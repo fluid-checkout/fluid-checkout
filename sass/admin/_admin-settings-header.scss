@@ -3,6 +3,7 @@
 // ------------------------------------
 
 #fc-header {
+	position: relative;
 	padding: $fc-header-padding-y $fc-header-padding-x;
 	margin-left: 0;
 	margin-bottom: 20px;
@@ -11,6 +12,7 @@
 	height: $fc-header-height;
 	box-shadow: $fc-header-box-shadow;
 	box-sizing: content-box;
+	overflow: visible;
 }
 
 .rtl #fc-header {
@@ -37,6 +39,9 @@
 	display: block;
 	max-height: $fc-header-logo-max-height;
 	width: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transform: translateZ( 0 );
 }
 
 #fc-header .fc-header__logo-text {
@@ -45,6 +50,8 @@
 	line-height: $fc-header-logo-text-line-height;
 	letter-spacing: $fc-header-logo-text-letter-spacing;
 	color: inherit;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 
@@ -87,8 +94,7 @@
 .fc-header__button:focus {
 	color: $fc-header-button-color;
 	box-shadow: none;
-	outline: 2px solid $fc-settings-nav-focus-outline-color;
-	outline-offset: 2px;
+	@include fc-admin-settings-focus-outline();
 }
 
 .fc-header__button:active:not( :disabled ):not( .disabled ) {
@@ -96,6 +102,7 @@
 }
 
 .fc-header__button .dashicons {
+	@include admin-dashicon-styles();
 	font-size: 16px;
 	height: 16px;
 	width: 16px;

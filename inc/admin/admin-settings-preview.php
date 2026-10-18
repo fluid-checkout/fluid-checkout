@@ -14,10 +14,25 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	 */
 	const HIDDEN_TABS = array( 'dashboard', 'license_keys' );
 
+	/**
+	 * Browser storage key of the preview state: preview mode, header and footer visibility, and expanded state.
+	 */
+	const STORAGE_KEY = 'fcAdminSettingsPreview';
+
+	/**
+	 * Smallest screen width where the preview shows as a column, as narrower screens open it as a drawer.
+	 */
+	const COMPACT_BREAKPOINT = 1280;
+
+	/**
+	 * Page preview width set by each viewport button. Tablet and desktop match the Fluid Checkout breakpoints.
+	 */
+	const VIEWPORT_WIDTHS = array( 'mobile' => 350, 'tablet' => 750, 'desktop' => 1000 );
+
 
 
 	/**
-	 * __construct function.
+	 * Register hooks for the settings preview column.
 	 */
 	public function __construct() {
 		$this->hooks();
@@ -30,6 +45,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Output
+		add_action( 'fc_admin_settings_layout_start', array( $this, 'output_expanded_state_script' ), 10 );
 		add_action( 'fc_admin_settings_after_content', array( $this, 'output_preview' ), 10 );
 
 		// Assets
@@ -42,7 +58,9 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	/**
 	 * Whether the preview column should be visible for a settings tab.
 	 *
-	 * @param  string  $tab  Settings tab slug.
+	 * @param   string  $tab  Settings tab slug.
+	 *
+	 * @return  bool
 	 */
 	public function is_preview_visible_for_tab( $tab ) {
 		return ! in_array( $tab, self::HIDDEN_TABS, true );
@@ -58,29 +76,79 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 
 		$pages = array(
 			'checkout'       => array(
-				'label'        => __( 'Checkout', 'fluid-checkout' ),
-				'requires_pro' => false,
+				'label'             => __( 'Checkout', 'fluid-checkout' ),
+				'requires_pro'      => false,
+				'url'               => wc_get_checkout_url(),
 			),
 			'cart'           => array(
-				'label'        => __( 'Cart', 'fluid-checkout' ),
-				'requires_pro' => ! $is_pro_activated,
+				'label'             => __( 'Cart', 'fluid-checkout' ),
+				'requires_pro'      => ! $is_pro_activated,
+				'enable_setting'    => 'fc_pro_enable_cart_page',
+				'url'               => wc_get_cart_url(),
 			),
 			'order_received' => array(
-				'label'        => __( 'Thank you', 'fluid-checkout' ),
-				'requires_pro' => ! $is_pro_activated,
+				'label'             => __( 'Thank you', 'fluid-checkout' ),
+				'requires_pro'      => ! $is_pro_activated,
+				'enable_setting'    => 'fc_pro_enable_order_received',
+				'url'               => FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_received_url(),
 			),
 			'order_pay'      => array(
-				'label'        => __( 'Order pay', 'fluid-checkout' ),
-				'requires_pro' => ! $is_pro_activated,
+				'label'             => __( 'Order pay', 'fluid-checkout' ),
+				'requires_pro'      => ! $is_pro_activated,
+				'enable_setting'    => 'fc_pro_enable_order_pay',
+				'url'               => FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_pay_url(),
 			),
 		);
 
 		/**
-		 * Filter preview page tabs on the Fluid Checkout settings page.
+		 * Filters preview page tabs on the Fluid Checkout settings page.
+		 * Each page is an array with the keys `label`, `requires_pro`, `url` of the frontend page to preview, and optionally `enable_setting`, the setting that enables the page on the settings tab with the same slug.
 		 *
-		 * @param  array  $pages  Map of page slug => args (`label`, `requires_pro`).
+		 * @since  5.0.0
+		 *
+		 * @param  array  $pages  Preview page definitions by page slug.
+		 *
+		 * @return array  Preview page definitions.
 		 */
 		return apply_filters( 'fc_admin_settings_preview_pages', $pages );
+	}
+
+	/**
+	 * Get the preview pane configuration for a settings tab.
+	 *
+	 * @param  string  $tab  Settings tab slug.
+	 * @return array         Preview pane configuration.
+	 */
+	public function get_preview_config( $tab ) {
+		// Define default configuration
+		$defaults = array(
+			'default_page'           => 'checkout',
+			'show_page_tabs'         => true,
+			'status_text'            => '',
+			// Settings that only change the page styles, refreshed without reloading the preview
+			'style_settings'         => array(
+				'fc_checkout_secondary_column_background_color',
+				'fc_checkout_header_background_color',
+				'fc_checkout_page_background_color',
+				'fc_checkout_footer_background_color',
+				'fc_checkout_order_review_highlight_color',
+			),
+		);
+
+		/**
+		 * Filter the preview pane configuration on the Fluid Checkout settings page.
+		 *
+		 * @since  5.0.0
+		 *
+		 * @param  array   $config  Preview pane configuration.
+		 * @param  string  $tab     Settings tab slug.
+		 *
+		 * @return array  Preview pane configuration.
+		 */
+		$config = apply_filters( 'fc_admin_settings_preview_config', $defaults, $tab );
+
+		// Keep the default values that filters removed
+		return wp_parse_args( $config, $defaults );
 	}
 
 	/**
@@ -97,7 +165,22 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 			return $tab;
 		}
 
-		return 'checkout';
+		// Otherwise, use the default preview page
+		$config = $this->get_preview_config( $tab );
+		return $config[ 'default_page' ];
+	}
+
+	/**
+	 * Get the preview URL of a preview page, which loads the page in the preview iframe.
+	 *
+	 * @param  array  $page_args  Preview page arguments.
+	 * @return string             Preview URL, or an empty string when the page cannot be previewed.
+	 */
+	public function get_preview_page_url( $page_args ) {
+		// Bail if the page requires PRO or has no frontend page to preview
+		if ( ! empty( $page_args[ 'requires_pro' ] ) || empty( $page_args[ 'url' ] ) ) { return ''; }
+
+		return FluidCheckout_Admin_Preview::instance()->get_preview_url( $page_args[ 'url' ] );
 	}
 
 
@@ -106,7 +189,8 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	 * Register preview assets.
 	 */
 	public function register_assets() {
-		wp_register_script( 'fc-admin-settings-preview', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-preview' ), array(), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		// Scripts
+		wp_register_script( 'fc-admin-settings-preview', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-preview' ), array( 'jquery', 'fc-utils', 'fc-admin-settings-enhanced-select' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-preview', 'window.addEventListener("load",function(){FCAdminSettingsPreview.init(fcAdminSettingsPreviewSettings);});' );
 	}
 
@@ -126,6 +210,9 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 
 		wp_enqueue_script( 'fc-admin-settings-preview' );
 
+		// Get preview pane configuration
+		$config = $this->get_preview_config( $page->get_current_tab() );
+
 		// EXCEPTION: Runtime values — initial tab and labels for the preview UI.
 		wp_localize_script(
 			'fc-admin-settings-preview',
@@ -134,21 +221,24 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 				'hiddenTabs'             => self::HIDDEN_TABS,
 				'initialTab'             => $page->get_current_tab(),
 				'initialPage'            => $this->get_preview_page_for_tab( $page->get_current_tab() ),
-				'previewProUrlTemplate'  => 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=settings-preview-{page}&mtm_source=lite-plugin',
-				'compactBreakpoint'      => 1280,
+				'placeholderSrcdocs'     => $this->get_placeholder_iframe_srcdocs(),
+				'defaultPage'            => $config[ 'default_page' ],
+				'modeQueryArg'           => FluidCheckout_Admin_Preview::MODE_QUERY_ARG,
+				'guestMode'              => FluidCheckout_Admin_Preview::MODE_GUEST,
+				'storageKey'             => self::STORAGE_KEY,
+				'compactBreakpoint'      => self::COMPACT_BREAKPOINT,
+				'viewportWidths'         => self::VIEWPORT_WIDTHS,
+				'ajaxUrl'                => admin_url( 'admin-ajax.php' ),
+				'draftAction'            => FluidCheckout_Admin_Preview::DRAFT_AJAX_ACTION,
+				'draftNonce'             => wp_create_nonce( FluidCheckout_Admin_Preview::DRAFT_AJAX_ACTION ),
+				'previewToken'           => FluidCheckout_Admin_Preview::instance()->get_token(),
+				'styleSettings'          => $config[ 'style_settings' ],
 				'i18n'                   => array(
 					'expand'               => __( 'Expand preview', 'fluid-checkout' ),
 					'collapse'             => __( 'Collapse preview', 'fluid-checkout' ),
 					'showPreview'          => __( 'Preview', 'fluid-checkout' ),
-					'preview'              => __( 'Page preview', 'fluid-checkout' ),
-					/* translators: %s: preview page label, e.g. Checkout */
-					'previewTitle'         => __( '%s preview', 'fluid-checkout' ),
-					'previewSubtitle'      => __( 'Isolated session · fields read-only', 'fluid-checkout' ),
-					/* translators: %s: HTML link to Fluid Checkout PRO pricing page */
-					'previewSubtitlePro'   => __( 'Available with %s.', 'fluid-checkout' ),
-					'previewProLinkLabel'  => __( 'Fluid Checkout PRO', 'fluid-checkout' ),
-					'zoomIn'               => __( 'Zoom in', 'fluid-checkout' ),
-					'zoomOut'              => __( 'Zoom out', 'fluid-checkout' ),
+					'showHeaderFooter'     => __( 'Show header and footer', 'fluid-checkout' ),
+					'hideHeaderFooter'     => __( 'Hide header and footer', 'fluid-checkout' ),
 				),
 			)
 		);
@@ -157,12 +247,84 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 
 
 	/**
+	 * Output the inline script that restores the expanded preview saved in the browser, before the settings layout renders.
+	 * The preview script runs once the page has loaded, so restoring it there would show the collapsed preview first.
+	 *
+	 * @param  string  $current_tab  Active settings tab slug.
+	 */
+	public function output_expanded_state_script( $current_tab ) {
+		// Bail if the preview is hidden for the settings tab
+		if ( ! $this->is_preview_visible_for_tab( $current_tab ) ) { return; }
+		?>
+		<script>
+		( function() {
+			var layout = document.querySelector( '[data-fc-settings-layout]' );
+			var state;
+
+			// Get the preview state saved in the browser, as browser storage can be blocked or unavailable
+			try {
+				state = JSON.parse( window.localStorage.getItem( <?php echo wp_json_encode( self::STORAGE_KEY ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON-encoded constant. ?> ) ) || {};
+			}
+			// Bail when browser storage is not available
+			catch ( error ) {
+				return;
+			}
+
+			// Maybe expand the preview, except for the drawer of the compact layout
+			if ( layout && true === state.expanded && ! window.matchMedia( '(max-width: <?php echo absint( self::COMPACT_BREAKPOINT - 1 ); ?>px)' ).matches ) {
+				layout.classList.add( 'is-preview-expanded' );
+			}
+		} )();
+		</script>
+		<?php
+	}
+
+	/**
+	 * Output the inline script that restores the preview mode and header and footer visibility saved in the browser, right after their controls.
+	 * The preview script runs once the page has loaded, so restoring them there would show the default values first.
+	 */
+	public function output_controls_state_script() {
+		?>
+		<script>
+		( function() {
+			var modeSelect = document.querySelector( '[data-fc-settings-preview-mode]' );
+			var headerFooterButton = document.querySelector( '[data-fc-settings-preview-header-footer]' );
+			var hideHeaderFooterLabel = <?php echo wp_json_encode( __( 'Hide header and footer', 'fluid-checkout' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON-encoded string. ?>;
+			var state;
+
+			// Get the preview state saved in the browser, as browser storage can be blocked or unavailable
+			try {
+				state = JSON.parse( window.localStorage.getItem( <?php echo wp_json_encode( self::STORAGE_KEY ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON-encoded constant. ?> ) ) || {};
+			}
+			// Bail when browser storage is not available
+			catch ( error ) {
+				return;
+			}
+
+			// Maybe select the saved preview mode, keeping guest mode for values the dropdown does not have
+			if ( modeSelect && state.mode && modeSelect.querySelector( 'option[value="' + state.mode + '"]' ) ) {
+				modeSelect.value = state.mode;
+			}
+
+			// Maybe show the header and footer toggle as pressed
+			if ( headerFooterButton && true === state.headerFooter ) {
+				headerFooterButton.setAttribute( 'aria-pressed', 'true' );
+				headerFooterButton.setAttribute( 'aria-label', hideHeaderFooterLabel );
+				headerFooterButton.setAttribute( 'title', hideHeaderFooterLabel );
+			}
+		} )();
+		</script>
+		<?php
+	}
+
+	/**
 	 * Output the settings preview column.
 	 *
 	 * @param  string  $current_tab  Active settings tab slug.
 	 */
 	public function output_preview( $current_tab ) {
 		$pages = $this->get_preview_pages();
+		$config = $this->get_preview_config( $current_tab );
 		$initial_page = $this->get_preview_page_for_tab( $current_tab );
 		$is_visible = $this->is_preview_visible_for_tab( $current_tab );
 		$initial_requires_pro = ! empty( $pages[ $initial_page ][ 'requires_pro' ] );
@@ -223,41 +385,58 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 						</label>
 					</div>
 
-					<div class="fc-settings-sectioned-buttons fc-settings-preview__zoom" role="group" aria-label="<?php echo esc_attr( __( 'Preview zoom', 'fluid-checkout' ) ); ?>">
+					<div class="fc-settings-sectioned-buttons fc-settings-preview__width" role="group" aria-label="<?php echo esc_attr( __( 'Preview width', 'fluid-checkout' ) ); ?>">
 						<button
 							type="button"
-							class="fc-settings-sectioned-buttons__option fc-settings-preview__zoom-button"
-							data-fc-settings-preview-zoom-out
-							title="<?php echo esc_attr( __( 'Zoom out', 'fluid-checkout' ) ); ?>"
-							aria-label="<?php echo esc_attr( __( 'Zoom out', 'fluid-checkout' ) ); ?>"
+							class="fc-settings-sectioned-buttons__option fc-settings-preview__width-button"
+							data-fc-settings-preview-width-decrease
+							title="<?php echo esc_attr( __( 'Decrease width', 'fluid-checkout' ) ); ?>"
+							aria-label="<?php echo esc_attr( __( 'Decrease width', 'fluid-checkout' ) ); ?>"
 						>
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM13.5 10.5h-6"/>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15"/>
 							</svg>
 						</button>
+						<label class="fc-settings-preview__width-value" title="<?php echo esc_attr( __( 'Preview width in pixels', 'fluid-checkout' ) ); ?>">
+							<input type="text" inputmode="numeric" autocomplete="off" value="<?php echo esc_attr( self::VIEWPORT_WIDTHS[ 'desktop' ] ); ?>" data-fc-settings-preview-width aria-label="<?php echo esc_attr( __( 'Preview width in pixels', 'fluid-checkout' ) ); ?>">
+							<span aria-hidden="true">px</span>
+						</label>
 						<button
 							type="button"
-							class="fc-settings-sectioned-buttons__option fc-settings-preview__zoom-value"
-							data-fc-settings-preview-zoom-value
-							title="<?php echo esc_attr( __( 'Reset zoom', 'fluid-checkout' ) ); ?>"
-							aria-label="<?php echo esc_attr( __( 'Reset zoom to 100%', 'fluid-checkout' ) ); ?>"
-						>100%</button>
-						<button
-							type="button"
-							class="fc-settings-sectioned-buttons__option fc-settings-preview__zoom-button"
-							data-fc-settings-preview-zoom-in
-							title="<?php echo esc_attr( __( 'Zoom in', 'fluid-checkout' ) ); ?>"
-							aria-label="<?php echo esc_attr( __( 'Zoom in', 'fluid-checkout' ) ); ?>"
+							class="fc-settings-sectioned-buttons__option fc-settings-preview__width-button"
+							data-fc-settings-preview-width-increase
+							title="<?php echo esc_attr( __( 'Increase width', 'fluid-checkout' ) ); ?>"
+							aria-label="<?php echo esc_attr( __( 'Increase width', 'fluid-checkout' ) ); ?>"
 						>
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6"/>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
 							</svg>
 						</button>
 					</div>
+
+					<div class="fc-settings-preview__frame-options">
+						<select class="fc-settings-preview__mode" data-fc-settings-preview-mode aria-label="<?php echo esc_attr( __( 'Preview as', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Preview as', 'fluid-checkout' ) ); ?>">
+							<option value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_GUEST ); ?>"><?php echo esc_html( __( 'Guest', 'fluid-checkout' ) ); ?></option>
+							<option value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_LOGGED_IN ); ?>"><?php echo esc_html( __( 'Logged in', 'fluid-checkout' ) ); ?></option>
+						</select>
+
+						<button type="button" class="fc-settings-preview__header-footer" data-fc-settings-preview-header-footer aria-pressed="false" aria-label="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75h16.5a1.5 1.5 0 011.5 1.5v13.5a1.5 1.5 0 01-1.5 1.5H3.75a1.5 1.5 0 01-1.5-1.5V5.25a1.5 1.5 0 011.5-1.5z"/>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 15.75h19.5"/>
+							</svg>
+						</button>
+
+						<?php $this->output_controls_state_script(); ?>
+					</div>
 				</div>
+
+				<?php if ( ! empty( $config[ 'status_text' ] ) ) : ?>
+					<p class="fc-settings-preview__status"><?php echo esc_html( $config[ 'status_text' ] ); ?></p>
+				<?php endif; ?>
 			</div>
 
-			<div class="fc-settings-preview__tabs" role="tablist" aria-label="<?php echo esc_attr( __( 'Preview page', 'fluid-checkout' ) ); ?>">
+			<div class="fc-settings-preview__tabs" role="tablist" aria-label="<?php echo esc_attr( __( 'Preview page', 'fluid-checkout' ) ); ?>" <?php echo $config[ 'show_page_tabs' ] ? '' : 'hidden'; ?>>
 				<?php foreach ( $pages as $page_slug => $page_args ) : ?>
 					<?php $is_active = $page_slug === $initial_page; ?>
 					<button
@@ -266,14 +445,17 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 						role="tab"
 						aria-selected="<?php echo $is_active ? 'true' : 'false'; ?>"
 						data-fc-settings-preview-page="<?php echo esc_attr( $page_slug ); ?>"
-						data-requires-pro="<?php echo ! empty( $page_args[ 'requires_pro' ] ) ? 'yes' : 'no'; ?>"
+						data-fc-settings-preview-url="<?php echo esc_url( $this->get_preview_page_url( $page_args ) ); ?>"
+						data-fc-settings-preview-enable-setting="<?php echo esc_attr( isset( $page_args[ 'enable_setting' ] ) ? $page_args[ 'enable_setting' ] : '' ); ?>"
 					><?php echo esc_html( $page_args[ 'label' ] ); ?></button>
 				<?php endforeach; ?>
 			</div>
 
 			<div class="fc-settings-preview__panel" data-fc-settings-preview-panel>
-				<div class="fc-settings-preview__frame-wrap" data-fc-settings-preview-frame-wrap data-viewport="desktop">
+				<div class="fc-settings-preview__frame-wrap" data-fc-settings-preview-frame-wrap>
 					<p class="fc-settings-preview__dims" data-fc-settings-preview-dims aria-live="polite">&mdash;</p>
+					<button type="button" class="fc-settings-preview__zoom-hint" data-fc-settings-preview-zoom-hint hidden><?php echo esc_html( __( 'Expand preview for a closer look', 'fluid-checkout' ) ); ?></button>
+					<span class="spinner fc-settings-preview__spinner"></span>
 					<iframe
 						class="fc-settings-preview__frame"
 						data-fc-settings-preview-frame
@@ -327,22 +509,72 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	}
 
 	/**
-	 * Build a minimal placeholder document for the preview iframe.
+	 * Get the subtitle HTML for the preview placeholder of a disabled page, with a link to the setting that enables it.
 	 *
-	 * @param  string  $page_label    Label of the preview page.
-	 * @param  bool    $requires_pro  Whether the page preview requires PRO.
-	 * @param  string  $page_slug     Preview page slug (for PRO upgrade tracking).
+	 * @param  string  $page_slug       Preview page slug, also the slug of the settings tab with the setting.
+	 * @param  string  $enable_setting  Setting that enables the page.
 	 * @return string
 	 */
-	private function get_placeholder_iframe_srcdoc( $page_label, $requires_pro = false, $page_slug = '' ) {
+	public function get_disabled_preview_subtitle_html( $page_slug, $enable_setting ) {
+		// Get link to the setting
+		$link = sprintf(
+			'<a href="%1$s" target="_parent">%2$s</a>',
+			esc_url( FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( $page_slug ) . '#' . $enable_setting ),
+			esc_html__( 'Turn them on', 'fluid-checkout' )
+		);
+
+		return sprintf(
+			/* translators: %s: HTML link to the setting that enables the optimizations of the page */
+			__( 'Optimizations for this page are turned off. %s to preview the page.', 'fluid-checkout' ),
+			$link
+		);
+	}
+
+	/**
+	 * Get the placeholder documents shown in the preview iframe for pages that cannot be previewed.
+	 *
+	 * @return array  Placeholder documents by preview page slug.
+	 */
+	public function get_placeholder_iframe_srcdocs() {
+		// Define placeholder documents
+		$placeholders = array();
+
+		// Iterate preview pages
+		foreach ( $this->get_preview_pages() as $page_slug => $page_args ) {
+			$placeholders[ $page_slug ] = $this->get_placeholder_iframe_srcdoc( $page_args[ 'label' ], ! empty( $page_args[ 'requires_pro' ] ), $page_slug, isset( $page_args[ 'enable_setting' ] ) ? $page_args[ 'enable_setting' ] : '' );
+		}
+
+		return $placeholders;
+	}
+
+	/**
+	 * Build a minimal placeholder document for the preview iframe.
+	 *
+	 * @param  string  $page_label      Label of the preview page.
+	 * @param  bool    $requires_pro    Whether the page preview requires PRO.
+	 * @param  string  $page_slug       Preview page slug (for PRO upgrade tracking).
+	 * @param  string  $enable_setting  Setting that enables the page, for the placeholder shown while it is disabled.
+	 * @return string
+	 */
+	private function get_placeholder_iframe_srcdoc( $page_label, $requires_pro = false, $page_slug = '', $enable_setting = '' ) {
 		$title = sprintf(
 			/* translators: %s: preview page label, e.g. Checkout */
 			__( '%s preview', 'fluid-checkout' ),
 			$page_label
 		);
-		$subtitle = $requires_pro
-			? $this->get_pro_preview_subtitle_html( $page_slug )
-			: esc_html__( 'Isolated session · fields read-only', 'fluid-checkout' );
+
+		// Maybe link to PRO, for pages that require it
+		if ( $requires_pro ) {
+			$subtitle = $this->get_pro_preview_subtitle_html( $page_slug );
+		}
+		// Maybe link to the setting that enables the page, for disabled pages
+		elseif ( ! empty( $enable_setting ) ) {
+			$subtitle = $this->get_disabled_preview_subtitle_html( $page_slug, $enable_setting );
+		}
+		// Otherwise, describe the preview
+		else {
+			$subtitle = esc_html__( 'Isolated session · nothing is saved', 'fluid-checkout' );
+		}
 
 		$allowed_subtitle_html = array(
 			'a' => array(
@@ -352,7 +584,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 			),
 		);
 
-		return '<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body{margin:0;height:100%;font:13px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#646970}body{display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;box-sizing:border-box}strong{display:block;margin-bottom:6px;color:#1e1e1e;font-size:14px}a{color:#2271b1;text-decoration:underline}a:hover,a:focus{color:#135e96}</style></head><body><div><strong id="fc-settings-preview-title">' . esc_html( $title ) . '</strong><span id="fc-settings-preview-subtitle">' . wp_kses( $subtitle, $allowed_subtitle_html ) . '</span></div></body></html>';
+		return '<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body{margin:0;height:100%;font:13px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#646970}body{display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;box-sizing:border-box}div{zoom:calc(1/var(--fc-settings-preview-scale,1))}strong{display:block;margin-bottom:6px;color:#1e1e1e;font-size:14px}a{color:#2271b1;text-decoration:underline}a:hover,a:focus{color:#135e96}</style></head><body><div><strong id="fc-settings-preview-title">' . esc_html( $title ) . '</strong><span id="fc-settings-preview-subtitle">' . wp_kses( $subtitle, $allowed_subtitle_html ) . '</span></div></body></html>';
 	}
 
 }

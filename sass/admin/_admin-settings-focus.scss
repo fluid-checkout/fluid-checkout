@@ -1,0 +1,43 @@
+// ------------------------------------
+// SETTINGS PAGE - FOCUS OUTLINE (IRIS)
+// ------------------------------------
+
+@mixin fc-admin-settings-iris-handle-focus {
+	border-color: $fc-settings-focus-outline-color !important; // Needed to override Iris and WP admin picker styles
+	box-shadow: none !important; // Needed to override Iris and WP admin picker styles
+	outline: $fc-settings-focus-outline-width solid $fc-settings-focus-outline-color !important; // Needed to override Iris and WP admin picker styles
+	outline-offset: $fc-settings-focus-outline-offset !important; // Needed to override Iris and WP admin picker styles
+}
+
+
+
+.fc-settings-wrap .iris-picker .iris-square-value:focus,
+.fc-settings-wrap .iris-picker .iris-square-value:focus-visible {
+	outline: none !important; // Needed to override Iris anchor focus styles; ring is drawn on the handle
+	box-shadow: none !important; // Needed to override Iris anchor focus styles
+}
+
+.fc-settings-wrap .iris-picker .iris-square-value:focus .iris-square-handle,
+.fc-settings-wrap .iris-picker .iris-square-value:focus-visible .iris-square-handle,
+.fc-settings-wrap .iris-picker .iris-square-value.ui-state-focus .iris-square-handle,
+.fc-settings-wrap .iris-picker .iris-square-handle.ui-slider-handle:focus,
+.fc-settings-wrap .iris-picker .iris-square-handle.ui-slider-handle:focus-visible {
+	border-radius: 50%;
+	@include fc-admin-settings-iris-handle-focus();
+}
+
+
+
+.fc-settings-wrap .iris-picker .iris-strip .ui-slider-handle:focus,
+.fc-settings-wrap .iris-picker .iris-strip .ui-slider-handle:focus-visible,
+.fc-settings-wrap .iris-picker .iris-strip .ui-slider-handle.ui-state-focus {
+	@include fc-admin-settings-iris-handle-focus();
+}
+
+
+
+.fc-settings-wrap .iris-picker .iris-palette:focus,
+.fc-settings-wrap .iris-picker .iris-palette:focus-visible {
+	box-shadow: none !important; // Needed to override WP admin picker palette focus ring
+	@include fc-admin-settings-focus-outline();
+}

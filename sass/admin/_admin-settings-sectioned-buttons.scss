@@ -9,7 +9,6 @@
 	border-radius: $fc-settings-input-border-radius;
 	background: $white;
 	box-shadow: $fc-settings-input-box-shadow;
-	overflow: hidden;
 }
 
 .fc-settings-sectioned-buttons__option {
@@ -35,8 +34,17 @@
 	box-sizing: border-box;
 }
 
+.fc-settings-sectioned-buttons__option:first-child {
+	border-radius: $fc-settings-input-border-radius 0 0 $fc-settings-input-border-radius;
+}
+
 .fc-settings-sectioned-buttons__option:last-child {
 	border-right: 0;
+	border-radius: 0 $fc-settings-input-border-radius $fc-settings-input-border-radius 0;
+}
+
+.fc-settings-sectioned-buttons__option:only-child {
+	border-radius: $fc-settings-input-border-radius;
 }
 
 .fc-settings-sectioned-buttons__option input {
@@ -62,10 +70,10 @@
 	font-weight: 600;
 }
 
-.fc-settings-sectioned-buttons__option:has( input:focus-visible ) {
-	outline: 2px solid $fc-settings-nav-focus-outline-color;
-	outline-offset: -2px;
+.fc-settings-sectioned-buttons__option:has( input:focus-visible ),
+.fc-settings-sectioned-buttons__option:focus-visible {
 	z-index: 1;
+	@include fc-admin-settings-focus-outline();
 }
 
 .fc-settings-sectioned-buttons__option.is-disabled {

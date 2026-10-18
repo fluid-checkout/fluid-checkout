@@ -2,7 +2,7 @@
  * Manage Fluid Checkout admin settings page behavior (conditionals, actions bar).
  *
  * DEPENDS ON:
- * - None (vanilla JS)
+ * - FCUtils // Settings merge
  */
 
 (function (root, factory) {
@@ -27,6 +27,7 @@
 		conditionalFieldKeyAttribute:          'data-conditional-id',
 		conditionalFieldValueAttribute:        'data-conditional-value',
 
+		settingsFieldSelector:                 '.fc-settings-field',
 		settingsRowSelector:                   '.fc-settings-field, tr',
 		layoutOptionsSelector:                 '.fc-settings-sectioned-buttons, .fc-settings-radio-options',
 		layoutOptionSelector:                  '.fc-settings-sectioned-buttons__option, .fc-settings-radio-option',
@@ -37,71 +38,39 @@
 		actionsSelector:                       '.fc-settings-actions',
 		formSelector:                          '[data-fc-settings-form]',
 		saveButtonSelector:                    '[data-fc-settings-save]',
+		noticesSelector:                       '[data-fc-settings-notices]',
 		isBusyClass:                           'is-busy',
 		isPinnedClass:                         'is-pinned',
+		noticeVisibleClass:                    'is-visible',
+		noticeHidingClass:                     'is-hiding',
 
 		hiddenClass:                           'hidden',
 
 		syncedSelectAttribute:                 'data-fc-settings-sync-group',
 
+		ajaxUrl:                               '',
+		saveAction:                            'fc_settings_save',
+		noticeDismissDelayMs:                  5000,
+		noticeHideTransitionMs:                300,
+
 		i18n: {
 			saving:                            'Saving...',
+			save:                              'Save settings',
+			saved:                             'Your settings have been saved.',
+			saveError:                         'Settings could not be saved. Please try again.',
+			dismissNotice:                     'Dismiss notice',
 		},
 	};
 	var _triggerFieldIds = [];
 	var _actionsSyncScheduled = false;
+	var _isSavingSettings = false;
+	var _settingsNoticeTimeout = null;
 
 
 
 	/**
 	 * METHODS
 	 */
-
-
-
-	/*!
-	* Merge two or more objects together.
-	* (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
-	* @param   {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
-	* @param   {Object}   objects  The objects to merge together
-	* @returns {Object}            Merged values of defaults and options
-	*/
-	var extend = function () {
-		// Variables
-		var extended = {};
-		var deep = false;
-		var i = 0;
-
-		// Check if a deep merge
-		if ( Object.prototype.toString.call( arguments[0] ) === '[object Boolean]' ) {
-			deep = arguments[0];
-			i++;
-		}
-
-		// Merge the object into the extended object
-		var merge = function (obj) {
-			for (var prop in obj) {
-				if (obj.hasOwnProperty(prop)) {
-					// If property is an object, merge properties
-					if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
-						extended[prop] = extend(extended[prop], obj[prop]);
-					} else {
-						extended[prop] = obj[prop];
-					}
-				}
-			}
-		};
-
-		// Loop through each object and conduct a merge
-		for (; i < arguments.length; i++) {
-			var obj = arguments[i];
-			merge(obj);
-		}
-
-		return extended;
-	};
-
-
 
 	/**
 	 * Get the field value based on field type.
@@ -145,7 +114,9 @@
 		}
 
 		return fieldValue;
-	}
+	};
+
+
 
 	/**
 	 * Get the conditional trigger key for an element (id or name, without field id prefix).
@@ -168,7 +139,9 @@
 		}
 
 		return '';
-	}
+	};
+
+
 
 	/**
 	 * Get the trigger field element by its full field id (with prefix).
@@ -196,7 +169,9 @@
 
 		// Fall back to element id
 		return document.getElementById( fieldId );
-	}
+	};
+
+
 
 	/**
 	 * Resolve the registered trigger field id for an event target element.
@@ -219,7 +194,9 @@
 		}
 
 		return null;
-	}
+	};
+
+
 
 	/**
 	 * Get the visibility container for a conditional field.
@@ -232,7 +209,7 @@
 		if ( ! element ) { return null; }
 
 		// Prefer the nearest settings field row
-		var settingsField = element.closest( '.fc-settings-field' );
+		var settingsField = element.closest( _settings.settingsFieldSelector );
 		if ( settingsField ) { return settingsField; }
 
 		// Fall back to a nested fieldset then a table row for WC embeds
@@ -240,7 +217,9 @@
 		if ( fieldset ) { return fieldset; }
 
 		return element.closest( 'tr' );
-	}
+	};
+
+
 
 	/**
 	 * Whether a container is currently hidden by conditional visibility.
@@ -253,7 +232,9 @@
 		if ( ! container ) { return false; }
 
 		return container.classList.contains( _settings.hiddenClass ) || 'none' === container.style.display;
-	}
+	};
+
+
 
 	/**
 	 * Whether a conditional field value matches the trigger value.
@@ -287,7 +268,9 @@
 		}
 
 		return false;
-	}
+	};
+
+
 
 	/**
 	 * Parse trigger ids from a conditional field attribute.
@@ -317,7 +300,9 @@
 		}
 
 		return result;
-	}
+	};
+
+
 
 	/**
 	 * Whether conditional ids in data-conditional-id should match with OR logic.
@@ -327,7 +312,9 @@
 	 */
 	var isConditionalOrMatch = function( conditionIds ) {
 		return null !== conditionIds && undefined !== conditionIds && String( conditionIds ).indexOf( '|' ) !== -1;
-	}
+	};
+
+
 
 	/**
 	 * Whether a conditional field lists the given trigger key in data-conditional-id.
@@ -351,7 +338,9 @@
 		}
 
 		return false;
-	}
+	};
+
+
 
 	/**
 	 * Evaluate whether any pipe-separated conditional id/value pair matches (OR).
@@ -392,7 +381,9 @@
 		}
 
 		return false;
-	}
+	};
+
+
 
 	/**
 	 * Evaluate whether all conditional id/value pairs currently match (AND).
@@ -458,7 +449,9 @@
 		}
 
 		return true;
-	}
+	};
+
+
 
 	/**
 	 * Whether the field row is a locked (disabled) settings field kept visible for discovery.
@@ -478,9 +471,9 @@
 		}
 
 		// Nested fieldsets still belong to a locked settings field row
-		settingsField = fieldRow.closest( '.fc-settings-field' );
+		settingsField = fieldRow.closest( _settings.settingsFieldSelector );
 		return !!( settingsField && settingsField.classList.contains( _settings.disabledFieldClass ) );
-	}
+	};
 
 
 
@@ -542,7 +535,7 @@
 			// this ensures that fields with nested conditions are displayed/hidden correctly.
 			maybeProcessConditionalFields( conditionalField );
 		}
-	}
+	};
 
 
 
@@ -593,7 +586,7 @@
 			// Process conditional fields
 			maybeProcessConditionalFields( fieldElement );
 		}
-	}
+	};
 
 
 
@@ -646,13 +639,14 @@
 	 * @param   {Event}  event  The click event.
 	 */
 	var handleClick = function( event ) {
+		var triggerFieldId;
+
 		// CONDITIONAL FIELDS TRIGGER
-		var triggerFieldId = resolveTriggerFieldId( event.target );
+		triggerFieldId = resolveTriggerFieldId( event.target );
 		if ( triggerFieldId ) {
-			// Maybe process conditional fields
 			maybeProcessConditionalFields( event.target );
 		}
-	}
+	};
 
 	/**
 	 * Sync selected class on layout / template option buttons.
@@ -809,10 +803,9 @@
 		// CONDITIONAL FIELDS TRIGGER
 		var triggerFieldId = resolveTriggerFieldId( event.target );
 		if ( triggerFieldId ) {
-			// Maybe process conditional fields
 			maybeProcessConditionalFields( event.target );
 		}
-	}
+	};
 
 
 
@@ -823,6 +816,38 @@
 	 */
 	var getSavingLabel = function() {
 		return _settings.i18n && _settings.i18n.saving ? _settings.i18n.saving : 'Saving...';
+	};
+
+	/**
+	 * Get the idle save button label from settings.
+	 *
+	 * @return  {string}  Save button label.
+	 */
+	var getSaveLabel = function() {
+		return _settings.i18n && _settings.i18n.save ? _settings.i18n.save : 'Save settings';
+	};
+
+
+
+	/**
+	 * Get the first save button that can submit the settings form.
+	 *
+	 * @return  {Element|null}  Save button, or null when saving is unavailable.
+	 */
+	var getActiveSaveButton = function() {
+		var buttons = document.querySelectorAll( _settings.saveButtonSelector );
+		var i;
+		var button;
+
+		for ( i = 0; i < buttons.length; i++ ) {
+			button = buttons[ i ];
+
+			if ( button.disabled || button.classList.contains( _settings.isBusyClass ) ) { continue; }
+
+			return button;
+		}
+
+		return null;
 	};
 
 	/**
@@ -865,6 +890,179 @@
 	};
 
 	/**
+	 * Restore save buttons after an AJAX save finishes.
+	 */
+	var resetSaveButtonsState = function() {
+		var buttons = document.querySelectorAll( _settings.saveButtonSelector );
+		var i;
+		var button;
+
+		for ( i = 0; i < buttons.length; i++ ) {
+			button = buttons[ i ];
+			button.classList.remove( _settings.isBusyClass );
+			button.disabled = false;
+			button.style.minWidth = '';
+			button.textContent = getSaveLabel();
+		}
+	};
+
+	/**
+	 * Get the active settings tab slug from the DOM.
+	 *
+	 * @return  {string}  Tab slug, or empty string when none is active.
+	 */
+	var getActiveSettingsTabSlug = function() {
+		var activeTab = document.querySelector( '.fc-settings-tab.is-active' );
+
+		if ( ! activeTab ) { return ''; }
+
+		return activeTab.getAttribute( 'data-fc-settings-tab' ) || '';
+	};
+
+	/**
+	 * Dismiss a floating save notice in the settings page header.
+	 *
+	 * @param   {Element}  notice  Notice element to dismiss.
+	 * @param   {Element}  host    Notice container element.
+	 */
+	var dismissSettingsSaveNotice = function( notice, host ) {
+		var hideTransitionMs;
+
+		if ( ! notice || ! host || ! host.contains( notice ) ) { return; }
+
+		if ( _settingsNoticeTimeout ) {
+			window.clearTimeout( _settingsNoticeTimeout );
+			_settingsNoticeTimeout = null;
+		}
+
+		hideTransitionMs = _settings.noticeHideTransitionMs;
+
+		notice.classList.remove( _settings.noticeVisibleClass );
+		notice.classList.add( _settings.noticeHidingClass );
+
+		window.setTimeout( function() {
+			if ( host.contains( notice ) ) {
+				host.removeChild( notice );
+			}
+		}, hideTransitionMs );
+	};
+
+	/**
+	 * Show a floating save notice in the settings page header.
+	 *
+	 * @param   {string}  type     Notice type: success or error.
+	 * @param   {string}  message  Notice message.
+	 */
+	var showSettingsSaveNotice = function( type, message ) {
+		var host = document.querySelector( _settings.noticesSelector );
+		var notice;
+		var noticeMessage;
+		var dismissButton;
+		var dismissLabel;
+		var dismissDelayMs;
+
+		if ( ! host || ! message ) { return; }
+
+		if ( _settingsNoticeTimeout ) {
+			window.clearTimeout( _settingsNoticeTimeout );
+			_settingsNoticeTimeout = null;
+		}
+
+		host.textContent = '';
+		notice = document.createElement( 'div' );
+		notice.className = 'fc-header__notice fc-header__notice--' + type;
+		notice.setAttribute( 'role', 'error' === type ? 'alert' : 'status' );
+
+		noticeMessage = document.createElement( 'span' );
+		noticeMessage.className = 'fc-header__notice-message';
+		noticeMessage.textContent = message;
+		notice.appendChild( noticeMessage );
+
+		dismissLabel = _settings.i18n && _settings.i18n.dismissNotice ? _settings.i18n.dismissNotice : 'Dismiss notice';
+		dismissButton = document.createElement( 'button' );
+		dismissButton.type = 'button';
+		dismissButton.className = 'fc-header__notice-dismiss';
+		dismissButton.setAttribute( 'aria-label', dismissLabel );
+		dismissButton.innerHTML = '<span class="dashicons dashicons-no-alt" aria-hidden="true"></span>';
+		dismissButton.addEventListener( 'click', function() {
+			dismissSettingsSaveNotice( notice, host );
+		} );
+		notice.appendChild( dismissButton );
+
+		host.appendChild( notice );
+
+		window.requestAnimationFrame( function() {
+			notice.classList.add( _settings.noticeVisibleClass );
+		} );
+
+		dismissDelayMs = _settings.noticeDismissDelayMs;
+
+		_settingsNoticeTimeout = window.setTimeout( function() {
+			dismissSettingsSaveNotice( notice, host );
+		}, dismissDelayMs );
+	};
+
+	/**
+	 * Save settings through admin AJAX.
+	 */
+	var saveSettingsViaAjax = function() {
+		var form;
+		var formData;
+		var activeTab;
+		var saveErrorMessage;
+		var savedMessage;
+
+		if ( _isSavingSettings ) { return; }
+
+		form = document.querySelector( _settings.formSelector );
+
+		// Bail if AJAX save is unavailable
+		if ( ! form || ! _settings.ajaxUrl ) { return; }
+
+		_isSavingSettings = true;
+		setSaveButtonsSavingState();
+
+		formData = new FormData( form );
+		formData.append( 'action', _settings.saveAction );
+
+		activeTab = getActiveSettingsTabSlug();
+		if ( activeTab ) {
+			formData.set( 'fc_settings_current_tab', activeTab );
+		}
+
+		saveErrorMessage = _settings.i18n && _settings.i18n.saveError ? _settings.i18n.saveError : 'Settings could not be saved. Please try again.';
+		savedMessage = _settings.i18n && _settings.i18n.saved ? _settings.i18n.saved : 'Your settings have been saved.';
+
+		window.fetch( _settings.ajaxUrl, {
+			method:      'POST',
+			body:        formData,
+			credentials: 'same-origin',
+		} )
+			.then( function( response ) {
+				return response.json();
+			} )
+			.then( function( response ) {
+				var message;
+
+				if ( response && response.success ) {
+					message = response.data && response.data.message ? response.data.message : savedMessage;
+					showSettingsSaveNotice( 'success', message );
+					return;
+				}
+
+				message = response && response.data && response.data.message ? response.data.message : saveErrorMessage;
+				showSettingsSaveNotice( 'error', message );
+			} )
+			.catch( function() {
+				showSettingsSaveNotice( 'error', saveErrorMessage );
+			} )
+			.finally( function() {
+				_isSavingSettings = false;
+				resetSaveButtonsState();
+			} );
+	};
+
+	/**
 	 * Handle settings form submit events.
 	 *
 	 * @param   {Event}  event  The submit event.
@@ -873,8 +1071,68 @@
 		// Bail if not the settings form
 		if ( ! event.target || ! event.target.matches || ! event.target.matches( _settings.formSelector ) ) { return; }
 
-		// Show saving state on save buttons
-		setSaveButtonsSavingState();
+		event.preventDefault();
+		saveSettingsViaAjax();
+	};
+
+
+
+	/**
+	 * Save settings when pressing Ctrl+S or Cmd+S.
+	 *
+	 * @param   {Event}  event  Keyboard event.
+	 */
+	var handleKeydown = function( event ) {
+		var form;
+		var saveButton;
+		var isSaveShortcut;
+		var target;
+		var inputType;
+
+		// Bail if FCUtils is not available
+		if ( ! window.FCUtils ) { return; }
+
+		// Prevent implicit form submit when pressing Enter in settings fields
+		if ( FCUtils.keyboardKeys.ENTER === event.key ) {
+			form = document.querySelector( _settings.formSelector );
+			target = event.target;
+
+			if ( form && target && form.contains( target ) && 'TEXTAREA' !== target.tagName ) {
+				if ( target.closest && target.closest( '.iris-picker' ) ) {
+					event.preventDefault();
+				}
+				else if ( 'SELECT' === target.tagName ) {
+					event.preventDefault();
+				}
+				else if ( 'INPUT' === target.tagName ) {
+					inputType = ( target.type || 'text' ).toLowerCase();
+
+					if ( -1 !== [ 'text', 'search', 'url', 'tel', 'email', 'password', 'number', 'color' ].indexOf( inputType ) ) {
+						event.preventDefault();
+					}
+				}
+			}
+		}
+
+		isSaveShortcut = ( event.metaKey || event.ctrlKey ) && ! event.altKey && ! event.shiftKey && FCUtils.keyboardKeys.S === event.key.toLowerCase();
+
+		// Bail if the save shortcut was not pressed
+		if ( ! isSaveShortcut ) { return; }
+
+		form = document.querySelector( _settings.formSelector );
+		saveButton = getActiveSaveButton();
+
+		// Bail if the form or an enabled save button is missing
+		if ( ! form || ! saveButton ) { return; }
+
+		event.preventDefault();
+
+		if ( typeof form.requestSubmit === 'function' ) {
+			form.requestSubmit( saveButton );
+		}
+		else {
+			saveButton.click();
+		}
 	};
 
 
@@ -889,7 +1147,7 @@
 		if ( _hasInitialized ) { return; }
 
 		// Merge settings
-		_settings = extend( true, _settings, options );
+		_settings = FCUtils.extendObject( _settings, options );
 
 		// Initialize conditionals
 		initializeConditionals();
@@ -904,6 +1162,7 @@
 		window.addEventListener( 'click', handleClick, true );
 		window.addEventListener( 'change', handleChange, true );
 		window.addEventListener( 'submit', handleSubmit, true );
+		document.addEventListener( 'keydown', handleKeydown, true );
 		// Capture scroll: tall WP admin menu scroll must keep the bar on the viewport
 		window.addEventListener( 'scroll', scheduleActionsBarSync, true );
 		window.addEventListener( 'resize', scheduleActionsBarSync );

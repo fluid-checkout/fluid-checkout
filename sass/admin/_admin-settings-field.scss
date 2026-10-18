@@ -19,7 +19,7 @@
 	// Stack label above control below the content reading width
 	@media ( max-width: $fc-settings-content-max-width - 1px ) {
 		flex-direction: column;
-		gap: 8px;
+		gap: 4px;
 	}
 }
 
@@ -31,7 +31,7 @@
 	padding-top: $fc-settings-field-label-padding-top;
 	font-size: $fc-settings-field-label-font-size;
 	font-weight: normal;
-	line-height: 1.4;
+	line-height: $fc-settings-field-label-line-height;
 	color: $fc-settings-text-color;
 
 	@media ( max-width: $fc-settings-content-max-width - 1px ) {
@@ -49,16 +49,7 @@
 
 // Clear space for the floating info icon on the right of the label
 .fc-settings-field__label:has( > .fc-settings-info-tip ) {
-	@media ( min-width: $fc-settings-content-max-width ) {
-		padding-right: $fc-settings-info-tip-offset;
-	}
-}
-
-.rtl .fc-settings-field__label:has( > .fc-settings-info-tip ) {
-	@media ( min-width: $fc-settings-content-max-width ) {
-		padding-right: 0;
-		padding-left: $fc-settings-info-tip-offset;
-	}
+	padding-inline-end: $fc-settings-info-tip-offset;
 }
 
 .fc-settings-field__label label {
@@ -147,17 +138,16 @@
 	// Sit below the color input row (control padding-top + input height + gap)
 	top: calc( 5px + #{$fc-settings-input-height} + 8px );
 	left: 0;
-	border: 1px solid #ccc;
+	border: 1px solid $admin-ui-border-color;
 	border-radius: 3px;
-	box-shadow: 0 1px 3px rgba( 0, 0, 0, .2 );
+	box-shadow: 0 1px 3px $elevation-shadow-strong;
 }
 
 // Buttons next to inputs match the field control height
 .fc-settings-field__control > .button,
 .fc-settings-field__control > .button-secondary,
 .fc-settings-field__control > .fc-settings-button,
-.fc-settings-wrap .fc-license-key__field-wrap .button,
-.fc-settings-wrap .fc-addons__site-key-field-row .button {
+.fc-settings-wrap .fc-license-key__field-wrap .button {
 	height: $fc-settings-input-height;
 	min-height: $fc-settings-input-height;
 }
@@ -209,16 +199,16 @@
 	padding-right: $fc-settings-select-caret-padding-right;
 	line-height: $fc-settings-input-height - 2px;
 	background-color: $fc-settings-input-background-color;
-	background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%232e4453'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E" );
+	background-image: $fc-settings-select-caret-background;
 	background-repeat: no-repeat;
-	background-position: right 10px center;
+	background-position: right $fc-settings-select-caret-offset-x center;
 	background-size: $fc-settings-select-caret-size;
 }
 
 .rtl .fc-settings-field__control select {
-	padding-right: 10px;
+	padding-right: $fc-settings-select-caret-offset-x;
 	padding-left: $fc-settings-select-caret-padding-right;
-	background-position: left 10px center;
+	background-position: left $fc-settings-select-caret-offset-x center;
 }
 
 .fc-settings-field__control textarea {
@@ -242,14 +232,14 @@
 }
 
 .fc-settings-field__control select:disabled {
-	background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%2368717a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E" );
+	background-image: $fc-settings-select-caret-background-disabled;
 	background-repeat: no-repeat;
-	background-position: right 10px center;
+	background-position: right $fc-settings-select-caret-offset-x center;
 	background-size: $fc-settings-select-caret-size;
 }
 
 .rtl .fc-settings-field__control select:disabled {
-	background-position: left 10px center;
+	background-position: left $fc-settings-select-caret-offset-x center;
 }
 
 .fc-settings-wrap .ts-wrapper.disabled .ts-control,
@@ -265,10 +255,11 @@
 .fc-settings-field__control input[type="number"]:focus,
 .fc-settings-field__control input[type="search"]:focus,
 .fc-settings-field__control select:focus,
-.fc-settings-field__control textarea:focus {
+.fc-settings-field__control textarea:focus,
+.fc-settings-field__control .colorpick:focus {
 	border-color: $fc-settings-input-border-color-focus;
-	outline: 1px solid $fc-settings-input-border-color-focus;
 	box-shadow: none;
+	@include fc-admin-settings-focus-outline();
 }
 
 .fc-settings-field__control input::placeholder,
@@ -354,9 +345,11 @@
 }
 
 .fc-settings-toggle {
-	position: absolute !important;
-	margin-left: -9999px !important;
-	visibility: hidden !important;
+	position: absolute !important; // Needed to take the checkbox out of the toggle layout flow
+	margin: 0 !important; // Needed to override WP admin checkbox margin
+	width: 1px; // Needs to be 1px to hide the checkbox visually but keep it focusable
+	height: 1px; // Needs to be 1px to hide the checkbox visually but keep it focusable
+	opacity: 0 !important; // Needed to override WP admin checkbox appearance
 }
 
 .fc-settings-toggle + label {
@@ -397,7 +390,7 @@ input.fc-settings-toggle--round + label::after {
 	width: $fc-settings-toggle-knob-size;
 	background-color: $white;
 	border-radius: 100%;
-	box-shadow: 0 2px 5px rgba( 0, 0, 0, .1 );
+	box-shadow: 0 2px 5px $elevation-shadow-soft;
 	transition: margin .4s;
 }
 
@@ -415,7 +408,7 @@ input.fc-settings-toggle--round:checked:disabled + label,
 }
 
 input.fc-settings-toggle--round:focus + label {
-	box-shadow: 0 0 0 1px $white, 0 0 0 3px $fc-settings-nav-focus-outline-color;
+	@include fc-admin-settings-focus-outline();
 }
 
 .fc-settings-switch--disabled .fc-settings-toggle + label {
@@ -455,23 +448,22 @@ input.fc-settings-toggle--round:focus + label {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: $fc-settings-info-tip-size;
-	height: $fc-settings-info-tip-size;
+	width: $fc-settings-info-icon-hit-size;
+	height: $fc-settings-info-icon-hit-size;
 	vertical-align: text-top;
 }
 
-// Field label tip: inline on small screens, floating to the right from 600px up.
-// Keep `position: relative` when inline so the popup anchors to the icon, not the label box.
+// Field label tip: anchor to the first label line at every viewport width
 .fc-settings-field__label > .fc-settings-info-tip {
-	position: relative;
-	margin-inline-start: 6px;
+	position: absolute;
+	top: $fc-settings-info-tip-label-top;
+	inset-inline-end: calc( -1 * #{$fc-settings-info-icon-hit-size} / 2 - 3px );
+	inset-inline-start: auto;
+	margin: 0;
 
-	@media ( min-width: $fc-settings-content-max-width ) {
-		position: absolute;
-		top: 15px;
-		right: -15px;
-		left: auto;
-		margin: 0;
+	@media ( max-width: $fc-settings-content-max-width - 1px ) {
+		top: $fc-settings-info-tip-label-top-stacked;
+		inset-inline-end: 0;
 	}
 }
 
@@ -479,16 +471,7 @@ input.fc-settings-toggle--round:focus + label {
 .fc-settings-field--checkbox > .fc-settings-field__label > .fc-settings-info-tip,
 .fc-settings-field--fc_telemetry > .fc-settings-field__label > .fc-settings-info-tip,
 .fc-settings-field--inline:has( > .fc-settings-field__control .fc-settings-switch ) > .fc-settings-field__label > .fc-settings-info-tip {
-	@media ( min-width: $fc-settings-content-max-width ) {
-		top: 8px;
-	}
-}
-
-.rtl .fc-settings-field__label > .fc-settings-info-tip {
-	@media ( min-width: $fc-settings-content-max-width ) {
-		right: auto;
-		left: -15px;
-	}
+	top: $fc-settings-info-tip-label-top-toggle;
 }
 
 .fc-settings-info-tip:hover,
@@ -500,9 +483,12 @@ input.fc-settings-toggle--round:focus + label {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	width: $fc-settings-info-icon-hit-size;
+	height: $fc-settings-info-icon-hit-size;
 	margin: 0;
 	padding: 0;
 	border: 0;
+	border-radius: 50%;
 	background: transparent;
 	color: $fc-settings-info-tip-color;
 	cursor: pointer;
@@ -521,6 +507,10 @@ input.fc-settings-toggle--round:focus + label {
 	color: $fc-settings-info-tip-color-hover;
 }
 
+.fc-settings-info-tip__button:focus {
+	@include fc-admin-settings-info-icon-focus-outline();
+}
+
 .fc-settings-info-tip__content {
 	opacity: 0;
 	visibility: hidden;
@@ -535,7 +525,7 @@ input.fc-settings-toggle--round:focus + label {
 	border: 1px solid $fc-settings-info-tip-border-color;
 	border-radius: 4px;
 	background: $fc-settings-info-tip-background;
-	box-shadow: 0 2px 5px rgba( 0, 0, 0, .1 ), 0 0 56px rgba( 0, 0, 0, .075 );
+	box-shadow: 0 2px 5px $elevation-shadow-soft, 0 0 56px $elevation-shadow-subtle;
 	box-sizing: border-box;
 	color: $fc-settings-info-tip-text-color;
 	font-size: 13px;
@@ -596,7 +586,7 @@ input.fc-settings-toggle--round:focus + label {
 .fc-settings-info-tip__content code {
 	padding: 1px 4px;
 	border-radius: 3px;
-	background: rgba( 200, 215, 225, .35 );
+	background: $admin-muted-surface-background;
 	font-size: 12px;
 }
 

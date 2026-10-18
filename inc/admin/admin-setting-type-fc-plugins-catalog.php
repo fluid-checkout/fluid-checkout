@@ -30,7 +30,6 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 	 */
 	public function get_plugins_catalog() {
 		$directory_url = FluidCheckout::$directory_url;
-		$icon_url      = $directory_url . 'images/admin/fluid-checkout-icon.svg';
 
 		$catalog = array(
 			array(
@@ -42,7 +41,7 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 				'subtitle'    => __( 'Conversion tools for shop and product pages.', 'fluid-checkout' ),
 				'description' => __( 'Boost conversions across your store with <strong>countdowns</strong>, a <strong>free shipping bar</strong>, <strong>product badges</strong> (bestseller, discount, on-sale, backorder), plus <strong>add to cart from listing pages</strong> and <strong>stock meter / FOMO</strong> prompts.', 'fluid-checkout' ),
 				'image'       => $directory_url . 'images/admin/plugins/fc-conversion-kit-icon.svg',
-				'product_url' => 'https://fluidcheckout.com/fc-conversion-kit/',
+				'product_url' => $this->get_tracked_product_url( 'https://fluidconversion.com/', 'fc-conversion-kit', 'learn-more' ),
 			),
 			array(
 				'id'          => 'fc-paddle-payments',
@@ -52,7 +51,7 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 				'subtitle'    => __( 'Sell digital products with Paddle as your merchant of record.', 'fluid-checkout' ),
 				'description' => __( 'Accept payments through <strong>Paddle</strong> on your WooCommerce store, with taxes and compliance handled for you.', 'fluid-checkout' ),
 				'image'       => $directory_url . 'images/admin/plugins/fc-paddle-payments-icon.svg',
-				'product_url' => 'https://fluidcheckout.com/fc-paddle-payments/',
+				'product_url' => $this->get_tracked_product_url( 'https://fluidcheckout.com/fc-paddle-payments/', 'fc-paddle-payments', 'learn-more' ),
 			),
 			array(
 				'id'          => 'fc-licenses',
@@ -62,10 +61,15 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 				'subtitle'    => __( 'License keys, updates, and plugin usage tracking.', 'fluid-checkout' ),
 				'description' => __( 'Sell and manage <strong>software license keys</strong> on WooCommerce, with customer account downloads, automatic plugin updates, and <strong>plugin usage tracking</strong>.', 'fluid-checkout' ),
 				'image'       => $directory_url . 'images/admin/plugins/fc-licenses-icon.svg',
-				'product_url' => 'https://fluidcheckout.com/fc-licenses/',
+				'product_url' => $this->get_tracked_product_url( 'https://fluidlicenses.com/', 'fc-licenses', 'learn-more' ),
 			),
 		);
 
+		/**
+		 * Filters the Dashboard plugins catalog.
+		 *
+		 * @since 5.0.0
+		 */
 		return apply_filters( 'fc_plugins_catalog', $catalog );
 	}
 
@@ -110,7 +114,7 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 		// Show activated state when the plugin is already active
 		if ( $is_activated ) :
 			?>
-			<a href="javascript:void(0);" class="button button--activated disabled"><?php echo esc_html( __( 'Activated', 'fluid-checkout' ) ); ?></a>
+			<span class="button button--activated disabled"><?php echo esc_html( __( 'Activated', 'fluid-checkout' ) ); ?></span>
 			<?php
 		// Show activate when the plugin is installed but inactive
 		elseif ( $is_installed ) :
@@ -162,7 +166,9 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 				<div class="fc-addons__item-header">
 					<img class="fc-addons__item-image" src="<?php echo esc_url( $plugin[ 'image' ] ); ?>" alt="<?php echo esc_attr( $plugin[ 'title' ] ); ?>">
 					<div class="fc-addons__item-title-section">
-						<span class="fc-settings-badge"><?php echo esc_html( __( 'Coming soon', 'fluid-checkout' ) ); ?></span>
+						<?php if ( $is_marketing ) : ?>
+							<span class="fc-settings-badge"><?php echo esc_html( __( 'Coming soon', 'fluid-checkout' ) ); ?></span>
+						<?php endif; ?>
 						<h3 class="fc-addons__item-title"><?php echo esc_html( $plugin[ 'title' ] ); ?></h3>
 						<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( $plugin[ 'subtitle' ] ); ?></p>
 					</div>
@@ -215,7 +221,6 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 				<div class="fc-dashboard__disclaimer">
 					<ul>
 						<li><?php echo wp_kses_post( __( 'These are <strong>separate plugins</strong> which are not part of Fluid Checkout PRO offer and need to be purchased separately.', 'fluid-checkout' ) ); ?></li>
-						<li><?php echo wp_kses_post( __( 'All prices shown in EUR. If there are any divergencies with the prices on our website, the offers shown on the website superseed these and will be applied.', 'fluid-checkout' ) ); ?></li>
 					</ul>
 				</div>
 

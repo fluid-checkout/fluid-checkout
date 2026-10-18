@@ -478,6 +478,9 @@ class FluidCheckout {
 		add_action( 'load_translation_file', array( $this, 'maybe_change_translation_file_path' ), 100, 3 ); // High priority to override locale files defined from other plugins (ie. Loco Translate at priority `11`)
 		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 10 );
 
+		// Admin preview
+		add_action( 'after_setup_theme', array( $this, 'load_admin_preview' ), 5 ); // Before add-ons load their features at priority `10`, as some read settings while loading
+
 		// Load features
 		add_action( 'after_setup_theme', array( $this, 'load_features' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'load_plugin_compat_features' ), 10 );
@@ -593,6 +596,57 @@ class FluidCheckout {
 		// Needs to use `get_option` directly as `FluidCheckout_Settings::get_option()` wrapper function is not available yet
 		$min = 'yes' === get_option( 'fc_load_unminified_assets', 'no' )  ? '' : '.min';
 		return $asset_version . $min;
+	}
+
+
+
+	/**
+	 * Check whether the admin preview should load for the current request.
+	 *
+	 * @return  bool
+	 */
+	public function should_load_admin_preview() {
+		// Preview iframe and frontend preview requests, including expired tokens that must be rejected
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Preview token is validated after the preview loads.
+		if ( isset( $_GET[ 'fc_preview' ] ) ) {
+			return true;
+		}
+
+		// Save unsaved settings for the preview from the settings page
+		if ( wp_doing_ajax() ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Checked when the preview handles the request.
+			$action = isset( $_REQUEST[ 'action' ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ 'action' ] ) ) : '';
+			if ( 'fc_admin_preview_save_draft' === $action ) {
+				return true;
+			}
+		}
+
+		// Fluid Checkout settings page in the admin
+		if ( is_admin() && ! wp_doing_ajax() ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Admin menu page slug.
+			$page = isset( $_GET[ 'page' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'page' ] ) ) : '';
+			if ( 'fluid-checkout' === $page ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Load the admin preview when {@see should_load_admin_preview()} is true.
+	 */
+	public function load_admin_preview() {
+		// Bail if the admin preview is not needed for this request
+		if ( ! $this->should_load_admin_preview() ) { return; }
+
+		// Load admin preview files
+		require_once self::$directory_path . 'inc/admin/admin-preview.php';
+		require_once self::$directory_path . 'inc/admin/admin-preview-dummy-data.php';
+		require_once self::$directory_path . 'inc/admin/admin-preview-dummy-product.php';
+		require_once self::$directory_path . 'inc/admin/admin-preview-dummy-order.php';
+		require_once self::$directory_path . 'inc/admin/admin-preview-order-factory.php';
+		require_once self::$directory_path . 'inc/admin/admin-preview-session-handler.php';
 	}
 
 
@@ -809,7 +863,7 @@ class FluidCheckout {
 			'name'        => 'woocommerce_required',
 			'error'       => true,
 			'description' => $description,
-			'dismissable' => false,
+			'dismissible' => false,
 		);
 
 		return $notices;

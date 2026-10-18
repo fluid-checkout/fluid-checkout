@@ -59,8 +59,15 @@ class FluidCheckout_Settings_AccountMatching {
 			$account_fields_conditional_id .= '|fc_pro_enable_delayed_account_creation';
 		}
 
+		/**
+		 * Filters the Customer accounts settings.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param array $settings Array with all settings for the current section.
+		 */
 		return apply_filters(
-			'fc_account_matching_settings',
+			'fc_customer_accounts_settings',
 			array(
 
 				array(

@@ -52,6 +52,11 @@ class FluidCheckout_Settings_GiftOptions {
 	public static function add_settings( $settings, $current_section ) {
 		if ( 'gift_options' !== $current_section ) { return $settings; }
 
+		/**
+		 * Filters the Gift options settings.
+		 *
+		 * @since 5.0.0
+		 */
 		return apply_filters(
 			'fc_gift_options_settings',
 			array(
