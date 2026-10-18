@@ -175,6 +175,22 @@ class FluidCheckout_Settings_AddressBook {
 						'disabled'          => true,
 						'requires'          => self::FEATURE,
 					),
+					array(
+						'title'             => __( 'Display layout', 'fluid-checkout' ),
+						'desc'              => __( 'Choose how saved addresses are displayed at checkout and on the cart.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Applies at checkout and on the cart. Saved addresses on the account page always use the cards layout.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_address_book_display_layout',
+						'type'              => 'select',
+						'options'           => array(
+							'cards'    => __( 'Address cards', 'fluid-checkout' ),
+							'list'     => __( 'Address list', 'fluid-checkout' ),
+							'dropdown' => __( 'Dropdown field', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_address_book_display_layout' ),
+						'autoload'          => false,
+						'disabled'          => true,
+						'requires'          => self::FEATURE,
+					),
 
 					array(
 						'type'              => 'sectionend',

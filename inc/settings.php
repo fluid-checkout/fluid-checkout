@@ -237,6 +237,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			// =============================== ADDRESS BOOK ===============================
 			'fc_pro_enable_address_book'                                    => 'no',
 			'fc_pro_enable_address_book_address_label'                      => 'yes',
+			'fc_pro_address_book_display_layout'                            => 'cards',
 
 			// =============================== CART (NEW PAGE) ===============================
 			'fc_pro_enable_cart_page'                                       => 'no',
