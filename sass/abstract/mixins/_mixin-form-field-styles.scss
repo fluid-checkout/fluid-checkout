@@ -1,0 +1,25 @@
+@mixin form-field-styles( $body-class, $row-state: '', $field-state: '', $include-textarea: true, $select2-element: '.select2-selection' ) {
+	body#{ $_body-page-selector }.#{ $body-class } .form-row#{ $row-state } select#{ $field-state },
+	body#{ $_body-page-selector }.#{ $body-class } .form-row#{ $row-state } input[type="email"]#{ $field-state },
+	body#{ $_body-page-selector }.#{ $body-class } .form-row#{ $row-state } input[type="number"]#{ $field-state },
+	body#{ $_body-page-selector }.#{ $body-class } .form-row#{ $row-state } input[type="search"]#{ $field-state },
+	body#{ $_body-page-selector }.#{ $body-class } .form-row#{ $row-state } input[type="text"]#{ $field-state },
+	body#{ $_body-page-selector }.#{ $body-class } .form-row#{ $row-state } input[type="date"]#{ $field-state },
+	body#{ $_body-page-selector }.#{ $body-class } .form-row#{ $row-state } input[type="tel"]#{ $field-state },
+	body#{ $_body-page-selector }.#{ $body-class } .form-row#{ $row-state } input[type="url"]#{ $field-state },
+	body#{ $_body-page-selector }.#{ $body-class } .form-row#{ $row-state } input[type="password"]#{ $field-state } {
+		@content;
+	}
+
+	@if $include-textarea {
+		body#{ $_body-page-selector }.#{ $body-class } .form-row#{ $row-state } textarea#{ $field-state } {
+			@content;
+		}
+	}
+
+	@if $select2-element {
+		body#{ $_body-page-selector }.#{ $body-class } .form-row#{ $row-state } #{ $select2-element } {
+			@content;
+		}
+	}
+}
