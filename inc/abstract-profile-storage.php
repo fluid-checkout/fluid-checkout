@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Store profiles, named sets of values saved as posts of one post type, with an active profile and a context profile overlay.
  */
-abstract class FluidCheckout_Profile_Storage extends FluidCheckout {
+abstract class FluidCheckout_ProfileStorage extends FluidCheckout {
 
 	/**
 	 * Runtime callback for the context profile hook, removed before the next one is added.

@@ -6,7 +6,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * CPT-backed settings profiles with lazy load, wp_cache, and get_option BC via pre_option.
  */
-class FluidCheckout_Settings extends FluidCheckout_Profile_Storage {
+class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 
 	/**
 	 * Settings profile post type.
