@@ -78,7 +78,7 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php do_action( 'fc_checkout_header_widgets' ); ?>
 
-		<?php if ( has_action( 'fc_checkout_header_cart_link' ) ) : ?>
+		<?php if ( has_action( 'fc_checkout_header_cart_link' ) && ! ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) ) : ?>
 		<div class="fc-checkout__cart-link-wrapper">
 			<?php do_action( 'fc_checkout_header_cart_link' ); ?>
 		</div>
