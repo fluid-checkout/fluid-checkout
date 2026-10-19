@@ -271,6 +271,9 @@ abstract class FluidCheckout_ProfileStorage extends FluidCheckout {
 	public function write_profile_post_content( $post_id, $post_content ) {
 		global $wpdb;
 
+		// Bail if the post is not a profile of this post type
+		if ( $this->get_profile_post_type() !== get_post_type( $post_id ) ) { return false; }
+
 		// Update post content in the database
 		$updated = $wpdb->update(
 			$wpdb->posts,
