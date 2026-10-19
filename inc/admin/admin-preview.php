@@ -1369,7 +1369,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	}
 
 	/**
-	 * Save the unsaved settings posted from the settings page for a preview token, so its preview requests show them.
+	 * Save the unsaved settings posted from the settings page, or another admin page with the preview, for a preview token, so its preview requests show them.
 	 */
 	public function ajax_save_draft() {
 		// Bail if the request nonce is not valid
@@ -1395,6 +1395,16 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 			// Add settings fields of the tab
 			$settings = array_merge( $settings, $settings_page->get_saveable_settings( $settings_page->get_tab_settings( $tab ) ) );
+		}
+
+		// Get the names of the fields in the form that sent the unsaved settings, also of unchecked checkboxes, without the `[]` of fields with several values
+		$field_names = isset( $_POST[ 'field_names' ] ) && is_array( $_POST[ 'field_names' ] ) ? preg_replace( '/\[\]$/', '', array_map( 'sanitize_text_field', wp_unslash( $_POST[ 'field_names' ] ) ) ) : array();
+
+		// Maybe keep only the settings of those fields, so a form with some of the settings does not unset the others
+		if ( ! empty( $field_names ) ) {
+			$settings = array_filter( $settings, function( $setting ) use ( $field_names ) {
+				return isset( $setting[ 'id' ] ) && in_array( isset( $setting[ 'field_name' ] ) ? $setting[ 'field_name' ] : $setting[ 'id' ], $field_names, true );
+			} );
 		}
 
 		// Keep the posted values, sanitized like when saving the settings, until the token expires

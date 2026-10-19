@@ -73,6 +73,7 @@
 		pageAttribute:               'data-fc-settings-preview-page',
 		urlAttribute:                'data-fc-settings-preview-url',
 		enableSettingAttribute:      'data-fc-settings-preview-enable-setting',
+		enabledAttribute:            'data-fc-settings-preview-enabled',
 		placeholderScaleProperty:    '--fc-settings-preview-scale',
 		viewportWidths:              { mobile: 350, tablet: 750, desktop: 1000 },
 		widthMin:                    320,
@@ -631,7 +632,7 @@
 	};
 
 	/**
-	 * Get the preview URL of a page tab, or an empty string when the page cannot be previewed: pages that require PRO, and pages disabled in the settings form, also by unsaved changes.
+	 * Get the preview URL of a page tab, or an empty string when the page cannot be previewed: pages that require PRO, and pages disabled in the settings form, also by unsaved changes, or in the saved settings when the form has no field for them.
 	 *
 	 * @param  {Element|null}  pageTab  Preview page tab.
 	 *
@@ -651,6 +652,9 @@
 
 		// Bail if the page is disabled in the settings form
 		if ( enableField && ! enableField.checked ) { return ''; }
+
+		// Bail if the page is disabled in the saved settings, for forms without the field of the setting that enables it
+		if ( ! enableField && 'no' === pageTab.getAttribute( _settings.enabledAttribute ) ) { return ''; }
 
 		return pageTab.getAttribute( _settings.urlAttribute ) || '';
 	};
@@ -889,18 +893,35 @@
 	 * Save the unsaved settings for the page preview, which shows them once refreshed.
 	 */
 	var saveDraft = function() {
+		var form = document.querySelector( _settings.formSelector );
+		var fieldNames = {};
 		var formData;
+		var i;
 
 		// Bail if a request is saving, which saves again once it finishes, so an older request cannot overwrite newer values
 		if ( _isSavingDraft ) { return; }
 
-		// Send the settings form values
+		// Mark the unsaved settings as saving
 		_hasUnsavedDraft = false;
 		_isSavingDraft = true;
-		formData = new FormData( document.querySelector( _settings.formSelector ) );
+
+		// Get the settings form values
+		formData = new FormData( form );
 		formData.set( 'action', _settings.draftAction );
 		formData.set( 'nonce', _settings.draftNonce );
 		formData.set( 'token', _settings.previewToken );
+
+		// Iterate form fields, to send their names, also of unchecked checkboxes, so only the settings of this form are unsaved changes
+		for ( i = 0; i < form.elements.length; i++ ) {
+			// Skip fields without a name, or with a name already sent
+			if ( ! form.elements[ i ].name || fieldNames[ form.elements[ i ].name ] ) { continue; }
+
+			// Add the field name
+			fieldNames[ form.elements[ i ].name ] = true;
+			formData.append( 'field_names[]', form.elements[ i ].name );
+		}
+
+		// Send the settings form values
 		fetch( _settings.ajaxUrl, { method: 'POST', credentials: 'same-origin', body: formData } ).then( handleDraftSaved, handleDraftSaved );
 	};
 

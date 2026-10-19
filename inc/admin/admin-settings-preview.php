@@ -3,7 +3,7 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Page preview column for the Fluid Checkout settings page.
- * Shown on all tabs except Dashboard and License Keys.
+ * Shown on all tabs except Dashboard and License Keys, and on other admin pages that output it with their own configuration.
  */
 class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 
@@ -141,7 +141,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		 * @since  5.0.0
 		 *
 		 * @param  array   $config  Preview pane configuration.
-		 * @param  string  $tab     Settings tab slug.
+		 * @param  string  $tab     Settings tab slug, or the slug another admin page uses for its preview pane configuration.
 		 *
 		 * @return array  Preview pane configuration.
 		 */
@@ -183,6 +183,18 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		return FluidCheckout_Admin_Preview::instance()->get_preview_url( $page_args[ 'url' ] );
 	}
 
+	/**
+	 * Check whether a preview page is enabled in the saved settings, which is always the case for pages without a setting that enables them.
+	 *
+	 * @param  array  $page_args  Preview page arguments.
+	 */
+	public function is_preview_page_enabled( $page_args ) {
+		// Bail if the page has no setting that enables it
+		if ( empty( $page_args[ 'enable_setting' ] ) ) { return true; }
+
+		return 'yes' === FluidCheckout_Settings::instance()->get_option( $page_args[ 'enable_setting' ] );
+	}
+
 
 
 	/**
@@ -195,23 +207,15 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	}
 
 	/**
-	 * Maybe enqueue preview assets on the Fluid Checkout settings page.
+	 * Enqueue preview assets, with the preview pane configuration of a settings tab or of another admin page that outputs the preview.
 	 *
-	 * @param  string  $_hook_suffix  Hook suffix for the current admin page.
+	 * @param  string  $tab  Settings tab slug, or the slug another admin page uses for its preview pane configuration.
 	 */
-	public function maybe_enqueue_assets( $_hook_suffix ) {
-		// Bail if settings page class is not available
-		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) ) { return; }
-
-		$page = FluidCheckout_Admin_Settings_Page::instance();
-
-		// Bail if not on the Fluid Checkout settings page
-		if ( ! $page->is_settings_page() ) { return; }
-
+	public function enqueue_assets( $tab ) {
 		wp_enqueue_script( 'fc-admin-settings-preview' );
 
 		// Get preview pane configuration
-		$config = $this->get_preview_config( $page->get_current_tab() );
+		$config = $this->get_preview_config( $tab );
 
 		// EXCEPTION: Runtime values — initial tab and labels for the preview UI.
 		wp_localize_script(
@@ -219,8 +223,8 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 			'fcAdminSettingsPreviewSettings',
 			array(
 				'hiddenTabs'             => self::HIDDEN_TABS,
-				'initialTab'             => $page->get_current_tab(),
-				'initialPage'            => $this->get_preview_page_for_tab( $page->get_current_tab() ),
+				'initialTab'             => $tab,
+				'initialPage'            => $this->get_preview_page_for_tab( $tab ),
 				'placeholderSrcdocs'     => $this->get_placeholder_iframe_srcdocs(),
 				'defaultPage'            => $config[ 'default_page' ],
 				'modeQueryArg'           => FluidCheckout_Admin_Preview::MODE_QUERY_ARG,
@@ -242,6 +246,24 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 				),
 			)
 		);
+	}
+
+	/**
+	 * Maybe enqueue preview assets on the Fluid Checkout settings page.
+	 *
+	 * @param  string  $_hook_suffix  Hook suffix for the current admin page.
+	 */
+	public function maybe_enqueue_assets( $_hook_suffix ) {
+		// Bail if settings page class is not available
+		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) ) { return; }
+
+		// Get settings page
+		$page = FluidCheckout_Admin_Settings_Page::instance();
+
+		// Bail if not on the Fluid Checkout settings page
+		if ( ! $page->is_settings_page() ) { return; }
+
+		$this->enqueue_assets( $page->get_current_tab() );
 	}
 
 
@@ -447,6 +469,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 						data-fc-settings-preview-page="<?php echo esc_attr( $page_slug ); ?>"
 						data-fc-settings-preview-url="<?php echo esc_url( $this->get_preview_page_url( $page_args ) ); ?>"
 						data-fc-settings-preview-enable-setting="<?php echo esc_attr( isset( $page_args[ 'enable_setting' ] ) ? $page_args[ 'enable_setting' ] : '' ); ?>"
+						data-fc-settings-preview-enabled="<?php echo $this->is_preview_page_enabled( $page_args ) ? 'yes' : 'no'; ?>"
 					><?php echo esc_html( $page_args[ 'label' ] ); ?></button>
 				<?php endforeach; ?>
 			</div>
