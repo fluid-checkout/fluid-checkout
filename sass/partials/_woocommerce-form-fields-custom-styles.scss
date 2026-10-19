@@ -4,7 +4,7 @@
 
 // Apply each field style only with its body class, as a variable without a value would replace the theme styles
 @include form-field-styles( 'has-fc-field-font-size', $select2-element: '.select2-selection__rendered' ) {
-	font-size: $form-field-font-size; // No `!important`, so the zoom fix for mobile devices still applies
+	font-size: $form-field-font-size !important; // Needed to override theme styles
 }
 
 @include form-field-styles( 'has-fc-field-height', $include-textarea: false, $select2-element: false ) {

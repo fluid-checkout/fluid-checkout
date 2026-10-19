@@ -130,6 +130,7 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 			// =============================== DESIGN ===============================
 			'fc_design_template'                                            => 'classic',
 			'fc_enable_dark_mode_styles'                                    => 'no',
+			'fc_pro_color_scheme'                                           => 'theme',
 			'fc_checkout_logo_image'                                        => '',
 			'fc_checkout_header_background_color'                           => null,
 			'fc_checkout_page_background_color'                             => null,

@@ -83,6 +83,14 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 			$add_classes[] = 'has-fc-button-styles';
 		}
 
+		// Get design classes added by other features
+		/**
+		 * Filters the body classes for the design of Fluid Checkout pages.
+		 *
+		 * @since 5.0.0
+		 */
+		$add_classes = apply_filters( 'fc_design_body_classes', $add_classes );
+
 		return array_merge( $classes, $add_classes );
 	}
 
