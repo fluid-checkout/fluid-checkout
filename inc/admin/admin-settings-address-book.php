@@ -37,6 +37,26 @@ class FluidCheckout_Settings_AddressBook {
 
 		// Address Book migration after the main Address Book options (locked until the add-on replaces these settings)
 		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_migration_settings' ), 30, 2 );
+
+		// Settings page preview
+		add_filter( 'fc_admin_settings_preview_tab_modes', array( __CLASS__, 'set_settings_preview_tab_mode' ), 10 );
+	}
+
+
+
+	/**
+	 * Use logged-in preview mode on the Address book settings tab.
+	 *
+	 * @param   array  $tab_modes  Preview mode by settings tab slug.
+	 *
+	 * @return  array  Preview mode by settings tab slug.
+	 */
+	public static function set_settings_preview_tab_mode( $tab_modes ) {
+		if ( ! class_exists( 'FluidCheckout_Admin_Preview', false ) ) { return $tab_modes; }
+
+		$tab_modes['address_book'] = FluidCheckout_Admin_Preview::MODE_LOGGED_IN;
+
+		return $tab_modes;
 	}
 
 
@@ -170,6 +190,41 @@ class FluidCheckout_Settings_AddressBook {
 						'custom_attributes' => array(
 							'data-conditional-id'    => 'fc_pro_enable_address_book',
 							'data-conditional-value' => 'yes',
+						),
+						'autoload'          => false,
+						'disabled'          => true,
+						'requires'          => self::FEATURE,
+					),
+					array(
+						'title'             => __( 'Display layout', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Choose how saved addresses are displayed at checkout and on the cart.', 'fluid-checkout' ) . '<br><br>' . __( 'Applies at checkout and on the cart. Saved addresses on the account page always use the cards layout.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_address_book_display_layout',
+						'type'              => 'select',
+						'options'           => array(
+							'cards'    => __( 'Address cards', 'fluid-checkout' ),
+							'list'     => __( 'Address list', 'fluid-checkout' ),
+							'dropdown' => __( 'Dropdown field', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_address_book_display_layout' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_address_book',
+							'data-conditional-value' => 'yes',
+						),
+						'autoload'          => false,
+						'disabled'          => true,
+						'requires'          => self::FEATURE,
+					),
+					array(
+						'title'             => __( 'Address search', 'fluid-checkout' ),
+						'desc'              => '',
+						'desc_tip'          => __( 'Show address search filter on frontend when customer has at least this number of saved addresses available.', 'fluid-checkout' ) . '<br><br>' . __( 'Not used when display layout is set to dropdown field.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_address_book_saved_addresses_search_min_count',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_address_book_saved_addresses_search_min_count' ),
+						'type'              => 'fc_number',
+						'suffix_label'      => __( 'Addresses', 'fluid-checkout' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_address_book,fc_pro_address_book_display_layout',
+							'data-conditional-value' => 'yes,cards|list',
 						),
 						'autoload'          => false,
 						'disabled'          => true,
