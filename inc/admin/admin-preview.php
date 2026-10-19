@@ -1397,15 +1397,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 			$settings = array_merge( $settings, $settings_page->get_saveable_settings( $settings_page->get_tab_settings( $tab ) ) );
 		}
 
-		// Get the names of the fields in the form that sent the unsaved settings, also of unchecked checkboxes, without the `[]` of fields with several values
-		$field_names = isset( $_POST[ 'field_names' ] ) && is_array( $_POST[ 'field_names' ] ) ? preg_replace( '/\[\]$/', '', array_map( 'sanitize_text_field', wp_unslash( $_POST[ 'field_names' ] ) ) ) : array();
-
-		// Maybe keep only the settings of those fields, so a form with some of the settings does not unset the others
-		if ( ! empty( $field_names ) ) {
-			$settings = array_filter( $settings, function( $setting ) use ( $field_names ) {
-				return isset( $setting[ 'id' ] ) && in_array( isset( $setting[ 'field_name' ] ) ? $setting[ 'field_name' ] : $setting[ 'id' ], $field_names, true );
-			} );
-		}
+		// Keep only the settings of the fields in the form that sent the unsaved settings
+		$settings = $settings_page->get_settings_in_form( $settings, $settings_page->get_posted_field_names( $_POST ) );
 
 		// Keep the posted values, sanitized like when saving the settings, until the token expires
 		set_transient( $this->get_draft_transient_name( $token ), FluidCheckout_Settings::instance()->get_sanitized_settings_values( $settings ), self::TOKEN_LIFETIME );

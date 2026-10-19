@@ -918,7 +918,7 @@
 
 			// Add the field name
 			fieldNames[ form.elements[ i ].name ] = true;
-			formData.append( 'field_names[]', form.elements[ i ].name );
+			formData.append( 'fc_settings_field_names[]', form.elements[ i ].name );
 		}
 
 		// Send the settings form values

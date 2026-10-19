@@ -1008,6 +1008,8 @@
 	var saveSettingsViaAjax = function() {
 		var form;
 		var formData;
+		var fieldNames = {};
+		var i;
 		var activeTab;
 		var saveErrorMessage;
 		var savedMessage;
@@ -1024,6 +1026,16 @@
 
 		formData = new FormData( form );
 		formData.append( 'action', _settings.saveAction );
+
+		// Iterate form fields, to send their names, also of unchecked checkboxes, so only the settings of this form are saved
+		for ( i = 0; i < form.elements.length; i++ ) {
+			// Skip fields without a name, or with a name already sent
+			if ( ! form.elements[ i ].name || fieldNames[ form.elements[ i ].name ] ) { continue; }
+
+			// Add the field name
+			fieldNames[ form.elements[ i ].name ] = true;
+			formData.append( 'fc_settings_field_names[]', form.elements[ i ].name );
+		}
 
 		activeTab = getActiveSettingsTabSlug();
 		if ( activeTab ) {
