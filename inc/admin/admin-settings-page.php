@@ -673,6 +673,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		wp_add_inline_script( 'fc-admin-settings-colorpicker', '(function(){var i=function(){FCAdminSettingsColorPicker.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-enhanced-select', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-enhanced-select' ), array( 'tomselect' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-enhanced-select', 'window.addEventListener("load",function(){FCAdminSettingsEnhancedSelect.init();});' );
+		wp_register_script( 'fc-admin-settings-css-value', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-css-value' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-admin-settings-css-value', '(function(){var i=function(){FCAdminSettingsCssValue.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 	}
 
 	/**
@@ -692,6 +694,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		wp_enqueue_script( 'fc-admin-settings-nav' );
 		wp_enqueue_script( 'fc-admin-settings-colorpicker' );
 		wp_enqueue_script( 'fc-admin-settings-enhanced-select' );
+		wp_enqueue_script( 'fc-admin-settings-css-value' );
 	}
 
 	/**

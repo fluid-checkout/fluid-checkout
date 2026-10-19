@@ -143,6 +143,50 @@
 	box-shadow: 0 1px 3px $elevation-shadow-strong;
 }
 
+.fc-settings-css-value__swatch {
+	flex: 0 0 $fc-settings-input-height;
+	width: $fc-settings-input-height;
+	height: $fc-settings-input-height;
+	margin: 0;
+	padding: 2px;
+	border: 1px solid $fc-settings-input-border-color;
+	border-radius: $fc-settings-input-border-radius;
+	background: $fc-settings-input-background-color;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.fc-settings-css-value__swatch::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+
+// Separate rules, as browsers drop a rule with a selector they do not support
+.fc-settings-css-value__swatch::-webkit-color-swatch {
+	border: 0;
+	border-radius: 3px;
+}
+
+.fc-settings-css-value__swatch::-moz-color-swatch {
+	border: 0;
+	border-radius: 3px;
+}
+
+.fc-settings-css-value__swatch:focus {
+	border-color: $fc-settings-input-border-color-focus;
+	@include fc-admin-settings-focus-outline();
+}
+
+.fc-settings-field__control .fc-settings-css-value__input {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.fc-settings-css-value__clear {
+	flex: 0 0 auto;
+	height: $fc-settings-input-height;
+	min-height: $fc-settings-input-height;
+}
+
 // Buttons next to inputs match the field control height
 .fc-settings-field__control > .button,
 .fc-settings-field__control > .button-secondary,
@@ -290,6 +334,11 @@
 	color: $fc-settings-input-color-disabled;
 }
 
+// Fields disabled by the value of another setting, which keep their values
+.fc-settings-field.is-disabled {
+	opacity: .55;
+}
+
 
 
 .fc-settings-field--paragraph p {
@@ -301,6 +350,26 @@
 	margin: $fc-settings-field-padding-y 0;
 	padding: 0;
 	border-top: 1px solid $fc-settings-field-border-color;
+}
+
+.fc-settings-field--group-title {
+	margin-top: $fc-settings-field-padding-y;
+	padding-top: $fc-settings-field-padding-y * 2;
+	border-top: 1px solid $fc-settings-field-border-color;
+}
+
+.fc-settings-field--group-title:first-child {
+	margin-top: 0;
+	padding-top: $fc-settings-field-padding-y;
+	border-top: 0;
+}
+
+.fc-settings-field__group-title {
+	margin: 0;
+	color: $fc-settings-text-color;
+	font-size: $fc-settings-field-label-font-size;
+	font-weight: 600;
+	line-height: $fc-settings-field-label-line-height;
 }
 
 

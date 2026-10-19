@@ -26,6 +26,8 @@
 		conditionalFieldsForTriggerSelector:   '[data-conditional-id="###ID###"]',
 		conditionalFieldKeyAttribute:          'data-conditional-id',
 		conditionalFieldValueAttribute:        'data-conditional-value',
+		conditionalFieldModeAttribute:         'data-conditional-mode',
+		conditionalModeDisable:                'disable',
 
 		settingsFieldSelector:                 '.fc-settings-field',
 		settingsRowSelector:                   '.fc-settings-field, tr',
@@ -33,6 +35,7 @@
 		layoutOptionSelector:                  '.fc-settings-sectioned-buttons__option, .fc-settings-radio-option',
 		isSelectedClass:                       'is-selected',
 		disabledFieldClass:                    'fc-settings-field--disabled',
+		isDisabledClass:                       'is-disabled',
 
 		contentSelector:                       '.fc-settings-content',
 		actionsSelector:                       '.fc-settings-actions',
@@ -521,11 +524,17 @@
 				isVisible = doAllConditionalConditionsMatch( conditionalField );
 			}
 
-			// Maybe show/hide field row
-			if ( isVisible ) {
+			// Maybe disable instead of hide the field row, for fields that stay visible. Inert rows still send their values when saving.
+			if ( _settings.conditionalModeDisable === conditionalField.getAttribute( _settings.conditionalFieldModeAttribute ) ) {
+				fieldRow.classList.toggle( _settings.isDisabledClass, ! isVisible );
+				fieldRow.inert = ! isVisible;
+			}
+			// Otherwise, maybe show the field row
+			else if ( isVisible ) {
 				fieldRow.classList.remove( _settings.hiddenClass );
 				fieldRow.style.display = ''; // Clear custom display style
 			}
+			// Otherwise, hide the field row
 			else {
 				fieldRow.classList.add( _settings.hiddenClass );
 				fieldRow.style.display = 'none';
