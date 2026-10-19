@@ -90,6 +90,7 @@
 		initialPage:                 'checkout',
 		placeholderSrcdocs:          {},
 		defaultPage:                 'checkout',
+		switchPageWithTab:           true,
 		modeQueryArg:                'fc_preview_mode',
 		guestMode:                   'guest',
 		messageSource:               'fc-admin-preview',
@@ -1264,7 +1265,14 @@
 		// Bail if tab slug is missing
 		if ( ! tab ) { return; }
 
-		syncFromSettingsTab( tab );
+		// Maybe show the preview page of the tab
+		if ( _settings.switchPageWithTab ) {
+			syncFromSettingsTab( tab );
+		}
+		// Otherwise, only show or hide the preview, as the admin page keeps its preview page when switching tabs
+		else {
+			setPreviewVisibilityForTab( tab );
+		}
 	};
 
 

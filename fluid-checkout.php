@@ -622,11 +622,11 @@ class FluidCheckout {
 			}
 		}
 
-		// Fluid Checkout settings page in the admin
+		// Fluid Checkout admin pages, which can output the preview pane
 		if ( is_admin() && ! wp_doing_ajax() ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Admin menu page slug.
 			$page = isset( $_GET[ 'page' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'page' ] ) ) : '';
-			if ( 'fluid-checkout' === $page ) {
+			if ( 0 === strpos( $page, 'fluid-checkout' ) ) {
 				return true;
 			}
 		}

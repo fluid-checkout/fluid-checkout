@@ -124,6 +124,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		$defaults = array(
 			'default_page'           => 'checkout',
 			'show_page_tabs'         => true,
+			'switch_page_with_tab'   => true,
 			'status_text'            => '',
 			// Settings that only change the page styles, refreshed without reloading the preview
 			'style_settings'         => array(
@@ -227,6 +228,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 				'initialPage'            => $this->get_preview_page_for_tab( $tab ),
 				'placeholderSrcdocs'     => $this->get_placeholder_iframe_srcdocs(),
 				'defaultPage'            => $config[ 'default_page' ],
+				'switchPageWithTab'      => $config[ 'switch_page_with_tab' ],
 				'modeQueryArg'           => FluidCheckout_Admin_Preview::MODE_QUERY_ARG,
 				'guestMode'              => FluidCheckout_Admin_Preview::MODE_GUEST,
 				'storageKey'             => self::STORAGE_KEY,
