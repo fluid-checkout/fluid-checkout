@@ -337,11 +337,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Added: Search icon to the Fluid Checkout icon font.
-* Added: Address search setting on the Address book tab to choose how many saved addresses are required before the search field is shown.
-* Improved: Hide the address search setting when display layout is set to dropdown field.
-* Improved: Use logged-in preview mode on the Address book settings tab so saved addresses are visible in the page preview.
-* Improved: Show a grey outline on the Guest and Logged in preview mode field when it changes automatically for a settings tab.
 * Added: Shared REST API base for `fluid-checkout/v1` (namespace, route registration, user-scoped permissions) and `fc_api_*` error helpers.
 * Improved: Update the sticky-states library to version 1.0.9.
 * Fixed: Show the Tom Select preview mode dropdown above the preview panel and keep Guest and Logged in in sync on the settings page.

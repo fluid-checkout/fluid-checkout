@@ -29,6 +29,13 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	 */
 	const VIEWPORT_WIDTHS = array( 'mobile' => 350, 'tablet' => 750, 'desktop' => 1000 );
 
+	/**
+	 * Default preview mode per settings tab, cached after the filter runs once per request.
+	 *
+	 * @var array|null
+	 */
+	private $tab_preview_modes = null;
+
 
 
 	/**
@@ -186,6 +193,29 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 
 
 	/**
+	 * Get the default preview mode per Fluid Checkout settings tab.
+	 *
+	 * @return array Preview mode by settings tab slug. Keys are tab slugs; values are `guest` or `logged_in`.
+	 */
+	public function get_tab_preview_modes() {
+		// Bail if tab preview modes were already resolved
+		if ( null !== $this->tab_preview_modes ) {
+			return $this->tab_preview_modes;
+		}
+
+		/**
+		 * Filter the default preview mode per Fluid Checkout settings tab.
+		 *
+		 * @return array Preview mode by settings tab slug. Keys are tab slugs; values are `guest` or `logged_in`.
+		 */
+		$this->tab_preview_modes = apply_filters( 'fc_admin_settings_preview_tab_modes', array() );
+
+		return $this->tab_preview_modes;
+	}
+
+
+
+	/**
 	 * Register preview assets.
 	 */
 	public function register_assets() {
@@ -213,6 +243,8 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		// Get preview pane configuration
 		$config = $this->get_preview_config( $page->get_current_tab() );
 
+		$tab_preview_modes = $this->get_tab_preview_modes();
+
 		// EXCEPTION: Runtime values — initial tab and labels for the preview UI.
 		wp_localize_script(
 			'fc-admin-settings-preview',
@@ -226,7 +258,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 				'modeQueryArg'           => FluidCheckout_Admin_Preview::MODE_QUERY_ARG,
 				'guestMode'              => FluidCheckout_Admin_Preview::MODE_GUEST,
 				'loggedInMode'           => FluidCheckout_Admin_Preview::MODE_LOGGED_IN,
-				'tabPreviewModes'        => apply_filters( 'fc_admin_settings_preview_tab_modes', array() ),
+				'tabPreviewModes'        => $tab_preview_modes,
 				'storageKey'             => self::STORAGE_KEY,
 				'compactBreakpoint'      => self::COMPACT_BREAKPOINT,
 				'viewportWidths'         => self::VIEWPORT_WIDTHS,
@@ -286,7 +318,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	 * The preview script runs once the page has loaded, so restoring them there would show the default values first.
 	 */
 	public function output_controls_state_script( $current_tab ) {
-		$tab_preview_modes = apply_filters( 'fc_admin_settings_preview_tab_modes', array() );
+		$tab_preview_modes = $this->get_tab_preview_modes();
 		$tab_preview_mode = isset( $tab_preview_modes[ $current_tab ] ) ? $tab_preview_modes[ $current_tab ] : '';
 		?>
 		<script>
