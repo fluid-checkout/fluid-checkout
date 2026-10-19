@@ -372,6 +372,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin Wawp (Automation Web Platform). Fix phone country code being applied twice after a page reload, and the phone country dropdown collapsing so countries cannot be selected on checkout.
 * Fixed: Compatibility with plugin Brevo for WooCommerce (formerly Sendinblue). Prevent duplicate newsletter opt-in checkbox when it is moved to the contact step.
 * Fixed: Console error from Astra Pro modern input animation when Select2 country or state fields update during checkout.
+* Fixed: Compatibility with plugin Svea Checkout for WooCommerce. Fix checkout page reloading indefinitely, style issues and missing shipping options with versions 3.0.0+, and checkout fields being cleared when switching to other payment methods.
 * Fixed: Checkout step names appearing partially visible inside the progress bar with some themes.
 * Fixed: Checkout error on the order summary when using WooCommerce versions before 11.2.0, caused by a WooCommerce cart method only available since 11.2.0.
 
