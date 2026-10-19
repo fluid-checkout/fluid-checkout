@@ -7,6 +7,22 @@ jQuery( function ( $ ) {
 
 	$.blockUI.defaults.overlayCSS.cursor = 'default';
 
+	// A paste can carry characters that render as nothing. The server strips them
+	// before validating, so flagging the field here would blame the customer for
+	// something invisible. Mirrors the strip in wc_remove_non_displayable_chars(),
+	// not the server's phone check — that one is stricter, so a number can pass
+	// here and still be refused on submit. No "u" flag, and surrogate pairs for the
+	// ranges above U+FFFF, so the pattern builds on any browser.
+	var invisible_chars = new RegExp(
+		'[\\u00AD\\u034F\\u061C\\u115F\\u1160\\u17B4\\u17B5\\u180B-\\u180F' +
+			'\\u200B-\\u200F\\u202A-\\u202E\\u2060-\\u206F\\u3164' +
+			'\\uFE00-\\uFE0F\\uFEFF\\uFFA0\\uFFF0-\\uFFFB]' +
+			'|\\uD82F[\\uDCA0-\\uDCA3]' +
+			'|\\uD834[\\uDD73-\\uDD7A]' +
+			'|[\\uDB40-\\uDB43][\\uDC00-\\uDFFF]',
+		'g'
+	);
+
 	// CHANGE: Add global flags to dynamically indicate whether some operations can be performed
 	window.can_update_checkout = true;
 	window.can_prevent_unload = true;
@@ -39,6 +55,7 @@ jQuery( function ( $ ) {
 		addressFieldsToMirrorSelector:                'select, input, textarea',
 
 		loadingClass:                                 'fc-loading',
+		// CHANGE: Replace `.woocommerce-checkout-review-order-table` with `.fc-shipping-method__packages` for Block UI
 		checkoutBlockUISelector:                      '.woocommerce-checkout-payment, .fc-shipping-method__packages',
 
 		checkoutPlaceOrderApplyLoadingClass:          'yes',
@@ -88,7 +105,14 @@ jQuery( function ( $ ) {
 					// Trigger field-level validation (which adds `.woocommerce-invalid` to invalid fields)
 					$form.find( '.input-text, select, input:checkbox' ).trigger( 'validate' );
 
-					// Check for validation errors (from validate_field handler)
+					// Check for validation errors (from validate_field handler).
+					// Only consider visible fields: `validate_field` flags any empty
+					// required field regardless of visibility, so hidden fields (e.g.
+					// the collapsed "Ship to a different address?" shipping fields)
+					// would otherwise block submission even when the visible form is
+					// valid. The `.woocommerce-invalid` class lives on the `.form-row`,
+					// which is hidden when its section is collapsed.
+					// CHANGE: Keep FC check without `:visible` so collapsed invalid fields still block custom place-order buttons
 					if ( $form.find( '.woocommerce-invalid' ).length > 0 ) {
 						hasError = true;
 					}
@@ -122,7 +146,7 @@ jQuery( function ( $ ) {
 						$termsCheckbox.closest( '.form-row' ).addClass( 'woocommerce-invalid' );
 					}
 
-					// Scroll to the first invalid field in DOM order
+					// CHANGE: Scroll to the first invalid field in DOM order (including collapsed rows)
 					if ( hasError ) {
 						var $firstInvalidField = $form.find( '.woocommerce-invalid' ).first();
 						if ( $firstInvalidField.length ) {
@@ -660,6 +684,8 @@ jQuery( function ( $ ) {
 
 			// Toggle state
 			if ( checkbox.checked ) {
+				// Ensure password is not pre-populated.
+				$( '#account_password' ).val( '' );
 				CollapsibleBlock.expand( createAccountBlock );
 			}
 			else {
@@ -976,7 +1002,13 @@ jQuery( function ( $ ) {
 				if ( validate_phone ) {
 					pattern = new RegExp( /[\s\#0-9_\-\+\/\(\)\.]/g );
 
-					if ( 0 < $this.val().replace( pattern, '' ).length ) {
+					if (
+						0 <
+						$this
+							.val()
+							.replace( invisible_chars, '' )
+							.replace( pattern, '' ).length
+					) {
 						$this.attr( 'aria-invalid', 'true' );
 						$parent
 							.removeClass( 'woocommerce-validated' )
@@ -1284,27 +1316,56 @@ jQuery( function ( $ ) {
 						} );
 					}
 
-					// Check for error
-					if ( data && 'failure' === data.result ) {
-						// CHANGE: Use checkout form selector from settings
-						var $form = $( _settings.checkoutFormSelector );
+					// CHANGE: Use checkout form selector from settings
+					var $form = $( _settings.checkoutFormSelector );
 
-						// Remove notices from all sources
+					// `result` only reports whether the response carries a notice, so a success
+					// or info notice reads as `failure` there. Prefer the explicit error flag
+					// when it is the boolean this endpoint documents and, if it reports an
+					// error, the response carries the notice to show for it. Otherwise fall
+					// back to `result`, such as for a third-party callback that answers before
+					// Core does.
+					var trustsErrorFlag =
+						!! data &&
+						'boolean' === typeof data.has_errors &&
+						( ! data.has_errors || !! data.messages );
+					var hasErrors = trustsErrorFlag
+						? data.has_errors
+						: !! data && 'failure' === data.result;
+
+					// Whether this response has a notice to render. `result` is the legacy
+					// signal for that and third-party callbacks still set it, so keep honoring
+					// it alongside the error flag.
+					var rendersNotices =
+						!! data &&
+						!! data.messages &&
+						( hasErrors || 'failure' === data.result );
+
+					if ( hasErrors ) {
+						// Remove notices from all sources before rendering an error.
 						$(
 							'.woocommerce-error, .woocommerce-message, .is-error, .is-success'
 						).remove();
+					} else if ( rendersNotices ) {
+						// A non-error notice supersedes a failed place order, but leaves every
+						// other notice on the page alone.
+						$( '.woocommerce-NoticeGroup-checkout' ).remove();
+					}
 
-						// Add new errors returned by this event
-						if ( data.messages ) {
-							$form.prepend(
-								'<div class="woocommerce-NoticeGroup woocommerce-NoticeGroup-updateOrderReview">' +
-									data.messages +
-									'</div>'
-							); // eslint-disable-line max-len
-						} else {
-							$form.prepend( data );
-						}
+					// Add notices returned by this event.
+					if ( rendersNotices ) {
+						$form.prepend(
+							'<div class="woocommerce-NoticeGroup woocommerce-NoticeGroup-updateOrderReview">' +
+								data.messages +
+								'</div>'
+						); // eslint-disable-line max-len
+					} else if ( data && 'failure' === data.result ) {
+						// A response that reports a notice without carrying one: render it as-is.
+						$form.prepend( data );
+					}
 
+					// Check for error.
+					if ( hasErrors ) {
 						// Lose focus for all fields
 						$form
 							.find( '.input-text, select, input:checkbox' )
@@ -1320,14 +1381,19 @@ jQuery( function ( $ ) {
 					// If there is no errors and the checkout update was triggered by changing the shipping method, focus its radio input.
 					if (
 						data &&
-						'success' === data.result &&
+						! hasErrors &&
 						args.current_target &&
 						args.current_target.id.indexOf( 'shipping_method' ) !==
 							-1
 					) {
-						document
-							.getElementById( args.current_target.id )
-							.focus();
+						// The refreshed fragment may no longer offer the method that was selected.
+						var shippingInput = document.getElementById(
+							args.current_target.id
+						);
+
+						if ( shippingInput ) {
+							shippingInput.focus();
+						}
 					}
 
 					// CHANGE: Unset global flag for processing checkout update
@@ -1657,7 +1723,7 @@ jQuery( function ( $ ) {
 				.find(
 					'.woocommerce-error[tabindex="-1"], .wc-block-components-notice-banner.is-error[tabindex="-1"]'
 				)
-				.focus();
+				.trigger( 'focus' );
 			$( document.body ).trigger( 'checkout_error', [ error_message ] );
 		},
 		wrapMessagesInsideLink: function ( $msgs ) {
@@ -1769,7 +1835,7 @@ jQuery( function ( $ ) {
 
 			$target
 				.find( '#coupon_code' )
-				.focus()
+				.trigger( 'focus' )
 				.addClass( 'has-error' )
 				.attr( 'aria-invalid', 'true' )
 				.attr( 'aria-describedby', 'coupon-error-notice' );
@@ -1864,6 +1930,11 @@ jQuery( function ( $ ) {
 							self.show_coupon_error(
 								response,
 								$coupon_field.parent()
+							);
+
+							$( document.body ).trigger(
+								'errored_coupon_in_checkout',
+								[ data.coupon_code, response ]
 							);
 						}
 
