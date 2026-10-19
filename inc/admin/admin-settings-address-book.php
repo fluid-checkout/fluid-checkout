@@ -217,14 +217,14 @@ class FluidCheckout_Settings_AddressBook {
 					array(
 						'title'             => __( 'Address search', 'fluid-checkout' ),
 						'desc'              => '',
-						'desc_tip'          => __( 'Show address search filter on frontend when customer has at least this number of saved addresses available.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Show address search filter on frontend when customer has at least this number of saved addresses available.', 'fluid-checkout' ) . '<br><br>' . __( 'Not used when display layout is set to dropdown field.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_address_book_saved_addresses_search_min_count',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_address_book_saved_addresses_search_min_count' ),
 						'type'              => 'fc_number',
 						'suffix_label'      => __( 'Addresses', 'fluid-checkout' ),
 						'custom_attributes' => array(
-							'data-conditional-id'    => 'fc_pro_enable_address_book',
-							'data-conditional-value' => 'yes',
+							'data-conditional-id'    => 'fc_pro_enable_address_book,fc_pro_address_book_display_layout',
+							'data-conditional-value' => 'yes,cards|list',
 						),
 						'autoload'          => false,
 						'disabled'          => true,
