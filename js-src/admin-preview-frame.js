@@ -55,6 +55,8 @@
 	var _cssVariables = {};
 	var _colorScheme = '';
 	var _hasDarkModeClass = false;
+	var _ignoredStyleIds = [];
+	var _colorSchemeBodyClasses = {};
 	var _shippingMethods = {};
 	var _originalFetch = null;
 	var _originalXhrOpen = null;
@@ -401,6 +403,9 @@
 
 		// Update the CSS variables of the color scheme
 		updatePreviewStyles();
+
+		// Update the body classes of the color scheme
+		setColorSchemeBodyClasses( _colorSchemeBodyClasses );
 	};
 
 	/**
@@ -414,6 +419,52 @@
 		// Iterate classes
 		for ( className in classes ) {
 			document.body.classList.toggle( className, true === classes[ className ] );
+		}
+	};
+
+	/**
+	 * Add or remove the body classes of the color scheme that the page preview shows, forced or its own.
+	 *
+	 * @param {Object}  classes  Whether each class is added, by color scheme (`light` or `dark`) and class name.
+	 */
+	var setColorSchemeBodyClasses = function( classes ) {
+		// Remember the classes, used again when the color scheme changes
+		_colorSchemeBodyClasses = classes;
+
+		// Add or remove the classes of the color scheme that the page shows
+		setBodyClasses( _colorSchemeBodyClasses[ document.body.classList.contains( _settings.darkModeClass ) ? 'dark' : 'light' ] || {} );
+	};
+
+	/**
+	 * Ignore the styles of style elements, replacing the ones ignored before, such as styles that the admin page replaces with CSS variables it sets.
+	 *
+	 * @param {Array}  ids  IDs of the style elements to ignore.
+	 */
+	var setIgnoredStyleIds = function( ids ) {
+		var styleElement;
+		var i;
+
+		// Iterate style elements ignored before, to use their styles again
+		for ( i = 0; i < _ignoredStyleIds.length; i++ ) {
+			styleElement = document.getElementById( _ignoredStyleIds[ i ] );
+
+			// Maybe enable the styles of the element
+			if ( styleElement && styleElement.sheet ) {
+				styleElement.sheet.disabled = false;
+			}
+		}
+
+		// Remember the style elements to ignore
+		_ignoredStyleIds = ids;
+
+		// Iterate style elements to ignore
+		for ( i = 0; i < _ignoredStyleIds.length; i++ ) {
+			styleElement = document.getElementById( _ignoredStyleIds[ i ] );
+
+			// Maybe disable the styles of the element
+			if ( styleElement && styleElement.sheet ) {
+				styleElement.sheet.disabled = true;
+			}
 		}
 	};
 
@@ -687,6 +738,14 @@
 		// SET BODY CLASSES
 		else if ( 'setBodyClasses' === e.data.type ) {
 			setBodyClasses( e.data.classes );
+		}
+		// SET COLOR SCHEME BODY CLASSES
+		else if ( 'setColorSchemeBodyClasses' === e.data.type ) {
+			setColorSchemeBodyClasses( e.data.classes );
+		}
+		// SET IGNORED STYLE IDS
+		else if ( 'setIgnoredStyleIds' === e.data.type ) {
+			setIgnoredStyleIds( e.data.ids );
 		}
 		// GET COMPUTED CSS VALUE
 		else if ( 'getComputedCssValue' === e.data.type ) {

@@ -194,6 +194,14 @@
 		_hasInitialized = true;
 	};
 
+	/**
+	 * Show the colors of all CSS value fields on their swatches again, such as after another script changes their placeholders.
+	 */
+	_publicMethods.syncSwatches = function() {
+		// Show the colors on the swatches
+		syncSwatches();
+	};
+
 
 
 	//

@@ -31,6 +31,7 @@
 
 		settingsFieldSelector:                 '.fc-settings-field',
 		settingsRowSelector:                   '.fc-settings-field, tr',
+		settingsCardSelector:                  '.fc-settings-card',
 		layoutOptionsSelector:                 '.fc-settings-sectioned-buttons, .fc-settings-radio-options',
 		layoutOptionSelector:                  '.fc-settings-sectioned-buttons__option, .fc-settings-radio-option',
 		isSelectedClass:                       'is-selected',
@@ -210,6 +211,9 @@
 	var getConditionalContainer = function( element ) {
 		// Bail if element is not valid
 		if ( ! element ) { return null; }
+
+		// Maybe use the card itself, for cards shown only while their condition matches
+		if ( element.matches( _settings.settingsCardSelector ) ) { return element; }
 
 		// Prefer the nearest settings field row
 		var settingsField = element.closest( _settings.settingsFieldSelector );

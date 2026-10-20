@@ -34,6 +34,8 @@
 	var _cssVariables = {};
 	var _colorScheme = '';
 	var _bodyClasses = {};
+	var _colorSchemeBodyClasses = {};
+	var _ignoredStyleIds = [];
 	var _fieldValues = {};
 	var _computedCssValueRequests = {};
 	var _computedCssValueRequestId = 0;
@@ -66,6 +68,7 @@
 		headerFooterSelector:        '[data-fc-settings-preview-header-footer]',
 		viewportInputSelector:       'input[name="fc-settings-preview-viewport"]',
 		enableSettingFieldSelector:  '[name="###NAME###"][type="checkbox"]',
+		ignoredFieldSelector:        '[data-fc-settings-preview-ignore]',
 		hasPreviewClass:             'has-preview',
 		isExpandedClass:             'is-preview-expanded',
 		isEnterClass:                'is-preview-enter',
@@ -744,8 +747,10 @@
 		postMessageToPreview( { type: 'setHeaderFooterVisibility', visible: _isHeaderFooterVisible } );
 		postMessageToPreview( { type: 'setFieldValues', values: _fieldValues[ _previewMode ] || [] } );
 		postMessageToPreview( { type: 'setColorScheme', scheme: _colorScheme } );
+		postMessageToPreview( { type: 'setIgnoredStyleIds', ids: _ignoredStyleIds } );
 		postMessageToPreview( { type: 'setCssVariables', variables: _cssVariables } );
 		postMessageToPreview( { type: 'setBodyClasses', classes: _bodyClasses } );
+		postMessageToPreview( { type: 'setColorSchemeBodyClasses', classes: _colorSchemeBodyClasses } );
 
 		// Iterate pending computed value requests, sent again as a reload drops them
 		for ( requestId in _computedCssValueRequests ) {
@@ -1212,6 +1217,9 @@
 		// Bail if the change is not for a settings field, such as for the preview controls
 		if ( ! e.target.closest( _settings.formSelector ) || e.target.closest( _settings.previewSelector ) ) { return; }
 
+		// Bail if the preview ignores the field, as another script shows its changes in the page preview
+		if ( e.target.closest( _settings.ignoredFieldSelector ) ) { return; }
+
 		// Bail if the current user has no preview token
 		if ( ! _settings.previewToken ) { return; }
 
@@ -1356,6 +1364,32 @@
 
 		// Send the classes to the page preview
 		postMessageToPreview( { type: 'setBodyClasses', classes: classes } );
+	};
+
+	/**
+	 * Add or remove body classes of the page preview for the color scheme it shows, forced or its own, replacing the classes set before with this method.
+	 *
+	 * @param  {Object}  classes  Whether each class is added, by color scheme (`light` or `dark`) and class name.
+	 */
+	_publicMethods.setColorSchemeBodyClasses = function( classes ) {
+		// Remember the classes, sent again after each reload
+		_colorSchemeBodyClasses = classes;
+
+		// Send the classes to the page preview
+		postMessageToPreview( { type: 'setColorSchemeBodyClasses', classes: _colorSchemeBodyClasses } );
+	};
+
+	/**
+	 * Ignore the styles of style elements in the page preview, replacing the ones ignored before, such as styles that the admin page replaces with CSS variables it sets.
+	 *
+	 * @param  {Array}  ids  IDs of the style elements to ignore.
+	 */
+	_publicMethods.setIgnoredStyleIds = function( ids ) {
+		// Remember the style elements to ignore, sent again after each reload
+		_ignoredStyleIds = ids;
+
+		// Send the style elements to ignore to the page preview
+		postMessageToPreview( { type: 'setIgnoredStyleIds', ids: _ignoredStyleIds } );
 	};
 
 	/**
