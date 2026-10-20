@@ -189,6 +189,15 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		 */
 		$css_variables = apply_filters( 'fc_css_variables', array( ':root' => array() ), $context );
 
+		return $this->format_css_variables_styles( $css_variables );
+	}
+
+	/**
+	 * Format CSS variables by scope as styles.
+	 *
+	 * @param  array  $css_variables  The CSS variables key/value pairs, by scope.
+	 */
+	public function format_css_variables_styles( $css_variables ) {
 		// Bail if no scope for CSS variables
 		if ( ! is_array( $css_variables ) || empty( $css_variables ) ) { return ''; }
 
@@ -262,6 +271,13 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		if ( empty( $custom_styles ) ) { return; }
 
 		echo '<style id="fc-custom-styles">' . $custom_styles . '</style>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
+		/**
+		 * Fires after the custom styles of Fluid Checkout pages are output.
+		 *
+		 * @since 5.0.0
+		 */
+		do_action( 'fc_custom_styles_after' );
 	}
 
 	/**

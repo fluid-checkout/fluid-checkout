@@ -453,6 +453,79 @@
 		root.parent.postMessage( { source: _settings.messageSource, type: 'computedCssValue', requestId: requestId, value: computedValue }, _settings.adminOrigin );
 	};
 
+	/**
+	 * Send the computed values of CSS variables for each color scheme to the admin page, read from a hidden element with a class whose styles set them.
+	 * The CSS variables set by the admin page and the styles of the ignored style elements do not apply while reading the values.
+	 *
+	 * @param {number|string}  requestId        Request ID.
+	 * @param {string}         className        Class of the element whose styles set the CSS variables.
+	 * @param {Array}          names            CSS variable names.
+	 * @param {Array}          colorSchemes     Color schemes to read the values for, `light` or `dark`.
+	 * @param {Array}          ignoredStyleIds  IDs of the style elements to ignore.
+	 */
+	var sendComputedCssVariables = function( requestId, className, names, colorSchemes, ignoredStyleIds ) {
+		var probe = document.createElement( 'div' );
+		var colorScheme = _colorScheme;
+		var cssVariables = _cssVariables;
+		var ignoredStyleElements = [];
+		var values = {};
+		var styleElement;
+		var computedStyle;
+		var i;
+		var j;
+
+		// Add the hidden element with the class
+		probe.className = className;
+		probe.hidden = true;
+		document.body.appendChild( probe );
+
+		// Read the values, restoring the page preview afterwards
+		try {
+			// Iterate style elements to ignore
+			for ( i = 0; i < ignoredStyleIds.length; i++ ) {
+				styleElement = document.getElementById( ignoredStyleIds[ i ] );
+
+				// Maybe disable the styles of the element while reading the values
+				if ( styleElement && styleElement.sheet && ! styleElement.sheet.disabled ) {
+					styleElement.sheet.disabled = true;
+					ignoredStyleElements.push( styleElement );
+				}
+			}
+
+			// Ignore the CSS variables set by the admin page while reading the values
+			_cssVariables = {};
+
+			// Iterate color schemes
+			for ( i = 0; i < colorSchemes.length; i++ ) {
+				// Use the color scheme, then get the styles of the hidden element
+				setColorScheme( colorSchemes[ i ] );
+				computedStyle = root.getComputedStyle( probe );
+				values[ colorSchemes[ i ] ] = {};
+
+				// Iterate CSS variables
+				for ( j = 0; j < names.length; j++ ) {
+					values[ colorSchemes[ i ] ][ names[ j ] ] = computedStyle.getPropertyValue( names[ j ] ).trim();
+				}
+			}
+		}
+		// Restore the CSS variables and the color scheme set by the admin page, and the ignored styles, also when reading the values fails
+		finally {
+			_cssVariables = cssVariables;
+			setColorScheme( colorScheme );
+
+			// Iterate ignored style elements, to enable them again
+			for ( i = 0; i < ignoredStyleElements.length; i++ ) {
+				ignoredStyleElements[ i ].sheet.disabled = false;
+			}
+
+			// Remove the hidden element
+			probe.remove();
+		}
+
+		// Send the computed values to the admin page
+		root.parent.postMessage( { source: _settings.messageSource, type: 'computedCssVariables', requestId: requestId, values: values }, _settings.adminOrigin );
+	};
+
 
 
 	/**
@@ -618,6 +691,10 @@
 		// GET COMPUTED CSS VALUE
 		else if ( 'getComputedCssValue' === e.data.type ) {
 			sendComputedCssValue( e.data.requestId, e.data.property, e.data.value );
+		}
+		// GET COMPUTED CSS VARIABLES
+		else if ( 'getComputedCssVariables' === e.data.type ) {
+			sendComputedCssVariables( e.data.requestId, e.data.className, e.data.names, e.data.colorSchemes, e.data.ignoredStyleIds );
 		}
 		// REFRESH STYLES
 		else if ( 'refreshStyles' === e.data.type ) {

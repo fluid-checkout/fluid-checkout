@@ -37,6 +37,8 @@
 	var _fieldValues = {};
 	var _computedCssValueRequests = {};
 	var _computedCssValueRequestId = 0;
+	var _computedCssVariablesRequests = {};
+	var _computedCssVariablesRequestId = 0;
 	var _isPreviewLoading = false;
 	var _isPreviewReady = false;
 	var _isRefreshingStyles = false;
@@ -736,6 +738,7 @@
 	 */
 	var sendPreviewState = function() {
 		var requestId;
+		var request;
 
 		// Send the header and footer visibility, the values entered in the fields in the current mode, and styles
 		postMessageToPreview( { type: 'setHeaderFooterVisibility', visible: _isHeaderFooterVisible } );
@@ -747,6 +750,12 @@
 		// Iterate pending computed value requests, sent again as a reload drops them
 		for ( requestId in _computedCssValueRequests ) {
 			postMessageToPreview( { type: 'getComputedCssValue', requestId: requestId, property: _computedCssValueRequests[ requestId ].property, value: _computedCssValueRequests[ requestId ].value } );
+		}
+
+		// Iterate pending computed CSS variables requests, sent again as a reload drops them
+		for ( requestId in _computedCssVariablesRequests ) {
+			request = _computedCssVariablesRequests[ requestId ];
+			postMessageToPreview( { type: 'getComputedCssVariables', requestId: requestId, className: request.className, names: request.names, colorSchemes: request.colorSchemes, ignoredStyleIds: request.ignoredStyleIds } );
 		}
 	};
 
@@ -765,6 +774,23 @@
 		// Resolve the request with the computed value
 		delete _computedCssValueRequests[ requestId ];
 		request.resolve( value );
+	};
+
+	/**
+	 * Resolve a computed CSS variables request with the values sent by the page preview.
+	 *
+	 * @param  {number|string}  requestId  Request ID.
+	 * @param  {Object}         values     Computed values by color scheme and CSS variable name.
+	 */
+	var resolveComputedCssVariablesRequest = function( requestId, values ) {
+		var request = _computedCssVariablesRequests[ requestId ];
+
+		// Bail if the request is already resolved
+		if ( ! request ) { return; }
+
+		// Resolve the request with the computed values
+		delete _computedCssVariablesRequests[ requestId ];
+		request.resolve( values );
 	};
 
 
@@ -1236,6 +1262,9 @@
 		if ( 'ready' === e.data.type ) {
 			_isPreviewReady = true;
 			sendPreviewState();
+
+			// Notify listeners that the page preview loaded
+			window.dispatchEvent( new CustomEvent( 'fcSettingsPreviewReady' ) );
 		}
 		// STYLES REFRESHED
 		else if ( 'stylesRefreshed' === e.data.type ) {
@@ -1246,6 +1275,10 @@
 		// COMPUTED CSS VALUE
 		else if ( 'computedCssValue' === e.data.type ) {
 			resolveComputedCssValueRequest( e.data.requestId, e.data.value );
+		}
+		// COMPUTED CSS VARIABLES
+		else if ( 'computedCssVariables' === e.data.type ) {
+			resolveComputedCssVariablesRequest( e.data.requestId, e.data.values );
 		}
 		// FIELD VALUES
 		else if ( 'fieldValues' === e.data.type ) {
@@ -1344,6 +1377,31 @@
 			// Otherwise resolve without a value, as the iframe shows a placeholder
 			else {
 				resolve( '' );
+			}
+		} );
+	};
+
+	/**
+	 * Get the computed values of CSS variables in the page preview for each color scheme, read from a hidden element with a class whose styles set them, such as default values that depend on the styles of the page.
+	 * The CSS variables set with `setCssVariables()` and the styles of the ignored style elements do not apply while reading the values.
+	 *
+	 * @param   {string}   className        Class of the element whose styles set the CSS variables.
+	 * @param   {Array}    names            CSS variable names.
+	 * @param   {Array}    colorSchemes     Color schemes to read the values for, `light` or `dark`.
+	 * @param   {Array}    ignoredStyleIds  IDs of the style elements to ignore.
+	 * @return  {Promise}                   Promise resolving to the computed values by color scheme and CSS variable name, or an empty object when the iframe shows a placeholder.
+	 */
+	_publicMethods.getComputedCssVariables = function( className, names, colorSchemes, ignoredStyleIds ) {
+		return new Promise( function( resolve ) {
+			// Maybe ask the page preview, which sends the computed values back
+			if ( getPreviewOrigin() ) {
+				_computedCssVariablesRequestId++;
+				_computedCssVariablesRequests[ _computedCssVariablesRequestId ] = { className: className, names: names, colorSchemes: colorSchemes, ignoredStyleIds: ignoredStyleIds, resolve: resolve };
+				postMessageToPreview( { type: 'getComputedCssVariables', requestId: _computedCssVariablesRequestId, className: className, names: names, colorSchemes: colorSchemes, ignoredStyleIds: ignoredStyleIds } );
+			}
+			// Otherwise resolve without values, as the iframe shows a placeholder
+			else {
+				resolve( {} );
 			}
 		} );
 	};
