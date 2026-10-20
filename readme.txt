@@ -337,6 +337,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Merge leftover individual settings options into the active settings profile so PRO features stay enabled after switching to bundled Lite inside PRO.
 * Fixed: Skip bootstrap when Fluid Checkout is already loaded from another copy (for example bundled inside PRO).
 * Improved: Upgraded Sass build tooling to the latest version.
 * Added: Shared REST API base for `fluid-checkout/v1` (namespace, route registration, user-scoped permissions) and `fc_api_*` error helpers.
