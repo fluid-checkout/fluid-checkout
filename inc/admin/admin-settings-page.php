@@ -697,6 +697,14 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		<div class="wrap woocommerce fc-wrap fc-settings-wrap">
 			<form method="post" action="<?php echo esc_url( $this->get_settings_url( $current_tab ) ); ?>" id="mainform" class="fc-settings-form" enctype="multipart/form-data" data-fc-settings-form>
 				<div class="<?php echo esc_attr( $layout_class ); ?>" data-fc-settings-layout>
+					<?php
+					/**
+					 * At the start of the settings layout, before the sidebar and content columns.
+					 *
+					 * @param  string  $current_tab  Active settings tab slug.
+					 */
+					do_action( 'fc_admin_settings_layout_start', $current_tab );
+					?>
 
 					<div class="fc-settings-sidebar" data-fc-settings-sidebar>
 						<div class="fc-settings-sidebar__inner">

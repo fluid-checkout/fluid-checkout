@@ -26,13 +26,16 @@ class FluidCheckout_WooCommercePayPalPayments extends FluidCheckout {
 
 		// Set checkout context
 		add_filter( 'woocommerce_paypal_payments_context' , array( $this, 'maybe_change_context_checkout' ), 300 );
-		
+
 		// Payment methods
 		add_filter( 'fc_checkout_update_on_visibility_change', array( $this, 'disable_update_on_visibility_change' ), 100 );
 
 		// Place order
 		add_filter( 'woocommerce_paypal_payments_checkout_button_renderer_hook', array( $this, 'change_paypal_button_hook_name' ), 100 );
 		add_filter( 'woocommerce_paypal_payments_checkout_dcc_renderer_hook', array( $this, 'change_paypal_button_hook_name' ), 100 );
+
+		// Admin preview
+		add_filter( 'fc_admin_preview_allowed_hosts', array( $this, 'add_admin_preview_allowed_hosts' ), 10 );
 	}
 
 	/**
@@ -172,6 +175,20 @@ class FluidCheckout_WooCommercePayPalPayments extends FluidCheckout {
 	 */
 	public function change_paypal_button_hook_name( $hook_name ) {
 		return 'fc_place_order_custom_buttons';
+	}
+
+
+
+	/**
+	 * Add the hosts that PayPal Payments contacts to show its payment buttons to the hosts the admin preview may contact.
+	 *
+	 * @param   array  $hosts  Host names.
+	 *
+	 * @return  array  Host names with PayPal hosts added.
+	 */
+	public function add_admin_preview_allowed_hosts( $hosts ) {
+		// Add the PayPal hosts
+		return array_merge( $hosts, array( '*.paypal.com' ) );
 	}
 
 }

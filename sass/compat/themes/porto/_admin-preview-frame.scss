@@ -1,0 +1,7 @@
+// ------------------------------------
+// ADMIN PREVIEW FRAME
+// ------------------------------------
+
+body#{ $_body-theme-selector }.fc-admin-preview--hide-header-footer #footer {
+	display: none !important; // Needed to override theme styles
+}

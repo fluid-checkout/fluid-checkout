@@ -68,7 +68,7 @@ $order-review-selector: null !default;
 
 
 .ts-dropdown.fc-settings-ts-dropdown {
-	z-index: $fc-settings-tom-select-dropdown-z-index !important; // Needed to stack above the fixed save bar
+	z-index: $fc-settings-tom-select-dropdown-z-index !important; // Needed to stack above preview drawers and the fixed save bar
 }
 
 

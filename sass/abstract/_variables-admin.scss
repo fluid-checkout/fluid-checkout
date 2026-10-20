@@ -133,10 +133,9 @@ $fc-settings-actions-bar-height:            60px !default;
 $fc-settings-actions-background-color:      #fff !default;
 $fc-settings-actions-border-color:          $admin-border-color-strong !default;
 $fc-settings-actions-box-shadow:            0 -3px 12px rgba( 0, 0, 0, .1 ) !default;
-// Stacking: columns < compact nav bar < preview drawer < expanded nav drawer < page header
+// Stacking: columns < actions < sidebar/preview < compact nav bar < preview drawer < expanded nav drawer < tom select dropdown < page header
 $fc-settings-content-z-index:               10 !default;
 $fc-settings-actions-z-index:               20 !default;
-$fc-settings-tom-select-dropdown-z-index:   25 !default;
 $fc-settings-sidebar-z-index:               30 !default;
 $fc-settings-preview-z-index:               30 !default;
 $fc-settings-nav-bar-z-index:               110 !default;
@@ -144,6 +143,7 @@ $fc-settings-nav-bar-z-index:               110 !default;
 $fc-settings-drawer-z-index:                120 !default;
 // Above the preview drawer while the settings menu is open
 $fc-settings-nav-drawer-z-index:            130 !default;
+$fc-settings-tom-select-dropdown-z-index:   140 !default;
 $fc-settings-content-title-margin:          0 0 20px !default;
 $fc-settings-content-title-font-size:       20px !default;
 $fc-settings-content-title-font-weight:     500 !default;
@@ -157,12 +157,14 @@ $fc-settings-preview-border-width:          1px !default;
 $fc-settings-preview-frame-border-width:    1px !default;
 // Inner preview frame width (panel paddings and frame borders are added separately)
 $fc-settings-preview-min-width:             280px !default;
-$fc-settings-preview-viewport-mobile:       350px !default;
-$fc-settings-preview-viewport-tablet:       750px !default;
+// Distance of the preview column from the admin menu on desktop, where the expanded preview starts and ends its transitions
+$fc-settings-preview-column-offset:         $fc-settings-sidebar-width + $fc-settings-content-max-width !default;
 // Below this width the preview starts collapsed and opens vertically from the actions bar
 $fc-settings-preview-compact-breakpoint:    1280px !default;
 $fc-settings-preview-transition-duration:   .28s !default;
 $fc-settings-preview-transition-easing:     ease !default;
+$fc-settings-preview-auto-changed-outline-color: #9ca3af !default;
+$fc-settings-preview-auto-changed-duration:      3s !default;
 
 // END - ADMIN - SETTINGS PAGE LAYOUT
 // ----------------------------------------
