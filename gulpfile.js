@@ -308,10 +308,10 @@ gulp.task( 'npm-run-build', gulp.series( function( done ) {
 	if ( ! fs.existsSync( './blocks' ) ) { return done(); }
 
 	exec( 'npm run build', _execOptions, function ( err, stdout, stderr ) {
-		console.log( stdout );
-		console.log( stderr );
+		// Successful builds stay quiet. Print the log only when the command fails.
 		if ( err ) {
-			// If an error occurred, make the Gulp task fail
+			if ( stdout ) { console.log( stdout ); }
+			if ( stderr ) { console.log( stderr ); }
 			done( err );
 			return;
 		}
