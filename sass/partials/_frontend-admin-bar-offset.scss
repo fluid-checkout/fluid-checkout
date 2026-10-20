@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // ADMIN BAR OFFSET
 // ------------------------------------
@@ -23,3 +29,4 @@ body.admin-bar:not( .fc-admin-bar-in-view ) .fc-sidebar[data-sticky-states].is-s
 body.admin-bar:not( .fc-admin-bar-in-view ) .fc-wrapper .fc-checkout-order-review[data-flyout].is-activated.is-open {
 	padding: $checkout-header-height 0 0 !important; // Needed to override the admin bar offset
 }
+

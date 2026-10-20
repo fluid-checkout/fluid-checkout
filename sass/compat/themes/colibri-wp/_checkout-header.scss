@@ -1,8 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT HEADER
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-checkout-header__inner {
+body#{ $body-theme-selector } .fc-checkout-header__inner {
 	padding: 0 $container-spacing-mobile;
 
 	@media (#{$bp-larger-than-tablet}) { padding: 0 $container-spacing-tablet; }

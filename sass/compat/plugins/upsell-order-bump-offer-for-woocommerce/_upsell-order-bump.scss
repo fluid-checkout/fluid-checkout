@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // UPSELL ORDER BUMP
 // ------------------------------------
@@ -34,3 +40,4 @@
 .fc-wrapper .fc-place-order__section .wrapup_order_bump {
 	margin-bottom: $global-spacing-small !important; // Needed to override plugin styles
 }
+

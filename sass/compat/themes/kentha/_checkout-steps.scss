@@ -1,12 +1,17 @@
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT STEPS
 // ------------------------------------
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper h1,
-body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper h2,
-body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper h3,
-body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper h4,
-body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper h5,
-body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper h6 {
+body#{ $body-theme-selector }#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper h1,
+body#{ $body-theme-selector }#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper h2,
+body#{ $body-theme-selector }#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper h3,
+body#{ $body-theme-selector }#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper h4,
+body#{ $body-theme-selector }#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper h5,
+body#{ $body-theme-selector }#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper h6 {
 	color: inherit;
 }

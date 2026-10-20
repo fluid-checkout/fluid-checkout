@@ -1,8 +1,13 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT SHIPPING ADDRESS
 // ------------------------------------
 
-body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
+body#{ $body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
 	textarea,
 	select,
 	input[type="email"],
@@ -21,7 +26,7 @@ body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce 
 	}
 }
 
-body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] .select2-selection {
+body#{ $body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] .select2-selection {
 	&:focus,
 	&:focus .select2-selection__rendered {
 		background-color: var( --fluidcheckout--betheme--form-field--background-color--focus ) !important; // Needed to override FC styles

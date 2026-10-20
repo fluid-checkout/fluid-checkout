@@ -1,9 +1,8 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"header",
-	"content-area",
-	"checkout-place-order",
-	"woocommerce-form-fields",
-	"woocommerce-form-fields-select2";
+@use "header";
+@use "content-area";
+@use "checkout-place-order";
+@use "woocommerce-form-fields";
+@use "woocommerce-form-fields-select2";

@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // HUNGARIAN PICKUP POINTS
 // ------------------------------------
@@ -49,3 +55,4 @@
 	justify-content: flex-end;
 	margin-top: $global-spacing-tiny;
 }
+

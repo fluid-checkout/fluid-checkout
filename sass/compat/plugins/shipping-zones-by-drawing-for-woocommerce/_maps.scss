@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // ORDER SUMMARY
 // ------------------------------------
@@ -12,3 +18,4 @@ body .fc-step__substep[data-substep-id="shipping_address"] #szbd_checkout_field 
 body .fc-step__substep[data-substep-id="shipping_address"] .woocommerce-shipping-fields + #szbd_checkout_field {
 	margin-top: $global-spacing-small;
 }
+

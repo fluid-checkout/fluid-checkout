@@ -1,7 +1,6 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"nav-menu",
-	"checkout-shipping",
-	"checkout-order-notes";
+@use "nav-menu";
+@use "checkout-shipping";
+@use "checkout-order-notes";

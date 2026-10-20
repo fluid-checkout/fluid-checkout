@@ -1,6 +1,5 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"buttons--coupon-code",
-	"checkout-coupon-code";
+@use "buttons--coupon-code";
+@use "checkout-coupon-code";

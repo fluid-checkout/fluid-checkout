@@ -1,3 +1,11 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+@use "../abstract/variables-tom-select" as *;
+
 // ------------------------------------
 // SETTINGS PAGE - PREVIEW COLUMN
 // ------------------------------------
@@ -504,8 +512,8 @@ select.fc-settings-preview__mode:focus-visible {
 }
 
 .fc-settings-preview__mode-field .ts-control:focus-within {
-	outline: $focus-outline-field !important; // Match Tom Select focus on settings fields
-	outline-offset: $focus-outline-offset-field !important;
+	outline: solid $fc-settings-focus-outline-width $fc-settings-focus-outline-color !important; // Match Tom Select focus on settings fields
+	outline-offset: $fc-settings-focus-outline-offset !important; // Match Tom Select focus on settings fields
 }
 
 .fc-settings-preview__frame-options .ts-wrapper {
@@ -707,3 +715,4 @@ select.fc-settings-preview__mode:focus-visible {
 	opacity: 1;
 	visibility: visible;
 }
+

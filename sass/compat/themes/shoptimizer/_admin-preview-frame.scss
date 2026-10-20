@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // ADMIN PREVIEW FRAME
 // ------------------------------------
 
-body#{ $_body-theme-selector }.fc-admin-preview--hide-header-footer .col-full-nav {
+body#{ $body-theme-selector }.fc-admin-preview--hide-header-footer .col-full-nav {
 	display: none !important; // Needed to override theme styles
 }

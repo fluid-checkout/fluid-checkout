@@ -1,14 +1,13 @@
-@import
-	"admin-settings-focus",
-	"admin-settings-header",
-	"admin-settings-notices",
-	"admin-settings-layout",
-	"admin-settings-sidebar",
-	"admin-settings-nav",
-	"admin-settings-card",
-	"admin-settings-field",
-	"admin-settings-tom-select",
-	"admin-settings-submit",
-	"admin-settings-sectioned-buttons",
-	"admin-settings-preview",
-	"admin-settings-layout-options";
+@use "admin-settings-focus";
+@use "admin-settings-header";
+@use "admin-settings-notices";
+@use "admin-settings-layout";
+@use "admin-settings-sidebar";
+@use "admin-settings-nav";
+@use "admin-settings-card";
+@use "admin-settings-field";
+@use "admin-settings-tom-select";
+@use "admin-settings-submit";
+@use "admin-settings-sectioned-buttons";
+@use "admin-settings-preview";
+@use "admin-settings-layout-options";

@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // FLYOUT BLOCK
 // ------------------------------------
@@ -71,3 +77,4 @@
 .has-flyout a[data-flyout-toggle][role="button"] {
 	cursor: pointer;
 }
+

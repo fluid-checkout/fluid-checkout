@@ -1,11 +1,14 @@
+@use "sass:map";
+@use "../variables" as variables;
+
 /// Get the icon-glyph vallue from the `$icons` list variable.
 /// @author Diego Versiani
 /// @param {String} $icon-name - Name of the icon corresponding to an icon value in the `$icons` list variable.
 /// @return {String} - Icon glyph value.
 @function icon-glyph( $icon-name ) {
-    @if not map-has-key( $icons, $icon-name ) {
+    @if not map.has-key( variables.$icons, $icon-name ) {
         @warn "No icon found for `#{$icon-name}` in $icons map. Property omitted.";
     }
 
-    @return map-get( $icons, $icon-name );
+    @return map.get( variables.$icons, $icon-name );
 }

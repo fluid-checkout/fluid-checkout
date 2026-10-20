@@ -1,18 +1,27 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper .select2-container .select2-selection--single {
+body#{ $body-theme-selector } .fc-wrapper .select2-container .select2-selection--single {
 	padding-top: 0;
 	padding-bottom: 0;
 }
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
 	line-height: $form-field-select2-selection-height--single;
 }
 
 
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__clear {
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__clear {
 	#{ $alignment-right }: remsize( .5rem );
 }
+
