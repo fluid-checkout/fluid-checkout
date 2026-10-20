@@ -182,6 +182,18 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
+	 * Check whether the current request is for an admin page with the settings page layout, where settings fields get the settings page controls and scripts.
+	 */
+	public function is_settings_layout_page() {
+		/**
+		 * Filters whether the current request is for an admin page with the settings page layout.
+		 *
+		 * @since 5.0.0
+		 */
+		return true === apply_filters( 'fc_is_admin_settings_layout_page', $this->is_settings_page() );
+	}
+
+	/**
 	 * Add a body class on the Fluid Checkout settings page.
 	 *
 	 * @param  string  $classes  Space-separated list of admin body classes.

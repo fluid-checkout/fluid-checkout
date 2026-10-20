@@ -422,14 +422,14 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	 * Whether the current settings page uses custom info tip icons for field descriptions.
 	 */
 	public function uses_info_tooltips() {
-		return class_exists( 'FluidCheckout_Admin_Settings_Page' ) && FluidCheckout_Admin_Settings_Page::instance()->is_settings_page();
+		return class_exists( 'FluidCheckout_Admin_Settings_Page' ) && FluidCheckout_Admin_Settings_Page::instance()->is_settings_layout_page();
 	}
 
 	/**
 	 * Whether the current settings page renders checkboxes as toggle switches.
 	 */
 	public function uses_toggle_checkboxes() {
-		return class_exists( 'FluidCheckout_Admin_Settings_Page' ) && FluidCheckout_Admin_Settings_Page::instance()->is_settings_page();
+		return class_exists( 'FluidCheckout_Admin_Settings_Page' ) && FluidCheckout_Admin_Settings_Page::instance()->is_settings_layout_page();
 	}
 
 	/**

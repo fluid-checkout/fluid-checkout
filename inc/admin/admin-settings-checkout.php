@@ -153,8 +153,27 @@ class FluidCheckout_Settings_Checkout {
 						'title'                 => __( 'Dark mode', 'fluid-checkout' ),
 						'desc'                  => __( 'Enable dark mode', 'fluid-checkout' ),
 						'id'                    => 'fc_enable_dark_mode_styles',
+						'requires'              => 'pro',
+						'locked_only'           => true, // Replaced by the Color scheme setting with PRO
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_dark_mode_styles' ),
 						'type'                  => 'checkbox',
+						'autoload'              => false,
+					),
+
+					array(
+						'title'                 => __( 'Color scheme', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'              => __( 'Use the light or dark colors on the checkout pages, or use the dark colors only when the theme is in dark mode.', 'fluid-checkout' ),
+						'id'                    => 'fc_pro_color_scheme',
+						'requires'              => 'pro',
+						'unlocked_only'         => true,
+						'type'                  => 'fc_layout_selector',
+						'options'               => array(
+							'theme'    => array( 'label' => __( 'Theme', 'fluid-checkout' ) ),
+							'light'    => array( 'label' => __( 'Light', 'fluid-checkout' ) ),
+							'dark'     => array( 'label' => __( 'Dark', 'fluid-checkout' ) ),
+						),
+						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_color_scheme' ),
 						'autoload'              => false,
 					),
 
