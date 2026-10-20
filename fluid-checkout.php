@@ -33,6 +33,13 @@ defined( 'ABSPATH' ) || exit;
 
 
 
+// Bail if Lite was already loaded from another copy (for example bundled inside PRO).
+if ( class_exists( 'FluidCheckout', false ) ) {
+	return;
+}
+
+
+
 // Plugin activation and deactivation
 require_once plugin_dir_path( __FILE__ ) . 'inc/plugin-activation.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/plugin-deactivation.php';
