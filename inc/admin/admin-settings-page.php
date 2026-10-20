@@ -751,6 +751,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		// Get current tab
 		$current_tab = $this->get_current_tab();
 
+		// Output the settings page layout
 		$this->output_layout( array(
 			'title'          => __( 'Settings', 'fluid-checkout' ),
 			'form_url'       => $this->get_settings_url( $current_tab ),

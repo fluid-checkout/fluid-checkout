@@ -1016,13 +1016,35 @@
 	};
 
 	/**
+	 * Get the values of a settings form, with the names of all its fields, also of unchecked checkboxes, so only the settings of the form are saved.
+	 *
+	 * @param   {Element}   form  Settings form.
+	 * @return  {FormData}        Values and field names of the form.
+	 */
+	var getFormData = function( form ) {
+		var formData = new FormData( form );
+		var fieldNames = {};
+		var i;
+
+		// Iterate form fields, to send their names
+		for ( i = 0; i < form.elements.length; i++ ) {
+			// Skip fields without a name, or with a name already sent
+			if ( ! form.elements[ i ].name || fieldNames[ form.elements[ i ].name ] ) { continue; }
+
+			// Add the field name
+			fieldNames[ form.elements[ i ].name ] = true;
+			formData.append( 'fc_settings_field_names[]', form.elements[ i ].name );
+		}
+
+		return formData;
+	};
+
+	/**
 	 * Save settings through admin AJAX.
 	 */
 	var saveSettingsViaAjax = function() {
 		var form;
 		var formData;
-		var fieldNames = {};
-		var i;
 		var activeTab;
 		var saveErrorMessage;
 		var savedMessage;
@@ -1037,18 +1059,8 @@
 		_isSavingSettings = true;
 		setSaveButtonsSavingState();
 
-		formData = new FormData( form );
+		formData = getFormData( form );
 		formData.append( 'action', _settings.saveAction );
-
-		// Iterate form fields, to send their names, also of unchecked checkboxes, so only the settings of this form are saved
-		for ( i = 0; i < form.elements.length; i++ ) {
-			// Skip fields without a name, or with a name already sent
-			if ( ! form.elements[ i ].name || fieldNames[ form.elements[ i ].name ] ) { continue; }
-
-			// Add the field name
-			fieldNames[ form.elements[ i ].name ] = true;
-			formData.append( 'fc_settings_field_names[]', form.elements[ i ].name );
-		}
 
 		activeTab = getActiveSettingsTabSlug();
 		if ( activeTab ) {
@@ -1194,6 +1206,16 @@
 
 		// Set initialized flag
 		_hasInitialized = true;
+	};
+
+	/**
+	 * Get the values of a settings form, with the names of all its fields, so only the settings of the form are saved.
+	 *
+	 * @param   {Element}   form  Settings form.
+	 * @return  {FormData}        Values and field names of the form.
+	 */
+	_publicMethods.getFormData = function( form ) {
+		return getFormData( form );
 	};
 
 

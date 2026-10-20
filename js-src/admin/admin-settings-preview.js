@@ -5,6 +5,7 @@
  * DEPENDS ON:
  * - jQuery // Settings field changes, as the color picker triggers them with jQuery
  * - FCUtils // Utility functions
+ * - FCSettingsPage // Values of the settings form
  */
 
 (function ( root, factory ) {
@@ -925,10 +926,7 @@
 	 * Save the unsaved settings for the page preview, which shows them once refreshed.
 	 */
 	var saveDraft = function() {
-		var form = document.querySelector( _settings.formSelector );
-		var fieldNames = {};
 		var formData;
-		var i;
 
 		// Bail if a request is saving, which saves again once it finishes, so an older request cannot overwrite newer values
 		if ( _isSavingDraft ) { return; }
@@ -937,21 +935,11 @@
 		_hasUnsavedDraft = false;
 		_isSavingDraft = true;
 
-		// Get the settings form values
-		formData = new FormData( form );
+		// Get the settings form values, with the names of its fields, so only the settings of this form are unsaved changes
+		formData = FCSettingsPage.getFormData( document.querySelector( _settings.formSelector ) );
 		formData.set( 'action', _settings.draftAction );
 		formData.set( 'nonce', _settings.draftNonce );
 		formData.set( 'token', _settings.previewToken );
-
-		// Iterate form fields, to send their names, also of unchecked checkboxes, so only the settings of this form are unsaved changes
-		for ( i = 0; i < form.elements.length; i++ ) {
-			// Skip fields without a name, or with a name already sent
-			if ( ! form.elements[ i ].name || fieldNames[ form.elements[ i ].name ] ) { continue; }
-
-			// Add the field name
-			fieldNames[ form.elements[ i ].name ] = true;
-			formData.append( 'fc_settings_field_names[]', form.elements[ i ].name );
-		}
 
 		// Send the settings form values
 		fetch( _settings.ajaxUrl, { method: 'POST', credentials: 'same-origin', body: formData } ).then( handleDraftSaved, handleDraftSaved );
