@@ -789,9 +789,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * Maybe migrate legacy individual options into the first active CPT profile.
 	 */
 	public function maybe_migrate_legacy_options() {
-		// Profiles are active — merge any leftover `wp_options` rows still on disk
+		// Bail if already migrated
 		if ( 'yes' === $this->get_raw_option( self::MIGRATION_FLAG_OPTION, 'no' ) ) {
-			$this->maybe_merge_legacy_individual_options_into_active_profile();
 			return;
 		}
 
@@ -801,7 +800,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 		if ( '' !== $active_slug && null !== $this->get_profile_post_id_by_slug( $active_slug ) ) {
 			$this->update_raw_option( self::MIGRATION_FLAG_OPTION, 'yes', false );
 			$this->maybe_set_migration_time();
-			$this->maybe_merge_legacy_individual_options_into_active_profile();
 			return;
 		}
 
@@ -841,45 +839,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 		if ( $had_legacy_fc_options ) {
 			$this->update_raw_option( self::CLEANUP_NOTICE_OPTION, 'yes', false );
 		}
-	}
-
-
-
-	/**
-	 * Copy individual option rows into the active profile when they still exist but the profile value differs.
-	 * Covers sites that moved to CPT profiles before every key was saved into the profile (for example PRO-only installs after bundled Lite).
-	 */
-	public function maybe_merge_legacy_individual_options_into_active_profile() {
-		$active_slug = $this->get_active_profile_slug();
-
-		// Bail if there is no readable active profile
-		if ( '' === $active_slug || null === $this->get_profile_post_id_by_slug( $active_slug ) ) { return; }
-
-		$defaults       = $this->get_default_option_values();
-		$profile_values = $this->get_profile_values( $active_slug );
-		$profile_values = is_array( $profile_values ) ? $profile_values : array();
-		$updates        = array();
-
-		// Iterate managed keys and prefer legacy rows when they still exist on disk
-		foreach ( $defaults as $key => $default ) {
-			$raw = $this->get_raw_option( $key, null );
-
-			// Skip keys that were never stored as individual options
-			if ( null === $raw ) { continue; }
-
-			$stored_in_profile = array_key_exists( $key, $profile_values ) ? $profile_values[ $key ] : null;
-
-			// Skip when the profile already matches the legacy row
-			if ( $stored_in_profile === $raw ) { continue; }
-
-			$updates[ $key ] = $raw;
-		}
-
-		// Bail if nothing needs merging
-		if ( empty( $updates ) ) { return; }
-
-		$this->update_active_profile_values( $updates );
-		$this->invalidate_cache();
 	}
 
 	/**
