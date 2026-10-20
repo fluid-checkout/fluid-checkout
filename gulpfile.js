@@ -51,19 +51,14 @@ var _loggedFirstTranslationApiError = false;
 
 // Dart Sass options passed through gulp-sass 6 (modern compile API).
 //
-// First-party stylesheets use @use / @forward where migrated. Vendor bridges
-// (Tom Select, flyout-block, sticky-states) and cross-plugin Sass may still
-// use `@import`. `quietDeps`, `silenceDeprecations`, and the custom logger
-// suppress `@import` deprecation noise from dependencies, vendor bridges, and
-// first-party stylesheets until the ecosystem finishes migrating to `@use`.
+// First-party stylesheets use @use / @forward. Third-party Sass that still
+// contains @import lives under sass/vendor/ when present. quietDeps hides
+// those deprecation warnings; this plugin's own stylesheets still warn.
 var _sassLogger = {
 	warn: function( message, options ) {
 		var spanUrl = options && options.span && options.span.url;
 		var pathname = spanUrl ? ( spanUrl.pathname || String( spanUrl ) ) : '';
 		if ( pathname.indexOf( 'node_modules' ) !== -1 ) {
-			return;
-		}
-		if ( pathname.indexOf( 'sass/vendor' ) !== -1 || pathname.indexOf( 'flyout-block' ) !== -1 ) {
 			return;
 		}
 		process.stderr.write( message + '\n' );
@@ -74,10 +69,8 @@ var _sassLogger = {
 };
 var _sassOptions = {
 	quietDeps: true,
-	silenceDeprecations: [ 'import' ],
 	loadPaths: [
 		path.resolve( 'sass' ),
-		path.resolve( '../fluid-checkout/sass' ),
 		path.resolve( 'sass/vendor' ),
 	],
 	logger: _sassLogger,
