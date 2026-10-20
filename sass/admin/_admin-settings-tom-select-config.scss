@@ -28,6 +28,6 @@
 	$ts-select-arrow-color: admin.$admin-text-color,
 	$ts-select-remove-color: admin.$admin-text-color-muted,
 	$ts-select-remove-color-hover: admin.$admin-text-color,
-	$ts-select-control-focus-outline: none,
-	$ts-select-control-focus-outline-offset: 0,
+	$ts-select-control-focus-outline: solid admin.$fc-settings-focus-outline-width admin.$fc-settings-focus-outline-color,
+	$ts-select-control-focus-outline-offset: admin.$fc-settings-focus-outline-offset,
 );

@@ -1,2 +1,6 @@
+@use 'sass:meta';
 @use "abstract/index-rtl";
-@use "flyout-block";
+@use "abstract" as *;
+@use "partials/flyout-block";
+
+@include meta.load-css('flyout-block-theme-flyout-only');
