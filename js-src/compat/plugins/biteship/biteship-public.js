@@ -554,8 +554,9 @@ function createTracker($) {
           $.post("/wp-admin/admin-ajax.php", data, function (response) {
             if (response.success) {
               if (response.data.waybill_id.length > 0) {
+                // CHANGE: Prefer upstream tracking URL from response.data.link when available
                 component.append(
-                  `<a href="${phpVars.trackingPageUrl}?waybill_id=${response.data.waybill_id}" target="_blank" class="woocommerce-button wp-element-button button view">TRACK</a>`,
+                  `<a href="${response.data.link}" target="_blank" class="woocommerce-button wp-element-button button view">TRACK</a>`,
                   [btnView],
                 );
               }

@@ -13,7 +13,7 @@
  * @see         https://woocommerce.com/document/template-structure/
  * @package     WooCommerce\Templates
  * @version     9.2.0
- * @fc-version  4.2.2
+ * @fc-version  4.2.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -63,7 +63,10 @@ $unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 		<?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
 		<input type="hidden" name="redirect" value="<?php echo esc_url( $redirect ); ?>" />
 		<?php // CHANGE: Change login button label to be consistent across checkout, also adding filter for custom button classes. ?>
-		<button type="submit" class="woocommerce-form-login__submit <?php echo esc_attr( apply_filters( 'fc_checkout_login_button_classes', 'woocommerce-button button' ) ); ?> <?php echo esc_attr( function_exists( 'wc_wp_theme_get_element_class_name' ) ? wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>"><?php echo esc_html( apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) ) ); ?></button>
+		<button type="submit" class="woocommerce-form-login__submit <?php echo esc_attr( apply_filters( 'fc_checkout_login_button_classes', 'woocommerce-button button' ) ); ?> <?php echo esc_attr( function_exists( 'wc_wp_theme_get_element_class_name' ) ? wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>"><?php
+			// CHANGE: Keep filtered label with `esc_html` (dynamic string, not `esc_html_e`)
+			echo esc_html( apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) ) );
+		?></button>
 	</p>
 
 	<p class="lost_password">

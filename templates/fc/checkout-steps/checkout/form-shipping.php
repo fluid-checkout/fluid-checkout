@@ -12,7 +12,7 @@
  *
  * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 3.6.0
+ * @version 11.2.0
  * @fc-version 4.2.8
  * @global WC_Checkout $checkout
  */
@@ -38,6 +38,7 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_shipping_collapsible_in
 	// CHANGE: Always output shipping address fields so AJAX visibility toggles can hide
 	// them without removing values from the DOM. Substep visibility still controls display.
 	?>
+	<?php // CHANGE: Remove ship-to-different-address checkbox markup ?>
 	<?php // CHANGE: Output "ship to different address" option via hook ?>
 	<?php do_action( 'fc_before_checkout_shipping_address_wrapper', $checkout ); ?>
 
@@ -47,6 +48,7 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_shipping_collapsible_in
 
 		<?php // CHANGE: Add markup for collapsible-block component ?>
 		<div id="woocommerce-shipping-fields__field-wrapper" class="woocommerce-shipping-fields__field-wrapper <?php echo 'collapsed' === $collapsible_initial_state ? 'is-collapsed' : ''; ?>" data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo esc_attr( $collapsible_initial_state ); ?>">
+			<?php // CHANGE: Remove $fields = get_checkout_fields( 'shipping' ) (fields split into same-as-billing / shipping-only lists) ?>
 			<?php // CHANGE: Display shipping fields which might be copied from shipping to billing fields ?>
 			<?php
 			foreach ( $shipping_same_as_billing_fields as $key => $field ) {
@@ -71,7 +73,7 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_shipping_collapsible_in
 
 		<?php do_action( 'woocommerce_after_checkout_shipping_form', $checkout ); ?>
 
-	</div>
+	</div><?php // CHANGE: Close shipping_address wrapper ?>
 
 	<?php
 	// CHANGE: Added for compatibility with plugins that use this action hook
@@ -81,4 +83,4 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_shipping_collapsible_in
 	<?php do_action( 'fc_checkout_after_step_shipping_fields_inside' ); ?>
 
 </div>
-
+<?php // CHANGE: Remove woocommerce-additional-fields / order_fields / Additional information / before_order_notes / after_order_notes section (moved to FC additional notes step) ?>

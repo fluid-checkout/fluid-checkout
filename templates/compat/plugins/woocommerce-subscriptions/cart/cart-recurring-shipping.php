@@ -7,7 +7,7 @@
  * @author  Prospress
  * @package WooCommerce Subscriptions/Templates
  * @version 1.0.0 - Migrated from WooCommerce Subscriptions v2.6.0
- * @fc-version 4.0.5
+ * @fc-version 4.2.8
  */
 
  // CHANGE: This template has been modified to align the shipping methods for subscription plans with Fluid Checkout's original shipping methods.
@@ -35,6 +35,7 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 
 	<?php // CHANGE: Change the markup of this section to align with the shipping methods section from Fluid Checkout ?>
 	<?php if ( 1 < count( $available_methods ) ) : ?>
+		<?php // CHANGE: Removed upstream radio list, elseif calculated-shipping branch, and else no-shipping markup ?>
 		<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element markup ?>
 		<?php echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
 
@@ -103,6 +104,7 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 				</div>
 			</div>
 		<?php endif; ?>
+		<?php // CHANGE: Removed upstream show_package_details block ?>
 	<?php endif; ?>
 
 </div>

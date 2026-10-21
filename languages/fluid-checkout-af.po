@@ -1921,14 +1921,6 @@ msgstr "(PRO)"
 msgid "(experimental)"
 msgstr "(eksperimenteel)"
 
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "Bevestig"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "Verifieer telefoonnommer"
-
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
 msgstr "Verifieer asseblief jou foonnommer."
@@ -2541,16 +2533,6 @@ msgstr ""
 "afdelings.<br> Kan ook van toepassing wees op ander bladsye soos die "
 "Mandjie-, Bestelling Ontvang- en Bekyk Bestelling-bladsye."
 
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"Die ontwerpsjabloon <em>&quot;Split&quot;</em> is nie beskikbaar wanneer "
-"<em>die &quot;1 kolom&quot;</em> -uitleg gebruik word nie en sal terugval "
-"op <em>&quot;Minimalisties&quot;</em> indien gekies."
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Stappe voor die afhandeling"
@@ -2654,44 +2636,60 @@ msgstr ""
 "kan word wanneer daardie opsie gemerk is, anders kan die kliënt dalk nie "
 "die afhandelingsvorm voltooi nie."
 
-#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level.php:3
-msgid "Top Level"
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
 msgstr ""
 
-#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/template-top-level-post-types-child.php:3
-msgid "Top Level In A Child Theme"
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
 msgstr ""
 
-#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/no-trailing-period-post-types.php:3
-msgid "No Trailing Period"
+#: inc/admin/admin-settings-checkout.php:126
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
 msgstr ""
 
-#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/tilde-post-types.php:3
-msgid "Tilde in Post Type."
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
 msgstr ""
 
-#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-comma-post-types.php:3
-msgid "Trailing Comma,"
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
 msgstr ""
 
-#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-post-types.php:3
-msgid "Trailing Period."
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
 msgstr ""
 
-#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-whitespace-post-types.php:3
-msgid "Trailing Period, White Space."
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
 msgstr ""
 
-#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-whitespace-period-post-types.php:3
-msgid "Trailing White Space, Period."
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
 msgstr ""
 
-#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir.php:3
-msgid "Sub Dir"
-msgstr ""
-
-#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/subdir/template-sub-dir-post-types-child.php:3
-msgid "Sub Dir In A Child Theme"
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:233
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
 msgstr ""
 
 #: inc/checkout-coupon-codes.php:275

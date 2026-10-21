@@ -13,7 +13,7 @@
  * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 10.9.0
- * @fc-version 4.2.6
+ * @fc-version 4.2.8
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -36,9 +36,11 @@ if ( $available_gateways ) : ?>
 				}
 
 				foreach ( $available_gateways as $gateway ) {
+					// CHANGE: Removed inline payment method list item markup in favor of checkout template
 					// CHANGE: Use template file from checkout to display payment method.
 					wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
 				}
+				// CHANGE: Removed inline payment method closing brace
 				?>
 			</ul>
 

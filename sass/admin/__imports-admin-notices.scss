@@ -1,7 +1,5 @@
 // ------------------------------------
-// OTP POPUP
+// IMPORT STYLES
 // ------------------------------------
-
-#awp_otp_popup {
-	z-index: z( 'modal' );
-}
+@import
+	"admin-notices";
