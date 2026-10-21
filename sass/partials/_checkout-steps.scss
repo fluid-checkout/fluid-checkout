@@ -146,7 +146,7 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 	}
 }
 // LAST Complete
-.has-checkout-layout--multi-step .fc-checkout-step[data-step-complete].fc-checkout-step--next-step-incomplete > .fc-step__substep[data-substep-last] {
+.has-checkout-layout--multi-step .fc-checkout-step[data-step-complete].fc-checkout-step--next-step-incomplete > div:nth-last-of-type( 2 ) { // Targets the last substep inside the last step that is completed
 	@media (#{$bp-larger-than-tablet}) {
 		border-bottom-right-radius: $checkout-substep-border-radius;
 		border-bottom-left-radius: $checkout-substep-border-radius;
@@ -154,7 +154,7 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 }
 // NEXT Incomplete
 .has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete,
-.has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete > .fc-step__substep[data-substep-last] {
+.has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete > div:last-of-type {
 	@media (#{$bp-larger-than-tablet}) {
 		margin-bottom: $global-spacing-small;
 		border-bottom-right-radius: $checkout-substep-border-radius;
@@ -170,14 +170,14 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 		border-radius: $checkout-substep-border-radius;
 	}
 }
-.has-checkout-layout--multi-step .fc-checkout-step[data-step-current] > .fc-step__substep[data-substep-first] {
+.has-checkout-layout--multi-step .fc-checkout-step[data-step-current] > div:first-of-type {
 	@media (#{$bp-larger-than-tablet}) {
 		margin-top: 0;
 		border-top-right-radius: $checkout-substep-border-radius;
 		border-top-left-radius: $checkout-substep-border-radius;
 	}
 }
-.has-checkout-layout--multi-step .fc-checkout-step[data-step-current] > .fc-step__substep[data-substep-last] {
+.has-checkout-layout--multi-step .fc-checkout-step[data-step-current] > div:last-of-type {
 	@media (#{$bp-larger-than-tablet}) {
 		margin-bottom: 0;
 		border-bottom-right-radius: $checkout-substep-border-radius;
