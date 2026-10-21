@@ -6418,6 +6418,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if forced to not set shipping address
 		if ( true !== apply_filters( 'fc_copy_billing_to_shipping_address_when_shipping_not_needed', true ) ) { return $posted_data; }
 
+		// Bail during AJAX updates so a temporary virtual-only cart does not overwrite
+		// typed shipping values. Place order still copies via the process checkout filter.
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) { return $posted_data; }
+
 		// Copy the billing address field values to the shipping address
 		$posted_data = $this->copy_posted_data_billing_address_to_shipping( $posted_data );
 
@@ -7407,6 +7411,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach ( $field_groups as $group_key => $fields ) {
 			// Skip shipping fields if shipping address is not needed
 			if ( 'shipping' === $group_key && ! WC()->cart->needs_shipping_address() ) { continue; }
+
+			// Skip shipping fields when the address section was not posted.
+			// After a virtual-only cart the fields can be missing from the form; clearing
+			// them here would wipe saved shipping values when a shippable item is re-added.
+			if ( 'shipping' === $group_key && ! array_key_exists( 'shipping_country', $posted_data ) && ! array_key_exists( 'shipping_address_1', $posted_data ) ) { continue; }
 
 			foreach( $fields as $field_key => $field_args ) {
 				// Skip fields in posted data

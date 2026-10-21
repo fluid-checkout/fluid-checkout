@@ -13,7 +13,7 @@
  * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.6.0
- * @fc-version 4.0.2
+ * @fc-version 4.2.8
  * @global WC_Checkout $checkout
  */
 
@@ -34,44 +34,44 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_shipping_collapsible_in
 
 	<?php do_action( 'fc_checkout_before_step_shipping_fields_inside' ); ?>
 
-	<?php if ( true === WC()->cart->needs_shipping_address() ) : ?>
+	<?php
+	// CHANGE: Always output shipping address fields so AJAX visibility toggles can hide
+	// them without removing values from the DOM. Substep visibility still controls display.
+	?>
+	<?php // CHANGE: Output "ship to different address" option via hook ?>
+	<?php do_action( 'fc_before_checkout_shipping_address_wrapper', $checkout ); ?>
 
-		<?php // CHANGE: Output "ship to different address" option via hook ?>
-		<?php do_action( 'fc_before_checkout_shipping_address_wrapper', $checkout ); ?>
+	<div class="shipping_address">
 
-		<div class="shipping_address">
+		<?php do_action( 'woocommerce_before_checkout_shipping_form', $checkout ); ?>
 
-			<?php do_action( 'woocommerce_before_checkout_shipping_form', $checkout ); ?>
-
-			<?php // CHANGE: Add markup for collapsible-block component ?>
-			<div id="woocommerce-shipping-fields__field-wrapper" class="woocommerce-shipping-fields__field-wrapper <?php echo 'collapsed' === $collapsible_initial_state ? 'is-collapsed' : ''; ?>" data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo esc_attr( $collapsible_initial_state ); ?>">
-				<?php // CHANGE: Display shipping fields which might be copied from shipping to billing fields ?>
-				<?php
-				foreach ( $shipping_same_as_billing_fields as $key => $field ) {
-					woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
-				}
-				?>
-			</div>
-
-			<?php // CHANGE: Display shipping only fields ?>
-			<?php do_action( 'fc_before_checkout_shipping_only_form', $checkout ); ?>
-
-			<?php // CHANGE: Display shipping only fields ?>
-			<?php if ( $shipping_only_fields && count( $shipping_only_fields ) > 0 ) : ?>
-			<div class="woocommerce-shipping-only-fields__field-wrapper">
-				<?php
-				foreach ( $shipping_only_fields as $key => $field ) {
-					woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
-				}
-				?>
-			</div>
-			<?php endif; ?>
-
-			<?php do_action( 'woocommerce_after_checkout_shipping_form', $checkout ); ?>
-
+		<?php // CHANGE: Add markup for collapsible-block component ?>
+		<div id="woocommerce-shipping-fields__field-wrapper" class="woocommerce-shipping-fields__field-wrapper <?php echo 'collapsed' === $collapsible_initial_state ? 'is-collapsed' : ''; ?>" data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo esc_attr( $collapsible_initial_state ); ?>">
+			<?php // CHANGE: Display shipping fields which might be copied from shipping to billing fields ?>
+			<?php
+			foreach ( $shipping_same_as_billing_fields as $key => $field ) {
+				woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+			}
+			?>
 		</div>
 
-	<?php endif; ?>
+		<?php // CHANGE: Display shipping only fields ?>
+		<?php do_action( 'fc_before_checkout_shipping_only_form', $checkout ); ?>
+
+		<?php // CHANGE: Display shipping only fields ?>
+		<?php if ( $shipping_only_fields && count( $shipping_only_fields ) > 0 ) : ?>
+		<div class="woocommerce-shipping-only-fields__field-wrapper">
+			<?php
+			foreach ( $shipping_only_fields as $key => $field ) {
+				woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+			}
+			?>
+		</div>
+		<?php endif; ?>
+
+		<?php do_action( 'woocommerce_after_checkout_shipping_form', $checkout ); ?>
+
+	</div>
 
 	<?php
 	// CHANGE: Added for compatibility with plugins that use this action hook
