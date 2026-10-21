@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Layout of WooCommerce address autocomplete suggestions and search icon on checkout and account edit-address form fields.
+
 = 4.2.7 - 2026-08-19 =
 
 * Bump tested up to WordPress 7.1+
