@@ -4844,12 +4844,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Hide the shipping method substep
 			$visibility[ 'shipping_method' ] = 'no';
 
-			// Hide the shipping address so virtual-only carts show billing alone,
-			// including during `update_order_review` after a cold load with `force_single_address`
+			// Hide the shipping address so virtual-only carts show billing alone
 			$visibility[ 'shipping_address' ] = 'no';
 		}
 
-		return $visibility;
+		return apply_filters( 'fc_shipping_step_substep_visibility', $visibility );
 	}
 
 
