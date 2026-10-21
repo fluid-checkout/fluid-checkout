@@ -209,14 +209,14 @@
 
 
 	/**
-	 * Maybe send the ready message to the admin page, when the preview is shown in its frame.
+	 * Maybe send the ready message to the admin page, with the color scheme of the page, when the preview is shown in its frame.
 	 */
 	var maybeSendReadyMessage = function() {
 		// Bail if not shown in a frame, or the admin origin is not available
 		if ( root.parent === root || ! _settings.adminOrigin ) { return; }
 
-		// Send ready message to the admin page
-		root.parent.postMessage( { source: _settings.messageSource, type: 'ready' }, _settings.adminOrigin );
+		// Send ready message to the admin page, with the color scheme the page has before the admin page forces one
+		root.parent.postMessage( { source: _settings.messageSource, type: 'ready', colorScheme: _hasDarkModeClass ? 'dark' : 'light' }, _settings.adminOrigin );
 	};
 
 

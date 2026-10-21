@@ -187,6 +187,17 @@
 	min-height: $fc-settings-input-height;
 }
 
+.fc-settings-field__control .fc-settings-css-value.is-invalid .fc-settings-css-value__input {
+	border-color: $error-color;
+}
+
+.fc-settings-css-value__error {
+	flex: 1 1 100%;
+	width: 100%;
+	margin: 0;
+	color: $error-color;
+}
+
 // Buttons next to inputs match the field control height
 .fc-settings-field__control > .button,
 .fc-settings-field__control > .button-secondary,

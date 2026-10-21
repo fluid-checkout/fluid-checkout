@@ -41,6 +41,7 @@
 		contentSelector:                       '.fc-settings-content',
 		actionsSelector:                       '.fc-settings-actions',
 		formSelector:                          '[data-fc-settings-form]',
+		invalidFieldSelector:                  '[aria-invalid="true"]',
 		saveButtonSelector:                    '[data-fc-settings-save]',
 		noticesSelector:                       '[data-fc-settings-notices]',
 		isBusyClass:                           'is-busy',
@@ -1017,6 +1018,7 @@
 
 	/**
 	 * Get the values of a settings form, with the names of all its fields, also of unchecked checkboxes, so only the settings of the form are saved.
+	 * Fields marked as not valid are left out, so their saved values stay.
 	 *
 	 * @param   {Element}   form  Settings form.
 	 * @return  {FormData}        Values and field names of the form.
@@ -1030,6 +1032,12 @@
 		for ( i = 0; i < form.elements.length; i++ ) {
 			// Skip fields without a name, or with a name already sent
 			if ( ! form.elements[ i ].name || fieldNames[ form.elements[ i ].name ] ) { continue; }
+
+			// Maybe remove the value of a field marked as not valid, and skip its name
+			if ( form.elements[ i ].matches( _settings.invalidFieldSelector ) ) {
+				formData.delete( form.elements[ i ].name );
+				continue;
+			}
 
 			// Add the field name
 			fieldNames[ form.elements[ i ].name ] = true;

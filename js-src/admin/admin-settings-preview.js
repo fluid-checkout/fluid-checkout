@@ -1259,8 +1259,8 @@
 			_isPreviewReady = true;
 			sendPreviewState();
 
-			// Notify listeners that the page preview loaded
-			window.dispatchEvent( new CustomEvent( 'fcSettingsPreviewReady' ) );
+			// Notify listeners that the page preview loaded, with the color scheme of the page
+			window.dispatchEvent( new CustomEvent( 'fcSettingsPreviewReady', { detail: { colorScheme: e.data.colorScheme } } ) );
 		}
 		// STYLES REFRESHED
 		else if ( 'stylesRefreshed' === e.data.type ) {

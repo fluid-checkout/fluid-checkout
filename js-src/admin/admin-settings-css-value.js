@@ -1,5 +1,5 @@
 /**
- * CSS value fields on the Fluid Checkout settings page, with their color swatch and clear button.
+ * CSS value fields on the Fluid Checkout settings page, with their color swatch, clear button and error for values that are not valid for their CSS property.
  *
  * DEPENDS ON:
  * - None (vanilla JS)
@@ -25,6 +25,9 @@
 		swatchSelector:                    '[data-fc-settings-css-value-swatch]',
 		inputSelector:                     '[data-fc-settings-css-value-input]',
 		clearSelector:                     '[data-fc-settings-css-value-clear]',
+		errorSelector:                     '[data-fc-settings-css-value-error]',
+		propertyAttribute:                 'data-fc-settings-css-value-property',
+		isInvalidClass:                    'is-invalid',
 		swatchDefaultColor:                '#ffffff',
 	};
 
@@ -112,7 +115,55 @@
 
 
 	/**
-	 * Handle input on CSS value fields: copy the swatch color to the value, or show the value color on the swatch.
+	 * Check whether the value of a CSS value input is valid for its CSS property, as the browser reads it.
+	 *
+	 * @param   {Element}  input  CSS value input.
+	 * @return  {boolean}         Whether the value is valid, also when it is empty or the input has no CSS property to check.
+	 */
+	var isValidValue = function( input ) {
+		var property = input.getAttribute( _settings.propertyAttribute );
+		var value = input.value.trim();
+
+		return ! property || ! value || CSS.supports( property, value );
+	};
+
+	/**
+	 * Show or hide the error of a CSS value field, for values that are not valid for its CSS property.
+	 *
+	 * @param  {Element}  field  CSS value field element.
+	 */
+	var syncError = function( field ) {
+		var input = field.querySelector( _settings.inputSelector );
+		var error = field.parentNode.querySelector( _settings.errorSelector );
+		var isValid;
+
+		// Bail if the field has no error to show, as it does not check its values
+		if ( ! error ) { return; }
+
+		// Show or hide the error
+		isValid = isValidValue( input );
+		field.classList.toggle( _settings.isInvalidClass, ! isValid );
+		input.setAttribute( 'aria-invalid', isValid ? 'false' : 'true' );
+		error.hidden = isValid;
+	};
+
+	/**
+	 * Show the errors of all CSS value fields with values that are not valid, such as values saved before the browser checked them.
+	 */
+	var syncErrors = function() {
+		var fields = document.querySelectorAll( _settings.fieldSelector );
+		var i;
+
+		// Iterate CSS value fields
+		for ( i = 0; i < fields.length; i++ ) {
+			syncError( fields[ i ] );
+		}
+	};
+
+
+
+	/**
+	 * Handle input on CSS value fields: copy the swatch color to the value, or show the value color on the swatch and the error for values that are not valid.
 	 *
 	 * @param  {Event}  e  Input event.
 	 */
@@ -126,9 +177,10 @@
 		if ( e.target.matches( _settings.swatchSelector ) ) {
 			setFieldValue( field.querySelector( _settings.inputSelector ), e.target.value );
 		}
-		// Otherwise, maybe show the value color on the swatch
+		// Otherwise, maybe show the value color on the swatch, and the error when the value is not valid
 		else if ( e.target.matches( _settings.inputSelector ) ) {
 			syncSwatch( field );
+			syncError( field );
 		}
 	};
 
@@ -188,8 +240,9 @@
 		document.addEventListener( 'change', handleChange, true );
 		document.addEventListener( 'click', handleClick );
 
-		// Show the colors on the swatches
+		// Show the colors on the swatches, and the errors of values that are not valid
 		syncSwatches();
+		syncErrors();
 
 		_hasInitialized = true;
 	};
@@ -200,6 +253,16 @@
 	_publicMethods.syncSwatches = function() {
 		// Show the colors on the swatches
 		syncSwatches();
+	};
+
+	/**
+	 * Check whether the value of a CSS value input is valid for its CSS property, such as before showing the value somewhere else.
+	 *
+	 * @param   {Element}  input  CSS value input.
+	 * @return  {boolean}         Whether the value is valid, also when it is empty or the input has no CSS property to check.
+	 */
+	_publicMethods.isValidValue = function( input ) {
+		return isValidValue( input );
 	};
 
 

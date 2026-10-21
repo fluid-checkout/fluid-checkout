@@ -28,12 +28,14 @@ class FluidCheckout_Admin_SettingType_CssValue extends FluidCheckout {
 	/**
 	 * Output the setting field.
 	 *
-	 * @param   array  $value  Admin settings args values. Set `swatch` to `true` to show a color swatch.
+	 * @param   array  $value  Admin settings args values. Set `swatch` to `true` to show a color swatch, and `css_property` to show an error for values that are not valid for that CSS property.
 	 */
 	public function output_field( $value ) {
 		$renderer = FluidCheckout_Admin_Settings_Renderer::instance();
 		$field_description = $renderer->get_field_description( $value );
+		$field_html_id = $renderer->get_field_html_id( $value );
 		$has_swatch = ! empty( $value[ 'swatch' ] );
+		$css_property = ! empty( $value[ 'css_property' ] ) ? $value[ 'css_property' ] : '';
 		$is_disabled = $renderer->is_field_disabled( $value );
 
 		// Define the swatch color, white unless the value or default is a hex color, as color inputs only take hex colors
@@ -69,7 +71,7 @@ class FluidCheckout_Admin_SettingType_CssValue extends FluidCheckout {
 			<?php endif; ?>
 			<input
 				name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-				id="<?php echo esc_attr( $renderer->get_field_html_id( $value ) ); ?>"
+				id="<?php echo esc_attr( $field_html_id ); ?>"
 				type="text"
 				dir="ltr"
 				style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
@@ -79,6 +81,10 @@ class FluidCheckout_Admin_SettingType_CssValue extends FluidCheckout {
 				autocomplete="off"
 				spellcheck="false"
 				data-fc-settings-css-value-input
+				<?php if ( '' !== $css_property ) : ?>
+					data-fc-settings-css-value-property="<?php echo esc_attr( $css_property ); ?>"
+					aria-describedby="<?php echo esc_attr( $field_html_id . '-error' ); ?>"
+				<?php endif; ?>
 				<?php echo $renderer->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				<?php disabled( $is_disabled ); ?>
 			/>
@@ -90,6 +96,9 @@ class FluidCheckout_Admin_SettingType_CssValue extends FluidCheckout {
 				<?php disabled( $is_disabled ); ?>
 			><?php echo esc_html( __( 'Clear', 'fluid-checkout' ) ); ?></button>
 		</span>
+		<?php if ( '' !== $css_property ) : ?>
+			<p class="fc-settings-css-value__error" id="<?php echo esc_attr( $field_html_id . '-error' ); ?>" data-fc-settings-css-value-error hidden><?php echo esc_html( __( 'Enter a valid CSS value.', 'fluid-checkout' ) ); ?></p>
+		<?php endif; ?>
 		<?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		<?php
 		$renderer->output_field_end( $value );
