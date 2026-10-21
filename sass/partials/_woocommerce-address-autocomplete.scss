@@ -60,8 +60,9 @@
 
 
 // Leave room for the search icon and the FC validation check on the right.
-.woocommerce-input-wrapper.autocomplete-available input#billing_address_1,
-.woocommerce-input-wrapper.autocomplete-available input#shipping_address_1,
-.woocommerce-input-wrapper.autocomplete-available input#address_1 {
+// `remsize( 1.6rem )` matches WooCommerce `.address-search-icon` width/height (16px).
+.woocommerce-input-wrapper.autocomplete-available:has( #billing_address_1 ) > input#billing_address_1,
+.woocommerce-input-wrapper.autocomplete-available:has( #shipping_address_1 ) > input#shipping_address_1,
+.woocommerce-input-wrapper.autocomplete-available:has( #address_1 ) > input#address_1 {
 	padding-#{ $alignment-right }: calc( #{ $checkout-validation-check-horizontal-spacing } + #{ $icon-size } + remsize( 1.6rem ) + #{ $checkout-validation-check-horizontal-spacing } );
 }
