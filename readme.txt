@@ -337,6 +337,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Allow the Lite admin notice icon URL to be filtered (PRO uses this when active).
 * Fixed: Skip bootstrap when Fluid Checkout is already loaded from another copy (for example bundled inside PRO).
 * Improved: Upgraded Sass build tooling to the latest version.
 * Added: Shared REST API base for `fluid-checkout/v1` (namespace, route registration, user-scoped permissions) and `fc_api_*` error helpers.
