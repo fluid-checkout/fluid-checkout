@@ -28,7 +28,7 @@ class FluidCheckout_Admin_SettingType_CssValue extends FluidCheckout {
 	/**
 	 * Output the setting field.
 	 *
-	 * @param   array  $value  Admin settings args values. Set `swatch` to `true` to show a color swatch, and `css_property` to show an error for values that are not valid for that CSS property.
+	 * @param   array  $value  Admin settings argument values. Set `swatch` to `true` to show a color swatch, and `css_property` to show an error for values that are not valid for that CSS property.
 	 */
 	public function output_field( $value ) {
 		$renderer = FluidCheckout_Admin_Settings_Renderer::instance();

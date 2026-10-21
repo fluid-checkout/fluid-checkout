@@ -44,6 +44,11 @@
 		invalidFieldSelector:                  '[aria-invalid="true"]',
 		saveButtonSelector:                    '[data-fc-settings-save]',
 		noticesSelector:                       '[data-fc-settings-notices]',
+		movedMessageSelector:                  '[data-fc-settings-moved-message]',
+		movedMessageContentSelector:           '[data-fc-settings-moved-message-content]',
+		movedMessageConfirmationSelector:      '[data-fc-settings-moved-message-confirmation]',
+		movedMessageDismissSelector:           '[data-fc-settings-moved-message-dismiss]',
+		movedMessageUndoSelector:              '[data-fc-settings-moved-message-undo]',
 		isBusyClass:                           'is-busy',
 		isPinnedClass:                         'is-pinned',
 		noticeVisibleClass:                    'is-visible',
@@ -52,9 +57,12 @@
 		hiddenClass:                           'hidden',
 
 		syncedSelectAttribute:                 'data-fc-settings-sync-group',
+		movedMessageAttribute:                 'data-fc-settings-moved-message',
 
 		ajaxUrl:                               '',
 		saveAction:                            'fc_settings_save',
+		movedMessageAction:                    'fc_settings_set_moved_setting_message_dismissed',
+		movedMessageNonce:                     '',
 		noticeDismissDelayMs:                  5000,
 		noticeHideTransitionMs:                300,
 
@@ -64,6 +72,7 @@
 			saved:                             'Your settings have been saved.',
 			saveError:                         'Settings could not be saved. Please try again.',
 			dismissNotice:                     'Dismiss notice',
+			movedMessageError:                 'The change could not be saved. Please try again.',
 		},
 	};
 	var _triggerFieldIds = [];
@@ -648,16 +657,74 @@
 
 
 	/**
+	 * Dismiss the message of a setting moved to another page for good, showing the button that undoes it, or show the message again.
+	 *
+	 * @param  {Element}  button       Dismiss or undo button of the message.
+	 * @param  {boolean}  isDismissed  Whether to dismiss the message, or show it again.
+	 */
+	var setMovedSettingMessageDismissed = function( button, isDismissed ) {
+		var message = button.closest( _settings.movedMessageSelector );
+		var formData = new FormData();
+
+		// Prevent sending the request twice
+		button.disabled = true;
+
+		// Get the request data
+		formData.append( 'action', _settings.movedMessageAction );
+		formData.append( 'nonce', _settings.movedMessageNonce );
+		formData.append( 'option_name', message.getAttribute( _settings.movedMessageAttribute ) );
+		formData.append( 'dismissed', isDismissed ? 'yes' : 'no' );
+
+		// Send the request
+		window.fetch( _settings.ajaxUrl, {
+			method:      'POST',
+			body:        formData,
+			credentials: 'same-origin',
+		} )
+			.then( function( response ) {
+				return response.json();
+			} )
+			.then( function( response ) {
+				// Bail if the change was not saved, so the error shows
+				if ( ! response || ! response.success ) { throw new Error( 'Change not saved' ); }
+
+				// Show the confirmation with the undo button in place of the message, or the message again
+				message.querySelector( _settings.movedMessageContentSelector ).hidden = isDismissed;
+				message.querySelector( _settings.movedMessageConfirmationSelector ).hidden = ! isDismissed;
+
+				// Move the focus to the button now shown, as the clicked button is hidden
+				message.querySelector( isDismissed ? _settings.movedMessageUndoSelector : _settings.movedMessageDismissSelector ).focus();
+			} )
+			.catch( function() {
+				// Show the error
+				showSettingsSaveNotice( 'error', _settings.i18n.movedMessageError );
+			} )
+			.finally( function() {
+				// Allow using the button again
+				button.disabled = false;
+			} );
+	};
+
+
+
+	/**
 	 * Handle click events.
 	 *
 	 * @param   {Event}  event  The click event.
 	 */
 	var handleClick = function( event ) {
-		var triggerFieldId;
+		var matchedElement;
 
+		// DISMISS MOVED SETTING MESSAGE
+		if ( matchedElement = event.target.closest( _settings.movedMessageDismissSelector ) ) {
+			setMovedSettingMessageDismissed( matchedElement, true );
+		}
+		// UNDO DISMISSING MOVED SETTING MESSAGE
+		else if ( matchedElement = event.target.closest( _settings.movedMessageUndoSelector ) ) {
+			setMovedSettingMessageDismissed( matchedElement, false );
+		}
 		// CONDITIONAL FIELDS TRIGGER
-		triggerFieldId = resolveTriggerFieldId( event.target );
-		if ( triggerFieldId ) {
+		else if ( resolveTriggerFieldId( event.target ) ) {
 			maybeProcessConditionalFields( event.target );
 		}
 	};

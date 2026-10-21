@@ -200,6 +200,23 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		return (bool) get_option( self::$plugin_prefix . '_dismissed_notice_' . $name, false );
 	}
 
+	/**
+	 * Dismiss a notice for good and site-wide, or show it again.
+	 *
+	 * @param  string  $name          Notice name.
+	 * @param  bool    $is_dismissed  Whether the notice is dismissed. Defaults to `true`.
+	 */
+	public function set_dismissed( $name, $is_dismissed = true ) {
+		// Maybe dismiss the notice
+		if ( $is_dismissed ) {
+			update_option( self::$plugin_prefix . '_dismissed_notice_' . $name, 1 );
+		}
+		// Otherwise, show the notice again
+		else {
+			delete_option( self::$plugin_prefix . '_dismissed_notice_' . $name );
+		}
+	}
+
 
 
 	/**
@@ -228,8 +245,8 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		}
 		if ( ! in_array( $name, $registered_names, true ) ) { return; }
 
-		// Update notice dismiss option
-		update_option( self::$plugin_prefix . '_dismissed_notice_' . $name, 1 );
+		// Dismiss the notice
+		$this->set_dismissed( $name );
 	}
 
 }

@@ -198,6 +198,65 @@
 	color: $error-color;
 }
 
+
+
+// Message of a setting moved to another page, in place of the field
+.fc-settings-moved-message {
+	flex: 1 1 100%;
+	width: 100%;
+	padding: 10px 12px;
+	border-left: 4px solid $fc-settings-input-border-color-focus;
+	background-color: $admin-muted-surface-background;
+	box-sizing: border-box;
+}
+
+.fc-settings-moved-message__content {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+}
+
+.fc-settings-moved-message__content[hidden] {
+	display: none;
+}
+
+.fc-settings-moved-message__text {
+	flex: 1 1 auto;
+	margin: 0;
+}
+
+.fc-settings-moved-message__confirmation {
+	margin: 0;
+}
+
+// Cross like the dismiss button of the settings page header notices
+.fc-settings-moved-message__dismiss {
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	padding: 0;
+	border: 0;
+	border-radius: 2px;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	opacity: .75;
+}
+
+.fc-settings-moved-message__dismiss:hover {
+	opacity: 1;
+}
+
+.fc-settings-moved-message__dismiss:focus {
+	outline: 0;
+	@include fc-admin-settings-focus-outline();
+}
+
+
+
 // Buttons next to inputs match the field control height
 .fc-settings-field__control > .button,
 .fc-settings-field__control > .button-secondary,

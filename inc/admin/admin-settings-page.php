@@ -27,6 +27,11 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	const WC_SETTINGS_TAB_ID = 'fc_checkout';
 
 	/**
+	 * Prefix of the notice names that store the dismissed messages of settings moved to another page.
+	 */
+	const MOVED_SETTING_NOTICE_PREFIX = 'moved_setting_';
+
+	/**
 	 * Settings page hook suffix, set when registering the admin menu.
 	 *
 	 * @var string
@@ -62,6 +67,9 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		// Save settings
 		add_action( 'admin_init', array( $this, 'maybe_save_settings' ), 10 );
 		add_action( 'wp_ajax_fc_settings_save', array( $this, 'ajax_save_settings' ), 10 );
+
+		// Messages of settings moved to another page
+		add_action( 'wp_ajax_fc_settings_set_moved_setting_message_dismissed', array( $this, 'ajax_set_moved_setting_message_dismissed' ), 10 );
 
 		// Admin body class
 		add_filter( 'admin_body_class', array( $this, 'add_admin_body_class' ), 10 );
@@ -506,18 +514,27 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
-	 * Keep only the settings of the fields in a form, so a form with some of the settings does not unset the others. Keeps all settings when no field names are given.
+	 * Keep only the settings of the fields in a form, so a form with some of the settings does not unset the others.
+	 * Without field names, keeps all settings except those moved to another page, as the settings page shows a message in place of their fields.
 	 *
 	 * @param  array  $settings     Settings arrays.
 	 * @param  array  $field_names  Names of the fields in the form.
 	 */
 	public function get_settings_in_form( $settings, $field_names ) {
-		// Bail if no field names are given
-		if ( empty( $field_names ) ) { return $settings; }
+		// Maybe keep all settings except those moved to another page, when the form does not send its field names
+		if ( empty( $field_names ) ) {
+			$settings = array_filter( $settings, function( $setting ) {
+				return ! FluidCheckout_Settings::instance()->is_settings_field_moved( $setting );
+			} );
+		}
+		// Otherwise, keep the settings of the fields in the form
+		else {
+			$settings = array_filter( $settings, function( $setting ) use ( $field_names ) {
+				return isset( $setting[ 'id' ] ) && in_array( isset( $setting[ 'field_name' ] ) ? $setting[ 'field_name' ] : $setting[ 'id' ], $field_names, true );
+			} );
+		}
 
-		return array_filter( $settings, function( $setting ) use ( $field_names ) {
-			return isset( $setting[ 'id' ] ) && in_array( isset( $setting[ 'field_name' ] ) ? $setting[ 'field_name' ] : $setting[ 'id' ], $field_names, true );
-		} );
+		return $settings;
 	}
 
 	/**
@@ -651,6 +668,48 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 
 	/**
+	 * Check whether the message of a setting moved to another page was dismissed.
+	 *
+	 * @param  string  $option_name  Option name of the setting.
+	 */
+	public function is_moved_setting_message_dismissed( $option_name ) {
+		return FluidCheckout_AdminNotices::instance()->is_dismissed( self::MOVED_SETTING_NOTICE_PREFIX . $option_name );
+	}
+
+	/**
+	 * Dismiss the message of a setting moved to another page for good and site-wide like other Fluid Checkout notices, or show it again, through admin AJAX.
+	 */
+	public function ajax_set_moved_setting_message_dismissed() {
+		// Bail if user does not have enough permissions
+		if ( ! current_user_can( self::CAPABILITY ) ) { wp_send_json_error( null, 403 ); }
+
+		// Check the nonce
+		check_ajax_referer( 'fc_settings_set_moved_setting_message_dismissed', 'nonce' );
+
+		// Get the option name of the setting, and whether to dismiss its message or show it again
+		$option_name = isset( $_POST[ 'option_name' ] ) ? sanitize_text_field( wp_unslash( $_POST[ 'option_name' ] ) ) : '';
+		$is_dismissed = isset( $_POST[ 'dismissed' ] ) && 'yes' === sanitize_text_field( wp_unslash( $_POST[ 'dismissed' ] ) );
+
+		// Iterate settings tabs, to only change the messages of settings moved to another page
+		foreach ( array_keys( $this->get_tabs() ) as $tab ) {
+			// Iterate settings of the tab
+			foreach ( $this->get_tab_settings( $tab ) as $setting ) {
+				// Skip other settings, and settings that did not move
+				if ( ! isset( $setting[ 'id' ] ) || $option_name !== $setting[ 'id' ] || ! FluidCheckout_Settings::instance()->is_settings_field_moved( $setting ) ) { continue; }
+
+				// Dismiss the message, or show it again
+				FluidCheckout_AdminNotices::instance()->set_dismissed( self::MOVED_SETTING_NOTICE_PREFIX . $option_name, $is_dismissed );
+				wp_send_json_success();
+			}
+		}
+
+		// Send the error for settings that did not move
+		wp_send_json_error();
+	}
+
+
+
+	/**
 	 * Register assets.
 	 */
 	public function register_assets() {
@@ -665,14 +724,16 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			'fc-settings-page',
 			'fcSettingsPageSettings',
 			array(
-				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
-				'saveAction' => 'fc_settings_save',
-				'i18n'       => array(
-					'saving'          => __( 'Saving...', 'fluid-checkout' ),
-					'save'            => __( 'Save settings', 'fluid-checkout' ),
-					'saved'           => __( 'Your settings have been saved.', 'fluid-checkout' ),
-					'saveError'       => __( 'Settings could not be saved. Please try again.', 'fluid-checkout' ),
-					'dismissNotice'   => __( 'Dismiss notice', 'fluid-checkout' ),
+				'ajaxUrl'              => admin_url( 'admin-ajax.php' ),
+				'saveAction'           => 'fc_settings_save',
+				'movedMessageNonce'    => wp_create_nonce( 'fc_settings_set_moved_setting_message_dismissed' ),
+				'i18n'                 => array(
+					'saving'                => __( 'Saving...', 'fluid-checkout' ),
+					'save'                  => __( 'Save settings', 'fluid-checkout' ),
+					'saved'                 => __( 'Your settings have been saved.', 'fluid-checkout' ),
+					'saveError'             => __( 'Settings could not be saved. Please try again.', 'fluid-checkout' ),
+					'dismissNotice'         => __( 'Dismiss notice', 'fluid-checkout' ),
+					'movedMessageError'     => __( 'The change could not be saved. Please try again.', 'fluid-checkout' ),
 				),
 			)
 		);

@@ -32,6 +32,7 @@
 		navLinkSelector:        '[data-fc-settings-nav-link]',
 		navToggleSelector:      '[data-fc-settings-nav-toggle]',
 		tabSelector:            '[data-fc-settings-tab]',
+		settingsFieldSelector:  '.fc-settings-field',
 		submitSelector:         '[data-fc-settings-submit]',
 		saveButtonSelector:     '[data-fc-settings-save]',
 		activeClass:            'is-active',
@@ -448,6 +449,37 @@
 
 
 	/**
+	 * Scroll to the settings field that the page URL links to, such as from the message of a setting moved to this page, and focus it.
+	 * Runs once the page has loaded, as other scripts change the layout until then, and when the URL links to another field of the page.
+	 */
+	var scrollToLinkedField = function() {
+		var field = window.location.hash ? document.getElementById( window.location.hash.slice( 1 ) ) : null;
+		var fieldRow;
+
+		// Bail if the URL does not link to a field of the settings form
+		if ( ! field || ! field.closest( _settings.formSelector ) ) { return; }
+
+		// Get the row of the field, as other controls can replace the field itself, such as Tom Select for dropdowns
+		fieldRow = field.closest( _settings.settingsFieldSelector ) || field;
+
+		// Bail if the field is hidden, such as by its conditions
+		if ( ! fieldRow.getClientRects().length ) { return; }
+
+		// Scroll the field to the middle of the screen, clear of the sticky header
+		fieldRow.scrollIntoView( { block: 'center' } );
+
+		// Maybe focus the field, unless another control replaces it
+		if ( field.offsetWidth > 1 ) {
+			field.focus( { preventScroll: true } );
+		}
+
+		// Remove the field from the URL, so reloading the page does not scroll to it again
+		window.history.replaceState( window.history.state, '', window.location.pathname + window.location.search );
+	};
+
+
+
+	/**
 	 * Initialize settings tab navigation.
 	 */
 	_publicMethods.init = function() {
@@ -468,6 +500,8 @@
 		document.addEventListener( 'click', handleNavToggleClick, true );
 		document.addEventListener( 'keydown', handleNavKeydown, true );
 		window.addEventListener( 'popstate', handlePopState );
+		window.addEventListener( 'load', scrollToLinkedField );
+		window.addEventListener( 'hashchange', scrollToLinkedField );
 		// Capture scroll from nested containers; keep the drawer aligned while sticky headers move
 		window.addEventListener( 'scroll', syncNavDrawerPosition, true );
 		window.addEventListener( 'resize', syncNavDrawerPosition );
