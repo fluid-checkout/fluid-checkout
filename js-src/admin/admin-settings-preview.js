@@ -552,6 +552,26 @@
 	};
 
 	/**
+	 * Load a document in a new copy of the iframe, which replaces it, as loading another document in an iframe adds a step to the browser history, while the first load of a new iframe does not.
+	 * The WordPress Customizer also loads each preview in a new iframe.
+	 *
+	 * @param  {Element}  frame      Preview iframe.
+	 * @param  {string}   attribute  Attribute of the document, `src` for its URL or `srcdoc` for its HTML.
+	 * @param  {string}   value      URL or HTML of the document.
+	 */
+	var loadFrameDocument = function( frame, attribute, value ) {
+		var newFrame = frame.cloneNode( false );
+
+		// Set the document of the new iframe, before it is in the page
+		newFrame.removeAttribute( 'src' );
+		newFrame.removeAttribute( 'srcdoc' );
+		newFrame.setAttribute( attribute, value );
+
+		// Replace the iframe
+		frame.parentNode.replaceChild( newFrame, frame );
+	};
+
+	/**
 	 * Load a page preview in the iframe, or the placeholder for pages that cannot be previewed.
 	 *
 	 * @param  {string}  page  Preview page slug.
@@ -566,14 +586,12 @@
 
 		// Maybe show the placeholder
 		if ( ! url ) {
-			frame.setAttribute( 'srcdoc', _settings.placeholderSrcdocs[ page ] );
-			frame.removeAttribute( 'src' );
+			loadFrameDocument( frame, 'srcdoc', _settings.placeholderSrcdocs[ page ] );
 			markPreviewLoading();
 		}
 		// Otherwise, maybe load the page preview, unless it is already loaded
 		else if ( previewUrl !== frame.getAttribute( 'src' ) ) {
-			frame.setAttribute( 'src', previewUrl );
-			frame.removeAttribute( 'srcdoc' );
+			loadFrameDocument( frame, 'src', previewUrl );
 			markPreviewLoading();
 		}
 	};
@@ -1003,7 +1021,7 @@
 		// Otherwise reload the iframe, for pages without the frame script such as error pages
 		else {
 			_needsReload = false;
-			frame.setAttribute( 'src', frame.getAttribute( 'src' ) );
+			loadFrameDocument( frame, 'src', frame.getAttribute( 'src' ) );
 			markPreviewLoading();
 		}
 	};
