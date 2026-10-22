@@ -26,6 +26,9 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Settings page
 		add_action( 'init', array( $this, 'load_settings_page' ), 10 );
 
+		// Design editor promo page
+		add_action( 'init', array( $this, 'load_design_editor_promo' ), 10 );
+
 		// Load dashboard
 		add_action( 'init', array( $this, 'load_dashboard' ), 10 );
 
@@ -80,6 +83,18 @@ class FluidCheckout_Admin extends FluidCheckout {
 		$this->load_settings_access();
 		include_once self::$directory_path . 'inc/admin/admin-settings-renderer.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-page.php';
+	}
+
+
+
+	/**
+	 * Load the Design editor admin page with the promo card, when PRO is not active.
+	 */
+	public function load_design_editor_promo() {
+		// Bail if PRO is active, as PRO adds the Design editor page
+		if ( FluidCheckout::instance()->is_pro_activated() ) { return; }
+
+		include_once self::$directory_path . 'inc/admin/admin-design-editor-promo.php';
 	}
 
 

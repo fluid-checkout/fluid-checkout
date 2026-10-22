@@ -8,11 +8,11 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 
 	/**
-	 * Settings tabs where the preview column is hidden.
+	 * Tabs of the settings page layout where the preview column is hidden, including the Design editor page without PRO.
 	 *
 	 * @var string[]
 	 */
-	const HIDDEN_TABS = array( 'dashboard', 'license_keys' );
+	const HIDDEN_TABS = array( 'dashboard', 'license_keys', 'design_editor' );
 
 	/**
 	 * Browser storage key of the preview state: preview mode, header and footer visibility, and expanded state.
