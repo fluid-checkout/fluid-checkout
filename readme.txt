@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Hide dependent international phone number settings when the feature is disabled.
 * Improved: Updated replaced files for WooCommerce `address-i18n.js` and EU/UK VAT for WooCommerce to match latest upstream versions.
 * Improved: Updated replaced checkout templates `form-shipping.php` and `review-order.php` for WooCommerce 11.2.0 compatibility.
+* Improved: Layout of WooCommerce address autocomplete suggestions and search icon on checkout and account edit-address form fields.
 * Fixed: Progress bar not showing the correct step when a hidden checkout step becomes visible again while incomplete.
 * Fixed: Proceed button being displayed instead of the edit and save buttons for an incomplete checkout step the user already passed.
 * Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
