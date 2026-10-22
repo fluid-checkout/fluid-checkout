@@ -475,10 +475,9 @@ class FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Check if Woocommerce is activated
-		if( ! $this->is_woocommerce_activated() ) {
+		// Notice only. The settings page does not depend on WooCommerce being bootstrapped.
+		if ( ! $this->is_woocommerce_activated() ) {
 			add_filter( 'fc_admin_notices', array( $this, 'add_woocommerce_required_notice' ), 10 );
-			return;
 		}
 
 		// Language locale
@@ -678,10 +677,13 @@ class FluidCheckout {
 		// Bail if features list is not valid
 		if ( ! is_array( self::$features )  ) { return; }
 
-		// Load admin features
+		// Settings page is Lite's own admin screen
 		if ( is_admin() ) {
 			require_once self::$directory_path . 'inc/admin/admin.php';
 		}
+
+		// Checkout features depend on WooCommerce
+		if ( ! $this->is_woocommerce_activated() ) { return; }
 
 		// Load each features
 		foreach ( self::$features as $feature_key => $feature ) {
@@ -699,6 +701,9 @@ class FluidCheckout {
 	 * Load plugins compatibility features.
 	 */
 	public function load_plugin_compat_features() {
+		// Bail if WooCommerce is not available
+		if ( ! $this->is_woocommerce_activated() ) { return; }
+
 		// Get active plugins
 		$plugins_installed = array_keys( get_plugins() );
 
@@ -739,6 +744,9 @@ class FluidCheckout {
 	 * Load themes compatibility features.
 	 */
 	public function load_theme_compat_features() {
+		// Bail if WooCommerce is not available
+		if ( ! $this->is_woocommerce_activated() ) { return; }
+
 		// Get currently active theme and child theme
 		$theme_slugs = array( get_template(), get_stylesheet() );
 

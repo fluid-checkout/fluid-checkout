@@ -42,6 +42,9 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	 * Register admin notice assets.
 	 */
 	public function register_assets() {
+		// Bail if checkout assets are not loaded yet
+		if ( ! class_exists( 'FluidCheckout_Enqueue' ) ) { return; }
+
 		// Styles
 		wp_register_style( 'fc-admin-notices', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-notices' ), array(), NULL );
 	}

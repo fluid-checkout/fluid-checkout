@@ -57,6 +57,9 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * `fc-settings-page` is registered by the settings page class.
 	 */
 	public function register_assets() {
+		// Bail if checkout assets are not loaded yet
+		if ( ! class_exists( 'FluidCheckout_Enqueue' ) ) { return; }
+
 		// Styles
 		wp_register_style( 'fc-admin-options', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-options' ), array(), NULL );
 		wp_register_style( 'fc-admin-dashboard', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-dashboard' ), array(), NULL );
