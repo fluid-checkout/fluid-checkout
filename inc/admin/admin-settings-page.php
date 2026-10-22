@@ -846,7 +846,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		$layout_class .= $has_preview ? ' has-preview' : '';
 		?>
 		<div class="wrap woocommerce fc-wrap fc-settings-wrap">
-			<form method="post" action="<?php echo esc_url( $args[ 'form_url' ] ); ?>" id="mainform" class="fc-settings-form" enctype="multipart/form-data" data-fc-settings-form>
+			<?php // Stop browsers from restoring unsaved values when going back to the page, as the page scripts start from the saved settings ?>
+			<form method="post" action="<?php echo esc_url( $args[ 'form_url' ] ); ?>" id="mainform" class="fc-settings-form" enctype="multipart/form-data" autocomplete="off" data-fc-settings-form>
 				<div class="<?php echo esc_attr( $layout_class ); ?>" data-fc-settings-layout>
 					<?php
 					/**

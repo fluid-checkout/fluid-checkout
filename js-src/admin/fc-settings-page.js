@@ -32,6 +32,7 @@
 		settingsFieldSelector:                 '.fc-settings-field',
 		settingsRowSelector:                   '.fc-settings-field, tr',
 		settingsCardSelector:                  '.fc-settings-card',
+		settingsTabSelector:                   '[data-fc-settings-tab]',
 		layoutOptionsSelector:                 '.fc-settings-sectioned-buttons, .fc-settings-radio-options',
 		layoutOptionSelector:                  '.fc-settings-sectioned-buttons__option, .fc-settings-radio-option',
 		isSelectedClass:                       'is-selected',
@@ -78,6 +79,7 @@
 	var _triggerFieldIds = [];
 	var _actionsSyncScheduled = false;
 	var _isSavingSettings = false;
+	var _hasUnsavedChanges = false;
 	var _settingsNoticeTimeout = null;
 
 
@@ -875,6 +877,9 @@
 	 * @param   {Event}  event  The change event.
 	 */
 	var handleChange = function( event ) {
+		// UNSAVED CHANGES
+		maybeSetUnsavedChanges( event.target );
+
 		// LAYOUT OPTION SELECTED STATE
 		syncLayoutOptionSelectedState( event.target );
 
@@ -886,6 +891,45 @@
 		if ( triggerFieldId ) {
 			maybeProcessConditionalFields( event.target );
 		}
+	};
+
+
+
+	/**
+	 * Remember that the settings form has unsaved changes, when a setting changes.
+	 * Only named fields of the settings tabs count, not the controls of the page preview or the navigation.
+	 *
+	 * @param   {Element}  field  Changed form field.
+	 */
+	var maybeSetUnsavedChanges = function( field ) {
+		// Bail if the field is not a setting of the settings form
+		if ( ! field.name || ! field.form || ! field.form.matches( _settings.formSelector ) || ! field.closest( _settings.settingsTabSelector ) ) { return; }
+
+		_hasUnsavedChanges = true;
+	};
+
+	/**
+	 * Handle input events.
+	 *
+	 * @param   {Event}  event  The input event.
+	 */
+	var handleInput = function( event ) {
+		// UNSAVED CHANGES
+		maybeSetUnsavedChanges( event.target );
+	};
+
+	/**
+	 * Ask to confirm leaving the page while the settings form has unsaved changes, which would be lost.
+	 *
+	 * @param   {Event}  event  The beforeunload event.
+	 */
+	var handleBeforeUnload = function( event ) {
+		// Bail if there are no unsaved changes
+		if ( ! _hasUnsavedChanges ) { return; }
+
+		// Ask to confirm leaving the page, with the message of the browser
+		event.preventDefault();
+		event.returnValue = '';
 	};
 
 
@@ -1134,6 +1178,9 @@
 		_isSavingSettings = true;
 		setSaveButtonsSavingState();
 
+		// Mark the changes as saved now, so changes made while saving stay unsaved
+		_hasUnsavedChanges = false;
+
 		formData = getFormData( form );
 		formData.append( 'action', _settings.saveAction );
 
@@ -1162,10 +1209,16 @@
 					return;
 				}
 
+				// Mark the changes as unsaved again, as the save failed
+				_hasUnsavedChanges = true;
+
 				message = response && response.data && response.data.message ? response.data.message : saveErrorMessage;
 				showSettingsSaveNotice( 'error', message );
 			} )
 			.catch( function() {
+				// Mark the changes as unsaved again, as the save failed
+				_hasUnsavedChanges = true;
+
 				showSettingsSaveNotice( 'error', saveErrorMessage );
 			} )
 			.finally( function() {
@@ -1273,7 +1326,9 @@
 		// Event handlers
 		window.addEventListener( 'click', handleClick, true );
 		window.addEventListener( 'change', handleChange, true );
+		document.addEventListener( 'input', handleInput, true );
 		window.addEventListener( 'submit', handleSubmit, true );
+		window.addEventListener( 'beforeunload', handleBeforeUnload );
 		document.addEventListener( 'keydown', handleKeydown, true );
 		// Capture scroll: tall WP admin menu scroll must keep the bar on the viewport
 		window.addEventListener( 'scroll', scheduleActionsBarSync, true );
