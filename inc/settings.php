@@ -533,6 +533,20 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 	}
 
 	/**
+	 * Get the settings context profile slug for the current request, while bypassing this class's `pre_option` filter.
+	 * Finding the context profile reads options, which would otherwise find the context profile again, endlessly.
+	 */
+	public function get_context_profile_slug() {
+		// Bypass `pre_option` while finding the context profile
+		$previous_bypass = $this->bypass_pre_option;
+		$this->bypass_pre_option = true;
+		$slug = parent::get_context_profile_slug();
+		$this->bypass_pre_option = $previous_bypass;
+
+		return $slug;
+	}
+
+	/**
 	 * Get the default settings values, which the settings profile values are merged into.
 	 */
 	public function get_default_values() {
