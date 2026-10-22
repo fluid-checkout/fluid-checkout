@@ -34,6 +34,12 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 
 		// Mark checklist steps when visiting related settings tabs
 		add_action( 'admin_init', array( $this, 'maybe_mark_checklist_steps_from_current_tab' ), 20 );
+
+		// Mark checklist steps when switching tabs in the settings SPA
+		add_action( 'wp_ajax_fc_setup_checklist_mark_tab', array( $this, 'ajax_mark_checklist_step_from_tab' ), 10 );
+
+		// Mark checklist steps when saving settings on a mapped tab
+		add_action( 'fc_admin_settings_saved', array( $this, 'maybe_mark_checklist_step_from_saved_tab' ), 10, 1 );
 	}
 
 
@@ -53,14 +59,9 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 				'label' => sprintf( __( 'Set up layout and design on the <a href="%s">checkout options</a>.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'checkout' ) ) ),
 			),
 			array(
-				'id'    => 'integrations',
-				/* translators: %s: Integrations settings URL. */
-				'label' => sprintf( __( 'Check if there are any <a href="%s">integration options</a> available for the theme or other plugins you have installed.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'integrations' ) ) ),
-			),
-			array(
-				'id'    => 'tracking',
-				/* translators: %s: Tools settings URL. */
-				'label' => sprintf( __( 'Help us improve compatibility and measure impact. <a href="%s">Enable usage tracking</a> from the tools settings.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'tools' ) ) ),
+				'id'    => 'customer_accounts',
+				/* translators: %s: Customer accounts settings URL. */
+				'label' => sprintf( __( 'Enable guest checkout and/or review <a href="%s">customer accounts settings</a>.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'customer_accounts' ) ) ),
 			),
 			array(
 				'id'         => 'optimized_pages',
@@ -79,6 +80,16 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 				/* translators: %s: Address book settings URL. */
 				'label'      => sprintf( __( 'Enable multiple saved addresses with <a href="%s">address book</a>.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'address_book' ) ) ),
 				'badge'      => 'setup-address-book',
+			),
+			array(
+				'id'    => 'integrations',
+				/* translators: %s: Integrations settings URL. */
+				'label' => sprintf( __( 'Check if there are any <a href="%s">integration options</a> available for the theme or other plugins you have installed.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'integrations' ) ) ),
+			),
+			array(
+				'id'    => 'tracking',
+				/* translators: %s: Tools settings URL. */
+				'label' => sprintf( __( 'Help us improve compatibility and measure impact. <a href="%s">Enable usage tracking</a> from the tools settings.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'tools' ) ) ),
 			),
 		);
 
@@ -241,8 +252,17 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 		// Bail if step id is empty
 		if ( empty( $step_id ) ) { return; }
 
-		// Bail if already completed
-		if ( $this->is_step_completed( $step_id ) ) { return; }
+		$visit_marked_steps = array_values( $this->get_checklist_tab_to_step_map() );
+
+		// Visit-marked steps only check stored completion so a tab visit always persists
+		if ( in_array( $step_id, $visit_marked_steps, true ) ) {
+			// Bail if already stored as completed
+			if ( in_array( $step_id, $this->get_completed_steps(), true ) ) { return; }
+		}
+		// Otherwise bail if already completed via settings or stored state
+		else if ( $this->is_step_completed( $step_id ) ) {
+			return;
+		}
 
 		$completed   = $this->get_completed_steps();
 		$completed[] = $step_id;
@@ -276,6 +296,57 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 
 
 	/**
+	 * Map settings tab slugs to getting-started checklist step ids.
+	 *
+	 * @return  array<string, string>
+	 */
+	public function get_checklist_tab_to_step_map() {
+		$tab_to_step = array(
+			'checkout'          => 'checkout',
+			'customer_accounts' => 'customer_accounts',
+			'integrations'      => 'integrations',
+		);
+
+		/**
+		 * Filters settings tabs that mark a getting-started checklist step when visited.
+		 *
+		 * @since 5.0.0
+		 */
+		return apply_filters( 'fc_setup_checklist_tab_to_step', $tab_to_step );
+	}
+
+
+
+	/**
+	 * Maybe mark a checklist step from a settings tab slug.
+	 *
+	 * @param   string  $tab  Settings tab slug.
+	 */
+	public function maybe_mark_checklist_step_from_tab( $tab ) {
+		$tab = sanitize_key( $tab );
+
+		$tab_to_step = $this->get_checklist_tab_to_step_map();
+
+		// Bail if the tab does not map to a checklist step
+		if ( ! array_key_exists( $tab, $tab_to_step ) ) { return; }
+
+		$this->mark_step_completed( $tab_to_step[ $tab ] );
+	}
+
+
+
+	/**
+	 * Maybe mark a checklist step after settings are saved on a mapped tab.
+	 *
+	 * @param   string  $tab  Settings tab slug that was active when saving.
+	 */
+	public function maybe_mark_checklist_step_from_saved_tab( $tab ) {
+		$this->maybe_mark_checklist_step_from_tab( $tab );
+	}
+
+
+
+	/**
 	 * Maybe mark checklist steps when visiting related settings tabs.
 	 */
 	public function maybe_mark_checklist_steps_from_current_tab() {
@@ -290,17 +361,46 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 		// Bail if user cannot manage settings
 		if ( ! current_user_can( FluidCheckout_Admin_Settings_Page::CAPABILITY ) ) { return; }
 
-		$tab_to_step = array(
-			'checkout'     => 'checkout',
-			'integrations' => 'integrations',
+		$this->maybe_mark_checklist_step_from_tab( $settings_page->get_current_tab() );
+	}
+
+
+
+	/**
+	 * AJAX: mark a getting-started checklist step when a mapped settings tab is activated.
+	 */
+	public function ajax_mark_checklist_step_from_tab() {
+		// Bail if user cannot manage settings
+		if ( ! current_user_can( FluidCheckout_Admin_Settings_Page::CAPABILITY ) ) {
+			wp_send_json_error( array( 'message' => __( 'You do not have permission to perform this action.', 'fluid-checkout' ) ), 403 );
+		}
+
+		check_ajax_referer( 'fc_setup_checklist_mark_tab', 'nonce' );
+
+		$tab = sanitize_key( wp_unslash( $_POST['tab'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+
+		// Bail if tab slug is missing
+		if ( empty( $tab ) ) {
+			wp_send_json_error( array( 'message' => __( 'Missing settings tab.', 'fluid-checkout' ) ) );
+		}
+
+		$tab_to_step = $this->get_checklist_tab_to_step_map();
+
+		// Bail if the tab does not map to a checklist step
+		if ( ! array_key_exists( $tab, $tab_to_step ) ) {
+			wp_send_json_error( array( 'message' => __( 'This tab does not map to a checklist step.', 'fluid-checkout' ) ) );
+		}
+
+		$step_id = $tab_to_step[ $tab ];
+
+		$this->mark_step_completed( $step_id );
+
+		wp_send_json_success(
+			array(
+				'step_id'     => $step_id,
+				'is_complete' => $this->is_step_completed( $step_id ),
+			)
 		);
-
-		$current_tab = $settings_page->get_current_tab();
-
-		// Bail if the current tab does not map to a checklist step
-		if ( ! array_key_exists( $current_tab, $tab_to_step ) ) { return; }
-
-		$this->mark_step_completed( $tab_to_step[ $current_tab ] );
 	}
 
 
@@ -339,7 +439,7 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 							$badge_html = FluidCheckout_Admin::instance()->get_pro_feature_badge_html( $step['badge'] );
 						}
 						?>
-						<li class="<?php echo esc_attr( $item_class ); ?>">
+						<li class="<?php echo esc_attr( $item_class ); ?>"<?php echo ! empty( $step_id ) ? ' data-fc-setup-checklist-step="' . esc_attr( $step_id ) . '"' : ''; ?>>
 							<span class="fc-dashboard-checklist__marker" aria-hidden="true"></span>
 							<span class="fc-dashboard-checklist__label"><?php echo wp_kses_post( isset( $step['label'] ) ? $step['label'] : '' ); ?></span>
 							<?php if ( $is_complete ) : ?>

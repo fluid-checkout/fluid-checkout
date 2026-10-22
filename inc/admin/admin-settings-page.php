@@ -105,6 +105,23 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		// Remove the submenu item automatically added for the top-level page,
 		// so the top-level menu links to the Dashboard tab
 		remove_submenu_page( self::PAGE_SLUG, self::PAGE_SLUG );
+
+		add_action( 'load-' . $this->page_hook_suffix, array( $this, 'handle_load_settings_page' ), 10 );
+	}
+
+
+
+	/**
+	 * Mark getting-started checklist steps when loading a mapped settings tab.
+	 */
+	public function handle_load_settings_page() {
+		// Bail if user cannot manage settings
+		if ( ! current_user_can( self::CAPABILITY ) ) { return; }
+
+		// Bail if setup checklist handler is unavailable
+		if ( ! class_exists( 'FluidCheckout_Admin_SettingType_Setup' ) ) { return; }
+
+		FluidCheckout_Admin_SettingType_Setup::instance()->maybe_mark_checklist_step_from_tab( $this->get_current_tab() );
 	}
 
 	/**
@@ -288,7 +305,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			'address_autocomplete'     => array( 'label' => __( 'Address autocomplete', 'fluid-checkout' ), 'section' => 'address_autocomplete' ),
 			'address_book'             => array( 'label' => __( 'Address book', 'fluid-checkout' ), 'section' => 'address_book' ),
 			'express_checkout'         => array( 'label' => __( 'Express checkout', 'fluid-checkout' ), 'section' => 'express_checkout' ),
-			'account_matching'         => array( 'label' => __( 'Customer accounts', 'fluid-checkout' ), 'section' => 'account_matching' ),
+			'customer_accounts'        => array( 'label' => __( 'Customer accounts', 'fluid-checkout' ), 'section' => 'customer_accounts' ),
 			'local_pickup'             => array( 'label' => __( 'Local pickup', 'fluid-checkout' ), 'section' => 'local_pickup' ),
 			'gift_options'             => array( 'label' => __( 'Gift options', 'fluid-checkout' ), 'section' => 'gift_options' ),
 			'international_phone'      => array( 'label' => __( 'Phone fields', 'fluid-checkout' ), 'section' => 'international_phone' ),
@@ -621,7 +638,22 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		wp_register_script( 'fc-admin-settings-tooltips', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-tooltips' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-tooltips', '(function(){var i=function(){FCAdminSettingsTooltips.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-nav', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-nav' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-admin-settings-nav', '(function(){var i=function(){FCAdminSettingsNav.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
+		wp_localize_script(
+			'fc-admin-settings-nav',
+			'fcAdminSettingsNavSettings',
+			array(
+				'setupChecklist' => array(
+					'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
+					'markTabAction'      => 'fc_setup_checklist_mark_tab',
+					'nonce'              => wp_create_nonce( 'fc_setup_checklist_mark_tab' ),
+					'tabToChecklistStep' => class_exists( 'FluidCheckout_Admin_SettingType_Setup' ) ? FluidCheckout_Admin_SettingType_Setup::instance()->get_checklist_tab_to_step_map() : array(),
+					'i18n'               => array(
+						'completed' => __( 'Completed', 'fluid-checkout' ),
+					),
+				),
+			)
+		);
+		wp_add_inline_script( 'fc-admin-settings-nav', '(function(){var i=function(){FCAdminSettingsNav.init(window.fcAdminSettingsNavSettings||{});};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-colorpicker', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-colorpicker' ), array( 'fc-utils', 'jquery', 'iris' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-colorpicker', '(function(){var i=function(){FCAdminSettingsColorPicker.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-enhanced-select', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-enhanced-select' ), array( 'tomselect' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );

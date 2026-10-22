@@ -49,7 +49,7 @@ class FluidCheckout_Settings_WCAccounts {
 	 */
 	public static function change_account_settings_args( $settings, $current_section ) {
 		$managed_option_ids = self::get_managed_option_ids();
-		$settings_url = class_exists( 'FluidCheckout_Admin_Settings_Page' ) ? FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'account_matching' ) : '';
+		$settings_url = class_exists( 'FluidCheckout_Admin_Settings_Page' ) ? FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'customer_accounts' ) : '';
 		$managed_notice = ! empty( $settings_url )
 			? sprintf(
 				/* translators: %s: URL to the Fluid Checkout Customer accounts settings page. */

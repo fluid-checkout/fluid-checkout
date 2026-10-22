@@ -337,6 +337,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Mark the Customer accounts getting-started checklist step when visiting or saving that settings tab, including SPA tab navigation.
+* Improved: Rename the Customer accounts settings tab slug from `account_matching` to `customer_accounts`.
+* Added: Customer accounts step on the Getting started checklist (after checkout layout and design).
+* Improved: Reorder the Getting started checklist so integration options come before usage tracking (tracking remains last).
 * Improved: Move Address autocomplete, Address book, and EU-VAT assistant into the features group on the settings menu.
 * Improved: Unlock Address Autocomplete, Address Book, and VAT Assistant settings with Fluid Checkout PRO only.
 * Removed: Add-on promotional cards on Address Autocomplete, Address Book, and VAT Assistant settings tabs.
