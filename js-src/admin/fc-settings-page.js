@@ -3,6 +3,7 @@
  *
  * DEPENDS ON:
  * - FCUtils // Settings merge
+ * - FCAdminSettingsSetupChecklist // Optional. Syncs getting-started checklist completion state after save.
  */
 
 (function (root, factory) {
@@ -1047,6 +1048,12 @@
 				if ( response && response.success ) {
 					message = response.data && response.data.message ? response.data.message : savedMessage;
 					showSettingsSaveNotice( 'success', message );
+
+					// Maybe refresh getting-started checklist completion state
+					if ( typeof FCAdminSettingsSetupChecklist !== 'undefined' && typeof FCAdminSettingsSetupChecklist.applyCompletionState === 'function' && response.data && response.data.checklist_state ) {
+						FCAdminSettingsSetupChecklist.applyCompletionState( response.data.checklist_state );
+					}
+
 					return;
 				}
 

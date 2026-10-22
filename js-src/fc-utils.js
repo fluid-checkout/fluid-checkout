@@ -76,6 +76,7 @@
 		ARROW_UP: 'ArrowUp',
 		ARROW_DOWN: 'ArrowDown',
 		S: 's',
+		P: 'p',
 	}
 
 

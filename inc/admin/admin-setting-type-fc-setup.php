@@ -29,6 +29,9 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 		// Field types
 		add_action( 'fc_admin_settings_render_field_fc_setup', array( $this, 'output_field' ), 10 );
 
+		// Drop stored completion for settings-driven and invalid stored steps
+		add_action( 'admin_init', array( $this, 'maybe_prune_stored_non_visit_checklist_steps' ), 14 );
+
 		// Drop stored completion for add-on steps when the add-on plugin is inactive
 		add_action( 'admin_init', array( $this, 'maybe_prune_inactive_add_on_checklist_steps' ), 15 );
 
@@ -89,7 +92,7 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 			array(
 				'id'    => 'tracking',
 				/* translators: %s: Tools settings URL. */
-				'label' => sprintf( __( 'Help us improve compatibility and measure impact. <a href="%s">Enable usage tracking</a> from the tools settings.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'tools' ) ) ),
+				'label' => sprintf( __( 'Get faster support and help us improve compatibility and measure impact. <a href="%s">Enable usage tracking</a> from the tools settings.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'tools' ) ) ),
 			),
 		);
 
@@ -130,9 +133,7 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 		$step_id = sanitize_key( $step_id );
 
 		$map = array(
-			'address_autocomplete'          => 'fc-google-address-autocomplete/fc-google-address-autocomplete.php',
-			'fc_gaa_address_autocomplete'   => 'fc-google-address-autocomplete/fc-google-address-autocomplete.php',
-			'address_book'                  => 'fc-address-book/fc-address-book.php',
+			'fc_gaa_address_autocomplete' => 'fc-google-address-autocomplete/fc-google-address-autocomplete.php',
 		);
 
 		return array_key_exists( $step_id, $map ) ? $map[ $step_id ] : '';
@@ -173,16 +174,6 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 			return 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_telemetry_enabled' );
 		}
 
-		// Add-on steps stay incomplete while the add-on plugin is inactive
-		if ( ! $this->is_checklist_add_on_plugin_active( $step_id ) ) {
-			return false;
-		}
-
-		// Address Autocomplete (fc-google-address-autocomplete step id on the Dashboard)
-		if ( 'fc_gaa_address_autocomplete' === $step_id ) {
-			return $this->is_address_autocomplete_step_complete( FluidCheckout_Settings::instance() );
-		}
-
 		// PRO feature steps: only complete while PRO is active, even if options stay enabled in the database
 		if ( in_array( $step_id, array( 'optimized_pages', 'address_autocomplete', 'address_book' ), true ) ) {
 			// Bail if PRO is not activated — keep the step number visible
@@ -205,7 +196,39 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 			}
 		}
 
+		// Address Autocomplete (legacy step id on the Dashboard)
+		if ( 'fc_gaa_address_autocomplete' === $step_id ) {
+			return $this->is_address_autocomplete_step_complete( FluidCheckout_Settings::instance() );
+		}
+
+		// Add-on steps stay incomplete while the add-on plugin is inactive
+		if ( ! $this->is_checklist_add_on_plugin_active( $step_id ) ) {
+			return false;
+		}
+
 		return in_array( $step_id, $this->get_completed_steps(), true );
+	}
+
+
+
+	/**
+	 * Get completion state for all getting-started checklist steps.
+	 *
+	 * @return  array<string, bool>
+	 */
+	public function get_checklist_steps_completion_state() {
+		$state = array();
+
+		foreach ( $this->get_checklist_steps() as $step ) {
+			$step_id = isset( $step['id'] ) ? sanitize_key( $step['id'] ) : '';
+
+			// Skip steps without an id
+			if ( empty( $step_id ) ) { continue; }
+
+			$state[ $step_id ] = $this->is_step_completed( $step_id );
+		}
+
+		return $state;
 	}
 
 
@@ -252,7 +275,7 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 		// Bail if step id is empty
 		if ( empty( $step_id ) ) { return; }
 
-		$visit_marked_steps = array_values( $this->get_checklist_tab_to_step_map() );
+		$visit_marked_steps = $this->get_visit_marked_checklist_step_ids();
 
 		// Visit-marked steps only check stored completion so a tab visit always persists
 		if ( in_array( $step_id, $visit_marked_steps, true ) ) {
@@ -318,6 +341,57 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 
 
 	/**
+	 * Checklist step ids that may be stored when visiting a settings tab.
+	 *
+	 * @return  string[]
+	 */
+	public function get_visit_marked_checklist_step_ids() {
+		return array_values( array_unique( $this->get_checklist_tab_to_step_map() ) );
+	}
+
+
+
+	/**
+	 * Checklist step ids derived from saved settings, not tab visits.
+	 *
+	 * @return  string[]
+	 */
+	public function get_settings_derived_checklist_step_ids() {
+		return array(
+			'tracking',
+			'optimized_pages',
+			'address_autocomplete',
+			'address_book',
+			'fc_gaa_address_autocomplete',
+		);
+	}
+
+
+
+	/**
+	 * Remove settings-driven step ids mistakenly stored in the visit checklist option.
+	 */
+	public function maybe_prune_stored_non_visit_checklist_steps() {
+		$completed   = $this->get_completed_steps();
+		$allowed     = $this->get_visit_marked_checklist_step_ids();
+		$pruned      = array();
+
+		foreach ( $completed as $step_id ) {
+			// Keep only visit-marked step ids in storage
+			if ( in_array( $step_id, $allowed, true ) ) {
+				$pruned[] = $step_id;
+			}
+		}
+
+		// Bail if nothing changed
+		if ( count( $pruned ) === count( $completed ) ) { return; }
+
+		update_option( self::CHECKLIST_OPTION, array_values( array_unique( $pruned ) ), false );
+	}
+
+
+
+	/**
 	 * Maybe mark a checklist step from a settings tab slug.
 	 *
 	 * @param   string  $tab  Settings tab slug.
@@ -367,7 +441,8 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 
 
 	/**
-	 * AJAX: mark a getting-started checklist step when a mapped settings tab is activated.
+	 * AJAX: sync getting-started checklist state when a settings tab is activated.
+	 * Marks visit-based steps when the tab maps to one, then returns every step state.
 	 */
 	public function ajax_mark_checklist_step_from_tab() {
 		// Bail if user cannot manage settings
@@ -384,21 +459,11 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 			wp_send_json_error( array( 'message' => __( 'Missing settings tab.', 'fluid-checkout' ) ) );
 		}
 
-		$tab_to_step = $this->get_checklist_tab_to_step_map();
-
-		// Bail if the tab does not map to a checklist step
-		if ( ! array_key_exists( $tab, $tab_to_step ) ) {
-			wp_send_json_error( array( 'message' => __( 'This tab does not map to a checklist step.', 'fluid-checkout' ) ) );
-		}
-
-		$step_id = $tab_to_step[ $tab ];
-
-		$this->mark_step_completed( $step_id );
+		$this->maybe_mark_checklist_step_from_tab( $tab );
 
 		wp_send_json_success(
 			array(
-				'step_id'     => $step_id,
-				'is_complete' => $this->is_step_completed( $step_id ),
+				'checklist_state' => $this->get_checklist_steps_completion_state(),
 			)
 		);
 	}
@@ -443,7 +508,7 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 							<span class="fc-dashboard-checklist__marker" aria-hidden="true"></span>
 							<span class="fc-dashboard-checklist__label"><?php echo wp_kses_post( isset( $step['label'] ) ? $step['label'] : '' ); ?></span>
 							<?php if ( $is_complete ) : ?>
-								<span class="screen-reader-text"><?php echo esc_html( __( 'Completed', 'fluid-checkout' ) ); ?></span>
+								<span class="screen-reader-text" data-fc-setup-checklist-completed-label><?php echo esc_html( __( 'Completed', 'fluid-checkout' ) ); ?></span>
 							<?php endif; ?>
 							<?php if ( ! empty( $badge_html ) ) : ?>
 								<span class="fc-dashboard-checklist__promo"><?php echo wp_kses_post( $badge_html ); ?></span>

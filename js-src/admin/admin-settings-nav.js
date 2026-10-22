@@ -4,6 +4,7 @@
  * On narrow viewports, toggles the expandable settings menu.
  *
  * DEPENDS ON:
+ * - FCAdminSettingsSetupChecklist // Syncs getting-started checklist completion state.
  * - FCAdminSettingsPreview // Optional. Collapses the preview drawer when the nav changes.
  */
 ( function ( root, factory ) {
@@ -23,7 +24,6 @@
 	var _hasInitialized = false;
 	var _publicMethods = {};
 	var _navCompactMediaQuery = null;
-	var _pendingChecklistTabs = {};
 	var _settings = {
 		formSelector:           '[data-fc-settings-form]',
 		sidebarSelector:        '[data-fc-settings-sidebar]',
@@ -46,16 +46,6 @@
 		settingsLinkSelector:   'a',
 		hrefAttribute:          'href',
 		navCompactBreakpoint:   980,
-
-		setupChecklist: {
-			ajaxUrl:             '',
-			markTabAction:       'fc_setup_checklist_mark_tab',
-			nonce:               '',
-			tabToChecklistStep:  {},
-			i18n:                {
-				completed:       'Completed',
-			},
-		},
 	};
 
 
@@ -261,99 +251,15 @@
 	};
 
 	/**
-	 * Whether a settings tab maps to a getting-started checklist step.
-	 *
-	 * @param   {string}  tab  Settings tab slug.
-	 * @return  {boolean}
-	 */
-	var tabMapsToChecklistStep = function( tab ) {
-		var checklistSettings = _settings.setupChecklist;
-
-		// Bail if tab slug is missing
-		if ( ! tab || ! checklistSettings || ! checklistSettings.tabToChecklistStep ) { return false; }
-
-		return Object.prototype.hasOwnProperty.call( checklistSettings.tabToChecklistStep, tab );
-	};
-
-	/**
-	 * Mark a getting-started checklist list item as completed in the DOM.
-	 *
-	 * @param   {string}  stepId  Checklist step id.
-	 */
-	var markChecklistItemComplete = function( stepId ) {
-		var item;
-		var screenReader;
-		var checklistSettings = _settings.setupChecklist;
-
-		// Bail if step id is missing
-		if ( ! stepId ) { return; }
-
-		item = document.querySelector( '[data-fc-setup-checklist-step="' + stepId + '"]' );
-
-		// Bail if checklist item is not on the page
-		if ( ! item || item.classList.contains( 'is-completed' ) ) { return; }
-
-		item.classList.add( 'is-completed' );
-
-		screenReader = document.createElement( 'span' );
-		screenReader.className = 'screen-reader-text';
-		screenReader.textContent = checklistSettings && checklistSettings.i18n && checklistSettings.i18n.completed ? checklistSettings.i18n.completed : 'Completed';
-		item.appendChild( screenReader );
-	};
-
-	/**
-	 * Persist getting-started checklist completion when a mapped settings tab is activated.
+	 * Sync getting-started checklist state when a settings tab becomes active.
 	 *
 	 * @param   {string}  tab  Settings tab slug.
 	 */
-	var persistSetupChecklistStepForTab = function( tab ) {
-		var checklistSettings = _settings.setupChecklist;
-		var body;
-		var requestOptions;
-		var stepId;
+	var syncSetupChecklistForTab = function( tab ) {
+		// Bail if setup checklist API is unavailable
+		if ( typeof FCAdminSettingsSetupChecklist === 'undefined' || typeof FCAdminSettingsSetupChecklist.syncForTab !== 'function' ) { return; }
 
-		// Bail if setup checklist settings are unavailable
-		if ( ! checklistSettings || ! checklistSettings.ajaxUrl || ! checklistSettings.nonce ) { return; }
-
-		// Bail if tab does not map to a checklist step
-		if ( ! tabMapsToChecklistStep( tab ) ) { return; }
-
-		stepId = checklistSettings.tabToChecklistStep[ tab ];
-
-		// Maybe update the dashboard checklist immediately
-		markChecklistItemComplete( stepId );
-
-		// Bail if a request for this tab is already in flight
-		if ( _pendingChecklistTabs[ tab ] ) { return; }
-
-		_pendingChecklistTabs[ tab ] = true;
-
-		body = new FormData();
-		body.append( 'action', checklistSettings.markTabAction );
-		body.append( 'nonce', checklistSettings.nonce );
-		body.append( 'tab', tab );
-
-		requestOptions = {
-			method:      'POST',
-			credentials: 'same-origin',
-			body:        body,
-		};
-
-		fetch( checklistSettings.ajaxUrl, requestOptions )
-			.then( function( response ) {
-				return response.json();
-			} )
-			.then( function( payload ) {
-				delete _pendingChecklistTabs[ tab ];
-
-				// Bail if request failed
-				if ( ! payload || ! payload.success ) { return; }
-
-				markChecklistItemComplete( payload.data && payload.data.step_id ? payload.data.step_id : stepId );
-			} )
-			.catch( function() {
-				delete _pendingChecklistTabs[ tab ];
-			} );
+		FCAdminSettingsSetupChecklist.syncForTab( tab );
 	};
 
 	/**
@@ -453,7 +359,7 @@
 		// Notify listeners that a settings tab became active (SPA navigation)
 		window.dispatchEvent( new CustomEvent( 'fcSettingsTabActivated', { detail: { tab: tab } } ) );
 
-		persistSetupChecklistStepForTab( tab );
+		syncSetupChecklistForTab( tab );
 
 		return true;
 	};
@@ -559,7 +465,7 @@
 	/**
 	 * Initialize settings tab navigation.
 	 */
-	_publicMethods.init = function( options ) {
+	_publicMethods.init = function() {
 		var form;
 		var breakpoint;
 		var initialTab;
@@ -567,18 +473,6 @@
 
 		// Bail if already initialized
 		if ( _hasInitialized ) { return; }
-
-		// Merge settings
-		if ( options ) {
-			if ( options.setupChecklist ) {
-				if ( root.FCUtils && typeof FCUtils.extendObject === 'function' ) {
-					FCUtils.extendObject( _settings.setupChecklist, options.setupChecklist );
-				}
-				else {
-					Object.assign( _settings.setupChecklist, options.setupChecklist );
-				}
-			}
-		}
 
 		form = document.querySelector( _settings.formSelector );
 

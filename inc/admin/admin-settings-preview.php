@@ -323,7 +323,8 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		?>
 		<script>
 		( function() {
-			var modeSelect = document.querySelector( '[data-fc-settings-preview-mode]' );
+			var modeField = document.querySelector( '[data-fc-settings-preview-mode-field]' );
+			var modeInput;
 			var headerFooterButton = document.querySelector( '[data-fc-settings-preview-header-footer]' );
 			var hideHeaderFooterLabel = <?php echo wp_json_encode( __( 'Hide header and footer', 'fluid-checkout' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON-encoded string. ?>;
 			var tabPreviewMode = <?php echo wp_json_encode( $tab_preview_mode ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON-encoded string. ?>;
@@ -342,15 +343,15 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 			// Prefer the preview mode configured for this settings tab, then the saved mode
 			previewMode = tabPreviewMode || state.mode || '';
 
-			// Maybe select the preview mode, keeping guest mode for values the dropdown does not have
-			if ( modeSelect && previewMode && modeSelect.querySelector( 'option[value="' + previewMode + '"]' ) ) {
-				modeSelect.value = previewMode;
+			// Maybe select the preview mode, keeping guest mode for values the control does not have
+			if ( modeField && previewMode ) {
+				modeInput = modeField.querySelector( '[data-fc-settings-preview-mode][value="' + previewMode + '"]' );
 
-				// Maybe highlight the mode field when the tab overrides the saved preview mode
-				if ( tabPreviewMode && tabPreviewMode !== state.mode ) {
-					var modeField = modeSelect.closest( '[data-fc-settings-preview-mode-field]' );
+				if ( modeInput ) {
+					modeInput.checked = true;
 
-					if ( modeField ) {
+					// Maybe highlight the mode field when the tab overrides the saved preview mode
+					if ( tabPreviewMode && tabPreviewMode !== state.mode ) {
 						modeField.classList.add( 'is-auto-changed' );
 						window.setTimeout( function() {
 							modeField.classList.remove( 'is-auto-changed' );
@@ -468,11 +469,15 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 					</div>
 
 					<div class="fc-settings-preview__frame-options">
-						<div class="fc-settings-preview__mode-field" data-fc-settings-preview-mode-field>
-							<select class="fc-settings-preview__mode" data-fc-settings-preview-mode aria-label="<?php echo esc_attr( __( 'Preview as', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Preview as', 'fluid-checkout' ) ); ?>">
-								<option value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_GUEST ); ?>"><?php echo esc_html( __( 'Guest', 'fluid-checkout' ) ); ?></option>
-								<option value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_LOGGED_IN ); ?>"><?php echo esc_html( __( 'Logged in', 'fluid-checkout' ) ); ?></option>
-							</select>
+						<div class="fc-settings-sectioned-buttons fc-settings-preview__mode" role="radiogroup" aria-label="<?php echo esc_attr( __( 'Preview as', 'fluid-checkout' ) ); ?>" data-fc-settings-preview-mode-field>
+							<label class="fc-settings-sectioned-buttons__option" title="<?php echo esc_attr( __( 'Guest', 'fluid-checkout' ) ); ?>">
+								<input type="radio" name="fc-settings-preview-mode" value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_GUEST ); ?>" data-fc-settings-preview-mode checked>
+								<span><?php echo esc_html( __( 'Guest', 'fluid-checkout' ) ); ?></span>
+							</label>
+							<label class="fc-settings-sectioned-buttons__option" title="<?php echo esc_attr( __( 'Logged in', 'fluid-checkout' ) ); ?>">
+								<input type="radio" name="fc-settings-preview-mode" value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_LOGGED_IN ); ?>" data-fc-settings-preview-mode>
+								<span><?php echo esc_html( __( 'Logged in', 'fluid-checkout' ) ); ?></span>
+							</label>
 						</div>
 
 						<button type="button" class="fc-settings-preview__header-footer" data-fc-settings-preview-header-footer aria-pressed="false" aria-label="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>">

@@ -310,7 +310,6 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			'gift_options'             => array( 'label' => __( 'Gift options', 'fluid-checkout' ), 'section' => 'gift_options' ),
 			'international_phone'      => array( 'label' => __( 'Phone fields', 'fluid-checkout' ), 'section' => 'international_phone' ),
 			'trust_symbols'            => array( 'label' => __( 'Trust badges', 'fluid-checkout' ), 'section' => 'trust_symbols' ),
-			'vat_assistant'            => array( 'label' => __( 'EU-VAT assistant', 'fluid-checkout' ), 'section' => 'vat_number' ),
 		);
 		$tabs_after = array(
 			'separator_3'              => array( 'type' => 'separator' ),
@@ -599,11 +598,15 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified above.
 		$this->save_settings_from_request( $_POST );
 
-		wp_send_json_success(
-			array(
-				'message' => __( 'Your settings have been saved.', 'fluid-checkout' ),
-			)
+		$response_data = array(
+			'message' => __( 'Your settings have been saved.', 'fluid-checkout' ),
 		);
+
+		if ( class_exists( 'FluidCheckout_Admin_SettingType_Setup' ) ) {
+			$response_data['checklist_state'] = FluidCheckout_Admin_SettingType_Setup::instance()->get_checklist_steps_completion_state();
+		}
+
+		wp_send_json_success( $response_data );
 	}
 
 
@@ -618,7 +621,22 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		wp_register_style( 'fc-admin-settings', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-settings' ), array( 'fc-admin-options' ), NULL );
 
 		// Scripts
-		wp_register_script( 'fc-settings-page', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-settings-page' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-admin-settings-setup-checklist', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-setup-checklist' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_localize_script(
+			'fc-admin-settings-setup-checklist',
+			'fcAdminSettingsSetupChecklistSettings',
+			array(
+				'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
+				'syncTabAction'      => 'fc_setup_checklist_mark_tab',
+				'nonce'              => wp_create_nonce( 'fc_setup_checklist_mark_tab' ),
+				'tabToChecklistStep' => class_exists( 'FluidCheckout_Admin_SettingType_Setup' ) ? FluidCheckout_Admin_SettingType_Setup::instance()->get_checklist_tab_to_step_map() : array(),
+				'i18n'               => array(
+					'completed' => __( 'Completed', 'fluid-checkout' ),
+				),
+			)
+		);
+		wp_add_inline_script( 'fc-admin-settings-setup-checklist', '(function(){var i=function(){FCAdminSettingsSetupChecklist.init(window.fcAdminSettingsSetupChecklistSettings||{});};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
+		wp_register_script( 'fc-settings-page', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-settings-page' ), array( 'fc-utils', 'fc-admin-settings-setup-checklist' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_localize_script(
 			'fc-settings-page',
 			'fcSettingsPageSettings',
@@ -637,23 +655,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		wp_add_inline_script( 'fc-settings-page', '(function(){var i=function(){FCSettingsPage.init(window.fcSettingsPageSettings||{});};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-tooltips', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-tooltips' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-tooltips', '(function(){var i=function(){FCAdminSettingsTooltips.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
-		wp_register_script( 'fc-admin-settings-nav', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-nav' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_localize_script(
-			'fc-admin-settings-nav',
-			'fcAdminSettingsNavSettings',
-			array(
-				'setupChecklist' => array(
-					'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
-					'markTabAction'      => 'fc_setup_checklist_mark_tab',
-					'nonce'              => wp_create_nonce( 'fc_setup_checklist_mark_tab' ),
-					'tabToChecklistStep' => class_exists( 'FluidCheckout_Admin_SettingType_Setup' ) ? FluidCheckout_Admin_SettingType_Setup::instance()->get_checklist_tab_to_step_map() : array(),
-					'i18n'               => array(
-						'completed' => __( 'Completed', 'fluid-checkout' ),
-					),
-				),
-			)
-		);
-		wp_add_inline_script( 'fc-admin-settings-nav', '(function(){var i=function(){FCAdminSettingsNav.init(window.fcAdminSettingsNavSettings||{});};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
+		wp_register_script( 'fc-admin-settings-nav', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-nav' ), array( 'fc-utils', 'fc-admin-settings-setup-checklist' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-admin-settings-nav', '(function(){var i=function(){FCAdminSettingsNav.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-colorpicker', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-colorpicker' ), array( 'fc-utils', 'jquery', 'iris' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-colorpicker', '(function(){var i=function(){FCAdminSettingsColorPicker.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-enhanced-select', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-enhanced-select' ), array( 'tomselect' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -672,6 +675,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 		// Scripts
 		wp_enqueue_script( 'iris' );
+		wp_enqueue_script( 'fc-admin-settings-setup-checklist' );
 		wp_enqueue_script( 'fc-settings-page' );
 		wp_enqueue_script( 'fc-admin-settings-tooltips' );
 		wp_enqueue_script( 'fc-admin-settings-nav' );

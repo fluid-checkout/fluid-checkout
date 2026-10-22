@@ -337,6 +337,16 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Guest and logged-in preview modes use segmented buttons in the preview toolbar.
+* Added: Toggle the settings page preview expanded or collapsed with Ctrl+Shift+P or Cmd+Shift+P.
+* Improved: Dashboard PRO offer uses the promo layout with a two-column features list and actions in the promo footer.
+* Improved: Always show the PRO features list on the Dashboard add-ons promo card, including when PRO is installed.
+* Fixed: Getting started Address book step not completing when PRO is active and the feature is enabled without the standalone add-on plugin active.
+* Removed: EU-VAT assistant from the Dashboard add-ons list and the settings menu.
+* Removed: More plugins from the Fluid Checkout family section on the Dashboard.
+* Fixed: Getting started checklist tab sync did not run because admin script settings were not applied when FCUtils was available.
+* Fixed: Only store visit-based getting started steps in the checklist option; PRO and tracking steps rely on saved settings.
+* Improved: Refresh Getting started checklist step completion on the Dashboard when saving settings or switching settings tabs (SPA), with an immediate update for visit-based steps.
 * Fixed: Mark the Customer accounts getting-started checklist step when visiting or saving that settings tab, including SPA tab navigation.
 * Improved: Rename the Customer accounts settings tab slug from `account_matching` to `customer_accounts`.
 * Added: Customer accounts step on the Getting started checklist (after checkout layout and design).
