@@ -285,15 +285,14 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			'order_received'           => array( 'label' => __( 'Thank you', 'fluid-checkout' ), 'section' => 'order_received' ),
 			'order_pay'                => array( 'label' => __( 'Order pay', 'fluid-checkout' ), 'section' => 'order_pay' ),
 			'separator'                => array( 'type' => 'separator' ),
+			'address_autocomplete'     => array( 'label' => __( 'Address autocomplete', 'fluid-checkout' ), 'section' => 'address_autocomplete' ),
+			'address_book'             => array( 'label' => __( 'Address book', 'fluid-checkout' ), 'section' => 'address_book' ),
 			'express_checkout'         => array( 'label' => __( 'Express checkout', 'fluid-checkout' ), 'section' => 'express_checkout' ),
 			'account_matching'         => array( 'label' => __( 'Customer accounts', 'fluid-checkout' ), 'section' => 'account_matching' ),
 			'local_pickup'             => array( 'label' => __( 'Local pickup', 'fluid-checkout' ), 'section' => 'local_pickup' ),
 			'gift_options'             => array( 'label' => __( 'Gift options', 'fluid-checkout' ), 'section' => 'gift_options' ),
 			'international_phone'      => array( 'label' => __( 'Phone fields', 'fluid-checkout' ), 'section' => 'international_phone' ),
 			'trust_symbols'            => array( 'label' => __( 'Trust badges', 'fluid-checkout' ), 'section' => 'trust_symbols' ),
-			'separator_2'              => array( 'type' => 'separator' ),
-			'address_autocomplete'     => array( 'label' => __( 'Address autocomplete', 'fluid-checkout' ), 'section' => 'address_autocomplete' ),
-			'address_book'             => array( 'label' => __( 'Address book', 'fluid-checkout' ), 'section' => 'address_book' ),
 			'vat_assistant'            => array( 'label' => __( 'EU-VAT assistant', 'fluid-checkout' ), 'section' => 'vat_number' ),
 		);
 		$tabs_after = array(

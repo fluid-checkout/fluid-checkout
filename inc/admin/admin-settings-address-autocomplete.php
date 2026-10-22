@@ -12,19 +12,14 @@ if ( class_exists( 'FluidCheckout_Settings_AddressAutocomplete', false ) ) {
 
 /**
  * FluidCheckout_Settings_AddressAutocomplete.
- * Settings are locked until the Address Autocomplete add-on unlocks the feature `address_autocomplete`.
+ * Settings are locked until Fluid Checkout PRO unlocks the feature `pro`.
  */
 class FluidCheckout_Settings_AddressAutocomplete {
 
 	/**
 	 * Feature slug used to lock and unlock the settings.
 	 */
-	const FEATURE = 'address_autocomplete';
-
-	/**
-	 * Product page URL for the Address Autocomplete add-on.
-	 */
-	const PRODUCT_URL = 'https://fluidcheckout.com/fc-google-address-autocomplete/';
+	const FEATURE = 'pro';
 
 
 
@@ -53,52 +48,6 @@ class FluidCheckout_Settings_AddressAutocomplete {
 	}
 
 
-
-	/**
-	 * Get the promotional settings card shown at the top of the Address Autocomplete tab when the add-on is not active.
-	 */
-	public static function get_promo_settings() {
-		// Bail if the add-on feature is already unlocked
-		if ( FluidCheckout_Admin_Settings_Access::instance()->is_unlocked( self::FEATURE ) ) { return array(); }
-
-		return array(
-			array(
-				'title'            => __( 'Address autocomplete', 'fluid-checkout' ),
-				'type'             => 'fc_promo',
-				'id'               => 'fc_gaa_address_autocomplete_promo',
-				'is_card'          => true,
-				'promo'            => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-autocomplete-promo', self::PRODUCT_URL, self::FEATURE ),
-				'tagline'          => __( 'Collect correct address details the first time and cut down on fields customers need to fill in.', 'fluid-checkout' ),
-				'features'         => array(
-					__( 'Autocomplete address fields with Google Places suggestions.', 'fluid-checkout' ),
-					__( 'Reduce typos and delivery issues with verified address data.', 'fluid-checkout' ),
-					__( 'Optional company and business search in the company field.', 'fluid-checkout' ),
-					__( 'Brasil API CEP autocomplete for Brazilian addresses.', 'fluid-checkout' ),
-				),
-				'learn_more_url'   => add_query_arg(
-					array(
-						'mtm_campaign' => 'addons',
-						'mtm_kwd'      => 'address-autocomplete-promo-learn-more',
-						'mtm_source'   => 'lite-plugin',
-					),
-					self::PRODUCT_URL
-				),
-				'learn_more_label' => __( 'Learn more', 'fluid-checkout' ),
-				'plugin_file'      => 'fc-google-address-autocomplete/fc-google-address-autocomplete.php',
-				'plugin_slug'      => 'fc-google-address-autocomplete',
-				'purchase_url'     => add_query_arg(
-					array(
-						'mtm_campaign' => 'addons',
-						'mtm_kwd'      => 'address-autocomplete-promo-purchase',
-						'mtm_source'   => 'lite-plugin',
-					),
-					self::PRODUCT_URL
-				),
-				'purchase_price'   => '29 EUR',
-			),
-		);
-	}
-
 	/**
 	 * Get the Address Autocomplete settings fields.
 	 */
@@ -109,7 +58,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 				'type'              => 'title',
 				'desc'              => '',
 				'id'                => 'fc_gaa_google_address_autocomplete',
-				'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-autocomplete', self::PRODUCT_URL, self::FEATURE ),
+				'promo'             => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'address-autocomplete' ),
 				'docs'              => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/getting-started-google-address-autocomplete/' ),
 			),
 
@@ -282,7 +231,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 				'type'              => 'title',
 				'desc'              => '',
 				'id'                => 'fc_gaa_brasil_api',
-				'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-autocomplete-brasil-api', self::PRODUCT_URL, self::FEATURE ),
+				'promo'             => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'address-autocomplete-brasil-api' ),
 			),
 
 			array(
@@ -338,7 +287,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 				'autoload'          => false,
 				'disabled'          => true,
 				'requires'          => self::FEATURE,
-				'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-autocomplete-debug', self::PRODUCT_URL, self::FEATURE ),
+				'promo'             => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'address-autocomplete-debug' ),
 			),
 		);
 	}
@@ -362,10 +311,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 		 */
 		$settings = apply_filters(
 			'fc_gaa_address_autocomplete_settings',
-			array_merge(
-				self::get_promo_settings(),
-				self::get_feature_settings()
-			)
+			self::get_feature_settings()
 		);
 
 		return $settings;

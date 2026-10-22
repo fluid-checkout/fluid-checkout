@@ -12,19 +12,14 @@ if ( class_exists( 'FluidCheckout_Settings_VATAssistant', false ) ) {
 
 /**
  * FluidCheckout_Settings_VATAssistant.
- * Settings are locked until the VAT Assistant add-on unlocks the feature `vat_assistant`.
+ * Settings are locked until Fluid Checkout PRO unlocks the feature `pro`.
  */
 class FluidCheckout_Settings_VATAssistant {
 
 	/**
 	 * Feature slug used to lock and unlock the settings.
 	 */
-	const FEATURE = 'vat_assistant';
-
-	/**
-	 * Product page URL for the VAT Assistant add-on.
-	 */
-	const PRODUCT_URL = 'https://fluidcheckout.com/fc-eu-vat-assistant/';
+	const FEATURE = 'pro';
 
 
 
@@ -91,54 +86,6 @@ class FluidCheckout_Settings_VATAssistant {
 	}
 
 
-
-	/**
-	 * Get the promotional settings card shown at the top of the VAT Assistant tab when the add-on is not active.
-	 */
-	public static function get_promo_settings() {
-		// Bail if the add-on feature is already unlocked
-		if ( FluidCheckout_Admin_Settings_Access::instance()->is_unlocked( self::FEATURE ) ) { return array(); }
-
-		return array(
-			array(
-				'title'            => __( 'VAT assistant', 'fluid-checkout' ),
-				'type'             => 'fc_promo',
-				'id'               => 'fc_vat_assistant_promo',
-				'is_card'          => true,
-				'promo'            => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'vat-assistant-promo', self::PRODUCT_URL, self::FEATURE ),
-				'tagline'          => __( 'Collect and validate EU VAT numbers at checkout, with reverse charge and location evidence when needed.', 'fluid-checkout' ),
-				'features'         => array(
-					__( 'Add an optional or required VAT number field to the billing form.', 'fluid-checkout' ),
-					__( 'Validate EU VAT numbers against the European VIES database.', 'fluid-checkout' ),
-					__( 'Apply reverse charge and show the right labels on invoices.', 'fluid-checkout' ),
-					__( 'Autocomplete company names and collect location evidence for digital goods.', 'fluid-checkout' ),
-				),
-				'learn_more_url'   => add_query_arg(
-					array(
-						'mtm_campaign' => 'addons',
-						'mtm_kwd'      => 'vat-assistant-promo-learn-more',
-						'mtm_source'   => 'lite-plugin',
-					),
-					self::PRODUCT_URL
-				),
-				'learn_more_label' => __( 'Learn more', 'fluid-checkout' ),
-				'plugin_file'      => 'fc-vat-assistant/fc-vat-assistant.php',
-				'plugin_slug'      => 'fc-vat-assistant',
-				'purchase_url'     => add_query_arg(
-					array(
-						'mtm_campaign' => 'addons',
-						'mtm_kwd'      => 'vat-assistant-promo-purchase',
-						'mtm_source'   => 'lite-plugin',
-					),
-					self::PRODUCT_URL
-				),
-				'purchase_price'   => '39 EUR',
-			),
-		);
-	}
-
-
-
 	/**
 	 * Add the VAT Assistant settings.
 	 *
@@ -161,15 +108,13 @@ class FluidCheckout_Settings_VATAssistant {
 		 */
 		$settings = apply_filters(
 			'fc_vat_' . $current_section . '_settings',
-			array_merge(
-				self::get_promo_settings(),
-				array(
+			array(
 				array(
 					'title'             => __( 'VAT number field', 'fluid-checkout' ),
 					'type'              => 'title',
 					'desc'              => '',
 					'id'                => 'fc_vat_number',
-					'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'vat-assistant', self::PRODUCT_URL, self::FEATURE ),
+					'promo'             => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'vat-assistant' ),
 				),
 
 				array(
@@ -216,7 +161,7 @@ class FluidCheckout_Settings_VATAssistant {
 					'type'              => 'title',
 					'desc'              => '',
 					'id'                => 'fc_vat_eu_vat_options',
-					'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'vat-assistant-eu-vat', self::PRODUCT_URL, self::FEATURE ),
+					'promo'             => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'vat-assistant-eu-vat' ),
 					'docs'              => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/fc-vat-assistant/' ),
 				),
 
@@ -387,7 +332,7 @@ class FluidCheckout_Settings_VATAssistant {
 					'type'              => 'title',
 					'desc'              => __( 'From January 1st, 2015, modifications have been made to the EU VAT regulations concerning digital goods, impacting exclusively B2C transactions. The VAT on digital goods must be calculated based on the customer\'s location, and evidence of this needs to be collected (IP address and billing address).', 'fluid-checkout' ),
 					'id'                => 'fc_vat_eu_vat_digital_goods_options',
-					'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'vat-assistant-digital-goods', self::PRODUCT_URL, self::FEATURE ),
+					'promo'             => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'vat-assistant-digital-goods' ),
 				),
 
 				array(
@@ -421,7 +366,6 @@ class FluidCheckout_Settings_VATAssistant {
 					'type'              => 'sectionend',
 					'id'                => 'fc_vat_eu_vat_digital_goods_options',
 				),
-				)
 			)
 		);
 

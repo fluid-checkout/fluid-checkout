@@ -337,6 +337,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Move Address autocomplete, Address book, and EU-VAT assistant into the features group on the settings menu.
+* Improved: Unlock Address Autocomplete, Address Book, and VAT Assistant settings with Fluid Checkout PRO only.
+* Removed: Add-on promotional cards on Address Autocomplete, Address Book, and VAT Assistant settings tabs.
 * Improved: Allow the Lite admin notice icon URL to be filtered (PRO uses this when active).
 * Fixed: Skip bootstrap when Fluid Checkout is already loaded from another copy (for example bundled inside PRO).
 * Improved: Upgraded Sass build tooling to the latest version.
