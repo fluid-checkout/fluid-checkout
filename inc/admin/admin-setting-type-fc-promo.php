@@ -181,9 +181,7 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 			if ( $activate_disabled ) {
 				$activate_classes .= ' disabled';
 			}
-			$activate_label = $is_pro_promo
-				? __( 'Activate plugin', 'fluid-checkout' )
-				: __( 'Activate add-on', 'fluid-checkout' );
+			$activate_label = __( 'Activate plugin', 'fluid-checkout' );
 			?>
 			<button
 				type="button"

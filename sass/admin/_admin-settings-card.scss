@@ -126,7 +126,10 @@ $order-review-selector: null !default;
 	box-shadow: 0 2px 6px 0 $elevation-shadow-medium;
 }
 
-.fc-settings-promo-pill:focus {
+.fc-settings-promo-pill:focus,
+.fc-settings-promo-pill:focus-visible {
+	// Keep the pill shape: WP admin `a:focus` sets `border-radius: 2px`
+	border-radius: $fc-settings-promo-pill-border-radius;
 	color: $fc-settings-promo-pill-color-hover;
 	text-decoration: none;
 	transform: scale( 1.025 );

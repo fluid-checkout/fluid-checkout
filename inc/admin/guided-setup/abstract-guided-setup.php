@@ -1800,21 +1800,12 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 
 
 	/**
-	 * Legacy option names mapped to older guided setup option names.
+	 * Read a guided setup option.
 	 *
-	 * @return  array
-	 */
-	public function get_legacy_guided_setup_option_names() {
-		return array();
-	}
-
-	/**
-	 * Read a guided setup option, copying the 2.3.0 value forward when the new option is missing.
-	 *
-	 * @since 3.0.0
+	 * @since 5.0.0
 	 *
 	 * @param   string  $option_name  Option name.
-	 * @param   mixed   $default      Value when neither option exists.
+	 * @param   mixed   $default      Value when the option does not exist.
 	 */
 	public function get_guided_setup_stored_option( $option_name, $default = false ) {
 		$stored = get_option( $option_name, null );
@@ -1824,37 +1815,18 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			return $stored;
 		}
 
-		$legacy_names = $this->get_legacy_guided_setup_option_names();
-
-		// Maybe copy the 2.3.0 option forward
-		if ( isset( $legacy_names[ $option_name ] ) ) {
-			$legacy = get_option( $legacy_names[ $option_name ], null );
-
-			if ( null !== $legacy ) {
-				update_option( $option_name, $legacy, false );
-				return $legacy;
-			}
-		}
-
 		return $default;
 	}
 
 	/**
-	 * Delete a guided setup option and its 2.3.0 name.
+	 * Delete a guided setup option.
 	 *
-	 * @since 3.0.0
+	 * @since 5.0.0
 	 *
 	 * @param   string  $option_name  Option name.
 	 */
 	public function delete_guided_setup_stored_option( $option_name ) {
 		delete_option( $option_name );
-
-		$legacy_names = $this->get_legacy_guided_setup_option_names();
-
-		// Also delete the 2.3.0 option so a later read does not restore it
-		if ( isset( $legacy_names[ $option_name ] ) ) {
-			delete_option( $legacy_names[ $option_name ] );
-		}
 	}
 
 }

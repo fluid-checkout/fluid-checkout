@@ -182,6 +182,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-layout-selector.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-template-selector.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-image-uploader.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-gaa-google-api-key.php';
 	}
 
 	/**

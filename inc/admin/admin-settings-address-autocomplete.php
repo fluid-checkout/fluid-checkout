@@ -83,9 +83,10 @@ class FluidCheckout_Settings_AddressAutocomplete {
 				'desc'              => __( 'Paste your Google API key and use the test button to confirm it works for this website. Make sure the key is valid and allowed for your domain, otherwise the address field might get blocked preventing customers from completing their orders.', 'fluid-checkout' ),
 				'id'                => 'fc_gaa_google_places_api_key',
 				'type'              => 'fc_gaa_google_places_api_key',
-				'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_gaa_google_places_api_key' ),
+				'default'           => '',
 				'autoload'          => false,
 				'disabled'          => true,
+				'is_option'         => false, // Site-wide wp_option; saved by PRO, not the settings profile
 				'requires'          => self::FEATURE,
 			),
 
