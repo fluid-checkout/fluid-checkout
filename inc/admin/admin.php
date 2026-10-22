@@ -11,6 +11,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 */
 	public function __construct() {
 		$this->load_settings_access();
+		$this->load_guided_setup();
 		$this->hooks();
 	}
 
@@ -63,6 +64,10 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Styles
 		wp_register_style( 'fc-admin-options', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-options' ), array(), NULL );
 		wp_register_style( 'fc-admin-dashboard', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-dashboard' ), array(), NULL );
+		wp_register_style( 'fc-admin-guided-setup', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-guided-setup' ), array(), NULL );
+
+		// Scripts
+		wp_register_script( 'fc-guided-setup', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-guided-setup' ), array( 'fc-utils', 'fc-collapsible-block' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 
@@ -72,6 +77,14 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 */
 	public function load_settings_access() {
 		include_once self::$directory_path . 'inc/admin/admin-settings-access.php';
+	}
+
+	/**
+	 * Load the guided setup base class and Fluid Checkout smoke wizard.
+	 */
+	public function load_guided_setup() {
+		require_once self::$directory_path . 'inc/admin/guided-setup/abstract-guided-setup.php';
+		require_once self::$directory_path . 'inc/admin/guided-setup/guided-setup-fluid-checkout.php';
 	}
 
 

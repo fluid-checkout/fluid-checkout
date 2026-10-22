@@ -476,9 +476,10 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 	 * @param   array  $value  Admin settings args values.
 	 */
 	public function output_field( $value ) {
-		$settings_page = FluidCheckout_Admin_Settings_Page::instance();
-		$dashboard_url = $settings_page->get_settings_url( 'dashboard' );
-		$steps         = $this->get_checklist_steps();
+		$steps            = $this->get_checklist_steps();
+		$guided_setup_url = class_exists( 'FluidCheckout_Admin_GuidedSetup_FluidCheckout' )
+			? FluidCheckout_Admin_GuidedSetup_FluidCheckout::instance()->get_guided_setup_url()
+			: FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'dashboard' );
 		?>
 		<div class="fc-settings-card fc-settings-card--setup">
 			<div class="fc-settings-card__header">
@@ -519,7 +520,7 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 			</div>
 
 			<div class="fc-settings-card__footer">
-				<a class="fc-settings-button fc-settings-button--primary" href="<?php echo esc_url( $dashboard_url ); ?>"><?php echo esc_html( __( 'Guided setup', 'fluid-checkout' ) ); ?></a>
+				<a class="fc-settings-button fc-settings-button--primary" href="<?php echo esc_url( $guided_setup_url ); ?>"><?php echo esc_html( __( 'Guided setup', 'fluid-checkout' ) ); ?></a>
 			</div>
 		</div>
 		<?php

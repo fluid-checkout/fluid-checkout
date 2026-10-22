@@ -337,6 +337,12 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Shared guided setup admin base class (`FluidCheckout_Admin_GuidedSetup`).
+* Added: Shared guided setup admin stylesheet (`fc-admin-guided-setup`).
+* Added: Shared guided setup admin script (`fc-guided-setup`).
+* Added: Guided setup progress storage keyed by feature slug (`guided_setup_id`) on the shared base class.
+* Added: Fluid Checkout guided setup (placeholder 3-step wizard) linked from Getting started.
+* Added: PHPUnit test suite and guided setup progress unit tests.
 * Improved: Guest and logged-in preview modes use segmented buttons in the preview toolbar.
 * Added: Toggle the settings page preview expanded or collapsed with Ctrl+Shift+P or Cmd+Shift+P.
 * Improved: Dashboard PRO offer uses the promo layout with a two-column features list and actions in the promo footer.

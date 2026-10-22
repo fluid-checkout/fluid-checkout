@@ -1,0 +1,185 @@
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
+// Guided setup card. Imported with `@import` from `admin-guided-setup.scss`.
+
+// ------------------------------------
+// GUIDED SETUP CARD
+// ------------------------------------
+
+.fc-guided-setup .fc-setup-card {
+	background: $white;
+	border: 1px solid $fc-header-button-border-color;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba( 0, 0, 0, 0.05 );
+	display: none;
+	#{$alignment-left}: 0; // Guided setup script slides the card on this side.
+	margin: $fc-settings-card-margin-bottom 0 0;
+	max-width: 100%;
+	opacity: 0;
+	position: relative;
+	top: 0;
+}
+
+.fc-guided-setup .fc-setup-card.fc-setup-card--visible {
+	display: block;
+	#{$alignment-left}: 0;
+	opacity: 1;
+	top: 0;
+}
+
+.fc-guided-setup .fc-setup-card {
+	#{$alignment-left}: 0;
+	top: 0;
+}
+
+.fc-guided-setup .fc-setup-card .fc-setup-card__inner {
+	padding: $fc-settings-card-padding;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		padding: $fc-settings-card-padding-mobile;
+	}
+}
+
+.fc-guided-setup .fc-setup-card .fc-setup-card__inner > :first-child > :first-child {
+	margin-top: 0;
+}
+
+.fc-guided-setup .fc-setup-card .fc-setup-card__inner > * > h2 {
+	font-size: $fc-settings-content-title-font-size;
+	font-weight: $fc-settings-content-title-font-weight;
+	line-height: $fc-settings-content-title-line-height;
+}
+
+.fc-guided-setup .fc-setup-card .fc-setup-card__inner > * > h3 {
+	font-size: $fc-settings-card-title-font-size;
+	font-weight: $fc-settings-card-title-font-weight;
+	line-height: 1.4;
+	margin-top: 20px;
+}
+
+.fc-guided-setup .fc-setup-card .fc-setup-card__inner p,
+.fc-guided-setup .fc-setup-card .fc-setup-card__inner ul,
+.fc-guided-setup .fc-setup-card .fc-setup-card__inner ol {
+	color: $fc-settings-card-description-color;
+	font-size: $fc-settings-field-label-font-size;
+	line-height: 1.5;
+}
+
+.fc-guided-setup .fc-setup-card .fc-setup-card__inner p.fc-setup-intro {
+	color: $fc-settings-text-color;
+	font-size: $fc-settings-field-label-font-size;
+	line-height: 1.5;
+}
+
+.fc-guided-setup .fc-setup-card .fc-setup-card__footer {
+	align-items: center;
+	background: $admin-muted-surface-background;
+	border-top: 1px solid $admin-separator-color;
+	border-radius: 0 0 8px 8px; // Both bottom corners match, so this does not flip.
+	display: flex;
+	justify-content: stretch;
+	padding: 25px;
+}
+
+.fc-setup-step-actions {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	width: 100%;
+
+	@media screen and ( max-width: 480px ) {
+		justify-content: center;
+	}
+}
+
+.fc-setup-step-actions__start {
+	align-items: center;
+	display: flex;
+	flex: 1 1 auto;
+	flex-wrap: wrap;
+	gap: 12px;
+	min-width: 0;
+
+	@media screen and ( max-width: 480px ) {
+		flex: 1 1 100%;
+		justify-content: center;
+	}
+}
+
+.fc-setup-step-back {
+	flex-shrink: 0;
+
+	@media screen and ( max-width: 480px ) {
+		flex: 0 1 auto;
+	}
+}
+
+.fc-setup-step-actions__links {
+	align-items: center;
+	display: inline-flex;
+	flex-shrink: 0;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+
+.fc-guided-setup .fc-setup-step-actions__links .button.button-link {
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.fc-guided-setup .fc-setup-card .fc-setup-card__footer .fc-setup-submit {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	justify-content: flex-end; // Follows flex direction when the document is RTL.
+	margin-#{$alignment-left}: auto;
+	padding: 0;
+	position: relative;
+
+	@media screen and ( max-width: 480px ) {
+		flex: 1 1 100%;
+		justify-content: center;
+		margin-#{$alignment-left}: 0;
+	}
+}
+
+.fc-guided-setup .fc-setup-card .fc-setup-card__footer .fc-setup-submit .button-primary[data-step] {
+	position: relative;
+}
+
+.fc-guided-setup .fc-setup-card .fc-setup-card__footer .fc-setup-submit .button-primary[data-step] .spinner {
+	float: none;
+	left: 50%; // Intentionally physical. Centers the spinner with translate( -50%, -50% ).
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	transform: translate( -50%, -50% );
+	visibility: hidden;
+}
+
+.fc-guided-setup .fc-setup-card .fc-setup-card__footer .fc-setup-submit .button-primary[data-step] .spinner.is-active {
+	filter: brightness( 0 ) invert( 1 );
+	visibility: visible;
+}
+
+.fc-guided-setup .fc-setup-card .fc-setup-card__footer .fc-setup-submit .button-primary[data-step].fc-setup-is-loading .fc-setup-continue-label {
+	visibility: hidden;
+}
+
+.fc-setup-list {
+	list-style: disc;
+	margin-#{$alignment-left}: 20px;
+}
+
+.fc-setup-list--numbered {
+	list-style: decimal;
+}
+
+
+
+.fc-guided-setup .fc-setup-card .fc-setup-card__footer {
+	justify-content: center;
+}

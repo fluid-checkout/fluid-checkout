@@ -376,9 +376,11 @@ $order-review-selector: null !default;
 
 
 
-// Match header primary / secondary button styles on settings page content.
+// Match header primary / secondary button styles on settings page and guided setup content.
 .fc-settings-wrap .button,
 .fc-settings-wrap .button-secondary,
+.fc-guided-setup .button,
+.fc-guided-setup .button-secondary,
 .fc-settings-button {
 	display: inline-block;
 	margin: 0;
@@ -411,6 +413,10 @@ $order-review-selector: null !default;
 .fc-settings-wrap .button:focus,
 .fc-settings-wrap .button-secondary:hover,
 .fc-settings-wrap .button-secondary:focus,
+.fc-guided-setup .button:hover,
+.fc-guided-setup .button:focus,
+.fc-guided-setup .button-secondary:hover,
+.fc-guided-setup .button-secondary:focus,
 .fc-settings-button:hover,
 .fc-settings-button:focus {
 	color: $fc-header-button-color;
@@ -422,17 +428,22 @@ $order-review-selector: null !default;
 
 .fc-settings-wrap .button:focus,
 .fc-settings-wrap .button-secondary:focus,
+.fc-guided-setup .button:focus,
+.fc-guided-setup .button-secondary:focus,
 .fc-settings-button:focus {
 	@include fc-admin-settings-focus-outline();
 }
 
 .fc-settings-wrap .button:active:not( :disabled ):not( .disabled ),
 .fc-settings-wrap .button-secondary:active:not( :disabled ):not( .disabled ),
+.fc-guided-setup .button:active:not( :disabled ):not( .disabled ),
+.fc-guided-setup .button-secondary:active:not( :disabled ):not( .disabled ),
 .fc-settings-button:active:not( :disabled ):not( .disabled ) {
 	border-width: 2px 1px 1px;
 }
 
 .fc-settings-wrap .button.button-primary,
+.fc-guided-setup .button.button-primary,
 .fc-settings-button--primary {
 	background: $fc-header-button-save-background;
 	border-color: $fc-header-button-save-border-color;
@@ -441,10 +452,55 @@ $order-review-selector: null !default;
 
 .fc-settings-wrap .button.button-primary:hover,
 .fc-settings-wrap .button.button-primary:focus,
+.fc-guided-setup .button.button-primary:hover,
+.fc-guided-setup .button.button-primary:focus,
 .fc-settings-button--primary:hover,
 .fc-settings-button--primary:focus {
 	background: $fc-header-button-save-background-hover;
 	border-color: $fc-header-button-save-border-color-hover;
 	color: $fc-header-button-save-color;
+}
+
+.fc-guided-setup .button.button-primary.fc-setup-disabled,
+.fc-guided-setup a.button.button-primary.fc-setup-disabled {
+	background: $fc-header-button-save-background-disabled;
+	border-color: $fc-header-button-save-border-color-disabled;
+	color: $white;
+	cursor: not-allowed;
+	opacity: 1;
+	pointer-events: none;
+}
+
+.fc-settings-wrap .button.button-link,
+.fc-guided-setup .button.button-link {
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	color: $admin-text-color-muted;
+	font-size: $fc-header-button-font-size;
+	font-weight: normal;
+	height: auto;
+	line-height: $fc-header-button-line-height;
+	min-height: 0;
+	padding: $fc-header-button-padding;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.fc-settings-wrap .button.button-link:hover,
+.fc-settings-wrap .button.button-link:focus,
+.fc-guided-setup .button.button-link:hover,
+.fc-guided-setup .button.button-link:focus {
+	background: transparent;
+	border: 0;
+	color: $fc-settings-nav-link-hover-color;
+	box-shadow: none;
+	text-decoration: underline;
+}
+
+.fc-settings-wrap .button.button-link:focus,
+.fc-guided-setup .button.button-link:focus {
+	@include fc-admin-settings-focus-outline();
 }
 

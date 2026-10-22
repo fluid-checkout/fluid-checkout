@@ -1,0 +1,37 @@
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
+// Guided setup page header. Imported with `@import` from `admin-guided-setup.scss`.
+
+// ------------------------------------
+// GUIDED SETUP HEADER
+// ------------------------------------
+
+.fc-setup-header {
+	margin: 0 0 12px;
+	text-align: center;
+}
+
+.fc-setup-header__badge {
+	display: inline-block;
+	margin: 0 0 calc( 8px / 3 );
+	padding: 2px 8px;
+	border-radius: $fc-settings-badge-border-radius;
+	background-color: $fc-settings-badge-background-color;
+	color: $fc-settings-text-color;
+	font-size: $fc-settings-badge-font-size;
+	font-weight: 600;
+	line-height: 1.6;
+	vertical-align: middle;
+}
+
+.fc-guided-setup .fc-setup-header__title {
+	margin: 0;
+	padding: 0;
+	padding-top: 0; // Needed to override WP admin `.wrap h1` vertical padding
+	border: none;
+	color: $fc-settings-text-color;
+	font-size: $fc-settings-content-title-font-size;
+	font-weight: $fc-settings-content-title-font-weight;
+	line-height: $fc-settings-content-title-line-height;
+}
