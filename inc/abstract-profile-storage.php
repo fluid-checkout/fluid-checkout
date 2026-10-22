@@ -89,9 +89,9 @@ abstract class FluidCheckout_ProfileStorage extends FluidCheckout {
 	 * @param  string  $slug  Profile slug.
 	 */
 	public function set_active_profile( $slug ) {
-		// Save sanitized slug as the active profile
+		// Save sanitized slug as the active profile, autoloaded as every request reads it
 		$slug = sanitize_title( (string) $slug );
-		$this->update_raw_option( $this->get_active_profile_option(), $slug, false );
+		$this->update_raw_option( $this->get_active_profile_option(), $slug, true );
 
 		// Clear cached values of the previous active profile
 		$this->invalidate_cache();
@@ -173,7 +173,7 @@ abstract class FluidCheckout_ProfileStorage extends FluidCheckout {
 			return array();
 		}
 
-		// Get profile post
+		// Get profile post, already cached by the lookup by slug
 		$post = get_post( $post_id );
 
 		// Bail if post is unreadable
@@ -403,22 +403,23 @@ abstract class FluidCheckout_ProfileStorage extends FluidCheckout {
 		// Bail if slug is empty
 		if ( '' === $slug ) { return null; }
 
-		// Get profile post by slug
+		// Get profile post by slug, which also caches the post so getting its values needs no other query
 		$posts = get_posts(
 			array(
-				'name'             => $slug,
-				'post_type'        => $this->get_profile_post_type(),
-				'post_status'      => array( 'publish', 'private', 'draft' ),
-				'posts_per_page'   => 1,
-				'fields'           => 'ids',
-				'suppress_filters' => true,
+				'name'                      => $slug,
+				'post_type'                 => $this->get_profile_post_type(),
+				'post_status'               => array( 'publish', 'private', 'draft' ),
+				'posts_per_page'            => 1,
+				'update_post_meta_cache'    => false,
+				'update_post_term_cache'    => false,
+				'suppress_filters'          => true,
 			)
 		);
 
 		// Bail if the profile post does not exist
 		if ( empty( $posts ) ) { return null; }
 
-		return (int) $posts[0];
+		return (int) $posts[0]->ID;
 	}
 
 
