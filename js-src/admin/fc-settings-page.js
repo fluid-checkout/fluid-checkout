@@ -1127,12 +1127,21 @@
 		if ( ! isSaveShortcut ) { return; }
 
 		form = document.querySelector( _settings.formSelector );
+
+		// Bail if the settings form is not on the page
+		if ( ! form ) { return; }
+
+		// Always block the browser save-page shortcut on the settings page
+		// (including while a save request is already in progress and save buttons are disabled)
+		event.preventDefault();
+
+		// Bail if a save request is already in progress
+		if ( _isSavingSettings ) { return; }
+
 		saveButton = getActiveSaveButton();
 
-		// Bail if the form or an enabled save button is missing
-		if ( ! form || ! saveButton ) { return; }
-
-		event.preventDefault();
+		// Bail if an enabled save button is missing
+		if ( ! saveButton ) { return; }
 
 		if ( typeof form.requestSubmit === 'function' ) {
 			form.requestSubmit( saveButton );
