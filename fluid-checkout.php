@@ -551,6 +551,7 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 			self::$features = array(
 				// Utility features
 				'FluidCheckout_Utils'                          => array( 'file' => self::$directory_path . 'inc/utils.php' ), // Needs to be loaded before other features that use page helpers.
+				'FluidCheckout_RestApiClient'                  => array( 'file' => self::$directory_path . 'inc/rest-api-client.php' ), // Generic HTTP client; loaded for PRO and other features (no singleton).
 				'FluidCheckout_Enqueue'                        => array( 'file' => self::$directory_path . 'inc/enqueue.php' ),
 				'FluidCheckout_FragmentsRefresh'               => array( 'file' => self::$directory_path . 'inc/fragments-refresh.php' ),
 				'FluidCheckout_Validation'                     => array( 'file' => self::$directory_path . 'inc/checkout-validation.php' ),

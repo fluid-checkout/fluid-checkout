@@ -40,7 +40,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 			'script_handle'                 => 'fc-guided-setup',
 			'style_handle'                  => 'fc-admin-guided-setup',
 
-			'js_settings_filter'            => 'fc_js_settings',
+			'js_settings_filter'            => 'fc_js_settings_admin',
 			'script_init_settings_key'      => 'guidedSetup',
 		);
 	}
@@ -207,7 +207,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		wp_enqueue_style( 'fc-admin-guided-setup' );
 
 		// Init after enqueue so the handle is registered (FluidCheckout_Admin::register_assets at priority 5).
-		wp_add_inline_script( 'fc-guided-setup', 'window.addEventListener("load",function(){if(window.FCGuidedSetup&&window.fcSettings&&fcSettings.guidedSetup){FCGuidedSetup.init(fcSettings.guidedSetup);}});' );
+		wp_add_inline_script( 'fc-guided-setup', 'window.addEventListener("load",function(){if(window.FCGuidedSetup&&window.fcSettingsAdmin&&fcSettingsAdmin.guidedSetup){FCGuidedSetup.init(fcSettingsAdmin.guidedSetup);}});' );
 	}
 
 
@@ -246,7 +246,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
-	 * Maybe output the fcSettings inline script on the guided setup page.
+	 * Maybe output the fcSettingsAdmin inline script on the guided setup page.
 	 */
 	public function maybe_output_settings_inline_script() {
 		// Bail if not on the guided setup page
@@ -255,7 +255,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		// Bail if enqueue class is not available
 		if ( ! class_exists( 'FluidCheckout_Enqueue' ) ) { return; }
 
-		FluidCheckout_Enqueue::instance()->output_settings_inline_script();
+		FluidCheckout_Enqueue::instance()->output_settings_inline_script_admin();
 	}
 
 

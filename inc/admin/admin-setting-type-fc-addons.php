@@ -24,6 +24,9 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 		// Assets
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
+
+		// Admin JS settings
+		add_filter( 'fc_js_settings_admin', array( $this, 'add_js_settings_admin' ), 10 );
 	}
 
 
@@ -37,22 +40,38 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 		// Enqueue dashboard add-ons script
 		wp_enqueue_script( 'fc-admin-dashboard-addons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-dashboard-addons' ), array( 'fc-utils' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-admin-dashboard-addons', 'window.addEventListener("load",function(){FCAdminDashboardAddons.init(fcAdminDashboardAddonsSettings);});' );
+		wp_add_inline_script( 'fc-admin-dashboard-addons', 'window.addEventListener("load",function(){if(window.fcSettingsAdmin&&fcSettingsAdmin.dashboardAddons){FCAdminDashboardAddons.init(fcSettingsAdmin.dashboardAddons);}});' );
+	}
 
-		// EXCEPTION: Runtime values — AJAX URL and nonce for local Activate.
-		wp_localize_script(
-			'fc-admin-dashboard-addons',
-			'fcAdminDashboardAddonsSettings',
-			array(
-				'ajaxUrl'       => admin_url( 'admin-ajax.php' ),
-				'activateNonce' => wp_create_nonce( 'fc-activate-plugin' ),
-				'i18n'          => array(
-					'processing'   => __( 'Processing…', 'fluid-checkout' ),
-					'genericError' => __( 'Something went wrong. Please try again.', 'fluid-checkout' ),
-					'activate'     => __( 'Activate plugin', 'fluid-checkout' ),
-					'activated'    => __( 'Activated', 'fluid-checkout' ),
-				),
-			)
+	/**
+	 * Add dashboard add-ons script settings to `fcSettingsAdmin`.
+	 *
+	 * @param   array  $settings  Admin JS settings.
+	 */
+	public function add_js_settings_admin( $settings ) {
+		// Bail if not on the Dashboard tab of the settings page
+		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) || ! FluidCheckout_Admin_Settings_Page::instance()->is_settings_page( 'dashboard' ) ) { return $settings; }
+
+		$settings[ 'dashboardAddons' ] = $this->get_dashboard_addons_script_settings();
+
+		return $settings;
+	}
+
+	/**
+	 * Get script settings for the dashboard add-ons UI.
+	 *
+	 * @return  array
+	 */
+	public function get_dashboard_addons_script_settings() {
+		return array(
+			'ajaxUrl'       => admin_url( 'admin-ajax.php' ),
+			'activateNonce' => wp_create_nonce( 'fc-activate-plugin' ),
+			'i18n'          => array(
+				'processing'   => __( 'Processing…', 'fluid-checkout' ),
+				'genericError' => __( 'Something went wrong. Please try again.', 'fluid-checkout' ),
+				'activate'     => __( 'Activate plugin', 'fluid-checkout' ),
+				'activated'    => __( 'Activated', 'fluid-checkout' ),
+			),
 		);
 	}
 

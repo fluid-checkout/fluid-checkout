@@ -57,9 +57,9 @@ class FluidCheckout_Settings_VATAssistant {
 	 * Get the shop VAT country name, from the VAT Assistant add-on when available, or the WooCommerce store country.
 	 */
 	public static function get_shop_vat_country_name() {
-		// Maybe get country name from the VAT Assistant add-on
-		if ( class_exists( 'FC_VAT_Assistant_Checkout_EU_VAT' ) ) {
-			return FC_VAT_Assistant_Checkout_EU_VAT::instance()->get_shop_vat_country_name();
+		// Maybe get country name from PRO EU-VAT feature
+		if ( class_exists( 'FluidCheckout_PRO_Checkout_EU_VAT' ) ) {
+			return FluidCheckout_PRO_Checkout_EU_VAT::instance()->get_shop_vat_country_name();
 		}
 
 		// Bail if WooCommerce is not available
@@ -94,7 +94,7 @@ class FluidCheckout_Settings_VATAssistant {
 	 */
 	public static function add_settings( $settings, $current_section ) {
 		// Bail if not on the VAT Assistant section
-		if ( 'vat_number' !== $current_section ) { return $settings; }
+		if ( 'vat_assistant' !== $current_section ) { return $settings; }
 
 		/**
 		 * Filters the settings for one VAT Assistant section.
@@ -102,7 +102,7 @@ class FluidCheckout_Settings_VATAssistant {
 		 * The dynamic portion of the hook name, `$current_section`, refers to the settings section slug.
 		 * Possible hook names include:
 		 *
-		 * - `fc_vat_number_settings`
+		 * - `fc_vat_vat_assistant_settings`
 		 *
 		 * @since 5.0.0
 		 */

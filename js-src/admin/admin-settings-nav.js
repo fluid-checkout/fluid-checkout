@@ -80,6 +80,8 @@
 	 *
 	 * Prefers `data-fc-settings-nav-link`. Falls back to same-origin
 	 * `admin.php?page=fluid-checkout&tab=…` links inside the settings form.
+	 * Links with `_wpnonce` are left alone so admin-notice actions
+	 * (dismiss, DB update, cleanup) can do a full page request.
 	 *
 	 * @param   {Element}  link  Anchor element.
 	 * @return  {string}         Tab slug, or empty string when not a settings tab link.
@@ -123,6 +125,9 @@
 
 		// Bail if the link is not a Fluid Checkout settings URL
 		if ( 'fluid-checkout' !== parsed.searchParams.get( 'page' ) ) { return ''; }
+
+		// Bail if the URL carries a nonce (admin notice / action links need a full reload)
+		if ( parsed.searchParams.has( '_wpnonce' ) ) { return ''; }
 
 		return parsed.searchParams.get( 'tab' ) || '';
 	};

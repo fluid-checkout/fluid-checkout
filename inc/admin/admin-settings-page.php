@@ -78,6 +78,10 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		// Enqueue assets after shared library scripts are registered
 		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 20 );
 
+		// Admin JS settings
+		add_filter( 'fc_js_settings_admin', array( $this, 'add_js_settings_admin' ), 10 );
+		add_action( 'admin_head', array( $this, 'maybe_output_settings_inline_script_admin' ), 5 );
+
 		// License key field assets
 		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_register_license_key_assets' ), 10 );
 	}
@@ -311,6 +315,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			'gift_options'             => array( 'label' => __( 'Gift options', 'fluid-checkout' ), 'section' => 'gift_options' ),
 			'international_phone'      => array( 'label' => __( 'Phone fields', 'fluid-checkout' ), 'section' => 'international_phone' ),
 			'trust_symbols'            => array( 'label' => __( 'Trust badges', 'fluid-checkout' ), 'section' => 'trust_symbols' ),
+			'vat_assistant'            => array( 'label' => __( 'EU-VAT Assistant', 'fluid-checkout' ), 'section' => 'vat_assistant' ),
 		);
 		$tabs_after = array(
 			'separator_3'              => array( 'type' => 'separator' ),
@@ -623,37 +628,9 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 		// Scripts
 		wp_register_script( 'fc-admin-settings-setup-checklist', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-setup-checklist' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_localize_script(
-			'fc-admin-settings-setup-checklist',
-			'fcAdminSettingsSetupChecklistSettings',
-			array(
-				'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
-				'syncTabAction'      => 'fc_setup_checklist_mark_tab',
-				'nonce'              => wp_create_nonce( 'fc_setup_checklist_mark_tab' ),
-				'tabToChecklistStep' => class_exists( 'FluidCheckout_Admin_SettingType_Setup' ) ? FluidCheckout_Admin_SettingType_Setup::instance()->get_checklist_tab_to_step_map() : array(),
-				'i18n'               => array(
-					'completed' => __( 'Completed', 'fluid-checkout' ),
-				),
-			)
-		);
-		wp_add_inline_script( 'fc-admin-settings-setup-checklist', '(function(){var i=function(){FCAdminSettingsSetupChecklist.init(window.fcAdminSettingsSetupChecklistSettings||{});};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
+		wp_add_inline_script( 'fc-admin-settings-setup-checklist', '(function(){var i=function(){if(window.fcSettingsAdmin&&fcSettingsAdmin.setupChecklist){FCAdminSettingsSetupChecklist.init(fcSettingsAdmin.setupChecklist);}};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-settings-page', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-settings-page' ), array( 'fc-utils', 'fc-admin-settings-setup-checklist' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_localize_script(
-			'fc-settings-page',
-			'fcSettingsPageSettings',
-			array(
-				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
-				'saveAction' => 'fc_settings_save',
-				'i18n'       => array(
-					'saving'          => __( 'Saving...', 'fluid-checkout' ),
-					'save'            => __( 'Save settings', 'fluid-checkout' ),
-					'saved'           => __( 'Your settings have been saved.', 'fluid-checkout' ),
-					'saveError'       => __( 'Settings could not be saved. Please try again.', 'fluid-checkout' ),
-					'dismissNotice'   => __( 'Dismiss notice', 'fluid-checkout' ),
-				),
-			)
-		);
-		wp_add_inline_script( 'fc-settings-page', '(function(){var i=function(){FCSettingsPage.init(window.fcSettingsPageSettings||{});};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
+		wp_add_inline_script( 'fc-settings-page', '(function(){var i=function(){if(window.fcSettingsAdmin&&fcSettingsAdmin.settingsPage){FCSettingsPage.init(fcSettingsAdmin.settingsPage);}};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-tooltips', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-tooltips' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-tooltips', '(function(){var i=function(){FCAdminSettingsTooltips.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-nav', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-nav' ), array( 'fc-utils', 'fc-admin-settings-setup-checklist' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -694,6 +671,51 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		if ( $this->page_hook_suffix !== $hook_suffix ) { return; }
 
 		$this->enqueue_assets();
+	}
+
+	/**
+	 * Add settings page script settings to `fcSettingsAdmin`.
+	 *
+	 * @param   array  $settings  Admin JS settings.
+	 */
+	public function add_js_settings_admin( $settings ) {
+		// Bail if not on the settings page
+		if ( ! $this->is_settings_page() ) { return $settings; }
+
+		$settings[ 'setupChecklist' ] = array(
+			'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
+			'syncTabAction'      => 'fc_setup_checklist_mark_tab',
+			'nonce'              => wp_create_nonce( 'fc_setup_checklist_mark_tab' ),
+			'tabToChecklistStep' => class_exists( 'FluidCheckout_Admin_SettingType_Setup' ) ? FluidCheckout_Admin_SettingType_Setup::instance()->get_checklist_tab_to_step_map() : array(),
+			'i18n'               => array(
+				'completed' => __( 'Completed', 'fluid-checkout' ),
+			),
+		);
+
+		$settings[ 'settingsPage' ] = array(
+			'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
+			'saveAction' => 'fc_settings_save',
+			// Copy for AJAX save and floating header notices on the settings page
+			'i18n'       => array(
+				'saving'        => __( 'Saving...', 'fluid-checkout' ),
+				'save'          => __( 'Save settings', 'fluid-checkout' ),
+				'saved'         => __( 'Your settings have been saved.', 'fluid-checkout' ),
+				'saveError'     => __( 'Settings could not be saved. Please try again.', 'fluid-checkout' ),
+				'dismissNotice' => __( 'Dismiss notice', 'fluid-checkout' ), // aria-label on the floating header notice dismiss button
+			),
+		);
+
+		return $settings;
+	}
+
+	/**
+	 * Maybe output `fcSettingsAdmin` on the Fluid Checkout settings page.
+	 */
+	public function maybe_output_settings_inline_script_admin() {
+		// Bail if not on the settings page
+		if ( ! $this->is_settings_page() ) { return; }
+
+		FluidCheckout_Enqueue::instance()->output_settings_inline_script_admin();
 	}
 
 	/**

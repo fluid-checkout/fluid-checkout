@@ -204,6 +204,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-settings-trust-symbols.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-address-autocomplete.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-address-book.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-vat-assistant.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-integrations.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-tools.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-license-keys.php';

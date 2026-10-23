@@ -337,10 +337,12 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Fixed: Company field requirements at checkout no longer affect unrelated address fields.
+* Added: Shared `FluidCheckout_RestApiClient` HTTP client for PRO and other features.
+* Added: Admin JavaScript settings object `fcSettingsAdmin` for admin screens that need it.
 * Added: PHPUnit test suite and guided setup progress unit tests.
 * Improved: Dashboard PRO offer uses the promo layout with a two-column features list and actions in the promo footer.
 * Improved: Always show the PRO features list on the Dashboard add-ons promo card, including when PRO is installed.
+* Fixed: Company field requirements at checkout no longer affect unrelated address fields.
 * Fixed: Getting started Address book step not completing when PRO is active and the feature is enabled without the standalone add-on plugin active.
 * Removed: EU-VAT assistant from the Dashboard add-ons list and the settings menu.
 * Removed: More plugins from the Fluid Checkout family section on the Dashboard.

@@ -59,7 +59,7 @@
 			save:                              'Save settings',
 			saved:                             'Your settings have been saved.',
 			saveError:                         'Settings could not be saved. Please try again.',
-			dismissNotice:                     'Dismiss notice',
+			dismissNotice:                     'Dismiss notice', // aria-label on the floating header notice dismiss button
 		},
 	};
 	var _triggerFieldIds = [];

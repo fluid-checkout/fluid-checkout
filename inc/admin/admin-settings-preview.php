@@ -58,6 +58,9 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		// Assets
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 20 );
+
+		// Admin JS settings (settings page already dumps `fcSettingsAdmin`)
+		add_filter( 'fc_js_settings_admin', array( $this, 'add_js_settings_admin' ), 10 );
 	}
 
 
@@ -221,7 +224,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-admin-settings-preview', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-preview' ), array( 'jquery', 'fc-utils', 'fc-admin-settings-enhanced-select' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-admin-settings-preview', 'window.addEventListener("load",function(){FCAdminSettingsPreview.init(fcAdminSettingsPreviewSettings);});' );
+		wp_add_inline_script( 'fc-admin-settings-preview', 'window.addEventListener("load",function(){if(window.fcSettingsAdmin&&fcSettingsAdmin.settingsPreview){FCAdminSettingsPreview.init(fcSettingsAdmin.settingsPreview);}});' );
 	}
 
 	/**
@@ -239,43 +242,53 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		if ( ! $page->is_settings_page() ) { return; }
 
 		wp_enqueue_script( 'fc-admin-settings-preview' );
+	}
+
+	/**
+	 * Add preview script settings to `fcSettingsAdmin` on the settings page.
+	 *
+	 * @param   array  $settings  Admin JS settings.
+	 */
+	public function add_js_settings_admin( $settings ) {
+		// Bail if settings page class is not available
+		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) ) { return $settings; }
+
+		$page = FluidCheckout_Admin_Settings_Page::instance();
+
+		// Bail if not on the Fluid Checkout settings page
+		if ( ! $page->is_settings_page() ) { return $settings; }
 
 		// Get preview pane configuration
 		$config = $this->get_preview_config( $page->get_current_tab() );
 
-		$tab_preview_modes = $this->get_tab_preview_modes();
-
-		// EXCEPTION: Runtime values — initial tab and labels for the preview UI.
-		wp_localize_script(
-			'fc-admin-settings-preview',
-			'fcAdminSettingsPreviewSettings',
-			array(
-				'hiddenTabs'             => self::HIDDEN_TABS,
-				'initialTab'             => $page->get_current_tab(),
-				'initialPage'            => $this->get_preview_page_for_tab( $page->get_current_tab() ),
-				'placeholderSrcdocs'     => $this->get_placeholder_iframe_srcdocs(),
-				'defaultPage'            => $config[ 'default_page' ],
-				'modeQueryArg'           => FluidCheckout_Admin_Preview::MODE_QUERY_ARG,
-				'guestMode'              => FluidCheckout_Admin_Preview::MODE_GUEST,
-				'loggedInMode'           => FluidCheckout_Admin_Preview::MODE_LOGGED_IN,
-				'tabPreviewModes'        => $tab_preview_modes,
-				'storageKey'             => self::STORAGE_KEY,
-				'compactBreakpoint'      => self::COMPACT_BREAKPOINT,
-				'viewportWidths'         => self::VIEWPORT_WIDTHS,
-				'ajaxUrl'                => admin_url( 'admin-ajax.php' ),
-				'draftAction'            => FluidCheckout_Admin_Preview::DRAFT_AJAX_ACTION,
-				'draftNonce'             => wp_create_nonce( FluidCheckout_Admin_Preview::DRAFT_AJAX_ACTION ),
-				'previewToken'           => FluidCheckout_Admin_Preview::instance()->get_token(),
-				'styleSettings'          => $config[ 'style_settings' ],
-				'i18n'                   => array(
-					'expand'               => __( 'Expand preview', 'fluid-checkout' ),
-					'collapse'             => __( 'Collapse preview', 'fluid-checkout' ),
-					'showPreview'          => __( 'Preview', 'fluid-checkout' ),
-					'showHeaderFooter'     => __( 'Show header and footer', 'fluid-checkout' ),
-					'hideHeaderFooter'     => __( 'Hide header and footer', 'fluid-checkout' ),
-				),
-			)
+		$settings[ 'settingsPreview' ] = array(
+			'hiddenTabs'         => self::HIDDEN_TABS,
+			'initialTab'         => $page->get_current_tab(),
+			'initialPage'        => $this->get_preview_page_for_tab( $page->get_current_tab() ),
+			'placeholderSrcdocs' => $this->get_placeholder_iframe_srcdocs(),
+			'defaultPage'        => $config[ 'default_page' ],
+			'modeQueryArg'       => FluidCheckout_Admin_Preview::MODE_QUERY_ARG,
+			'guestMode'          => FluidCheckout_Admin_Preview::MODE_GUEST,
+			'loggedInMode'       => FluidCheckout_Admin_Preview::MODE_LOGGED_IN,
+			'tabPreviewModes'    => $this->get_tab_preview_modes(),
+			'storageKey'         => self::STORAGE_KEY,
+			'compactBreakpoint'  => self::COMPACT_BREAKPOINT,
+			'viewportWidths'     => self::VIEWPORT_WIDTHS,
+			'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
+			'draftAction'        => FluidCheckout_Admin_Preview::DRAFT_AJAX_ACTION,
+			'draftNonce'         => wp_create_nonce( FluidCheckout_Admin_Preview::DRAFT_AJAX_ACTION ),
+			'previewToken'       => FluidCheckout_Admin_Preview::instance()->get_token(),
+			'styleSettings'      => $config[ 'style_settings' ],
+			'i18n'               => array(
+				'expand'           => __( 'Expand preview', 'fluid-checkout' ),
+				'collapse'         => __( 'Collapse preview', 'fluid-checkout' ),
+				'showPreview'      => __( 'Preview', 'fluid-checkout' ),
+				'showHeaderFooter' => __( 'Show header and footer', 'fluid-checkout' ),
+				'hideHeaderFooter' => __( 'Hide header and footer', 'fluid-checkout' ),
+			),
 		);
+
+		return $settings;
 	}
 
 
