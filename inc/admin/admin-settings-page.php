@@ -274,10 +274,29 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		?>
 		<div id="fc-header">
 			<div class="fc-header__notices" data-fc-settings-notices aria-live="polite"></div>
-			<a class="fc-header__logo" href="<?php echo esc_url( $home_url ); ?>" target="_blank" rel="noopener noreferrer">
-				<img class="fc-header__logo-icon" src="<?php echo esc_url( $logo_url ); ?>" alt="" />
-				<span class="fc-header__logo-text"><?php echo esc_html( __( 'Fluid Checkout', 'fluid-checkout' ) ); ?></span>
-			</a>
+			<div class="fc-header__branding">
+				<a class="fc-header__logo" href="<?php echo esc_url( $home_url ); ?>" target="_blank" rel="noopener noreferrer">
+					<img class="fc-header__logo-icon" src="<?php echo esc_url( $logo_url ); ?>" alt="" />
+					<span class="fc-header__logo-text"><?php echo esc_html( __( 'Fluid Checkout', 'fluid-checkout' ) ); ?></span>
+				</a>
+				<?php
+				/**
+				 * Filters HTML beside the settings header logo link (not inside the link).
+				 *
+				 * @since 5.0.0
+				 *
+				 * @param string $html Empty by default.
+				 */
+				echo wp_kses(
+					apply_filters( 'fc_settings_header_logo_after_title', '' ),
+					array(
+						'span' => array(
+							'class' => true,
+						),
+					)
+				);
+				?>
+			</div>
 
 			<a class="fc-header__button" href="<?php echo esc_url( $support_url ); ?>" target="_blank" rel="noopener noreferrer">
 				<span class="dashicons dashicons-email-alt" aria-hidden="true"></span><?php echo esc_html( __( 'Support', 'fluid-checkout' ) ); ?>

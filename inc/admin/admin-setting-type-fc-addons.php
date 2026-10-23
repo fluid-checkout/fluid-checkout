@@ -7,6 +7,11 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 	/**
+	 * Option key: hide the Dashboard PRO promo section while Fluid Checkout PRO is active.
+	 */
+	const HIDE_DASHBOARD_PRO_PROMO_OPTION = 'fc_hide_dashboard_pro_promo_section';
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -21,6 +26,9 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 	public function hooks() {
 		// Field types
 		add_action( 'fc_admin_settings_render_field_fc_addons', array( $this, 'output_field' ), 10 );
+
+		// Dashboard PRO promo visibility
+		add_action( 'admin_init', array( $this, 'maybe_hide_dashboard_pro_promo_section' ), 5 );
 
 		// Assets
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
@@ -177,6 +185,11 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 	 * @return array|null
 	 */
 	public function get_pro_bundle_addon() {
+		// Bail if the Dashboard PRO promo section should not render
+		if ( ! $this->should_show_dashboard_pro_promo_section() ) {
+			return null;
+		}
+
 		// Iterate catalog items
 		foreach ( $this->get_addons_catalog() as $addon ) {
 			// Bail if this is not the PRO bundle item
@@ -193,6 +206,104 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		}
 
 		return null;
+	}
+
+
+
+	/**
+	 * Whether the user chose to hide the Dashboard PRO promo while PRO is active.
+	 *
+	 * @return bool
+	 */
+	public function is_dashboard_pro_promo_hidden_by_user() {
+		return 'yes' === get_option( self::HIDE_DASHBOARD_PRO_PROMO_OPTION, 'no' );
+	}
+
+
+
+	/**
+	 * Whether the Dashboard PRO promo section should be output.
+	 *
+	 * Lite always shows the section. When PRO is active, honour the hide preference.
+	 *
+	 * @return bool
+	 */
+	public function should_show_dashboard_pro_promo_section() {
+		// Always show the promo while only Lite is active
+		if ( ! FluidCheckout::instance()->is_pro_activated() ) {
+			return true;
+		}
+
+		// Hide the promo when the user dismissed it with PRO active
+		if ( $this->is_dashboard_pro_promo_hidden_by_user() ) {
+			return false;
+		}
+
+		return true;
+	}
+
+
+
+	/**
+	 * Persist hide preference and redirect back to the Dashboard settings tab.
+	 */
+	public function maybe_hide_dashboard_pro_promo_section() {
+		// Bail if not a hide request
+		if ( ! isset( $_GET['fc_hide_dashboard_pro_promo'] ) || '1' !== sanitize_key( wp_unslash( $_GET['fc_hide_dashboard_pro_promo'] ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			return;
+		}
+
+		// Bail if user cannot manage WooCommerce
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { return; }
+
+		check_admin_referer( 'fc_hide_dashboard_pro_promo' );
+
+		// Bail if PRO is not active (preference only applies with PRO active)
+		if ( ! FluidCheckout::instance()->is_pro_activated() ) { return; }
+
+		update_option( self::HIDE_DASHBOARD_PRO_PROMO_OPTION, 'yes', false );
+
+		wp_safe_redirect( FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'dashboard' ) );
+		exit;
+	}
+
+
+
+	/**
+	 * Get the URL to hide the Dashboard PRO promo section.
+	 *
+	 * @return string
+	 */
+	private function get_hide_dashboard_pro_promo_section_url() {
+		return wp_nonce_url(
+			add_query_arg(
+				array(
+					'fc_hide_dashboard_pro_promo' => '1',
+				),
+				FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'dashboard' )
+			),
+			'fc_hide_dashboard_pro_promo'
+		);
+	}
+
+
+
+	/**
+	 * Get HTML for the Hide this section control on the Dashboard PRO promo.
+	 *
+	 * @return string
+	 */
+	private function get_hide_dashboard_pro_promo_section_button_html() {
+		// Bail if PRO is not active
+		if ( ! FluidCheckout::instance()->is_pro_activated() ) {
+			return '';
+		}
+
+		return sprintf(
+			'<a class="fc-settings-button fc-settings-button--primary" href="%1$s">%2$s</a>',
+			esc_url( $this->get_hide_dashboard_pro_promo_section_url() ),
+			esc_html( __( 'Hide this section', 'fluid-checkout' ) )
+		);
 	}
 
 
@@ -308,6 +419,12 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 		ob_start();
 
+		// Dashboard PRO promo: hide control before Activated / other actions
+		if ( $is_pro_bundle && $is_pro_active ) {
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $this->get_hide_dashboard_pro_promo_section_button_html();
+		}
+
 		if ( $is_activated ) :
 			$action_type = 'activated';
 			?>
@@ -361,6 +478,11 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			}
 		endif;
 
+		// PRO bundle promo: Learn more stays on the same row as Hide / Activated / Install
+		if ( $is_pro_bundle ) {
+			$this->output_learn_more_link( $addon );
+		}
+
 		$html = (string) ob_get_clean();
 
 		/**
@@ -396,18 +518,9 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 	 * @param array $addon PRO bundle catalog item.
 	 */
 	private function output_pro_promo_section( $addon ) {
-		$addon_id    = isset( $addon['id'] ) ? $addon['id'] : '';
-		$product_url = $this->get_addon_product_url( $addon );
-		$features    = ! empty( $addon['features'] ) && is_array( $addon['features'] ) ? $addon['features'] : array();
+		$features     = ! empty( $addon['features'] ) && is_array( $addon['features'] ) ? $addon['features'] : array();
 		$actions_html = $this->get_plugin_addon_actions_html( $addon );
-		$learn_more_url = '';
-
-		// Build tracked Learn more URL when a product URL is available
-		if ( '' !== $product_url ) {
-			$learn_more_url = $this->get_tracked_product_url( $product_url, $addon_id, 'learn-more' );
-		}
-
-		$has_footer = ! empty( $actions_html ) || '' !== $learn_more_url;
+		$has_footer   = ! empty( $actions_html );
 		?>
 		<div class="fc-settings-card fc-settings-card--addons fc-settings-card--promo" id="fc-dashboard-pro-promo">
 			<div class="fc-settings-card__header">
@@ -452,15 +565,9 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 			<?php if ( $has_footer ) : ?>
 				<div class="fc-settings-card__footer">
-					<?php if ( ! empty( $actions_html ) ) : ?>
-						<div class="fc-addons__item-actions fc-settings-promo__actions" data-fc-dashboard-pro-promo-actions>
-							<?php echo $actions_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						</div>
-					<?php endif; ?>
-
-					<?php if ( '' !== $learn_more_url ) : ?>
-						<a class="fc-settings-button" href="<?php echo esc_url( $learn_more_url ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( __( 'Learn more', 'fluid-checkout' ) ); ?></a>
-					<?php endif; ?>
+					<div class="fc-addons__item-actions fc-addons__item-actions--promo-inline fc-settings-promo__actions" data-fc-dashboard-pro-promo-actions>
+						<?php echo $actions_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					</div>
 				</div>
 			<?php endif; ?>
 		</div>

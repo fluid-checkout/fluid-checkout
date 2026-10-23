@@ -337,6 +337,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: `fc_settings_header_logo_after_title` filter for HTML after the settings header logo title.
+* Added: Hide this section control on the Dashboard PRO promo when Fluid Checkout PRO is active.
 * Added: Shared `FluidCheckout_RestApiClient` HTTP client for PRO and other features.
 * Added: Admin JavaScript settings object `fcSettingsAdmin` for admin screens that need it.
 * Added: PHPUnit test suite and guided setup progress unit tests.

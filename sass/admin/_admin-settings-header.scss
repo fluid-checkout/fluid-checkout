@@ -24,18 +24,23 @@
 	text-align: left;
 }
 
-#fc-header .fc-header__logo {
+#fc-header .fc-header__branding {
 	float: left;
+	display: inline-flex;
+	align-items: center;
+}
+
+.rtl #fc-header .fc-header__branding {
+	float: right;
+}
+
+#fc-header .fc-header__logo {
 	display: inline-flex;
 	align-items: center;
 	gap: $fc-header-logo-gap;
 	text-decoration: none;
 	vertical-align: middle;
 	color: $fc-header-logo-text-color;
-}
-
-.rtl #fc-header .fc-header__logo {
-	float: right;
 }
 
 #fc-header .fc-header__logo-icon {

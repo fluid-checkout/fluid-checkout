@@ -219,6 +219,7 @@
 }
 
 .fc-settings-card--promo .fc-settings-promo__actions .button,
+.fc-settings-card--promo .fc-settings-promo__actions .fc-settings-button,
 .fc-settings-card--promo .fc-settings-promo__actions .fc-addons__item-license-select {
 	width: auto;
 	max-width: none;
@@ -233,6 +234,7 @@
 
 .fc-settings-card--promo .fc-settings-promo__actions .button + .fc-addons__item-action-notice,
 .fc-settings-card--promo .fc-settings-promo__actions .button + .button,
+.fc-settings-card--promo .fc-settings-promo__actions .fc-settings-button + .button,
 .fc-settings-card--promo .fc-settings-promo__actions .fc-addons__item-license-select + .button,
 .fc-settings-card--promo .fc-settings-promo__actions .fc-addons__item-action-notice {
 	margin-top: 0;

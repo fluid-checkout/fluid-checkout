@@ -351,6 +351,8 @@ class FluidCheckout_Admin extends FluidCheckout {
 		);
 	}
 
+
+
 	/**
 	 * Get the purchase button label for an add-on.
 	 *
