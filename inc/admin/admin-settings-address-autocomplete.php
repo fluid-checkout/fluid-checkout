@@ -29,9 +29,6 @@ class FluidCheckout_Settings_AddressAutocomplete {
 	public static function hooks() {
 		// Settings
 		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
-
-		// Tools settings, runs after the Tools settings are added
-		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_debug_settings' ), 20, 2 );
 	}
 
 
@@ -274,28 +271,6 @@ class FluidCheckout_Settings_AddressAutocomplete {
 	}
 
 	/**
-	 * Get the Address Autocomplete debug fields for Tools > Troubleshooting.
-	 */
-	public static function get_debug_settings() {
-		return array(
-			array(
-				'title'             => __( 'Google Maps scripts', 'fluid-checkout' ),
-				'desc'              => __( 'Do not remove duplicate Google Maps scripts', 'fluid-checkout' ),
-				'desc_tip'          => __( 'When enabled, duplicate Google Maps scripts will NOT be removed which can cause errors and performance issues. Only use this option while troubleshooting.', 'fluid-checkout' ),
-				'id'                => 'fc_gaa_google_maps_dont_remove_duplicate_scripts',
-				'type'              => 'checkbox',
-				'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_gaa_google_maps_dont_remove_duplicate_scripts' ),
-				'autoload'          => false,
-				'disabled'          => true,
-				'requires'          => self::FEATURE,
-				'promo'             => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'address-autocomplete-debug' ),
-			),
-		);
-	}
-
-
-
-	/**
 	 * Add the Address Autocomplete settings.
 	 *
 	 * @param   array   $settings         Array with all settings for the current section.
@@ -316,42 +291,6 @@ class FluidCheckout_Settings_AddressAutocomplete {
 		);
 
 		return $settings;
-	}
-
-	/**
-	 * Add the Address Autocomplete debug settings into Tools > Troubleshooting.
-	 *
-	 * @param   array   $settings         Array with all settings for the current section.
-	 * @param   string  $current_section  Current section name.
-	 */
-	public static function add_debug_settings( $settings, $current_section ) {
-		// Bail if not on the tools section
-		if ( 'tools' !== $current_section ) { return $settings; }
-
-		/**
-		 * Filters the Address Autocomplete debug settings displayed on the Tools tab.
-		 *
-		 * @since 5.0.0
-		 */
-		$debug_settings = apply_filters( 'fc_gaa_address_autocomplete_debug_settings', self::get_debug_settings() );
-
-		// Bail if debug settings are not valid
-		if ( ! is_array( $debug_settings ) || empty( $debug_settings ) ) { return $settings; }
-
-		// Insert into the Troubleshooting section, before its section end
-		$result = array();
-		foreach ( (array) $settings as $setting ) {
-			// Maybe insert Address Autocomplete debug fields before the Troubleshooting section end
-			if ( isset( $setting[ 'id' ], $setting[ 'type' ] ) && 'fc_checkout_advanced_debug_options' === $setting[ 'id' ] && 'sectionend' === $setting[ 'type' ] ) {
-				foreach ( $debug_settings as $debug_setting ) {
-					$result[] = $debug_setting;
-				}
-			}
-
-			$result[] = $setting;
-		}
-
-		return $result;
 	}
 
 }
