@@ -550,6 +550,7 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 		private function register_features() {
 			self::$features = array(
 				// Utility features
+				'FluidCheckout_Utils'                          => array( 'file' => self::$directory_path . 'inc/utils.php' ), // Needs to be loaded before other features that use page helpers.
 				'FluidCheckout_Enqueue'                        => array( 'file' => self::$directory_path . 'inc/enqueue.php' ),
 				'FluidCheckout_FragmentsRefresh'               => array( 'file' => self::$directory_path . 'inc/fragments-refresh.php' ),
 				'FluidCheckout_Validation'                     => array( 'file' => self::$directory_path . 'inc/checkout-validation.php' ),
