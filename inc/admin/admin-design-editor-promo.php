@@ -45,7 +45,7 @@ class FluidCheckout_Admin_DesignEditorPromo extends FluidCheckout {
 		add_filter( 'admin_body_class', array( $this, 'add_admin_body_class' ), 10 );
 
 		// Admin page header
-		add_action( 'admin_notices', array( $this, 'maybe_output_admin_header' ), 1 );
+		add_action( 'admin_notices', array( $this, 'maybe_output_admin_header' ), 1 ); // Before other admin notices, so the page header comes first
 
 		// Settings page layout
 		add_filter( 'fc_is_admin_settings_layout_page', array( $this, 'maybe_set_is_settings_layout_page' ), 10 );

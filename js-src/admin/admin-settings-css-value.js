@@ -1,5 +1,5 @@
 /**
- * CSS value fields on the Fluid Checkout settings page, with their color swatch, clear button and error for values that are not valid for their CSS property.
+ * CSS value fields on the Fluid Checkout settings page.
  *
  * DEPENDS ON:
  * - None (vanilla JS)
@@ -236,9 +236,9 @@
 		if ( _hasInitialized ) { return; }
 
 		// Add event listeners
-		document.addEventListener( 'input', handleInput );
+		document.addEventListener( 'input', handleInput, true );
 		document.addEventListener( 'change', handleChange, true );
-		document.addEventListener( 'click', handleClick );
+		document.addEventListener( 'click', handleClick, true );
 
 		// Show the colors on the swatches, and the errors of values that are not valid
 		syncSwatches();

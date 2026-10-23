@@ -661,8 +661,8 @@
 	/**
 	 * Dismiss the message of a setting moved to another page for good, showing the button that undoes it, or show the message again.
 	 *
-	 * @param  {Element}  button       Dismiss or undo button of the message.
-	 * @param  {boolean}  isDismissed  Whether to dismiss the message, or show it again.
+	 * @param   {Element}  button       Dismiss or undo button of the message.
+	 * @param   {boolean}  isDismissed  Whether to dismiss the message, or show it again.
 	 */
 	var setMovedSettingMessageDismissed = function( button, isDismissed ) {
 		var message = button.closest( _settings.movedMessageSelector );

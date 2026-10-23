@@ -28,7 +28,7 @@ class FluidCheckout_Admin_SettingType_GroupTitle extends FluidCheckout {
 	/**
 	 * Output the setting field.
 	 *
-	 * @param   array  $value  Admin settings args values. Custom attributes are added to the title row, such as conditional attributes.
+	 * @param   array  $value  Admin settings argument values. Custom attributes are added to the title row, such as conditional attributes.
 	 */
 	public function output_field( $value ) {
 		?>

@@ -75,7 +75,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		add_filter( 'admin_body_class', array( $this, 'add_admin_body_class' ), 10 );
 
 		// Admin page header
-		add_action( 'admin_notices', array( $this, 'maybe_output_admin_header' ), 1 );
+		add_action( 'admin_notices', array( $this, 'maybe_output_admin_header' ), 1 ); // Before other admin notices, so the page header comes first
 
 		// Remove WooCommerce Help tabs on this page
 		add_action( 'admin_head', array( $this, 'maybe_remove_help_tabs' ), 10 );
