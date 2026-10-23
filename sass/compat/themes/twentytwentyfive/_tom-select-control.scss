@@ -1,8 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // TOM SELECT CONTROL
 // ------------------------------------
 
-body#{ $_body-theme-selector } .ts-wrapper.single .ts-control {
+body#{ $body-theme-selector } .ts-wrapper.single .ts-control {
 	background-color: var(--wc-form-color-background, #fff);
 	border: var(--wc-form-border-width) solid var(--wc-form-border-color);
 	border-radius: var(--wc-form-border-radius);
@@ -11,6 +19,7 @@ body#{ $_body-theme-selector } .ts-wrapper.single .ts-control {
 	font-weight: 400;
 }
 
-body#{ $_body-theme-selector } .ts-wrapper.single .ts-control .item {
+body#{ $body-theme-selector } .ts-wrapper.single .ts-control .item {
 	line-height: remsize( 4.8rem ); // Needed to match theme styles
 }
+

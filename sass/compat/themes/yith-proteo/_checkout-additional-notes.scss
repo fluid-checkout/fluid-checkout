@@ -1,8 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT ADDITIONAL NOTES
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper .woocommerce-additional-fields .woocommerce-additional-fields__field-wrapper {
+body#{ $body-theme-selector } .fc-wrapper .woocommerce-additional-fields .woocommerce-additional-fields__field-wrapper {
 	margin-#{ $alignment-left }: 0;
 	margin-#{ $alignment-right }: 0;
 }

@@ -100,12 +100,6 @@ Quite insane how the developer is doing this. And a free plugin!!
 
 * **Integrated coupon code field at the checkout**: more options for positions to display the coupon code field.
 
-Future features:
-
-* Improved Local Pickup
-* Delayed account creation
-* Customize checkout steps and fields
-* ... and more.
 
 Want all features? Get the [Fluid Checkout PRO Bundle plan](https://fluidcheckout.com/pricing/) with all the PRO features and all add-ons for a special price.
 
@@ -113,19 +107,6 @@ Want all features? Get the [Fluid Checkout PRO Bundle plan](https://fluidcheckou
 
 [Fluid Checkout PRO demo site](https://demos.fluidcheckout.com/pro/?add-to-cart=14&quantity=2)
 
-== Add-ons ==
-
-Even more features available as separate plugins:
-
-* **[Google Address Autocomplete for WooCommerce](https://fluidcheckout.com/fc-google-address-autocomplete/)**: let customers search their addresses and autofill fields in the checkout page using the Google APIs, reducing by around 40% the number of fields they need to type. Also available to use without Fluid Checkout.
-
-* **[Address book](https://fluidcheckout.com/fc-address-book/)**: allow customers to save multiple addresses to their account and choose which ones to use at the checkout and cart pages.
-
-* **[EU-VAT Assistant](https://fluidcheckout.com/fc-eu-vat-assistant/)**: Collect and validate EU VAT numbers at the checkout page, removes tax charges on reverse charge basis and confirms customer location when needed.
-
-[View all products](https://fluidcheckout.com/add-ons/).
-
-Want all features? Get the [Fluid Checkout PRO Bundle plan](https://fluidcheckout.com/pricing/) with all the PRO features and all add-ons for a special price.
 
 
 == Fully Customizable ==
@@ -357,6 +338,122 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Company field requirements at checkout no longer affect unrelated address fields.
+* Added: PHPUnit test suite and guided setup progress unit tests.
+* Improved: Dashboard PRO offer uses the promo layout with a two-column features list and actions in the promo footer.
+* Improved: Always show the PRO features list on the Dashboard add-ons promo card, including when PRO is installed.
+* Fixed: Getting started Address book step not completing when PRO is active and the feature is enabled without the standalone add-on plugin active.
+* Removed: EU-VAT assistant from the Dashboard add-ons list and the settings menu.
+* Removed: More plugins from the Fluid Checkout family section on the Dashboard.
+* Fixed: Getting started checklist tab sync did not run because admin script settings were not applied when FCUtils was available.
+* Fixed: Only store visit-based getting started steps in the checklist option; PRO and tracking steps rely on saved settings.
+* Improved: Refresh Getting started checklist step completion on the Dashboard when saving settings or switching settings tabs (SPA), with an immediate update for visit-based steps.
+* Fixed: Mark the Customer accounts getting-started checklist step when visiting or saving that settings tab, including SPA tab navigation.
+* Improved: Rename the Customer accounts settings tab slug from `account_matching` to `customer_accounts`.
+* Added: Customer accounts step on the Getting started checklist (after checkout layout and design).
+* Improved: Reorder the Getting started checklist so integration options come before usage tracking (tracking remains last).
+* Improved: Move Address autocomplete, Address book, and EU-VAT assistant into the features group on the settings menu.
+* Improved: Unlock Address Autocomplete, Address Book, and VAT Assistant settings with Fluid Checkout PRO only.
+* Removed: Add-on promotional cards on Address Autocomplete, Address Book, and VAT Assistant settings tabs.
+* Improved: Allow the Lite admin notice icon URL to be filtered (PRO uses this when active).
+* Fixed: Skip bootstrap when Fluid Checkout is already loaded from another copy (for example bundled inside PRO).
+* Improved: Upgraded Sass build tooling to the latest version.
+* Added: Shared REST API base for `fluid-checkout/v1` (namespace, route registration, user-scoped permissions) and `fc_api_*` error helpers.
+* Improved: Update the sticky-states library to version 1.0.9.
+* Fixed: Show the Tom Select preview mode dropdown above the preview panel and keep Guest and Logged in in sync on the settings page.
+* Improved: Expand the desktop admin page preview to the available width, with a 1000px minimum layout size.
+* Improved: Load the admin page preview only on Fluid Checkout settings pages and during preview requests.
+* Improved: Define Address Autocomplete settings fields in Lite (locked until the add-on is active).
+* Improved: Use the same lighter divider color between Getting started checklist steps as on the Google address autocomplete guided setup.
+* Improved: Sharpen the Fluid Checkout checkmark logo and header text on the settings page with shared Dashicons font-smoothing styles.
+* Improved: Use Tom Select for all dropdown fields on the Fluid Checkout settings page.
+* Improved: Open settings dropdowns upward when there is not enough room below, so the full list stays visible above the save bar.
+* Added: Save Fluid Checkout settings with Ctrl+S or Cmd+S on the settings page.
+* Improved: Save Fluid Checkout settings without reloading the page, with dismissible success and error messages shown in the settings header.
+* Improved: PRO feature badges on the Getting started checklist link to pricing again, matching other settings badges.
+* Improved: Google address autocomplete is enabled by default.
+* Removed: Site key checks from add-on promo cards. Those cards link to upgrade or purchase pages.
+* Removed: Action hook `fc_dashboard_addons_before_list` from the Dashboard add-ons settings card.
+* Removed: Option to disable the integrated coupon code section. It is always enabled when WooCommerce coupons are available.
+* Removed: "Upgrade to PRO to unlock more options" links from settings field descriptions.
+* Improved: Keep locked settings visible for discovery, and hide dependent settings only after PRO or add-ons unlock them.
+* Improved: Show usage tracking data groups as individual settings toggles instead of a checkbox group.
+* Removed: Checkbox group field nesting from the Fluid Checkout settings page. Each option uses its own toggle row.
+* Improved: Show the option to display trust badge widgets only at the last step on mobile when checkout widget areas are enabled and the multi-step layout is selected.
+* Improved: Show logo image and header, page, and footer background colors only when the distraction free checkout template is selected.
+* Improved: Move documentation links for Design template, Cart items, and theme integrations to the section title info icon, and add tracking parameters to settings documentation links.
+* Added: Documentation info icon on the Address book, Google Address Autocomplete, and EU-VAT settings sections.
+* Improved: Split checkout Cart items and Place order into their own settings sections, and rename the edit cart items option label.
+* Improved: Show a focus outline on settings page buttons.
+* Improved: Rename add-on purchase buttons to Install add-on.
+* Improved: Rename add-on activate buttons to Activate add-on.
+* Improved: Links between Fluid Checkout settings tabs switch pages without a full reload.
+* Improved: Dashboard add-on cards hide purchase prices, show Learn more when only Lite is active, and keep Learn more beside Install when PRO is active but the add-on is not installed yet.
+* Improved: Disable Activate add-on when the add-on is installed but Fluid Checkout PRO is not activated.
+* Improved: Show Learn more beside Activate add-on when the add-on is installed but not activated.
+* Removed: Site key section from the License keys settings page.
+* Improved: Getting started checklist promotes PRO page optimizations, address autocomplete from Google Maps, and address book, completable only while PRO is active.
+* Improved: Address autocomplete checklist step completes when Google Maps is enabled with a tested API key, or when Brasil API is enabled.
+* Improved: Address autocomplete settings placeholders include legacy API, company result types, and Powered by Google fields for the add-on.
+* Improved: Show the settings page preview column from 1280px viewport width.
+* Improved: Show Checkout layout before Design template on the Checkout settings page.
+* Improved: Getting started card on the Dashboard uses a numbered checklist that marks steps as complete when visited or when usage tracking is enabled.
+* Improved: Settings section headers show only the PRO badge, not the Add-on badge.
+* Improved: Use sentence case for settings menu items, page titles, section titles, and field labels.
+* Added: Guest checkout, login, and account creation options on the Customer accounts settings page, so they can use different values per settings profile.
+* Improved: Disable guest checkout, login, and account creation options on the WooCommerce Accounts settings page when Fluid Checkout is active, and point merchants to Customer accounts settings.
+* Improved: Rename the International Phone Numbers settings page to Phone fields, and move shipping and billing phone field options there.
+* Improved: Move Trust badges settings to their own settings page, with one section per front-end page.
+* Improved: Move the Google Maps scripts troubleshooting option into Tools > Troubleshooting.
+* Improved: Settings navigation becomes an expandable menu on smaller screens.
+* Improved: On small screens, the Upgrade and Save settings buttons move into the settings title bar.
+* Added: Live preview in the plugin settings, showing setting changes before they are saved.
+* Improved: Limit settings content sections to a 600px max width for easier scanning.
+* Improved: Split design template and checkout layout into separate settings sections with larger option cards.
+* Added: New settings pages and guided setup.
+* Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
+* Improved: Show settings that are locked by a compatible plugin or theme as disabled, with a note explaining why the value cannot be changed.
+* Improved: Design template options use bordered radio boxes; checkout layout and columns use segmented buttons matching the settings design.
+* Improved: Split page templates, progress bar, and order summary into their own checkout settings sections.
+* Improved: Automatically detect whether "Add" link button labels should be lowercase based on the store language, instead of a setting.
+* Fixed: PRO-only settings values are forced back to Lite-compatible options when Fluid Checkout PRO is not active.
+* Fixed: Getting started checklist steps for add-ons stayed marked complete after the add-on plugin was deactivated.
+* Fixed: Active add-ons did not unlock their settings tabs because the settings access registry loaded too late during admin bootstrap.
+* Fixed: Add-on promo cards showed Activate add-on instead of Activated when the add-on was already active and Fluid Checkout PRO was active.
+* Fixed: Settings color picker hue bar appeared black on empty color fields while keeping the input empty until a color is chosen.
+* Improved: After activating an add-on from the settings page, show the Activated button briefly instead of a success message before reloading.
+* Added: Support for Split design template for the 1-column layout (PRO feature).
+* Added: Setting to choose a background color for the Split design secondary column (PRO feature).
+* Added: Filter `fc_available_shipping_methods` to change the shipping methods shown for a package.
+* Added: Filter `fc_local_pickup_shipping_zone_fields_options` for the local pickup shipping zone fields setting.
+* Added: Filter `fc_prevent_shipping_method_autoselect` to prevent automatic selection of the first shipping method. Return `true` to prevent auto-selecting a shipping method.
+* Added: Filter `fc_add_pickup_point_info_as_review_text_lines` to include pickup point details in the shipping method review text. The filter `fc_skip_add_pickup_point_info_as_review_text_lines` is deprecated. Returning true from that filter still skips those lines.
+* Improved: Show the Fluid Checkout plugin icon on admin notices.
+* Improved: Default position of the shipping method section is now before the shipping address.
+* Improved: Local pickup settings include the default delivery type, shipping zone fields, and the shipping method position, which is shared with the Checkout section.
+* Improved: Filter `fc_shipping_method_display_package_destination_substep_text_lines` now also receives the shipping method and the package index.
+* Improved: Settings toggles can be reached with the keyboard.
+* Fixed: Compatibility with WooCommerce Subscriptions. Recurring shipping methods were hidden when the only package index was 0.
+* Fixed: Compatibility with plugin Hungarian Pickup Points & Shipping Labels for WooCommerce. Fix required shipping address field errors when placing an order with the plugin's pickup point shipping method. Fix pickup point map not listing points for the shipping country.
+* Fixed: Progress bar not showing the correct step when a hidden checkout step becomes visible again while incomplete.
+* Fixed: Proceed button being displayed instead of the edit and save buttons for an incomplete checkout step the user already passed.
+* Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
+* Fixed: "Same as billing address" behavior on the cart shipping calculator.
+* Fixed: JavaScript error on every checkout update when the cart does not need shipping, with the plugins Germanized and Shiptastic active, which could stop other checkout scripts from running.
+* Fixed: JavaScript error when trying to proceed to the next checkout step or save a substep when validation fails on hidden or non-focusable fields, which could block checkout progression.
+* Fixed: Escape the login form redirect URL attribute and harden Uncode theme width settings unserialization.
+* Fixed: Harden settings profile payload unserialization.
+* Fixed: Only dismiss admin notices when the notice name is registered.
+* Removed: Experimental label from the mobile order summary "Before checkout steps" option.
+* Fixed: Shipping method substep validation for BOX NOW Delivery Croatia, GLS Shipping for WooCommerce and WooCommerce Carrier Agents not being applied.
+* Fixed: Saving settings while Fluid Checkout PRO is inactive keeps the stored PRO-only choices.
+* Fixed: Turning on usage tracking from the admin notice stays enabled.
+* Fixed: "Add" link labels stay capitalized for languages that capitalize nouns, such as German and Dutch.
+* Fixed: Existing settings are copied correctly when updating to the new settings page.
+* Fixed: The color picker stays open while a color is selected.
+* Deprecated: Filter `fc_next_step_button_label` now shows a deprecation notice, use `fc_proceed_to_next_step_button_label` instead.
+* Deprecated: Filter `fc_shipping_methods_disable_auto_select`, use `fc_prevent_shipping_method_autoselect` instead. Note that the new filter has inverted logic: return `true` to prevent auto-selecting a shipping method.
+* Removed: Unused option `fc_local_pickup_display_clear_shipping_methods_button`.
+* Removed: Option to prevent automatic selection of the first shipping method. Use the filter `fc_prevent_shipping_method_autoselect` to prevent it with code.
 
 = 4.2.7 - 2026-08-19 =
 

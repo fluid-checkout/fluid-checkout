@@ -1,15 +1,13 @@
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-hello-elementor' !default;
-
 
 
 
 
 // ------------------------------------
-// IMPORT STYLES
+// LOAD STYLES
 // ------------------------------------
-@import
-	"checkout-content-area";
+@use "scope-hello-elementor" as scope;
+@forward "checkout-content-area" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);

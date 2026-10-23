@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // SELECT2 FORM FIELDS
 // ------------------------------------
@@ -5,3 +11,4 @@
 div.woocommerce .fc-wrapper .form-row .select2-selection--single {
 	padding-#{ $alignment-left }: remsize( 1.2rem ) !important;
 }
+

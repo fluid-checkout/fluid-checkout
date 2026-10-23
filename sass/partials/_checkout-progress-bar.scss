@@ -1,4 +1,9 @@
 @use "sass:math" as math;
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
 
 // ------------------------------------
 // CHECKOUT PROGRESS BAR
@@ -96,3 +101,4 @@
 		width: #{ math.div( 100%, $count ) };
 	}
 }
+

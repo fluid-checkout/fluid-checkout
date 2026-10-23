@@ -1,0 +1,12 @@
+// ------------------------------------
+
+
+
+
+// ------------------------------------
+// LOAD STYLES
+// ------------------------------------
+@use "scope-shoptimizer" as scope;
+@forward "admin-preview-frame" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-theme-selector: scope.$body-theme-selector
+);

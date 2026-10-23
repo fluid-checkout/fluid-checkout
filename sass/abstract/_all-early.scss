@@ -1,2 +1,3 @@
-@import
-	"functions/_all-early";
+// Legacy @import entry — forwards early functions for backward compatibility.
+@forward "functions/strip-unit";
+@forward "functions/remsize";

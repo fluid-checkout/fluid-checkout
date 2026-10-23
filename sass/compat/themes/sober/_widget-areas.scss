@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // WIDGET AREAS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-widget-area .widget {
+body#{ $body-theme-selector } .fc-widget-area .widget {
 	padding: 0;
 }

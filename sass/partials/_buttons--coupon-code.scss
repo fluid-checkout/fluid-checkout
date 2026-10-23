@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // BUTTONS -- CHECKOUT
 // ------------------------------------
@@ -9,3 +15,4 @@ body.has-fc-button-colors .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-co
 body.has-fc-button-styles .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
 	@extend %button-styles;
 }
+

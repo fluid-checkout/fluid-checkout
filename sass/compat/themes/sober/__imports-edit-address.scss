@@ -1,14 +1,13 @@
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-edit-address' !default;
-$_body-theme-selector:                 '.theme-sober' !default;
 
 
 
 
 // ------------------------------------
-// IMPORT STYLES
+// LOAD STYLES
 // ------------------------------------
-@import
-	"woocommerce-form-fields--edit-address";
+@use "scope-edit-address" as scope;
+@forward "woocommerce-form-fields--edit-address" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);

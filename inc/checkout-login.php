@@ -20,6 +20,13 @@ class FluidCheckout_Login extends FluidCheckout {
 	 */
 	public function is_feature_enabled() {
 		// Bail if feature is disabled
+		/**
+		 * Filters whether AJAX login is enabled at checkout.
+		 *
+		 * @since 4.0.4
+		 *
+		 * @param bool $enabled Whether the feature is enabled. Default true.
+		 */
 		if ( true !== apply_filters( 'fc_enable_checkout_ajax_login', true ) ) { return false; }
 
 		return true;
@@ -116,6 +123,13 @@ class FluidCheckout_Login extends FluidCheckout {
 	 */
 	public function add_js_settings( $settings ) {
 		// Add settings
+		/**
+		 * Filters the login settings passed to the frontend script.
+		 *
+		 * @since 4.0.4
+		 *
+		 * @param array $settings Settings to output.
+		 */
 		$settings[ 'checkoutLogin' ] = apply_filters( 'fc_checkout_login_script_settings', array(
 			'checkoutLoginNonce' => wp_create_nonce( 'fc-checkout-login' ),
 		) );

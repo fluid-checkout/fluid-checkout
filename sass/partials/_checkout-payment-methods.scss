@@ -1,3 +1,11 @@
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
@@ -6,8 +14,8 @@
 	position: relative;
 }
 
-body#{ $_body-page-selector } div.woocommerce .fc-wrapper #payment,
-body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #payment {
+body#{ $body-page-selector } div.woocommerce .fc-wrapper #payment,
+body#{ $body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #payment {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -18,8 +26,8 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 
 
 
-body#{ $_body-page-selector } div.woocommerce .fc-wrapper #payment ul.payment_methods,
-body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #payment ul.payment_methods {
+body#{ $body-page-selector } div.woocommerce .fc-wrapper #payment ul.payment_methods,
+body#{ $body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #payment ul.payment_methods {
 	list-style-type: none;
 	margin: 0 !important; // Needed to override theme styles
 	padding: 0;
@@ -281,3 +289,4 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 .fc-wrapper #payment .payment_methods > .woocommerce-notice {
 	margin-bottom: 0;
 }
+

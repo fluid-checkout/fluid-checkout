@@ -1,0 +1,55 @@
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
+// Google API key field (Lite stub and PRO/FCGAA real field): input + Test / Guided setup actions in one row.
+
+// ------------------------------------
+// SETTINGS PAGE - GOOGLE API KEY FIELD
+// ------------------------------------
+
+.fc-gaa-google-api-validation__api-key-field-row {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: $fc-settings-input-group-gap;
+	width: 100%;
+}
+
+.fc-gaa-google-api-validation__api-key-field-row input[type="text"],
+.fc-settings-wrap .fc-settings-field__control .fc-gaa-google-api-validation__api-key-field-row input[type="text"] {
+	flex: 1 1 auto;
+	width: auto;
+	min-width: 0;
+	max-width: none; // Needed to override WP admin `max-width: 25rem`
+	box-sizing: border-box;
+}
+
+.fc-gaa-google-api-validation__api-key-field-actions {
+	display: inline-flex;
+	flex-shrink: 0;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: $fc-settings-input-group-gap;
+}
+
+.fc-gaa-google-api-validation__api-key-field-actions .button,
+.fc-settings-wrap .fc-gaa-google-api-validation__api-key-field-actions .button {
+	flex-shrink: 0;
+	white-space: nowrap;
+}
+
+@media ( max-width: 1200px ) {
+	.fc-gaa-google-api-validation__api-key-field-row {
+		flex-wrap: wrap;
+	}
+
+	.fc-gaa-google-api-validation__api-key-field-row input[type="text"],
+	.fc-settings-wrap .fc-settings-field__control .fc-gaa-google-api-validation__api-key-field-row input[type="text"] {
+		flex: 1 1 100%;
+		width: 100%;
+	}
+
+	.fc-gaa-google-api-validation__api-key-field-actions {
+		flex: 1 1 100%;
+	}
+}

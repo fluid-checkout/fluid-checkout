@@ -1,6 +1,5 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"checkout-place-order",
-	"woocommerce-form-fields-select2";
+@use "checkout-place-order";
+@use "woocommerce-form-fields-select2";

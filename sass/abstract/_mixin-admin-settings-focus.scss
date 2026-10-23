@@ -1,0 +1,24 @@
+@use "variables-admin" as *;
+
+// ----------------------------------------
+// MIXIN - ADMIN SETTINGS FOCUS OUTLINE
+// ----------------------------------------
+
+@mixin fc-admin-settings-focus-outline {
+	outline: $fc-settings-focus-outline-width solid $fc-settings-focus-outline-color;
+	outline-offset: $fc-settings-focus-outline-offset;
+}
+
+
+
+@mixin fc-admin-settings-info-icon-focus-outline {
+	border-radius: 50%;
+	@include fc-admin-settings-focus-outline();
+}
+
+
+
+@mixin fc-admin-settings-selected-option-outline {
+	outline: $fc-settings-focus-outline-width solid $fc-settings-selected-option-outline-color;
+	outline-offset: $fc-settings-focus-outline-offset;
+}

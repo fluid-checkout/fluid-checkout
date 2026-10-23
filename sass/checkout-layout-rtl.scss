@@ -1,10 +1,7 @@
 // ------------------------------------
-// IMPORT ABSTRACT
+// LOAD PUBLIC API
 // ------------------------------------
-@import
-	"abstract/_all-early",
-	"abstract/_variables-rtl",
-	"abstract/_all";
+@use "abstract/index-rtl";
 
 
 
@@ -13,5 +10,7 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"partials/__imports-checkout-layout";
+@use "partials/__imports-checkout-layout";
+
+@use 'sass:meta';
+@include meta.load-css('flyout-block-animations');

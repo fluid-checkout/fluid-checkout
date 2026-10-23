@@ -1,0 +1,9 @@
+// Tom Select 2.4.3 styles plus the caret mixin.
+//
+// The upstream stylesheet still contains @import, so it cannot be loaded
+// with @use. This partial is loaded through the sass/vendor load path
+// (see gulpfile.js, quietDeps) and is not a public entry.
+
+@import "../../node_modules/tom-select/dist/scss/tom-select";
+
+@include ts-caret();

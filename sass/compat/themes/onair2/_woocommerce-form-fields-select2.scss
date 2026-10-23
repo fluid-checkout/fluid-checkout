@@ -1,13 +1,21 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single,
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple {
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--single,
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple {
 	text-align: #{ $alignment-left };
 }
 
-body#{ $_body-theme-selector } .select2-container--default .select2-results__option[aria-selected="true"] {
+body#{ $body-theme-selector } .select2-container--default .select2-results__option[aria-selected="true"] {
 	background-color: $form-field-background-color--accent !important; // Needed to override theme styles
 	color: $form-field-text-color--accent !important; // Needed to override theme styles
 }

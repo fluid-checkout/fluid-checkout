@@ -1,7 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // FLYOUT ORDER SUMMARY
 // ------------------------------------
 
-body#{ $_body-theme-selector }.admin-bar .fc-wrapper .fc-checkout-order-review[data-flyout].is-activated.is-open {
+body#{ $body-theme-selector }.admin-bar .fc-wrapper .fc-checkout-order-review[data-flyout].is-activated.is-open {
 	padding: $checkout-header-height 0 0;
 }
+

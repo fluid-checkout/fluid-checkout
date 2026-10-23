@@ -1,0 +1,240 @@
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
+// ------------------------------------
+// SETTINGS PAGE - LAYOUT
+// ------------------------------------
+
+body.fc-settings-page #wpfooter {
+	display: none;
+}
+
+// Hide the Help / Screen Options toggles; Help tabs are also removed in PHP.
+body.fc-settings-page #screen-meta,
+body.fc-settings-page #screen-meta-links {
+	display: none;
+}
+
+body.fc-settings-page #wpbody-content {
+	padding-bottom: 0;
+	// Clip preview overflow without creating a scroll container (keeps sticky preview)
+	overflow-x: clip;
+}
+
+// Extend the sidebar white background + separator to the full page height via #wpcontent.
+// Zero left padding so the gradient origin matches the sidebar (which bleeds to the content edge).
+// Clip preview overflow to the right without horizontal scrollbars.
+body.fc-settings-page #wpcontent {
+	padding-left: 0;
+	overflow-x: clip;
+	background: linear-gradient(
+		to right,
+		$fc-settings-sidebar-background-color $fc-settings-sidebar-width,
+		$admin-border-color-strong $fc-settings-sidebar-width,
+		$admin-border-color-strong ( $fc-settings-sidebar-width + 1px ),
+		$fc-settings-page-background-color ( $fc-settings-sidebar-width + 1px )
+	);
+
+	// No full-height left column decoration when the nav is a compact menu
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		padding-left: 0;
+		background: $fc-settings-page-background-color;
+	}
+}
+
+body.rtl.fc-settings-page #wpcontent {
+	padding-left: 0;
+	padding-right: 0;
+	overflow-x: clip;
+	background: linear-gradient(
+		to left,
+		$fc-settings-sidebar-background-color $fc-settings-sidebar-width,
+		$admin-border-color-strong $fc-settings-sidebar-width,
+		$admin-border-color-strong ( $fc-settings-sidebar-width + 1px ),
+		$fc-settings-page-background-color ( $fc-settings-sidebar-width + 1px )
+	);
+
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		background: $fc-settings-page-background-color;
+	}
+}
+
+// Hide notices in their initial position; show them once WP relocates them into the content pane.
+body.fc-settings-page #wpbody-content > .notice,
+body.fc-settings-page #wpbody-content > .error {
+	display: none;
+}
+
+body.fc-settings-page #wpbody-content .fc-settings-content .notice,
+body.fc-settings-page #wpbody-content .fc-settings-content .error {
+	display: block;
+	margin-bottom: 16px;
+}
+
+
+
+.fc-settings-wrap {
+	margin: 0;
+	color: $fc-settings-text-color;
+}
+
+.fc-settings-wrap [class*="fc-settings-"] {
+	box-sizing: border-box;
+}
+
+.fc-settings-wrap hr.wp-header-end {
+	display: block;
+	height: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+
+
+.fc-settings-layout {
+	position: relative;
+	display: flex;
+	align-items: stretch;
+	min-height: calc( 100vh - #{$fc-settings-sticky-offset} );
+	margin-left: 0;
+
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		flex-direction: column;
+		min-height: 0;
+		margin-left: 0;
+	}
+}
+
+// Full-height left column face above the center actions bar.
+// `#wpcontent` gradient alone paints behind descendants, so the actions bar would cover it.
+.fc-settings-layout::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: $fc-settings-sidebar-z-index;
+	width: $fc-settings-sidebar-width;
+	background-color: $fc-settings-sidebar-background-color;
+	box-shadow: $fc-settings-sidebar-box-shadow;
+	pointer-events: none;
+
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		content: none;
+	}
+}
+
+.rtl .fc-settings-layout {
+	margin-left: 0;
+	margin-right: 0;
+
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		margin-right: 0;
+	}
+}
+
+.rtl .fc-settings-layout::before {
+	left: auto;
+	right: 0;
+	box-shadow: $fc-settings-sidebar-box-shadow-rtl;
+}
+
+
+
+// Center column is natural document flow: the page scrolls, not an inner pane.
+.fc-settings-content {
+	position: relative;
+	z-index: $fc-settings-content-z-index;
+	align-self: flex-start;
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	min-width: 0;
+	max-width: $fc-settings-content-max-width;
+	padding: 0;
+	// Clear space for the fixed actions bar at the bottom of the screen
+	padding-bottom: $fc-settings-actions-bar-height;
+
+	// Compact nav: fill available width so the actions bar reaches the screen edge
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		align-self: stretch;
+		width: 100%;
+		max-width: none;
+	}
+}
+
+// Dashboard sections use a wider reading column
+.fc-settings-content:has( .fc-settings-tab--dashboard.is-active ) {
+	max-width: $fc-settings-dashboard-content-max-width;
+
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		max-width: none;
+	}
+}
+
+.fc-settings-content:has( .fc-settings-tab--dashboard.is-active ) .fc-settings-card {
+	max-width: $fc-settings-dashboard-content-max-width;
+}
+
+.fc-settings-content:has( .fc-settings-tab--dashboard.is-active ) .fc-settings-content__scroll {
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		max-width: $fc-settings-dashboard-content-max-width;
+	}
+}
+
+// No save bar on the active tab: drop the reserved space
+.fc-settings-content:not( :has( .fc-settings-actions:not( [ hidden ] ) ) ) {
+	padding-bottom: 0;
+}
+
+.fc-settings-content__scroll {
+	flex: 1 1 auto;
+	padding: $fc-settings-content-padding;
+	padding-bottom: $fc-settings-content-padding-bottom;
+
+	// Keep settings fields at the desktop reading width when the column grows
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		max-width: $fc-settings-content-max-width;
+		width: 100%;
+	}
+}
+
+// Lock page scroll while a drawer overlay is open
+body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ),
+body.fc-settings-page:has( .fc-settings-sidebar.is-nav-expanded ) {
+	overflow: hidden;
+}
+
+.fc-settings-content__scroll .fc-settings-card:last-child {
+	margin-bottom: 0;
+}
+
+.fc-settings-content__title {
+	margin: $fc-settings-content-title-margin;
+	padding: 0;
+	border: none;
+	font-size: $fc-settings-content-title-font-size;
+	font-weight: $fc-settings-content-title-font-weight;
+	line-height: $fc-settings-content-title-line-height;
+	color: $fc-settings-text-color;
+}
+
+
+
+.fc-settings-tab {
+	display: none;
+}
+
+.fc-settings-tab.is-active {
+	display: block;
+	animation: fc-settings-tab-fade-in $fc-settings-tab-animation-duration ease-out;
+
+	@media ( prefers-reduced-motion: reduce ) { animation: none; }
+}
+
+@keyframes fc-settings-tab-fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+

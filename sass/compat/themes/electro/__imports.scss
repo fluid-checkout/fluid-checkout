@@ -1,18 +1,25 @@
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-electro' !default;
-
 
 
 
 
 // ------------------------------------
-// IMPORT STYLES
+// LOAD STYLES
 // ------------------------------------
-@import
-	"checkout-steps",
-	"checkout-payment-methods",
-	"checkout-place-order",
-	"checkout-login";
+@use "scope-electro" as scope;
+@forward "checkout-steps" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
+@forward "checkout-payment-methods" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
+@forward "checkout-place-order" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
+@forward "checkout-login" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);

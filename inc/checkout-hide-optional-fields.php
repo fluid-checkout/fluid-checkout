@@ -69,7 +69,87 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 			$skip_list[] = 'billing_address_2';
 		}
 
+		/**
+		 * Filters the field keys that are not hidden when optional fields are collapsed.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string[] $skip_list Field keys to skip.
+		 */
 		return apply_filters( 'fc_hide_optional_fields_skip_list', $skip_list );
+	}
+
+
+
+	/**
+	 * Whether "Add" link button labels should be lowercased for the current locale.
+	 *
+	 * @return bool
+	 */
+	public function should_lowercase_add_link_label() {
+		// Get current locale
+		$locale = function_exists( 'determine_locale' ) ? determine_locale() : get_locale();
+		$locale = str_replace( '-', '_', $locale );
+
+		// Get language code (part before underscore)
+		$language = strtolower( strtok( $locale, '_' ) );
+
+		/**
+		 * Filters the locales and language codes that keep "Add" link labels capitalized.
+		 *
+		 * @since 5.0.0
+		 */
+		$preserve_case_languages = apply_filters(
+			'fc_optional_fields_link_label_preserve_case_languages',
+			array(
+				// Capitalize every noun
+				'de_DE', 'de_DE_formal', 'de_AT', 'de_CH', 'de_CH_informal', 'lb_LU',
+				// Turkish and Azerbaijani dotted/dotless i
+				'tr_TR', 'az', 'az_TR',
+				// Dutch IJ digraph
+				'nl_NL', 'nl_NL_formal', 'nl_BE',
+				// Greek: accents and final sigma
+				'el',
+				// Irish: mutation prefixes like tSeirbhís
+				'ga',
+				// Georgian: uppercase becomes heading-only capitals
+				'ka_GE',
+				// Lithuanian dotted i and Armenian ligature (rarely matters)
+				'lt_LT', 'hy',
+			)
+		);
+		$preserve_case_languages = array_map( 'strtolower', (array) $preserve_case_languages );
+		$locale_key = strtolower( $locale );
+
+		// Lowercase unless the language or the full locale preserves noun capitalization
+		$should_lowercase = ! in_array( $language, $preserve_case_languages, true ) && ! in_array( $locale_key, $preserve_case_languages, true );
+
+		/**
+		 * Filters whether "Add" link labels are lowercased for the current locale.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param  string  $locale    Current locale.
+		 * @param  string  $language  Language code.
+		 */
+		return (bool) apply_filters( 'fc_optional_fields_link_label_lowercase', $should_lowercase, $locale, $language );
+	}
+
+	/**
+	 * Maybe lowercase a label used in an "Add" link button.
+	 *
+	 * @param   string  $label  The field label.
+	 */
+	public function maybe_lowercase_add_link_label( $label ) {
+		// Bail if should not lowercase
+		if ( ! $this->should_lowercase_add_link_label() ) { return $label; }
+
+		// Lowercase with multibyte support when available
+		if ( function_exists( 'mb_strtolower' ) ) {
+			return mb_strtolower( $label, 'UTF-8' );
+		}
+
+		return strtolower( $label );
 	}
 
 
@@ -95,9 +175,23 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		if ( false !== strpos( $field, 'id="fc-expansible-form-section__toggle--' . $key ) ) { return $field; }
 
 		// Maybe skip optional field by type
+		/**
+		 * Filters the field types that are not collapsed behind an "Add" link.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array $skip Whether to skip the default behavior.
+		 */
 		if ( in_array( $args[ 'type' ], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'state', 'country', 'select', 'checkbox', 'radio', 'hidden' ) ) ) ) { return $field; }
 
 		// Maybe skip optional field by class
+		/**
+		 * Filters the CSS classes that keep an optional field visible.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param array $skip Whether to skip the default behavior.
+		 */
 		$skip_field_container_classes = apply_filters( 'fc_hide_optional_fields_skip_by_class', array( 'fc-skip-hide-optional-field' ) );
 		foreach ( $skip_field_container_classes as $skip_class ) {
 			foreach ( $args[ 'class' ] as $field_class ) {
@@ -110,6 +204,16 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		if ( in_array( $key, $this->get_hide_optional_fields_skip_list() ) ) { return $field; }
 
 		// Maybe skip optional field by other criteria
+		/**
+		 * Filters whether a single optional field is excluded from being collapsed.
+		 *
+		 * @since 4.0.6
+		 *
+		 * @param bool   $skip  Whether to skip the default behavior. Default false.
+		 * @param string $key   Field key.
+		 * @param array  $args  Field arguments.
+		 * @param mixed  $value Field value. Empty values can be collapsed. Default null.
+		 */
 		if ( apply_filters( 'fc_hide_optional_fields_skip_field', false, $key, $args, $value ) ) { return $field; }
 
 		// Set attribute `data-autofocus` to focus on the optional field when expanding the section
@@ -133,8 +237,8 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		$form_field_label = $args[ 'label' ];
 
 		// Maybe set field label as lowercase
-		if ( ( ! array_key_exists( 'optional_expand_link_lowercase', $args ) || false !== $args[ 'optional_expand_link_lowercase' ] ) && 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_optional_fields_link_label_lowercase' ) ) {
-			$form_field_label = strtolower( $form_field_label );
+		if ( ! array_key_exists( 'optional_expand_link_lowercase', $args ) || false !== $args[ 'optional_expand_link_lowercase' ] ) {
+			$form_field_label = $this->maybe_lowercase_add_link_label( $form_field_label );
 		}
 
 		// Get toggle label
@@ -142,10 +246,39 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		$toggle_label = array_key_exists( 'optional_expand_link_label', $args ) ? sanitize_text_field( $args[ 'optional_expand_link_label' ] ) : sprintf( __( 'Add %s', 'fluid-checkout' ), $form_field_label );
 
 		// Filter to allow developer to change the optional field expansible toggle label
+		/**
+		 * Filters the toggle label of an expansible section.
+		 *
+		 * The dynamic portion of the hook name, `$key`, refers to the checkout field key.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $toggle_label Toggle label.
+		 */
 		$toggle_label = apply_filters( "fc_expansible_section_toggle_label_{$key}", $toggle_label );
 
 		// Maybe add "optional" to toggle label
-		if ( true === apply_filters( 'fc_expansible_section_toggle_label_add_optional_text', true ) && true === apply_filters( "fc_expansible_section_toggle_label_{$key}_add_optional_text", true ) ) {
+		/**
+		 * Filters whether every expansible section toggle label includes the "optional" text.
+		 *
+		 * @since 2.0.2
+		 *
+		 * @param bool $label Label text. Default true.
+		 */
+		if ( true === apply_filters( 'fc_expansible_section_toggle_label_add_optional_text', true ) && true === 
+			/**
+			 * Filters whether to append the "optional" text to one expansible section toggle label.
+			 *
+			 * The dynamic portion of the hook name, `$key`, refers to the checkout field key for that
+			 * optional field. This runs in addition to
+			 * `fc_expansible_section_toggle_label_add_optional_text`, which applies to every optional
+			 * field.
+			 *
+			 * @since 2.0.2
+			 *
+			 * @param bool $value Value to filter. Default true.
+			 */
+			apply_filters( "fc_expansible_section_toggle_label_{$key}_add_optional_text", true ) ) {
 			$toggle_label .= ' (' . __( 'optional', 'woocommerce' ) . ')';
 		}
 

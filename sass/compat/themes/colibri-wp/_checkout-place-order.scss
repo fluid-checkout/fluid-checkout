@@ -1,7 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT PLACE ORDER
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-place-order {
+body#{ $body-theme-selector } .fc-place-order {
 	padding: $global-spacing 0 $global-spacing-extra-small;
 }
+

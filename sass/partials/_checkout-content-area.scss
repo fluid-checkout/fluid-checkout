@@ -1,8 +1,16 @@
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 html,
-body#{ $_body-page-selector } {
+body#{ $body-page-selector } {
 	overflow-x: hidden; // Fallback value to prevent horizontal scroll on IE, EDGE and Safari
 	overflow-x: clip; // Prevent horizontal scroll on all modern browsers
 }
@@ -10,7 +18,7 @@ body#{ $_body-page-selector } {
 
 
 // Remove the `alignwide` class styles from the classic shortcode block.
-body#{ $_body-page-selector } div[data-block-name="woocommerce/classic-shortcode"].alignwide {
+body#{ $body-page-selector } div[data-block-name="woocommerce/classic-shortcode"].alignwide {
 	left: 0 !important; // Needed to override theme styles for the class `.alignwide`
 	width: 100% !important; // Needed to override theme styles for the class `.alignwide`
 }
@@ -18,7 +26,7 @@ body#{ $_body-page-selector } div[data-block-name="woocommerce/classic-shortcode
 
 
 // Remove margins inherited from some themes
-body#{ $_body-page-selector } .fc-content,
+body#{ $body-page-selector } .fc-content,
 form.woocommerce-checkout {
 	display: block !important; // Needed to override theme styles breaking the layout
 	margin: 0 auto;
@@ -36,7 +44,7 @@ form.woocommerce-checkout {
 
 
 
-body#{ $_body-page-selector } #main.fc-main {
+body#{ $body-page-selector } #main.fc-main {
 	box-sizing: border-box;
 	position: static;
 	float: none;
@@ -60,16 +68,16 @@ body#{ $_body-page-selector } #main.fc-main {
 	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large 0; }
 }
 
-body#{ $_body-page-selector }.has-flyout--open #main.fc-main {
+body#{ $body-page-selector }.has-flyout--open #main.fc-main {
 	z-index: unset;
 }
 
 
 
-body#{ $_body-page-selector } .fc-content,
-body#{ $_body-page-selector } .fc-progress-bar,
-body#{ $_body-page-selector } .fc-checkout-notices,
-body#{ $_body-page-selector } .fc-wrapper {
+body#{ $body-page-selector } .fc-content,
+body#{ $body-page-selector } .fc-progress-bar,
+body#{ $body-page-selector } .fc-checkout-notices,
+body#{ $body-page-selector } .fc-wrapper {
 	&,
 	& * {
 		box-sizing: border-box !important; // Needed to override theme styles breaking the layout
@@ -78,7 +86,7 @@ body#{ $_body-page-selector } .fc-wrapper {
 
 
 
-body#{ $_body-page-selector } .fc-content {
+body#{ $body-page-selector } .fc-content {
 	float: none !important; // Needed to override theme styles breaking the layout
 	margin: 0 auto;
 	padding-bottom: $global-spacing-large;
@@ -86,7 +94,7 @@ body#{ $_body-page-selector } .fc-content {
 	border: 0;
 	text-align: left;
 }
-body#{ $_body-page-selector } .fc-content.fc-container {
+body#{ $body-page-selector } .fc-content.fc-container {
 	padding: 0 $container-spacing-mobile $global-spacing-large;
 
 	// max-width
@@ -103,7 +111,7 @@ body#{ $_body-page-selector } .fc-content.fc-container {
 	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large $global-spacing-large; }
 }
 
-body#{ $_body-page-selector }.has-checkout-header .fc-content {
+body#{ $body-page-selector }.has-checkout-header .fc-content {
 	@media (#{$bp-larger-than-desktop}) {
 		padding-top: $global-spacing-extra-small;
 	}
@@ -111,7 +119,7 @@ body#{ $_body-page-selector }.has-checkout-header .fc-content {
 
 
 
-body#{ $_body-page-selector } .fc-content div.woocommerce:not( div.woocommerce div.woocommerce ) {
+body#{ $body-page-selector } .fc-content div.woocommerce:not( div.woocommerce div.woocommerce ) {
 	position: static;
 	max-width: 100%;
 
@@ -119,3 +127,4 @@ body#{ $_body-page-selector } .fc-content div.woocommerce:not( div.woocommerce d
 		margin: 0 auto;
 	}
 }
+

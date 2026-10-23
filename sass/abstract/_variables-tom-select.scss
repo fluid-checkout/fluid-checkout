@@ -1,3 +1,6 @@
+@use "functions/remsize" as *;
+@use "variables" as *;
+
 // ----------------------------------------
 // VARIABLES FOR TOM SELECT
 // ----------------------------------------
@@ -60,6 +63,10 @@ $ts-select-arrow-size:                                   remsize( .5rem ) !defau
 $ts-select-arrow-color:                                  $grey !default;
 $ts-select-arrow-offset:                                 remsize( 1rem ) !default;
 
+$ts-select-clear-size:                                   remsize( 1.5rem ) !default;
+$ts-select-clear-offset:                                 remsize( 2.5rem ) !default;
+$ts-select-clearable-padding-right:                      calc( #{ $ts-select-clear-offset } + #{ $ts-select-clear-size } ) !default;
+
 $ts-select-remove-size:                                   $global-spacing-small !default;
 $ts-select-remove-color:                                  $grey !default;
 $ts-select-remove-color-hover:                            $error-color !default;
@@ -70,3 +77,6 @@ $ts-select-caret-margin-rtl:                             0 remsize( .4rem ) 0 re
 $ts-select-spinner-size:                                 $global-spacing !default;
 $ts-select-spinner-border-size:                          $global-spacing-tiny !default;
 $ts-select-spinner-border-color:                         $ts-select-color-border !default;
+
+$ts-select-control-focus-outline:                        $focus-outline-field !default;
+$ts-select-control-focus-outline-offset:                 $focus-outline-offset-field !default;

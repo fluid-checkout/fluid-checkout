@@ -1,7 +1,15 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 
-body#{ $_body-theme-selector } form.woocommerce-checkout > * {
+body#{ $body-theme-selector } form.woocommerce-checkout > * {
 	padding-#{ $alignment-left }: 0; // Override Listable's left padding style
 }

@@ -1,8 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-content.container {
+body#{ $body-theme-selector } .fc-content.container {
 	padding-#{ $alignment-left }: $global-spacing-small;
 	padding-#{ $alignment-right }: $global-spacing-small;
 
@@ -16,3 +24,4 @@ body#{ $_body-theme-selector } .fc-content.container {
 		width: 1170px;
 	}
 }
+

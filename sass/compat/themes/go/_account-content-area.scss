@@ -1,12 +1,17 @@
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // MY ACCOUNT CONTENT AREA
 // ------------------------------------
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } .entry-content > .woocommerce {
+body#{ $body-theme-selector }#{ $body-page-selector } .entry-content > .woocommerce {
 	max-width: var(--go--max-width--alignwide) !important; // Needed to override theme styles
 }
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } .woocommerce-MyAccount-navigation {
+body#{ $body-theme-selector }#{ $body-page-selector } .woocommerce-MyAccount-navigation {
 	width: 100%;
 
 	@media (min-width: 769px) { // Use breakpoint values from the theme
@@ -14,7 +19,7 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } .woocommerce-MyAccount-n
 	}
 }
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } .woocommerce-MyAccount-content {
+body#{ $body-theme-selector }#{ $body-page-selector } .woocommerce-MyAccount-content {
 	width: 100%;
 
 	@media (min-width: 769px) { // Use breakpoint values from the theme

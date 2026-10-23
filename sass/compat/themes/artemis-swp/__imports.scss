@@ -1,16 +1,17 @@
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-artemis-swp' !default;
-
 
 
 
 
 // ------------------------------------
-// IMPORT STYLES
+// LOAD STYLES
 // ------------------------------------
-@import
-	"checkout-steps",
-	"woocommerce-form-fields-select2";
+@use "scope-artemis-swp" as scope;
+@forward "checkout-steps" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
+@forward "woocommerce-form-fields-select2" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);

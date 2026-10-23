@@ -1,6 +1,13 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // ORDER SUMMARY
 // ------------------------------------
 body.has-fc-compat-german-market-button-placement form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table {
 	margin-bottom: $global-spacing-small;
 }
+

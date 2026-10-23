@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT STEP ACTIONS
 // ------------------------------------
 
-body#{ $_body-theme-selector } button.fc-step__next-step.button {
+body#{ $body-theme-selector } button.fc-step__next-step.button {
 	display: inline-block;
 }

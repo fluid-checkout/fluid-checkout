@@ -1,3 +1,11 @@
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT STEPS
 // ------------------------------------
@@ -68,13 +76,15 @@
 }
 
 .fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-edit,
-.fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-save {
+.fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-save,
+.fc-wrapper .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__substep[data-substep-editable="no"] .fc-step__substep-edit,
+.fc-wrapper .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__substep[data-substep-editable="no"] .fc-step__substep-save {
 	display: none !important; // Needed to override theme styles set with `!important`
 }
 
 
 
-body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
+body#{ $body-page-selector } div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
 	margin: $checkout-substep-title-margin;
 	padding: $checkout-substep-title-padding;
 	color: $checkout-substep-title-color;
@@ -94,24 +104,24 @@ body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-step__substep .fc-
 
 
 
-body#{ $_body-page-selector } form.woocommerce-checkout {
+body#{ $body-page-selector } form.woocommerce-checkout {
 	float: none;
 }
 
 
 
-body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep:before,
-body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep:after,
-body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:before,
-body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:after,
-body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:before,
-body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:after {
+body#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep:before,
+body#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep:after,
+body#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:before,
+body#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:after,
+body#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:before,
+body#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:after {
 	@include clearfix();
 }
 
 
 
-body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
+body#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
 	float: none;
 	width: 100%;
 	text-align: $alignment-left;
@@ -254,7 +264,8 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 
 	@media (#{$bp-larger-than-desktop-medium}) { width: calc( 100% - #{ remsize( 22rem ) } ); }
 }
-.fc-wrapper [data-step-complete] .fc-step__substep-text {
+.fc-wrapper [data-step-complete] .fc-step__substep-text,
+.fc-wrapper .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__substep-text {
 	display: block;
 }
 .fc-wrapper .fc-step__substep-fields.is-expanded:not( .is-transitioning ) + .fc-step__substep-text {
@@ -288,7 +299,8 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 	padding-bottom: $global-spacing-small;
 	text-align: center;
 }
-.has-checkout-layout--multi-step [data-step-complete] .fc-step__actions {
+.has-checkout-layout--multi-step [data-step-complete] .fc-step__actions,
+.has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__actions {
 	display: none;
 }
 
@@ -349,12 +361,16 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 }
 
 .fc-wrapper [data-step-complete] .fc-step__substep-edit,
-.fc-wrapper [data-step-complete] .is-editing .fc-step__substep-save {
+.fc-wrapper [data-step-complete] .is-editing .fc-step__substep-save,
+.fc-wrapper .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__substep-edit,
+.fc-wrapper .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__substep-fields.is-expanded ~ .fc-step__substep-save {
 	display: inline-block !important; // Needed to override theme styles
 }
 
 .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-edit,
-.fc-wrapper [data-step-complete] .fc-step__substep-save {
+.fc-wrapper [data-step-complete] .fc-step__substep-save,
+.fc-wrapper .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__substep-fields.is-expanded ~ .fc-step__substep-edit,
+.fc-wrapper .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__substep-save {
 	display: none !important; // Needed to override theme styles
 }
 
@@ -392,3 +408,4 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 .fc-substep__fields--coupon_codes .fc-step__substep-fields-inner {
 	padding: 0;
 }
+

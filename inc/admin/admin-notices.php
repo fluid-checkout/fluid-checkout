@@ -28,6 +28,110 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	public function hooks() {
 		add_action( 'admin_notices', array( $this, 'display_notices' ), 10 );
 		add_action( 'admin_init', array( $this, 'dismiss_notice' ), 10 );
+
+		// Register assets
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+	}
+
+
+
+	/**
+	 * Register admin notice assets.
+	 */
+	public function register_assets() {
+		// Bail if checkout assets are not loaded yet
+		if ( ! class_exists( 'FluidCheckout_Enqueue' ) ) { return; }
+
+		// Styles
+		wp_register_style( 'fc-admin-notices', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-notices' ), array(), NULL );
+	}
+
+	/**
+	 * Enqueue admin notice assets.
+	 */
+	public function enqueue_assets() {
+		// Styles
+		wp_enqueue_style( 'fc-admin-notices' );
+	}
+
+	/**
+	 * Maybe enqueue admin notice assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if user does not have necessary permissions
+		if ( ! current_user_can( 'install_plugins' ) ) { return; }
+
+		$this->enqueue_assets();
+	}
+
+
+
+	/**
+	 * Get the plugin icon URL for admin notices.
+	 *
+	 * @return  string
+	 */
+	public function get_plugin_icon_url() {
+		$icon_url = self::$directory_url . 'images/admin/fluid-checkout-icon.svg';
+
+		/**
+		 * Filters the plugin icon URL for Fluid Checkout Lite admin notices.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param  string  $icon_url  Default Lite plugin icon URL.
+		 */
+		return apply_filters( 'fc_admin_notice_icon_url', $icon_url );
+	}
+
+
+
+	/**
+	 * Output a single admin notice.
+	 *
+	 * @param   array  $notice  Notice data.
+	 */
+	public function output_notice( $notice ) {
+		// Initialize notice classes
+		$notice_classes = array(
+			'notice',
+			esc_attr( self::$plugin_prefix ) . '-admin-notice',
+		);
+
+		// Add error class if notice is an error
+		if ( true === $notice['error'] ) {
+			$notice_classes[] = 'notice-error';
+		}
+		?>
+		<div class="<?php echo esc_attr( implode( ' ', $notice_classes ) ); ?>">
+			<div class="fc-admin-notice__inner">
+				<div class="fc-admin-notice__icon">
+					<img src="<?php echo esc_url( $this->get_plugin_icon_url() ); ?>" alt="" width="48" height="48" />
+				</div>
+
+				<div class="fc-admin-notice__content">
+					<?php if ( ! empty( $notice['title'] ) ) : ?>
+						<p><strong><?php echo wp_kses_post( $notice['title'] ); ?></strong></p>
+					<?php endif; ?>
+
+					<?php if ( ! empty( $notice['description'] ) ) : ?>
+						<?php if ( $notice['paragraph_wrap'] ) : ?>
+							<p><?php echo wp_kses_post( $notice['description'] ); ?></p>
+						<?php else : ?>
+							<?php echo wp_kses_post( $notice['description'] ); ?>
+						<?php endif; ?>
+					<?php endif; ?>
+
+					<?php if ( is_array( $notice['actions'] ) && count( $notice['actions'] ) > 0 ) { ?>
+						<p class="submit"><?php echo wp_kses_post( implode( ' ', $notice['actions'] ) ); ?></p>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+		<?php
 	}
 
 
@@ -39,6 +143,23 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		// Bail if user does not have necessary permissions
 		if ( ! current_user_can( 'install_plugins' ) ) { return; }
 
+		/**
+		 * Filters the admin notices displayed by Fluid Checkout.
+		 *
+		 * The notice list is built from the plugin prefix stored in
+		 * `FluidCheckout_AdminNotices::$plugin_prefix`, which is `fc`.
+		 * Possible hook names include:
+		 *
+		 * - `fc_admin_notices`
+		 *
+		 * @since 2.3.2
+		 *
+		 * Each notice item may include `dismissible` (bool). Default true.
+		 * `dismissable` is a deprecated alias kept for backwards compatibility.
+		 * It is used only when `dismissible` is omitted; if both are set, `dismissible` wins.
+		 *
+		 * @param array $value Value to filter. Default empty array.
+		 */
 		$notices = apply_filters( self::$plugin_prefix . '_admin_notices', array() );
 
 		if ( empty( $notices ) ) {
@@ -46,39 +167,34 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		}
 
 		$default_options = array(
-			'name'           => null,
-			'title'          => '',
-			'description'    => '',
-			'error'          => false,
-			'actions'        => array(),
-			'dismissable'    => true,
-			'dismiss_label'  => __( 'Don\'t show this again', 'fluid-checkout' ),
+			'name'            => null,
+			'title'           => '',
+			'description'     => '',
+			'error'           => false,
+			'actions'         => array(),
+			'dismissible'     => true,
+			'dismiss_label'   => __( 'Don\'t show this again', 'fluid-checkout' ),
+			'paragraph_wrap'  => true,
 		);
 
 		foreach ( $notices as $notice ) {
+			$has_dismissible = is_array( $notice ) && array_key_exists( 'dismissible', $notice );
 			$notice = wp_parse_args( $notice, $default_options );
+
+			// `dismissable` is a deprecated alias of `dismissible`. The correct key wins when both are set.
+			if ( ! $has_dismissible && array_key_exists( 'dismissable', $notice ) ) {
+				$notice['dismissible'] = $notice['dismissable'];
+			}
 
 			// Maybe skip notice if it's already dismissed
 			if ( is_null( $notice['name'] ) || $this->is_dismissed( $notice['name'] ) ) { continue; }
 
 			// Maybe add dismiss action
-			if ( $notice['dismissable'] ) {
-				$notice['actions'][] = '<a href="' . esc_url( add_query_arg( array( self::$plugin_prefix . '_action' => 'dismiss_notice', self::$plugin_prefix . '_notice' => $notice['name'], '_wpnonce' => wp_create_nonce( 'dismiss-notice' ) ) ) ) . '" style="margin: 0 20px;">' . esc_html( $notice['dismiss_label'] ) . '</a>';
+			if ( $notice['dismissible'] ) {
+				$notice['actions'][] = '<a class="fc-admin-notice__dismiss" href="' . esc_url( add_query_arg( array( self::$plugin_prefix . '_action' => 'dismiss_notice', self::$plugin_prefix . '_notice' => $notice['name'], '_wpnonce' => wp_create_nonce( 'dismiss-notice' ) ) ) ) . '">' . esc_html( $notice['dismiss_label'] ) . '</a>';
 			}
 
-			?>
-			<div class="notice <?php echo esc_attr( self::$plugin_prefix ); ?>-admin-notice <?php echo $notice['error'] === true ? 'notice-error' : ''; ?>" <?php echo $notice['error'] === true ? '' : 'style="border-left-color: #0047e1;"'; ?>>
-				<?php if ( ! empty( $notice['title'] ) ) : ?>
-					<p><strong><?php echo wp_kses_post( $notice['title'] ); ?></strong></p>
-				<?php endif; ?>
-
-				<p><?php echo wp_kses_post( $notice['description'] ); ?></p>
-
-				<?php if ( is_array( $notice['actions'] ) && count( $notice['actions'] ) > 0 ) { ?>
-					<p><?php echo wp_kses_post( implode( ' ',  $notice['actions'] ) ); ?></p>
-				<?php } ?>
-			</div>
-			<?php
+			$this->output_notice( $notice );
 		}
 	}
 
@@ -111,8 +227,20 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		// Bail if not dismissing notices
 		if ( ! array_key_exists( self::$plugin_prefix . '_action', $_GET ) || 'dismiss_notice' !== sanitize_text_field( wp_unslash( $_GET[ self::$plugin_prefix . '_action' ] ) ) || ! array_key_exists( self::$plugin_prefix . '_notice', $_GET ) || empty( sanitize_text_field( wp_unslash( $_GET[ self::$plugin_prefix . '_notice' ] ) ) ) ) { return; }
 
-		// Update notice dismiss option
+		// Get notice name
 		$name = sanitize_text_field( wp_unslash( $_GET[ self::$plugin_prefix . '_notice' ] ) );
+
+		// Bail if notice name is not registered
+		$registered_notices = apply_filters( self::$plugin_prefix . '_admin_notices', array() );
+		$registered_names = array();
+		foreach ( $registered_notices as $notice ) {
+			// Skip notices without a name
+			if ( empty( $notice['name'] ) ) { continue; }
+			$registered_names[] = $notice['name'];
+		}
+		if ( ! in_array( $name, $registered_names, true ) ) { return; }
+
+		// Update notice dismiss option
 		update_option( self::$plugin_prefix . '_dismissed_notice_' . $name, 1 );
 	}
 

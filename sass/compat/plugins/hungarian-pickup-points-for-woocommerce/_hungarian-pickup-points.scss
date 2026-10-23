@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // HUNGARIAN PICKUP POINTS
 // ------------------------------------
@@ -28,7 +34,7 @@
 
 
 
-.fc-wrapper .fc-step__substep .vp-woo-pont-review-order-selected {
+.fc-wrapper .vp-woo-pont-review-order-selected {
 	position: relative;
 	display: block;
 	padding-#{ $alignment-left }: calc( 32px + #{ $global-spacing-extra-small } ); // 32px = icon width, size unit in `px` as defined by the related plugin.
@@ -36,7 +42,7 @@
 
 
 
-.fc-wrapper .fc-step__substep .vp-woo-pont-review-order-selected .vp-woo-pont-provider-icon {
+.fc-wrapper .vp-woo-pont-review-order-selected .vp-woo-pont-provider-icon {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -49,3 +55,4 @@
 	justify-content: flex-end;
 	margin-top: $global-spacing-tiny;
 }
+

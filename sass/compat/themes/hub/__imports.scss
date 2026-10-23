@@ -1,18 +1,25 @@
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-hub' !default;
-
 
 
 
 
 // ------------------------------------
-// IMPORT STYLES
+// LOAD STYLES
 // ------------------------------------
-@import
-	"order-summary",
-	"tom-select-control",
-	"woocommerce-form-fields",
-	"woocommerce-form-fields-select2";
+@use "scope-hub" as scope;
+@forward "order-summary" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
+@forward "tom-select-control" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
+@forward "woocommerce-form-fields" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
+@forward "woocommerce-form-fields-select2" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);

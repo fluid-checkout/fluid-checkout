@@ -1,7 +1,15 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT COUPON CODE
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper .fc-coupon_code__collapsible input#coupon_code {
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon_code__collapsible input#coupon_code {
 	font-size: remsize( 1.6rem );
 }

@@ -1,3 +1,15 @@
+/**
+ * Fluid Checkout shared Gulpfile.
+ *
+ * Canonical source: fluid-checkout-standards/shared/root/gulpfile.js
+ * Synced to plugin repositories as `gulpfile.js` via `sync-shared-files.js`
+ * (manifest id `gulpfile`). Keep plugin-specific options in `gulp-settings.json`
+ * and secrets in `gulp-settings.local.json` (API keys, BrowserSync, zip path).
+ *
+ * Auto-translation skips DeepL/Google when keys are missing, empty, or
+ * placeholders (`*****`) and does not fail the package build.
+ */
+
 // Defining requirements
 var fs = require('fs');
 var gulp = require('gulp');
@@ -31,16 +43,49 @@ var _package = loadJsonFile.sync( 'package.json' );
 var _gulpSettings = loadJsonFile.sync( 'gulp-settings.json' );
 var _gulpSettingsLocal = {};
 var _assetsVersion = '';
-var _defaultAction = _gulpSettingsLocal.defaultAction || _gulpSettings.defaultAction || 'watch';
 var _translationErrors = [];
+var _translationWarnings = [];
 var _translationErrorLimit = 5;
 var _translationAborted = false;
+var _loggedFirstTranslationApiError = false;
+
+// Dart Sass options passed through gulp-sass 6 (modern compile API).
+//
+// First-party stylesheets use @use / @forward. Third-party Sass that still
+// contains @import lives under sass/vendor/ when present. quietDeps hides
+// those deprecation warnings; this plugin's own stylesheets still warn.
+var _sassLogger = {
+	warn: function( message, options ) {
+		var spanUrl = options && options.span && options.span.url;
+		var pathname = spanUrl ? ( spanUrl.pathname || String( spanUrl ) ) : '';
+		if ( pathname.indexOf( 'node_modules' ) !== -1 ) {
+			return;
+		}
+		process.stderr.write( message + '\n' );
+	},
+	debug: function( message ) {
+		process.stderr.write( message + '\n' );
+	},
+};
+var _sassOptions = {
+	quietDeps: true,
+	loadPaths: [
+		path.resolve( 'sass' ),
+		path.resolve( 'sass/vendor' ),
+	],
+	logger: _sassLogger,
+};
+
+// Zip and rsync listings from large plugins exceed exec's default 1 MB buffer.
+var _execOptions = { maxBuffer: 1024 * 1024 * 50 };
 
 
 
 // Try loading local gulpfile settings
-try{ _gulpSettingsLocal = loadJsonFile.sync( 'gulp-settings.local.json' ); }
+try { _gulpSettingsLocal = loadJsonFile.sync( 'gulp-settings.local.json' ); }
 catch ( err ) {}
+
+var _defaultAction = _gulpSettingsLocal.defaultAction || _gulpSettings.defaultAction || 'watch';
 
 
 
@@ -121,7 +166,7 @@ function processCss( src, dest ) {
 		.pipe(sassImportJson({
 			isScss: true
 		}))
-		.pipe(sass())
+		.pipe(sass( _sassOptions ))
 		.pipe(autoprefixer({ cascade: false }))
 		.pipe(rename({suffix: _assetsVersion}))
 		.pipe(gulp.dest( dest )) // save .css
@@ -137,7 +182,7 @@ function processCssDev( src, dest ) {
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(sassImportJson({ isScss: true }))
-		.pipe(sass())
+		.pipe(sass( _sassOptions ))
 		.pipe(autoprefixer({ cascade: false }))
 		.pipe(rename({ suffix: _assetsVersion }))
 		.pipe(gulp.dest( dest )) // save .css
@@ -262,16 +307,17 @@ gulp.task( 'npm-run-build', gulp.series( function( done ) {
 	// Bail if the `blocks` folder does not exist
 	if ( ! fs.existsSync( './blocks' ) ) { return done(); }
 
-	exec('npm run build', function (err, stdout, stderr) {
-		console.log( stdout );
-		console.log( stderr );
+	exec( 'npm run build', _execOptions, function ( err, stdout, stderr ) {
+		// Successful builds stay quiet. Print the log only when the command fails.
 		if ( err ) {
-			// If an error occurred, make the Gulp task fail
+			if ( stdout ) { console.log( stdout ); }
+			if ( stderr ) { console.log( stderr ); }
 			done( err );
+			return;
 		}
-	});
 
-	done();
+		done();
+	} );
 } ) );
 
 
@@ -351,17 +397,19 @@ gulp.task( 'copy-plugin-files', gulp.series( function( done ) {
 		( rsyncArgs ? rsyncArgs + ' ' : '' ) +
 		'../' + _package.name + '/ ' +
 		_gulpSettingsLocal.pluginZipPath + '/' + _package.name,
+		_execOptions,
 		function ( err, stdout, stderr ) {
 			console.log( stdout );
 			console.log( stderr );
 			if ( err ) {
 				// If an error occurred, make the Gulp task fail
 				done( err );
+				return;
 			}
+
+			done();
 		}
 	);
-
-	done();
 } ) );
 
 // Run:
@@ -381,16 +429,17 @@ gulp.task( 'pack-plugin-zip', gulp.series( function( done ) {
 	}
 
 	// Zip the plugin folder
-	exec( 'cd ' + _gulpSettingsLocal.pluginZipPath + ' && zip -r ' + destinationFile + ' ' + _package.name, function ( err, stdout, stderr ) {
+	exec( 'cd ' + _gulpSettingsLocal.pluginZipPath + ' && zip -r ' + destinationFile + ' ' + _package.name, _execOptions, function ( err, stdout, stderr ) {
 		console.log( stdout );
 		console.log( stderr );
 		if ( err ) {
 			// If an error occurred, make the Gulp task fail
 			done( err );
+			return;
 		}
-	});
 
-	done();
+		done();
+	} );
 } ) );
 
 
@@ -473,6 +522,123 @@ function abortTranslationIfErrorLimitReached() {
 
 
 
+// Function to record a translation warning without failing the Gulp task
+function addTranslationWarning( message ) {
+	_translationWarnings.push( message );
+	console.warn( 'Warning: ' + message );
+	appendTranslationLog( 'Warning: ' + message );
+}
+
+// Function to print a final translation warning summary
+function printTranslationWarningSummary() {
+	if ( 0 === _translationWarnings.length && 0 === _translationErrors.length ) {
+		return;
+	}
+
+	console.warn( '' );
+	console.warn( '========== Translation warnings ==========' );
+
+	_translationWarnings.forEach( function( message ) {
+		console.warn( ' - ' + message );
+	} );
+
+	_translationErrors.forEach( function( error ) {
+		console.warn( ' - Error translating ' + error.lang + ': ' + error.error );
+	} );
+
+	console.warn( 'Auto-translation issues did not fail the package build. See the translation log for details.' );
+	printTranslationLogLink();
+	console.warn( '==========================================' );
+	console.warn( '' );
+}
+
+// Function to check whether a translation API key is usable
+function isUsableTranslationApiKey( key ) {
+	if ( 'string' !== typeof key ) {
+		return false;
+	}
+
+	var trimmedKey = key.trim();
+
+	if ( ! trimmedKey ) {
+		return false;
+	}
+
+	// Placeholder values from gulp-settings.local.example.json (e.g. *****)
+	if ( /^\*+$/.test( trimmedKey ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+// Function to get a usable translation API config by type, or null when missing
+function getTranslationApiConfig( type ) {
+	var apis = _gulpSettingsLocal && _gulpSettingsLocal.translationAPIs;
+
+	if ( ! Array.isArray( apis ) ) {
+		return null;
+	}
+
+	var config = apis.find( function( api ) {
+		return api && api.type === type;
+	} );
+
+	if ( ! config || ! config.url || ! isUsableTranslationApiKey( config.key ) ) {
+		return null;
+	}
+
+	return config;
+}
+
+// Function to warn about missing translation APIs and whether auto-translation can run
+function warnMissingTranslationApis() {
+	var deeplConfigured = !! getTranslationApiConfig( 'deepl' );
+	var googleConfigured = !! getTranslationApiConfig( 'googleTranslate' );
+
+	if ( ! deeplConfigured && ! googleConfigured ) {
+		addTranslationWarning( 'DeepL and Google Translate API keys are missing, empty, or placeholders (*****). Skipping auto-translation. POT and PO files are still updated without calling translation APIs.' );
+		return false;
+	}
+
+	if ( ! deeplConfigured ) {
+		addTranslationWarning( 'DeepL API key is missing, empty, or a placeholder (*****). Skipping DeepL. Languages with a DeepL mapping will fall back to Google Translate where a Google language code exists.' );
+	}
+
+	if ( ! googleConfigured ) {
+		addTranslationWarning( 'Google Translate API key is missing, empty, or a placeholder (*****). Skipping Google Translate. Languages without a DeepL mapping will not be auto-translated.' );
+	}
+
+	return true;
+}
+
+// Function to pick an available translation provider for a language
+function getAvailableTranslationProvider( langSettings ) {
+	if ( ! langSettings ) {
+		return null;
+	}
+
+	if ( null !== langSettings.deepl && getTranslationApiConfig( 'deepl' ) ) {
+		return {
+			useDeepl: true,
+			translationSource: 'deepl',
+			apiTargetLang: langSettings.deepl
+		};
+	}
+
+	if ( langSettings.googleTranslate && getTranslationApiConfig( 'googleTranslate' ) ) {
+		return {
+			useDeepl: false,
+			translationSource: 'google',
+			apiTargetLang: langSettings.googleTranslate
+		};
+	}
+
+	return null;
+}
+
+
+
 // Function to run items with a concurrency limit
 function runWithConcurrency( items, limit, worker, callback ) {
 	if ( 0 === items.length ) {
@@ -512,15 +678,19 @@ function runWithConcurrency( items, limit, worker, callback ) {
 
 // Function to translate text using Deepl
 function translateWithDeepl( text, targetLang, callback ) {
-	var deeplApiUrl = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'deepl'; } ).url;
-	var deeplApiKey = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'deepl'; } ).key;
+	var deeplApiConfig = getTranslationApiConfig( 'deepl' );
+
+	if ( ! deeplApiConfig ) {
+		callback( new Error( 'DeepL API is not configured' ) );
+		return;
+	}
 
 	import( 'node-fetch' ).then( function ( fetch ) {
-		fetch.default( deeplApiUrl, {
+		return fetch.default( deeplApiConfig.url, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded',
-				'Authorization': 'DeepL-Auth-Key ' + deeplApiKey
+				'Authorization': 'DeepL-Auth-Key ' + deeplApiConfig.key
 			},
 			body: 'text=' + encodeURIComponent( text ) + '&source_lang=EN' + '&target_lang=' + targetLang
 		} )
@@ -540,16 +710,19 @@ function translateWithDeepl( text, targetLang, callback ) {
 
 			// Otherwise, pass translated text into callback
 			callback( null, data.translations[ 0 ].text );
-		} )
-		.catch( function( error ) { callback( error ); } );
-	} );
+		} );
+	} ).catch( function( error ) { callback( error ); } );
 }
- 
+
 // Function to translate text using Google Translate
 function translateWithGoogle( text, targetLang, callback ) {
-	var googleApiConfig = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'googleTranslate'; } );
-	var googleApiUrl = googleApiConfig.url;
-	var googleApiKey = googleApiConfig.key;
+	var googleApiConfig = getTranslationApiConfig( 'googleTranslate' );
+
+	if ( ! googleApiConfig ) {
+		callback( new Error( 'Google Translate API is not configured' ) );
+		return;
+	}
+
 	var requestOptions = {};
 
 	if ( googleApiConfig.referrer ) {
@@ -559,7 +732,7 @@ function translateWithGoogle( text, targetLang, callback ) {
 	}
 
 	import( 'node-fetch' ).then( function ( fetch ) {
-		fetch.default( googleApiUrl + '?key=' + googleApiKey + '&q=' + encodeURIComponent( text ) + '&source=en' + '&target=' + targetLang, requestOptions )
+		return fetch.default( googleApiConfig.url + '?key=' + googleApiConfig.key + '&q=' + encodeURIComponent( text ) + '&source=en' + '&target=' + targetLang, requestOptions )
 		.then( function( response ) {
 			// Handle API error
 			if ( 200 !== response.status ) {
@@ -576,23 +749,31 @@ function translateWithGoogle( text, targetLang, callback ) {
 
 			// Otherwise, pass translated text into callback
 			callback( null, data.data.translations[ 0 ].translatedText );
-		} )
-		.catch( function( error ) { callback( error ); } );
-	} );
+		} );
+	} ).catch( function( error ) { callback( error ); } );
 }
 
 // Function to translate PO file
 function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
-	// Maybe copy POT file to PO file if it does not exist
-	if ( ! fs.existsSync( poFilePath ) ) {
-		fs.copyFileSync( potFilePath, poFilePath );
+	var poContent;
+	var langSettings;
+
+	try {
+		// Maybe copy POT file to PO file if it does not exist
+		if ( ! fs.existsSync( poFilePath ) ) {
+			fs.copyFileSync( potFilePath, poFilePath );
+		}
+
+		// Get PO file contents
+		poContent = fs.readFileSync( poFilePath );
+
+		// Get language settings
+		langSettings = _gulpSettings.languages[ targetLang ];
 	}
-
-	// Get PO file contents
-	var poContent = fs.readFileSync( poFilePath );
-
-	// Get language settings
-	var langSettings = _gulpSettings.languages[ targetLang ];
+	catch ( error ) {
+		addTranslationWarning( 'Error reading translation files for ' + targetLang + ': ' + error.message );
+		return callback();
+	}
 
 	// Load gettext-parser
 	import( 'gettext-parser' ).then( function( gettextParser ) {
@@ -604,7 +785,7 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 		var pot = gettextParser.po.parse( potContent );
 
 		// Update plural format, if available
-		if ( langSettings.pluralForms ) {
+		if ( langSettings && langSettings.pluralForms ) {
 			// Update plural-forms header from language settings
 			po.headers[ 'Plural-Forms' ] = langSettings.pluralForms;
 
@@ -636,6 +817,7 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 
 		// Initialize translations
 		var translations = po.translations;
+		var provider = getAvailableTranslationProvider( langSettings );
 		var jobs = [];
 
 		// Build flat job list for strings that need translation
@@ -650,24 +832,28 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 					var msgstr = contextTranslations[ msgid ].msgstr[ msgstrIndex ];
 
 					if ( ! msgstr ) {
-						var useDeepl = langSettings.deepl !== null;
+						// Skip untranslated strings when no API is available for this language
+						if ( ! provider ) {
+							continue;
+						}
 
 						jobs.push( {
 							context: context,
 							msgid: msgid,
 							msgstrIndex: msgstrIndex,
 							strToTranslate: msgstrIndex > 0 ? msgidPlural : msgid,
-							useDeepl: useDeepl,
-							translationSource: useDeepl ? 'deepl' : 'google',
-							apiTargetLang: useDeepl ? langSettings.deepl : langSettings[ 'googleTranslate' ]
+							useDeepl: provider.useDeepl,
+							translationSource: provider.translationSource,
+							apiTargetLang: provider.apiTargetLang
 						} );
 					}
 				}
 			} );
 		} );
 
-		// Bail if no strings need translation
+		// Bail if no strings need translation (still write merged POT entries)
 		if ( 0 === jobs.length ) {
+			fs.writeFileSync( poFilePath, gettextParser.po.compile( po ), { flush: true } );
 			return callback();
 		}
 
@@ -688,7 +874,17 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 				if ( err ) {
 					appendTranslationLog( 'Error translating "' + job.strToTranslate + '" to ' + job.apiTargetLang + ' with ' + ( job.useDeepl ? 'Deepl' : 'Google Translate' ) + ': ' + err.message );
 					_translationErrors.push( { lang: job.apiTargetLang, error: err.message } );
+
+					if ( ! _loggedFirstTranslationApiError ) {
+						_loggedFirstTranslationApiError = true;
+						console.warn( 'Warning: Translation API error. Further errors are written to the translation log. The package build will continue.' );
+					}
+
 					abortTranslationIfErrorLimitReached();
+
+					if ( _translationAborted && _translationErrorLimit === _translationErrors.length ) {
+						addTranslationWarning( 'Translation stopped after ' + _translationErrorLimit + ' API errors. Remaining strings were skipped.' );
+					}
 				}
 				else {
 					translations[ job.context ][ job.msgid ].msgstr[ job.msgstrIndex ] = translatedText;
@@ -705,7 +901,10 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 			fs.writeFileSync( poFilePath, gettextParser.po.compile( po ), { flush: true } );
 			callback();
 		} );
-	});
+	} ).catch( function( error ) {
+		addTranslationWarning( 'Error processing PO file for ' + targetLang + ': ' + error.message );
+		callback();
+	} );
 }
 
 // Function to convert PO file to PHP
@@ -771,39 +970,38 @@ function poToPHP ( jsonFile, enc, cb ) {
 
 // Run:
 // gulp translate-po
-// Translate PO files using Deepl and Google Translate
+// Translate PO files using Deepl and Google Translate.
+// Missing or placeholder API keys skip that provider with a warning.
+// API errors are logged and do not fail the package build.
 gulp.task( 'translate-po', function ( done ) {
 	_translationErrors = [];
+	_translationWarnings = [];
 	_translationAborted = false;
+	_loggedFirstTranslationApiError = false;
 	initTranslationLog();
 	printTranslationLogLink();
+	warnMissingTranslationApis();
 
 	// Get languages
 	var languagesList = Object.keys( _gulpSettings.languages );
 	var index = 0;
 
+	// Finish the task without failing the package build
+	function finishTranslatePo() {
+		printTranslationWarningSummary();
+		done();
+	}
+
 	// Translate next language
 	function translateNext() {
 		if ( _translationAborted ) {
 			appendTranslationLog( 'Translation run stopped after ' + _translationErrorLimit + ' API errors.' );
-			console.error( 'Translation stopped after ' + _translationErrorLimit + ' API errors. See translation log for details.' );
-
-			_translationErrors.forEach( function ( error ) {
-				console.error( `Error translating ${error.lang}:`, error.error );
-			} );
-
-			return done();
+			return finishTranslatePo();
 		}
 
 		if ( index >= languagesList.length ) {
-			appendTranslationLog( 'Translation run finished. Languages processed: ' + languagesList.length + '. Errors: ' + _translationErrors.length );
-
-			// Log errors
-			_translationErrors.forEach( function ( error ) {
-				console.error( `Error translating ${error.lang}:`, error.error );
-			} );
-
-			return done();
+			appendTranslationLog( 'Translation run finished. Languages processed: ' + languagesList.length + '. Errors: ' + _translationErrors.length + '. Warnings: ' + _translationWarnings.length );
+			return finishTranslatePo();
 		}
 
 		// Get language code and PO file path
@@ -878,22 +1076,10 @@ gulp.task( 'generate-pot', function ( done ) {
 
 // Run:
 // gulp translations
-// Generate POT file and update translations
-gulp.task( 'translate', gulp.series( 'generate-pot', 'update-translations' ) );
-
-
-
-// Run:
-// gulp copy-updater
-// Copy the theme/plugin updater class into the project
-gulp.task( 'copy-updater', gulp.series( function( done ) {
-	if ( _gulpSettings.copyUpdater ) {
-		del.sync( _gulpSettings.copyUpdater.destination );
-
-		gulp.src( _gulpSettings.copyUpdater.source )
-		.pipe( gulp.dest( _gulpSettings.copyUpdater.destination ) );
-	}
-
+// Generate POT file and update translations.
+// Auto-translation warnings are summarized again at the end of the build run.
+gulp.task( 'translate', gulp.series( 'generate-pot', 'update-translations', function( done ) {
+	printTranslationWarningSummary();
 	done();
 } ) );
 

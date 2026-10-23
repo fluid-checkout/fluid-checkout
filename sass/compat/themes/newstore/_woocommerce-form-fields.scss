@@ -1,8 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // WOOCOMMERCE FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row {
+body#{ $body-theme-selector } div.woocommerce form .form-row {
 
 	select,
 	input[type="email"],
@@ -20,3 +28,4 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row {
 		top: 0;
 	}
 }
+

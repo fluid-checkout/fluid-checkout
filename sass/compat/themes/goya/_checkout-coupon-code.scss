@@ -1,8 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT COUPON CODE
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .fc-coupon-code-section .form-row .woocommerce-input-wrapper {
+body#{ $body-theme-selector } div.woocommerce .fc-wrapper .fc-coupon-code-section .form-row .woocommerce-input-wrapper {
 	position: relative !important; // Needed to override theme styles
 	top: 0 !important; // Needed to override theme styles
 	#{ $alignment-left}: 0 !important; // Needed to override theme styles
@@ -11,7 +19,7 @@ body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .fc-coupon-code-secti
 
 
 
-body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .fc-coupon-code-section .form-row .woocommerce-input-wrapper label {
+body#{ $body-theme-selector } div.woocommerce .fc-wrapper .fc-coupon-code-section .form-row .woocommerce-input-wrapper label {
 	z-index: z( 'above' ) !important; // Needed to override theme styles
 	position: absolute !important; // Needed to override theme styles
 	top: -10px !important; // Needed to override theme styles, used px directly to match unit used by the theme styles
@@ -20,7 +28,7 @@ body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .fc-coupon-code-secti
 	font-size: 0.95em !important; // Needed to override theme styles, used em directly to match unit used by the theme styles
 }
 
-body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .fc-coupon-code-section .form-row .woocommerce-input-wrapper label:after {
+body#{ $body-theme-selector } div.woocommerce .fc-wrapper .fc-coupon-code-section .form-row .woocommerce-input-wrapper label:after {
 	content: '';
 	background: $white;
 	height: 2px; // Used px directly to match unit used by the theme styles
@@ -30,3 +38,4 @@ body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .fc-coupon-code-secti
 	#{ $alignment-left}: 0;
 	z-index: -1;
 }
+
