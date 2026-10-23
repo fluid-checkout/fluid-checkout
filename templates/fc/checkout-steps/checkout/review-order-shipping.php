@@ -10,9 +10,11 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see https://docs.woocommerce.com/document/template-structure/
+ * @see https://woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 3.0.4
+ * @version 3.0.5
+ * @wc-version 11.2.0
+ * @fc-version 4.2.9
  * @original plugins/woocommerce/templates/cart/cart-shipping.php
  */
 
@@ -22,7 +24,14 @@ defined( 'ABSPATH' ) || exit;
 	<th><?php echo wp_kses_post( $package_name ); ?></th>
 	<td data-title="<?php echo esc_attr( $package_name ); ?>">
 		<?php if ( $method ) : ?>
-			<?php printf( '<span class="shipping_method_%1$s_%2$s">%3$s</span>', $index, esc_attr( sanitize_title( $method->id ) ), wp_kses_post( $formatted_shipping_price ) ); ?>
+			<?php
+			printf(
+				'<span class="shipping_method_%1$s_%2$s">%3$s</span>',
+				$index,
+				esc_attr( sanitize_title( $method->id ) ),
+				wp_kses_post( $formatted_shipping_price )
+			);
+			?>
 		<?php else :
 			/**
 			 * Filters the placeholder shown when no shipping method has been chosen.

@@ -120,7 +120,13 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Register WooCommerce scripts with modified version
 		wp_register_script( 'woocommerce', $this->get_script_url( 'js/woocommerce' ), $woocommerce_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_register_script( 'wc-country-select', $this->get_script_url( 'js/country-select' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+
+		$country_select_deps = array( 'jquery', 'fc-utils' );
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
+			$country_select_deps[] = 'selectWoo';
+		}
+
+		wp_register_script( 'wc-country-select', $this->get_script_url( 'js/country-select' ), $country_select_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-address-i18n', $this->get_script_url( 'js/address-i18n' ), array( 'jquery', 'wc-country-select' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-checkout', $this->get_script_url( 'js/checkout' ), $checkout_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-password-strength-meter', $this->get_script_url( 'js/password-strength-meter' ), array( 'jquery', 'password-strength-meter' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );

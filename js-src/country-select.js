@@ -304,7 +304,7 @@ jQuery( function( $ ) {
 			}
 		}
 
-		// Re-focus element
+		// CHANGE: Re-focus element after country/state field type updates
 		FCUtils.maybeRefocusElement( window.fcCurrentFocusedElement, window.fcCurrentFocusedElementValue );
 
 		$( document.body ).trigger( 'country_to_state_changing', [country, $wrapper ] );

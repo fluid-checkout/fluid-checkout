@@ -61,3 +61,6 @@ fluid-checkout-docs/
 js
 css
 build
+
+# Generated replacements manifest (regenerate before every check; keep replacements.config.json committed)
+replacements.json

@@ -48,6 +48,7 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 	<?php // CHANGE: Change the markup of this section to align with the shipping methods section from Fluid Checkout ?>
 	<?php // CHANGE: Always display shipping options for recurring packages, even when only one shipping method is available ?>
 	<?php if ( 0 < count( $available_methods ) ) : ?>
+		<?php // CHANGE: Removed upstream radio list, elseif calculated-shipping branch, and else no-shipping markup ?>
 		<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element markup ?>
 		<?php
 			/**
@@ -145,6 +146,7 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 				</div>
 			</div>
 		<?php endif; ?>
+		<?php // CHANGE: Removed upstream show_package_details block ?>
 	<?php endif; ?>
 
 </div>
