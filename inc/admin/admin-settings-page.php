@@ -824,7 +824,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	/**
 	 * Output the settings layout: the sidebar with title, save buttons and navigation, the tab panels in one form, and the page preview. Also used by other Fluid Checkout admin pages.
 	 *
-	 * @param  array  $args  Layout arguments: `title` of the sidebar, `form_url`, `tabs` (like the settings tabs), `current_tab`, `nav_callback` that outputs the navigation for the tabs and current tab, and `tab_content_callback` that outputs the contents of a tab. The callbacks default to those of the settings page.
+	 * @param  array  $args  Layout arguments: `title` of the sidebar, `form_url`, `tabs` (like the settings tabs, optionally with a `title` shown above their contents instead of their `label`), `current_tab`, `nav_callback` that outputs the navigation for the tabs and current tab, and `tab_content_callback` that outputs the contents of a tab. The callbacks default to those of the settings page.
 	 */
 	public function output_layout( $args ) {
 		// Get layout arguments
@@ -905,13 +905,16 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 								if ( 'separator' === $tab_args[ 'type' ] ) { continue; }
 
 								$is_active = $tab === $current_tab;
+
+								// Get the title shown above the tab contents, the label unless the tab has its own title
+								$tab_title = ! empty( $tab_args[ 'title' ] ) ? $tab_args[ 'title' ] : $tab_args[ 'label' ];
 								?>
 								<div
 									class="fc-settings-tab fc-settings-tab--<?php echo esc_attr( $tab ); ?><?php echo $is_active ? ' is-active' : ''; ?>"
 									data-fc-settings-tab="<?php echo esc_attr( $tab ); ?>"
 									data-fc-settings-show-save="<?php echo $tab_args[ 'show_save_button' ] ? 'yes' : 'no'; ?>"
 								>
-									<h2 class="fc-settings-content__title"><?php echo esc_html( $tab_args[ 'label' ] ); ?></h2>
+									<h2 class="fc-settings-content__title"><?php echo esc_html( $tab_title ); ?></h2>
 
 									<?php call_user_func( $args[ 'tab_content_callback' ], $tab, $tab_args ); ?>
 								</div>
