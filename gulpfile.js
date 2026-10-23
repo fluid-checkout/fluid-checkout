@@ -274,6 +274,7 @@ function buildJS( done ) {
 	var buildMain = function() { if ( _gulpSettings.jsSources.main ) { return processJs( _gulpSettings.jsSources.main, './js/' ); } else { return Promise.resolve(); } };
 	var buildStandalone = function() { if ( _gulpSettings.jsSources.standalone ) { return processJs( _gulpSettings.jsSources.standalone, './js/' ); } else { return Promise.resolve(); } };
 	var buildAdmin = function() { if ( _gulpSettings.jsSources.admin ) { return processJs( _gulpSettings.jsSources.admin, './js/admin/' ); } else { return Promise.resolve(); } };
+	var buildAccount = function() { if ( _gulpSettings.jsSources.account ) { return processJs( _gulpSettings.jsSources.account, './js/account/' ); } else { return Promise.resolve(); } };
 	var buildPluginCompat = function() { if ( _gulpSettings.jsSources.pluginCompat ) { return processJs( _gulpSettings.jsSources.pluginCompat, './js/compat/plugins/' ); } else { return Promise.resolve(); } };
 	var buildThemeCompat = function() { if ( _gulpSettings.jsSources.themeCompat ) { return processJs( _gulpSettings.jsSources.themeCompat, './js/compat/themes/' ); } else { return Promise.resolve(); } };
 
@@ -285,6 +286,7 @@ function buildJS( done ) {
 		buildMain,
 		buildStandalone,
 		buildAdmin,
+		buildAccount,
 		buildPluginCompat,
 		buildThemeCompat
 	];
@@ -330,11 +332,15 @@ gulp.task( 'build', gulp.series( gulp.parallel( 'build-js', 'build-css', 'npm-ru
 
 
 /**
- * Merge plugin zip rsync settings from shared and local config.
+ * Merge plugin zip rsync settings from base and optional local overlays.
+ *
+ * @param {Object} baseSettings  pluginZipRsync from gulp-settings.json
+ * @param {Object} localSettings pluginZipRsync from gulp-settings.local.json (optional)
+ * @return {Object}
  */
-function getMergedPluginZipRsyncSettings() {
-	var base = _gulpSettings.pluginZipRsync || {};
-	var local = _gulpSettingsLocal.pluginZipRsync || {};
+function getMergedPluginZipRsyncSettingsFromFiles( baseSettings, localSettings ) {
+	var base = baseSettings || {};
+	var local = localSettings || {};
 
 	return {
 		include: ( base.include || [] ).concat( local.include || [] ),
@@ -345,22 +351,65 @@ function getMergedPluginZipRsyncSettings() {
 }
 
 /**
- * Build rsync filter arguments for plugin zip exports.
+ * Merge plugin zip rsync settings from this plugin's shared and local config.
+ *
+ * @return {Object}
  */
-function getPluginZipRsyncArgs() {
-	var rsync = getMergedPluginZipRsyncSettings();
+function getMergedPluginZipRsyncSettings() {
+	return getMergedPluginZipRsyncSettingsFromFiles(
+		_gulpSettings.pluginZipRsync,
+		_gulpSettingsLocal.pluginZipRsync
+	);
+}
+
+/**
+ * Load and merge pluginZipRsync from a gulp-settings.json path.
+ * Merges a sibling gulp-settings.local.json when present.
+ *
+ * @param {string} settingsJsonPath Absolute or relative path to gulp-settings.json
+ * @return {Object}
+ */
+function loadPluginZipRsyncSettings( settingsJsonPath ) {
+	var absoluteSettingsPath = path.resolve( settingsJsonPath );
+	var baseSettings = loadJsonFile.sync( absoluteSettingsPath );
+	var localSettings = {};
+	var localSettingsPath = path.join( path.dirname( absoluteSettingsPath ), 'gulp-settings.local.json' );
+
+	// Maybe merge local rsync overrides next to the settings file
+	if ( fs.existsSync( localSettingsPath ) ) {
+		try {
+			localSettings = loadJsonFile.sync( localSettingsPath );
+		} catch ( e ) {
+			localSettings = {};
+		}
+	}
+
+	return getMergedPluginZipRsyncSettingsFromFiles(
+		baseSettings.pluginZipRsync,
+		localSettings.pluginZipRsync
+	);
+}
+
+/**
+ * Build rsync filter arguments from a merged pluginZipRsync object.
+ *
+ * @param {Object} mergedRsync Merged include/exclude settings
+ * @return {string}
+ */
+function getPluginZipRsyncArgsFromSettings( mergedRsync ) {
+	var rsync = mergedRsync || {};
 	var args = [];
 
-	rsync.exclude.forEach( function( pattern ) {
-		args.push( '--exclude="' + pattern + '"' );
+	( rsync.exclude || [] ).forEach( function( pattern ) {
+		args.push( '--exclude=' + JSON.stringify( String( pattern ) ) );
 	} );
 
-	rsync.include.forEach( function( pattern ) {
-		args.push( '--include="' + pattern + '"' );
+	( rsync.include || [] ).forEach( function( pattern ) {
+		args.push( '--include=' + JSON.stringify( String( pattern ) ) );
 	} );
 
 	if ( rsync.excludeFrom ) {
-		args.push( '--exclude-from=' + rsync.excludeFrom );
+		args.push( '--exclude-from=' + JSON.stringify( String( rsync.excludeFrom ) ) );
 	}
 
 	if ( rsync.pruneEmptyDirs ) {
@@ -368,6 +417,220 @@ function getPluginZipRsyncArgs() {
 	}
 
 	return args.join( ' ' );
+}
+
+/**
+ * Build rsync filter arguments for this plugin's zip export.
+ *
+ * @return {string}
+ */
+function getPluginZipRsyncArgs() {
+	return getPluginZipRsyncArgsFromSettings( getMergedPluginZipRsyncSettings() );
+}
+
+/**
+ * Bundled sibling sources to materialize into the export zip.
+ * Configured in gulp-settings.json → pluginZipBundledSources.
+ *
+ * @return {Array}
+ */
+function getBundledSourcesConfig() {
+	var sources = _gulpSettings.pluginZipBundledSources;
+	return Array.isArray( sources ) ? sources : [];
+}
+
+/**
+ * Extra main-rsync excludes so bundled target subdirs are not copied as symlinks.
+ *
+ * @return {Array}
+ */
+function getBundledTargetSubdirExcludes() {
+	var excludes = [];
+
+	getBundledSourcesConfig().forEach( function( entry ) {
+		if ( ! entry || ! entry.targetSubdir ) { return; }
+		// Exclude the symlink/file itself and any nested paths
+		excludes.push( entry.targetSubdir );
+		excludes.push( entry.targetSubdir + '/' );
+		excludes.push( entry.targetSubdir + '/**' );
+	} );
+
+	return excludes;
+}
+
+/**
+ * Rsync args for the main plugin export, excluding bundled target folders.
+ *
+ * @return {string}
+ */
+function getMainPluginZipRsyncArgs() {
+	var merged = getMergedPluginZipRsyncSettings();
+	var bundledExcludes = getBundledTargetSubdirExcludes();
+
+	merged.exclude = ( merged.exclude || [] ).concat( bundledExcludes );
+
+	return getPluginZipRsyncArgsFromSettings( merged );
+}
+
+/**
+ * Run gulp build inside a bundled source directory when configured.
+ *
+ * @param {Object} entry             Bundled source config entry
+ * @param {string} absoluteSourceDir Absolute path to the source plugin root
+ * @param {Function} done            Callback with optional error
+ */
+function runBundledSourceBuild( entry, absoluteSourceDir, done ) {
+	// Bail if build before copy is not enabled
+	if ( ! entry.buildBeforeCopy ) {
+		done();
+		return;
+	}
+
+	var buildTask = entry.buildTask || 'build';
+	console.log( 'Building bundled source: ' + absoluteSourceDir + ' (gulp ' + buildTask + ')' );
+
+	exec(
+		'npx gulp ' + buildTask,
+		Object.assign( {}, _execOptions, { cwd: absoluteSourceDir } ),
+		function( err, stdout, stderr ) {
+			console.log( stdout );
+			console.log( stderr );
+			if ( err ) {
+				done( new Error(
+					'Bundled source build failed in "' + absoluteSourceDir + '". ' +
+					'Run "npm install" there if dependencies are missing, then retry.'
+				) );
+				return;
+			}
+			done();
+		}
+	);
+}
+
+/**
+ * Materialize one bundled source into the export plugin folder.
+ *
+ * @param {string}   exportPluginRoot Absolute path to the exported plugin folder
+ * @param {Object}   entry            Bundled source config entry
+ * @param {Function} done             Callback with optional error
+ */
+function copySingleBundledSource( exportPluginRoot, entry, done ) {
+	var targetSubdir = entry.targetSubdir;
+	var sourceDir = entry.sourceDir;
+	var required = entry.required !== false;
+	var absoluteSourceDir = path.resolve( process.cwd(), sourceDir );
+	var absoluteTargetDir = path.join( exportPluginRoot, targetSubdir );
+
+	// Bail if required fields are missing
+	if ( ! targetSubdir || ! sourceDir ) {
+		done( new Error( 'pluginZipBundledSources entry requires targetSubdir and sourceDir.' ) );
+		return;
+	}
+
+	// Bail if source directory is missing
+	if ( ! fs.existsSync( absoluteSourceDir ) ) {
+		if ( required ) {
+			done( new Error( 'Bundled source directory missing: "' + absoluteSourceDir + '".' ) );
+			return;
+		}
+		console.log( 'Skipping optional bundled source (missing): ' + absoluteSourceDir );
+		done();
+		return;
+	}
+
+	runBundledSourceBuild( entry, absoluteSourceDir, function( buildErr ) {
+		if ( buildErr ) {
+			done( buildErr );
+			return;
+		}
+
+		// Remove any previous target folder or leftover symlink from the export tree.
+		// Broken symlinks fail existsSync, so use lstat.
+		try {
+			var targetStat = fs.lstatSync( absoluteTargetDir );
+			if ( targetStat.isSymbolicLink() ) {
+				fs.unlinkSync( absoluteTargetDir );
+			} else {
+				del.sync( absoluteTargetDir, { force: true } );
+			}
+		} catch ( e ) {
+			// Target does not exist yet
+		}
+
+		var rsyncSettings;
+		if ( entry.rsyncSettingsFrom ) {
+			rsyncSettings = loadPluginZipRsyncSettings( path.resolve( process.cwd(), entry.rsyncSettingsFrom ) );
+		} else {
+			rsyncSettings = getMergedPluginZipRsyncSettings();
+		}
+
+		// Merge optional per-entry include/exclude overrides
+		rsyncSettings.include = ( rsyncSettings.include || [] ).concat( entry.include || [] );
+		rsyncSettings.exclude = ( rsyncSettings.exclude || [] ).concat( entry.exclude || [] );
+
+		// Resolve exclude-from relative to the source plugin root before building args
+		if ( rsyncSettings.excludeFrom ) {
+			rsyncSettings.excludeFrom = path.resolve( absoluteSourceDir, rsyncSettings.excludeFrom );
+		}
+
+		var rsyncArgs = getPluginZipRsyncArgsFromSettings( rsyncSettings );
+
+		console.log( 'Bundling ' + sourceDir + ' → ' + targetSubdir );
+
+		exec(
+			'rsync -av --copy-links ' +
+			( rsyncArgs ? rsyncArgs + ' ' : '' ) +
+			JSON.stringify( absoluteSourceDir + '/' ) + ' ' +
+			JSON.stringify( absoluteTargetDir ),
+			_execOptions,
+			function( err, stdout, stderr ) {
+				console.log( stdout );
+				console.log( stderr );
+				if ( err ) {
+					done( err );
+					return;
+				}
+				done();
+			}
+		);
+	} );
+}
+
+/**
+ * Materialize all configured bundled sources into the export plugin folder.
+ *
+ * @param {string}   exportPluginRoot Absolute path to the exported plugin folder
+ * @param {Function} done             Callback with optional error
+ */
+function copyAllBundledSources( exportPluginRoot, done ) {
+	var entries = getBundledSourcesConfig();
+
+	// Bail if no bundled sources are configured
+	if ( ! entries.length ) {
+		done();
+		return;
+	}
+
+	var index = 0;
+
+	function copyNext( err ) {
+		if ( err ) {
+			done( err );
+			return;
+		}
+
+		// Bail when all entries are copied
+		if ( index >= entries.length ) {
+			done();
+			return;
+		}
+
+		var entry = entries[ index ];
+		index += 1;
+		copySingleBundledSource( exportPluginRoot, entry, copyNext );
+	}
+
+	copyNext();
 }
 
 // Run:
@@ -391,12 +654,13 @@ gulp.task( 'copy-plugin-files', gulp.series( function( done ) {
 	}
 
 	// Rsync filters are configured in gulp-settings.json → pluginZipRsync
-	var rsyncArgs = getPluginZipRsyncArgs();
+	// Bundled target subdirs are excluded here and materialized after the main copy.
+	var rsyncArgs = getMainPluginZipRsyncArgs();
 	exec(
 		'rsync -av ' +
 		( rsyncArgs ? rsyncArgs + ' ' : '' ) +
 		'../' + _package.name + '/ ' +
-		_gulpSettingsLocal.pluginZipPath + '/' + _package.name,
+		destinationFolder,
 		_execOptions,
 		function ( err, stdout, stderr ) {
 			console.log( stdout );
@@ -407,7 +671,7 @@ gulp.task( 'copy-plugin-files', gulp.series( function( done ) {
 				return;
 			}
 
-			done();
+			copyAllBundledSources( destinationFolder, done );
 		}
 	);
 } ) );
