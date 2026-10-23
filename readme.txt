@@ -337,6 +337,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Company field requirements at checkout no longer affect unrelated address fields.
 * Added: PHPUnit test suite and guided setup progress unit tests.
 * Improved: Dashboard PRO offer uses the promo layout with a two-column features list and actions in the promo footer.
 * Improved: Always show the PRO features list on the Dashboard add-ons promo card, including when PRO is installed.
