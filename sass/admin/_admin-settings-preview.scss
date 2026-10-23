@@ -297,6 +297,7 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	flex: 0 0 auto;
 	flex-wrap: wrap;
 	align-items: center;
+	justify-content: flex-start;
 	gap: $fc-settings-preview-toolbar-gap;
 	min-width: 0;
 }
@@ -307,6 +308,8 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	flex: 0 0 auto;
 	align-items: center;
 	justify-content: center;
+	gap: 4px;
+	min-width: $fc-settings-preview-expand-size;
 	width: $fc-settings-preview-expand-size;
 	height: $fc-settings-preview-expand-size;
 	padding: 0;
@@ -316,6 +319,12 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	box-shadow: $fc-settings-input-box-shadow;
 	color: $fc-settings-text-color;
 	cursor: pointer;
+	box-sizing: border-box;
+}
+
+body.is-showing-settings-shortcuts .fc-settings-preview__expand {
+	width: auto;
+	padding: 0 8px;
 }
 
 .fc-settings-preview__expand:hover,
@@ -414,10 +423,12 @@ button.fc-settings-preview__width-button {
 .fc-settings-preview__width-value {
 	display: flex;
 	flex: 0 0 auto;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	gap: 0;
 	margin: 0;
-	padding: 0 8px;
+	padding: 0 6px;
 	border-inline-end: 1px solid $fc-settings-input-border-color;
 	color: $fc-settings-text-color;
 	font-size: 12px;
@@ -429,6 +440,13 @@ button.fc-settings-preview__width-button {
 	box-sizing: border-box;
 }
 
+.fc-settings-preview__width-value > span {
+	font-size: 10px;
+	font-weight: 400;
+	line-height: 1;
+	opacity: .8;
+}
+
 .fc-settings-preview__width-value:has( input:focus-visible ) {
 	outline: 2px solid $fc-settings-nav-focus-outline-color;
 	outline-offset: -2px;
@@ -436,17 +454,24 @@ button.fc-settings-preview__width-button {
 
 .fc-settings-preview__width-value input[type="text"],
 .fc-settings-preview__width-value input[type="text"]:focus {
-	width: 4ch;
+	width: calc( 4ch + 4px );
 	min-height: 0;
 	margin: 0;
-	padding: 0;
+	padding: 0 2px;
 	border: 0;
 	background: transparent;
 	box-shadow: none;
 	outline: 0;
 	color: inherit;
 	font: inherit;
-	text-align: right;
+	text-align: center;
+	box-sizing: content-box;
+}
+
+@media ( max-width: 499px ) {
+	.fc-settings-preview__width {
+		display: none;
+	}
 }
 
 .fc-settings-preview__frame-options {
@@ -454,18 +479,20 @@ button.fc-settings-preview__width-button {
 	flex: 0 0 auto;
 	align-items: center;
 	gap: $fc-settings-preview-toolbar-gap;
-	margin-inline-start: auto;
 }
 
-.fc-settings-preview__mode {
+.fc-settings-sectioned-buttons.fc-settings-preview__mode {
 	flex: 0 0 auto;
 	width: auto;
 }
 
 .fc-settings-preview__mode .fc-settings-sectioned-buttons__option {
+	flex: 0 0 auto;
+	width: auto;
+	min-width: 0;
 	min-height: $fc-settings-input-height;
 	height: $fc-settings-input-height;
-	padding: 0 10px;
+	padding: 0 8px;
 	white-space: nowrap;
 }
 

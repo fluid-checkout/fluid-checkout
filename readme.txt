@@ -338,8 +338,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: PHPUnit test suite and guided setup progress unit tests.
-* Improved: Guest and logged-in preview modes use segmented buttons in the preview toolbar.
-* Added: Toggle the settings page preview expanded or collapsed with Ctrl+Shift+P or Cmd+Shift+P.
 * Improved: Dashboard PRO offer uses the promo layout with a two-column features list and actions in the promo footer.
 * Improved: Always show the PRO features list on the Dashboard add-ons promo card, including when PRO is installed.
 * Fixed: Getting started Address book step not completing when PRO is active and the feature is enabled without the standalone add-on plugin active.

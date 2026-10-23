@@ -246,8 +246,9 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			form="mainform"
 			class="fc-header__button fc-header__button--save"
 			data-fc-settings-save
+			data-fc-settings-shortcut="save"
 			<?php disabled( ! $can_save ); ?>
-		><?php echo esc_html( __( 'Save settings', 'fluid-checkout' ) ); ?></button>
+		><?php echo esc_html( __( 'Save settings', 'fluid-checkout' ) ); ?><span class="fc-settings-shortcut" data-fc-settings-shortcut-label aria-hidden="true"></span></button>
 		<?php
 	}
 
@@ -812,12 +813,13 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 						</div>
 
 						<div class="fc-settings-actions" data-fc-settings-submit <?php echo $can_save ? '' : 'hidden'; ?>>
-							<button type="submit" class="fc-header__button fc-header__button--save fc-settings-actions__button" data-fc-settings-save <?php disabled( ! $can_save ); ?>><?php echo esc_html( __( 'Save settings', 'fluid-checkout' ) ); ?></button>
+							<button type="submit" class="fc-header__button fc-header__button--save fc-settings-actions__button" data-fc-settings-save data-fc-settings-shortcut="save" <?php disabled( ! $can_save ); ?>><?php echo esc_html( __( 'Save settings', 'fluid-checkout' ) ); ?><span class="fc-settings-shortcut" data-fc-settings-shortcut-label aria-hidden="true"></span></button>
 							<?php if ( class_exists( 'FluidCheckout_Admin_Settings_Preview' ) ) : ?>
 								<button
 									type="button"
 									class="fc-header__button fc-settings-actions__preview"
 									data-fc-settings-preview-toggle
+									data-fc-settings-shortcut="expand-preview"
 									aria-controls="fc-settings-preview"
 									aria-expanded="false"
 								>
@@ -830,6 +832,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 										<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 19.5L12 15.75 15.75 19.5"/>
 									</svg>
 									<span><?php echo esc_html( __( 'Preview', 'fluid-checkout' ) ); ?></span>
+									<span class="fc-settings-shortcut" data-fc-settings-shortcut-label aria-hidden="true"></span>
 								</button>
 							<?php endif; ?>
 						</div>

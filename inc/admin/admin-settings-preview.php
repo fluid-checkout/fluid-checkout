@@ -393,7 +393,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		>
 			<div class="fc-settings-preview__toolbar">
 				<div class="fc-settings-preview__controls">
-					<button type="button" class="fc-settings-preview__expand" data-fc-settings-preview-expand aria-pressed="false" aria-label="<?php echo esc_attr( __( 'Expand preview', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Expand preview', 'fluid-checkout' ) ); ?>">
+					<button type="button" class="fc-settings-preview__expand" data-fc-settings-preview-expand data-fc-settings-shortcut="expand-preview" aria-pressed="false" aria-label="<?php echo esc_attr( __( 'Expand preview', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Expand preview', 'fluid-checkout' ) ); ?>">
 						<svg class="fc-settings-preview__expand-icon fc-settings-preview__expand-icon--expand fc-settings-preview__expand-icon--horizontal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 8.25L4.5 12l3.75 3.75"/>
 							<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 8.25L19.5 12l-3.75 3.75"/>
@@ -410,6 +410,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 							<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5L12 8.25 15.75 4.5"/>
 							<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 19.5L12 15.75 15.75 19.5"/>
 						</svg>
+						<span class="fc-settings-shortcut" data-fc-settings-shortcut-label aria-hidden="true"></span>
 					</button>
 
 					<div class="fc-settings-sectioned-buttons fc-settings-preview__viewports" role="radiogroup" aria-label="<?php echo esc_attr( __( 'Preview viewport', 'fluid-checkout' ) ); ?>">
@@ -469,6 +470,13 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 					</div>
 
 					<div class="fc-settings-preview__frame-options">
+						<button type="button" class="fc-settings-preview__header-footer" data-fc-settings-preview-header-footer aria-pressed="false" aria-label="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75h16.5a1.5 1.5 0 011.5 1.5v13.5a1.5 1.5 0 01-1.5 1.5H3.75a1.5 1.5 0 01-1.5-1.5V5.25a1.5 1.5 0 011.5-1.5z"/>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 15.75h19.5"/>
+							</svg>
+						</button>
+
 						<div class="fc-settings-sectioned-buttons fc-settings-preview__mode" role="radiogroup" aria-label="<?php echo esc_attr( __( 'Preview as', 'fluid-checkout' ) ); ?>" data-fc-settings-preview-mode-field>
 							<label class="fc-settings-sectioned-buttons__option" title="<?php echo esc_attr( __( 'Guest', 'fluid-checkout' ) ); ?>">
 								<input type="radio" name="fc-settings-preview-mode" value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_GUEST ); ?>" data-fc-settings-preview-mode checked>
@@ -479,13 +487,6 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 								<span><?php echo esc_html( __( 'Logged in', 'fluid-checkout' ) ); ?></span>
 							</label>
 						</div>
-
-						<button type="button" class="fc-settings-preview__header-footer" data-fc-settings-preview-header-footer aria-pressed="false" aria-label="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75h16.5a1.5 1.5 0 011.5 1.5v13.5a1.5 1.5 0 01-1.5 1.5H3.75a1.5 1.5 0 01-1.5-1.5V5.25a1.5 1.5 0 011.5-1.5z"/>
-								<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 15.75h19.5"/>
-							</svg>
-						</button>
 
 						<?php $this->output_controls_state_script( $current_tab ); ?>
 					</div>

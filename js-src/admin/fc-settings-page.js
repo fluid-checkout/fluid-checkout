@@ -66,6 +66,12 @@
 	var _actionsSyncScheduled = false;
 	var _isSavingSettings = false;
 	var _settingsNoticeTimeout = null;
+	var _modifierHoldTimer = null;
+	var _isShowingShortcuts = false;
+	var _shortcutLabels = {
+		save:           '',
+		'expand-preview': '',
+	};
 
 
 
@@ -1085,6 +1091,136 @@
 
 
 	/**
+	 * Whether the current platform should use Mac-style shortcut labels.
+	 *
+	 * @return  {boolean}
+	 */
+	var isMacPlatform = function() {
+		var platform;
+
+		if ( navigator.userAgentData && navigator.userAgentData.platform ) {
+			platform = navigator.userAgentData.platform;
+		}
+		else {
+			platform = navigator.platform || '';
+		}
+
+		return -1 !== platform.toUpperCase().indexOf( 'MAC' );
+	};
+
+	/**
+	 * Build platform-specific shortcut labels and fill them into the markup.
+	 */
+	var populateShortcutLabels = function() {
+		var labels;
+		var i;
+		var shortcutKey;
+		var labelElement;
+
+		if ( isMacPlatform() ) {
+			_shortcutLabels.save = '⌘S';
+			_shortcutLabels[ 'expand-preview' ] = '⌘⇧P';
+		}
+		else {
+			_shortcutLabels.save = 'Ctrl+S';
+			_shortcutLabels[ 'expand-preview' ] = 'Ctrl+Shift+P';
+		}
+
+		labels = document.querySelectorAll( '[data-fc-settings-shortcut]' );
+
+		for ( i = 0; i < labels.length; i++ ) {
+			shortcutKey = labels[ i ].getAttribute( 'data-fc-settings-shortcut' );
+			labelElement = labels[ i ].querySelector( '[data-fc-settings-shortcut-label]' );
+
+			// Skip when the shortcut key or label element is missing
+			if ( ! shortcutKey || ! labelElement || ! _shortcutLabels[ shortcutKey ] ) { continue; }
+
+			labelElement.textContent = _shortcutLabels[ shortcutKey ];
+		}
+	};
+
+	/**
+	 * Show keyboard shortcut hints on marked buttons.
+	 */
+	var showShortcutHints = function() {
+		document.body.classList.add( 'is-showing-settings-shortcuts' );
+		_isShowingShortcuts = true;
+		_modifierHoldTimer = null;
+	};
+
+	/**
+	 * Hide keyboard shortcut hints.
+	 */
+	var hideShortcutHints = function() {
+		document.body.classList.remove( 'is-showing-settings-shortcuts' );
+		_isShowingShortcuts = false;
+	};
+
+	/**
+	 * Clear the modifier-key hold timer used to reveal shortcuts.
+	 */
+	var clearModifierHoldTimer = function() {
+		if ( ! _modifierHoldTimer ) { return; }
+
+		window.clearTimeout( _modifierHoldTimer );
+		_modifierHoldTimer = null;
+	};
+
+	/**
+	 * Whether the event key is Cmd or Ctrl.
+	 *
+	 * @param   {KeyboardEvent}  event  Keyboard event.
+	 * @return  {boolean}
+	 */
+	var isShortcutModifierKey = function( event ) {
+		return 'Meta' === event.key || 'Control' === event.key;
+	};
+
+	/**
+	 * Start revealing shortcuts after Cmd or Ctrl is held for 3 seconds.
+	 *
+	 * @param   {KeyboardEvent}  event  Keyboard event.
+	 */
+	var handleModifierHoldKeydown = function( event ) {
+		// Bail if this is not Cmd or Ctrl
+		if ( ! isShortcutModifierKey( event ) ) { return; }
+
+		// Bail on key repeat while the key is already held
+		if ( event.repeat ) { return; }
+
+		// Bail if shortcuts are already visible or the timer is running
+		if ( _isShowingShortcuts || _modifierHoldTimer ) { return; }
+
+		_modifierHoldTimer = window.setTimeout( showShortcutHints, 1000 );
+	};
+
+	/**
+	 * Hide shortcuts when Cmd or Ctrl is released.
+	 *
+	 * @param   {KeyboardEvent}  event  Keyboard event.
+	 */
+	var handleModifierHoldKeyup = function( event ) {
+		// Bail if this is not Cmd or Ctrl
+		if ( ! isShortcutModifierKey( event ) ) { return; }
+
+		// Bail while the other modifier is still held
+		if ( event.metaKey || event.ctrlKey ) { return; }
+
+		clearModifierHoldTimer();
+		hideShortcutHints();
+	};
+
+	/**
+	 * Hide shortcuts when the window loses focus.
+	 */
+	var handleModifierHoldBlur = function() {
+		clearModifierHoldTimer();
+		hideShortcutHints();
+	};
+
+
+
+	/**
 	 * Save settings when pressing Ctrl+S or Cmd+S.
 	 *
 	 * @param   {Event}  event  Keyboard event.
@@ -1174,11 +1310,17 @@
 		// Pin the actions bar before the first paint settles
 		syncActionsBarPosition();
 
+		// Fill platform-specific shortcut labels into marked buttons
+		populateShortcutLabels();
+
 		// Event handlers
 		window.addEventListener( 'click', handleClick, true );
 		window.addEventListener( 'change', handleChange, true );
 		window.addEventListener( 'submit', handleSubmit, true );
 		document.addEventListener( 'keydown', handleKeydown, true );
+		document.addEventListener( 'keydown', handleModifierHoldKeydown, true );
+		document.addEventListener( 'keyup', handleModifierHoldKeyup, true );
+		window.addEventListener( 'blur', handleModifierHoldBlur );
 		// Capture scroll: tall WP admin menu scroll must keep the bar on the viewport
 		window.addEventListener( 'scroll', scheduleActionsBarSync, true );
 		window.addEventListener( 'resize', scheduleActionsBarSync );
