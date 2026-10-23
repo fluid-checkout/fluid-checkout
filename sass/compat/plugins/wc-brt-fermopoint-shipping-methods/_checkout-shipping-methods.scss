@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // CHECKOUT SHIPPING METHODS
 // ------------------------------------
@@ -21,3 +27,4 @@ body.woocommerce-checkout #wc_brt_fermopoint_shipping_methods_custom-div_contain
 body.woocommerce-checkout .wc_brt_tr_alert {
 	margin-top: $global-spacing-small;
 }
+

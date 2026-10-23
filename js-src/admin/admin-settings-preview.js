@@ -50,6 +50,7 @@
 	var _needsRefresh = false;
 	var _needsReload = false;
 	var _saveDraftDebounced = null;
+	var _modeAutoChangedTimer = null;
 	var _settings = {
 		formSelector:                '[data-fc-settings-form]',
 		layoutSelector:              '[data-fc-settings-layout]',
@@ -66,6 +67,9 @@
 		widthInputSelector:          '[data-fc-settings-preview-width]',
 		zoomHintSelector:            '[data-fc-settings-preview-zoom-hint]',
 		modeSelector:                '[data-fc-settings-preview-mode]',
+		modeFieldSelector:           '[data-fc-settings-preview-mode-field]',
+		modeAutoChangedClass:        'is-auto-changed',
+		modeAutoChangedDurationMs:   3000,
 		headerFooterSelector:        '[data-fc-settings-preview-header-footer]',
 		viewportInputSelector:       'input[name="fc-settings-preview-viewport"]',
 		enableSettingFieldSelector:  '[name="###NAME###"][type="checkbox"]',
@@ -99,6 +103,8 @@
 		switchPageWithTab:           true,
 		modeQueryArg:                'fc_preview_mode',
 		guestMode:                   'guest',
+		loggedInMode:                'logged_in',
+		tabPreviewModes:             {},
 		messageSource:               'fc-admin-preview',
 		storageKey:                  'fcAdminSettingsPreview',
 		ajaxUrl:                     '',
@@ -631,6 +637,35 @@
 	};
 
 	/**
+	 * Get the preview mode configured for a settings tab, if any.
+	 *
+	 * @param  {string}  tab  Settings tab slug.
+	 *
+	 * @return  {string}  Preview mode, or an empty string when the tab has no configured mode.
+	 */
+	var getTabPreviewMode = function( tab ) {
+		return ( _settings.tabPreviewModes && _settings.tabPreviewModes[ tab ] ) || '';
+	};
+
+	/**
+	 * Switch the preview mode when the active settings tab requires it.
+	 *
+	 * @param  {string}  tab  Settings tab slug.
+	 *
+	 * @return  {boolean}  Whether the preview mode changed.
+	 */
+	var maybeApplyPreviewModeForTab = function( tab ) {
+		var tabMode = getTabPreviewMode( tab );
+
+		// Bail if the tab has no configured mode, or the mode is already selected
+		if ( ! tabMode || tabMode === _previewMode ) { return false; }
+
+		setPreviewMode( tabMode, true );
+
+		return true;
+	};
+
+	/**
 	 * Sync preview visibility and page from a settings tab change.
 	 *
 	 * @param  {string}  tab  Settings tab slug.
@@ -640,6 +675,8 @@
 
 		// Bail if preview is hidden for this tab
 		if ( ! isPreviewVisibleForTab( tab ) ) { return; }
+
+		maybeApplyPreviewModeForTab( tab );
 
 		// Show the preview page of the settings tab
 		setPreviewPage( getPreviewPageForTab( tab ) );
@@ -849,13 +886,37 @@
 	};
 
 	/**
+	 * Show a grey outline on the preview mode field after an automatic mode change.
+	 */
+	var flashPreviewModeAutoChanged = function() {
+		var modeField = document.querySelector( _settings.modeFieldSelector );
+
+		// Bail if the mode field wrapper is missing
+		if ( ! modeField ) { return; }
+
+		modeField.classList.add( _settings.modeAutoChangedClass );
+
+		// Maybe clear a previous auto-changed timer
+		if ( _modeAutoChangedTimer ) {
+			window.clearTimeout( _modeAutoChangedTimer );
+		}
+
+		_modeAutoChangedTimer = window.setTimeout( function() {
+			modeField.classList.remove( _settings.modeAutoChangedClass );
+			_modeAutoChangedTimer = null;
+		}, _settings.modeAutoChangedDurationMs );
+	};
+
+	/**
 	 * Set the preview mode, as selected in the mode dropdown.
 	 *
-	 * @param  {string}  mode  Preview mode.
+	 * @param  {string}   mode          Preview mode.
+	 * @param  {boolean}  isAutomatic   Whether the mode changed programmatically, such as when switching settings tabs.
 	 */
-	var setPreviewMode = function( mode ) {
+	var setPreviewMode = function( mode, isAutomatic ) {
 		var modeSelect = document.querySelector( _settings.modeSelector );
 		var hasModeOption;
+		var previousMode = _previewMode;
 
 		// Bail if the mode dropdown is missing
 		if ( ! modeSelect ) { return; }
@@ -868,6 +929,11 @@
 		// Maybe sync Tom Select when the preview mode field was enhanced before this ran
 		if ( modeSelect.tomselect ) {
 			modeSelect.tomselect.setValue( _previewMode, true );
+		}
+
+		// Maybe highlight the mode field when the mode changed automatically
+		if ( isAutomatic && previousMode !== _previewMode ) {
+			flashPreviewModeAutoChanged();
 		}
 	};
 
@@ -1525,7 +1591,10 @@
 		// Restore the preview mode and header and footer visibility saved in the browser
 		savedState = getSavedState();
 		ensurePreviewModeTomSelect();
-		setPreviewMode( savedState.mode || _settings.guestMode );
+		var initialTabMode = getTabPreviewMode( _settings.initialTab );
+		var initialMode = initialTabMode || savedState.mode || _settings.guestMode;
+
+		setPreviewMode( initialMode, !! initialTabMode && initialTabMode !== savedState.mode );
 		setHeaderFooterVisible( true === savedState.headerFooter );
 
 		// Sync from the initial settings tab, with the desktop page preview filling the available width

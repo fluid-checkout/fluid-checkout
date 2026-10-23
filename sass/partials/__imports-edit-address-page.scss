@@ -1,25 +1,39 @@
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-edit-address' !default;
-
 
 
 
 
 // ------------------------------------
-// IMPORT STYLES
+// LOAD STYLES
 // ------------------------------------
-@import
-	"clearfix",
-	"fc-hidden",
-	"collapsible-blocks",
-
-	"buttons--edit-address",
-
-	"woocommerce-account-page-addresses",
-	"woocommerce-form-fields",
-	"woocommerce-form-fields-select2",
-	"woocommerce-form-fields-font-size",
-	"woocommerce-form-fields-custom-styles",
-	"expansible-sections";
+@use "scope-edit-address-page" as scope;
+@forward "clearfix" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "fc-hidden" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "collapsible-blocks" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "buttons--edit-address" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "woocommerce-account-page-addresses" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "woocommerce-form-fields" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "woocommerce-form-fields-select2" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "woocommerce-form-fields-font-size" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "woocommerce-form-fields-custom-styles" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "expansible-sections" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);

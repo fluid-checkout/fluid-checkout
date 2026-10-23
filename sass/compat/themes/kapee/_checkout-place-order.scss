@@ -1,12 +1,17 @@
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT PLACE ORDER
 // ------------------------------------
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-wrapper .fc-place-order button[type="submit"].fc-place-order-button {
+body#{ $body-theme-selector }#{ $body-page-selector } .fc-wrapper .fc-place-order button[type="submit"].fc-place-order-button {
 	background-color: var(--fluidcheckout--kappe--place-order-button--background-color);
 	position: static !important; // Needed to override theme styles
 }
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-wrapper .fc-place-order .fc-place-order-button:hover {
+body#{ $body-theme-selector }#{ $body-page-selector } .fc-wrapper .fc-place-order .fc-place-order-button:hover {
 	background-color: var(--fluidcheckout--kappe--place-order-button--background-color--hover);
 }

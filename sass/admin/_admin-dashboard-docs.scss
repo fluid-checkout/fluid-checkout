@@ -1,3 +1,10 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
 // ------------------------------------
 // DASHBOARD GETTING STARTED CHECKLIST
 // ------------------------------------
@@ -97,3 +104,4 @@
 	margin-left: 0;
 	margin-right: auto;
 }
+

@@ -337,6 +337,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Upgraded Sass build tooling to the latest version.
+* Added: Shared REST API base for `fluid-checkout/v1` (namespace, route registration, user-scoped permissions) and `fc_api_*` error helpers.
+* Improved: Update the sticky-states library to version 1.0.9.
 * Fixed: Show the Tom Select preview mode dropdown above the preview panel and keep Guest and Logged in in sync on the settings page.
 * Improved: Expand the desktop admin page preview to the available width, with a 1000px minimum layout size.
 * Improved: Load the admin page preview only on Fluid Checkout settings pages and during preview requests.
@@ -350,6 +353,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: PRO feature badges on the Getting started checklist link to pricing again, matching other settings badges.
 * Improved: Google address autocomplete is enabled by default.
 * Removed: Site key checks from add-on promo cards. Those cards link to upgrade or purchase pages.
+* Removed: Action hook `fc_dashboard_addons_before_list` from the Dashboard add-ons settings card.
 * Removed: Option to disable the integrated coupon code section. It is always enabled when WooCommerce coupons are available.
 * Removed: "Upgrade to PRO to unlock more options" links from settings field descriptions.
 * Improved: Keep locked settings visible for discovery, and hide dependent settings only after PRO or add-ons unlock them.
@@ -370,6 +374,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Removed: Site key section from the License keys settings page.
 * Improved: Getting started checklist promotes PRO page optimizations, address autocomplete from Google Maps, and address book, completable only while PRO is active.
 * Improved: Address autocomplete checklist step completes when Google Maps is enabled with a tested API key, or when Brasil API is enabled.
+* Improved: Address autocomplete settings placeholders include legacy API, company result types, and Powered by Google fields for the add-on.
 * Improved: Show the settings page preview column from 1280px viewport width.
 * Improved: Show Checkout layout before Design template on the Checkout settings page.
 * Improved: Getting started card on the Dashboard uses a numbered checklist that marks steps as complete when visited or when usage tracking is enabled.
@@ -408,6 +413,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Filter `fc_shipping_method_display_package_destination_substep_text_lines` now also receives the shipping method and the package index.
 * Improved: Settings toggles can be reached with the keyboard.
 * Fixed: Compatibility with WooCommerce Subscriptions. Recurring shipping methods were hidden when the only package index was 0.
+* Fixed: Compatibility with plugin Hungarian Pickup Points & Shipping Labels for WooCommerce. Fix required shipping address field errors when placing an order with the plugin's pickup point shipping method. Fix pickup point map not listing points for the shipping country.
 * Fixed: Progress bar not showing the correct step when a hidden checkout step becomes visible again while incomplete.
 * Fixed: Proceed button being displayed instead of the edit and save buttons for an incomplete checkout step the user already passed.
 * Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.

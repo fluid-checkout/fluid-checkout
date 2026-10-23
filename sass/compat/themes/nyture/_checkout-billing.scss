@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT SHIPPING ADDRESS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper .woocommerce-billing-fields .shipping_address {
+body#{ $body-theme-selector } .woocommerce .fc-wrapper .woocommerce-billing-fields .shipping_address {
 	margin-bottom: 0;
 }

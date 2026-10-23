@@ -1,14 +1,11 @@
 // ------------------------------------
 // IMPORT ABSTRACT
 // ------------------------------------
-@import
-	"../../abstract/_all-early",
-	"../../abstract/_all";
+@use "abstract" as *;
 
 
 
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"seese/__imports";
+@use "seese/__imports";

@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // BOX SIZING FIX
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper div {
+body#{ $body-theme-selector } .fc-wrapper div {
 	box-sizing: border-box !important; // Needed to override theme styles
 }

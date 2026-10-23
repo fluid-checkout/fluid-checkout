@@ -1,9 +1,8 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"checkout-validation",
-	"otp-intl-tel-input-styles",
-	"otp-button",
-	"otp-popup",
-	"woocommerce-form-fields";
+@use "checkout-validation";
+@use "otp-intl-tel-input-styles";
+@use "otp-button";
+@use "otp-popup";
+@use "woocommerce-form-fields";

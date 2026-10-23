@@ -1,6 +1,5 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"checkout-shipping-methods",
-	"hungarian-pickup-points";
+@use "checkout-shipping-methods";
+@use "hungarian-pickup-points";

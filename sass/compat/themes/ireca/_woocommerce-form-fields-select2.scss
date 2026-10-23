@@ -1,11 +1,19 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single.select2-selection--single {
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--single.select2-selection--single {
 	border: $form-field-border-width solid $form-field-border-color;
 }
 
-body#{ $_body-theme-selector } .select2-container--default .select2-selection--single .select2-selection__rendered {
+body#{ $body-theme-selector } .select2-container--default .select2-selection--single .select2-selection__rendered {
 	color: var( --wc-form-color-text, #000 );
 }

@@ -1,6 +1,5 @@
-@import
-    "mixin-clearfix",
-    "mixin-font-face",
-    "mixin-icon",
-    "mixin-admin-dashicons",
-    "mixin-form-field-styles";
+@forward "mixin-clearfix";
+@forward "mixin-font-face";
+@forward "mixin-icon";
+@forward "mixin-admin-dashicons";
+@forward "mixin-form-field-styles";

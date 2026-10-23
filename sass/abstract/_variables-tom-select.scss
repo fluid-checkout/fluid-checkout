@@ -1,3 +1,6 @@
+@use "functions/remsize" as *;
+@use "variables" as *;
+
 // ----------------------------------------
 // VARIABLES FOR TOM SELECT
 // ----------------------------------------
@@ -74,3 +77,6 @@ $ts-select-caret-margin-rtl:                             0 remsize( .4rem ) 0 re
 $ts-select-spinner-size:                                 $global-spacing !default;
 $ts-select-spinner-border-size:                          $global-spacing-tiny !default;
 $ts-select-spinner-border-color:                         $ts-select-color-border !default;
+
+$ts-select-control-focus-outline:                        $focus-outline-field !default;
+$ts-select-control-focus-outline-offset:                 $focus-outline-offset-field !default;

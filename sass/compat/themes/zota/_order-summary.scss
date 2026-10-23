@@ -1,16 +1,25 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-body#{ $_body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
+body#{ $body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
 	padding-right: $order-summary-cell-padding-horizontal; // Targets only the right side, should not use `$alignment-right` in this case
 }
 
-body#{ $_body-theme-selector } .woocommerce table.shop_table > thead > tr > th,
-body#{ $_body-theme-selector } .woocommerce table.shop_table > thead > tr > td,
-body#{ $_body-theme-selector } .woocommerce table.shop_table > tbody > tr > td,
-body#{ $_body-theme-selector } .woocommerce table.shop_table > tbody > tr > th,
-body#{ $_body-theme-selector } .woocommerce table.shop_table > tfoot > tr > td,
-body#{ $_body-theme-selector } .woocommerce table.shop_table > tfoot > tr > th {
+body#{ $body-theme-selector } .woocommerce table.shop_table > thead > tr > th,
+body#{ $body-theme-selector } .woocommerce table.shop_table > thead > tr > td,
+body#{ $body-theme-selector } .woocommerce table.shop_table > tbody > tr > td,
+body#{ $body-theme-selector } .woocommerce table.shop_table > tbody > tr > th,
+body#{ $body-theme-selector } .woocommerce table.shop_table > tfoot > tr > td,
+body#{ $body-theme-selector } .woocommerce table.shop_table > tfoot > tr > th {
 	line-height: inherit !important; // Needed to override theme styles
 }
+

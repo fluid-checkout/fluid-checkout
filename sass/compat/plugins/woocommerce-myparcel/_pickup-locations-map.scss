@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // PICKUP LOCATIONS MAP
 // ------------------------------------
@@ -12,3 +18,4 @@
 .fc-wrapper .woocommerce-myparcel__delivery-options .leaflet-bottom {
 	z-index: z( 'default' ) + 1;
 }
+

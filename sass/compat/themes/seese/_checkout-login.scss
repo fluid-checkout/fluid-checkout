@@ -1,20 +1,28 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT LOGIN
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-login-form__wrapper.woocommerce form .form-row input[type="checkbox"],
-body#{ $_body-theme-selector } .fc-login-form__wrapper.woocommerce form .form-row input[type="radio"] {
+body#{ $body-theme-selector } .fc-login-form__wrapper.woocommerce form .form-row input[type="checkbox"],
+body#{ $body-theme-selector } .fc-login-form__wrapper.woocommerce form .form-row input[type="radio"] {
 	position: relative;
 	#{ $alignment-left }: auto;
 	vertical-align: middle;
 	line-height: 1;
 }
 
-body#{ $_body-theme-selector } .fc-login-form__wrapper.woocommerce form .woocommerce-form__label-for-checkbox {
+body#{ $body-theme-selector } .fc-login-form__wrapper.woocommerce form .woocommerce-form__label-for-checkbox {
 	position: relative;
 }
 
-body#{ $_body-theme-selector } .fc-login-form__wrapper.woocommerce form .woocommerce-form__label-for-checkbox span {
+body#{ $body-theme-selector } .fc-login-form__wrapper.woocommerce form .woocommerce-form__label-for-checkbox span {
 	position: relative;
 	bottom: 0;
 }

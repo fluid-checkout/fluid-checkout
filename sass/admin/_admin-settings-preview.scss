@@ -1,3 +1,11 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+@use "../abstract/variables-tom-select" as *;
+
 // ------------------------------------
 // SETTINGS PAGE - PREVIEW COLUMN
 // ------------------------------------
@@ -453,6 +461,13 @@ button.fc-settings-preview__width-button {
 	margin-inline-start: auto;
 }
 
+.fc-settings-preview__mode-field {
+	flex: 0 0 120px;
+	width: 120px;
+	min-width: 120px;
+	max-width: 120px;
+}
+
 select.fc-settings-preview__mode {
 	width: 120px;
 	height: $fc-settings-input-height;
@@ -463,6 +478,42 @@ select.fc-settings-preview__mode {
 	box-shadow: $fc-settings-input-box-shadow;
 	color: $fc-settings-input-color;
 	font-size: $fc-settings-input-font-size;
+}
+
+.fc-settings-preview__mode-field.is-auto-changed select.fc-settings-preview__mode {
+	border-color: $fc-settings-input-border-color-focus;
+	box-shadow: none;
+	animation: fc-settings-preview-mode-auto-changed-outline $fc-settings-preview-auto-changed-duration ease forwards;
+}
+
+.fc-settings-preview__mode-field.is-auto-changed .ts-control {
+	box-shadow: $ts-select-shadow-input-focus !important; // Match Tom Select focus ring on settings fields
+	animation: fc-settings-preview-mode-auto-changed-outline $fc-settings-preview-auto-changed-duration ease forwards;
+}
+
+@keyframes fc-settings-preview-mode-auto-changed-outline {
+	0%,
+	66.67% {
+		outline: $fc-settings-focus-outline-width solid $fc-settings-preview-auto-changed-outline-color;
+		outline-offset: $fc-settings-focus-outline-offset;
+	}
+
+	100% {
+		outline: $fc-settings-focus-outline-width solid transparent;
+		outline-offset: $fc-settings-focus-outline-offset;
+	}
+}
+
+select.fc-settings-preview__mode:focus,
+select.fc-settings-preview__mode:focus-visible {
+	border-color: $fc-settings-input-border-color-focus;
+	box-shadow: none;
+	@include fc-admin-settings-focus-outline();
+}
+
+.fc-settings-preview__mode-field .ts-control:focus-within {
+	outline: solid $fc-settings-focus-outline-width $fc-settings-focus-outline-color !important; // Match Tom Select focus on settings fields
+	outline-offset: $fc-settings-focus-outline-offset !important; // Match Tom Select focus on settings fields
 }
 
 .fc-settings-preview__frame-options .ts-wrapper {
@@ -664,3 +715,4 @@ select.fc-settings-preview__mode {
 	opacity: 1;
 	visibility: visible;
 }
+

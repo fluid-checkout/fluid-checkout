@@ -229,6 +229,8 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 			// =============================== ADDRESS BOOK ===============================
 			'fc_pro_enable_address_book'                                    => 'no',
 			'fc_pro_enable_address_book_address_label'                      => 'yes',
+			'fc_pro_address_book_display_layout'                            => 'cards',
+			'fc_pro_address_book_saved_addresses_search_min_count'          => 5,
 
 			// =============================== CART (NEW PAGE) ===============================
 			'fc_pro_enable_cart_page'                                       => 'no',

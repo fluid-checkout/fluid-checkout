@@ -1,4 +1,5 @@
 @use "sass:math" as math;
+@use "functions/remsize" as *;
 
 // ----------------------------------------
 // VARIABLES
@@ -228,6 +229,7 @@ $icons: (
 	'i-cart': '\e828',
 	'i-check-small': '\e805',
 	'i-check': '\e806',
+	'i-search': '\e807',
 	'i-check-circle': '\e82b',
 	'i-chevron-down': '\e808',
 	'i-chevron-left': '\e80a',

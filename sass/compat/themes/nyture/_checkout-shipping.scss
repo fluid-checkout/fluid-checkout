@@ -1,11 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT SHIPPING ADDRESS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper .woocommerce-shipping-fields .shipping_address {
+body#{ $body-theme-selector } .woocommerce .fc-wrapper .woocommerce-shipping-fields .shipping_address {
 	margin-bottom: 0;
 }
 
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper .woocommerce-shipping-fields {
+body#{ $body-theme-selector } .woocommerce .fc-wrapper .woocommerce-shipping-fields {
 	margin-bottom: 0;
 }

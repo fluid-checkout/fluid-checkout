@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // BUTTONS -- ADD PAYMENT METHOD
 // ------------------------------------
@@ -10,3 +16,4 @@ body.has-fc-button-colors #add_payment_method #place_order { // Targetting the "
 body.has-fc-button-styles #add_payment_method #place_order { // Targetting the "Add payment method" button
 	@extend %button-styles;
 }
+

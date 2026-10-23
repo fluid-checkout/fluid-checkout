@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // CHECKOUT SHIPPING METHODS
 // ------------------------------------
@@ -123,3 +129,4 @@
 	float: none !important; // Copied from plugin's `advanced-flat-rate-shipping-for-woocommerce-public.css`
 }
 // CHANGE: END - Copied from plugin's `advanced-flat-rate-shipping-for-woocommerce-public.css`
+

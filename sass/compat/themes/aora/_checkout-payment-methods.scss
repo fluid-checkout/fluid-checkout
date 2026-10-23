@@ -1,19 +1,28 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
 
-body#{ $_body-theme-selector }.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.payment_methods {
+body#{ $body-theme-selector }.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.payment_methods {
 	border: $option-box-border !important; // Needed to override theme styles set with `!important`
 }
 
 
 
-body#{ $_body-theme-selector } .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:before {
+body#{ $body-theme-selector } .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:before {
 	background-color: $success-color !important; // Needed to override theme styles set with `!important`
 }
 
 
 
-body#{ $_body-theme-selector } .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box:after {
+body#{ $body-theme-selector } .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box:after {
 	display: none !important; // Needed to override theme styles set with `!important`
 }
+

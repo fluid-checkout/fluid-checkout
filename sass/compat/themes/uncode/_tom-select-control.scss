@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // TOM SELECT CONTROL
 // ------------------------------------
 
-body#{ $_body-theme-selector } .ts-wrapper.single .ts-control {
+body#{ $body-theme-selector } .ts-wrapper.single .ts-control {
 	font-weight: normal;
 }

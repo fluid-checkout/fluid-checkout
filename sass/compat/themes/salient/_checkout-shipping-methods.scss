@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT SHIPPING METHODS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .woocommerce ul#shipping_method .shipping-method__option input[type="radio"] + .shipping-method__option-label span {
+body#{ $body-theme-selector } .woocommerce ul#shipping_method .shipping-method__option input[type="radio"] + .shipping-method__option-label span {
 	color: inherit;
 }

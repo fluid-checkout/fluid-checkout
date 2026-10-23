@@ -482,6 +482,9 @@ class FluidCheckout {
 		// Admin preview
 		add_action( 'after_setup_theme', array( $this, 'load_admin_preview' ), 5 ); // Before add-ons load their features at priority `10`, as some read settings while loading
 
+		// REST API base for `fluid-checkout/v1` (before PRO and add-on features at priority `10`+).
+		add_action( 'after_setup_theme', array( $this, 'load_rest_api' ), 5 );
+
 		// Load features
 		add_action( 'after_setup_theme', array( $this, 'load_features' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'load_plugin_compat_features' ), 10 );
@@ -514,6 +517,16 @@ class FluidCheckout {
 				wp_cache_flush();
 			}
 		}
+	}
+
+
+
+	/**
+	 * Load shared REST API classes for `fluid-checkout/v1`.
+	 */
+	public function load_rest_api() {
+		require_once self::$directory_path . 'inc/rest-api/errors.php';
+		require_once self::$directory_path . 'inc/rest-api/v1/abstract-v1-endpoint.php';
 	}
 
 
