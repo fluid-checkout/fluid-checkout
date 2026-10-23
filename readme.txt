@@ -398,7 +398,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Settings color picker hue bar appeared black on empty color fields while keeping the input empty until a color is chosen.
 * Improved: After activating an add-on from the settings page, show the Activated button briefly instead of a success message before reloading.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
-* Added: Setting to choose a background color for the Split design secondary column (PRO feature).
 * Added: Filter `fc_available_shipping_methods` to change the shipping methods shown for a package.
 * Added: Filter `fc_local_pickup_shipping_zone_fields_options` for the local pickup shipping zone fields setting.
 * Added: Filter `fc_prevent_shipping_method_autoselect` to prevent automatic selection of the first shipping method. Return `true` to prevent auto-selecting a shipping method.
