@@ -13,7 +13,7 @@
  * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates\Emails\Plain
  * @version 8.6.0
- * @fc-version 4.2.8
+ * @fc-version 5.0.0
  */
 
 defined( 'ABSPATH' ) || exit;

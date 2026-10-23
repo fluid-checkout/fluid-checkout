@@ -8849,7 +8849,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Uses the `WC_Cart::get_item_product_name()` method when available (WooCommerce 11.2.0+),
 	 * and falls back to the product name for older versions of WooCommerce.
 	 *
-	 * @since 4.2.8
+	 * @since 5.0.0
 	 *
 	 * @param   array       $cart_item      Cart item object.
 	 * @param   WC_Product  $product        The product object.
