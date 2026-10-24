@@ -13,7 +13,7 @@
  * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates\Emails\Plain
  * @version 8.6.0
- * @fc-version 4.0.0
+ * @fc-version 5.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -70,8 +70,8 @@ $billing_address_formatted = apply_filters( 'fc_pro_order_details_customer_billi
  */
 $shipping_address_formatted = apply_filters( 'fc_pro_order_details_customer_shipping_address_formatted', $order->get_formatted_shipping_address( esc_html__( 'N/A', 'woocommerce' ) ), $order );
 
-// CHANGE: Use the section title from from the variables above
-echo "\n" . esc_html( wc_strtoupper( esc_html( $billing_address_label ) ) ) . "\n\n";
+// CHANGE: Use filtered billing label, keep upstream `esc_html__` fallback
+echo "\n" . esc_html( wc_strtoupper( $billing_address_label ? $billing_address_label : esc_html__( 'Billing address', 'woocommerce' ) ) ) . "\n\n";
 // CHANGE: Use filtered billing address to display
 echo preg_replace( '#<br\s*/?>#i', "\n", $billing_address_formatted ) . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
@@ -98,10 +98,9 @@ do_action( 'woocommerce_email_customer_address_section', 'billing', $order, $sen
 
 // CHANGE: Change criteria to show shipping addresses
 if ( $show_shipping ) {
-	// CHANGE: Remove code to retrieve and criteria to display shipping address as it has already been retrieved
-
-	// CHANGE: Use the section title from from the variables above
-	echo "\n" . esc_html( wc_strtoupper( esc_html( $shipping_address_label ) ) ) . "\n\n";
+	// CHANGE: Removed upstream `$shipping = ...` and nested `if ( $shipping ) { ... }`
+	// CHANGE: Use filtered shipping label, keep upstream `esc_html__` fallback
+	echo "\n" . esc_html( wc_strtoupper( $shipping_address_label ? $shipping_address_label : esc_html__( 'Shipping address', 'woocommerce' ) ) ) . "\n\n";
 
 	// CHANGE: Display the formatted shipping address from the variable
 	echo preg_replace( '#<br\s*/?>#i', "\n", $shipping_address_formatted ) . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -123,3 +122,4 @@ if ( $show_shipping ) {
 	 */
 	do_action( 'woocommerce_email_customer_address_section', 'shipping', $order, $sent_to_admin, true );
 }
+// CHANGE: Removed closing brace from upstream nested `if ( $shipping )`

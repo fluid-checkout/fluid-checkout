@@ -13,7 +13,7 @@
  * @see         https://woocommerce.com/document/template-structure/
  * @package     WooCommerce\Templates
  * @version     9.2.0
- * @fc-version  4.2.2
+ * @fc-version  5.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -97,15 +97,19 @@ $unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 			 * @param string $classes CSS classes. Default `woocommerce-button button`.
 			 */
 			echo esc_attr( apply_filters( 'fc_checkout_login_button_classes', 'woocommerce-button button' ) );
-		?> <?php echo esc_attr( function_exists( 'wc_wp_theme_get_element_class_name' ) ? wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>"><?php echo esc_html( 
-			/**
-			 * Filters the login button label at checkout.
-			 *
-			 * @since 1.2.0
-			 *
-			 * @param string $label Label text.
-			 */
-			apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) ) ); ?></button>
+		?> <?php echo esc_attr( function_exists( 'wc_wp_theme_get_element_class_name' ) ? wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>"><?php
+			// CHANGE: Keep filtered label with `esc_html` (dynamic string, not `esc_html_e`)
+			echo esc_html(
+				/**
+				 * Filters the login button label at checkout.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string $label Label text.
+				 */
+				apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) )
+			);
+		?></button>
 	</p>
 
 	<p class="lost_password">

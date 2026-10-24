@@ -28,6 +28,27 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 
 
 	/**
+	 * Whether optional fields should be wrapped as expansible sections on the current page.
+	 *
+	 * Expansible markup needs Fluid Checkout collapsible assets, which load only on checkout and
+	 * selected account pages. Outside those pages both the "Add ..." toggle and the field stay visible.
+	 */
+	public function should_hide_optional_fields_on_current_page() {
+		// Bail if WooCommerce page helpers are not available
+		if ( ! function_exists( 'is_checkout' ) ) { return false; }
+
+		// Checkout form (not thank you or pay-for-order)
+		if ( is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page() ) { return true; }
+
+		// Account pages that also load Fluid Checkout form assets
+		if ( function_exists( 'is_account_page' ) && is_account_page() && ( is_wc_endpoint_url( 'edit-address' ) || is_wc_endpoint_url( 'add-payment-method' ) ) ) { return true; }
+
+		return (bool) apply_filters( 'fc_should_hide_optional_fields_on_current_page', false );
+	}
+
+
+
+	/**
 	 * Initialize hooks.
 	 */
 	public function hooks() {
@@ -163,6 +184,9 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 	 * @param   mixed   $value  Value of the field. Defaults to `null`.
 	 */
 	public function add_optional_form_field_link_button( $field, $key, $args, $value ) {
+		// Bail if the current page does not load expansible section assets
+		if ( ! $this->should_hide_optional_fields_on_current_page() ) { return $field; }
+
 		// Bail if field is required
 		// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
 		if ( array_key_exists( 'required', $args ) && true == $args[ 'required' ] ) { return $field; }

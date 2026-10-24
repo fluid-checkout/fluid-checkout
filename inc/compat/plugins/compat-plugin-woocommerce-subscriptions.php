@@ -184,7 +184,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			 * @param string $template_name Template name.
 			 * @param string $template_path Template path.
 			 */
-			$override_with_pro_hook = apply_filters_deprecated( 'fc_pro_override_template_with_theme_file', array( false, $template, $template_name, $template_path ), '4.2.8', 'fc_override_template_with_theme_file' );
+			$override_with_pro_hook = apply_filters_deprecated( 'fc_pro_override_template_with_theme_file', array( false, $template, $template_name, $template_path ), '5.0.0', 'fc_override_template_with_theme_file' );
 
 			if ( $override_with_theme_file || $override_with_pro_hook ) {
 				$_template_override = locate_template( array(

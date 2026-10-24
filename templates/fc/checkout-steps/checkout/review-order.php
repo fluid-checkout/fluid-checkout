@@ -12,8 +12,8 @@
  *
  * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 11.0.0
- * @fc-version 4.2.6
+ * @version 11.2.0
+ * @fc-version 5.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -68,6 +68,7 @@ defined( 'ABSPATH' ) || exit;
 							<?php echo apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 							<?php // CHANGE: Add product details wrapper and move all details content to output via hooks ?>
+							<?php // CHANGE: Removed inline get_item_product_name / cart_item_name / product_name echo (moved to fc_order_summary_cart_item_details hooks) ?>
 							<div class="product-details">
 								<?php
 									/**
@@ -154,6 +155,7 @@ defined( 'ABSPATH' ) || exit;
 			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
 
 			<?php // CHANGE: Replaced cart totals shipping markup with an action hook to allow for customizations ?>
+			<?php // CHANGE: Removed wc_cart_totals_shipping_html() call ?>
 			<?php
 				/**
 				 * Fires where the chosen shipping method is rendered in the order review.

@@ -13,7 +13,7 @@
  * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates\Emails
  * @version 10.6.0
- * @fc-version 4.2.2
+ * @fc-version 5.0.0
  */
 
 use Automattic\WooCommerce\Utilities\FeaturesUtil;
@@ -95,9 +95,11 @@ $display_section_divider = (bool) apply_filters( 'woocommerce_email_body_display
 	<tr>
 		<th class="font-family text-align-left" style="border:0; padding:0;" valign="top" width="50%">
 			<?php if ( $email_improvements_enabled ) { ?>
-				<b class="address-title"><?php echo esc_html( $billing_address_label ); ?></b>
+				<?php // CHANGE: Use filtered billing label, keep upstream `esc_html_e` fallback ?>
+				<b class="address-title"><?php $billing_address_label ? print( esc_html( $billing_address_label ) ) : esc_html_e( 'Billing address', 'woocommerce' ); ?></b>
 			<?php } else { ?>
-				<h2><?php echo esc_html( $billing_address_label ); ?></h2>
+				<?php // CHANGE: Use filtered billing label, keep upstream `esc_html_e` fallback ?>
+				<h2><?php $billing_address_label ? print( esc_html( $billing_address_label ) ) : esc_html_e( 'Billing address', 'woocommerce' ); ?></h2>
 			<?php } ?>
 		</th>
 
@@ -105,9 +107,11 @@ $display_section_divider = (bool) apply_filters( 'woocommerce_email_body_display
 		<?php if ( $show_shipping ) : ?>
 			<th class="font-family text-align-left" style="border:0; padding:0;" valign="top" width="50%">
 				<?php if ( $email_improvements_enabled ) { ?>
-					<b class="address-title"><?php echo esc_html( $shipping_address_label ); ?></b>
+					<?php // CHANGE: Use filtered shipping label, keep upstream `esc_html_e` fallback ?>
+					<b class="address-title"><?php $shipping_address_label ? print( esc_html( $shipping_address_label ) ) : esc_html_e( 'Shipping address', 'woocommerce' ); ?></b>
 				<?php } else { ?>
-					<h2><?php echo esc_html( $shipping_address_label ); ?></h2>
+					<?php // CHANGE: Use filtered shipping label, keep upstream `esc_html_e` fallback ?>
+					<h2><?php $shipping_address_label ? print( esc_html( $shipping_address_label ) ) : esc_html_e( 'Shipping address', 'woocommerce' ); ?></h2>
 				<?php } ?>
 			</th>
 		<?php endif; ?>
@@ -120,8 +124,8 @@ $display_section_divider = (bool) apply_filters( 'woocommerce_email_body_display
 			<?php // CHANGE: Move addresses titles to a separate row ?>
 
 			<address class="address">
-				<?php // CHANGE: Use filtered billing address to display ?>
-				<?php echo wp_kses_post( $billing_address_formatted ); ?>
+				<?php // CHANGE: Use filtered billing address to display, keep upstream `esc_html__` N/A fallback ?>
+				<?php echo wp_kses_post( $billing_address_formatted ? $billing_address_formatted : esc_html__( 'N/A', 'woocommerce' ) ); ?>
 
 				<?php // CHANGE: Only output the phone number if it is not already included in the formatted address ?>
 				<?php if ( $order->get_billing_phone() && false === strpos( $billing_address_formatted, $order->get_billing_phone() ) ) : ?>

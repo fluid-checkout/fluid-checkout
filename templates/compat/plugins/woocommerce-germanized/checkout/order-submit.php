@@ -13,7 +13,7 @@
  * @see https://github.com/vendidero/woocommerce-germanized/wiki/Overriding-Germanized-Templates
  * @package Germanized/Templates
  * @version 2.7.0
- * @fc-version 4.2.5
+ * @fc-version 5.0.0
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -61,9 +61,10 @@ if ( ! wp_doing_ajax() ) {
 
 		<input type="hidden" name="wc_gzd_order_submit_button_shown" value="1" />
 
-		<?php // CHANGE: Remove conditional to output the checkout nonce ?>
+		<?php // CHANGE: Removed `if ( $include_nonce )` / `endif` around checkout nonce ?>
+		<?php // CHANGE: Always output the checkout nonce ?>
 		<?php wp_nonce_field( 'woocommerce-process_checkout' ); ?>
-		<?php // CHANGE: END - Remove conditional to output the checkout nonce ?>
+		<?php // CHANGE: END - Always output the checkout nonce ?>
 
 		<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
 
