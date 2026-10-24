@@ -121,6 +121,7 @@
 		"./**/*.php",
 		"!./vendor/**",
 		"!./vendor-dev/**",
+		"!./bundled/**",
 		"!./languages/**"
 	],
 	"translationDest": "./languages",
