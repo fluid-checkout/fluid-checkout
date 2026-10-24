@@ -32,6 +32,7 @@
 	var _collapseTimer = null;
 	var _previewMode = 'guest';
 	var _isHeaderFooterVisible = false;
+	var _isHeaderFooterShownForTab = false;
 	var _cssVariables = {};
 	var _colorScheme = '';
 	var _bodyClasses = {};
@@ -101,6 +102,7 @@
 		placeholderSrcdocs:          {},
 		defaultPage:                 'checkout',
 		switchPageWithTab:           true,
+		headerFooterTabs:            [],
 		modeQueryArg:                'fc_preview_mode',
 		guestMode:                   'guest',
 		loggedInMode:                'logged_in',
@@ -973,6 +975,28 @@
 		postMessageToPreview( { type: 'setHeaderFooterVisibility', visible: visible } );
 	};
 
+	/**
+	 * Show the header and footer while a settings tab set to show them is active, and hide them again after leaving it.
+	 * A visibility changed with the toggle button while that tab is active stays.
+	 *
+	 * @param  {string}  tab  Settings tab slug.
+	 */
+	var maybeToggleHeaderFooterForTab = function( tab ) {
+		// Maybe show the header and footer for the tab
+		if ( -1 !== _settings.headerFooterTabs.indexOf( tab ) ) {
+			// Bail if the header and footer are already visible
+			if ( _isHeaderFooterVisible ) { return; }
+
+			setHeaderFooterVisible( true );
+			_isHeaderFooterShownForTab = true;
+		}
+		// Otherwise, maybe hide the header and footer shown for the previous tab
+		else if ( _isHeaderFooterShownForTab ) {
+			setHeaderFooterVisible( false );
+			_isHeaderFooterShownForTab = false;
+		}
+	};
+
 
 
 	/**
@@ -1153,9 +1177,10 @@
 		}
 		// HEADER AND FOOTER TOGGLE
 		else if ( matchedElement = e.target.closest( _settings.headerFooterSelector ) ) {
-			// Toggle the header and footer, remembered in the browser
+			// Toggle the header and footer, remembered in the browser and kept after leaving a tab that shows them
 			setHeaderFooterVisible( ! _isHeaderFooterVisible );
 			saveState( 'headerFooter', _isHeaderFooterVisible );
+			_isHeaderFooterShownForTab = false;
 			e.preventDefault();
 		}
 	};
@@ -1386,6 +1411,9 @@
 		else {
 			setPreviewVisibilityForTab( tab );
 		}
+
+		// Maybe show or hide the header and footer for the tab
+		maybeToggleHeaderFooterForTab( tab );
 	};
 
 
@@ -1596,6 +1624,9 @@
 
 		setPreviewMode( initialMode, !! initialTabMode && initialTabMode !== savedState.mode );
 		setHeaderFooterVisible( true === savedState.headerFooter );
+
+		// Maybe show the header and footer for the initial settings tab
+		maybeToggleHeaderFooterForTab( _settings.initialTab );
 
 		// Sync from the initial settings tab, with the desktop page preview filling the available width
 		setDesktopFillViewport();

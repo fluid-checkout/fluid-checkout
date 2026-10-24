@@ -132,6 +132,8 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 			'default_page'           => 'checkout',
 			'show_page_tabs'         => true,
 			'switch_page_with_tab'   => true,
+			// Settings tabs that show the header and footer in the page preview while active
+			'header_footer_tabs'     => array(),
 			'status_text'            => '',
 			// Settings that only change the page styles, refreshed without reloading the preview
 			'style_settings'         => array(
@@ -261,6 +263,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 				'placeholderSrcdocs'     => $this->get_placeholder_iframe_srcdocs(),
 				'defaultPage'            => $config[ 'default_page' ],
 				'switchPageWithTab'      => $config[ 'switch_page_with_tab' ],
+				'headerFooterTabs'       => $config[ 'header_footer_tabs' ],
 				'modeQueryArg'           => FluidCheckout_Admin_Preview::MODE_QUERY_ARG,
 				'guestMode'              => FluidCheckout_Admin_Preview::MODE_GUEST,
 				'loggedInMode'           => FluidCheckout_Admin_Preview::MODE_LOGGED_IN,
