@@ -183,6 +183,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-template-selector.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-image-uploader.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-gaa-google-api-key.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-button.php';
 	}
 
 	/**
@@ -519,6 +520,13 @@ class FluidCheckout_Admin extends FluidCheckout {
 			esc_url( $url ),
 			esc_attr( $label )
 		);
+	}
+
+	/**
+	 * Get HTML for an external-link icon, typically shown on settings buttons that open a new tab.
+	 */
+	public function get_external_tab_icon_html() {
+		return '<span class="fc-settings-external-tab-icon dashicons dashicons-external" aria-hidden="true"></span>';
 	}
 
 
