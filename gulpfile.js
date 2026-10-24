@@ -538,9 +538,10 @@ function hasGitWorkingTreeChanges( absoluteDir ) {
 }
 
 /**
- * For official releases (not alpha/beta/dev/rc), verify every bundled source that
- * sets `releaseBranch`: path exists, is a git repo, is on that branch, and is clean.
- * Entries without `releaseBranch` are not checked here.
+ * For official releases (not alpha/beta/dev/rc):
+ * - this plugin must be a git repo on `main`
+ * - every bundled source with `releaseBranch` must exist, be a git repo on that
+ *   branch, and have a clean working tree
  *
  * @param {Function} done Callback with optional Error
  */
@@ -552,6 +553,7 @@ function verifyBundledSourcesForOfficialRelease( done ) {
 	var absoluteSourceDir;
 	var label;
 	var branch;
+	var cwd;
 
 	// Bail early for pre-release package versions
 	if ( isPreReleaseVersion() ) {
@@ -559,8 +561,27 @@ function verifyBundledSourcesForOfficialRelease( done ) {
 		return;
 	}
 
-	entries = getBundledSourcesConfig();
 	errors = [];
+	cwd = process.cwd();
+
+	if ( ! isGitRepository( cwd ) ) {
+		errors.push( 'This plugin is not a git repository; official releases require git.' );
+	}
+	else {
+		try {
+			branch = getGitBranchName( cwd );
+			if ( 'main' !== branch ) {
+				errors.push(
+					'Official releases must be created from branch "main" (current: "' + branch + '").'
+				);
+			}
+		}
+		catch ( err ) {
+			errors.push( 'Could not read git branch for this plugin: ' + err.message );
+		}
+	}
+
+	entries = getBundledSourcesConfig();
 
 	for ( i = 0; i < entries.length; i++ ) {
 		entry = entries[ i ];
@@ -570,7 +591,7 @@ function verifyBundledSourcesForOfficialRelease( done ) {
 			continue;
 		}
 
-		absoluteSourceDir = path.resolve( process.cwd(), entry.sourceDir );
+		absoluteSourceDir = path.resolve( cwd, entry.sourceDir );
 		label = entry.targetSubdir || entry.sourceDir;
 
 		if ( ! fs.existsSync( absoluteSourceDir ) ) {
@@ -621,7 +642,7 @@ function verifyBundledSourcesForOfficialRelease( done ) {
 
 	if ( errors.length ) {
 		done( new Error(
-			'Official release blocked by bundled source checks:\n- ' + errors.join( '\n- ' )
+			'Official release blocked:\n- ' + errors.join( '\n- ' )
 		) );
 		return;
 	}
