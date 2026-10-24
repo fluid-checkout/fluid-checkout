@@ -364,6 +364,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Progress bar not showing the correct step when a hidden checkout step becomes visible again while incomplete.
 * Fixed: Proceed button being displayed instead of the edit and save buttons for an incomplete checkout step the user already passed.
 * Fixed: "Same as billing address" behavior on the cart shipping calculator.
+* Fixed: JavaScript error in collapsible blocks when a child element fires `transitionend` (for example on the view-order account page).
+* Fixed: JavaScript error when focusing a shipping method after checkout update if that method is no longer available in the refreshed fragment.
 * Deprecated: Filter `fc_next_step_button_label` now shows a deprecation notice, use `fc_proceed_to_next_step_button_label` instead.
 * Deprecated: Filter `fc_shipping_methods_disable_auto_select`, use `fc_prevent_shipping_method_autoselect` instead. Note that the new filter has inverted logic: return `true` to prevent auto-selecting a shipping method.
 * Deprecated: Filter `fc_skip_add_pickup_point_info_as_review_text_lines`. Returning true from this filter still skips pickup point details from the shipping method review text. Use `fc_add_pickup_point_info_as_review_text_lines` instead.

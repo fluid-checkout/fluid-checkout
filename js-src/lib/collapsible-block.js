@@ -478,57 +478,84 @@
 
 
 	/**
+	 * Resolve the content element from a content HTMLElement or a TransitionEvent
+	 * on that element. Ignores height transitions that bubbled from descendants.
+	 *
+	 * @param   mixed  elementOrEvent  Content element, or transitionend Event.
+	 *
+	 * @return  HTMLElement|null       Content element, or null when the event should be ignored.
+	 */
+	var getContentElementFromFinishArg = function ( elementOrEvent ) {
+		if ( ! elementOrEvent ) { return null; }
+
+		// TransitionEvent: only handle this content element's own height transition
+		if ( 'propertyName' in elementOrEvent ) {
+			if ( elementOrEvent.propertyName !== 'height' ) { return null; }
+
+			// Ignore bubbled transitionend from children (they are not collapsible instances)
+			if ( elementOrEvent.target && elementOrEvent.currentTarget && elementOrEvent.target !== elementOrEvent.currentTarget ) {
+				return null;
+			}
+
+			return elementOrEvent.currentTarget || elementOrEvent.target || null;
+		}
+
+		return elementOrEvent;
+	}
+
+
+
+	/**
 	 * Finish the change to the "expanded" state.
 	 *
 	 * @param   mixed    element     The content element of the collapsible block as a HTMLElement, or an Event dispatched on that element.
 	 */
 	var finishExpand = function ( element ) {
-		// Bail if element is invalid
+		element = getContentElementFromFinishArg( element );
+
+		// Bail if element is invalid or this transition should be ignored
 		if ( ! element ) { return; }
 
 		// Bail if element height property is empty, as it indicates that the element has already completed expanding
 		if ( element.style && '' === element.style.height ) { return; }
 
-		// Maybe bail when handling a transition event but not for the right property
-		if ( 'propertyName' in element && element.propertyName !== 'height' ) { return; }
-
-		// Get target element from property, usually passed in an event object
-		if ( 'target' in element && element.target ) {
-			element = element.target;
-		}
-		
-		// Get the manager
+		// Get the manager (main element or content element)
 		var manager = _publicMethods.getInstance( element );
 
-		// Remove content element properties when transition is complete
-		element.style.height = '';
-		element.style.overflow = '';
+		// Bail if this element is not a registered collapsible (e.g. leftover listener, or unrelated node)
+		if ( ! manager ) { return; }
 
-		// Remove `is-transitioning` class
-		element.classList.remove( manager.settings.isTransitioningClass );
+		var contentElement = manager.contentElement;
+
+		// Remove content element properties when transition is complete
+		contentElement.style.height = '';
+		contentElement.style.overflow = '';
+
+		// Remove `is-transitioning` class from the main element (where it was added)
+		manager.element.classList.remove( manager.settings.isTransitioningClass );
 
 		// Syncronize `aria-expanded` for every handler on the page
-		syncAriaExpanded( element, true );
+		syncAriaExpanded( contentElement, true );
 
 		// Maybe set focus state
-		if ( _canChangeFocus && manager && manager.isActivated === true && manager.withFocus ) {
+		if ( _canChangeFocus && manager.isActivated === true && manager.withFocus ) {
 			var focusElement = null;
 
 			// Maybe set focus to the child element marked as auto-focus that is visible, skipping those in nested collapsible blocks
-			var autofocusChildren = element.querySelectorAll( _settings.autoFocusSelector );
+			var autofocusChildren = contentElement.querySelectorAll( _settings.autoFocusSelector );
 			if ( ! focusElement && autofocusChildren ) {
 				for ( var i = 0; i < autofocusChildren.length; i++ ) {
 					var autofocusChild = autofocusChildren[i];
 
-					if ( autofocusChild.closest( _settings.contentElementSelector ) === element && isVisible( autofocusChild ) ) {
+					if ( autofocusChild.closest( _settings.contentElementSelector ) === contentElement && isVisible( autofocusChild ) ) {
 						focusElement = autofocusChild;
 					}
 				}
 			}
 
 			// Maybe set focusElement to the first focusable element that is visible
-			if ( ! focusElement && element.matches( _settings.autoFocusSelector ) ) {
-				var focusableElements = Array.from( getFocusableElements( element ) );
+			if ( ! focusElement && contentElement.matches( _settings.autoFocusSelector ) ) {
+				var focusableElements = Array.from( getFocusableElements( contentElement ) );
 
 				for ( var i = 0; i < focusableElements.length; i++ ) {
 					var focusableElement = focusableElements[i];
@@ -552,7 +579,7 @@
 		manager.withFocus = true;
 
 		// Remove the event handler so it runs only once
-		element.removeEventListener( getTransitionEndEvent(), finishExpand );
+		contentElement.removeEventListener( getTransitionEndEvent(), finishExpand );
 	}
 
 
@@ -562,39 +589,38 @@
 	 * @param   mixed  element  The content element of the collapsible block as a HTMLElement, or an Event dispatched on that element.
 	 */
 	var finishCollapse = function ( element ) {
-		// Bail if element is invalid
+		element = getContentElementFromFinishArg( element );
+
+		// Bail if element is invalid or this transition should be ignored
 		if ( ! element ) { return; }
-
-		// Maybe bail when handling a transition event but not for the right property
-		if ( 'propertyName' in element && element.propertyName !== 'height' ) return;
-
-		// Get target element from property, usually passed in an event object
-		if ( 'target' in element && element.target ) {
-			element = element.target;
-		}
 
 		// Get the manager instance from the element
 		var manager = _publicMethods.getInstance( element );
 
-		// Hide the element from the screen and from the accessibility tree
-		element.style.display = 'none';
+		// Bail if this element is not a registered collapsible (e.g. leftover listener, or unrelated node)
+		if ( ! manager ) { return; }
 
-		// Remove `is-transitioning` class
-		element.classList.remove( manager.settings.isTransitioningClass );
+		var contentElement = manager.contentElement;
+
+		// Hide the element from the screen and from the accessibility tree
+		contentElement.style.display = 'none';
+
+		// Remove `is-transitioning` class from the main element (where it was added)
+		manager.element.classList.remove( manager.settings.isTransitioningClass );
 
 		// Syncronize `aria-expanded` for every handler on the page
-		syncAriaExpanded( element, false );
+		syncAriaExpanded( contentElement, false );
 
 		// Remove the event handler so it runs only once
-		element.removeEventListener( getTransitionEndEvent(), finishCollapse );
+		contentElement.removeEventListener( getTransitionEndEvent(), finishCollapse );
 	}
 
 
 
 	/**
-	 * Get slider manager instance from slider element.
+	 * Get collapsible-block manager instance from the main or content element.
 	 *
-	 * @param   HTMLElement  element  Collapsible block main element.
+	 * @param   HTMLElement  element  Collapsible block main element or content element.
 	 *
 	 * @return  Object                Collapsible block `manager` instance.
 	 */
@@ -603,7 +629,7 @@
 
 		for ( var i = 0; i < _publicMethods.managers.length; i++ ) {
 			var manager = _publicMethods.managers[i];
-			if ( manager.element == element ) { instance = manager; break; }
+			if ( manager.element == element || manager.contentElement == element ) { instance = manager; break; }
 		}
 
 		return instance;
