@@ -11,6 +11,4 @@
 // IMPORT STYLES
 // ------------------------------------
 @use "partials/__imports-checkout-layout";
-
-@use 'sass:meta';
-@include meta.load-css('flyout-block-animations');
+@use 'partials/flyout-block-animations' as *;

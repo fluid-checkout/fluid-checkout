@@ -1,0 +1,20 @@
+// Load every flyout animation. Prefer a single animation file when only a subset is needed.
+
+@use 'slide-in-up';
+@use 'slide-in-down';
+@use 'slide-in-left';
+@use 'slide-in-right';
+@use 'slide-out-up';
+@use 'slide-out-down';
+@use 'slide-out-left';
+@use 'slide-out-right';
+@use 'fade-in';
+@use 'fade-out';
+@use 'fade-in-up';
+@use 'fade-in-down';
+@use 'fade-in-left';
+@use 'fade-in-right';
+@use 'fade-out-up';
+@use 'fade-out-down';
+@use 'fade-out-left';
+@use 'fade-out-right';
