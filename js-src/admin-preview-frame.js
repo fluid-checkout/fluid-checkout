@@ -537,20 +537,172 @@
 	};
 
 	/**
+	 * Whether keyboard events should not forward admin shortcuts to the settings page.
+	 *
+	 * @param  {Element}  target  Event target.
+	 * @return {boolean}
+	 */
+	var isAdminShortcutBlockedTarget = function( target ) {
+		var inputType;
+
+		// Bail if target is missing
+		if ( ! target || ! target.tagName ) { return false; }
+
+		// Skip text fields and other editable controls
+		if ( 'TEXTAREA' === target.tagName || 'SELECT' === target.tagName ) {
+			return true;
+		}
+
+		// Maybe skip text-like inputs
+		if ( 'INPUT' === target.tagName ) {
+			inputType = ( target.type || 'text' ).toLowerCase();
+
+			if ( -1 !== [ 'text', 'search', 'url', 'tel', 'email', 'password', 'number', 'color' ].indexOf( inputType ) ) {
+				return true;
+			}
+		}
+
+		// Skip contenteditable regions
+		if ( target.isContentEditable ) {
+			return true;
+		}
+
+		return false;
+	};
+
+	/**
+	 * Whether the event key is Cmd or Ctrl.
+	 *
+	 * @param  {KeyboardEvent}  e  Keyboard event.
+	 * @return {boolean}
+	 */
+	var isShortcutModifierKey = function( e ) {
+		return 'Meta' === e.key || 'Control' === e.key || 'MetaLeft' === e.code || 'MetaRight' === e.code || 'ControlLeft' === e.code || 'ControlRight' === e.code;
+	};
+
+	/**
+	 * Forward a message to the settings page holding the frame.
+	 *
+	 * @param  {Object}  data  Message payload without the shared source field.
+	 */
+	var postToAdmin = function( data ) {
+		// Bail if not shown in a frame, or the admin origin is not available
+		if ( root.parent === root || ! _settings.adminOrigin ) { return; }
+
+		data.source = _settings.messageSource;
+		root.parent.postMessage( data, _settings.adminOrigin );
+	};
+
+	/**
+	 * Forward admin keyboard shortcuts to the settings page holding the frame.
+	 *
+	 * @param  {KeyboardEvent}  e  Key down event.
+	 * @return {boolean}  Whether an admin shortcut was handled.
+	 */
+	var maybeForwardAdminShortcut = function( e ) {
+		var isExpandShortcut;
+		var isSaveShortcut;
+
+		// Bail if not shown in a frame, or the admin origin is not available
+		if ( root.parent === root || ! _settings.adminOrigin ) { return false; }
+
+		// Bail if FCUtils is not available
+		if ( ! window.FCUtils ) { return false; }
+
+		isExpandShortcut = ( e.metaKey || e.ctrlKey ) && e.shiftKey && ! e.altKey && FCUtils.keyboardKeys.P === e.key.toLowerCase();
+		isSaveShortcut = ( e.metaKey || e.ctrlKey ) && ! e.altKey && ! e.shiftKey && FCUtils.keyboardKeys.S === e.key.toLowerCase();
+
+		// Bail if no admin shortcut was pressed
+		if ( ! isExpandShortcut && ! isSaveShortcut ) { return false; }
+
+		// Bail if expanding while the user is typing in a field
+		if ( isExpandShortcut && isAdminShortcutBlockedTarget( e.target ) ) { return false; }
+
+		// Stop the browser shortcut and keep it inside the settings page flow
+		e.preventDefault();
+		e.stopImmediatePropagation();
+
+		// EXPAND PREVIEW
+		if ( isExpandShortcut ) {
+			postToAdmin( { type: 'adminShortcut', shortcut: 'expandPreview' } );
+		}
+		// SAVE SETTINGS
+		else if ( isSaveShortcut ) {
+			postToAdmin( { type: 'adminShortcut', shortcut: 'saveSettings' } );
+		}
+
+		return true;
+	};
+
+	/**
+	 * Forward Cmd/Ctrl hold start to the settings page so shortcut hints can show.
+	 *
+	 * @param  {KeyboardEvent}  e  Key down event.
+	 */
+	var maybeForwardModifierHoldStart = function( e ) {
+		// Bail if this is not Cmd or Ctrl
+		if ( ! isShortcutModifierKey( e ) ) { return; }
+
+		// Bail on key repeat while the key is already held
+		if ( e.repeat ) { return; }
+
+		postToAdmin( { type: 'adminShortcut', shortcut: 'modifierHoldStart' } );
+	};
+
+	/**
+	 * Forward Cmd/Ctrl release to the settings page so shortcut hints can hide.
+	 *
+	 * @param  {KeyboardEvent}  e  Key up event.
+	 */
+	var maybeForwardModifierHoldEnd = function( e ) {
+		// Bail if this is not Cmd or Ctrl
+		if ( ! isShortcutModifierKey( e ) ) { return; }
+
+		// Bail while the other modifier is still held
+		if ( e.metaKey || e.ctrlKey ) { return; }
+
+		postToAdmin( { type: 'adminShortcut', shortcut: 'modifierHoldEnd' } );
+	};
+
+	/**
+	 * Hide shortcut hints on the settings page when focus leaves the preview frame.
+	 */
+	var handleWindowBlur = function() {
+		postToAdmin( { type: 'adminShortcut', shortcut: 'modifierHoldEnd' } );
+	};
+
+	/**
 	 * Handle document key down events and route to the appropriate handler.
 	 * Quantity changes and coupon codes are inert, as the preview starts again from the dummy cart on each request.
 	 *
 	 * @param {Event}  e  Key down event.
 	 */
 	var handleKeyDown = function( e ) {
+		// MODIFIER HOLD
+		maybeForwardModifierHoldStart( e );
+
+		// ADMIN SHORTCUTS
+		if ( maybeForwardAdminShortcut( e ) ) {
+			return;
+		}
 		// INERT FIELDS
-		if ( FCUtils.keyboardKeys.TAB !== e.key && e.target.closest( _settings.inertFieldSelector ) ) {
+		else if ( FCUtils.keyboardKeys.TAB !== e.key && e.target.closest( _settings.inertFieldSelector ) ) {
 			preventAction( e );
 		}
 		// COUPON CODE FIELDS
 		else if ( FCUtils.keyboardKeys.ENTER === e.key && e.target.closest( _settings.couponCodeFieldSelector ) ) {
 			preventAction( e );
 		}
+	};
+
+	/**
+	 * Handle document key up events and route to the appropriate handler.
+	 *
+	 * @param {Event}  e  Key up event.
+	 */
+	var handleKeyUp = function( e ) {
+		// MODIFIER HOLD
+		maybeForwardModifierHoldEnd( e );
 	};
 
 	/**
@@ -653,6 +805,8 @@
 		window.addEventListener( 'click', handleClick, true );
 		window.addEventListener( 'auxclick', handleClick, true ); // Middle clicks open links in new tabs
 		window.addEventListener( 'keydown', handleKeyDown, true );
+		window.addEventListener( 'keyup', handleKeyUp, true );
+		window.addEventListener( 'blur', handleWindowBlur );
 		window.addEventListener( 'beforeinput', handleBeforeInput, true );
 		window.addEventListener( 'input', handleChange, true );
 		window.addEventListener( 'change', handleChange, true );

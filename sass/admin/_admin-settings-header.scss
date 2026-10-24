@@ -152,7 +152,13 @@
 }
 
 body.is-showing-settings-shortcuts .fc-settings-shortcut {
-	display: inline;
+	display: inline-flex;
+	align-items: center;
+}
+
+// Let shortcut labels widen the button instead of being clipped
+body.is-showing-settings-shortcuts .fc-header__button {
+	overflow: visible;
 }
 
 

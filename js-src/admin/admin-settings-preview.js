@@ -1357,6 +1357,38 @@
 			// Keep the values entered in the current mode in memory only, so reloading the settings page or saving the settings shows the dummy values again
 			_fieldValues[ _previewMode ] = e.data.values;
 		}
+		// ADMIN SHORTCUT
+		else if ( 'adminShortcut' === e.data.type ) {
+			handleAdminShortcutMessage( e.data.shortcut );
+		}
+	};
+
+	/**
+	 * Handle admin shortcuts forwarded from the page preview iframe.
+	 *
+	 * @param  {string}  shortcut  Shortcut id from the frame script.
+	 */
+	var handleAdminShortcutMessage = function( shortcut ) {
+		var layout;
+
+		// EXPAND PREVIEW
+		if ( 'expandPreview' === shortcut ) {
+			layout = getLayout();
+
+			// Bail if the preview column is not visible for the current tab
+			if ( ! layout || ! layout.classList.contains( _settings.hasPreviewClass ) ) { return; }
+
+			togglePreviewExpanded();
+		}
+		// SAVE SETTINGS
+		else if ( 'saveSettings' === shortcut ) {
+			// Let the settings page run the same save shortcut flow as a keydown on the admin document
+			document.dispatchEvent( new CustomEvent( 'fc-settings-admin-shortcut', { detail: { shortcut: 'save' } } ) );
+		}
+		// MODIFIER HOLD START / END
+		else if ( 'modifierHoldStart' === shortcut || 'modifierHoldEnd' === shortcut ) {
+			document.dispatchEvent( new CustomEvent( 'fc-settings-admin-shortcut', { detail: { shortcut: shortcut } } ) );
+		}
 	};
 
 	/**

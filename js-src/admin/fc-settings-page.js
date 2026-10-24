@@ -834,6 +834,38 @@
 		return _settings.i18n && _settings.i18n.save ? _settings.i18n.save : 'Save settings';
 	};
 
+	/**
+	 * Set the visible label on a save button without removing the shortcut hint.
+	 *
+	 * @param  {Element}  button  Save button.
+	 * @param  {string}   label   Button label text.
+	 */
+	var setSaveButtonLabel = function( button, label ) {
+		var shortcutLabel;
+		var child;
+		var i;
+
+		// Update the first text node so the shortcut hint element stays in the button
+		for ( i = 0; i < button.childNodes.length; i++ ) {
+			child = button.childNodes[ i ];
+
+			if ( Node.TEXT_NODE === child.nodeType ) {
+				child.textContent = label;
+				return;
+			}
+		}
+
+		shortcutLabel = button.querySelector( '[data-fc-settings-shortcut-label]' );
+
+		// Maybe insert the label before the shortcut hint when the text node is missing
+		if ( shortcutLabel ) {
+			button.insertBefore( document.createTextNode( label ), shortcutLabel );
+			return;
+		}
+
+		button.textContent = label;
+	};
+
 
 
 	/**
@@ -880,7 +912,7 @@
 				button.style.minWidth = width + 'px';
 			}
 
-			button.textContent = getSavingLabel();
+			setSaveButtonLabel( button, getSavingLabel() );
 			button.classList.add( _settings.isBusyClass );
 		}
 
@@ -909,7 +941,7 @@
 			button.classList.remove( _settings.isBusyClass );
 			button.disabled = false;
 			button.style.minWidth = '';
-			button.textContent = getSaveLabel();
+			setSaveButtonLabel( button, getSaveLabel() );
 		}
 	};
 
@@ -1173,11 +1205,29 @@
 	 * @return  {boolean}
 	 */
 	var isShortcutModifierKey = function( event ) {
-		return 'Meta' === event.key || 'Control' === event.key;
+		return 'Meta' === event.key || 'Control' === event.key || 'MetaLeft' === event.code || 'MetaRight' === event.code || 'ControlLeft' === event.code || 'ControlRight' === event.code;
 	};
 
 	/**
-	 * Start revealing shortcuts after Cmd or Ctrl is held for 3 seconds.
+	 * Start revealing shortcuts after Cmd or Ctrl is held.
+	 */
+	var startModifierHoldTimer = function() {
+		// Bail if shortcuts are already visible or the timer is running
+		if ( _isShowingShortcuts || _modifierHoldTimer ) { return; }
+
+		_modifierHoldTimer = window.setTimeout( showShortcutHints, 1000 );
+	};
+
+	/**
+	 * Stop the hold timer and hide shortcut hints.
+	 */
+	var endModifierHold = function() {
+		clearModifierHoldTimer();
+		hideShortcutHints();
+	};
+
+	/**
+	 * Start revealing shortcuts after Cmd or Ctrl is held.
 	 *
 	 * @param   {KeyboardEvent}  event  Keyboard event.
 	 */
@@ -1188,10 +1238,7 @@
 		// Bail on key repeat while the key is already held
 		if ( event.repeat ) { return; }
 
-		// Bail if shortcuts are already visible or the timer is running
-		if ( _isShowingShortcuts || _modifierHoldTimer ) { return; }
-
-		_modifierHoldTimer = window.setTimeout( showShortcutHints, 1000 );
+		startModifierHoldTimer();
 	};
 
 	/**
@@ -1206,19 +1253,53 @@
 		// Bail while the other modifier is still held
 		if ( event.metaKey || event.ctrlKey ) { return; }
 
-		clearModifierHoldTimer();
-		hideShortcutHints();
+		endModifierHold();
 	};
 
 	/**
-	 * Hide shortcuts when the window loses focus.
+	 * Hide shortcuts when the window loses focus, unless focus moved into the preview iframe.
 	 */
 	var handleModifierHoldBlur = function() {
-		clearModifierHoldTimer();
-		hideShortcutHints();
+		// Wait for focus to settle so the preview iframe is activeElement when clicked
+		window.setTimeout( function() {
+			var frame = document.querySelector( '[data-fc-settings-preview-frame]' );
+
+			// Keep the hold state when focus moved into the preview iframe
+			if ( frame && document.activeElement === frame ) { return; }
+
+			endModifierHold();
+		}, 0 );
 	};
 
 
+
+	/**
+	 * Submit the settings form with the active save button, when available.
+	 */
+	var maybeSubmitSaveSettings = function() {
+		var form;
+		var saveButton;
+
+		form = document.querySelector( _settings.formSelector );
+
+		// Bail if the settings form is not on the page
+		if ( ! form ) { return; }
+
+		// Bail if a save request is already in progress
+		if ( _isSavingSettings ) { return; }
+
+		saveButton = getActiveSaveButton();
+
+		// Bail if an enabled save button is missing
+		if ( ! saveButton ) { return; }
+
+		if ( typeof form.requestSubmit === 'function' ) {
+			form.requestSubmit( saveButton );
+		}
+		else {
+			saveButton.click();
+		}
+	};
 
 	/**
 	 * Save settings when pressing Ctrl+S or Cmd+S.
@@ -1227,7 +1308,6 @@
 	 */
 	var handleKeydown = function( event ) {
 		var form;
-		var saveButton;
 		var isSaveShortcut;
 		var target;
 		var inputType;
@@ -1262,28 +1342,32 @@
 		// Bail if the save shortcut was not pressed
 		if ( ! isSaveShortcut ) { return; }
 
-		form = document.querySelector( _settings.formSelector );
-
-		// Bail if the settings form is not on the page
-		if ( ! form ) { return; }
-
 		// Always block the browser save-page shortcut on the settings page
 		// (including while a save request is already in progress and save buttons are disabled)
 		event.preventDefault();
 
-		// Bail if a save request is already in progress
-		if ( _isSavingSettings ) { return; }
+		maybeSubmitSaveSettings();
+	};
 
-		saveButton = getActiveSaveButton();
+	/**
+	 * Handle admin shortcuts forwarded from the page preview iframe.
+	 *
+	 * @param  {CustomEvent}  event  Shortcut event from the preview script.
+	 */
+	var handleAdminShortcut = function( event ) {
+		var shortcut = event.detail ? event.detail.shortcut : '';
 
-		// Bail if an enabled save button is missing
-		if ( ! saveButton ) { return; }
-
-		if ( typeof form.requestSubmit === 'function' ) {
-			form.requestSubmit( saveButton );
+		// SAVE
+		if ( 'save' === shortcut ) {
+			maybeSubmitSaveSettings();
 		}
-		else {
-			saveButton.click();
+		// MODIFIER HOLD START
+		else if ( 'modifierHoldStart' === shortcut ) {
+			startModifierHoldTimer();
+		}
+		// MODIFIER HOLD END
+		else if ( 'modifierHoldEnd' === shortcut ) {
+			endModifierHold();
 		}
 	};
 
@@ -1320,6 +1404,7 @@
 		document.addEventListener( 'keydown', handleKeydown, true );
 		document.addEventListener( 'keydown', handleModifierHoldKeydown, true );
 		document.addEventListener( 'keyup', handleModifierHoldKeyup, true );
+		document.addEventListener( 'fc-settings-admin-shortcut', handleAdminShortcut );
 		window.addEventListener( 'blur', handleModifierHoldBlur );
 		// Capture scroll: tall WP admin menu scroll must keep the bar on the viewport
 		window.addEventListener( 'scroll', scheduleActionsBarSync, true );
