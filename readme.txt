@@ -345,8 +345,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Filter `fc_local_pickup_shipping_zone_fields_options` for the local pickup shipping zone fields setting (PRO feature).
 * Added: Filter `fc_available_shipping_methods` to change the shipping methods shown for a package.
 * Added: Filter `fc_prevent_shipping_method_autoselect` to prevent automatic selection of the first shipping method. Return `true` to prevent auto-selecting a shipping method.
-* Added: "Edit pickup locations" button on the Local pickup settings section to open WooCommerce pickup location settings in a new tab.
-* Added: Option to use the WooCommerce pickup location title as the pickup option label on checkout.
 * Improved: Layout of WooCommerce address autocomplete suggestions and search icon on checkout and account edit-address form fields.
 * Improved: Updated replaced files for WooCommerce `address-i18n.js` and EU/UK VAT for WooCommerce to match latest upstream versions.
 * Improved: Updated replaced checkout templates `form-shipping.php` and `review-order.php` for WooCommerce 11.2.0 compatibility.
@@ -355,7 +353,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Show settings that are locked by a compatible plugin or theme as disabled, with a note explaining why the value cannot be changed.
 * Improved: Upgraded Sass build tooling to the latest version.
 * Improved: Filter `fc_shipping_method_display_package_destination_substep_text_lines` now also receives the shipping method and the package index.
-* Improved: Renamed default delivery type labels in Local pickup settings to "Ship to address" and "Local pickup".
 * Fixed: Compatibility with plugin Brevo for WooCommerce (formerly Sendinblue). Prevent duplicate newsletter opt-in checkbox when it is moved to the contact step.
 * Fixed: Compatibility with plugin Colissimo. Hide dependent international phone number settings when the feature is disabled.
 * Fixed: Compatibility with plugin Hungarian Pickup Points & Shipping Labels for WooCommerce. Fix required shipping address field errors when placing an order with the plugin's pickup point shipping method. Fix pickup point map not listing points for the shipping country.
