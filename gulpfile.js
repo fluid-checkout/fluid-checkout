@@ -55,6 +55,7 @@ var po2json = require('gulp-po2json');
 var through2 = require('through2');
 var path = require('path');
 var url = require('url');
+var readline = require('readline');
 
 
 
@@ -71,6 +72,8 @@ var _translationErrorLimit = 5;
 var _translationAborted = false;
 var _loggedFirstTranslationApiError = false;
 var _translationLogFileForRun = null;
+var _translationProgressActiveLang = null;
+var _translationProgressTotal = 0;
 
 // Dart Sass options passed through gulp-sass 6 (modern compile API).
 //
@@ -796,16 +799,58 @@ function appendTranslationLog( message ) {
 
 
 
-// Function to update translation progress in the terminal
-function updateTranslationProgress( completed, total, targetLang ) {
-	process.stdout.write( '\rTranslating (' + targetLang + '): ' + completed + ' of ' + total );
+// Function to start progress for one language (only one language is active at a time)
+function beginTranslationProgress( targetLang, total ) {
+	_translationProgressActiveLang = targetLang;
+	_translationProgressTotal = total;
+	updateTranslationProgress( 0, total, targetLang );
 }
 
+// Function to update translation progress for the active language only.
+// In-place updates need a TTY; non-TTY hosts (some IDE terminals) only get the final line.
+function updateTranslationProgress( completed, total, targetLang ) {
+	var safeCompleted;
+	var message;
 
+	// Bail if this update is for a previous language still returning API callbacks
+	if ( targetLang !== _translationProgressActiveLang ) {
+		return;
+	}
 
-// Function to finish translation progress line in the terminal
-function finishTranslationProgress() {
-	process.stdout.write( '\n' );
+	// Bail if stdout cannot rewrite the current line reliably
+	if ( ! process.stdout.isTTY ) {
+		return;
+	}
+
+	safeCompleted = Math.min( completed, total );
+	message = 'Translating (' + targetLang + '): ' + safeCompleted + ' of ' + total;
+	readline.clearLine( process.stdout, 0 );
+	readline.cursorTo( process.stdout, 0 );
+	process.stdout.write( message );
+}
+
+// Function to commit the active language progress line, then clear the active language
+function finishTranslationProgress( completed, total, targetLang ) {
+	var lang = targetLang || _translationProgressActiveLang;
+	var tot = ( typeof total === 'number' ) ? total : _translationProgressTotal;
+	var doneCount = ( typeof completed === 'number' ) ? Math.min( completed, tot ) : tot;
+	var message;
+
+	if ( lang && tot > 0 ) {
+		message = 'Translating (' + lang + '): ' + doneCount + ' of ' + tot;
+
+		if ( process.stdout.isTTY ) {
+			readline.clearLine( process.stdout, 0 );
+			readline.cursorTo( process.stdout, 0 );
+			process.stdout.write( message + '\n' );
+		}
+		else {
+			process.stdout.write( message + '\n' );
+		}
+	}
+
+	_translationProgressActiveLang = null;
+	_translationProgressTotal = 0;
 }
 
 
@@ -952,24 +997,40 @@ function runWithConcurrency( items, limit, worker, callback ) {
 	var index = 0;
 	var inFlight = 0;
 	var completed = 0;
+	var didFinish = false;
 
 	function maybeComplete() {
+		// Bail if the batch already finished (avoids starting the next language twice)
+		if ( didFinish ) {
+			return;
+		}
+
 		if ( completed >= items.length || ( _translationAborted && 0 === inFlight ) ) {
+			didFinish = true;
 			callback();
 		}
 	}
 
 	function startNext() {
 		while ( inFlight < limit && index < items.length && ! _translationAborted ) {
-			var item = items[ index++ ];
-			inFlight++;
+			(function( item ) {
+				var settled = false;
 
-			worker( item, function() {
-				inFlight--;
-				completed++;
-				startNext();
-				maybeComplete();
-			} );
+				inFlight++;
+
+				worker( item, function() {
+					// Bail if this job already settled (API or worker called done twice)
+					if ( settled ) {
+						return;
+					}
+
+					settled = true;
+					inFlight--;
+					completed++;
+					startNext();
+					maybeComplete();
+				} );
+			})( items[ index++ ] );
 		}
 
 		maybeComplete();
@@ -983,9 +1044,22 @@ function runWithConcurrency( items, limit, worker, callback ) {
 // Function to translate text using Deepl
 function translateWithDeepl( text, targetLang, callback ) {
 	var deeplApiConfig = getTranslationApiConfig( 'deepl' );
+	var settled = false;
+
+	/**
+	 * Invoke the job callback once (promise chains can reject after a success path throws in the callback).
+	 */
+	function finish( err, translatedText ) {
+		if ( settled ) {
+			return;
+		}
+
+		settled = true;
+		callback( err, translatedText );
+	}
 
 	if ( ! deeplApiConfig ) {
-		callback( new Error( 'DeepL API is not configured' ) );
+		finish( new Error( 'DeepL API is not configured' ) );
 		return;
 	}
 
@@ -1013,17 +1087,30 @@ function translateWithDeepl( text, targetLang, callback ) {
 			}
 
 			// Otherwise, pass translated text into callback
-			callback( null, data.translations[ 0 ].text );
+			finish( null, data.translations[ 0 ].text );
 		} );
-	} ).catch( function( error ) { callback( error ); } );
+	} ).catch( function( error ) { finish( error ); } );
 }
 
 // Function to translate text using Google Translate
 function translateWithGoogle( text, targetLang, callback ) {
 	var googleApiConfig = getTranslationApiConfig( 'googleTranslate' );
+	var settled = false;
+
+	/**
+	 * Invoke the job callback once (promise chains can reject after a success path throws in the callback).
+	 */
+	function finish( err, translatedText ) {
+		if ( settled ) {
+			return;
+		}
+
+		settled = true;
+		callback( err, translatedText );
+	}
 
 	if ( ! googleApiConfig ) {
-		callback( new Error( 'Google Translate API is not configured' ) );
+		finish( new Error( 'Google Translate API is not configured' ) );
 		return;
 	}
 
@@ -1052,9 +1139,9 @@ function translateWithGoogle( text, targetLang, callback ) {
 			}
 
 			// Otherwise, pass translated text into callback
-			callback( null, data.data.translations[ 0 ].translatedText );
+			finish( null, data.data.translations[ 0 ].translatedText );
 		} );
-	} ).catch( function( error ) { callback( error ); } );
+	} ).catch( function( error ) { finish( error ); } );
 }
 
 // Function to translate PO file
@@ -1162,17 +1249,22 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 		}
 
 		var completedCount = 0;
+		var jobTotal = jobs.length;
 
-		updateTranslationProgress( 0, jobs.length, targetLang );
+		beginTranslationProgress( targetLang, jobTotal );
 
 		runWithConcurrency( jobs, getTranslationConcurrency(), function( job, done ) {
-			if ( _translationAborted ) {
-				return done();
-			}
+			var settled = false;
 
-			var translateFunction = job.useDeepl ? translateWithDeepl : translateWithGoogle;
+			/**
+			 * Settle this job once, even if the translation API calls back more than once.
+			 */
+			function settleJob( err, translatedText ) {
+				if ( settled ) {
+					return;
+				}
 
-			translateFunction( job.strToTranslate, job.apiTargetLang, function( err, translatedText ) {
+				settled = true;
 				completedCount++;
 
 				if ( err ) {
@@ -1181,6 +1273,10 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 
 					if ( ! _loggedFirstTranslationApiError ) {
 						_loggedFirstTranslationApiError = true;
+						// Break the in-place progress line so the warning is not mashed into the counts
+						if ( process.stdout.isTTY ) {
+							process.stdout.write( '\n' );
+						}
 						console.warn( 'Warning: Translation API error. Further errors are written to the translation log. The package build will continue.' );
 					}
 
@@ -1190,18 +1286,28 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 						addTranslationWarning( 'Translation stopped after ' + _translationErrorLimit + ' API errors. Remaining strings were skipped.' );
 					}
 				}
-				else {
+				else if ( ! err && typeof translatedText === 'string' ) {
 					translations[ job.context ][ job.msgid ].msgstr[ job.msgstrIndex ] = translatedText;
 
 					var indexString = job.msgstrIndex > 0 ? '(' + job.msgstrIndex + ')' : '';
 					appendTranslationLog( 'Translated: ' + targetLang + ' ' + job.translationSource + ' ' + indexString + ' ' + job.strToTranslate + ' -> ' + translatedText );
 				}
 
-				updateTranslationProgress( completedCount, jobs.length, targetLang );
+				updateTranslationProgress( completedCount, jobTotal, targetLang );
 				done();
+			}
+
+			if ( _translationAborted ) {
+				return settleJob();
+			}
+
+			var translateFunction = job.useDeepl ? translateWithDeepl : translateWithGoogle;
+
+			translateFunction( job.strToTranslate, job.apiTargetLang, function( err, translatedText ) {
+				settleJob( err, translatedText );
 			} );
 		}, function() {
-			finishTranslationProgress();
+			finishTranslationProgress( completedCount, jobTotal, targetLang );
 			fs.writeFileSync( poFilePath, gettextParser.po.compile( po ), { flush: true } );
 			callback();
 		} );
