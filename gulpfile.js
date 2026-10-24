@@ -12,7 +12,8 @@
  * Tasks:
  * - default              Runs the configured default action (usually `watch`)
  * - update-ver           Bump asset version strings from package.json
- * - update-ver-release   update-ver plus changelog version/date for full releases
+ * - update-ver-release   update-ver plus changelog version/date for full releases;
+ *                        also verifies pluginZipBundledSources with releaseBranch
  * - clean-css            Delete generated CSS files
  * - clean-js             Delete generated JS files
  * - build-css            Production CSS from Sass
@@ -49,6 +50,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var del = require('del');
 var exec = require('child_process').exec;
+var execSync = require('child_process').execSync;
 var wpPot = require('gulp-wp-pot');
 var po2mo = require('gulp-po2mo');
 var po2json = require('gulp-po2json');
@@ -156,26 +158,33 @@ gulp.task( 'update-ver', gulp.series( function( done ) {
 } ) );
 
 // Run:
-// gulp update-ver
-// Update the project version for full releases, including the version and date in the changelog
-gulp.task( 'update-ver-release', gulp.series( 'update-ver', function( done ) {
-	// Define assets version
-	_assetsVersion = '-' + _package.version.replace( /\./gi, '' );
+// gulp update-ver-release
+// Update the project version for full releases, including the version and date in the changelog.
+// Official releases also verify pluginZipBundledSources that set releaseBranch.
+gulp.task( 'update-ver-release', gulp.series(
+	function( done ) {
+		verifyBundledSourcesForOfficialRelease( done );
+	},
+	'update-ver',
+	function( done ) {
+		// Define assets version
+		_assetsVersion = '-' + _package.version.replace( /\./gi, '' );
 
-	// Get current date
-	var today = new Date();
+		// Get current date
+		var today = new Date();
 
-	// Only update readme.txt for full release versions
-	if ( ! isPreReleaseVersion() ) {
-		gulp.src( _gulpSettings.changelogFile )
-		// See http://mdn.io/string.replace#Specifying_a_string_as_a_parameter
-		.pipe(replace(/Stable tag: (.)*/g, 'Stable tag: ' + _package.version ))
-		.pipe(replace(/= Unreleased (.)*/g, '= ' + _package.version + ' - ' + today.toISOString().slice(0, 10) + ' =' ))
-		.pipe(gulp.dest('./'));
+		// Only update readme.txt for full release versions
+		if ( ! isPreReleaseVersion() ) {
+			gulp.src( _gulpSettings.changelogFile )
+			// See http://mdn.io/string.replace#Specifying_a_string_as_a_parameter
+			.pipe(replace(/Stable tag: (.)*/g, 'Stable tag: ' + _package.version ))
+			.pipe(replace(/= Unreleased (.)*/g, '= ' + _package.version + ' - ' + today.toISOString().slice(0, 10) + ' =' ))
+			.pipe(gulp.dest('./'));
+		}
+
+		done();
 	}
-
-	done();
-} ) );
+) );
 
 
 
@@ -481,6 +490,146 @@ function getBundledSourcesConfig() {
 }
 
 /**
+ * Whether a directory is a git working tree (including worktrees / linked .git files).
+ *
+ * @param {string} absoluteDir Absolute path to check
+ * @return {boolean}
+ */
+function isGitRepository( absoluteDir ) {
+	try {
+		execSync( 'git rev-parse --git-dir', {
+			cwd: absoluteDir,
+			encoding: 'utf8',
+			stdio: [ 'ignore', 'pipe', 'ignore' ],
+		} );
+		return true;
+	}
+	catch ( err ) {
+		return false;
+	}
+}
+
+/**
+ * Current branch name for a git working tree, or "HEAD" when detached.
+ *
+ * @param {string} absoluteDir Absolute path to the repository
+ * @return {string}
+ */
+function getGitBranchName( absoluteDir ) {
+	return execSync( 'git rev-parse --abbrev-ref HEAD', {
+		cwd: absoluteDir,
+		encoding: 'utf8',
+	} ).trim();
+}
+
+/**
+ * Whether the git working tree has uncommitted changes (tracked or untracked, non-ignored).
+ *
+ * @param {string} absoluteDir Absolute path to the repository
+ * @return {boolean}
+ */
+function hasGitWorkingTreeChanges( absoluteDir ) {
+	var status = execSync( 'git status --porcelain', {
+		cwd: absoluteDir,
+		encoding: 'utf8',
+	} ).trim();
+
+	return '' !== status;
+}
+
+/**
+ * For official releases (not alpha/beta/dev/rc), verify every bundled source that
+ * sets `releaseBranch`: path exists, is a git repo, is on that branch, and is clean.
+ * Entries without `releaseBranch` are not checked here.
+ *
+ * @param {Function} done Callback with optional Error
+ */
+function verifyBundledSourcesForOfficialRelease( done ) {
+	var entries;
+	var errors;
+	var i;
+	var entry;
+	var absoluteSourceDir;
+	var label;
+	var branch;
+
+	// Bail early for pre-release package versions
+	if ( isPreReleaseVersion() ) {
+		done();
+		return;
+	}
+
+	entries = getBundledSourcesConfig();
+	errors = [];
+
+	for ( i = 0; i < entries.length; i++ ) {
+		entry = entries[ i ];
+
+		// Bail if this entry does not require a release branch
+		if ( ! entry || ! entry.releaseBranch || ! entry.sourceDir ) {
+			continue;
+		}
+
+		absoluteSourceDir = path.resolve( process.cwd(), entry.sourceDir );
+		label = entry.targetSubdir || entry.sourceDir;
+
+		if ( ! fs.existsSync( absoluteSourceDir ) ) {
+			errors.push(
+				'Bundled source missing for official release: "' + absoluteSourceDir + '" (' + label + ').'
+			);
+			continue;
+		}
+
+		if ( ! isGitRepository( absoluteSourceDir ) ) {
+			errors.push(
+				'Bundled source is not a git repository: "' + absoluteSourceDir + '" (' + label + ').'
+			);
+			continue;
+		}
+
+		try {
+			branch = getGitBranchName( absoluteSourceDir );
+		}
+		catch ( err ) {
+			errors.push(
+				'Could not read git branch for bundled source "' + label + '": ' + err.message
+			);
+			continue;
+		}
+
+		if ( branch !== entry.releaseBranch ) {
+			errors.push(
+				'Bundled source "' + label + '" must be on branch "' + entry.releaseBranch +
+				'" for official releases (current: "' + branch + '").'
+			);
+		}
+
+		try {
+			if ( hasGitWorkingTreeChanges( absoluteSourceDir ) ) {
+				errors.push(
+					'Bundled source "' + label + '" has uncommitted changes; ' +
+					'working tree must be clean for official releases.'
+				);
+			}
+		}
+		catch ( err ) {
+			errors.push(
+				'Could not read git status for bundled source "' + label + '": ' + err.message
+			);
+		}
+	}
+
+	if ( errors.length ) {
+		done( new Error(
+			'Official release blocked by bundled source checks:\n- ' + errors.join( '\n- ' )
+		) );
+		return;
+	}
+
+	done();
+}
+
+/**
  * Extra main-rsync excludes so bundled target subdirs are not copied as symlinks.
  *
  * @return {Array}
@@ -671,7 +820,15 @@ function copyAllBundledSources( exportPluginRoot, done ) {
 		copySingleBundledSource( exportPluginRoot, entry, copyNext );
 	}
 
-	copyNext();
+	// Official releases re-check releaseBranch sources before materializing the zip
+	verifyBundledSourcesForOfficialRelease( function( verifyErr ) {
+		if ( verifyErr ) {
+			done( verifyErr );
+			return;
+		}
+
+		copyNext();
+	} );
 }
 
 // Run:
