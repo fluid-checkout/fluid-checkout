@@ -42,6 +42,9 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	 * Register admin notice assets.
 	 */
 	public function register_assets() {
+		// Bail if checkout assets are not loaded yet
+		if ( ! class_exists( 'FluidCheckout_Enqueue' ) ) { return; }
+
 		// Styles
 		wp_register_style( 'fc-admin-notices', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-notices' ), array(), NULL );
 	}
@@ -72,7 +75,16 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	 * @return  string
 	 */
 	public function get_plugin_icon_url() {
-		return self::$directory_url . 'images/admin/fluid-checkout-icon.svg';
+		$icon_url = self::$directory_url . 'images/admin/fluid-checkout-icon.svg';
+
+		/**
+		 * Filters the plugin icon URL for Fluid Checkout Lite admin notices.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param  string  $icon_url  Default Lite plugin icon URL.
+		 */
+		return apply_filters( 'fc_admin_notice_icon_url', $icon_url );
 	}
 
 

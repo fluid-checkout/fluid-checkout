@@ -209,6 +209,18 @@ class FluidCheckout_Settings_Tools {
 				),
 
 				array(
+					'title'             => __( 'Google Maps scripts', 'fluid-checkout' ),
+					'desc'              => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Do not remove duplicate Google Maps scripts', 'fluid-checkout' ),
+					'desc_tip'          => __( 'When enabled, duplicate Google Maps scripts will NOT be removed which can cause errors and performance issues. Only use this option while troubleshooting.', 'fluid-checkout' ),
+					'id'                => 'fc_gaa_google_maps_dont_remove_duplicate_scripts',
+					'type'              => 'checkbox',
+					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_gaa_google_maps_dont_remove_duplicate_scripts' ),
+					'autoload'          => false,
+					'disabled'          => true,
+					'requires'          => 'pro',
+				),
+
+				array(
 					'type' => 'sectionend',
 					'id'   => 'fc_checkout_advanced_debug_options',
 				),

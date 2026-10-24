@@ -50,9 +50,26 @@ Forward Lite first, then plugin variables and styles:
 @forward "styles/all";
 ```
 
+## Shared UI libs (flyout-block, sticky-states)
+
+Canonical Sass lives in `fluid-checkout-standards/shared/sass/lib/` and syncs into Lite as `sass/lib/`. Load with `@use`, not `@import`:
+
+```scss
+@use 'lib/flyout-block'; // theme only
+@use 'lib/sticky-states';
+@use 'lib/flyout-block/index-flyout-only'; // theme alias
+@use 'lib/flyout-block/index-animations'; // every animation
+@use 'lib/flyout-block/theme/animations/fade-in-up'; // one animation
+@use 'partials/flyout-block-animations'; // Lite-only: FC-used subset
+```
+
+Animations live under `lib/flyout-block/theme/animations/` (one file each), plus `_imports-all.scss`. The Fluid Checkout subset is selected in Lite at `partials/_flyout-block-animations.scss` (not in standards).
+
+Edit those libs in standards, then sync (`--file sass-lib-flyout-block` / `sass-lib-sticky-states`) and rebuild CSS.
+
 ## Third-party Sass
 
-Tom Select, flyout-block, and sticky-states still use `@import` inside `sass/vendor/` bridge files. Entry stylesheets load them with `@use 'sass:meta'` and `@include meta.load-css('…')`. The gulp build sets `quietDeps: true` and `loadPaths` for `sass/` and `sass/vendor/`.
+Tom Select still uses `@import` inside `sass/vendor/` bridge files. Entry stylesheets load them with `@use 'sass:meta'` and `@include meta.load-css('…')`. The gulp build sets `quietDeps: true` and `loadPaths` for `sass/` and `sass/vendor/`.
 
 ## Check
 

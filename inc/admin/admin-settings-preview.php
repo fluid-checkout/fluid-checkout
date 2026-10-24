@@ -58,6 +58,9 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		// Assets
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 20 );
+
+		// Admin JS settings (settings page already dumps `fcSettingsAdmin`)
+		add_filter( 'fc_js_settings_admin', array( $this, 'add_js_settings_admin' ), 10 );
 	}
 
 
@@ -221,7 +224,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-admin-settings-preview', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-preview' ), array( 'jquery', 'fc-utils', 'fc-admin-settings-enhanced-select' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-admin-settings-preview', 'window.addEventListener("load",function(){FCAdminSettingsPreview.init(fcAdminSettingsPreviewSettings);});' );
+		wp_add_inline_script( 'fc-admin-settings-preview', 'window.addEventListener("load",function(){if(window.fcSettingsAdmin&&fcSettingsAdmin.settingsPreview){FCAdminSettingsPreview.init(fcSettingsAdmin.settingsPreview);}});' );
 	}
 
 	/**
@@ -239,43 +242,53 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		if ( ! $page->is_settings_page() ) { return; }
 
 		wp_enqueue_script( 'fc-admin-settings-preview' );
+	}
+
+	/**
+	 * Add preview script settings to `fcSettingsAdmin` on the settings page.
+	 *
+	 * @param   array  $settings  Admin JS settings.
+	 */
+	public function add_js_settings_admin( $settings ) {
+		// Bail if settings page class is not available
+		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) ) { return $settings; }
+
+		$page = FluidCheckout_Admin_Settings_Page::instance();
+
+		// Bail if not on the Fluid Checkout settings page
+		if ( ! $page->is_settings_page() ) { return $settings; }
 
 		// Get preview pane configuration
 		$config = $this->get_preview_config( $page->get_current_tab() );
 
-		$tab_preview_modes = $this->get_tab_preview_modes();
-
-		// EXCEPTION: Runtime values — initial tab and labels for the preview UI.
-		wp_localize_script(
-			'fc-admin-settings-preview',
-			'fcAdminSettingsPreviewSettings',
-			array(
-				'hiddenTabs'             => self::HIDDEN_TABS,
-				'initialTab'             => $page->get_current_tab(),
-				'initialPage'            => $this->get_preview_page_for_tab( $page->get_current_tab() ),
-				'placeholderSrcdocs'     => $this->get_placeholder_iframe_srcdocs(),
-				'defaultPage'            => $config[ 'default_page' ],
-				'modeQueryArg'           => FluidCheckout_Admin_Preview::MODE_QUERY_ARG,
-				'guestMode'              => FluidCheckout_Admin_Preview::MODE_GUEST,
-				'loggedInMode'           => FluidCheckout_Admin_Preview::MODE_LOGGED_IN,
-				'tabPreviewModes'        => $tab_preview_modes,
-				'storageKey'             => self::STORAGE_KEY,
-				'compactBreakpoint'      => self::COMPACT_BREAKPOINT,
-				'viewportWidths'         => self::VIEWPORT_WIDTHS,
-				'ajaxUrl'                => admin_url( 'admin-ajax.php' ),
-				'draftAction'            => FluidCheckout_Admin_Preview::DRAFT_AJAX_ACTION,
-				'draftNonce'             => wp_create_nonce( FluidCheckout_Admin_Preview::DRAFT_AJAX_ACTION ),
-				'previewToken'           => FluidCheckout_Admin_Preview::instance()->get_token(),
-				'styleSettings'          => $config[ 'style_settings' ],
-				'i18n'                   => array(
-					'expand'               => __( 'Expand preview', 'fluid-checkout' ),
-					'collapse'             => __( 'Collapse preview', 'fluid-checkout' ),
-					'showPreview'          => __( 'Preview', 'fluid-checkout' ),
-					'showHeaderFooter'     => __( 'Show header and footer', 'fluid-checkout' ),
-					'hideHeaderFooter'     => __( 'Hide header and footer', 'fluid-checkout' ),
-				),
-			)
+		$settings[ 'settingsPreview' ] = array(
+			'hiddenTabs'         => self::HIDDEN_TABS,
+			'initialTab'         => $page->get_current_tab(),
+			'initialPage'        => $this->get_preview_page_for_tab( $page->get_current_tab() ),
+			'placeholderSrcdocs' => $this->get_placeholder_iframe_srcdocs(),
+			'defaultPage'        => $config[ 'default_page' ],
+			'modeQueryArg'       => FluidCheckout_Admin_Preview::MODE_QUERY_ARG,
+			'guestMode'          => FluidCheckout_Admin_Preview::MODE_GUEST,
+			'loggedInMode'       => FluidCheckout_Admin_Preview::MODE_LOGGED_IN,
+			'tabPreviewModes'    => $this->get_tab_preview_modes(),
+			'storageKey'         => self::STORAGE_KEY,
+			'compactBreakpoint'  => self::COMPACT_BREAKPOINT,
+			'viewportWidths'     => self::VIEWPORT_WIDTHS,
+			'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
+			'draftAction'        => FluidCheckout_Admin_Preview::DRAFT_AJAX_ACTION,
+			'draftNonce'         => wp_create_nonce( FluidCheckout_Admin_Preview::DRAFT_AJAX_ACTION ),
+			'previewToken'       => FluidCheckout_Admin_Preview::instance()->get_token(),
+			'styleSettings'      => $config[ 'style_settings' ],
+			'i18n'               => array(
+				'expand'           => __( 'Expand preview', 'fluid-checkout' ),
+				'collapse'         => __( 'Collapse preview', 'fluid-checkout' ),
+				'showPreview'      => __( 'Preview', 'fluid-checkout' ),
+				'showHeaderFooter' => __( 'Show header and footer', 'fluid-checkout' ),
+				'hideHeaderFooter' => __( 'Hide header and footer', 'fluid-checkout' ),
+			),
 		);
+
+		return $settings;
 	}
 
 
@@ -323,7 +336,8 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		?>
 		<script>
 		( function() {
-			var modeSelect = document.querySelector( '[data-fc-settings-preview-mode]' );
+			var modeField = document.querySelector( '[data-fc-settings-preview-mode-field]' );
+			var modeInput;
 			var headerFooterButton = document.querySelector( '[data-fc-settings-preview-header-footer]' );
 			var hideHeaderFooterLabel = <?php echo wp_json_encode( __( 'Hide header and footer', 'fluid-checkout' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON-encoded string. ?>;
 			var tabPreviewMode = <?php echo wp_json_encode( $tab_preview_mode ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON-encoded string. ?>;
@@ -342,15 +356,15 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 			// Prefer the preview mode configured for this settings tab, then the saved mode
 			previewMode = tabPreviewMode || state.mode || '';
 
-			// Maybe select the preview mode, keeping guest mode for values the dropdown does not have
-			if ( modeSelect && previewMode && modeSelect.querySelector( 'option[value="' + previewMode + '"]' ) ) {
-				modeSelect.value = previewMode;
+			// Maybe select the preview mode, keeping guest mode for values the control does not have
+			if ( modeField && previewMode ) {
+				modeInput = modeField.querySelector( '[data-fc-settings-preview-mode][value="' + previewMode + '"]' );
 
-				// Maybe highlight the mode field when the tab overrides the saved preview mode
-				if ( tabPreviewMode && tabPreviewMode !== state.mode ) {
-					var modeField = modeSelect.closest( '[data-fc-settings-preview-mode-field]' );
+				if ( modeInput ) {
+					modeInput.checked = true;
 
-					if ( modeField ) {
+					// Maybe highlight the mode field when the tab overrides the saved preview mode
+					if ( tabPreviewMode && tabPreviewMode !== state.mode ) {
 						modeField.classList.add( 'is-auto-changed' );
 						window.setTimeout( function() {
 							modeField.classList.remove( 'is-auto-changed' );
@@ -392,7 +406,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		>
 			<div class="fc-settings-preview__toolbar">
 				<div class="fc-settings-preview__controls">
-					<button type="button" class="fc-settings-preview__expand" data-fc-settings-preview-expand aria-pressed="false" aria-label="<?php echo esc_attr( __( 'Expand preview', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Expand preview', 'fluid-checkout' ) ); ?>">
+					<button type="button" class="fc-settings-preview__expand" data-fc-settings-preview-expand data-fc-settings-shortcut="expand-preview" aria-pressed="false" aria-label="<?php echo esc_attr( __( 'Expand preview', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Expand preview', 'fluid-checkout' ) ); ?>">
 						<svg class="fc-settings-preview__expand-icon fc-settings-preview__expand-icon--expand fc-settings-preview__expand-icon--horizontal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 8.25L4.5 12l3.75 3.75"/>
 							<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 8.25L19.5 12l-3.75 3.75"/>
@@ -409,6 +423,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 							<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5L12 8.25 15.75 4.5"/>
 							<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 19.5L12 15.75 15.75 19.5"/>
 						</svg>
+						<span class="fc-settings-shortcut" data-fc-settings-shortcut-label aria-hidden="true"></span>
 					</button>
 
 					<div class="fc-settings-sectioned-buttons fc-settings-preview__viewports" role="radiogroup" aria-label="<?php echo esc_attr( __( 'Preview viewport', 'fluid-checkout' ) ); ?>">
@@ -468,19 +483,23 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 					</div>
 
 					<div class="fc-settings-preview__frame-options">
-						<div class="fc-settings-preview__mode-field" data-fc-settings-preview-mode-field>
-							<select class="fc-settings-preview__mode" data-fc-settings-preview-mode aria-label="<?php echo esc_attr( __( 'Preview as', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Preview as', 'fluid-checkout' ) ); ?>">
-								<option value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_GUEST ); ?>"><?php echo esc_html( __( 'Guest', 'fluid-checkout' ) ); ?></option>
-								<option value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_LOGGED_IN ); ?>"><?php echo esc_html( __( 'Logged in', 'fluid-checkout' ) ); ?></option>
-							</select>
-						</div>
-
 						<button type="button" class="fc-settings-preview__header-footer" data-fc-settings-preview-header-footer aria-pressed="false" aria-label="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>">
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75h16.5a1.5 1.5 0 011.5 1.5v13.5a1.5 1.5 0 01-1.5 1.5H3.75a1.5 1.5 0 01-1.5-1.5V5.25a1.5 1.5 0 011.5-1.5z"/>
 								<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 15.75h19.5"/>
 							</svg>
 						</button>
+
+						<div class="fc-settings-sectioned-buttons fc-settings-preview__mode" role="radiogroup" aria-label="<?php echo esc_attr( __( 'Preview as', 'fluid-checkout' ) ); ?>" data-fc-settings-preview-mode-field>
+							<label class="fc-settings-sectioned-buttons__option" title="<?php echo esc_attr( __( 'Guest', 'fluid-checkout' ) ); ?>">
+								<input type="radio" name="fc-settings-preview-mode" value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_GUEST ); ?>" data-fc-settings-preview-mode checked>
+								<span><?php echo esc_html( __( 'Guest', 'fluid-checkout' ) ); ?></span>
+							</label>
+							<label class="fc-settings-sectioned-buttons__option" title="<?php echo esc_attr( __( 'Logged in', 'fluid-checkout' ) ); ?>">
+								<input type="radio" name="fc-settings-preview-mode" value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_LOGGED_IN ); ?>" data-fc-settings-preview-mode>
+								<span><?php echo esc_html( __( 'Logged in', 'fluid-checkout' ) ); ?></span>
+							</label>
+						</div>
 
 						<?php $this->output_controls_state_script( $current_tab ); ?>
 					</div>

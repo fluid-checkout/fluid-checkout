@@ -815,22 +815,6 @@
 	};
 
 	/**
-	 * Enhance the preview mode dropdown with Tom Select when settings enhanced select is available.
-	 */
-	var ensurePreviewModeTomSelect = function() {
-		var modeSelect = document.querySelector( _settings.modeSelector );
-
-		// Bail if the mode dropdown is missing or already enhanced
-		if ( ! modeSelect || modeSelect.tomselect ) { return; }
-
-		// Bail if settings enhanced select is not available
-		if ( 'undefined' === typeof FCAdminSettingsEnhancedSelect ) { return; }
-
-		FCAdminSettingsEnhancedSelect.init();
-		FCAdminSettingsEnhancedSelect.enhanceFields( modeSelect );
-	};
-
-	/**
 	 * Show a grey outline on the preview mode field after an automatic mode change.
 	 */
 	var flashPreviewModeAutoChanged = function() {
@@ -853,28 +837,30 @@
 	};
 
 	/**
-	 * Set the preview mode, as selected in the mode dropdown.
+	 * Set the preview mode, as selected in the guest / logged-in control.
 	 *
 	 * @param  {string}   mode          Preview mode.
 	 * @param  {boolean}  isAutomatic   Whether the mode changed programmatically, such as when switching settings tabs.
 	 */
 	var setPreviewMode = function( mode, isAutomatic ) {
-		var modeSelect = document.querySelector( _settings.modeSelector );
-		var hasModeOption;
+		var modeField = document.querySelector( _settings.modeFieldSelector );
+		var modeInput;
+		var modeRadios;
 		var previousMode = _previewMode;
 
-		// Bail if the mode dropdown is missing
-		if ( ! modeSelect ) { return; }
+		// Bail if the mode field is missing
+		if ( ! modeField ) { return; }
 
-		// Use guest mode when the dropdown has no matching option
-		hasModeOption = modeSelect.querySelector( 'option[value="' + mode + '"]' );
-		_previewMode = hasModeOption ? mode : _settings.guestMode;
-		modeSelect.value = _previewMode;
+		modeInput = modeField.querySelector( _settings.modeSelector + '[value="' + mode + '"]' );
 
-		// Maybe sync Tom Select when the preview mode field was enhanced before this ran
-		if ( modeSelect.tomselect ) {
-			modeSelect.tomselect.setValue( _previewMode, true );
-		}
+		// Use guest mode when the control has no matching option
+		_previewMode = modeInput ? mode : _settings.guestMode;
+		modeRadios = modeField.querySelectorAll( _settings.modeSelector );
+
+		// Sync the segmented buttons with the preview mode
+		modeRadios.forEach( function( radio ) {
+			radio.checked = radio.value === _previewMode;
+		} );
 
 		// Maybe highlight the mode field when the mode changed automatically
 		if ( isAutomatic && previousMode !== _previewMode ) {
@@ -1036,11 +1022,9 @@
 
 
 	/**
-	 * Handle expand button clicks.
-	 *
-	 * @param  {Event}  e  Click event.
+	 * Toggle expanded/collapsed preview, matching the expand control button.
 	 */
-	var handleExpandClick = function( e ) {
+	var togglePreviewExpanded = function() {
 		var layout = getLayout();
 		var expanded;
 
@@ -1055,7 +1039,84 @@
 		if ( ! isCompactPreviewLayout() ) {
 			saveState( 'expanded', expanded );
 		}
+	};
 
+
+
+	/**
+	 * Whether keyboard events should not trigger the preview expand shortcut.
+	 *
+	 * @param  {Element}  target  Event target.
+	 * @return {boolean}
+	 */
+	var isPreviewExpandShortcutBlockedTarget = function( target ) {
+		var inputType;
+
+		// Bail if target is missing
+		if ( ! target || ! target.tagName ) { return false; }
+
+		// Skip text fields and other editable controls
+		if ( 'TEXTAREA' === target.tagName || 'SELECT' === target.tagName ) {
+			return true;
+		}
+
+		// Maybe skip text-like inputs
+		if ( 'INPUT' === target.tagName ) {
+			inputType = ( target.type || 'text' ).toLowerCase();
+
+			if ( -1 !== [ 'text', 'search', 'url', 'tel', 'email', 'password', 'number', 'color' ].indexOf( inputType ) ) {
+				return true;
+			}
+		}
+
+		// Skip contenteditable regions
+		if ( target.isContentEditable ) {
+			return true;
+		}
+
+		return false;
+	};
+
+
+
+	/**
+	 * Toggle preview expanded/collapsed with Ctrl+Shift+P or Cmd+Shift+P.
+	 *
+	 * @param  {KeyboardEvent}  e  Key down event.
+	 */
+	var handlePreviewExpandKeydown = function( e ) {
+		var layout;
+		var isExpandShortcut;
+
+		// Bail if FCUtils is not available
+		if ( ! window.FCUtils ) { return; }
+
+		isExpandShortcut = ( e.metaKey || e.ctrlKey ) && e.shiftKey && ! e.altKey && FCUtils.keyboardKeys.P === e.key.toLowerCase();
+
+		// Bail if the expand shortcut was not pressed
+		if ( ! isExpandShortcut ) { return; }
+
+		// Bail if the user is typing in a field
+		if ( isPreviewExpandShortcutBlockedTarget( e.target ) ) { return; }
+
+		layout = getLayout();
+
+		// Bail if the preview column is not visible for the current tab
+		if ( ! layout || ! layout.classList.contains( _settings.hasPreviewClass ) ) { return; }
+
+		e.preventDefault();
+		togglePreviewExpanded();
+	};
+
+
+
+	/**
+	 * Handle expand button clicks.
+	 *
+	 * @param  {Event}  e  Click event.
+	 */
+	var handleExpandClick = function( e ) {
+		togglePreviewExpanded();
 		e.preventDefault();
 	};
 
@@ -1207,12 +1268,12 @@
 	};
 
 	/**
-	 * Handle preview mode dropdown changes.
+	 * Handle preview mode segmented button changes.
 	 *
 	 * @param  {Event}  e  Change event.
 	 */
 	var handleModeChange = function( e ) {
-		// Bail if the change is not for the mode dropdown
+		// Bail if the change is not for the preview mode control
 		if ( ! e.target.matches( _settings.modeSelector ) ) { return; }
 
 		// Load the active page in the new mode, remembered in the browser
@@ -1295,6 +1356,38 @@
 		else if ( 'fieldValues' === e.data.type ) {
 			// Keep the values entered in the current mode in memory only, so reloading the settings page or saving the settings shows the dummy values again
 			_fieldValues[ _previewMode ] = e.data.values;
+		}
+		// ADMIN SHORTCUT
+		else if ( 'adminShortcut' === e.data.type ) {
+			handleAdminShortcutMessage( e.data.shortcut );
+		}
+	};
+
+	/**
+	 * Handle admin shortcuts forwarded from the page preview iframe.
+	 *
+	 * @param  {string}  shortcut  Shortcut id from the frame script.
+	 */
+	var handleAdminShortcutMessage = function( shortcut ) {
+		var layout;
+
+		// EXPAND PREVIEW
+		if ( 'expandPreview' === shortcut ) {
+			layout = getLayout();
+
+			// Bail if the preview column is not visible for the current tab
+			if ( ! layout || ! layout.classList.contains( _settings.hasPreviewClass ) ) { return; }
+
+			togglePreviewExpanded();
+		}
+		// SAVE SETTINGS
+		else if ( 'saveSettings' === shortcut ) {
+			// Let the settings page run the same save shortcut flow as a keydown on the admin document
+			document.dispatchEvent( new CustomEvent( 'fc-settings-admin-shortcut', { detail: { shortcut: 'save' } } ) );
+		}
+		// MODIFIER HOLD START / END
+		else if ( 'modifierHoldStart' === shortcut || 'modifierHoldEnd' === shortcut ) {
+			document.dispatchEvent( new CustomEvent( 'fc-settings-admin-shortcut', { detail: { shortcut: shortcut } } ) );
 		}
 	};
 
@@ -1437,6 +1530,7 @@
 		document.addEventListener( 'change', handleViewportChange, true );
 		document.addEventListener( 'change', handleWidthChange, true );
 		document.addEventListener( 'keydown', handleWidthKeyDown, true );
+		document.addEventListener( 'keydown', handlePreviewExpandKeydown, true );
 		document.addEventListener( 'change', handleModeChange, true );
 		window.addEventListener( 'message', handleMessage );
 		document.addEventListener( 'load', handleFrameLoad, true ); // Load events do not bubble, but reach the document in the capture phase
@@ -1463,7 +1557,6 @@
 
 		// Restore the preview mode and header and footer visibility saved in the browser
 		savedState = getSavedState();
-		ensurePreviewModeTomSelect();
 		var initialTabMode = getTabPreviewMode( _settings.initialTab );
 		var initialMode = initialTabMode || savedState.mode || _settings.guestMode;
 

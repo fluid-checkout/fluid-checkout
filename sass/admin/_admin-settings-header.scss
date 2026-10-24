@@ -24,18 +24,23 @@
 	text-align: left;
 }
 
-#fc-header .fc-header__logo {
+#fc-header .fc-header__branding {
 	float: left;
+	display: inline-flex;
+	align-items: center;
+}
+
+.rtl #fc-header .fc-header__branding {
+	float: right;
+}
+
+#fc-header .fc-header__logo {
 	display: inline-flex;
 	align-items: center;
 	gap: $fc-header-logo-gap;
 	text-decoration: none;
 	vertical-align: middle;
 	color: $fc-header-logo-text-color;
-}
-
-.rtl #fc-header .fc-header__logo {
-	float: right;
 }
 
 #fc-header .fc-header__logo-icon {
@@ -60,7 +65,10 @@
 
 
 .fc-header__button {
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0;
 	margin: 0 0 0 $fc-header-button-margin-left;
 	padding: $fc-header-button-padding;
 	background: $white;
@@ -106,14 +114,51 @@
 
 .fc-header__button .dashicons {
 	@include admin-dashicon-styles();
+	flex: 0 0 auto;
 	font-size: 16px;
 	height: 16px;
 	width: 16px;
-	margin: 2px 5px 0 -5px;
+	margin: 0 5px 0 -5px;
 }
 
 .rtl .fc-header__button .dashicons {
-	margin: 2px -5px 0 5px;
+	margin: 0 -5px 0 5px;
+}
+
+
+
+.fc-settings-shortcut {
+	display: none;
+	flex: 0 0 auto;
+	margin-inline-start: 6px;
+	padding: 2px;
+	border-radius: 2px;
+	background-color: rgba( 255, 255, 255, 0.2 );
+	color: inherit;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 1;
+	letter-spacing: .02em;
+	opacity: .8;
+	white-space: nowrap;
+	box-sizing: border-box;
+}
+
+.fc-header__button:not( .fc-header__button--save ):not( .fc-header__button--upgrade ) .fc-settings-shortcut,
+.fc-settings-preview__expand .fc-settings-shortcut,
+.button-secondary .fc-settings-shortcut,
+.fc-settings-button:not( .fc-settings-button--primary ) .fc-settings-shortcut {
+	background-color: rgba( 130, 130, 130, .2 );
+}
+
+body.is-showing-settings-shortcuts .fc-settings-shortcut {
+	display: inline-flex;
+	align-items: center;
+}
+
+// Let shortcut labels widen the button instead of being clipped
+body.is-showing-settings-shortcuts .fc-header__button {
+	overflow: visible;
 }
 
 

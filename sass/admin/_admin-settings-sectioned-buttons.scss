@@ -38,16 +38,16 @@
 }
 
 .fc-settings-sectioned-buttons__option:first-child {
-	border-radius: $fc-settings-input-border-radius 0 0 $fc-settings-input-border-radius;
+	border-radius: calc( #{$fc-settings-input-border-radius} - 1px ) 0 0 calc( #{$fc-settings-input-border-radius} - 1px );
 }
 
 .fc-settings-sectioned-buttons__option:last-child {
 	border-right: 0;
-	border-radius: 0 $fc-settings-input-border-radius $fc-settings-input-border-radius 0;
+	border-radius: 0 calc( #{$fc-settings-input-border-radius} - 1px ) calc( #{$fc-settings-input-border-radius} - 1px ) 0;
 }
 
 .fc-settings-sectioned-buttons__option:only-child {
-	border-radius: $fc-settings-input-border-radius;
+	border-radius: calc( #{$fc-settings-input-border-radius} - 1px );
 }
 
 .fc-settings-sectioned-buttons__option input {

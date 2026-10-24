@@ -41,7 +41,7 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 		$notices[] = array(
 			'name'        => FluidCheckout_Admin_TelemetrySettings::NOTICE_NAME,
 			'title'       => __( 'Help us improve Fluid Checkout', 'fluid-checkout' ),
-			'description' => __( 'Share anonymous site environment reports with Fluid Checkout to help us improve compatibility and measure impact. No customer, user, or sensitive data are included. You can choose what is shared anytime from the Tools settings.', 'fluid-checkout' ),
+			'description' => __( 'Share anonymous site environment reports with Fluid Checkout to get faster support and help us improve compatibility and measure impact. No customer, user, or sensitive data are included. You can choose what is shared anytime from the Tools settings.', 'fluid-checkout' ),
 			'actions'     => array(
 				sprintf(
 					'<a href="%s" class="button button-primary">%s</a>',

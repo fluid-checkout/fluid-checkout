@@ -23,6 +23,7 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 		add_action( 'wp_ajax_fc_telemetry_send_now', array( $this, 'ajax_send_telemetry_now' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts_styles' ), 10 );
 		add_action( 'admin_footer', array( $this, 'output_modal_markup' ), 10 );
+		add_filter( 'fc_js_settings_admin', array( $this, 'add_js_settings_admin' ), 10 );
 	}
 
 
@@ -37,35 +38,44 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 
 		// Scripts
 		wp_register_script( 'fc-admin-telemetry', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-telemetry' ), array( 'fc-utils' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-admin-telemetry', 'window.addEventListener("load",function(){FCAdminTelemetry.init(fcAdminTelemetrySettings);});' );
-		wp_localize_script(
-			'fc-admin-telemetry',
-			'fcAdminTelemetrySettings',
-			array(
-				'ajaxUrl'         => admin_url( 'admin-ajax.php' ),
-				'nonce'           => wp_create_nonce( 'fc_telemetry_admin' ),
-				'isEnabledSaved'  => 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_telemetry_enabled', 'no' ),
-				'i18n'            => array(
-					'modalTitle'       => __( 'Site report preview', 'fluid-checkout' ),
-					'modalDescription' => __( 'This is the data that would be included in the next site environment report based on your current settings.', 'fluid-checkout' ),
-					'loading'          => __( 'Loading report preview...', 'fluid-checkout' ),
-					'loadError'        => __( 'Could not load the site report preview. Try again.', 'fluid-checkout' ),
-					'sendError'        => __( 'Could not send the site report. Try again.', 'fluid-checkout' ),
-					'sendSuccess'      => __( 'Site report sent successfully.', 'fluid-checkout' ),
-					'sendNow'          => __( 'Send now', 'fluid-checkout' ),
-					'enableAndSendNow' => __( 'Enable and send now', 'fluid-checkout' ),
-					'close'            => __( 'Close', 'fluid-checkout' ),
-					'inProgress'       => __( 'A site report request is already in progress. Try again in a moment.', 'fluid-checkout' ),
-					'disabled'         => __( 'Site environment reporting is disabled.', 'fluid-checkout' ),
-					'emptyPayload'     => __( 'No site report data is available to send.', 'fluid-checkout' ),
-					'ineligibleDomain' => __( 'This site domain cannot send environment reports (local or development domains are excluded).', 'fluid-checkout' ),
-					'rateLimited'      => __( 'A site report was sent recently. Try again later.', 'fluid-checkout' ),
-					'requestFailed'    => __( 'The site report could not be sent. Try again later.', 'fluid-checkout' ),
-				),
-			)
-		);
+		wp_add_inline_script( 'fc-admin-telemetry', 'window.addEventListener("load",function(){if(window.fcSettingsAdmin&&fcSettingsAdmin.telemetry){FCAdminTelemetry.init(fcSettingsAdmin.telemetry);}});' );
 
 		wp_enqueue_script( 'fc-admin-telemetry' );
+	}
+
+	/**
+	 * Add telemetry script settings to `fcSettingsAdmin` on the settings page.
+	 *
+	 * @param   array  $settings  Admin JS settings.
+	 */
+	public function add_js_settings_admin( $settings ) {
+		// Bail if not on the settings screen
+		if ( ! $this->is_settings_screen() ) { return $settings; }
+
+		$settings[ 'telemetry' ] = array(
+			'ajaxUrl'        => admin_url( 'admin-ajax.php' ),
+			'nonce'          => wp_create_nonce( 'fc_telemetry_admin' ),
+			'isEnabledSaved' => 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_telemetry_enabled', 'no' ),
+			'i18n'           => array(
+				'modalTitle'       => __( 'Site report preview', 'fluid-checkout' ),
+				'modalDescription' => __( 'This is the data that would be included in the next site environment report based on your current settings.', 'fluid-checkout' ),
+				'loading'          => __( 'Loading report preview...', 'fluid-checkout' ),
+				'loadError'        => __( 'Could not load the site report preview. Try again.', 'fluid-checkout' ),
+				'sendError'        => __( 'Could not send the site report. Try again.', 'fluid-checkout' ),
+				'sendSuccess'      => __( 'Site report sent successfully.', 'fluid-checkout' ),
+				'sendNow'          => __( 'Send now', 'fluid-checkout' ),
+				'enableAndSendNow' => __( 'Enable and send now', 'fluid-checkout' ),
+				'close'            => __( 'Close', 'fluid-checkout' ),
+				'inProgress'       => __( 'A site report request is already in progress. Try again in a moment.', 'fluid-checkout' ),
+				'disabled'         => __( 'Site environment reporting is disabled.', 'fluid-checkout' ),
+				'emptyPayload'     => __( 'No site report data is available to send.', 'fluid-checkout' ),
+				'ineligibleDomain' => __( 'This site domain cannot send environment reports (local or development domains are excluded).', 'fluid-checkout' ),
+				'rateLimited'      => __( 'A site report was sent recently. Try again later.', 'fluid-checkout' ),
+				'requestFailed'    => __( 'The site report could not be sent. Try again later.', 'fluid-checkout' ),
+			),
+		);
+
+		return $settings;
 	}
 
 

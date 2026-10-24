@@ -12,19 +12,14 @@ if ( class_exists( 'FluidCheckout_Settings_AddressAutocomplete', false ) ) {
 
 /**
  * FluidCheckout_Settings_AddressAutocomplete.
- * Settings are locked until the Address Autocomplete add-on unlocks the feature `address_autocomplete`.
+ * Settings are locked until Fluid Checkout PRO unlocks the feature `pro`.
  */
 class FluidCheckout_Settings_AddressAutocomplete {
 
 	/**
 	 * Feature slug used to lock and unlock the settings.
 	 */
-	const FEATURE = 'address_autocomplete';
-
-	/**
-	 * Product page URL for the Address Autocomplete add-on.
-	 */
-	const PRODUCT_URL = 'https://fluidcheckout.com/fc-google-address-autocomplete/';
+	const FEATURE = 'pro';
 
 
 
@@ -34,9 +29,6 @@ class FluidCheckout_Settings_AddressAutocomplete {
 	public static function hooks() {
 		// Settings
 		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
-
-		// Tools settings, runs after the Tools settings are added
-		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_debug_settings' ), 20, 2 );
 	}
 
 
@@ -53,52 +45,6 @@ class FluidCheckout_Settings_AddressAutocomplete {
 	}
 
 
-
-	/**
-	 * Get the promotional settings card shown at the top of the Address Autocomplete tab when the add-on is not active.
-	 */
-	public static function get_promo_settings() {
-		// Bail if the add-on feature is already unlocked
-		if ( FluidCheckout_Admin_Settings_Access::instance()->is_unlocked( self::FEATURE ) ) { return array(); }
-
-		return array(
-			array(
-				'title'            => __( 'Address autocomplete', 'fluid-checkout' ),
-				'type'             => 'fc_promo',
-				'id'               => 'fc_gaa_address_autocomplete_promo',
-				'is_card'          => true,
-				'promo'            => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-autocomplete-promo', self::PRODUCT_URL, self::FEATURE ),
-				'tagline'          => __( 'Collect correct address details the first time and cut down on fields customers need to fill in.', 'fluid-checkout' ),
-				'features'         => array(
-					__( 'Autocomplete address fields with Google Places suggestions.', 'fluid-checkout' ),
-					__( 'Reduce typos and delivery issues with verified address data.', 'fluid-checkout' ),
-					__( 'Optional company and business search in the company field.', 'fluid-checkout' ),
-					__( 'Brasil API CEP autocomplete for Brazilian addresses.', 'fluid-checkout' ),
-				),
-				'learn_more_url'   => add_query_arg(
-					array(
-						'mtm_campaign' => 'addons',
-						'mtm_kwd'      => 'address-autocomplete-promo-learn-more',
-						'mtm_source'   => 'lite-plugin',
-					),
-					self::PRODUCT_URL
-				),
-				'learn_more_label' => __( 'Learn more', 'fluid-checkout' ),
-				'plugin_file'      => 'fc-google-address-autocomplete/fc-google-address-autocomplete.php',
-				'plugin_slug'      => 'fc-google-address-autocomplete',
-				'purchase_url'     => add_query_arg(
-					array(
-						'mtm_campaign' => 'addons',
-						'mtm_kwd'      => 'address-autocomplete-promo-purchase',
-						'mtm_source'   => 'lite-plugin',
-					),
-					self::PRODUCT_URL
-				),
-				'purchase_price'   => '29 EUR',
-			),
-		);
-	}
-
 	/**
 	 * Get the Address Autocomplete settings fields.
 	 */
@@ -109,7 +55,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 				'type'              => 'title',
 				'desc'              => '',
 				'id'                => 'fc_gaa_google_address_autocomplete',
-				'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-autocomplete', self::PRODUCT_URL, self::FEATURE ),
+				'promo'             => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'address-autocomplete' ),
 				'docs'              => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/getting-started-google-address-autocomplete/' ),
 			),
 
@@ -134,9 +80,10 @@ class FluidCheckout_Settings_AddressAutocomplete {
 				'desc'              => __( 'Paste your Google API key and use the test button to confirm it works for this website. Make sure the key is valid and allowed for your domain, otherwise the address field might get blocked preventing customers from completing their orders.', 'fluid-checkout' ),
 				'id'                => 'fc_gaa_google_places_api_key',
 				'type'              => 'fc_gaa_google_places_api_key',
-				'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_gaa_google_places_api_key' ),
+				'default'           => '',
 				'autoload'          => false,
 				'disabled'          => true,
+				'is_option'         => false, // Site-wide wp_option; saved by PRO, not the settings profile
 				'requires'          => self::FEATURE,
 			),
 
@@ -282,7 +229,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 				'type'              => 'title',
 				'desc'              => '',
 				'id'                => 'fc_gaa_brasil_api',
-				'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-autocomplete-brasil-api', self::PRODUCT_URL, self::FEATURE ),
+				'promo'             => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'address-autocomplete-brasil-api' ),
 			),
 
 			array(
@@ -324,28 +271,6 @@ class FluidCheckout_Settings_AddressAutocomplete {
 	}
 
 	/**
-	 * Get the Address Autocomplete debug fields for Tools > Troubleshooting.
-	 */
-	public static function get_debug_settings() {
-		return array(
-			array(
-				'title'             => __( 'Google Maps scripts', 'fluid-checkout' ),
-				'desc'              => __( 'Do not remove duplicate Google Maps scripts', 'fluid-checkout' ),
-				'desc_tip'          => __( 'When enabled, duplicate Google Maps scripts will NOT be removed which can cause errors and performance issues. Only use this option while troubleshooting.', 'fluid-checkout' ),
-				'id'                => 'fc_gaa_google_maps_dont_remove_duplicate_scripts',
-				'type'              => 'checkbox',
-				'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_gaa_google_maps_dont_remove_duplicate_scripts' ),
-				'autoload'          => false,
-				'disabled'          => true,
-				'requires'          => self::FEATURE,
-				'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-autocomplete-debug', self::PRODUCT_URL, self::FEATURE ),
-			),
-		);
-	}
-
-
-
-	/**
 	 * Add the Address Autocomplete settings.
 	 *
 	 * @param   array   $settings         Array with all settings for the current section.
@@ -362,49 +287,10 @@ class FluidCheckout_Settings_AddressAutocomplete {
 		 */
 		$settings = apply_filters(
 			'fc_gaa_address_autocomplete_settings',
-			array_merge(
-				self::get_promo_settings(),
-				self::get_feature_settings()
-			)
+			self::get_feature_settings()
 		);
 
 		return $settings;
-	}
-
-	/**
-	 * Add the Address Autocomplete debug settings into Tools > Troubleshooting.
-	 *
-	 * @param   array   $settings         Array with all settings for the current section.
-	 * @param   string  $current_section  Current section name.
-	 */
-	public static function add_debug_settings( $settings, $current_section ) {
-		// Bail if not on the tools section
-		if ( 'tools' !== $current_section ) { return $settings; }
-
-		/**
-		 * Filters the Address Autocomplete debug settings displayed on the Tools tab.
-		 *
-		 * @since 5.0.0
-		 */
-		$debug_settings = apply_filters( 'fc_gaa_address_autocomplete_debug_settings', self::get_debug_settings() );
-
-		// Bail if debug settings are not valid
-		if ( ! is_array( $debug_settings ) || empty( $debug_settings ) ) { return $settings; }
-
-		// Insert into the Troubleshooting section, before its section end
-		$result = array();
-		foreach ( (array) $settings as $setting ) {
-			// Maybe insert Address Autocomplete debug fields before the Troubleshooting section end
-			if ( isset( $setting[ 'id' ], $setting[ 'type' ] ) && 'fc_checkout_advanced_debug_options' === $setting[ 'id' ] && 'sectionend' === $setting[ 'type' ] ) {
-				foreach ( $debug_settings as $debug_setting ) {
-					$result[] = $debug_setting;
-				}
-			}
-
-			$result[] = $setting;
-		}
-
-		return $result;
 	}
 
 }

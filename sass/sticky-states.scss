@@ -1,4 +1,2 @@
-@use 'sass:meta';
 @use 'abstract' as *;
-
-@include meta.load-css('sticky-states-theme');
+@use 'lib/sticky-states';

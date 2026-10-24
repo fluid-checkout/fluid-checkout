@@ -65,11 +65,6 @@ class FluidCheckout_Settings_Dashboard {
 					'is_card'          => true,
 					'autoload'         => false,
 				),
-				array(
-					'type'             => 'fc_plugins_catalog',
-					'is_card'          => true,
-					'autoload'         => false,
-				),
 
 			);
 

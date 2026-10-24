@@ -4,6 +4,7 @@
  * On narrow viewports, toggles the expandable settings menu.
  *
  * DEPENDS ON:
+ * - FCAdminSettingsSetupChecklist // Syncs getting-started checklist completion state.
  * - FCAdminSettingsPreview // Optional. Collapses the preview drawer when the nav changes.
  */
 ( function ( root, factory ) {
@@ -79,6 +80,8 @@
 	 *
 	 * Prefers `data-fc-settings-nav-link`. Falls back to same-origin
 	 * `admin.php?page=fluid-checkout&tab=…` links inside the settings form.
+	 * Links with `_wpnonce` are left alone so admin-notice actions
+	 * (dismiss, DB update, cleanup) can do a full page request.
 	 *
 	 * @param   {Element}  link  Anchor element.
 	 * @return  {string}         Tab slug, or empty string when not a settings tab link.
@@ -122,6 +125,9 @@
 
 		// Bail if the link is not a Fluid Checkout settings URL
 		if ( 'fluid-checkout' !== parsed.searchParams.get( 'page' ) ) { return ''; }
+
+		// Bail if the URL carries a nonce (admin notice / action links need a full reload)
+		if ( parsed.searchParams.has( '_wpnonce' ) ) { return ''; }
 
 		return parsed.searchParams.get( 'tab' ) || '';
 	};
@@ -250,6 +256,18 @@
 	};
 
 	/**
+	 * Sync getting-started checklist state when a settings tab becomes active.
+	 *
+	 * @param   {string}  tab  Settings tab slug.
+	 */
+	var syncSetupChecklistForTab = function( tab ) {
+		// Bail if setup checklist API is unavailable
+		if ( typeof FCAdminSettingsSetupChecklist === 'undefined' || typeof FCAdminSettingsSetupChecklist.syncForTab !== 'function' ) { return; }
+
+		FCAdminSettingsSetupChecklist.syncForTab( tab );
+	};
+
+	/**
 	 * Update save button visibility and disabled state for a tab panel.
 	 *
 	 * @param  {Element}  tabPanel  Active tab panel element.
@@ -345,6 +363,8 @@
 
 		// Notify listeners that a settings tab became active (SPA navigation)
 		window.dispatchEvent( new CustomEvent( 'fcSettingsTabActivated', { detail: { tab: tab } } ) );
+
+		syncSetupChecklistForTab( tab );
 
 		return true;
 	};

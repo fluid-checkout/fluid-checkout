@@ -1,5 +1,4 @@
-@use 'sass:meta';
 @use 'abstract' as *;
-@use "partials/flyout-block";
-
-@include meta.load-css('flyout-block-theme');
+@use "partials/flyout-block" as *;
+@use 'lib/flyout-block' as *;
+@use 'partials/flyout-block-animations' as *;

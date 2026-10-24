@@ -1,9 +1,0 @@
-// flyout-block theme styles (RTL bundle — no animation keyframes).
-//
-// Loaded through sass/vendor and quietDeps. Not a public entry.
-// The theme calls z(). That function has to be in scope before the import.
-
-@use "../abstract" as *;
-
-@import "../../node_modules/flyout-block/sass/abstract/variables";
-@import "../../node_modules/flyout-block/sass/theme/flyout-block";

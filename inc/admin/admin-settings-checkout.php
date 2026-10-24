@@ -633,8 +633,7 @@ class FluidCheckout_Settings_Checkout {
 
 					array(
 						'title'                 => __( 'Company name field for shipping address', 'fluid-checkout' ),
-						'desc'                  => '',
-						'desc_tip'              => __( 'Change visibility for the company name field for the shipping address section on the checkout form.', 'fluid-checkout' ) . ' ' . __( 'If field is set as "optional", which is the default visibility state, no changes will be applied to let other plugins apply any changes they need.', 'fluid-checkout' ),
+						'desc_tip'              => __( 'Change visibility for the company name field for the shipping address section on the checkout form.', 'fluid-checkout' ),
 						'id'                    => 'fc_shipping_company_field_visibility',
 						'type'                  => 'select',
 						'options'               => array(

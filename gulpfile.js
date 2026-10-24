@@ -8,6 +8,29 @@
  *
  * Auto-translation skips DeepL/Google when keys are missing, empty, or
  * placeholders (`*****`) and does not fail the package build.
+ *
+ * Tasks:
+ * - default              Runs the configured default action (usually `watch`)
+ * - update-ver           Bump asset version strings from package.json
+ * - update-ver-release   update-ver plus changelog version/date for full releases;
+ *                        also verifies pluginZipBundledSources with releaseBranch
+ * - clean-css            Delete generated CSS files
+ * - clean-js             Delete generated JS files
+ * - build-css            Production CSS from Sass
+ * - build-css-dev        Development CSS from Sass (sourcemaps)
+ * - build-js             Production JS (uglify/concat)
+ * - npm-run-build        Run `npm run build` for WordPress block assets when present
+ * - build                Parallel build-js, build-css, and npm-run-build
+ * - copy-plugin-files    Copy committed plugin files into the export folder
+ * - pack-plugin-zip      Zip the export folder into an installable package
+ * - generate-pot         Generate the POT translation catalog
+ * - translate-po         Fill empty PO msgstr via DeepL/Google Translate APIs (skipped for alpha/beta/dev/rc)
+ * - update-translations  translate-po, then rebuild .mo and .l10n.php (skipped for alpha/beta/dev/rc)
+ * - translate            generate-pot then update-translations (skipped for alpha/beta/dev/rc)
+ * - browser-sync         Start BrowserSync from local settings
+ * - browser-sync-reload  Reload BrowserSync clients
+ * - watch                Watch sources and rebuild on change
+ * - watch-reload         Build once, then watch with BrowserSync reload
  */
 
 // Defining requirements
@@ -27,12 +50,14 @@ var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var del = require('del');
 var exec = require('child_process').exec;
+var execSync = require('child_process').execSync;
 var wpPot = require('gulp-wp-pot');
 var po2mo = require('gulp-po2mo');
 var po2json = require('gulp-po2json');
 var through2 = require('through2');
 var path = require('path');
 var url = require('url');
+var readline = require('readline');
 
 
 
@@ -48,6 +73,9 @@ var _translationWarnings = [];
 var _translationErrorLimit = 5;
 var _translationAborted = false;
 var _loggedFirstTranslationApiError = false;
+var _translationLogFileForRun = null;
+var _translationProgressActiveLang = null;
+var _translationProgressTotal = 0;
 
 // Dart Sass options passed through gulp-sass 6 (modern compile API).
 //
@@ -90,6 +118,31 @@ var _defaultAction = _gulpSettingsLocal.defaultAction || _gulpSettings.defaultAc
 
 
 // Run:
+/**
+ * Whether the current package.json version is a pre-release (alpha, beta, dev, or rc).
+ * Same rules as changelog Stable tag updates: skip when the marker appears after the start.
+ */
+function isPreReleaseVersion() {
+	var skipVersionPatterns = [ 'beta', 'dev', 'alpha', 'rc' ];
+	var i;
+
+	// Reload package.json so npm version bumps are visible mid-lifecycle
+	try {
+		_package = loadJsonFile.sync( 'package.json' );
+	}
+	catch ( err ) {
+		// Keep the previously loaded package when reload fails
+	}
+
+	for ( i = 0; i < skipVersionPatterns.length; i++ ) {
+		if ( 0 < _package.version.indexOf( skipVersionPatterns[ i ] ) ) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 // gulp update-ver
 // Update the project version
 gulp.task( 'update-ver', gulp.series( function( done ) {
@@ -105,36 +158,33 @@ gulp.task( 'update-ver', gulp.series( function( done ) {
 } ) );
 
 // Run:
-// gulp update-ver
-// Update the project version for full releases, including the version and date in the changelog
-gulp.task( 'update-ver-release', gulp.series( 'update-ver', function( done ) {
-	// Define assets version
-	_assetsVersion = '-' + _package.version.replace( /\./gi, '' );
+// gulp update-ver-release
+// Update the project version for full releases, including the version and date in the changelog.
+// Official releases also verify pluginZipBundledSources that set releaseBranch.
+gulp.task( 'update-ver-release', gulp.series(
+	function( done ) {
+		verifyBundledSourcesForOfficialRelease( done );
+	},
+	'update-ver',
+	function( done ) {
+		// Define assets version
+		_assetsVersion = '-' + _package.version.replace( /\./gi, '' );
 
-	// Get current date
-	var today = new Date();
+		// Get current date
+		var today = new Date();
 
-	// Set patterns to skip version updates
-	var skipVersionPatterns = [ 'beta', 'dev', 'alpha', 'rc' ];
-	var skip = false;
-	for ( var i = 0; i < skipVersionPatterns.length; i++ ) {
-		if ( 0 < _package.version.indexOf( skipVersionPatterns[ i ] ) ) {
-			skip = true;
-			break;
+		// Only update readme.txt for full release versions
+		if ( ! isPreReleaseVersion() ) {
+			gulp.src( _gulpSettings.changelogFile )
+			// See http://mdn.io/string.replace#Specifying_a_string_as_a_parameter
+			.pipe(replace(/Stable tag: (.)*/g, 'Stable tag: ' + _package.version ))
+			.pipe(replace(/= Unreleased (.)*/g, '= ' + _package.version + ' - ' + today.toISOString().slice(0, 10) + ' =' ))
+			.pipe(gulp.dest('./'));
 		}
-	}
 
-	// Only update readme.txt for full release versions
-	if ( ! skip ) {
-		gulp.src( _gulpSettings.changelogFile )
-		// See http://mdn.io/string.replace#Specifying_a_string_as_a_parameter
-		.pipe(replace(/Stable tag: (.)*/g, 'Stable tag: ' + _package.version ))
-		.pipe(replace(/= Unreleased (.)*/g, '= ' + _package.version + ' - ' + today.toISOString().slice(0, 10) + ' =' ))
-		.pipe(gulp.dest('./'));
+		done();
 	}
-
-	done();
-} ) );
+) );
 
 
 
@@ -274,6 +324,7 @@ function buildJS( done ) {
 	var buildMain = function() { if ( _gulpSettings.jsSources.main ) { return processJs( _gulpSettings.jsSources.main, './js/' ); } else { return Promise.resolve(); } };
 	var buildStandalone = function() { if ( _gulpSettings.jsSources.standalone ) { return processJs( _gulpSettings.jsSources.standalone, './js/' ); } else { return Promise.resolve(); } };
 	var buildAdmin = function() { if ( _gulpSettings.jsSources.admin ) { return processJs( _gulpSettings.jsSources.admin, './js/admin/' ); } else { return Promise.resolve(); } };
+	var buildAccount = function() { if ( _gulpSettings.jsSources.account ) { return processJs( _gulpSettings.jsSources.account, './js/account/' ); } else { return Promise.resolve(); } };
 	var buildPluginCompat = function() { if ( _gulpSettings.jsSources.pluginCompat ) { return processJs( _gulpSettings.jsSources.pluginCompat, './js/compat/plugins/' ); } else { return Promise.resolve(); } };
 	var buildThemeCompat = function() { if ( _gulpSettings.jsSources.themeCompat ) { return processJs( _gulpSettings.jsSources.themeCompat, './js/compat/themes/' ); } else { return Promise.resolve(); } };
 
@@ -285,6 +336,7 @@ function buildJS( done ) {
 		buildMain,
 		buildStandalone,
 		buildAdmin,
+		buildAccount,
 		buildPluginCompat,
 		buildThemeCompat
 	];
@@ -330,11 +382,15 @@ gulp.task( 'build', gulp.series( gulp.parallel( 'build-js', 'build-css', 'npm-ru
 
 
 /**
- * Merge plugin zip rsync settings from shared and local config.
+ * Merge plugin zip rsync settings from base and optional local overlays.
+ *
+ * @param {Object} baseSettings  pluginZipRsync from gulp-settings.json
+ * @param {Object} localSettings pluginZipRsync from gulp-settings.local.json (optional)
+ * @return {Object}
  */
-function getMergedPluginZipRsyncSettings() {
-	var base = _gulpSettings.pluginZipRsync || {};
-	var local = _gulpSettingsLocal.pluginZipRsync || {};
+function getMergedPluginZipRsyncSettingsFromFiles( baseSettings, localSettings ) {
+	var base = baseSettings || {};
+	var local = localSettings || {};
 
 	return {
 		include: ( base.include || [] ).concat( local.include || [] ),
@@ -345,22 +401,65 @@ function getMergedPluginZipRsyncSettings() {
 }
 
 /**
- * Build rsync filter arguments for plugin zip exports.
+ * Merge plugin zip rsync settings from this plugin's shared and local config.
+ *
+ * @return {Object}
  */
-function getPluginZipRsyncArgs() {
-	var rsync = getMergedPluginZipRsyncSettings();
+function getMergedPluginZipRsyncSettings() {
+	return getMergedPluginZipRsyncSettingsFromFiles(
+		_gulpSettings.pluginZipRsync,
+		_gulpSettingsLocal.pluginZipRsync
+	);
+}
+
+/**
+ * Load and merge pluginZipRsync from a gulp-settings.json path.
+ * Merges a sibling gulp-settings.local.json when present.
+ *
+ * @param {string} settingsJsonPath Absolute or relative path to gulp-settings.json
+ * @return {Object}
+ */
+function loadPluginZipRsyncSettings( settingsJsonPath ) {
+	var absoluteSettingsPath = path.resolve( settingsJsonPath );
+	var baseSettings = loadJsonFile.sync( absoluteSettingsPath );
+	var localSettings = {};
+	var localSettingsPath = path.join( path.dirname( absoluteSettingsPath ), 'gulp-settings.local.json' );
+
+	// Maybe merge local rsync overrides next to the settings file
+	if ( fs.existsSync( localSettingsPath ) ) {
+		try {
+			localSettings = loadJsonFile.sync( localSettingsPath );
+		} catch ( e ) {
+			localSettings = {};
+		}
+	}
+
+	return getMergedPluginZipRsyncSettingsFromFiles(
+		baseSettings.pluginZipRsync,
+		localSettings.pluginZipRsync
+	);
+}
+
+/**
+ * Build rsync filter arguments from a merged pluginZipRsync object.
+ *
+ * @param {Object} mergedRsync Merged include/exclude settings
+ * @return {string}
+ */
+function getPluginZipRsyncArgsFromSettings( mergedRsync ) {
+	var rsync = mergedRsync || {};
 	var args = [];
 
-	rsync.exclude.forEach( function( pattern ) {
-		args.push( '--exclude="' + pattern + '"' );
+	( rsync.exclude || [] ).forEach( function( pattern ) {
+		args.push( '--exclude=' + JSON.stringify( String( pattern ) ) );
 	} );
 
-	rsync.include.forEach( function( pattern ) {
-		args.push( '--include="' + pattern + '"' );
+	( rsync.include || [] ).forEach( function( pattern ) {
+		args.push( '--include=' + JSON.stringify( String( pattern ) ) );
 	} );
 
 	if ( rsync.excludeFrom ) {
-		args.push( '--exclude-from=' + rsync.excludeFrom );
+		args.push( '--exclude-from=' + JSON.stringify( String( rsync.excludeFrom ) ) );
 	}
 
 	if ( rsync.pruneEmptyDirs ) {
@@ -368,6 +467,389 @@ function getPluginZipRsyncArgs() {
 	}
 
 	return args.join( ' ' );
+}
+
+/**
+ * Build rsync filter arguments for this plugin's zip export.
+ *
+ * @return {string}
+ */
+function getPluginZipRsyncArgs() {
+	return getPluginZipRsyncArgsFromSettings( getMergedPluginZipRsyncSettings() );
+}
+
+/**
+ * Bundled sibling sources to materialize into the export zip.
+ * Configured in gulp-settings.json → pluginZipBundledSources.
+ *
+ * @return {Array}
+ */
+function getBundledSourcesConfig() {
+	var sources = _gulpSettings.pluginZipBundledSources;
+	return Array.isArray( sources ) ? sources : [];
+}
+
+/**
+ * Whether a directory is a git working tree (including worktrees / linked .git files).
+ *
+ * @param {string} absoluteDir Absolute path to check
+ * @return {boolean}
+ */
+function isGitRepository( absoluteDir ) {
+	try {
+		execSync( 'git rev-parse --git-dir', {
+			cwd: absoluteDir,
+			encoding: 'utf8',
+			stdio: [ 'ignore', 'pipe', 'ignore' ],
+		} );
+		return true;
+	}
+	catch ( err ) {
+		return false;
+	}
+}
+
+/**
+ * Current branch name for a git working tree, or "HEAD" when detached.
+ *
+ * @param {string} absoluteDir Absolute path to the repository
+ * @return {string}
+ */
+function getGitBranchName( absoluteDir ) {
+	return execSync( 'git rev-parse --abbrev-ref HEAD', {
+		cwd: absoluteDir,
+		encoding: 'utf8',
+	} ).trim();
+}
+
+/**
+ * Whether the git working tree has uncommitted changes (tracked or untracked, non-ignored).
+ *
+ * @param {string} absoluteDir Absolute path to the repository
+ * @return {boolean}
+ */
+function hasGitWorkingTreeChanges( absoluteDir ) {
+	var status = execSync( 'git status --porcelain', {
+		cwd: absoluteDir,
+		encoding: 'utf8',
+	} ).trim();
+
+	return '' !== status;
+}
+
+/**
+ * For official releases (not alpha/beta/dev/rc):
+ * - this plugin must be a git repo on `main`
+ * - every bundled source with `releaseBranch` must exist, be a git repo on that
+ *   branch, and have a clean working tree
+ *
+ * @param {Function} done Callback with optional Error
+ */
+function verifyBundledSourcesForOfficialRelease( done ) {
+	var entries;
+	var errors;
+	var i;
+	var entry;
+	var absoluteSourceDir;
+	var label;
+	var branch;
+	var cwd;
+
+	// Bail early for pre-release package versions
+	if ( isPreReleaseVersion() ) {
+		done();
+		return;
+	}
+
+	errors = [];
+	cwd = process.cwd();
+
+	if ( ! isGitRepository( cwd ) ) {
+		errors.push( 'This plugin is not a git repository; official releases require git.' );
+	}
+	else {
+		try {
+			branch = getGitBranchName( cwd );
+			if ( 'main' !== branch ) {
+				errors.push(
+					'Official releases must be created from branch "main" (current: "' + branch + '").'
+				);
+			}
+		}
+		catch ( err ) {
+			errors.push( 'Could not read git branch for this plugin: ' + err.message );
+		}
+	}
+
+	entries = getBundledSourcesConfig();
+
+	for ( i = 0; i < entries.length; i++ ) {
+		entry = entries[ i ];
+
+		// Bail if this entry does not require a release branch
+		if ( ! entry || ! entry.releaseBranch || ! entry.sourceDir ) {
+			continue;
+		}
+
+		absoluteSourceDir = path.resolve( cwd, entry.sourceDir );
+		label = entry.targetSubdir || entry.sourceDir;
+
+		if ( ! fs.existsSync( absoluteSourceDir ) ) {
+			errors.push(
+				'Bundled source missing for official release: "' + absoluteSourceDir + '" (' + label + ').'
+			);
+			continue;
+		}
+
+		if ( ! isGitRepository( absoluteSourceDir ) ) {
+			errors.push(
+				'Bundled source is not a git repository: "' + absoluteSourceDir + '" (' + label + ').'
+			);
+			continue;
+		}
+
+		try {
+			branch = getGitBranchName( absoluteSourceDir );
+		}
+		catch ( err ) {
+			errors.push(
+				'Could not read git branch for bundled source "' + label + '": ' + err.message
+			);
+			continue;
+		}
+
+		if ( branch !== entry.releaseBranch ) {
+			errors.push(
+				'Bundled source "' + label + '" must be on branch "' + entry.releaseBranch +
+				'" for official releases (current: "' + branch + '").'
+			);
+		}
+
+		try {
+			if ( hasGitWorkingTreeChanges( absoluteSourceDir ) ) {
+				errors.push(
+					'Bundled source "' + label + '" has uncommitted changes; ' +
+					'working tree must be clean for official releases.'
+				);
+			}
+		}
+		catch ( err ) {
+			errors.push(
+				'Could not read git status for bundled source "' + label + '": ' + err.message
+			);
+		}
+	}
+
+	if ( errors.length ) {
+		done( new Error(
+			'Official release blocked:\n- ' + errors.join( '\n- ' )
+		) );
+		return;
+	}
+
+	done();
+}
+
+/**
+ * Extra main-rsync excludes so bundled target subdirs are not copied as symlinks.
+ *
+ * @return {Array}
+ */
+function getBundledTargetSubdirExcludes() {
+	var excludes = [];
+
+	getBundledSourcesConfig().forEach( function( entry ) {
+		if ( ! entry || ! entry.targetSubdir ) { return; }
+		// Exclude the symlink/file itself and any nested paths
+		excludes.push( entry.targetSubdir );
+		excludes.push( entry.targetSubdir + '/' );
+		excludes.push( entry.targetSubdir + '/**' );
+	} );
+
+	return excludes;
+}
+
+/**
+ * Rsync args for the main plugin export, excluding bundled target folders.
+ *
+ * @return {string}
+ */
+function getMainPluginZipRsyncArgs() {
+	var merged = getMergedPluginZipRsyncSettings();
+	var bundledExcludes = getBundledTargetSubdirExcludes();
+
+	merged.exclude = ( merged.exclude || [] ).concat( bundledExcludes );
+
+	return getPluginZipRsyncArgsFromSettings( merged );
+}
+
+/**
+ * Run gulp build inside a bundled source directory when configured.
+ *
+ * @param {Object} entry             Bundled source config entry
+ * @param {string} absoluteSourceDir Absolute path to the source plugin root
+ * @param {Function} done            Callback with optional error
+ */
+function runBundledSourceBuild( entry, absoluteSourceDir, done ) {
+	// Bail if build before copy is not enabled
+	if ( ! entry.buildBeforeCopy ) {
+		done();
+		return;
+	}
+
+	var buildTask = entry.buildTask || 'build';
+	console.log( 'Building bundled source: ' + absoluteSourceDir + ' (gulp ' + buildTask + ')' );
+
+	exec(
+		'npx gulp ' + buildTask,
+		Object.assign( {}, _execOptions, { cwd: absoluteSourceDir } ),
+		function( err, stdout, stderr ) {
+			console.log( stdout );
+			console.log( stderr );
+			if ( err ) {
+				done( new Error(
+					'Bundled source build failed in "' + absoluteSourceDir + '". ' +
+					'Run "npm install" there if dependencies are missing, then retry.'
+				) );
+				return;
+			}
+			done();
+		}
+	);
+}
+
+/**
+ * Materialize one bundled source into the export plugin folder.
+ *
+ * @param {string}   exportPluginRoot Absolute path to the exported plugin folder
+ * @param {Object}   entry            Bundled source config entry
+ * @param {Function} done             Callback with optional error
+ */
+function copySingleBundledSource( exportPluginRoot, entry, done ) {
+	var targetSubdir = entry.targetSubdir;
+	var sourceDir = entry.sourceDir;
+	var required = entry.required !== false;
+	var absoluteSourceDir = path.resolve( process.cwd(), sourceDir );
+	var absoluteTargetDir = path.join( exportPluginRoot, targetSubdir );
+
+	// Bail if required fields are missing
+	if ( ! targetSubdir || ! sourceDir ) {
+		done( new Error( 'pluginZipBundledSources entry requires targetSubdir and sourceDir.' ) );
+		return;
+	}
+
+	// Bail if source directory is missing
+	if ( ! fs.existsSync( absoluteSourceDir ) ) {
+		if ( required ) {
+			done( new Error( 'Bundled source directory missing: "' + absoluteSourceDir + '".' ) );
+			return;
+		}
+		console.log( 'Skipping optional bundled source (missing): ' + absoluteSourceDir );
+		done();
+		return;
+	}
+
+	runBundledSourceBuild( entry, absoluteSourceDir, function( buildErr ) {
+		if ( buildErr ) {
+			done( buildErr );
+			return;
+		}
+
+		// Remove any previous target folder or leftover symlink from the export tree.
+		// Broken symlinks fail existsSync, so use lstat.
+		try {
+			var targetStat = fs.lstatSync( absoluteTargetDir );
+			if ( targetStat.isSymbolicLink() ) {
+				fs.unlinkSync( absoluteTargetDir );
+			} else {
+				del.sync( absoluteTargetDir, { force: true } );
+			}
+		} catch ( e ) {
+			// Target does not exist yet
+		}
+
+		var rsyncSettings;
+		if ( entry.rsyncSettingsFrom ) {
+			rsyncSettings = loadPluginZipRsyncSettings( path.resolve( process.cwd(), entry.rsyncSettingsFrom ) );
+		} else {
+			rsyncSettings = getMergedPluginZipRsyncSettings();
+		}
+
+		// Merge optional per-entry include/exclude overrides
+		rsyncSettings.include = ( rsyncSettings.include || [] ).concat( entry.include || [] );
+		rsyncSettings.exclude = ( rsyncSettings.exclude || [] ).concat( entry.exclude || [] );
+
+		// Resolve exclude-from relative to the source plugin root before building args
+		if ( rsyncSettings.excludeFrom ) {
+			rsyncSettings.excludeFrom = path.resolve( absoluteSourceDir, rsyncSettings.excludeFrom );
+		}
+
+		var rsyncArgs = getPluginZipRsyncArgsFromSettings( rsyncSettings );
+
+		console.log( 'Bundling ' + sourceDir + ' → ' + targetSubdir );
+
+		exec(
+			'rsync -av --copy-links ' +
+			( rsyncArgs ? rsyncArgs + ' ' : '' ) +
+			JSON.stringify( absoluteSourceDir + '/' ) + ' ' +
+			JSON.stringify( absoluteTargetDir ),
+			_execOptions,
+			function( err, stdout, stderr ) {
+				console.log( stdout );
+				console.log( stderr );
+				if ( err ) {
+					done( err );
+					return;
+				}
+				done();
+			}
+		);
+	} );
+}
+
+/**
+ * Materialize all configured bundled sources into the export plugin folder.
+ *
+ * @param {string}   exportPluginRoot Absolute path to the exported plugin folder
+ * @param {Function} done             Callback with optional error
+ */
+function copyAllBundledSources( exportPluginRoot, done ) {
+	var entries = getBundledSourcesConfig();
+
+	// Bail if no bundled sources are configured
+	if ( ! entries.length ) {
+		done();
+		return;
+	}
+
+	var index = 0;
+
+	function copyNext( err ) {
+		if ( err ) {
+			done( err );
+			return;
+		}
+
+		// Bail when all entries are copied
+		if ( index >= entries.length ) {
+			done();
+			return;
+		}
+
+		var entry = entries[ index ];
+		index += 1;
+		copySingleBundledSource( exportPluginRoot, entry, copyNext );
+	}
+
+	// Official releases re-check releaseBranch sources before materializing the zip
+	verifyBundledSourcesForOfficialRelease( function( verifyErr ) {
+		if ( verifyErr ) {
+			done( verifyErr );
+			return;
+		}
+
+		copyNext();
+	} );
 }
 
 // Run:
@@ -391,12 +873,13 @@ gulp.task( 'copy-plugin-files', gulp.series( function( done ) {
 	}
 
 	// Rsync filters are configured in gulp-settings.json → pluginZipRsync
-	var rsyncArgs = getPluginZipRsyncArgs();
+	// Bundled target subdirs are excluded here and materialized after the main copy.
+	var rsyncArgs = getMainPluginZipRsyncArgs();
 	exec(
 		'rsync -av ' +
 		( rsyncArgs ? rsyncArgs + ' ' : '' ) +
 		'../' + _package.name + '/ ' +
-		_gulpSettingsLocal.pluginZipPath + '/' + _package.name,
+		destinationFolder,
 		_execOptions,
 		function ( err, stdout, stderr ) {
 			console.log( stdout );
@@ -407,7 +890,7 @@ gulp.task( 'copy-plugin-files', gulp.series( function( done ) {
 				return;
 			}
 
-			done();
+			copyAllBundledSources( destinationFolder, done );
 		}
 	);
 } ) );
@@ -444,9 +927,26 @@ gulp.task( 'pack-plugin-zip', gulp.series( function( done ) {
 
 
 
-// Function to get translation log file path
+// Function to get translation log file path for the current run.
+// Uses the configured path with a timestamp so each run keeps its own log.
 function getTranslationLogFile() {
-	return _gulpSettings.translationLogFile || './logs/translations.log';
+	var configured;
+	var parsed;
+	var stamp;
+
+	// Reuse the same path for the whole translate-po run
+	if ( _translationLogFileForRun ) {
+		return _translationLogFileForRun;
+	}
+
+	configured = _gulpSettings.translationLogFile || './logs/translations.log';
+	parsed = path.parse( configured );
+	// Filesystem-safe UTC timestamp, e.g. 2026-10-24T17-24-00-123Z
+	stamp = new Date().toISOString().replace( /[:.]/g, '-' );
+
+	_translationLogFileForRun = path.join( parsed.dir, parsed.name + '-' + stamp + parsed.ext );
+
+	return _translationLogFileForRun;
 }
 
 
@@ -492,16 +992,58 @@ function appendTranslationLog( message ) {
 
 
 
-// Function to update translation progress in the terminal
-function updateTranslationProgress( completed, total, targetLang ) {
-	process.stdout.write( '\rTranslating (' + targetLang + '): ' + completed + ' of ' + total );
+// Function to start progress for one language (only one language is active at a time)
+function beginTranslationProgress( targetLang, total ) {
+	_translationProgressActiveLang = targetLang;
+	_translationProgressTotal = total;
+	updateTranslationProgress( 0, total, targetLang );
 }
 
+// Function to update translation progress for the active language only.
+// In-place updates need a TTY; non-TTY hosts (some IDE terminals) only get the final line.
+function updateTranslationProgress( completed, total, targetLang ) {
+	var safeCompleted;
+	var message;
 
+	// Bail if this update is for a previous language still returning API callbacks
+	if ( targetLang !== _translationProgressActiveLang ) {
+		return;
+	}
 
-// Function to finish translation progress line in the terminal
-function finishTranslationProgress() {
-	process.stdout.write( '\n' );
+	// Bail if stdout cannot rewrite the current line reliably
+	if ( ! process.stdout.isTTY ) {
+		return;
+	}
+
+	safeCompleted = Math.min( completed, total );
+	message = 'Translating (' + targetLang + '): ' + safeCompleted + ' of ' + total;
+	readline.clearLine( process.stdout, 0 );
+	readline.cursorTo( process.stdout, 0 );
+	process.stdout.write( message );
+}
+
+// Function to commit the active language progress line, then clear the active language
+function finishTranslationProgress( completed, total, targetLang ) {
+	var lang = targetLang || _translationProgressActiveLang;
+	var tot = ( typeof total === 'number' ) ? total : _translationProgressTotal;
+	var doneCount = ( typeof completed === 'number' ) ? Math.min( completed, tot ) : tot;
+	var message;
+
+	if ( lang && tot > 0 ) {
+		message = 'Translating (' + lang + '): ' + doneCount + ' of ' + tot;
+
+		if ( process.stdout.isTTY ) {
+			readline.clearLine( process.stdout, 0 );
+			readline.cursorTo( process.stdout, 0 );
+			process.stdout.write( message + '\n' );
+		}
+		else {
+			process.stdout.write( message + '\n' );
+		}
+	}
+
+	_translationProgressActiveLang = null;
+	_translationProgressTotal = 0;
 }
 
 
@@ -648,24 +1190,40 @@ function runWithConcurrency( items, limit, worker, callback ) {
 	var index = 0;
 	var inFlight = 0;
 	var completed = 0;
+	var didFinish = false;
 
 	function maybeComplete() {
+		// Bail if the batch already finished (avoids starting the next language twice)
+		if ( didFinish ) {
+			return;
+		}
+
 		if ( completed >= items.length || ( _translationAborted && 0 === inFlight ) ) {
+			didFinish = true;
 			callback();
 		}
 	}
 
 	function startNext() {
 		while ( inFlight < limit && index < items.length && ! _translationAborted ) {
-			var item = items[ index++ ];
-			inFlight++;
+			(function( item ) {
+				var settled = false;
 
-			worker( item, function() {
-				inFlight--;
-				completed++;
-				startNext();
-				maybeComplete();
-			} );
+				inFlight++;
+
+				worker( item, function() {
+					// Bail if this job already settled (API or worker called done twice)
+					if ( settled ) {
+						return;
+					}
+
+					settled = true;
+					inFlight--;
+					completed++;
+					startNext();
+					maybeComplete();
+				} );
+			})( items[ index++ ] );
 		}
 
 		maybeComplete();
@@ -679,9 +1237,22 @@ function runWithConcurrency( items, limit, worker, callback ) {
 // Function to translate text using Deepl
 function translateWithDeepl( text, targetLang, callback ) {
 	var deeplApiConfig = getTranslationApiConfig( 'deepl' );
+	var settled = false;
+
+	/**
+	 * Invoke the job callback once (promise chains can reject after a success path throws in the callback).
+	 */
+	function finish( err, translatedText ) {
+		if ( settled ) {
+			return;
+		}
+
+		settled = true;
+		callback( err, translatedText );
+	}
 
 	if ( ! deeplApiConfig ) {
-		callback( new Error( 'DeepL API is not configured' ) );
+		finish( new Error( 'DeepL API is not configured' ) );
 		return;
 	}
 
@@ -709,17 +1280,30 @@ function translateWithDeepl( text, targetLang, callback ) {
 			}
 
 			// Otherwise, pass translated text into callback
-			callback( null, data.translations[ 0 ].text );
+			finish( null, data.translations[ 0 ].text );
 		} );
-	} ).catch( function( error ) { callback( error ); } );
+	} ).catch( function( error ) { finish( error ); } );
 }
 
 // Function to translate text using Google Translate
 function translateWithGoogle( text, targetLang, callback ) {
 	var googleApiConfig = getTranslationApiConfig( 'googleTranslate' );
+	var settled = false;
+
+	/**
+	 * Invoke the job callback once (promise chains can reject after a success path throws in the callback).
+	 */
+	function finish( err, translatedText ) {
+		if ( settled ) {
+			return;
+		}
+
+		settled = true;
+		callback( err, translatedText );
+	}
 
 	if ( ! googleApiConfig ) {
-		callback( new Error( 'Google Translate API is not configured' ) );
+		finish( new Error( 'Google Translate API is not configured' ) );
 		return;
 	}
 
@@ -748,9 +1332,9 @@ function translateWithGoogle( text, targetLang, callback ) {
 			}
 
 			// Otherwise, pass translated text into callback
-			callback( null, data.data.translations[ 0 ].translatedText );
+			finish( null, data.data.translations[ 0 ].translatedText );
 		} );
-	} ).catch( function( error ) { callback( error ); } );
+	} ).catch( function( error ) { finish( error ); } );
 }
 
 // Function to translate PO file
@@ -858,17 +1442,22 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 		}
 
 		var completedCount = 0;
+		var jobTotal = jobs.length;
 
-		updateTranslationProgress( 0, jobs.length, targetLang );
+		beginTranslationProgress( targetLang, jobTotal );
 
 		runWithConcurrency( jobs, getTranslationConcurrency(), function( job, done ) {
-			if ( _translationAborted ) {
-				return done();
-			}
+			var settled = false;
 
-			var translateFunction = job.useDeepl ? translateWithDeepl : translateWithGoogle;
+			/**
+			 * Settle this job once, even if the translation API calls back more than once.
+			 */
+			function settleJob( err, translatedText ) {
+				if ( settled ) {
+					return;
+				}
 
-			translateFunction( job.strToTranslate, job.apiTargetLang, function( err, translatedText ) {
+				settled = true;
 				completedCount++;
 
 				if ( err ) {
@@ -877,6 +1466,10 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 
 					if ( ! _loggedFirstTranslationApiError ) {
 						_loggedFirstTranslationApiError = true;
+						// Break the in-place progress line so the warning is not mashed into the counts
+						if ( process.stdout.isTTY ) {
+							process.stdout.write( '\n' );
+						}
 						console.warn( 'Warning: Translation API error. Further errors are written to the translation log. The package build will continue.' );
 					}
 
@@ -886,18 +1479,28 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 						addTranslationWarning( 'Translation stopped after ' + _translationErrorLimit + ' API errors. Remaining strings were skipped.' );
 					}
 				}
-				else {
+				else if ( ! err && typeof translatedText === 'string' ) {
 					translations[ job.context ][ job.msgid ].msgstr[ job.msgstrIndex ] = translatedText;
 
 					var indexString = job.msgstrIndex > 0 ? '(' + job.msgstrIndex + ')' : '';
 					appendTranslationLog( 'Translated: ' + targetLang + ' ' + job.translationSource + ' ' + indexString + ' ' + job.strToTranslate + ' -> ' + translatedText );
 				}
 
-				updateTranslationProgress( completedCount, jobs.length, targetLang );
+				updateTranslationProgress( completedCount, jobTotal, targetLang );
 				done();
+			}
+
+			if ( _translationAborted ) {
+				return settleJob();
+			}
+
+			var translateFunction = job.useDeepl ? translateWithDeepl : translateWithGoogle;
+
+			translateFunction( job.strToTranslate, job.apiTargetLang, function( err, translatedText ) {
+				settleJob( err, translatedText );
 			} );
 		}, function() {
-			finishTranslationProgress();
+			finishTranslationProgress( completedCount, jobTotal, targetLang );
 			fs.writeFileSync( poFilePath, gettextParser.po.compile( po ), { flush: true } );
 			callback();
 		} );
@@ -973,11 +1576,18 @@ function poToPHP ( jsonFile, enc, cb ) {
 // Translate PO files using Deepl and Google Translate.
 // Missing or placeholder API keys skip that provider with a warning.
 // API errors are logged and do not fail the package build.
+// Skipped for alpha, beta, dev, and rc package versions.
 gulp.task( 'translate-po', function ( done ) {
+	if ( isPreReleaseVersion() ) {
+		console.log( 'Skipping translate-po for pre-release version ' + _package.version );
+		return done();
+	}
+
 	_translationErrors = [];
 	_translationWarnings = [];
 	_translationAborted = false;
 	_loggedFirstTranslationApiError = false;
+	_translationLogFileForRun = null;
 	initTranslationLog();
 	printTranslationLogLink();
 	warnMissingTranslationApis();
@@ -1021,26 +1631,33 @@ gulp.task( 'translate-po', function ( done ) {
 
 // Run:
 // gulp update-translations
-// Update translations
-gulp.task( 'update-translations', gulp.series( 'translate-po', function ( done ) {
-	var tasks = Object.keys( _gulpSettings.languages ).map( function( lang ) {
-		return function ( done2 ) {
-			gulp.src( _gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '-' + lang + '.po' )
-				.pipe( po2mo() )
-				.pipe( gulp.dest( _gulpSettings.translationDest ) );
+// Update translations. Skipped for alpha, beta, dev, and rc package versions.
+gulp.task( 'update-translations', function( done ) {
+	if ( isPreReleaseVersion() ) {
+		console.log( 'Skipping update-translations for pre-release version ' + _package.version );
+		return done();
+	}
 
-			gulp.src( _gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '-' + lang + '.po' )
-				.pipe( po2json() )
-				.pipe( through2.obj( poToPHP ) )
-				.pipe( rename( { extname: '.l10n.php' } ) )
-				.pipe( gulp.dest( _gulpSettings.translationDest ) );
+	return gulp.series( 'translate-po', function ( seriesDone ) {
+		var tasks = Object.keys( _gulpSettings.languages ).map( function( lang ) {
+			return function ( done2 ) {
+				gulp.src( _gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '-' + lang + '.po' )
+					.pipe( po2mo() )
+					.pipe( gulp.dest( _gulpSettings.translationDest ) );
 
-			done2();
-		};
-	} );
+				gulp.src( _gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '-' + lang + '.po' )
+					.pipe( po2json() )
+					.pipe( through2.obj( poToPHP ) )
+					.pipe( rename( { extname: '.l10n.php' } ) )
+					.pipe( gulp.dest( _gulpSettings.translationDest ) );
 
-	return gulp.series( tasks )( done );
-} ) );
+				done2();
+			};
+		} );
+
+		return gulp.series( tasks )( seriesDone );
+	} )( done );
+} );
 	
 
 // Run:
@@ -1075,13 +1692,21 @@ gulp.task( 'generate-pot', function ( done ) {
 
 
 // Run:
-// gulp translations
+// gulp translate
 // Generate POT file and update translations.
 // Auto-translation warnings are summarized again at the end of the build run.
-gulp.task( 'translate', gulp.series( 'generate-pot', 'update-translations', function( done ) {
-	printTranslationWarningSummary();
-	done();
-} ) );
+// Skipped for alpha, beta, dev, and rc package versions (use generate-pot alone if needed).
+gulp.task( 'translate', function( done ) {
+	if ( isPreReleaseVersion() ) {
+		console.log( 'Skipping translations for pre-release version ' + _package.version );
+		return done();
+	}
+
+	return gulp.series( 'generate-pot', 'update-translations', function( seriesDone ) {
+		printTranslationWarningSummary();
+		seriesDone();
+	} )( done );
+} );
 
 
 

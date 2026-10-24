@@ -1365,54 +1365,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Returns whether the current page is the checkout page or requesting for checkout fragments.
 	 */
 	public function is_checkout_page_or_fragment() {
-		global $wp_query;
-		$ajax_action = $wp_query->get( 'wc-ajax' );
-
-		// Return `true` if any of the following conditions are met:
-		if ( is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page() ) { return true; }
-		if ( 'update_order_review' === $ajax_action ) { return true; }
-		if ( 'checkout' === $ajax_action ) { return true; }
-		if ( array_key_exists( 'wc-ajax', $_GET ) && 'update_order_review' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ?? '' ) ) ) { return true; }
-		if ( array_key_exists( 'wc-ajax', $_GET ) && 'checkout' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ?? '' ) ) ) { return true; }
-
-		// Filter to allow other plugins to add their own conditions
-		/**
-		 * Filters whether the current request is the checkout page or a checkout fragment.
-		 *
-		 * @since 2.3.1
-		 *
-		 * @param bool $value Value to filter. Default false.
-		 */
-		if ( true === apply_filters( 'fc_is_checkout_page_or_fragment', false ) ) { return true; }
-
-		// Otherwise, return `false`
-		return false;
+		return FluidCheckout_Utils::instance()->is_checkout_page_or_fragment();
 	}
 
 	/**
 	 * Returns whether the current page is the cart page or requesting for cart fragments.
 	 */
 	public function is_cart_page_or_fragment() {
-		global $wp_query;
-		$ajax_action = wc_clean( wp_unslash( $wp_query->get( 'wc-ajax' ) ) );
-
-		// Return `true` if any of the following conditions are met:
-		if ( is_cart() ) { return true; }
-		if ( 'fc_pro_update_cart_fragments' === $ajax_action ) { return true; }
-		if ( ( array_key_exists( 'wc-ajax', $_GET ) && 'fc_pro_update_cart_fragments' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ?? '' ) ) ) ) { return true; } // Needed to check for AJAX calls for the cart fragments early in the request.
-
-		// Filter to allow other plugins to add their own conditions
-		/**
-		 * Filters whether the current request is the cart page or a cart fragment.
-		 *
-		 * @since 1.6.0
-		 *
-		 * @param bool $value Value to filter. Default false.
-		 */
-		if ( true === apply_filters( 'fc_is_cart_page_or_fragment', false ) ) { return true; }
-
-		// Otherwise, return `false`
-		return false;
+		return FluidCheckout_Utils::instance()->is_cart_page_or_fragment();
 	}
 
 
