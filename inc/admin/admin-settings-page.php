@@ -190,7 +190,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
-	 * Check whether the current request is for an admin page with the settings page layout, where settings fields get the settings page controls and scripts.
+	 * Check whether the current request is for an admin page with the settings page layout.
 	 */
 	public function is_settings_layout_page() {
 		/**
@@ -255,7 +255,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
-	 * Output the Fluid Checkout admin page header, also used by other Fluid Checkout admin pages.
+	 * Output the Fluid Checkout admin page header.
 	 *
 	 * @param  bool  $can_save  Whether the save button should be enabled.
 	 */
@@ -502,7 +502,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
-	 * Get the names of the fields in the form that sent a request, also of unchecked checkboxes, without the `[]` of fields with several values.
+	 * Get the names of the fields in the form that sent the request, including unchecked checkboxes.
 	 *
 	 * @param  array  $post_data  Request data, with the field names the settings scripts send.
 	 */
@@ -514,8 +514,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
-	 * Keep only the settings of the fields in a form, so a form with some of the settings does not unset the others.
-	 * Without field names, keeps all settings except those moved to another page, as the settings page shows a message in place of their fields.
+	 * Get the settings of the fields in a form, so a form with some of the settings does not unset the others.
+	 * Without field names, gets all settings except those moved to another page, as the settings page shows a message in their place.
 	 *
 	 * @param  array  $settings     Settings arrays.
 	 * @param  array  $field_names  Names of the fields in the form.
@@ -677,7 +677,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
-	 * Dismiss the message of a setting moved to another page for good and site-wide like other Fluid Checkout notices, or show it again, through admin AJAX.
+	 * Dismiss the message of a setting moved to another page, or show it again, through admin AJAX.
 	 */
 	public function ajax_set_moved_setting_message_dismissed() {
 		// Bail if user does not have enough permissions
@@ -822,7 +822,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
-	 * Output the settings layout: the sidebar with title, save buttons and navigation, the tab panels in one form, and the page preview. Also used by other Fluid Checkout admin pages.
+	 * Output the settings page layout, with the sidebar navigation, the tab panels in one form and the page preview.
 	 *
 	 * @param  array  $args  Layout arguments: `title` of the sidebar, `form_url`, `tabs` (like the settings tabs, optionally with a `title` shown above their contents instead of their `label`), `current_tab`, `nav_callback` that outputs the navigation for the tabs and current tab, and `tab_content_callback` that outputs the contents of a tab. The callbacks default to those of the settings page.
 	 */

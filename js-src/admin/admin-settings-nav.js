@@ -449,8 +449,8 @@
 
 
 	/**
-	 * Scroll to the settings field that the page URL links to, such as from the message of a setting moved to this page, and focus it.
-	 * Runs once the page has loaded, as other scripts change the layout until then, and when the URL links to another field of the page.
+	 * Scroll to the settings field that the page URL links to, and focus it.
+	 * Runs once the page has loaded, as other scripts change the layout until then.
 	 */
 	var scrollToLinkedField = function() {
 		var field = window.location.hash ? document.getElementById( window.location.hash.slice( 1 ) ) : null;

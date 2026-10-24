@@ -659,7 +659,7 @@
 
 
 	/**
-	 * Dismiss the message of a setting moved to another page for good, showing the button that undoes it, or show the message again.
+	 * Dismiss the message of a setting moved to another page, or show it again.
 	 *
 	 * @param   {Element}  button       Dismiss or undo button of the message.
 	 * @param   {boolean}  isDismissed  Whether to dismiss the message, or show it again.
@@ -687,15 +687,18 @@
 				return response.json();
 			} )
 			.then( function( response ) {
-				// Bail if the change was not saved, so the error shows
-				if ( ! response || ! response.success ) { throw new Error( 'Change not saved' ); }
+				// Maybe show the confirmation with the undo button in place of the message, or the message again
+				if ( response && response.success ) {
+					message.querySelector( _settings.movedMessageContentSelector ).hidden = isDismissed;
+					message.querySelector( _settings.movedMessageConfirmationSelector ).hidden = ! isDismissed;
 
-				// Show the confirmation with the undo button in place of the message, or the message again
-				message.querySelector( _settings.movedMessageContentSelector ).hidden = isDismissed;
-				message.querySelector( _settings.movedMessageConfirmationSelector ).hidden = ! isDismissed;
-
-				// Move the focus to the button now shown, as the clicked button is hidden
-				message.querySelector( isDismissed ? _settings.movedMessageUndoSelector : _settings.movedMessageDismissSelector ).focus();
+					// Move the focus to the button now shown, as the clicked button is hidden
+					message.querySelector( isDismissed ? _settings.movedMessageUndoSelector : _settings.movedMessageDismissSelector ).focus();
+				}
+				// Otherwise, show the error
+				else {
+					showSettingsSaveNotice( 'error', _settings.i18n.movedMessageError );
+				}
 			} )
 			.catch( function() {
 				// Show the error
@@ -1128,37 +1131,6 @@
 	};
 
 	/**
-	 * Get the values of a settings form, with the names of all its fields, also of unchecked checkboxes, so only the settings of the form are saved.
-	 * Fields marked as not valid are left out, so their saved values stay.
-	 *
-	 * @param   {Element}   form  Settings form.
-	 * @return  {FormData}        Values and field names of the form.
-	 */
-	var getFormData = function( form ) {
-		var formData = new FormData( form );
-		var fieldNames = {};
-		var i;
-
-		// Iterate form fields, to send their names
-		for ( i = 0; i < form.elements.length; i++ ) {
-			// Skip fields without a name, or with a name already sent
-			if ( ! form.elements[ i ].name || fieldNames[ form.elements[ i ].name ] ) { continue; }
-
-			// Maybe remove the value of a field marked as not valid, and skip its name
-			if ( form.elements[ i ].matches( _settings.invalidFieldSelector ) ) {
-				formData.delete( form.elements[ i ].name );
-				continue;
-			}
-
-			// Add the field name
-			fieldNames[ form.elements[ i ].name ] = true;
-			formData.append( 'fc_settings_field_names[]', form.elements[ i ].name );
-		}
-
-		return formData;
-	};
-
-	/**
 	 * Save settings through admin AJAX.
 	 */
 	var saveSettingsViaAjax = function() {
@@ -1181,7 +1153,7 @@
 		// Mark the changes as saved now, so changes made while saving stay unsaved
 		_hasUnsavedChanges = false;
 
-		formData = getFormData( form );
+		formData = _publicMethods.getFormData( form );
 		formData.append( 'action', _settings.saveAction );
 
 		activeTab = getActiveSettingsTabSlug();
@@ -1303,6 +1275,37 @@
 
 
 	/**
+	 * Get the values of a settings form with the names of its fields, also of unchecked checkboxes, so only the settings of the form are saved.
+	 * Fields marked as not valid are left out, so their saved values stay.
+	 *
+	 * @param   {Element}   form  Settings form.
+	 * @return  {FormData}        Values and field names of the form.
+	 */
+	_publicMethods.getFormData = function( form ) {
+		var formData = new FormData( form );
+		var fieldNames = {};
+		var i;
+
+		// Iterate form fields, to send their names
+		for ( i = 0; i < form.elements.length; i++ ) {
+			// Skip fields without a name, or with a name already sent
+			if ( ! form.elements[ i ].name || fieldNames[ form.elements[ i ].name ] ) { continue; }
+
+			// Maybe remove the value of a field marked as not valid, and skip its name
+			if ( form.elements[ i ].matches( _settings.invalidFieldSelector ) ) {
+				formData.delete( form.elements[ i ].name );
+				continue;
+			}
+
+			// Add the field name
+			fieldNames[ form.elements[ i ].name ] = true;
+			formData.append( 'fc_settings_field_names[]', form.elements[ i ].name );
+		}
+
+		return formData;
+	};
+
+	/**
 	 * Initialize component and set related handlers.
 	 *
 	 * @param   {Object}  options  Optional settings overrides (e.g. fieldIdPrefix).
@@ -1336,16 +1339,6 @@
 
 		// Set initialized flag
 		_hasInitialized = true;
-	};
-
-	/**
-	 * Get the values of a settings form, with the names of all its fields, so only the settings of the form are saved.
-	 *
-	 * @param   {Element}   form  Settings form.
-	 * @return  {FormData}        Values and field names of the form.
-	 */
-	_publicMethods.getFormData = function( form ) {
-		return getFormData( form );
 	};
 
 

@@ -86,19 +86,6 @@
 	};
 
 	/**
-	 * Show the colors of all CSS value fields on their swatches, also for values the server cannot convert to hex colors.
-	 */
-	var syncSwatches = function() {
-		var fields = document.querySelectorAll( _settings.fieldSelector );
-		var i;
-
-		// Iterate CSS value fields
-		for ( i = 0; i < fields.length; i++ ) {
-			syncSwatch( fields[ i ] );
-		}
-	};
-
-	/**
 	 * Set the value of a CSS value field, and trigger the event of a value typed in it.
 	 *
 	 * @param  {Element}  input  CSS value input.
@@ -115,19 +102,6 @@
 
 
 	/**
-	 * Check whether the value of a CSS value input is valid for its CSS property, as the browser reads it.
-	 *
-	 * @param   {Element}  input  CSS value input.
-	 * @return  {boolean}         Whether the value is valid, also when it is empty or the input has no CSS property to check.
-	 */
-	var isValidValue = function( input ) {
-		var property = input.getAttribute( _settings.propertyAttribute );
-		var value = input.value.trim();
-
-		return ! property || ! value || CSS.supports( property, value );
-	};
-
-	/**
 	 * Show or hide the error of a CSS value field, for values that are not valid for its CSS property.
 	 *
 	 * @param  {Element}  field  CSS value field element.
@@ -141,7 +115,7 @@
 		if ( ! error ) { return; }
 
 		// Show or hide the error
-		isValid = isValidValue( input );
+		isValid = _publicMethods.isValidValue( input );
 		field.classList.toggle( _settings.isInvalidClass, ! isValid );
 		input.setAttribute( 'aria-invalid', isValid ? 'false' : 'true' );
 		error.hidden = isValid;
@@ -163,7 +137,7 @@
 
 
 	/**
-	 * Handle input on CSS value fields: copy the swatch color to the value, or show the value color on the swatch and the error for values that are not valid.
+	 * Handle input on CSS value fields.
 	 *
 	 * @param  {Event}  e  Input event.
 	 */
@@ -173,11 +147,11 @@
 		// Bail if the event is not from a CSS value field
 		if ( ! field ) { return; }
 
-		// Maybe copy the swatch color to the value
+		// SWATCH
 		if ( e.target.matches( _settings.swatchSelector ) ) {
 			setFieldValue( field.querySelector( _settings.inputSelector ), e.target.value );
 		}
-		// Otherwise, maybe show the value color on the swatch, and the error when the value is not valid
+		// VALUE
 		else if ( e.target.matches( _settings.inputSelector ) ) {
 			syncSwatch( field );
 			syncError( field );
@@ -229,6 +203,32 @@
 
 
 	/**
+	 * Show the colors of all CSS value fields on their swatches, also for values the server cannot convert to hex colors.
+	 */
+	_publicMethods.syncSwatches = function() {
+		var fields = document.querySelectorAll( _settings.fieldSelector );
+		var i;
+
+		// Iterate CSS value fields
+		for ( i = 0; i < fields.length; i++ ) {
+			syncSwatch( fields[ i ] );
+		}
+	};
+
+	/**
+	 * Check whether the value of a CSS value input is valid for its CSS property, as the browser reads it.
+	 *
+	 * @param   {Element}  input  CSS value input.
+	 * @return  {boolean}         Whether the value is valid, also when it is empty or the input has no CSS property to check.
+	 */
+	_publicMethods.isValidValue = function( input ) {
+		var property = input.getAttribute( _settings.propertyAttribute );
+		var value = input.value.trim();
+
+		return ! property || ! value || CSS.supports( property, value );
+	};
+
+	/**
 	 * Initialize CSS value fields.
 	 */
 	_publicMethods.init = function() {
@@ -241,28 +241,10 @@
 		document.addEventListener( 'click', handleClick, true );
 
 		// Show the colors on the swatches, and the errors of values that are not valid
-		syncSwatches();
+		_publicMethods.syncSwatches();
 		syncErrors();
 
 		_hasInitialized = true;
-	};
-
-	/**
-	 * Show the colors of all CSS value fields on their swatches again, such as after another script changes their placeholders.
-	 */
-	_publicMethods.syncSwatches = function() {
-		// Show the colors on the swatches
-		syncSwatches();
-	};
-
-	/**
-	 * Check whether the value of a CSS value input is valid for its CSS property, such as before showing the value somewhere else.
-	 *
-	 * @param   {Element}  input  CSS value input.
-	 * @return  {boolean}         Whether the value is valid, also when it is empty or the input has no CSS property to check.
-	 */
-	_publicMethods.isValidValue = function( input ) {
-		return isValidValue( input );
 	};
 
 

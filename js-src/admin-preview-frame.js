@@ -436,36 +436,38 @@
 	};
 
 	/**
-	 * Ignore the styles of style elements, replacing the ones ignored before, such as styles that the admin page replaces with CSS variables it sets.
+	 * Disable or enable the styles of style elements.
+	 *
+	 * @param {Array}    ids         IDs of the style elements.
+	 * @param {boolean}  isDisabled  Whether to disable the styles.
+	 */
+	var setStyleElementsDisabled = function( ids, isDisabled ) {
+		var styleElement;
+		var i;
+
+		// Iterate style elements
+		for ( i = 0; i < ids.length; i++ ) {
+			styleElement = document.getElementById( ids[ i ] );
+
+			// Maybe disable or enable the styles of the element
+			if ( styleElement && styleElement.sheet ) {
+				styleElement.sheet.disabled = isDisabled;
+			}
+		}
+	};
+
+	/**
+	 * Ignore the styles of style elements, replacing the ones ignored before.
 	 *
 	 * @param {Array}  ids  IDs of the style elements to ignore.
 	 */
 	var setIgnoredStyleIds = function( ids ) {
-		var styleElement;
-		var i;
+		// Use the styles of the elements ignored before again
+		setStyleElementsDisabled( _ignoredStyleIds, false );
 
-		// Iterate style elements ignored before, to use their styles again
-		for ( i = 0; i < _ignoredStyleIds.length; i++ ) {
-			styleElement = document.getElementById( _ignoredStyleIds[ i ] );
-
-			// Maybe enable the styles of the element
-			if ( styleElement && styleElement.sheet ) {
-				styleElement.sheet.disabled = false;
-			}
-		}
-
-		// Remember the style elements to ignore
+		// Ignore the styles of the new elements
 		_ignoredStyleIds = ids;
-
-		// Iterate style elements to ignore
-		for ( i = 0; i < _ignoredStyleIds.length; i++ ) {
-			styleElement = document.getElementById( _ignoredStyleIds[ i ] );
-
-			// Maybe disable the styles of the element
-			if ( styleElement && styleElement.sheet ) {
-				styleElement.sheet.disabled = true;
-			}
-		}
+		setStyleElementsDisabled( _ignoredStyleIds, true );
 	};
 
 	/**
@@ -506,21 +508,18 @@
 
 	/**
 	 * Send the computed values of CSS variables for each color scheme to the admin page, read from a hidden element with a class whose styles set them.
-	 * The CSS variables set by the admin page and the styles of the ignored style elements do not apply while reading the values.
+	 * The CSS variables set by the admin page do not apply while reading the values, and the ignored style elements stay ignored.
 	 *
-	 * @param {number|string}  requestId        Request ID.
-	 * @param {string}         className        Class of the element whose styles set the CSS variables.
-	 * @param {Array}          names            CSS variable names.
-	 * @param {Array}          colorSchemes     Color schemes to read the values for, `light` or `dark`.
-	 * @param {Array}          ignoredStyleIds  IDs of the style elements to ignore.
+	 * @param {number|string}  requestId     Request ID.
+	 * @param {string}         className     Class of the element whose styles set the CSS variables.
+	 * @param {Array}          names         CSS variable names.
+	 * @param {Array}          colorSchemes  Color schemes to read the values for, `light` or `dark`.
 	 */
-	var sendComputedCssVariables = function( requestId, className, names, colorSchemes, ignoredStyleIds ) {
+	var sendComputedCssVariables = function( requestId, className, names, colorSchemes ) {
 		var probe = document.createElement( 'div' );
 		var colorScheme = _colorScheme;
 		var cssVariables = _cssVariables;
-		var ignoredStyleElements = [];
 		var values = {};
-		var styleElement;
 		var computedStyle;
 		var i;
 		var j;
@@ -532,17 +531,6 @@
 
 		// Read the values, restoring the page preview afterwards
 		try {
-			// Iterate style elements to ignore
-			for ( i = 0; i < ignoredStyleIds.length; i++ ) {
-				styleElement = document.getElementById( ignoredStyleIds[ i ] );
-
-				// Maybe disable the styles of the element while reading the values
-				if ( styleElement && styleElement.sheet && ! styleElement.sheet.disabled ) {
-					styleElement.sheet.disabled = true;
-					ignoredStyleElements.push( styleElement );
-				}
-			}
-
 			// Ignore the CSS variables set by the admin page while reading the values
 			_cssVariables = {};
 
@@ -559,15 +547,10 @@
 				}
 			}
 		}
-		// Restore the CSS variables and the color scheme set by the admin page, and the ignored styles, also when reading the values fails
+		// Restore the CSS variables and the color scheme set by the admin page, also when reading the values fails
 		finally {
 			_cssVariables = cssVariables;
 			setColorScheme( colorScheme );
-
-			// Iterate ignored style elements, to enable them again
-			for ( i = 0; i < ignoredStyleElements.length; i++ ) {
-				ignoredStyleElements[ i ].sheet.disabled = false;
-			}
 
 			// Remove the hidden element
 			probe.remove();
@@ -753,7 +736,7 @@
 		}
 		// GET COMPUTED CSS VARIABLES
 		else if ( 'getComputedCssVariables' === e.data.type ) {
-			sendComputedCssVariables( e.data.requestId, e.data.className, e.data.names, e.data.colorSchemes, e.data.ignoredStyleIds );
+			sendComputedCssVariables( e.data.requestId, e.data.className, e.data.names, e.data.colorSchemes );
 		}
 		// REFRESH STYLES
 		else if ( 'refreshStyles' === e.data.type ) {

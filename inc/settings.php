@@ -1276,7 +1276,7 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 
 
 	/**
-	 * Move a settings field to another page: the settings page shows a one-time message with a link to its new place instead of the field, and saving the settings page leaves its stored value untouched.
+	 * Move a settings field to another page, so the settings page shows a message with a link to its new place instead of the field.
 	 * Other pages that show the field, such as its new place, still show and save it.
 	 *
 	 * @param  array   $settings     Admin settings argument values.

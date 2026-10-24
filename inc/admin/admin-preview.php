@@ -1399,7 +1399,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	}
 
 	/**
-	 * Save the unsaved settings posted from the settings page, or another admin page with the preview, for a preview token, so its preview requests show them.
+	 * Save the unsaved settings posted from an admin page with the preview for a preview token, so its preview requests show them.
 	 */
 	public function ajax_save_draft() {
 		// Bail if the request nonce is not valid

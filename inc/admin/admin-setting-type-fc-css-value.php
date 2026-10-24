@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * CSS value field type for the Fluid Checkout settings page: a text input for any CSS value, with an optional color swatch and a button that clears the value.
+ * CSS value field type for the Fluid Checkout settings page, with an optional color swatch.
  */
 class FluidCheckout_Admin_SettingType_CssValue extends FluidCheckout {
 
@@ -28,7 +28,7 @@ class FluidCheckout_Admin_SettingType_CssValue extends FluidCheckout {
 	/**
 	 * Output the setting field.
 	 *
-	 * @param   array  $value  Admin settings argument values. Set `swatch` to `true` to show a color swatch, and `css_property` to show an error for values that are not valid for that CSS property.
+	 * @param   array  $value  Admin settings argument values, with the optional `swatch` and `css_property` arguments.
 	 */
 	public function output_field( $value ) {
 		$renderer = FluidCheckout_Admin_Settings_Renderer::instance();

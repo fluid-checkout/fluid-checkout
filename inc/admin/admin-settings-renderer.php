@@ -368,7 +368,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 
 
 	/**
-	 * Output the message of a settings field moved to another page, with a link to its new place, a button that dismisses it for good, and a button that undoes dismissing it.
+	 * Output the message of a settings field moved to another page, with a link to its new place.
 	 *
 	 * @param  array  $value  Settings field arguments.
 	 */

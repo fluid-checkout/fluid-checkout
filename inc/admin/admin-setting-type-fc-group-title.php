@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Group title field type for the Fluid Checkout settings page, a title with a separator above it for a group of fields inside a card.
+ * Group title field type for the Fluid Checkout settings page.
  */
 class FluidCheckout_Admin_SettingType_GroupTitle extends FluidCheckout {
 
@@ -28,7 +28,7 @@ class FluidCheckout_Admin_SettingType_GroupTitle extends FluidCheckout {
 	/**
 	 * Output the setting field.
 	 *
-	 * @param   array  $value  Admin settings argument values. Custom attributes are added to the title row, such as conditional attributes.
+	 * @param   array  $value  Admin settings argument values.
 	 */
 	public function output_field( $value ) {
 		?>

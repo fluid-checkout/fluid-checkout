@@ -560,8 +560,7 @@
 	};
 
 	/**
-	 * Load a document in a new copy of the iframe, which replaces it, as loading another document in an iframe adds a step to the browser history, while the first load of a new iframe does not.
-	 * The WordPress Customizer also loads each preview in a new iframe.
+	 * Load a document in a new copy of the iframe, as loading another document in the same iframe adds a step to the browser history.
 	 *
 	 * @param  {Element}  frame      Preview iframe.
 	 * @param  {string}   attribute  Attribute of the document, `src` for its URL or `srcdoc` for its HTML.
@@ -696,7 +695,7 @@
 	};
 
 	/**
-	 * Get the preview URL of a page tab, or an empty string when the page cannot be previewed: pages that require PRO, and pages disabled in the settings form, also by unsaved changes, or in the saved settings when the form has no field for them.
+	 * Get the preview URL of a page tab, or an empty string when the page cannot be previewed: pages that require PRO, and pages disabled in the settings form or in the saved settings.
 	 *
 	 * @param  {Element|null}  pageTab  Preview page tab.
 	 *
@@ -818,7 +817,7 @@
 		// Iterate pending computed CSS variables requests, sent again as a reload drops them
 		for ( requestId in _computedCssVariablesRequests ) {
 			request = _computedCssVariablesRequests[ requestId ];
-			postMessageToPreview( { type: 'getComputedCssVariables', requestId: requestId, className: request.className, names: request.names, colorSchemes: request.colorSchemes, ignoredStyleIds: request.ignoredStyleIds } );
+			postMessageToPreview( { type: 'getComputedCssVariables', requestId: requestId, className: request.className, names: request.names, colorSchemes: request.colorSchemes } );
 		}
 	};
 
@@ -1467,7 +1466,7 @@
 	};
 
 	/**
-	 * Add or remove body classes of the page preview for the color scheme it shows, forced or its own, replacing the classes set before with this method.
+	 * Add or remove body classes of the page preview for the color scheme it shows, replacing those set before with this method.
 	 *
 	 * @param  {Object}  classes  Whether each class is added, by color scheme (`light` or `dark`) and class name.
 	 */
@@ -1480,7 +1479,7 @@
 	};
 
 	/**
-	 * Ignore the styles of style elements in the page preview, replacing the ones ignored before, such as styles that the admin page replaces with CSS variables it sets.
+	 * Ignore the styles of style elements in the page preview, replacing the ones ignored before.
 	 *
 	 * @param  {Array}  ids  IDs of the style elements to ignore.
 	 */
@@ -1516,22 +1515,21 @@
 	};
 
 	/**
-	 * Get the computed values of CSS variables in the page preview for each color scheme, read from a hidden element with a class whose styles set them, such as default values that depend on the styles of the page.
-	 * The CSS variables set with `setCssVariables()` and the styles of the ignored style elements do not apply while reading the values.
+	 * Get the computed values of CSS variables in the page preview for each color scheme, read from a hidden element with a class whose styles set them.
+	 * The CSS variables set with `setCssVariables()` and the ignored style elements do not apply while reading the values.
 	 *
-	 * @param   {string}   className        Class of the element whose styles set the CSS variables.
-	 * @param   {Array}    names            CSS variable names.
-	 * @param   {Array}    colorSchemes     Color schemes to read the values for, `light` or `dark`.
-	 * @param   {Array}    ignoredStyleIds  IDs of the style elements to ignore.
-	 * @return  {Promise}                   Promise resolving to the computed values by color scheme and CSS variable name, or an empty object when the iframe shows a placeholder.
+	 * @param   {string}   className     Class of the element whose styles set the CSS variables.
+	 * @param   {Array}    names         CSS variable names.
+	 * @param   {Array}    colorSchemes  Color schemes to read the values for, `light` or `dark`.
+	 * @return  {Promise}                Promise resolving to the computed values by color scheme and CSS variable name, or an empty object when the iframe shows a placeholder.
 	 */
-	_publicMethods.getComputedCssVariables = function( className, names, colorSchemes, ignoredStyleIds ) {
+	_publicMethods.getComputedCssVariables = function( className, names, colorSchemes ) {
 		return new Promise( function( resolve ) {
 			// Maybe ask the page preview, which sends the computed values back
 			if ( getPreviewOrigin() ) {
 				_computedCssVariablesRequestId++;
-				_computedCssVariablesRequests[ _computedCssVariablesRequestId ] = { className: className, names: names, colorSchemes: colorSchemes, ignoredStyleIds: ignoredStyleIds, resolve: resolve };
-				postMessageToPreview( { type: 'getComputedCssVariables', requestId: _computedCssVariablesRequestId, className: className, names: names, colorSchemes: colorSchemes, ignoredStyleIds: ignoredStyleIds } );
+				_computedCssVariablesRequests[ _computedCssVariablesRequestId ] = { className: className, names: names, colorSchemes: colorSchemes, resolve: resolve };
+				postMessageToPreview( { type: 'getComputedCssVariables', requestId: _computedCssVariablesRequestId, className: className, names: names, colorSchemes: colorSchemes } );
 			}
 			// Otherwise resolve without values, as the iframe shows a placeholder
 			else {

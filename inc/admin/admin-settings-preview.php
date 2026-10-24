@@ -194,7 +194,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	}
 
 	/**
-	 * Check whether a preview page is enabled in the saved settings, which is always the case for pages without a setting that enables them.
+	 * Check whether a preview page is enabled in the saved settings.
 	 *
 	 * @param  array  $page_args  Preview page arguments.
 	 */
