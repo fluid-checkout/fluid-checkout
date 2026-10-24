@@ -8,6 +8,28 @@
  *
  * Auto-translation skips DeepL/Google when keys are missing, empty, or
  * placeholders (`*****`) and does not fail the package build.
+ *
+ * Tasks:
+ * - default              Runs the configured default action (usually `watch`)
+ * - update-ver           Bump asset version strings from package.json
+ * - update-ver-release   update-ver plus changelog version/date for full releases
+ * - clean-css            Delete generated CSS files
+ * - clean-js             Delete generated JS files
+ * - build-css            Production CSS from Sass
+ * - build-css-dev        Development CSS from Sass (sourcemaps)
+ * - build-js             Production JS (uglify/concat)
+ * - npm-run-build        Run `npm run build` for WordPress block assets when present
+ * - build                Parallel build-js, build-css, and npm-run-build
+ * - copy-plugin-files    Copy committed plugin files into the export folder
+ * - pack-plugin-zip      Zip the export folder into an installable package
+ * - generate-pot         Generate the POT translation catalog
+ * - translate-po         Fill empty PO msgstr via DeepL/Google Translate APIs
+ * - update-translations  translate-po, then rebuild .mo and .l10n.php
+ * - translate            generate-pot then update-translations
+ * - browser-sync         Start BrowserSync from local settings
+ * - browser-sync-reload  Reload BrowserSync clients
+ * - watch                Watch sources and rebuild on change
+ * - watch-reload         Build once, then watch with BrowserSync reload
  */
 
 // Defining requirements
@@ -48,6 +70,7 @@ var _translationWarnings = [];
 var _translationErrorLimit = 5;
 var _translationAborted = false;
 var _loggedFirstTranslationApiError = false;
+var _translationLogFileForRun = null;
 
 // Dart Sass options passed through gulp-sass 6 (modern compile API).
 //
@@ -708,9 +731,26 @@ gulp.task( 'pack-plugin-zip', gulp.series( function( done ) {
 
 
 
-// Function to get translation log file path
+// Function to get translation log file path for the current run.
+// Uses the configured path with a timestamp so each run keeps its own log.
 function getTranslationLogFile() {
-	return _gulpSettings.translationLogFile || './logs/translations.log';
+	var configured;
+	var parsed;
+	var stamp;
+
+	// Reuse the same path for the whole translate-po run
+	if ( _translationLogFileForRun ) {
+		return _translationLogFileForRun;
+	}
+
+	configured = _gulpSettings.translationLogFile || './logs/translations.log';
+	parsed = path.parse( configured );
+	// Filesystem-safe UTC timestamp, e.g. 2026-10-24T17-24-00-123Z
+	stamp = new Date().toISOString().replace( /[:.]/g, '-' );
+
+	_translationLogFileForRun = path.join( parsed.dir, parsed.name + '-' + stamp + parsed.ext );
+
+	return _translationLogFileForRun;
 }
 
 
@@ -1242,6 +1282,7 @@ gulp.task( 'translate-po', function ( done ) {
 	_translationWarnings = [];
 	_translationAborted = false;
 	_loggedFirstTranslationApiError = false;
+	_translationLogFileForRun = null;
 	initTranslationLog();
 	printTranslationLogLink();
 	warnMissingTranslationApis();
