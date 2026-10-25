@@ -78,7 +78,7 @@ class FluidCheckout_Admin_SettingType_Telemetry extends FluidCheckout {
 				type="button"
 				class="button button-secondary fc-telemetry-preview-button"
 				aria-haspopup="dialog"
-			><?php esc_html_e( 'Preview report data', 'fluid-checkout' ); ?></button>
+			><?php esc_html_e( 'Preview what would be sent', 'fluid-checkout' ); ?></button>
 			<button
 				type="button"
 				class="button button-secondary fc-telemetry-send-now-button"

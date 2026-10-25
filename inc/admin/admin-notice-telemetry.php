@@ -130,24 +130,25 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 		// Bail on Fluid Checkout settings screens (usage tracking is available under Tools / Getting started)
 		if ( $this->is_fc_settings_screen() ) { return $notices; }
 
-		$description  = '<p>' . esc_html( __( 'Share anonymous usage tracking data with Fluid Checkout to get faster support and help us improve compatibility and measure impact.', 'fluid-checkout' ) ) . '</p>';
-		$description .= '<p>' . esc_html( __( 'Privacy is our priority: customer, user, or sensitive data are never included. Preview and choose what to share from the Tools settings.', 'fluid-checkout' ) ) . '</p>';
+		$description  = '<p>' . esc_html( __( 'Usage tracking is optional and off by default. It helps us improve compatibility and support. You can preview the exact data before it is sent, and turn it off at any time.', 'fluid-checkout' ) ) . '</p>';
+		$description .= '<p>' . esc_html( __( 'If you turn it on, Fluid Checkout receives your site domain and basic environment details: WordPress, PHP and WooCommerce versions, language, store country, currency and timezone, your active theme, and your installed plugins and their versions. You can also choose to include monthly order counts and sales totals. No customer data is sent, such as names, emails, addresses, or order details. A paid Fluid Checkout plugin can include a hashed license key, not the key itself.', 'fluid-checkout' ) ) . '</p>';
 
 		$notices[] = array(
 			'name'            => self::NOTICE_NAME,
-			'title'           => __( 'Faster support and improved compatibility', 'fluid-checkout' ),
+			'title'           => __( 'Usage tracking', 'fluid-checkout' ),
 			'description'     => $description,
 			'paragraph_wrap'  => false,
+			'dismiss_label'   => __( 'Keep it off', 'fluid-checkout' ),
 			'actions'         => array(
-				sprintf(
-					'<a href="%s" class="button button-primary">%s</a>',
-					esc_url( $this->get_enable_url() ),
-					esc_html__( 'Enable usage tracking', 'fluid-checkout' )
-				),
 				sprintf(
 					'<a href="%s" class="button button-secondary">%s</a>',
 					esc_url( $this->get_tools_settings_url() ),
-					esc_html__( 'Configure usage tracking', 'fluid-checkout' )
+					esc_html__( 'Review usage tracking', 'fluid-checkout' )
+				),
+				sprintf(
+					'<a href="%s" class="button button-secondary">%s</a>',
+					esc_url( $this->get_enable_url() ),
+					esc_html__( 'Turn on usage tracking', 'fluid-checkout' )
 				),
 			),
 		);

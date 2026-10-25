@@ -53,18 +53,18 @@
 		ajaxUrl:                              '',
 		nonce:                                '',
 		i18n: {
-			loading:                          'Loading report preview...',
-			loadError:                        'Could not load the site report preview. Try again.',
-			sendError:                        'Could not send the site report. Try again.',
-			sendSuccess:                      'Site report sent successfully.',
+			loading:                          'Loading preview...',
+			loadError:                        'Could not load the preview. Try again.',
+			sendError:                        'Could not send the usage data. Try again.',
+			sendSuccess:                      'Usage data sent.',
 			sendNow:                          'Send now',
-			enableAndSendNow:                 'Enable and send now',
-			inProgress:                       'A site report request is already in progress. Try again in a moment.',
-			disabled:                         'Site environment reporting is disabled.',
-			emptyPayload:                     'No site report data is available to send.',
-			ineligibleDomain:                 'This site domain cannot send environment reports (local or development domains are excluded).',
-			rateLimited:                      'A site report was sent recently. Try again later.',
-			requestFailed:                    'The site report could not be sent. Try again later.',
+			enableAndSendNow:                 'Turn on and send now',
+			inProgress:                       'Usage data is already being sent. Try again in a moment.',
+			disabled:                         'Usage tracking is turned off.',
+			emptyPayload:                     'There is no usage data to send.',
+			ineligibleDomain:                 'This site cannot send usage data. Local and development sites are excluded.',
+			rateLimited:                      'Usage data was sent recently. Try again later.',
+			requestFailed:                    'The usage data could not be sent. Try again later.',
 		},
 	};
 
@@ -152,7 +152,7 @@
 			return data.message;
 		}
 
-		return _settings.i18n.loadError || 'Could not load the site report preview. Try again.';
+		return _settings.i18n.loadError || 'Could not load the preview. Try again.';
 	};
 
 
@@ -191,7 +191,7 @@
 
 		// Maybe treat HTTP 429 as rate limited
 		if ( 429 === parseInt( data.response_code, 10 ) ) {
-			return _settings.i18n.rateLimited || 'A site report was sent recently. Try again later.';
+			return _settings.i18n.rateLimited || 'Usage data was sent recently. Try again later.';
 		}
 
 		// Maybe return the server message
@@ -199,7 +199,7 @@
 			return data.message;
 		}
 
-		return _settings.i18n.requestFailed || _settings.i18n.sendError || 'The site report could not be sent. Try again later.';
+		return _settings.i18n.requestFailed || _settings.i18n.sendError || 'The usage data could not be sent. Try again later.';
 	};
 
 
@@ -335,7 +335,7 @@
 	var updateSendButton = function( enabled ) {
 		var label = enabled
 			? ( _settings.i18n.sendNow || 'Send now' )
-			: ( _settings.i18n.enableAndSendNow || 'Enable and send now' );
+			: ( _settings.i18n.enableAndSendNow || 'Turn on and send now' );
 
 		// Bail if send button is missing
 		if ( ! _sendButton ) { return; }
@@ -352,7 +352,7 @@
 	var setLoadingState = function() {
 		// Maybe show the loading message in the preview area
 		if ( _payload ) {
-			_payload.textContent = _settings.i18n.loading || 'Loading report preview...';
+			_payload.textContent = _settings.i18n.loading || 'Loading preview...';
 		}
 
 		// Maybe hide the modal send button while loading
@@ -542,7 +542,7 @@
 		applyEnabledState( true );
 		showFeedback(
 			feedbackTarget,
-			response.data.message || _settings.i18n.sendSuccess || 'Site report sent successfully.',
+			response.data.message || _settings.i18n.sendSuccess || 'Usage data sent.',
 			'success'
 		);
 	};
