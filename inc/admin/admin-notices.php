@@ -46,14 +46,14 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	private function load_notices() {
 		require_once self::$directory_path . 'inc/admin/admin-notice-db-migrations.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-db-migrations-applied.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-telemetry.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-settings-legacy-cleanup.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-new-settings-page.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-review-request.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-divi-checkout-layout-being-used.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-germanized-pro-multistep-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-coderockz-delivery-plugins-detected.php';
-		require_once self::$directory_path . 'inc/admin/admin-notice-settings-legacy-cleanup.php';
-		require_once self::$directory_path . 'inc/admin/admin-notice-new-settings-page.php';
-		require_once self::$directory_path . 'inc/admin/admin-notice-telemetry.php';
 	}
 
 
