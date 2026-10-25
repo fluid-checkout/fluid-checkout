@@ -185,6 +185,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			// =============================== LOCAL PICKUP ===============================
 			'fc_enable_checkout_local_pickup'                               => 'no',
 			'fc_local_pickup_default_delivery_type'                         => 'ship',
+			'fc_local_pickup_use_woocommerce_pickup_label'                  => 'no',
 			'fc_local_pickup_shipping_zone_fields'                          => array(),
 			'fc_local_pickup_save_shipping_address'                         => 'no',
 

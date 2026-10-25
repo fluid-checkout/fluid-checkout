@@ -300,6 +300,15 @@
 	color: $admin-text-color-muted;
 }
 
+.fc-settings-field--fc_button .fc-settings-button .fc-settings-external-tab-icon {
+	width: 1.2em;
+	height: 1.2em;
+	margin-inline-start: 4px;
+	font-size: 16px;
+	line-height: inherit;
+	vertical-align: text-bottom;
+}
+
 .fc-settings-field--separator {
 	margin: $fc-settings-field-padding-y 0;
 	padding: 0;
