@@ -12,9 +12,9 @@ class FluidCheckout_AdminNotices_SettingsLegacyCleanup extends FluidCheckout {
 	private static $plugin_prefix = 'fc';
 
 	/**
-	 * Days to wait after migration before showing the cleanup notice.
+	 * Time to wait after migration before showing the cleanup notice (`strtotime`-relative, e.g. `2 months`).
 	 */
-	const NOTICE_DELAY_DAYS = 14;
+	const NOTICE_DELAY = '2 months';
 
 
 
@@ -64,7 +64,7 @@ class FluidCheckout_AdminNotices_SettingsLegacyCleanup extends FluidCheckout {
 		}
 
 		// Bail if the delay after migration has not passed yet
-		if ( time() < ( $migration_time + ( DAY_IN_SECONDS * self::NOTICE_DELAY_DAYS ) ) ) {
+		if ( time() < strtotime( '+' . self::NOTICE_DELAY, $migration_time ) ) {
 			return $notices;
 		}
 
@@ -78,7 +78,7 @@ class FluidCheckout_AdminNotices_SettingsLegacyCleanup extends FluidCheckout {
 		);
 
 		$description  = '<p>' . esc_html( __( 'Since Fluid Checkout 5.0, settings are saved differently. Legacy options are still stored in the database to allow downgrades to previous versions if needed.', 'fluid-checkout' ) ) . '</p>';
-		$description .= '<p>' . esc_html( __( 'Your store has been running for about 2 weeks on the new settings so you could clean up legacy options stored in the database. Please note that after cleanup, if you need to downgrade to previous versions of the plugin it will use default values for all settings.', 'fluid-checkout' ) ) . '</p>';
+		$description .= '<p>' . esc_html( __( 'Your store has been running for about 2 months on the new settings so you could clean up legacy options stored in the database. Please note that after cleanup, if you need to downgrade to previous versions of the plugin it will use default values for all settings.', 'fluid-checkout' ) ) . '</p>';
 
 		$notices[] = array(
 			'name'            => self::$plugin_prefix . '_settings_legacy_cleanup',

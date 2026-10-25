@@ -11,6 +11,11 @@ class FluidCheckout_AdminNotices_NewSettingsPage extends FluidCheckout {
 	 */
 	const NOTICE_NAME = 'new_settings_page';
 
+	/**
+	 * Installs on or after this date (site timezone, start of day) already ship with the new settings UI.
+	 */
+	const INSTALL_CUTOFF_DATE = '2026-11-09';
+
 
 
 	/**
@@ -43,12 +48,15 @@ class FluidCheckout_AdminNotices_NewSettingsPage extends FluidCheckout {
 		// Bail if settings page class is not available
 		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) ) { return $notices; }
 
+		// Bail if the plugin was installed with the new settings experience
+		if ( ! $this->should_show_for_install_date() ) { return $notices; }
+
 		$settings_page = FluidCheckout_Admin_Settings_Page::instance();
 
 		$notices[] = array(
 			'name'          => self::NOTICE_NAME,
 			'title'         => __( 'New settings page 🎉', 'fluid-checkout' ),
-			'description'   => __( 'Fluid Checkout has a redesigned settings experience with sidebar navigation, guided setup, and live checkout preview. Open settings to explore the new layout and discover new ways to configure your checkout.', 'fluid-checkout' ),
+			'description'   => __( 'Fluid Checkout has a redesigned settings experience with guided setup, live page previews, and easier navigation. Open settings to explore the new layout and discover new ways to configure your checkout.', 'fluid-checkout' ),
 			'dismiss_label' => __( 'Dismiss', 'fluid-checkout' ),
 			'visible'       => ! $settings_page->is_settings_page(),
 			'actions'       => array(
@@ -61,6 +69,24 @@ class FluidCheckout_AdminNotices_NewSettingsPage extends FluidCheckout {
 		);
 
 		return $notices;
+	}
+
+
+
+	/**
+	 * Whether this notice should show for the current install activation time.
+	 */
+	public function should_show_for_install_date() {
+		$install_date = (int) get_option( 'fc_plugin_activation_time', 0 );
+		$cutoff       = strtotime( self::INSTALL_CUTOFF_DATE . ' 00:00:00' );
+
+		// Bail if the cutoff timestamp is invalid
+		if ( false === $cutoff ) { return true; }
+
+		// Treat missing activation time as a legacy install
+		if ( $install_date < 1 ) { return true; }
+
+		return $install_date < $cutoff;
 	}
 
 
