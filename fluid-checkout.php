@@ -33,7 +33,7 @@ defined( 'ABSPATH' ) || exit;
 
 
 
-// Maybe load if was not already loaded
+// Only load if not already loaded
 if ( ! class_exists( 'FluidCheckout' ) ) {
 
 	// Plugin activation and deactivation
