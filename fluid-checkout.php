@@ -538,6 +538,7 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 			require_once self::$directory_path . 'inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php';
 			require_once self::$directory_path . 'inc/admin/admin-notice-coderockz-delivery-plugins-detected.php';
 			require_once self::$directory_path . 'inc/admin/admin-notice-settings-legacy-cleanup.php';
+			require_once self::$directory_path . 'inc/admin/admin-notice-new-settings-page.php';
 			require_once self::$directory_path . 'inc/admin/admin-telemetry-settings.php';
 			require_once self::$directory_path . 'inc/admin/admin-notice-telemetry.php';
 		}

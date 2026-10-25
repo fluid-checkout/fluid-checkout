@@ -158,6 +158,9 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		 * `dismissable` is a deprecated alias kept for backwards compatibility.
 		 * It is used only when `dismissible` is omitted; if both are set, `dismissible` wins.
 		 *
+		 * Each notice item may include `visible` (bool). Default true. When false, the notice
+		 * stays registered for dismiss handling but is not output on the current screen.
+		 *
 		 * @param array $value Value to filter. Default empty array.
 		 */
 		$notices = apply_filters( self::$plugin_prefix . '_admin_notices', array() );
@@ -175,6 +178,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 			'dismissible'     => true,
 			'dismiss_label'   => __( 'Don\'t show this again', 'fluid-checkout' ),
 			'paragraph_wrap'  => true,
+			'visible'         => true,
 		);
 
 		foreach ( $notices as $notice ) {
@@ -188,6 +192,9 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 
 			// Maybe skip notice if it's already dismissed
 			if ( is_null( $notice['name'] ) || $this->is_dismissed( $notice['name'] ) ) { continue; }
+
+			// Maybe skip output while keeping the notice registered for dismiss handling
+			if ( ! $notice['visible'] ) { continue; }
 
 			// Maybe add dismiss action
 			if ( $notice['dismissible'] ) {
