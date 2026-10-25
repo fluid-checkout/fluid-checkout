@@ -370,6 +370,8 @@ We value your privacy and your customers' privacy. We cannot guarantee that the 
 
 You choose which of these to share. Before anything is sent, you can preview the exact data in the plugin settings, and you can turn usage tracking off at any time.
 
+Agencies and developers can turn usage tracking off for a site by defining the FC_DISABLE_TELEMETRY constant as true in wp-config.php, which keeps the saved choice and sends nothing while that constant is set.
+
 = Is Fluid Checkout compatible with WCAG 2.2 Level AA accessibility requirements? Will it make my webshop compliant? =
 
 Yes. Fluid Checkout is built to follow WCAG 2.2 Level AA on the checkout page, but we can't promise that your webshop is compliant. Compliance depends on your whole website, including your theme, your content and the other plugins you use. On the checkout page, Fluid Checkout supports:
