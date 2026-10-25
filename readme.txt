@@ -183,7 +183,7 @@ We test popular themes and add compatibility for them in every update, including
 
 == Compatible with popular plugins ==
 
-Fluid Checkout is explicitly compatible with 140+ plugins, and most other plugins work out of the box.
+Fluid Checkout is explicitly compatible with 150+ plugins, and most other plugins work out of the box.
 
 [See all plugins explicitly compatible with Fluid Checkout](https://fluidcheckout.com/compatible-plugins/)
 
