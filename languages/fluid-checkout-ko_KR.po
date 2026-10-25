@@ -3246,14 +3246,6 @@ msgstr "기본 배송 유형"
 msgid "Choose which delivery type will be selected by default."
 msgstr "기본으로 선택될 배송 유형을 선택하세요."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "선박"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "픽업"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "배송 지역 필드"
@@ -4232,6 +4224,23 @@ msgstr ""
 "WooCommerce용 Germanized를 사용할 때 주문 제출 위치는 항상 “주문 요약 아래”로 설정됩니다. 이 플러그인은 주문 "
 "제출 버튼과 법적 동의 체크박스가 주문 요약 아래에 표시되도록 요구합니다."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "수령 장소 편집"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce 설정에서 ‘매장 수령’ 라벨 사용"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"이 기능을 활성화하면 결제 시 표시되는 픽업 옵션 라벨이 WooCommerce 픽업 장소 설정의 제목과 일치합니다. 비활성화하면 "
+"라벨에는 Fluid Checkout의 번역 가능한 “현지 픽업” 텍스트가 사용됩니다."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4483,3 +4492,13 @@ msgstr "선택 사항"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "필수"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "배송지 주소"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "매장 수령"

@@ -3478,14 +3478,6 @@ msgstr "Sjálfgefin afhendingartegund"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Veldu hvaða afhendingartegund verður valin sjálfgefið."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Skip"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Afhending"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Reitir fyrir flutningssvæði"
@@ -4555,6 +4547,25 @@ msgstr ""
 "pöntunarhnappurinn og gildandi gátreitir birtist fyrir neðan "
 "pöntunaryfirlitið."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Breyta afhendingarstöðum"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Nota staðbundna afhendingarmiða úr WooCommerce stillingum"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Þegar þetta er virkt passar merkimiðinn fyrir afhendingarvalkostinn við "
+"afgreiðslu við titilinn úr stillingum WooCommerce fyrir afhendingarstað. "
+"Þegar þetta er óvirkt notar merkimiðinn þýðanlegan texta „Staðbundin "
+"afhending“ úr Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4807,3 +4818,13 @@ msgstr "Valfrjálst"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Nauðsynlegt"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Sending á heimilisfang"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Sækja á staðnum"

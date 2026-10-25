@@ -3523,14 +3523,6 @@ msgstr "Aina chaguomsingi ya uwasilishaji"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Chagua aina ya uwasilishaji itakayochaguliwa kwa chaguo-msingi."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Meli"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Kuchukua"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Sehemu za eneo la usafirishaji"
@@ -4614,6 +4606,25 @@ msgstr ""
 "Programu-jalizi hiyo inahitaji kitufe cha mpangilio wa mahali na visanduku "
 "vya kuteua halali vionyeshwe chini ya muhtasari wa mpangilio."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Hariri maeneo ya kuchukuliwa"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Tumia lebo ya kuchukua kutoka kwa mipangilio ya WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Inapowashwa, lebo ya chaguo la kuchukua kwenye malipo inalingana na kichwa "
+"kutoka kwa mipangilio ya eneo la kuchukua la WooCommerce. Inapozimwa, lebo "
+"hutumia maandishi ya &quot;Kuchukua kwa Ndani&quot; yanayoweza kutafsiriwa "
+"kutoka kwa Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4864,3 +4875,13 @@ msgstr "Hiari"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Inahitajika"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Usafirishaji kwa anwani"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Kuchukua bidhaa za ndani"

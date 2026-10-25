@@ -3581,14 +3581,6 @@ msgstr "ပုံသေ ပို့ဆောင်မှု အမျိုး�
 msgid "Choose which delivery type will be selected by default."
 msgstr "မူရင်းအားဖြင့် မည်သည့်ပို့ဆောင်မှုအမျိုးအစားကို ရွေးချယ်မည်ကို ရွေးချယ်ပါ။"
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "သင်္ဘော"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "ကောက်ကိုင်လိုက်သည်"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "သင်္ဘောဇုန် လယ်ကွင်းများ"
@@ -4690,6 +4682,25 @@ msgstr ""
 "သည် place order ခလုတ်နှင့် legal checkbox များကို order summary "
 "အောက်တွင်ပြသရန် လိုအပ်သည်။"
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "လာယူမည့်နေရာများကို တည်းဖြတ်ပါ"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce ဆက်တင်များမှ ဒေသတွင်း ကောက်ယူမှု အညွှန်းကို အသုံးပြုပါ"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"ဖွင့်ထားသည့်အခါ ငွေရှင်းသည့်အခါ ကောက်ယူမှုရွေးချယ်မှု အညွှန်းသည် "
+"WooCommerce ကောက်ယူမှုတည်နေရာဆက်တင်များမှ ခေါင်းစဉ်နှင့် ကိုက်ညီပါသည်။ "
+"ပိတ်ထားသည့်အခါ အညွှန်းသည် Fluid Checkout မှ ဘာသာပြန်နိုင်သော &quot;Local "
+"pickup&quot; စာသားကို အသုံးပြုပါသည်။"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4943,3 +4954,13 @@ msgstr "ရွေးချယ်နိုင်သည်"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "လိုအပ်သည်"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "လိပ်စာသို့ ပို့ဆောင်ပေးခြင်း"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "ဒေသတွင်း လာယူခြင်း"

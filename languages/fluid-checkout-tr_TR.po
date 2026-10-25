@@ -3649,14 +3649,6 @@ msgstr "Varsayılan teslimat türü"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Varsayılan olarak hangi teslimat türünün seçileceğini belirleyin."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Gemi"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Teslim alma"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Nakliye bölgesi alanları"
@@ -4744,6 +4736,25 @@ msgstr ""
 "Bu eklenti, sipariş verme düğmesinin ve yasal onay kutularının sipariş "
 "özetinin altında görüntülenmesini gerektirir."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Teslim alma noktalarını düzenle"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce ayarlarından yerel teslim alma etiketini kullanın"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Etkinleştirildiğinde, ödeme sayfasında yer alan teslim alma seçeneği "
+"etiketi, WooCommerce teslim alma yeri ayarlarında belirtilen başlıkla aynı "
+"olur. Devre dışı bırakıldığında ise etiket, Fluid Checkout’tan alınan ve "
+"çevrilebilir “Yerel teslim alma” metnini kullanır."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -5000,3 +5011,13 @@ msgstr "İsteğe bağlı"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Zorunlu"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Teslimat adresi"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Yerinden teslim alma"

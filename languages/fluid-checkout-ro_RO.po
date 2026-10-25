@@ -3572,14 +3572,6 @@ msgstr "Tipul de livrare implicit"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Alegeți tipul de livrare care va fi selectat în mod implicit."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Navă"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Preluare"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Câmpuri privind zonele de livrare"
@@ -4697,6 +4689,25 @@ msgstr ""
 "casetele de selectare privind informațiile legale să fie afișate sub "
 "rezumatul comenzii."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Editează locațiile de preluare"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Utilizați eticheta de ridicare locală din setările WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Când este activată, eticheta opțiunii de ridicare de la casă corespunde "
+"titlului din setările WooCommerce privind locația de ridicare. Când este "
+"dezactivată, eticheta utilizează textul traducibil „Ridicare locală” din "
+"Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4950,3 +4961,13 @@ msgstr "Opțional"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Obligatoriu"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Adresa de livrare"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Ridicare de la sediu"

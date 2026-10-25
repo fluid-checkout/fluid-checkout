@@ -3457,14 +3457,6 @@ msgstr "ڈیفالٹ ڈیلیوری کی قسم"
 msgid "Choose which delivery type will be selected by default."
 msgstr "منتخب کریں کہ ڈیلیوری کی کون سی قسم بطور ڈیفالٹ منتخب کی جائے گی۔"
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "جہاز"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "اٹھاؤ"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "شپنگ زون فیلڈز"
@@ -4525,6 +4517,24 @@ msgstr ""
 "&quot;آرڈر سمری کے نیچے&quot; پر سیٹ ہوتی ہے۔ اس پلگ ان کو آرڈر کے خلاصے کے "
 "نیچے ڈسپلے کرنے کے لیے پلیس آرڈر بٹن اور قانونی چیک باکسز کی ضرورت ہوتی ہے۔"
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "پک اپ کے مقامات میں ترمیم کریں۔"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce کی ترتیبات سے مقامی پک اپ لیبل استعمال کریں۔"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"فعال ہونے پر، چیک آؤٹ پر پک اپ آپشن کا لیبل WooCommerce پک اپ مقام کی "
+"ترتیبات کے عنوان سے مماثل ہے۔ غیر فعال ہونے پر، لیبل Fluid Checkout سے "
+"ترجمہ کے قابل &quot;لوکل پک اپ&quot; متن کا استعمال کرتا ہے۔"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4777,3 +4787,13 @@ msgstr "اختیاری"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "درکار ہے۔"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "ایڈریس پر شپنگ"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "مقامی پک اپ"

@@ -16,21 +16,24 @@
  *                        also verifies pluginZipBundledSources with releaseBranch
  * - clean-css            Delete generated CSS files
  * - clean-js             Delete generated JS files
+ * - set-assets-version   Set _assetsVersion from package.json in memory only (dev builds)
  * - build-css            Production CSS from Sass
- * - build-css-dev        Development CSS from Sass (sourcemaps)
- * - build-js             Production JS (uglify/concat)
+ * - build-css-dev        Development CSS from Sass (sourcemaps; no clean)
+ * - build-js             Production JS (uglify)
+ * - build-js-dev         Development JS (no uglify; no clean)
  * - npm-run-build        Run `npm run build` for WordPress block assets when present
  * - build                Parallel build-js, build-css, and npm-run-build
  * - copy-plugin-files    Copy committed plugin files into the export folder
  * - pack-plugin-zip      Zip the export folder into an installable package
  * - generate-pot         Generate the POT translation catalog
- * - translate-po         Fill empty PO msgstr via DeepL/Google Translate APIs (skipped for alpha/beta/dev/rc)
- * - update-translations  translate-po, then rebuild .mo and .l10n.php (skipped for alpha/beta/dev/rc)
- * - translate            generate-pot then update-translations (skipped for alpha/beta/dev/rc)
+ * - translate-po         Fill empty PO msgstr via DeepL/Google Translate APIs
+ * - update-translations  translate-po, then rebuild .mo and .l10n.php
+ * - translate            generate-pot then update-translations
+ *                        (pre-release alpha/beta/dev/rc: skipped only during `npm version`)
  * - browser-sync         Start BrowserSync from local settings
  * - browser-sync-reload  Reload BrowserSync clients
- * - watch                Watch sources and rebuild on change
- * - watch-reload         Build once, then watch with BrowserSync reload
+ * - watch                Watch sources and rebuild on change (dev asset tasks)
+ * - watch-reload         Build once with dev tasks, then watch with BrowserSync reload
  */
 
 // Defining requirements
@@ -58,6 +61,9 @@ var through2 = require('through2');
 var path = require('path');
 var url = require('url');
 var readline = require('readline');
+var glob = require('glob');
+var minimatchModule = require('minimatch');
+var minimatch = typeof minimatchModule === 'function' ? minimatchModule : minimatchModule.minimatch;
 
 
 
@@ -143,6 +149,23 @@ function isPreReleaseVersion() {
 	return false;
 }
 
+/**
+ * Whether gulp was invoked from the npm `version` lifecycle script.
+ * Used to skip expensive auto-translation during alpha/beta packaging
+ * while still allowing manual `gulp translate` on pre-release branches.
+ */
+function isNpmVersionLifecycle() {
+	return 'version' === process.env.npm_lifecycle_event;
+}
+
+/**
+ * Skip auto-translation for pre-release versions only when packing via `npm version`.
+ * Manual `npx gulp translate` / `translate-po` / `update-translations` still run.
+ */
+function shouldSkipPreReleaseTranslations() {
+	return isPreReleaseVersion() && isNpmVersionLifecycle();
+}
+
 // gulp update-ver
 // Update the project version
 gulp.task( 'update-ver', gulp.series( function( done ) {
@@ -208,6 +231,161 @@ gulp.task( 'clean-js', function( done ) {
 
 
 
+/**
+ * Default dest directories for legacy sassSources / jsSources array entries.
+ * New keys should use { "src": [...], "dest": "..." } in gulp-settings.json.
+ */
+var _defaultSassDest = {
+	main: './css/',
+	admin: './css/admin/',
+	designTemplates: './css/design-templates/',
+	pluginCompat: './css/compat/plugins/',
+	themeCompat: './css/compat/themes/',
+};
+
+var _defaultJsDest = {
+	libraries: './js/lib/',
+	polyfills: './js/lib/',
+	bundles: './js/',
+	main: './js/',
+	standalone: './js/',
+	admin: './js/admin/',
+	account: './js/account/',
+	pluginCompat: './js/compat/plugins/',
+	themeCompat: './js/compat/themes/',
+};
+
+/**
+ * Normalize a sassSources / jsSources entry to { src, dest }.
+ * Accepts a legacy glob array or { src, dest }.
+ */
+function normalizeSourceEntry( key, value, defaultDestMap ) {
+	var dest;
+
+	if ( ! value ) {
+		return null;
+	}
+
+	if ( Array.isArray( value ) ) {
+		dest = defaultDestMap[ key ] || './';
+		return { src: value, dest: dest };
+	}
+
+	if ( 'object' === typeof value && value.src ) {
+		dest = value.dest || defaultDestMap[ key ] || './';
+		return {
+			src: Array.isArray( value.src ) ? value.src : [ value.src ],
+			dest: dest,
+		};
+	}
+
+	return null;
+}
+
+/**
+ * List normalized source entries for sassSources or jsSources.
+ */
+function getNormalizedSources( sourcesConfig, defaultDestMap ) {
+	var sources = [];
+	var key;
+	var entry;
+
+	if ( ! sourcesConfig || 'object' !== typeof sourcesConfig ) {
+		return sources;
+	}
+
+	for ( key in sourcesConfig ) {
+		if ( ! Object.prototype.hasOwnProperty.call( sourcesConfig, key ) ) {
+			continue;
+		}
+
+		entry = normalizeSourceEntry( key, sourcesConfig[ key ], defaultDestMap );
+		if ( entry ) {
+			sources.push( { key: key, src: entry.src, dest: entry.dest } );
+		}
+	}
+
+	return sources;
+}
+
+/**
+ * Expand src globs to entry file paths (skip Sass partials named _*.scss).
+ */
+function expandEntryFiles( srcGlobs ) {
+	var patterns = Array.isArray( srcGlobs ) ? srcGlobs : [ srcGlobs ];
+	var files = [];
+	var i;
+	var matched;
+	var j;
+	var file;
+	var base;
+
+	for ( i = 0; i < patterns.length; i++ ) {
+		matched = glob.sync( patterns[ i ], { nodir: true } );
+		for ( j = 0; j < matched.length; j++ ) {
+			file = matched[ j ];
+			base = path.basename( file );
+			if ( 0 === base.indexOf( '_' ) && /\.scss$/i.test( base ) ) {
+				continue;
+			}
+			files.push( file );
+		}
+	}
+
+	return files;
+}
+
+/**
+ * Parallel batch size for per-entry Sass compiles.
+ */
+function getSassParallelBatchSize() {
+	var local = _gulpSettingsLocal.sassParallelBatchSize;
+	var shared = _gulpSettings.sassParallelBatchSize;
+
+	if ( 'number' === typeof local && local > 0 ) {
+		return local;
+	}
+	if ( 'number' === typeof shared && shared > 0 ) {
+		return shared;
+	}
+
+	return 32;
+}
+
+/**
+ * Run gulp task functions in parallel batches to limit peak memory.
+ */
+function runTasksInBatches( taskFns, batchSize, done ) {
+	var index = 0;
+
+	if ( ! taskFns || 0 === taskFns.length ) {
+		done();
+		return;
+	}
+
+	function runNextBatch() {
+		var batch;
+
+		if ( index >= taskFns.length ) {
+			done();
+			return;
+		}
+
+		batch = taskFns.slice( index, index + batchSize );
+		index += batchSize;
+
+		gulp.parallel( batch )( function( err ) {
+			if ( err ) {
+				done( err );
+				return;
+			}
+			runNextBatch();
+		} );
+	}
+
+	runNextBatch();
+}
+
 // Process CSS for production environment.
 function processCss( src, dest ) {
 	return gulp.src( src )
@@ -242,28 +420,176 @@ function processCssDev( src, dest ) {
 		.pipe(browserSync.stream());
 }
 
+/**
+ * Wait for a vinyl/gulp stream to finish, then call done once.
+ */
+function whenStreamDone( stream, done ) {
+	var settled = false;
 
+	function finish( err ) {
+		if ( settled ) {
+			return;
+		}
+		settled = true;
+		done( err );
+	}
+
+	stream.on( 'error', finish );
+	stream.on( 'finish', function() {
+		finish();
+	} );
+	// Some pipelines (e.g. with browserSync.stream) emit end without finish
+	stream.on( 'end', function() {
+		finish();
+	} );
+}
+
+/**
+ * Compile Sass for a source group.
+ *
+ * Full builds use one gulp.src pipeline per source key (same as classic gulpfile;
+ * keys still run in parallel via buildCss / buildCssDev). Per-entry parallel
+ * streams hang with browserSync.stream() and add overhead — use expandEntryFiles
+ * + processCssDev(singleFile) only from the watch handler (Phase 3).
+ *
+ * Optional parallel per-entry for production-only pipelines (no browserSync) when
+ * sassParallelBatchSize is set and the group is large — see processCssEntriesParallel.
+ */
+function processCssEntries( src, dest, processorFn, done ) {
+	var files = expandEntryFiles( src );
+	var batchSize = getSassParallelBatchSize();
+	var parallelThreshold = 64;
+	var useParallel = false;
+	var tasks;
+	var i;
+
+	if ( 0 === files.length ) {
+		done();
+		return;
+	}
+
+	// Parallelize large production groups only (processCss has no browserSync.stream).
+	// Dev CSS stays one stream per key — browserSync.stream hangs under many parallel pipes.
+	useParallel = files.length >= parallelThreshold && processorFn === processCss;
+
+	if ( ! useParallel ) {
+		whenStreamDone( processorFn( src, dest ), done );
+		return;
+	}
+
+	tasks = [];
+	for ( i = 0; i < files.length; i++ ) {
+		( function( filePath ) {
+			tasks.push( function() {
+				return processorFn( filePath, dest );
+			} );
+		} )( files[ i ] );
+	}
+
+	runTasksInBatches( tasks, batchSize, done );
+}
+
+/**
+ * Build one Sass source key (production).
+ */
+function buildCssSourceKey( entry, done ) {
+	processCssEntries( entry.src, entry.dest, processCss, done );
+}
+
+/**
+ * Build one Sass source key (development).
+ */
+function buildCssDevSourceKey( entry, done ) {
+	processCssEntries( entry.src, entry.dest, processCssDev, done );
+}
+
+// Run:
+// gulp set-assets-version
+// Set _assetsVersion from package.json in memory only (does not rewrite plugin header).
+gulp.task( 'set-assets-version', function setAssetsVersion( done ) {
+	try {
+		_package = loadJsonFile.sync( 'package.json' );
+	}
+	catch ( err ) {
+		// Keep the previously loaded package when reload fails
+	}
+
+	_assetsVersion = '-' + _package.version.replace( /\./gi, '' );
+	done();
+} );
+
+/**
+ * Register named per-source compile tasks so the terminal shows
+ * compile-css-dev:main instead of <anonymous>.
+ */
+function registerCompileSubtasks() {
+	var sassSources = getNormalizedSources( _gulpSettings.sassSources, _defaultSassDest );
+	var jsSources = getNormalizedSources( _gulpSettings.jsSources, _defaultJsDest );
+	var i;
+	var entry;
+	var cssDevTasks = [];
+	var cssProdTasks = [];
+	var jsDevTasks = [];
+	var jsProdTasks = [];
+
+	for ( i = 0; i < sassSources.length; i++ ) {
+		entry = sassSources[ i ];
+		( function( sourceEntry ) {
+			var cssDevName = 'compile-css-dev:' + sourceEntry.key;
+			var cssProdName = 'compile-css:' + sourceEntry.key;
+
+			gulp.task( cssDevName, function() {
+				return processCssDev( sourceEntry.src, sourceEntry.dest );
+			} );
+			gulp.task( cssProdName, function( done ) {
+				var files = expandEntryFiles( sourceEntry.src );
+				if ( files.length >= 64 ) {
+					processCssEntries( sourceEntry.src, sourceEntry.dest, processCss, done );
+					return;
+				}
+				return processCss( sourceEntry.src, sourceEntry.dest );
+			} );
+
+			cssDevTasks.push( cssDevName );
+			cssProdTasks.push( cssProdName );
+		} )( entry );
+	}
+
+	for ( i = 0; i < jsSources.length; i++ ) {
+		entry = jsSources[ i ];
+		( function( sourceEntry ) {
+			var jsDevName = 'compile-js-dev:' + sourceEntry.key;
+			var jsProdName = 'compile-js:' + sourceEntry.key;
+
+			gulp.task( jsDevName, function() {
+				return processJsDev( sourceEntry.src, sourceEntry.dest );
+			} );
+			gulp.task( jsProdName, function() {
+				return processJs( sourceEntry.src, sourceEntry.dest );
+			} );
+
+			jsDevTasks.push( jsDevName );
+			jsProdTasks.push( jsProdName );
+		} )( entry );
+	}
+
+	return {
+		cssDevTasks: cssDevTasks,
+		cssProdTasks: cssProdTasks,
+		jsDevTasks: jsDevTasks,
+		jsProdTasks: jsProdTasks,
+	};
+}
+
+var _compileSubtasks = registerCompileSubtasks();
 
 // Build all css for production
 function buildCss( done ) {
-	// Define functions for each css source
-	var buildMainStyles = function() { if ( _gulpSettings.sassSources.main ) { return processCss( _gulpSettings.sassSources.main, './css/' ); } else { return Promise.resolve(); } };
-	var buildAdminStyles = function() { if ( _gulpSettings.sassSources.admin ) { return processCss( _gulpSettings.sassSources.admin, './css/admin/' ); } else { return Promise.resolve(); } };
-	var buildDesignTemplatesStyles = function() { if ( _gulpSettings.sassSources.designTemplates ) { return processCss( _gulpSettings.sassSources.designTemplates, './css/design-templates/' ); } else { return Promise.resolve(); } };
-	var buildPluginCompatStyles = function() { if ( _gulpSettings.sassSources.pluginCompat ) { return processCss( _gulpSettings.sassSources.pluginCompat, './css/compat/plugins/' ); } else { return Promise.resolve(); } };
-	var buildThemeCompatStyles = function() { if ( _gulpSettings.sassSources.themeCompat ) { return processCss( _gulpSettings.sassSources.themeCompat, './css/compat/themes/' ); } else { return Promise.resolve(); } };
-
-	// Define tasks
-	var tasks = [
-		buildMainStyles,
-		buildAdminStyles,
-		buildDesignTemplatesStyles,
-		buildPluginCompatStyles,
-		buildThemeCompatStyles
-	];
-
-	// Run tasks in parallel
-	return gulp.parallel( tasks )( done );
+	if ( 0 === _compileSubtasks.cssProdTasks.length ) {
+		done();
+		return;
+	}
+	return gulp.parallel( _compileSubtasks.cssProdTasks )( done );
 }
 
 // Run:
@@ -276,30 +602,17 @@ gulp.task( 'build-css', gulp.series( 'update-ver', 'clean-css', buildCss ) );
 
 // Build all CSS for development
 function buildCssDev( done ) {
-	// Define functions for each css source
-	var buildMainStylesDev = function() { if ( _gulpSettings.sassSources.main ) { return processCssDev( _gulpSettings.sassSources.main, './css/' ); } else { return Promise.resolve(); } };
-	var buildAdminStylesDev = function() { if ( _gulpSettings.sassSources.admin ) { return processCssDev( _gulpSettings.sassSources.admin, './css/admin/' ); } else { return Promise.resolve(); } };
-	var buildDesignTemplatesStylesDev = function() { if ( _gulpSettings.sassSources.designTemplates ) { return processCssDev( _gulpSettings.sassSources.designTemplates, './css/design-templates/' ); } else { return Promise.resolve(); } };
-	var buildPluginCompatStylesDev = function() { if ( _gulpSettings.sassSources.pluginCompat ) { return processCssDev( _gulpSettings.sassSources.pluginCompat, './css/compat/plugins/' ); } else { return Promise.resolve(); } };
-	var buildThemeCompatStylesDev = function() { if ( _gulpSettings.sassSources.themeCompat ) { return processCssDev( _gulpSettings.sassSources.themeCompat, './css/compat/themes/' ); } else { return Promise.resolve(); } };
-
-	// Define tasks
-	var tasks = [
-		buildMainStylesDev,
-		buildAdminStylesDev,
-		buildDesignTemplatesStylesDev,
-		buildPluginCompatStylesDev,
-		buildThemeCompatStylesDev
-	];
-
-	// Run tasks in parallel
-	return gulp.parallel( tasks )( done );
+	if ( 0 === _compileSubtasks.cssDevTasks.length ) {
+		done();
+		return;
+	}
+	return gulp.parallel( _compileSubtasks.cssDevTasks )( done );
 }
 
 // Run:
 // gulp build-css-dev
-// Builds css from scss for development environment and apply other changes.
-gulp.task( 'build-css-dev', gulp.series( 'update-ver', 'clean-css', buildCssDev ) );
+// Builds css from scss for development environment (no clean; in-memory version suffix).
+gulp.task( 'build-css-dev', gulp.series( 'set-assets-version', buildCssDev ) );
 
 
 
@@ -315,40 +628,46 @@ function processJs( src, dest ) {
 		.pipe(gulp.dest( dest )); // save .min.js
 }
 
+// Process JS for development environment (no uglify; .min suffix for enqueue parity).
+function processJsDev( src, dest ) {
+	return gulp.src( src )
+		.pipe(plumber())
+		.pipe(sourcemaps.init())
+		.pipe(rename({ suffix: _assetsVersion }))
+		.pipe(gulp.dest( dest )) // save .js
+		.pipe(rename({ suffix: '.min' }))
+		.pipe(sourcemaps.write( 'maps' ))
+		.pipe(gulp.dest( dest )) // save .min.js
+		.pipe(browserSync.stream());
+}
+
 // Build all JS for production
 function buildJS( done ) {
-	// Define functions for each js source
-	var buildLibraries = function() { if ( _gulpSettings.jsSources.libraries ) { return processJs( _gulpSettings.jsSources.libraries, './js/lib/' ); } else { return Promise.resolve(); } };
-	var buildPolyfills = function() { if ( _gulpSettings.jsSources.polyfills ) { return processJs( _gulpSettings.jsSources.polyfills, './js/lib/' ); } else { return Promise.resolve(); } };
-	var buildBundles = function() { if ( _gulpSettings.jsSources.bundles ) { return processJs( _gulpSettings.jsSources.bundles, './js/' ); } else { return Promise.resolve(); } };
-	var buildMain = function() { if ( _gulpSettings.jsSources.main ) { return processJs( _gulpSettings.jsSources.main, './js/' ); } else { return Promise.resolve(); } };
-	var buildStandalone = function() { if ( _gulpSettings.jsSources.standalone ) { return processJs( _gulpSettings.jsSources.standalone, './js/' ); } else { return Promise.resolve(); } };
-	var buildAdmin = function() { if ( _gulpSettings.jsSources.admin ) { return processJs( _gulpSettings.jsSources.admin, './js/admin/' ); } else { return Promise.resolve(); } };
-	var buildAccount = function() { if ( _gulpSettings.jsSources.account ) { return processJs( _gulpSettings.jsSources.account, './js/account/' ); } else { return Promise.resolve(); } };
-	var buildPluginCompat = function() { if ( _gulpSettings.jsSources.pluginCompat ) { return processJs( _gulpSettings.jsSources.pluginCompat, './js/compat/plugins/' ); } else { return Promise.resolve(); } };
-	var buildThemeCompat = function() { if ( _gulpSettings.jsSources.themeCompat ) { return processJs( _gulpSettings.jsSources.themeCompat, './js/compat/themes/' ); } else { return Promise.resolve(); } };
+	if ( 0 === _compileSubtasks.jsProdTasks.length ) {
+		done();
+		return;
+	}
+	return gulp.parallel( _compileSubtasks.jsProdTasks )( done );
+}
 
-	// Define tasks
-	var tasks = [
-		buildLibraries,
-		buildPolyfills,
-		buildBundles,
-		buildMain,
-		buildStandalone,
-		buildAdmin,
-		buildAccount,
-		buildPluginCompat,
-		buildThemeCompat
-	];
-
-	// Run tasks in parallel
-	return gulp.parallel( tasks )( done );
+// Build all JS for development
+function buildJSDev( done ) {
+	if ( 0 === _compileSubtasks.jsDevTasks.length ) {
+		done();
+		return;
+	}
+	return gulp.parallel( _compileSubtasks.jsDevTasks )( done );
 }
 
 // Run:
 // gulp build-js.
 // Uglifies and concat all JS files into one
 gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', buildJS ) );
+
+// Run:
+// gulp build-js-dev
+// Copy and rename JS for development (no uglify; in-memory version suffix).
+gulp.task( 'build-js-dev', gulp.series( 'set-assets-version', buildJSDev ) );
 
 
 
@@ -1576,10 +1895,10 @@ function poToPHP ( jsonFile, enc, cb ) {
 // Translate PO files using Deepl and Google Translate.
 // Missing or placeholder API keys skip that provider with a warning.
 // API errors are logged and do not fail the package build.
-// Skipped for alpha, beta, dev, and rc package versions.
+// Pre-release versions: skipped only when run from `npm version` (not manual gulp).
 gulp.task( 'translate-po', function ( done ) {
-	if ( isPreReleaseVersion() ) {
-		console.log( 'Skipping translate-po for pre-release version ' + _package.version );
+	if ( shouldSkipPreReleaseTranslations() ) {
+		console.log( 'Skipping translate-po for pre-release version ' + _package.version + ' during npm version' );
 		return done();
 	}
 
@@ -1631,10 +1950,11 @@ gulp.task( 'translate-po', function ( done ) {
 
 // Run:
 // gulp update-translations
-// Update translations. Skipped for alpha, beta, dev, and rc package versions.
+// Update translations.
+// Pre-release versions: skipped only when run from `npm version` (not manual gulp).
 gulp.task( 'update-translations', function( done ) {
-	if ( isPreReleaseVersion() ) {
-		console.log( 'Skipping update-translations for pre-release version ' + _package.version );
+	if ( shouldSkipPreReleaseTranslations() ) {
+		console.log( 'Skipping update-translations for pre-release version ' + _package.version + ' during npm version' );
 		return done();
 	}
 
@@ -1695,10 +2015,10 @@ gulp.task( 'generate-pot', function ( done ) {
 // gulp translate
 // Generate POT file and update translations.
 // Auto-translation warnings are summarized again at the end of the build run.
-// Skipped for alpha, beta, dev, and rc package versions (use generate-pot alone if needed).
+// Pre-release versions: skipped only when run from `npm version` (manual gulp still runs).
 gulp.task( 'translate', function( done ) {
-	if ( isPreReleaseVersion() ) {
-		console.log( 'Skipping translations for pre-release version ' + _package.version );
+	if ( shouldSkipPreReleaseTranslations() ) {
+		console.log( 'Skipping translations for pre-release version ' + _package.version + ' during npm version' );
 		return done();
 	}
 
@@ -1731,15 +2051,269 @@ gulp.task( 'browser-sync-reload', function( done ) {
 
 
 
+/**
+ * Derive watch globs from a source src list.
+ *
+ * Compat entry globs become recursive under that compat folder only.
+ * Top-level ./sass/*.scss watches entry files plus shared trees
+ * (partials, abstract, admin, lib) — not compat/ — so theme edits do not
+ * rebuild main and shared partials do not rebuild all themeCompat files.
+ * Paths that already use a recursive glob or have no wildcard stay as-is.
+ */
+function srcGlobsToWatchGlobs( src ) {
+	var patterns = Array.isArray( src ) ? src : [ src ];
+	var result = [];
+	var i;
+	var pattern;
+	var topLevelSass;
+	var ext;
+
+	for ( i = 0; i < patterns.length; i++ ) {
+		pattern = patterns[ i ];
+
+		if ( -1 !== pattern.indexOf( '**' ) || -1 === pattern.indexOf( '*' ) ) {
+			result.push( pattern );
+			continue;
+		}
+
+		// Top-level plugin Sass entries: do not watch the whole sass/ tree
+		topLevelSass = pattern.match( /^\.\/sass\/\*(\.[^/]+)$/ );
+		if ( topLevelSass ) {
+			ext = topLevelSass[ 1 ];
+			result.push( './sass/*' + ext );
+			result.push( './sass/partials/**/*' + ext );
+			result.push( './sass/abstract/**/*' + ext );
+			result.push( './sass/admin/**/*' + ext );
+			result.push( './sass/lib/**/*' + ext );
+			continue;
+		}
+
+		result.push( pattern.replace( /\/\*(\.[^/]+)$/, '/**/*$1' ) );
+	}
+
+	return result;
+}
+
+/**
+ * Whether a relative path matches any of the given minimatch patterns.
+ */
+function pathMatchesAnyGlob( relativePath, patterns ) {
+	var i;
+	var normalized = relativePath.split( path.sep ).join( '/' );
+
+	if ( 0 === normalized.indexOf( './' ) ) {
+		normalized = normalized.slice( 2 );
+	}
+
+	for ( i = 0; i < patterns.length; i++ ) {
+		if ( minimatch( normalized, patterns[ i ].replace( /^\.\//, '' ), { dot: true } ) ) {
+			return true;
+		}
+		if ( minimatch( './' + normalized, patterns[ i ], { dot: true } ) ) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Whether the changed path is a Sass partial (_*.scss).
+ */
+function isSassPartialPath( filePath ) {
+	return /^_.*\.scss$/i.test( path.basename( filePath ) );
+}
+
+/**
+ * Whether the changed path is a concrete entry under the source src globs.
+ */
+function isSourceEntryFile( filePath, srcGlobs ) {
+	var relativePath = path.relative( process.cwd(), filePath ).split( path.sep ).join( '/' );
+	var entries;
+	var i;
+
+	if ( isSassPartialPath( filePath ) ) {
+		return false;
+	}
+
+	entries = expandEntryFiles( srcGlobs );
+	for ( i = 0; i < entries.length; i++ ) {
+		if ( path.resolve( entries[ i ] ) === path.resolve( filePath ) ) {
+			return true;
+		}
+		if ( entries[ i ].split( path.sep ).join( '/' ) === relativePath ) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Debounced runners keyed by debounce id.
+ */
+var _watchDebounceTimers = {};
+var _watchDebounceMs = 150;
+
+function debounceWatchAction( debounceId, action ) {
+	if ( _watchDebounceTimers[ debounceId ] ) {
+		clearTimeout( _watchDebounceTimers[ debounceId ] );
+	}
+
+	_watchDebounceTimers[ debounceId ] = setTimeout( function() {
+		delete _watchDebounceTimers[ debounceId ];
+		action();
+	}, _watchDebounceMs );
+}
+
+/**
+ * Log watch compile start/finish so the terminal matches real frontend readiness.
+ */
+function logWatchCompile( phase, label, relativePath ) {
+	var suffix = relativePath ? ( ' ← ' + relativePath ) : '';
+	console.log( '[fc-gulp] ' + phase + ' ' + label + suffix );
+}
+
+/**
+ * Run set-assets-version then the given named compile tasks (parallel when several).
+ */
+function runNamedDevCompile( taskNames, relativePath, done ) {
+	var runCompile;
+	var label = taskNames.join( ', ' );
+
+	if ( 0 === taskNames.length ) {
+		done();
+		return;
+	}
+
+	logWatchCompile( 'start', label, relativePath );
+
+	runCompile = 1 === taskNames.length
+		? gulp.series( 'set-assets-version', taskNames[ 0 ] )
+		: gulp.series( 'set-assets-version', gulp.parallel( taskNames ) );
+
+	runCompile( function( err ) {
+		if ( err ) {
+			logWatchCompile( 'error', label, relativePath );
+			done( err );
+			return;
+		}
+		logWatchCompile( 'done', label, relativePath );
+		done();
+	} );
+}
+
+/**
+ * Register asset watches from sassSources / jsSources.
+ */
+function registerAssetSourceWatches() {
+	var sassSources = getNormalizedSources( _gulpSettings.sassSources, _defaultSassDest );
+	var jsSources = getNormalizedSources( _gulpSettings.jsSources, _defaultJsDest );
+	var sassWatchMeta = [];
+	var i;
+	var entry;
+	var watchGlobs;
+	var allSassWatchGlobs = [];
+
+	for ( i = 0; i < sassSources.length; i++ ) {
+		entry = sassSources[ i ];
+		watchGlobs = srcGlobsToWatchGlobs( entry.src );
+		sassWatchMeta.push( { entry: entry, watchGlobs: watchGlobs } );
+		allSassWatchGlobs = allSassWatchGlobs.concat( watchGlobs );
+	}
+
+	if ( allSassWatchGlobs.length > 0 ) {
+		gulp.watch( allSassWatchGlobs ).on( 'change', function( filePath ) {
+			var relativePath = path.relative( process.cwd(), filePath ).split( path.sep ).join( '/' );
+			var matchedKeys = [];
+			var j;
+			var meta;
+			var isPartial = isSassPartialPath( filePath );
+			var singleEntryMeta = null;
+			var taskNames;
+
+			for ( j = 0; j < sassWatchMeta.length; j++ ) {
+				meta = sassWatchMeta[ j ];
+				if ( pathMatchesAnyGlob( relativePath, meta.watchGlobs ) ) {
+					matchedKeys.push( meta );
+				}
+			}
+
+			// Do not rebuild every Sass group on partials — only keys whose
+			// watch globs cover this path (e.g. sass/partials → main only).
+
+			if ( 0 === matchedKeys.length ) {
+				return;
+			}
+
+			debounceWatchAction( 'sass:' + matchedKeys.map( function( m ) { return m.entry.key; } ).join( ',' ), function() {
+				// Single non-partial entry file: compile that file only
+				if ( ! isPartial && 1 === matchedKeys.length && isSourceEntryFile( filePath, matchedKeys[ 0 ].entry.src ) ) {
+					singleEntryMeta = matchedKeys[ 0 ];
+					logWatchCompile( 'start', 'compile-css-dev:' + singleEntryMeta.entry.key + ' (entry)', relativePath );
+					gulp.series( 'set-assets-version', function compileCssDevEntry( done ) {
+						whenStreamDone( processCssDev( filePath, singleEntryMeta.entry.dest ), function( err ) {
+							if ( ! err ) {
+								logWatchCompile( 'done', 'compile-css-dev:' + singleEntryMeta.entry.key + ' (entry)', relativePath );
+							}
+							done( err );
+						} );
+					} )();
+					return;
+				}
+
+				taskNames = matchedKeys.map( function( metaItem ) {
+					return 'compile-css-dev:' + metaItem.entry.key;
+				} );
+
+				runNamedDevCompile( taskNames, relativePath, function() {} );
+			} );
+		} );
+	}
+
+	for ( i = 0; i < jsSources.length; i++ ) {
+		( function( jsEntry ) {
+			var jsWatchGlobs = srcGlobsToWatchGlobs( jsEntry.src );
+			var jsDevTaskName = 'compile-js-dev:' + jsEntry.key;
+
+			gulp.watch( jsWatchGlobs ).on( 'change', function( filePath ) {
+				var relativePath = path.relative( process.cwd(), filePath ).split( path.sep ).join( '/' );
+
+				debounceWatchAction( 'js:' + jsEntry.key + ':' + filePath, function() {
+					if ( isSourceEntryFile( filePath, jsEntry.src ) ) {
+						logWatchCompile( 'start', jsDevTaskName + ' (entry)', relativePath );
+						gulp.series( 'set-assets-version', function compileJsDevEntry( done ) {
+							whenStreamDone( processJsDev( filePath, jsEntry.dest ), function( err ) {
+								if ( ! err ) {
+									logWatchCompile( 'done', jsDevTaskName + ' (entry)', relativePath );
+								}
+								done( err );
+							} );
+						} )();
+						return;
+					}
+
+					runNamedDevCompile( [ jsDevTaskName ], relativePath, function() {} );
+				} );
+			} );
+		} )( jsSources[ i ] );
+	}
+}
+
 // Run:
 // gulp watch
-// Starts watcher. Watcher runs appropriate tasks on file changes
+// Starts watcher. Asset watches come from sassSources / jsSources (dev builds).
+// gulp-settings.watch remains for non-asset tasks (e.g. blocks → npm-run-build).
 gulp.task( 'watch', gulp.series( function( done ) {
-	_gulpSettings.watch.forEach( function ( item ) {
-		var watchPattern = item[ 0 ];
-		var runTasks = item[ 1 ];
-		gulp.watch( watchPattern, gulp.series( runTasks ) );
-	} );
+	registerAssetSourceWatches();
+
+	if ( _gulpSettings.watch && Array.isArray( _gulpSettings.watch ) ) {
+		_gulpSettings.watch.forEach( function ( item ) {
+			var watchPattern = item[ 0 ];
+			var runTasks = item[ 1 ];
+			gulp.watch( watchPattern, gulp.series( runTasks ) );
+		} );
+	}
 
 	done();
 } ) );
@@ -1749,7 +2323,7 @@ gulp.task( 'watch', gulp.series( function( done ) {
 // Run:
 // gulp watch-reload
 // Starts watcher with browser-sync. Browser-sync reloads page automatically on your browser
-gulp.task( 'watch-reload', gulp.series( gulp.parallel( 'build-js', 'build-css-dev' ), gulp.series( 'watch', 'browser-sync' ) ) );
+gulp.task( 'watch-reload', gulp.series( gulp.parallel( 'build-js-dev', 'build-css-dev' ), gulp.series( 'watch', 'browser-sync' ) ) );
 
 
 

@@ -3300,14 +3300,6 @@ msgstr "ነባሪ የማድረሻ አይነት"
 msgid "Choose which delivery type will be selected by default."
 msgstr "በነባሪነት የትኛው የማድረሻ አይነት እንደሚመረጥ ይምረጡ።"
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "መርከብ"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "ፒካፕ"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "የማጓጓዣ ዞን መስኮች"
@@ -4306,6 +4298,24 @@ msgstr ""
 "ለWooCommerce ጀርመንኛን ሲጠቀሙ የቦታ ትዕዛዝ አቀማመጥ ሁልጊዜ &quot;ከትዕዛዝ ማጠቃለያ በታች&quot; "
 "ተብሎ ይቀናበራል። ያ ተሰኪ ከትዕዛዝ ማጠቃለያው በታች የቦታ ትዕዛዝ አዝራሩን እና ህጋዊ የአመልካች ሳጥኖችን ይፈልጋል።"
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "የመውሰጃ ቦታዎችን ያርትዑ"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "ከWooCommerce ቅንብሮች የአካባቢውን የመውሰጃ መለያ ይጠቀሙ"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"ሲነቃ፣ በቼክአውት ላይ ያለው የፒክአፕ አማራጭ መለያ ከWooCommerce picack location settings ርዕስ "
+"ጋር ይዛመዳል። ሲሰናከል፣ መለያው ከFluid Checkout የሚተረጎመውን &quot;Local pickup&quot; ጽሑፍ "
+"ይጠቀማል።"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4554,3 +4564,13 @@ msgstr "አማራጭ"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "ያስፈልጋል"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "ወደ አድራሻው የሚላክ ጭነት"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "የአካባቢው ፒክአፕ"

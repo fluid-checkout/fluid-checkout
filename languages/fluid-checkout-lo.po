@@ -3458,14 +3458,6 @@ msgstr "ປະເພດການຈັດສົ່ງເລີ່ມຕົ້ນ
 msgid "Choose which delivery type will be selected by default."
 msgstr "ເລືອກປະເພດການຈັດສົ່ງທີ່ຈະຖືກເລືອກຕາມຄ່າເລີ່ມຕົ້ນ."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "ເຮືອ"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "ຮັບເອງ"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "ພື້ນທີ່ເຂດຂົນສົ່ງ"
@@ -4541,6 +4533,25 @@ msgstr ""
 "ປລັກອິນນັ້ນຮຽກຮ້ອງໃຫ້ປຸ່ມສັ່ງຊື້ ແລະ "
 "ກ່ອງກາເຄື່ອງໝາຍທາງກົດໝາຍສະແດງຢູ່ລຸ່ມສະຫຼຸບການສັ່ງຊື້."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "ແກ້ໄຂສະຖານທີ່ຮັບ"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "ໃຊ້ປ້າຍກຳກັບຮັບເຄື່ອງໃນທ້ອງຖິ່ນຈາກການຕັ້ງຄ່າ WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"ເມື່ອເປີດໃຊ້ງານ, "
+"ປ້າຍຊື່ຕົວເລືອກການຮັບສິນຄ້າໃນເວລາຊຳລະເງິນຈະກົງກັບຫົວຂໍ້ຈາກການຕັ້ງຄ່າສະຖານທີ່"
+"ຮັບສິນຄ້າຂອງ WooCommerce. ເມື່ອປິດໃຊ້ງານ, ປ້າຍຊື່ຈະໃຊ້ຂໍ້ຄວາມ "
+"&quot;ການຮັບສິນຄ້າໃນທ້ອງຖິ່ນ&quot; ທີ່ສາມາດແປໄດ້ຈາກ Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4793,3 +4804,13 @@ msgstr "ບໍ່ບັງຄັບ"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "ຕ້ອງມີການ"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "ຈັດສົ່ງໄປທີ່ຢູ່"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "ການຮັບເຄື່ອງໃນທ້ອງຖິ່ນ"

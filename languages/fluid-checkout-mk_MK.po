@@ -3528,14 +3528,6 @@ msgstr "Стандарден тип на испорака"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Изберете кој тип на испорака ќе биде избран по дифолт."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Брод"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Подигнување"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Полиња за зона на испорака"
@@ -4627,6 +4619,25 @@ msgstr ""
 "нарачка и полињата за избор „легално“ да бидат прикажани под резимето на "
 "нарачката."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Уредете ги локациите за подигнување"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Користете локална етикета за подигнување од поставките на WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Кога е овозможено, етикетата за опцијата за подигнување при наплатата се "
+"совпаѓа со насловот од поставките за локација за подигнување на "
+"WooCommerce. Кога е оневозможено, етикетата го користи преводливиот текст "
+"„Локално подигнување“ од Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4877,3 +4888,13 @@ msgstr "Опционално"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Задолжително"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Испорака до адреса"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Локално подигнување"

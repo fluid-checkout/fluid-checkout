@@ -3517,14 +3517,6 @@ msgstr "Демейки жеткирүү түрү"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Демейки шартта кайсы жеткирүү түрү тандалаарын тандаңыз."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Кеме"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Ала кетүү"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Жеткирүү зонасынын талаалары"
@@ -4619,6 +4611,25 @@ msgstr ""
 "плагин буйрутма кыскача мазмунунун астында буйрутма берүү баскычын жана "
 "юридикалык белгилөө кутучаларын көрсөтүүнү талап кылат."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Алып кетүү жерлерин түзөтүү"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce жөндөөлөрүнөн жергиликтүү алып кетүү энбелгисин колдонуңуз"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Иштетилгенде, төлөөдөгү алып кетүү опциясынын энбелгиси WooCommerce алып "
+"кетүү жайгашкан жердин жөндөөлөрүндөгү аталышка дал келет. Өчүрүлгөндө, "
+"энбелги Fluid Checkout&#39;тан которулуучу &quot;Жергиликтүү алып "
+"кетүү&quot; текстин колдонот."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4871,3 +4882,13 @@ msgstr "Кошумча"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Талап кылынат"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Дарекке жеткирүү"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Жергиликтүү алып кетүү"

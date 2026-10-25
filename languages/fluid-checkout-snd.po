@@ -3451,14 +3451,6 @@ msgstr "ڊفالٽ پهچائڻ جو قسم"
 msgid "Choose which delivery type will be selected by default."
 msgstr "ڊفالٽ طور تي ڪهڙي قسم جي ترسيل چونڊيو ويندو اهو چونڊيو."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "ٻيڙي"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "کڻو"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "شپنگ زون جا ميدان"
@@ -4519,6 +4511,25 @@ msgstr ""
 "&quot;آرڊر خلاصي جي هيٺان&quot; تي سيٽ ڪئي ويندي آهي. انهي پلگ ان کي جڳهه "
 "آرڊر بٽڻ ۽ قانوني چيڪ بڪس آرڊر خلاصي جي هيٺان ڏيکارڻ جي ضرورت آهي."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "پڪ اپ جي جڳهن کي تبديل ڪريو"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce سيٽنگن مان مقامي پڪ اپ ليبل استعمال ڪريو"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"جڏهن فعال ڪيو ويندو آهي، ته چيڪ آئوٽ تي پڪ اپ آپشن ليبل WooCommerce پڪ اپ "
+"لوڪيشن سيٽنگز مان عنوان سان ملندو آهي. جڏهن غير فعال ڪيو ويندو آهي، ته ليبل "
+"فلوئڊ چيڪ آئوٽ مان ترجمو ٿيندڙ &quot;مقامي پڪ اپ&quot; ٽيڪسٽ استعمال ڪندو "
+"آهي."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4771,3 +4782,13 @@ msgstr "اختياري"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "گهربل"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "پتي تي پهچائڻ"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "مقامي پڪ اپ"

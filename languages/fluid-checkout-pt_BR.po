@@ -3702,14 +3702,6 @@ msgstr "Tipo de entrega padrão"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Escolha qual tipo de entrega será selecionado por padrão."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Navio"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Retirada"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Campos da zona de envio"
@@ -4810,6 +4802,25 @@ msgstr ""
 "que o botão “Finalizar compra” e as caixas de seleção de termos legais "
 "sejam exibidos abaixo do resumo do pedido."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Editar locais de retirada"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Use a etiqueta de retirada local nas configurações do WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Quando ativada, a legenda da opção de retirada no checkout corresponde ao "
+"título definido nas configurações de local de retirada do WooCommerce. "
+"Quando desativada, a legenda utiliza o texto traduzível “Retirada local” do "
+"Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -5068,3 +5079,13 @@ msgstr "Opcional"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Obrigatório"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Endereço de entrega"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Retirada no local"

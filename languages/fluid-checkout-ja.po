@@ -3258,14 +3258,6 @@ msgstr "デフォルトの配送方法"
 msgid "Choose which delivery type will be selected by default."
 msgstr "デフォルトで選択される配送方法を選択してください。"
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "船"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "ピックアップ"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "配送エリアのフィールド"
@@ -4254,6 +4246,23 @@ msgstr ""
 "WooCommerce」を使用する場合、注文ボタンの位置は常に「注文概要の下」に設定されます。このプラグインでは、注文ボタンと法的チェックボックスを注文"
 "概要の下に表示する必要があります。"
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "受け取り場所を編集する"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerceの設定から「店頭受取」ラベルを使用する"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"この機能を有効にすると、チェックアウト時の「店頭受取」オプションのラベルは、WooCommerceの店頭受取場所設定で指定されたタイトルと一致します。無"
+"効にすると、ラベルにはFluid Checkoutの翻訳可能な「店頭受取」というテキストが使用されます。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4505,3 +4514,13 @@ msgstr "任意"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "必須"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "配送先住所"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "店頭受け取り"

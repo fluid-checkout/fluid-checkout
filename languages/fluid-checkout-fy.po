@@ -3511,14 +3511,6 @@ msgstr "Standert leveringstype"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Kies hokker leveringstype standert selektearre wurdt."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Skip"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Ophelje"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Ferstjoersônefjilden"
@@ -4611,6 +4603,25 @@ msgstr ""
 "plugin fereasket dat de knop &#39;bestelling pleatse&#39; en juridyske "
 "seleksjefakjes ûnder it besteloversjoch werjûn wurde."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Ophelplakken bewurkje"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Brûk it lokale ophellabel fanút WooCommerce-ynstellingen"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"As it ynskeakele is, komt it label foar de ophelopsje by it beteljen oerien "
+"mei de titel fan &#39;e ynstellings foar WooCommerce-ophellokaasje. As it "
+"útskeakele is, brûkt it label de oersetbere tekst &quot;Lokale ophel&quot; "
+"fan Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4863,3 +4874,13 @@ msgstr "Fakultatyf"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Ferplicht"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Ferstjoering nei adres"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Lokale ophelplak"

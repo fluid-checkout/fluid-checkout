@@ -3472,14 +3472,6 @@ msgstr "Oletusarvoinen toimitustapa"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Valitse, mikä toimitustapa valitaan oletuksena."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Laiva"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Nouto"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Toimitusalueen kentät"
@@ -4563,6 +4555,25 @@ msgstr ""
 "laajennus edellyttää, että tilauksen tekemispainike ja lakisääteiset "
 "valintaruudut näkyvät tilausyhteenvedon alapuolella."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Muokkaa noutopaikkoja"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Käytä WooCommerce-asetuksista löytyvää paikallisen noutotarran tietoa"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Kun tämä asetus on käytössä, kassalla näkyvä nouto-vaihtoehdon otsikko "
+"vastaa WooCommerce-noutoasetusten otsikkoa. Kun asetus on pois käytöstä, "
+"otsikossa käytetään Fluid Checkoutin käännettävää tekstiä ”Paikallinen "
+"nouto”."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4816,3 +4827,13 @@ msgstr "Valinnainen"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Pakollinen"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Toimitusosoite"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Nouto paikan päältä"

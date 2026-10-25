@@ -3563,14 +3563,6 @@ msgstr "Default nga klase sa pagpadala"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Pilia kung unsang klase sa pagpadala ang pilion pinaagi sa default."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Barko"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Pagkuha"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Mga natad sa sona sa pagpadala"
@@ -4666,6 +4658,25 @@ msgstr ""
 "nga ipakita sa plugin ang buton sa place order ug ang mga legal nga "
 "checkbox sa ubos sa summary sa order."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "I-edit ang mga lokasyon sa pagkuha"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Gamita ang lokal nga label sa pagkuha gikan sa mga setting sa WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Kon gi-enable, ang label sa opsyon sa pagkuha sa checkout motakdo sa titulo "
+"gikan sa mga setting sa lokasyon sa pagkuha sa WooCommerce. Kon gi-disable, "
+"ang label mogamit sa mahubad nga teksto nga &quot;Local pickup&quot; gikan "
+"sa Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4918,3 +4929,13 @@ msgstr "Opsyonal"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Gikinahanglan"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Pagpadala sa adres"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Lokal nga pagkuha"

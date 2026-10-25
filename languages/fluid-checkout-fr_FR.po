@@ -3722,14 +3722,6 @@ msgstr "Mode de livraison par défaut"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Choisissez le mode de livraison qui sera sélectionné par défaut."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Navire"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Retrait"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Champs relatifs aux zones de livraison"
@@ -4841,6 +4833,27 @@ msgstr ""
 "et les cases à cocher relatives aux mentions légales s'affichent sous le "
 "récapitulatif de la commande."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Modifier les points de retrait"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr ""
+"Utiliser l'étiquette de retrait en magasin à partir des paramètres de "
+"WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Lorsque cette option est activée, le libellé de l'option « Retrait » lors "
+"du paiement correspond au titre défini dans les paramètres de lieu de "
+"retrait de WooCommerce. Lorsqu'elle est désactivée, le libellé utilise le "
+"texte traduisible « Retrait en magasin » fourni par Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -5098,3 +5111,13 @@ msgstr "Facultatif"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Obligatoire"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Adresse de livraison"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Retrait en magasin"

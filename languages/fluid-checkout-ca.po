@@ -3562,14 +3562,6 @@ msgstr "Tipus de lliurament predeterminat"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Trieu quin tipus de lliurament es seleccionarà per defecte."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Vaixell"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Recollida"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Camps de zona d&#39;enviament"
@@ -4678,6 +4670,27 @@ msgstr ""
 "Aquest complement requereix que el botó de fer la comanda i les caselles de "
 "selecció legals es mostrin a sota del resum de la comanda."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Edita les ubicacions de recollida"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr ""
+"Utilitza l&#39;etiqueta de recollida local des de la configuració de "
+"WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Quan està activada, l&#39;etiqueta de l&#39;opció de recollida al moment de "
+"la compra coincideix amb el títol de la configuració de la ubicació de "
+"recollida de WooCommerce. Quan està desactivada, l&#39;etiqueta utilitza el "
+"text traduïble &quot;Recollida local&quot; de Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4931,3 +4944,13 @@ msgstr "Opcional"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Obligatori"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Enviament a l&#39;adreça"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Recollida local"

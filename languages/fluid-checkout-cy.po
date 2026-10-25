@@ -3522,14 +3522,6 @@ msgstr "Math dosbarthu diofyn"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Dewiswch pa fath o ddosbarthu fydd yn cael ei ddewis yn ddiofyn."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Llong"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Casglu"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Meysydd parth cludo"
@@ -4614,6 +4606,25 @@ msgstr ""
 "ategyn hwnnw&#39;n gofyn am arddangos y botwm archeb a&#39;r blychau gwirio "
 "cyfreithiol o dan grynodeb yr archeb."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Golygu lleoliadau casglu"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Defnyddiwch label casglu lleol o osodiadau WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Pan gaiff ei alluogi, mae&#39;r label opsiwn casglu wrth y ddesg dalu yn "
+"cyfateb i&#39;r teitl o osodiadau lleoliad casglu WooCommerce. Pan gaiff ei "
+"analluogi, mae&#39;r label yn defnyddio&#39;r testun &quot;Casglu "
+"lleol&quot; y gellir ei gyfieithu o Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4866,3 +4877,13 @@ msgstr "Dewisol"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Angenrheidiol"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Llongau i&#39;r cyfeiriad"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Casglu lleol"

@@ -3354,14 +3354,6 @@ msgstr "סוג משלוח ברירת מחדל"
 msgid "Choose which delivery type will be selected by default."
 msgstr "בחר איזה סוג משלוח ייבחר כברירת מחדל."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "סְפִינָה"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "איסוף"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "שדות אזור משלוח"
@@ -4384,6 +4376,24 @@ msgstr ""
 "בגרמניזציה עבור WooCommerce. תוסף זה דורש שכפתור ביצוע ההזמנה ותיבות הסימון "
 "החוקיות יופיעו מתחת לסיכום ההזמנה."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "עריכת מיקומי איסוף"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "השתמש בתווית איסוף מקומית מהגדרות WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"כאשר אפשרות האיסוף מופעלת, תווית אפשרות האיסוף בקופה תואמת לכותרת מהגדרות "
+"מיקום האיסוף של WooCommerce. כאשר היא מושבתת, התווית משתמשת בטקסט הניתן "
+"לתרגום &quot;איסוף מקומי&quot; מ-Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4634,3 +4644,13 @@ msgstr "אופציונלי"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "דָרוּשׁ"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "משלוח לכתובת"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "איסוף מקומי"

@@ -3482,14 +3482,6 @@ msgstr "ডিফল্ট ডেলিভারি ধরণ"
 msgid "Choose which delivery type will be selected by default."
 msgstr "ডিফল্টরূপে কোন ডেলিভারি ধরণটি নির্বাচিত হবে তা বেছে নিন।"
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "জাহাজ"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "পিকআপ"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "শিপিং জোন ক্ষেত্রগুলি"
@@ -4559,6 +4551,24 @@ msgstr ""
 "দেওয়ার বাটন এবং আইনি চেকবক্সগুলো অর্ডার সারাংশের নিচে প্রদর্শিত হওয়া "
 "প্রয়োজন।"
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "পিকআপ স্থান সম্পাদনা করুন"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce সেটিংস থেকে স্থানীয় পিকআপ লেবেল ব্যবহার করুন"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"এটি চালু করা থাকলে, চেকআউটের সময় পিকআপ অপশনের লেবেলটি WooCommerce-এর পিকআপ "
+"লোকেশন সেটিংসের শিরোনামের সাথে মিলে যায়। এটি বন্ধ করা থাকলে, লেবেলটিতে "
+"Fluid Checkout-এর অনুবাদযোগ্য &quot;Local pickup&quot; লেখাটি ব্যবহৃত হয়।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4809,3 +4819,13 @@ msgstr "ঐচ্ছিক"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "প্রয়োজনীয়"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "শিপিং ঠিকানা"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "স্থানীয়ভাবে সংগ্রহ"

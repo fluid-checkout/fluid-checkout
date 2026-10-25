@@ -3473,14 +3473,6 @@ msgstr "Loại giao hàng mặc định"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Hãy chọn loại hình giao hàng sẽ được chọn mặc định."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Tàu thủy"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Nhặt lên"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Các khu vực vận chuyển"
@@ -4556,6 +4548,25 @@ msgstr ""
 "sử dụng plugin Germanized for WooCommerce. Plugin này yêu cầu nút đặt hàng "
 "và các ô chọn pháp lý phải được hiển thị bên dưới tóm tắt đơn hàng."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Chỉnh sửa địa điểm đón khách"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Sử dụng nhãn nhận hàng tại cửa hàng từ cài đặt WooCommerce."
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Khi được bật, nhãn tùy chọn nhận hàng tại cửa hàng trên trang thanh toán sẽ "
+"khớp với tiêu đề từ cài đặt địa điểm nhận hàng của WooCommerce. Khi bị tắt, "
+"nhãn sẽ sử dụng văn bản &quot;Nhận hàng tại cửa hàng&quot; có thể dịch được "
+"từ Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4808,3 +4819,13 @@ msgstr "Không bắt buộc"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Yêu cầu"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Địa chỉ giao hàng"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Nhận hàng tại địa điểm"

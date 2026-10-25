@@ -3460,14 +3460,6 @@ msgstr "ਡਿਲੀਵਰੀ ਦੀ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਕਿ�
 msgid "Choose which delivery type will be selected by default."
 msgstr "ਚੁਣੋ ਕਿ ਡਿਲੀਵਰੀ ਦੀ ਕਿਹੜੀ ਕਿਸਮ ਡਿਫਾਲਟ ਤੌਰ &#39;ਤੇ ਚੁਣੀ ਜਾਵੇਗੀ।"
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "ਜਹਾਜ਼"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "ਚੁੱਕਣਾ"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "ਸ਼ਿਪਿੰਗ ਜ਼ੋਨ ਖੇਤਰ"
@@ -4531,6 +4523,25 @@ msgstr ""
 "ਆਰਡਰ ਬਟਨ ਅਤੇ ਕਾਨੂੰਨੀ ਚੈੱਕਬਾਕਸ ਨੂੰ ਆਰਡਰ ਸੰਖੇਪ ਦੇ ਹੇਠਾਂ ਪ੍ਰਦਰਸ਼ਿਤ ਕਰਨ ਦੀ ਲੋੜ "
 "ਹੁੰਦੀ ਹੈ।"
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "ਪਿਕਅੱਪ ਟਿਕਾਣਿਆਂ ਦਾ ਸੰਪਾਦਨ ਕਰੋ"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce ਸੈਟਿੰਗਾਂ ਤੋਂ ਸਥਾਨਕ ਪਿਕਅੱਪ ਲੇਬਲ ਦੀ ਵਰਤੋਂ ਕਰੋ"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"ਜਦੋਂ ਸਮਰੱਥ ਬਣਾਇਆ ਜਾਂਦਾ ਹੈ, ਤਾਂ ਚੈੱਕਆਉਟ &#39;ਤੇ ਪਿਕਅੱਪ ਵਿਕਲਪ ਲੇਬਲ "
+"WooCommerce ਪਿਕਅੱਪ ਸਥਾਨ ਸੈਟਿੰਗਾਂ ਤੋਂ ਸਿਰਲੇਖ ਨਾਲ ਮੇਲ ਖਾਂਦਾ ਹੈ। ਜਦੋਂ ਅਯੋਗ "
+"ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਤਾਂ ਲੇਬਲ ਫਲੂਇਡ ਚੈੱਕਆਉਟ ਤੋਂ ਅਨੁਵਾਦਯੋਗ &quot;ਸਥਾਨਕ "
+"ਪਿਕਅੱਪ&quot; ਟੈਕਸਟ ਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4783,3 +4794,13 @@ msgstr "ਵਿਕਲਪਿਕ"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "ਲੋੜੀਂਦਾ"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "ਪਤੇ &#39;ਤੇ ਭੇਜਣਾ"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "ਸਥਾਨਕ ਪਿਕਅੱਪ"

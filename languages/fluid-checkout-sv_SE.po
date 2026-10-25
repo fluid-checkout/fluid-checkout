@@ -3481,14 +3481,6 @@ msgstr "Standardleveranssätt"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Välj vilken leveransmetod som ska väljas som standard."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Fartyg"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Upphämtning"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Fält för leveranszoner"
@@ -4581,6 +4573,25 @@ msgstr ""
 "Det tillägget kräver att beställningsknappen och de juridiska kryssrutorna "
 "visas under beställningssammanfattningen."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Redigera upphämtningsplatser"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Använd etiketten för lokal upphämtning från WooCommerce-inställningarna"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"När funktionen är aktiverad stämmer etiketten för avhämtningsalternativet "
+"vid kassan överens med rubriken i inställningarna för avhämtningsplatser i "
+"WooCommerce. När funktionen är inaktiverad använder etiketten den "
+"översättningsbara texten ”Lokal avhämtning” från Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4832,3 +4843,13 @@ msgstr "Valfritt"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Obligatoriskt"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Leveransadress"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Lokalt avhämtning"

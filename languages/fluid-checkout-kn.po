@@ -3495,14 +3495,6 @@ msgstr "ಡೀಫಾಲ್ಟ್ ವಿತರಣಾ ಪ್ರಕಾರ"
 msgid "Choose which delivery type will be selected by default."
 msgstr "ಪೂರ್ವನಿಯೋಜಿತವಾಗಿ ಯಾವ ವಿತರಣಾ ಪ್ರಕಾರವನ್ನು ಆಯ್ಕೆ ಮಾಡಬೇಕೆಂದು ಆರಿಸಿ."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "ಹಡಗು"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "ಪಿಕಪ್"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "ಸಾಗಣೆ ವಲಯ ಕ್ಷೇತ್ರಗಳು"
@@ -4581,6 +4573,25 @@ msgstr ""
 "&quot;ಆದೇಶ ಸಾರಾಂಶದ ಕೆಳಗೆ&quot; ಹೊಂದಿಸಲಾಗುತ್ತದೆ. ಆ ಪ್ಲಗಿನ್‌ಗೆ ಸ್ಥಳ ಕ್ರಮ ಬಟನ್ "
 "ಮತ್ತು ಕಾನೂನು ಚೆಕ್‌ಬಾಕ್ಸ್‌ಗಳನ್ನು ಆದೇಶ ಸಾರಾಂಶದ ಕೆಳಗೆ ಪ್ರದರ್ಶಿಸುವ ಅಗತ್ಯವಿದೆ."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "ಪಿಕಪ್ ಸ್ಥಳಗಳನ್ನು ಸಂಪಾದಿಸಿ"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಂದ ಸ್ಥಳೀಯ ಪಿಕಪ್ ಲೇಬಲ್ ಬಳಸಿ"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ, ಚೆಕ್‌ಔಟ್‌ನಲ್ಲಿರುವ ಪಿಕಪ್ ಆಯ್ಕೆಯ ಲೇಬಲ್ WooCommerce ಪಿಕಪ್ "
+"ಸ್ಥಳ ಸೆಟ್ಟಿಂಗ್‌ಗಳ ಶೀರ್ಷಿಕೆಗೆ ಹೊಂದಿಕೆಯಾಗುತ್ತದೆ. ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿದಾಗ, ಲೇಬಲ್ "
+"ಫ್ಲೂಯಿಡ್ ಚೆಕ್‌ಔಟ್‌ನಿಂದ ಅನುವಾದಿಸಬಹುದಾದ &quot;ಸ್ಥಳೀಯ ಪಿಕಪ್&quot; ಪಠ್ಯವನ್ನು "
+"ಬಳಸುತ್ತದೆ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4833,3 +4844,13 @@ msgstr "ಐಚ್ಛಿಕ"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "ಅಗತ್ಯವಿದೆ"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "ವಿಳಾಸಕ್ಕೆ ರವಾನಿಸಲಾಗುತ್ತಿದೆ"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "ಸ್ಥಳೀಯ ಪಿಕಪ್"

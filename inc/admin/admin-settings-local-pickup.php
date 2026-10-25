@@ -114,8 +114,8 @@ class FluidCheckout_Settings_LocalPickup {
 					'id'                    => 'fc_local_pickup_default_delivery_type',
 					'type'                  => 'fc_select',
 					'options'               => array(
-						'ship'   => __( 'Ship to address', 'fluid-checkout' ),
-						'pickup' => __( 'Local pickup', 'fluid-checkout' ),
+						'ship'   => _x( 'Shipping to address', 'Delivery type', 'fluid-checkout' ),
+						'pickup' => _x( 'Local pickup', 'Delivery type', 'fluid-checkout' ),
 					),
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_default_delivery_type' ),
 					'custom_attributes'     => array(

@@ -3451,14 +3451,6 @@ msgstr "نوع تحویل پیش‌فرض"
 msgid "Choose which delivery type will be selected by default."
 msgstr "انتخاب کنید که کدام نوع تحویل به طور پیش‌فرض انتخاب شود."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "کشتی"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "وانت"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "فیلدهای منطقه حمل و نقل"
@@ -4517,6 +4509,24 @@ msgstr ""
 "&quot;زیر خلاصه سفارش&quot; تنظیم می‌شود. این افزونه نیاز دارد که دکمه "
 "سفارش و کادرهای انتخاب قانونی در زیر خلاصه سفارش نمایش داده شوند."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "ویرایش مکان‌های تحویل"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "استفاده از برچسب تحویل محلی از تنظیمات ووکامرس"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"وقتی فعال باشد، برچسب گزینه تحویل در صفحه پرداخت با عنوان تنظیمات مکان "
+"تحویل ووکامرس مطابقت دارد. وقتی غیرفعال باشد، برچسب از متن قابل ترجمه "
+"&quot;تحویل محلی&quot; از صفحه پرداخت سیال استفاده می‌کند."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4769,3 +4779,13 @@ msgstr "اختیاری"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "مورد نیاز"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "ارسال به آدرس"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "وانت محلی"

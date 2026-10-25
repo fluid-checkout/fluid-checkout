@@ -3509,14 +3509,6 @@ msgstr "Predvolený spôsob doručenia"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Vyberte, ktorý typ doručenia sa má nastaviť ako predvolený."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Loď"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Vyzdvihnutie"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Polia pre prepravné zóny"
@@ -4606,6 +4598,25 @@ msgstr ""
 "doplnok vyžaduje, aby sa tlačidlo na odoslanie objednávky a zaškrtávacie "
 "políčka s právnymi informáciami zobrazovali pod súhrnom objednávky."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Upraviť miesta vyzdvihnutia"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Použiť štítok na osobný odber z nastavení WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Ak je táto funkcia zapnutá, názov možnosti osobného vyzdvihnutia pri platbe "
+"zodpovedá názvu z nastavení miesta osobného vyzdvihnutia v WooCommerce. Ak "
+"je táto funkcia vypnutá, názov používa preložiteľný text „Osobné "
+"vyzdvihnutie“ z modulu Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4859,3 +4870,13 @@ msgstr "Voliteľné"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Povinné"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Doručenie na adresu"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Osobný odber"

@@ -3457,14 +3457,6 @@ msgstr "डीफॉल्ट वितरण प्रकार"
 msgid "Choose which delivery type will be selected by default."
 msgstr "डीफॉल्टनुसार कोणता वितरण प्रकार निवडला जाईल ते निवडा."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "जहाज"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "पिकअप"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "शिपिंग झोन फील्ड्स"
@@ -4537,6 +4529,24 @@ msgstr ""
 "&#39;ऑर्डर द्या&#39; बटण आणि कायदेशीर चेकबॉक्सेस ऑर्डर सारांशाच्या खाली "
 "दिसणे आवश्यक आहे."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "पिकअप ठिकाणे संपादित करा"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "वू कॉमर्स सेटिंग्जमधून लोकल पिकअप लेबल वापरा"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"सक्षम केल्यावर, चेकआउटवरील पिकअप पर्यायाचे लेबल वूकॉमर्स पिकअप लोकेशन "
+"सेटिंग्जमधील शीर्षकाशी जुळते. अक्षम केल्यावर, लेबल फ्लुइड चेकआउटमधील "
+"भाषांतर करण्यायोग्य &quot;लोकल पिकअप&quot; मजकूर वापरते."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4787,3 +4797,13 @@ msgstr "ऐच्छिक"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "आवश्यक"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "पाठवण्याचा पत्ता"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "स्थानिक पिकअप"
