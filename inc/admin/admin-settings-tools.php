@@ -227,6 +227,37 @@ class FluidCheckout_Settings_Tools {
 
 			);
 
+			// Legacy settings cleanup
+			if ( class_exists( 'FluidCheckout_AdminNotices_SettingsLegacyCleanup' ) && FluidCheckout_AdminNotices_SettingsLegacyCleanup::should_show_tools_cleanup_field() ) {
+				$settings = array_merge(
+					$settings,
+					array(
+						array(
+							'title' => __( 'Legacy settings', 'fluid-checkout' ),
+							'type'  => 'title',
+							'desc'  => __( 'Since Fluid Checkout 5.0, settings are stored in profiles. Legacy individual option rows may still exist in the database from older versions to allow downgrades to a pre-5.0 plugin version.', 'fluid-checkout' ),
+							'id'    => 'fc_legacy_settings_options',
+						),
+						array(
+							'title'              => __( 'Legacy settings cleanup', 'fluid-checkout' ),
+							'desc'               => __( 'Remove leftover individual option rows after you no longer need to downgrade to a pre-5.0 plugin version.', 'fluid-checkout' ),
+							'id'                 => 'fc_settings_legacy_cleanup_button',
+							'type'               => 'fc_button',
+							'button_text'        => __( 'Clean legacy settings', 'fluid-checkout' ),
+							'url'                => FluidCheckout_AdminNotices_SettingsLegacyCleanup::get_cleanup_url(),
+							'button_style'       => 'secondary',
+							'open_in_new_tab'    => false,
+							'show_external_icon' => false,
+							'is_option'          => false,
+						),
+						array(
+							'type' => 'sectionend',
+							'id'   => 'fc_legacy_settings_options',
+						),
+					)
+				);
+			}
+
 			/**
 			 * Filters the settings for one Fluid Checkout admin section.
 			 *

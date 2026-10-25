@@ -7,6 +7,13 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_Admin extends FluidCheckout {
 
 	/**
+	 * Installs on or after this date (site timezone, start of day) ship with the new settings experience.
+	 */
+	const INSTALL_CUTOFF_DATE_V5 = '2026-11-09';
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -49,6 +56,24 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Clear cache after saving settings
 		add_action( 'woocommerce_settings_saved', array( $this, 'flush_cache' ), 10 );
 		add_action( 'fc_admin_settings_saved', array( $this, 'flush_cache' ), 10 );
+	}
+
+
+
+	/**
+	 * Whether the site was installed before the new settings experience cutoff.
+	 */
+	public static function is_legacy_install() {
+		$install_date = (int) get_option( 'fc_plugin_activation_time', 0 );
+		$cutoff       = strtotime( self::INSTALL_CUTOFF_DATE_V5 . ' 00:00:00' );
+
+		// Bail if the cutoff timestamp is invalid
+		if ( false === $cutoff ) { return true; }
+
+		// Treat missing activation time as a legacy install
+		if ( $install_date < 1 ) { return true; }
+
+		return $install_date < $cutoff;
 	}
 
 
@@ -177,19 +202,22 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-select.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-multiselect.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-telemetry.php';
-		include_once self::$directory_path . 'inc/admin/admin-telemetry.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-textarea.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-layout-selector.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-template-selector.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-image-uploader.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-gaa-google-api-key.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-button.php';
+
+		// Telemetry controls
+		include_once self::$directory_path . 'inc/admin/admin-telemetry.php';
 	}
 
 	/**
 	 * Load settings providers that register tabs, sections and fields on FC hooks.
 	 */
 	public function load_settings_providers() {
+		// Settings pages
 		include_once self::$directory_path . 'inc/admin/admin-settings-wc-shipping.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-wc-accounts.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-dashboard.php';
@@ -210,7 +238,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-settings-tools.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-license-keys.php';
 
-		// Preview column
+		// Live preview
 		include_once self::$directory_path . 'inc/admin/admin-settings-preview.php';
 	}
 

@@ -12,13 +12,6 @@ class FluidCheckout_AdminNotices_NewSettingsPage extends FluidCheckout {
 	const NOTICE_NAME = 'new_settings_page';
 
 	/**
-	 * Installs on or after this date (site timezone, start of day) already ship with the new settings UI.
-	 */
-	const INSTALL_CUTOFF_DATE = '2026-11-09';
-
-
-
-	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -77,16 +70,7 @@ class FluidCheckout_AdminNotices_NewSettingsPage extends FluidCheckout {
 	 * Whether this notice should show for the current install activation time.
 	 */
 	public function should_show_for_install_date() {
-		$install_date = (int) get_option( 'fc_plugin_activation_time', 0 );
-		$cutoff       = strtotime( self::INSTALL_CUTOFF_DATE . ' 00:00:00' );
-
-		// Bail if the cutoff timestamp is invalid
-		if ( false === $cutoff ) { return true; }
-
-		// Treat missing activation time as a legacy install
-		if ( $install_date < 1 ) { return true; }
-
-		return $install_date < $cutoff;
+		return FluidCheckout_Admin::is_legacy_install();
 	}
 
 
