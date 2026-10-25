@@ -8,7 +8,7 @@ Stable tag: 4.2.7
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Fluid Checkout is a free WooCommerce checkout plugin for more completed orders: easy for new buyers, fast for repeat orders.
+Fluid Checkout is a free WooCommerce checkout plugin to help more shoppers finish their order: easy for new buyers, fast for repeat orders.
 
 
 == Description ==
