@@ -1,6 +1,6 @@
 === Fluid Checkout for WooCommerce - Lite ===
 Contributors: diegoversiani
-Tags: woocommerce, checkout, conversion, multi-step, one-page
+Tags: woocommerce, checkout, woocommerce checkout, one page checkout, multi-step checkout
 Requires PHP: 7.4
 Requires at least: 6.5
 Tested up to: 7.1
@@ -19,9 +19,9 @@ Fluid Checkout Lite is a free WooCommerce checkout plugin that replaces the defa
 
 Works with popular themes and payment gateways like Stripe and PayPal. Using the WooCommerce Checkout block? Fluid Checkout automatically replaces it with its own checkout form, so you don't need to rebuild your checkout page.
 
-Built with accessibility in mind, following ADA and WCAG 2.2 Level AA guidelines, so shoppers in the US, the EU and everywhere else can complete their order.
+Built with accessibility in mind and designed to support WCAG 2.2 Level AA on the checkout page, so shoppers in the US, the EU and everywhere else can complete their order.
 
-Trusted by 20,000+ WooCommerce stores.
+Trusted by 20,000+ active WooCommerce sites.
 
 = Live demo =
 
@@ -59,7 +59,7 @@ Quite insane how the developer is doing this. And a free plugin!!
 
 Fluid Checkout PRO brings the same experience to the cart, order pay and thank you pages. It adds Google Address Autocomplete, the Address Book, account matching, delayed account creation, edit cart at checkout, the EU-VAT Assistant and more.
 
-Fluid Checkout PRO is a single standalone plugin that includes everything, with priority support.
+Fluid Checkout PRO is one standalone plugin: all Lite features, all PRO features, and the Address Book, Google Address Autocomplete and EU-VAT Assistant, with priority support.
 
 [See all Fluid Checkout PRO features](https://fluidcheckout.com/)
 
@@ -121,7 +121,7 @@ Fluid Checkout PRO is a single plugin with everything for your checkout: all fea
 
 * **International phone numbers**: Phone numbers with country code, checked for the right length.
 
-* **Local pickup**: When customers choose local pickup or collection in store, no shipping address needed. The shipping address fields are hidden.
+* **Local pickup**: When customers choose local pickup or in-store collection, the shipping address fields are hidden.
 
 * **Gift messages**: Let customers add a gift message to their order and print it on packing slips from supported invoice and packing slip plugins.
 
@@ -261,7 +261,7 @@ See our documentation on [How to translate Fluid Checkout plugins into your lang
 
 Once installed and activated, Fluid Checkout will replace the WooCommerce checkout page with the chosen layout. The default settings options were chosen to work well on most shops.
 
-The guided setup helps you choose the best options for your use case and starts automatically on installation. You can also find the guided setup in the settings dashboard at WP Admin > Fluid Checkout > Dashboard, in the Getting started section.
+The guided setup is optional and helps you choose the best options for your use case. It starts automatically on installation, and you can skip it. You can also find the guided setup in the settings dashboard at WP Admin > Fluid Checkout > Dashboard, in the Getting started section.
 
 Change any settings directly at WP Admin > Fluid Checkout > Settings.
 
@@ -297,7 +297,7 @@ Most payment gateways work out of the box, including popular ones such as Stripe
 
 = What is the best checkout plugin for WooCommerce? =
 
-The best checkout plugin is the one that helps your customers finish their order without changing how your store works. Look for a mobile first checkout, fewer checkout fields, guest checkout, and compatibility with your theme and payment gateways. Fluid Checkout covers all of these, is free to start with Fluid Checkout Lite, and is trusted by 20,000+ WooCommerce stores.
+The best checkout plugin is the one that helps your customers finish their order without changing how your store works. Look for a mobile first checkout, fewer checkout fields, guest checkout, and compatibility with your theme and payment gateways. Fluid Checkout covers all of these, is free to start with Fluid Checkout Lite, and is trusted by 20,000+ active WooCommerce sites.
 
 
 = How can I speed up checkout and reduce abandoned carts in WooCommerce? =
@@ -332,12 +332,17 @@ Yes, through your payment plugin. Google Pay, Apple Pay and other express button
 
 = What happens if I deactivate Fluid Checkout? =
 
-Your store goes back to the default WooCommerce checkout.
+Your store goes back to the default WooCommerce checkout. Your Fluid Checkout settings are not deleted, so they are available again if you reactivate the plugin.
+
+
+= Is Fluid Checkout compatible with High-Performance Order Storage (HPOS)? =
+
+Yes. Fluid Checkout is compatible with WooCommerce High-Performance Order Storage (HPOS).
 
 
 = Will Fluid Checkout work with my theme? =
 
-Yes! Fluid Checkout should work with most theme out-of-the-box. However some themes may need adjustments due to not using WooCommerce standard hooks or styles or if they add their own customizations which might conflict with Fluid Checkout.
+Yes! Fluid Checkout should work with most themes out-of-the-box. However some themes may need adjustments due to not using WooCommerce standard hooks or styles or if they add their own customizations which might conflict with Fluid Checkout.
 
 **If you have any issues using Fluid Checkout with your theme please let us know through our [support page](https://fluidcheckout.com/support/) and we'll look into it.**
 
@@ -363,15 +368,15 @@ We value your privacy and your customers' privacy. We cannot guarantee that the 
 
 You choose which of these to share. Before anything is sent, you can preview the exact data in the plugin settings, and you can turn usage tracking off at any time.
 
-= Is Fluid Checkout fully compatible with ADA/WCAG 2.2 Level AA requirements? Will it make my webshop compliant? =
+= Is Fluid Checkout compatible with WCAG 2.2 Level AA accessibility requirements? Will it make my webshop compliant? =
 
-Yes, Fluid Checkout is built with accessibility in mind, and we follow ADA and WCAG 2.2 Level AA guidelines for the checkout page. On the checkout page, Fluid Checkout supports:
+Yes. Fluid Checkout is built to follow WCAG 2.2 Level AA on the checkout page, but we can't promise that your webshop is compliant. Compliance depends on your whole website, including your theme, your content and the other plugins you use. On the checkout page, Fluid Checkout supports:
 
 * Keyboard-only navigation, including moving between steps and using form fields without a mouse.
 * Screen readers, with labeled fields, buttons and sections.
 * Clear form validation, with errors linked to their fields so assistive technologies can announce them.
 
-**Your webshop's compliance is still your responsibility.** Fluid Checkout only covers the checkout, and compliance depends on your whole website, including your theme, your content and the other plugins you use. We can't guarantee that your webshop will be 100% compliant with ADA, WCAG or any other accessibility requirements.
+**Your webshop's compliance is still your responsibility.** Fluid Checkout only covers the checkout. We can't guarantee that your webshop will be 100% compliant with WCAG, ADA or any other accessibility requirements.
 
 We always strive to make Fluid Checkout better for accessibility. If you notice any accessibility issue on the checkout, please let us know through our [support page](https://fluidcheckout.com/support/) and we will fix it.
 
