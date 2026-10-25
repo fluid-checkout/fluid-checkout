@@ -40,7 +40,7 @@
 		border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
 	}
 
-	// Taller admin bar on small screens; page header is sticky above this bar
+	// Page header is sticky above this bar; mobile offset excludes the scrolling WP admin bar
 	@media ( max-width: $admin-breakpoint-mobile ) {
 		top: $fc-settings-sticky-offset-mobile;
 	}
@@ -259,7 +259,7 @@
 }
 
 @media screen and ( max-width: $admin-breakpoint-mobile ) {
-	// Taller admin bar; keep the menu bar below the sticky page header
+	// Keep the menu bar below the sticky page header (admin bar scrolls away on small screens)
 	.fc-settings-layout .fc-settings-sidebar,
 	.fc-settings-layout.has-preview .fc-settings-sidebar {
 		top: $fc-settings-sticky-offset-mobile;

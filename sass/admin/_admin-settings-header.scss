@@ -242,9 +242,10 @@ body.fc-settings-page #wpbody-content {
 
 @media screen and ( max-width: $admin-breakpoint-mobile ) {
 	body.fc-settings-page #fc-header {
-		// Stay sticky above the compact settings menu bar while the page scrolls
+		// Stay sticky above the compact settings menu bar while the page scrolls.
+		// WP admin bar scrolls away on small screens, so stick to the viewport top.
 		position: sticky;
-		top: $admin-wp-admin-bar-height-mobile;
+		top: 0;
 		left: auto;
 		right: auto;
 		margin-left: 0;

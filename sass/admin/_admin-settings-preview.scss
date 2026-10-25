@@ -246,7 +246,7 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 }
 
 @media screen and ( max-width: $admin-breakpoint-mobile ) {
-	// Taller admin bar + full width (no left admin menu column on small screens).
+	// Full width on small screens (no left admin menu column); sticky top excludes scrolling admin bar.
 	// Match auto-fold / folded specificity so those rules do not keep a menu-width inset.
 	.fc-settings-layout.is-preview-expanded .fc-settings-preview,
 	.fc-settings-layout.has-preview .fc-settings-preview,
