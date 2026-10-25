@@ -60,6 +60,13 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 	protected static $instances = array();
 
 	/**
+	 * Registered guided setup admin page slugs.
+	 *
+	 * @var array
+	 */
+	protected static $registered_page_slugs = array();
+
+	/**
 	 * Singleton instance function.
 	 *
 	 * @return static
@@ -72,6 +79,38 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 		}
 
 		return self::$instances[ $called_class ];
+	}
+
+	/**
+	 * Register a guided setup admin page slug for screen detection.
+	 *
+	 * @param   string  $page_slug  Admin page slug.
+	 */
+	public static function register_guided_setup_page_slug( $page_slug ) {
+		$page_slug = (string) $page_slug;
+
+		// Bail if page slug is empty
+		if ( '' === $page_slug ) { return; }
+
+		self::$registered_page_slugs[ $page_slug ] = true;
+	}
+
+	/**
+	 * Whether the current admin request is any Fluid Checkout guided setup screen.
+	 *
+	 * @return  bool
+	 */
+	public static function is_guided_setup_admin_screen() {
+		// Bail if not in admin
+		if ( ! is_admin() ) { return false; }
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$page = isset( $_GET[ 'page' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'page' ] ) ) : '';
+
+		// Bail if page query arg is empty
+		if ( '' === $page ) { return false; }
+
+		return isset( self::$registered_page_slugs[ $page ] );
 	}
 
 
@@ -183,8 +222,24 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			array( $this, 'output_guided_setup' )
 		);
 
+		// Track page slug so notice suppression can detect guided setup screens
+		self::register_guided_setup_page_slug( $this->page_slug );
+
 		// Set browser tab title for hidden admin pages
 		add_action( 'load-' . $this->page_hook_suffix, array( $this, 'setup_admin_page_title' ) );
+
+		// Hide all admin notices (FC and third-party) on guided setup screens
+		add_action( 'load-' . $this->page_hook_suffix, array( $this, 'maybe_strip_admin_notices_on_guided_setup' ), 20 );
+	}
+
+	/**
+	 * Remove WordPress admin notice actions on guided setup screens.
+	 */
+	public function maybe_strip_admin_notices_on_guided_setup() {
+		// Bail if Fluid Checkout admin helpers are unavailable
+		if ( ! class_exists( 'FluidCheckout_Admin' ) ) { return; }
+
+		FluidCheckout_Admin::strip_non_fc_admin_notices_on_load( false );
 	}
 
 

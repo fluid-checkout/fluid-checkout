@@ -119,6 +119,11 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	 * Mark getting-started checklist steps when loading a mapped settings tab.
 	 */
 	public function handle_load_settings_page() {
+		// Allow only Fluid Checkout admin notices on this screen (strip WooCommerce and other plugins)
+		if ( class_exists( 'FluidCheckout_Admin' ) ) {
+			FluidCheckout_Admin::strip_non_fc_admin_notices_on_load( true );
+		}
+
 		// Bail if user cannot manage settings
 		if ( ! current_user_can( self::CAPABILITY ) ) { return; }
 
