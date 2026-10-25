@@ -3517,14 +3517,6 @@ msgstr "Jenis pengiriman default"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Pilih jenis pengiriman mana yang akan dipilih secara default."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Kapal"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Penjemputan"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Kolom zona pengiriman"
@@ -4613,6 +4605,29 @@ msgstr ""
 "pesanan\" saat menggunakan Germanized for WooCommerce. Plugin tersebut "
 "mengharuskan tombol \"Lakukan Pemesanan\" dan kotak centang persyaratan "
 "hukum ditampilkan di bawah ringkasan pesanan."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Edit lokasi pengambilan"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Alamat pengiriman"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Gunakan label pengambilan di tempat dari pengaturan WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Jika diaktifkan, label opsi pengambilan barang pada halaman checkout akan "
+"sesuai dengan judul yang tercantum dalam pengaturan lokasi pengambilan "
+"barang di WooCommerce. Jika dinonaktifkan, label tersebut akan menggunakan "
+"teks \"Pengambilan lokal\" yang dapat diterjemahkan dari Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

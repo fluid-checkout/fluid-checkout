@@ -3704,14 +3704,6 @@ msgstr "Standardversandart"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Wählen Sie aus, welche Versandart standardmäßig ausgewählt werden soll."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Schiff"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Abholung"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Felder für Versandzonen"
@@ -4838,6 +4830,31 @@ msgstr ""
 "Bestellübersicht“ gesetzt. Dieses Plugin erfordert, dass die Schaltfläche "
 "„Bestellung aufgeben“ und die rechtlichen Kontrollkästchen unterhalb der "
 "Bestellübersicht angezeigt werden."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Abholorte bearbeiten"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Lieferadresse"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr ""
+"Verwende das Etikett für die Abholung vor Ort aus den "
+"WooCommerce-Einstellungen"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Wenn diese Option aktiviert ist, entspricht die Bezeichnung der Abholoption "
+"an der Kasse dem Titel aus den WooCommerce-Einstellungen für Abholorte. "
+"Wenn sie deaktiviert ist, wird die Bezeichnung mit dem übersetzbaren Text "
+"„Lokale Abholung“ aus Fluid Checkout angezeigt."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

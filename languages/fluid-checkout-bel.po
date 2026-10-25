@@ -3523,14 +3523,6 @@ msgstr "Тып дастаўкі па змаўчанні"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Выберыце, які тып дастаўкі будзе абраны па змаўчанні."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Карабель"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Самавываз"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Палі зоны дастаўкі"
@@ -4620,6 +4612,28 @@ msgstr ""
 "заўсёды ўстаноўлена на «Пад апісаннем замовы». Гэты плагін патрабуе, каб "
 "кнопка размяшчэння замовы і юрыдычныя сцяжкі адлюстроўваліся пад апісаннем "
 "замовы."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Рэдагаваць месцы пасадкі"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Дастаўка па адрасе"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Выкарыстоўваць мясцовы этыкетку самавывазу з налад WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Калі ўключана, надпіс варыянту самавывазу пры афармленні замовы супадае з "
+"назвай з налад месца самавывазу WooCommerce. Калі выключана, надпіс "
+"выкарыстоўвае перакладны тэкст «Мясцовы самавываз» з Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

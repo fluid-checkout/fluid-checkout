@@ -3498,14 +3498,6 @@ msgstr "Standardleveringsform"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Vælg, hvilken leveringsform der skal vælges som standard."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Skib"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Afhentning"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Felter for forsendelseszoner"
@@ -4596,6 +4588,29 @@ msgstr ""
 "ordresammendraget«, når man bruger Germanized til WooCommerce. Dette plugin "
 "kræver, at bestillingsknappen og de juridiske afkrydsningsfelter vises "
 "under ordresammendraget."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Rediger afhentningssteder"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Leveringsadresse"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Brug et label til lokal afhentning fra WooCommerce-indstillingerne"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Når denne indstilling er aktiveret, svarer betegnelsen for "
+"afhentningsmuligheden ved kassen til titlen fra indstillingerne for "
+"afhentningssteder i WooCommerce. Når indstillingen er deaktiveret, bruger "
+"betegnelsen den oversættelige tekst »Lokal afhentning« fra Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

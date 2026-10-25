@@ -3496,14 +3496,6 @@ msgstr "ئۆلچەملىك يەتكۈزۈش تىپى"
 msgid "Choose which delivery type will be selected by default."
 msgstr "سۈكۈتتىكى ھالەتتە قايسى يەتكۈزۈش تىپى تاللىنىدىغانلىقىنى تاللاڭ."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "پاراخوت"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "ئېلىپ كېتىش"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "توشۇش رايونى مەيدانلىرى"
@@ -4600,6 +4592,29 @@ msgstr ""
 "قىلىش خۇلاسىسى ئاستىدا» قىلىپ تەڭشىلىنىدۇ. بۇ قىستۇرما زاكاز قىلىش خۇلاسىسى "
 "ئاستىدا زاكاز قىلىش كۇنۇپكىسى ۋە قانۇنىي بەلگە قۇتىلىرىنىڭ كۆرسىتىلىشىنى "
 "تەلەپ قىلىدۇ."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "ئېلىپ كېتىش ئورۇنلىرىنى تەھرىرلەش"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "ئادرېسقا ئەۋەتىڭ"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce تەڭشەكلىرىدىن يەرلىك ئېلىپ كېتىش بەلگىسىنى ئىشلىتىڭ"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"قوزغىتىلغاندا، سېتىۋېلىش ئورنىدىكى مال ئېلىش تاللانمىسى بەلگىسى WooCommerce "
+"مال ئېلىش ئورنى تەڭشىكىدىكى ماۋزۇغا ماس كېلىدۇ. ئېتىۋېتىلگەندە، بەلگە Fluid "
+"Checkout دىكى تەرجىمە قىلغىلى بولىدىغان «يەرلىك مال ئېلىش» تېكىستىنى "
+"ئىشلىتىدۇ."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

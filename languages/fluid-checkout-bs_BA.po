@@ -3487,14 +3487,6 @@ msgstr "Zadana vrsta isporuke"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Odaberite koja vrsta isporuke će biti odabrana prema zadanim postavkama."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Brod"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Preuzimanje"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Polja zone dostave"
@@ -4571,6 +4563,29 @@ msgstr ""
 "narudžbe&quot; kada se koristi Germanized za WooCommerce. Taj dodatak "
 "zahtijeva da se dugme za narudžbu i legalni potvrdni okviri prikazuju ispod "
 "sažetka narudžbe."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Uredi lokacije preuzimanja"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Dostava na adresu"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Koristite lokalnu etiketu za preuzimanje iz postavki WooCommerce-a"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Kada je omogućeno, oznaka opcije preuzimanja prilikom plaćanja odgovara "
+"naslovu iz postavki lokacije preuzimanja u WooCommerce-u. Kada je "
+"onemogućeno, oznaka koristi prevodivi tekst &quot;Lokalno preuzimanje&quot; "
+"iz Fluid Checkout-a."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

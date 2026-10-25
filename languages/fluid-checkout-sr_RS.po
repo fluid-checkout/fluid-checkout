@@ -3568,14 +3568,6 @@ msgstr "Подразумевани тип испоруке"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Изаберите који тип испоруке ће бити подразумевано изабран."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Брод"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Преузимање"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Поља зоне испоруке"
@@ -4649,6 +4641,29 @@ msgstr ""
 "Позиција поруџбине је увек подешена на „Испод резимеа поруџбине“ када се "
 "користи германизована верзија за WooCommerce. Тај додатак захтева да дугме "
 "за поруџбину и поља за потврду буду приказани испод резимеа поруџбине."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Измени локације за преузимање"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Пошаљите на адресу"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Користите локалну етикету за преузимање из подешавања WooCommerce-а"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Када је омогућено, ознака опције преузимања при плаћању подудара се са "
+"насловом из подешавања локације преузимања WooCommerce-а. Када је "
+"онемогућено, ознака користи преводиви текст „Локално преузимање“ из Fluid "
+"Checkout-а."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

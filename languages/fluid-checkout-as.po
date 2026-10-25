@@ -3470,14 +3470,6 @@ msgstr "অবিকল্পিত ডেলিভাৰীৰ ধৰণ"
 msgid "Choose which delivery type will be selected by default."
 msgstr "অবিকল্পিতভাৱে কোনটো ডেলিভাৰী ধৰণ নিৰ্ব্বাচিত হ&#39;ব নিৰ্ব্বাচন কৰক।"
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "জাহাজ"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "উঠাওক"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "শিপিং জ&#39;নৰ ক্ষেত্ৰ"
@@ -4536,6 +4528,28 @@ msgstr ""
 "সদায় &quot;অৰ্ডাৰৰ সাৰাংশৰ তলত&quot; লে সংহতি কৰা হয়। সেই প্লাগইনৰ বাবে "
 "অৰ্ডাৰ স্থান বুটাম আৰু আইনী চেকবক্সসমূহ অৰ্ডাৰৰ সাৰাংশৰ তলত প্ৰদৰ্শিত হোৱাৰ "
 "প্ৰয়োজন।"
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "পিকআপৰ স্থান সম্পাদনা কৰক"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "ঠিকনালৈ জাহাজ কৰক"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce ছেটিংছৰ পৰা স্থানীয় পিকআপ লেবেল ব্যৱহাৰ কৰক"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"যেতিয়া সামৰ্থবান কৰা হয়, চেকআউটত পিকআপ বিকল্প লেবেলে WooCommerce পিকআপ "
+"অৱস্থান সংহতিসমূহৰ পৰা শিৰোনামৰ সৈতে মিলে। নিষ্ক্ৰিয় কৰাৰ সময়ত, লেবেলে "
+"তৰল চেকআউটৰ পৰা অনুবাদযোগ্য &quot;স্থানীয় পিকআপ&quot; লিখনী ব্যৱহাৰ কৰে।"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -3399,14 +3399,6 @@ msgstr "نوع التسليم الافتراضي"
 msgid "Choose which delivery type will be selected by default."
 msgstr "اختر نوع التوصيل الذي سيتم تحديده افتراضياً."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "سفينة"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "يلتقط"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "حقول منطقة الشحن"
@@ -4456,6 +4448,24 @@ msgstr ""
 "الطلب&quot; دائمًا على &quot;أسفل ملخص الطلب&quot;. تتطلب هذه الإضافة عرض "
 "زر &quot;إتمام الطلب&quot; ومربعات الاختيار القانونية أسفل ملخص الطلب."
 
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "تعديل مواقع الاستلام"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "استخدم ملصق الاستلام المحلي من إعدادات ووكومرس"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"عند تفعيل خيار الاستلام، يتطابق عنوانه في صفحة الدفع مع العنوان المُحدد في "
+"إعدادات موقع الاستلام في WooCommerce. أما عند تعطيله، فيستخدم النص القابل "
+"للترجمة &quot;الاستلام المحلي&quot; من Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -4706,3 +4716,13 @@ msgstr "خياري"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "مطلوب"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr ""
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr ""

@@ -26,9 +26,10 @@
  * - copy-plugin-files    Copy committed plugin files into the export folder
  * - pack-plugin-zip      Zip the export folder into an installable package
  * - generate-pot         Generate the POT translation catalog
- * - translate-po         Fill empty PO msgstr via DeepL/Google Translate APIs (skipped for alpha/beta/dev/rc)
- * - update-translations  translate-po, then rebuild .mo and .l10n.php (skipped for alpha/beta/dev/rc)
- * - translate            generate-pot then update-translations (skipped for alpha/beta/dev/rc)
+ * - translate-po         Fill empty PO msgstr via DeepL/Google Translate APIs
+ * - update-translations  translate-po, then rebuild .mo and .l10n.php
+ * - translate            generate-pot then update-translations
+ *                        (pre-release alpha/beta/dev/rc: skipped only during `npm version`)
  * - browser-sync         Start BrowserSync from local settings
  * - browser-sync-reload  Reload BrowserSync clients
  * - watch                Watch sources and rebuild on change (dev asset tasks)
@@ -146,6 +147,23 @@ function isPreReleaseVersion() {
 	}
 
 	return false;
+}
+
+/**
+ * Whether gulp was invoked from the npm `version` lifecycle script.
+ * Used to skip expensive auto-translation during alpha/beta packaging
+ * while still allowing manual `gulp translate` on pre-release branches.
+ */
+function isNpmVersionLifecycle() {
+	return 'version' === process.env.npm_lifecycle_event;
+}
+
+/**
+ * Skip auto-translation for pre-release versions only when packing via `npm version`.
+ * Manual `npx gulp translate` / `translate-po` / `update-translations` still run.
+ */
+function shouldSkipPreReleaseTranslations() {
+	return isPreReleaseVersion() && isNpmVersionLifecycle();
 }
 
 // gulp update-ver
@@ -1877,10 +1895,10 @@ function poToPHP ( jsonFile, enc, cb ) {
 // Translate PO files using Deepl and Google Translate.
 // Missing or placeholder API keys skip that provider with a warning.
 // API errors are logged and do not fail the package build.
-// Skipped for alpha, beta, dev, and rc package versions.
+// Pre-release versions: skipped only when run from `npm version` (not manual gulp).
 gulp.task( 'translate-po', function ( done ) {
-	if ( isPreReleaseVersion() ) {
-		console.log( 'Skipping translate-po for pre-release version ' + _package.version );
+	if ( shouldSkipPreReleaseTranslations() ) {
+		console.log( 'Skipping translate-po for pre-release version ' + _package.version + ' during npm version' );
 		return done();
 	}
 
@@ -1932,10 +1950,11 @@ gulp.task( 'translate-po', function ( done ) {
 
 // Run:
 // gulp update-translations
-// Update translations. Skipped for alpha, beta, dev, and rc package versions.
+// Update translations.
+// Pre-release versions: skipped only when run from `npm version` (not manual gulp).
 gulp.task( 'update-translations', function( done ) {
-	if ( isPreReleaseVersion() ) {
-		console.log( 'Skipping update-translations for pre-release version ' + _package.version );
+	if ( shouldSkipPreReleaseTranslations() ) {
+		console.log( 'Skipping update-translations for pre-release version ' + _package.version + ' during npm version' );
 		return done();
 	}
 
@@ -1996,10 +2015,10 @@ gulp.task( 'generate-pot', function ( done ) {
 // gulp translate
 // Generate POT file and update translations.
 // Auto-translation warnings are summarized again at the end of the build run.
-// Skipped for alpha, beta, dev, and rc package versions (use generate-pot alone if needed).
+// Pre-release versions: skipped only when run from `npm version` (manual gulp still runs).
 gulp.task( 'translate', function( done ) {
-	if ( isPreReleaseVersion() ) {
-		console.log( 'Skipping translations for pre-release version ' + _package.version );
+	if ( shouldSkipPreReleaseTranslations() ) {
+		console.log( 'Skipping translations for pre-release version ' + _package.version + ' during npm version' );
 		return done();
 	}
 

@@ -3455,14 +3455,6 @@ msgstr "පෙරනිමි බෙදාහැරීමේ වර්ගය"
 msgid "Choose which delivery type will be selected by default."
 msgstr "පෙරනිමියෙන් තෝරා ගන්නේ කුමන බෙදාහැරීමේ වර්ගයද යන්න තෝරන්න."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "නැව"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "අවුලා ගන්න"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "නැව්ගත කිරීමේ කලාප ක්ෂේත්‍ර"
@@ -4527,6 +4519,28 @@ msgstr ""
 "&quot;ඇණවුම් සාරාංශයට පහළින්&quot; ලෙස සකසා ඇත. එම ප්ලගිනයට ස්ථාන "
 "අනුපිළිවෙල බොත්තම සහ නීතිමය චෙක් කොටු ඇණවුම් සාරාංශයට පහළින් පෙන්වීමට "
 "අවශ්‍ය වේ."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "රැගෙන යාමේ ස්ථාන සංස්කරණය කරන්න"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "ලිපිනයට නැව්ගත කරන්න"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce සැකසුම් වලින් දේශීය පිකප් ලේබලය භාවිතා කරන්න."
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"සක්‍රිය කළ විට, පිටවීමේදී පිකප් විකල්ප ලේබලය WooCommerce පිකප් ස්ථාන "
+"සැකසුම් වලින් ලැබෙන මාතෘකාවට ගැලපේ. අක්‍රිය කළ විට, ලේබලය Fluid Checkout "
+"වෙතින් පරිවර්තනය කළ හැකි &quot;දේශීය පිකප්&quot; පෙළ භාවිතා කරයි."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

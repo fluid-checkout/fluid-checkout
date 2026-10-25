@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2026-10-24 18:59+0000\n"
+"POT-Creation-Date: 2026-10-25 01:15+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -322,11 +322,11 @@ msgstr ""
 msgid "Display widgets on the checkout footer. Only displayed if using the plugin's checkout footer."
 msgstr ""
 
-#: inc/settings.php:513
+#: inc/settings.php:514
 msgid "Settings profiles"
 msgstr ""
 
-#: inc/settings.php:514
+#: inc/settings.php:515
 msgid "Settings profile"
 msgstr ""
 
@@ -354,7 +354,7 @@ msgstr ""
 msgid "<p>We detected that you are using the plugins Delivery & Pickup Date Time for WooCommerce (free and PRO) by CodeRockz. Integration with these plugins have been moved to Fluid Checkout PRO.</p>"
 msgstr ""
 
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin-settings-page.php:245, inc/admin/admin.php:267, inc/admin/admin.php:389
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin-settings-page.php:245, inc/admin/admin.php:268, inc/admin/admin.php:390
 msgid "Upgrade to PRO"
 msgstr ""
 
@@ -398,7 +398,7 @@ msgstr ""
 msgid "Edit the checkout page"
 msgstr ""
 
-#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104, inc/admin/admin.php:504
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104, inc/admin/admin.php:505
 msgid "Read the documentation."
 msgstr ""
 
@@ -1888,23 +1888,23 @@ msgstr ""
 msgid "Highlight the shipping address section in the checkout form"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:618, inc/admin/admin-settings-local-pickup.php:156, inc/admin/admin-settings-local-pickup.php:163
+#: inc/admin/admin-settings-checkout.php:618, inc/admin/admin-settings-local-pickup.php:191, inc/admin/admin-settings-local-pickup.php:198
 msgid "Shipping methods"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:199
 msgid "This setting is shared between the Checkout and Local pickup sections. On the Local pickup section, it also decides whether the Ship/Pickup selector shows inside the shipping method section (before the address) or as a separate section (after)."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:620, inc/admin/admin-settings-local-pickup.php:165
+#: inc/admin/admin-settings-checkout.php:620, inc/admin/admin-settings-local-pickup.php:200
 msgid "Choose in which position to display the shipping methods section."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:627, inc/admin/admin-settings-local-pickup.php:170
+#: inc/admin/admin-settings-checkout.php:627, inc/admin/admin-settings-local-pickup.php:205
 msgid "Before shipping address"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:628, inc/admin/admin-settings-local-pickup.php:171
+#: inc/admin/admin-settings-checkout.php:628, inc/admin/admin-settings-local-pickup.php:206
 msgid "After shipping address"
 msgstr ""
 
@@ -2358,51 +2358,65 @@ msgstr ""
 msgid "Replaces the shipping address with the pickup point location when a local pickup shipping method is selected."
 msgstr ""
 
-#: inc/admin/admin-settings-local-pickup.php:92
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr ""
+
+#: inc/admin/admin-settings-local-pickup.php:111
 msgid "Default delivery type"
 msgstr ""
 
-#: inc/admin/admin-settings-local-pickup.php:94
+#: inc/admin/admin-settings-local-pickup.php:113
 msgid "Choose which delivery type will be selected by default."
 msgstr ""
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
 msgstr ""
 
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr ""
-
-#: inc/admin/admin-settings-local-pickup.php:112
-msgid "Shipping zone fields"
-msgstr ""
-
-#: inc/admin/admin-settings-local-pickup.php:113
-msgid "Choose which fields will be displayed for the local pickup shipping zone filter fields. Leave empty to show all available options."
-msgstr ""
-
-#: inc/admin/admin-settings-local-pickup.php:114
-msgid "These fields will be displayed as a filter for the local pickup shipping methods. Some fields might still appear at checkout when not selected here, if compatible plugins require them to work properly."
-msgstr ""
-
-#: inc/admin/admin-settings-local-pickup.php:130
-msgid "Order shipping address"
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
 msgstr ""
 
 #: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr ""
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid "When enabled, the pickup option label on checkout matches the title from WooCommerce pickup location settings. When disabled, the label uses the translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+
+#: inc/admin/admin-settings-local-pickup.php:147
+msgid "Shipping zone fields"
+msgstr ""
+
+#: inc/admin/admin-settings-local-pickup.php:148
+msgid "Choose which fields will be displayed for the local pickup shipping zone filter fields. Leave empty to show all available options."
+msgstr ""
+
+#: inc/admin/admin-settings-local-pickup.php:149
+msgid "These fields will be displayed as a filter for the local pickup shipping methods. Some fields might still appear at checkout when not selected here, if compatible plugins require them to work properly."
+msgstr ""
+
+#: inc/admin/admin-settings-local-pickup.php:165
+msgid "Order shipping address"
+msgstr ""
+
+#: inc/admin/admin-settings-local-pickup.php:167
 msgid "Choose which address to save as the shipping address for local pickup orders."
 msgstr ""
 
-#: inc/admin/admin-settings-local-pickup.php:136
+#: inc/admin/admin-settings-local-pickup.php:171
 msgid "Save the selected pickup location"
 msgstr ""
 
-#: inc/admin/admin-settings-local-pickup.php:137
+#: inc/admin/admin-settings-local-pickup.php:172
 msgid "Save same as the billing address"
 msgstr ""
 
-#: inc/admin/admin-settings-local-pickup.php:138
+#: inc/admin/admin-settings-local-pickup.php:173
 msgid "Do not save any shipping address"
 msgstr ""
 
@@ -2596,7 +2610,7 @@ msgstr ""
 msgid "Fluid Checkout"
 msgstr ""
 
-#: inc/admin/admin-settings-page.php:107, inc/admin/admin-settings-page.php:107, inc/admin/admin-settings-page.php:809, inc/admin/admin.php:259
+#: inc/admin/admin-settings-page.php:107, inc/admin/admin-settings-page.php:107, inc/admin/admin-settings-page.php:809, inc/admin/admin.php:260
 msgid "Settings"
 msgstr ""
 
@@ -2604,7 +2618,7 @@ msgstr ""
 msgid "Save settings"
 msgstr ""
 
-#: inc/admin/admin-settings-page.php:302, inc/admin/admin.php:260
+#: inc/admin/admin-settings-page.php:302, inc/admin/admin.php:261
 msgid "Support"
 msgstr ""
 
@@ -3217,54 +3231,54 @@ msgid "You are not allowed to manage site reports."
 msgstr ""
 
 #. translators: %s: Upgrade link.
-#: inc/admin/admin.php:287
+#: inc/admin/admin.php:288
 msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
 msgstr ""
 
-#: inc/admin/admin.php:309
+#: inc/admin/admin.php:310
 msgid "PRO feature"
 msgstr ""
 
-#: inc/admin/admin.php:350
+#: inc/admin/admin.php:351
 msgid "Other plugins"
 msgstr ""
 
 #. translators: %s: formatted price including currency, e.g. "29 EUR"
-#: inc/admin/admin.php:363
+#: inc/admin/admin.php:364
 msgid "Get only this add-on &mdash; %s"
 msgstr ""
 
-#: inc/admin/admin.php:372
+#: inc/admin/admin.php:373
 msgid "Install add-on"
 msgstr ""
 
 #. translators: %s: formatted price including currency, e.g. "129 EUR"
-#: inc/admin/admin.php:382
+#: inc/admin/admin.php:383
 msgid "Upgrade to PRO &mdash; %s"
 msgstr ""
 
-#: inc/admin/admin.php:402
+#: inc/admin/admin.php:403
 msgid "(PRO)"
 msgstr ""
 
-#: inc/admin/admin.php:422
+#: inc/admin/admin.php:423
 msgid "(experimental)"
 msgstr ""
 
-#: inc/admin/admin.php:448
+#: inc/admin/admin.php:449
 msgid "This is an experimental feature and may not work as expected in all setups. Use it with caution."
 msgstr ""
 
 #. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
-#: inc/admin/admin.php:459
+#: inc/admin/admin.php:460
 msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
 msgstr ""
 
-#: inc/admin/admin.php:461
+#: inc/admin/admin.php:462
 msgid "Add-on"
 msgstr ""
 
-#: inc/admin/admin.php:514
+#: inc/admin/admin.php:515
 msgid "View documentation"
 msgstr ""
 

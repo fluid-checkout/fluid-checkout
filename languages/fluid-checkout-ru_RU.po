@@ -3644,14 +3644,6 @@ msgstr "Тип доставки по умолчанию"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Выберите, какой тип доставки будет установлен по умолчанию."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Корабль"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Забор"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Поля зон доставки"
@@ -4751,6 +4743,29 @@ msgstr ""
 "«Оформить заказ» всегда устанавливается на «Ниже сводки заказа». Этот "
 "плагин требует, чтобы кнопка «Оформить заказ» и флажки с юридической "
 "информацией отображались ниже сводки заказа."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Изменить пункты выдачи"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Адрес доставки"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Используйте этикетку для самовывоза из настроек WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Если эта опция включена, название пункта самовывоза при оформлении заказа "
+"соответствует названию, указанному в настройках пунктов самовывоза "
+"WooCommerce. Если эта опция отключена, в качестве названия используется "
+"переводимый текст «Самовывоз» из Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

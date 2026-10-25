@@ -3494,14 +3494,6 @@ msgstr "Լռելյայն առաքման տեսակ"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Ընտրեք, թե որ առաքման տեսակն է ընտրվելու լռելյայն։"
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Նավ"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Վերցնել"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Առաքման գոտու դաշտեր"
@@ -4583,6 +4575,28 @@ msgstr ""
 "WooCommerce-ի համար Germanized-ն օգտագործելիս պատվերի տեղադրման դիրքը միշտ "
 "սահմանվում է «Պատվերի ամփոփագրի տակ»։ Այդ հավելվածը պահանջում է, որ պատվերի "
 "տեղադրման կոճակը և օրինական նշատուփերը ցուցադրվեն պատվերի ամփոփագրի տակ։"
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Խմբագրել վերցման վայրերը"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Առաքում հասցեով"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Օգտագործեք WooCommerce-ի կարգավորումներից տեղական վերցման պիտակը"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Երբ միացված է, վճարման ժամանակ վերցման տարբերակի պիտակը համընկնում է "
+"WooCommerce վերցման վայրի կարգավորումների վերնագրի հետ: Երբ անջատված է, "
+"պիտակը օգտագործում է Fluid Checkout-ից թարգմանելի «Տեղական վերցում» տեքստը:"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

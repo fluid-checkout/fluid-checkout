@@ -3508,14 +3508,6 @@ msgstr "Cureyê radestkirinê yê xwerû"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Hilbijêre ka kîjan celeb radestkirin dê bi xwerû were hilbijartin."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Gemî"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Berguhkê rake"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Zeviyên herêma barkirinê"
@@ -4600,6 +4592,29 @@ msgstr ""
 "tim wekî &quot;Li jêr kurteya fermanê&quot; tê danîn. Ew pêvek hewce dike "
 "ku bişkoka danîna fermanê û qutiyên kontrolê yên qanûnî li jêr kurteya "
 "fermanê werin nîşandan."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Cihên wergirtinê biguherîne"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Şandin bo navnîşanê"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Etîketa wergirtina herêmî ji mîhengên WooCommerce bikar bînin"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Dema ku çalak be, etîketa vebijarka wergirtinê li ser dravdanê bi sernavê "
+"ji mîhengên cîhê wergirtinê ya WooCommerce re li hev dike. Dema ku neçalak "
+"be, etîket nivîsa &quot;Wergirtina Herêmî&quot; ya wergerbar ji Fluid "
+"Checkout bikar tîne."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

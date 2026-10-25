@@ -3576,14 +3576,6 @@ msgstr "Uri ng default na paghahatid"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Piliin kung aling uri ng paghahatid ang pipiliin bilang default."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Barko"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Pagkuha"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Mga patlang ng sona ng pagpapadala"
@@ -4685,6 +4677,29 @@ msgstr ""
 "ng order&quot; kapag ginagamit ang Germanized para sa WooCommerce. "
 "Kinakailangan ng plugin na iyon na maipakita ang button na place order at "
 "mga legal na checkbox sa ibaba ng buod ng order."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "I-edit ang mga lokasyon ng pagkuha"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Ipadala sa address"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Gamitin ang lokal na label ng pagkuha mula sa mga setting ng WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Kapag naka-enable, ang label ng opsyon sa pagkuha sa checkout ay tumutugma "
+"sa pamagat mula sa mga setting ng lokasyon ng pagkuha ng WooCommerce. Kapag "
+"naka-disable, gagamitin ng label ang maisasalin na tekstong &quot;Local "
+"pickup&quot; mula sa Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

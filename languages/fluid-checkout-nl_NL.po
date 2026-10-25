@@ -3662,14 +3662,6 @@ msgstr "Standaard bezorgwijze"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Kies welke bezorgwijze standaard wordt geselecteerd."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Schip"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Ophalen"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Velden voor verzendzones"
@@ -4771,6 +4763,29 @@ msgstr ""
 "bestelknop altijd ingesteld op „Onder het besteloverzicht“. Deze plug-in "
 "vereist dat de bestelknop en de wettelijk verplichte selectievakjes onder "
 "het besteloverzicht worden weergegeven."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Ophaallocaties bewerken"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Verzendadres"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Gebruik het label voor lokale afhaling uit de WooCommerce-instellingen"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Als deze optie is ingeschakeld, komt de tekst van het label voor afhalen "
+"bij het afrekenen overeen met de titel uit de instellingen voor "
+"afhaallocaties in WooCommerce. Als deze optie is uitgeschakeld, wordt voor "
+"het label de vertaalbare tekst „Lokaal afhalen“ uit Fluid Checkout gebruikt."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

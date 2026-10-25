@@ -3448,14 +3448,6 @@ msgstr "د سپارلو ډیفالټ ډول"
 msgid "Choose which delivery type will be selected by default."
 msgstr "غوره کړئ چې د تحویلۍ کوم ډول به په ډیفالټ ډول غوره شي."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "کښتۍ"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "پورته کول"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "د بار وړلو زون ساحې"
@@ -4509,6 +4501,28 @@ msgstr ""
 "د WooCommerce لپاره د Germanized کارولو پر مهال د ځای امر موقعیت تل &quot;د "
 "امر لنډیز لاندې&quot; ته ټاکل شوی وي. دا پلگ ان د ځای امر تڼۍ او قانوني چیک "
 "باکسونو ته اړتیا لري چې د امر لنډیز لاندې ښودل شي."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "د پورته کولو ځایونه سم کړئ"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "پتې ته ولېږئ"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "د WooCommerce ترتیباتو څخه د ځایی پک اپ لیبل وکاروئ"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"کله چې فعال شي، په چیک آوټ کې د پک اپ اختیار لیبل د WooCommerce د پک اپ "
+"موقعیت ترتیباتو څخه سرلیک سره سمون خوري. کله چې غیر فعال شي، لیبل د فلوډ "
+"چیک آوټ څخه د ژباړې وړ &quot;ځایي پک اپ&quot; متن کاروي."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

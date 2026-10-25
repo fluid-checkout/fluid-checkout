@@ -3541,14 +3541,6 @@ msgstr "ഡിഫോൾട്ട് ഡെലിവറി തരം"
 msgid "Choose which delivery type will be selected by default."
 msgstr "ഡിഫോൾട്ടായി ഏത് ഡെലിവറി തരം തിരഞ്ഞെടുക്കണമെന്ന് തിരഞ്ഞെടുക്കുക."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "കപ്പൽ"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "പുരോഗമിക്കുക"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "ഷിപ്പിംഗ് സോൺ ഫീൽഡുകൾ"
@@ -4647,6 +4639,29 @@ msgstr ""
 "എല്ലായ്പ്പോഴും &quot;ഓർഡർ സംഗ്രഹത്തിന് താഴെ&quot; ആയി "
 "സജ്ജീകരിച്ചിരിക്കുന്നു. ആ പ്ലഗിൻ ഓർഡർ സംഗ്രഹത്തിന് താഴെ പ്ലേസ് ഓർഡർ ബട്ടണും "
 "നിയമപരമായ ചെക്ക്‌ബോക്സുകളും പ്രദർശിപ്പിക്കേണ്ടതുണ്ട്."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "പിക്കപ്പ് ലൊക്കേഷനുകൾ എഡിറ്റ് ചെയ്യുക"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "വിലാസത്തിലേക്ക് അയയ്ക്കുക"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce ക്രമീകരണങ്ങളിൽ നിന്ന് ലോക്കൽ പിക്കപ്പ് ലേബൽ ഉപയോഗിക്കുക"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"പ്രവർത്തനക്ഷമമാക്കുമ്പോൾ, ചെക്ക്ഔട്ടിലെ പിക്കപ്പ് ഓപ്ഷൻ ലേബൽ WooCommerce "
+"പിക്കപ്പ് ലൊക്കേഷൻ ക്രമീകരണങ്ങളിൽ നിന്നുള്ള ശീർഷകവുമായി പൊരുത്തപ്പെടുന്നു. "
+"പ്രവർത്തനരഹിതമാക്കുമ്പോൾ, ലേബൽ ഫ്ലൂയിഡ് ചെക്ക്ഔട്ടിൽ നിന്നുള്ള വിവർത്തനം "
+"ചെയ്യാവുന്ന &quot;ലോക്കൽ പിക്കപ്പ്&quot; ടെക്സ്റ്റ് ഉപയോഗിക്കുന്നു."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

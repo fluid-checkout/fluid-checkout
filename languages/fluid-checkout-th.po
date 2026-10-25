@@ -3468,14 +3468,6 @@ msgstr "ประเภทการจัดส่งเริ่มต้น"
 msgid "Choose which delivery type will be selected by default."
 msgstr "เลือกประเภทการจัดส่งที่จะถูกเลือกโดยค่าเริ่มต้น"
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "เรือ"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "หยิบ"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "ช่องทางเขตการขนส่ง"
@@ -4562,6 +4554,29 @@ msgstr ""
 "ตำแหน่งการสั่งซื้อจะถูกตั้งค่าเป็น &quot;ด้านล่างสรุปคำสั่งซื้อ&quot; เสมอ "
 "ปลั๊กอินนี้ต้องการให้ปุ่มสั่งซื้อและช่องทำเครื่องหมายข้อกำหนดทางกฎหมายแสดงอย"
 "ู่ด้านล่างสรุปคำสั่งซื้อ"
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "แก้ไขสถานที่รับสินค้า"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "จัดส่งไปยังที่อยู่"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "ใช้ป้ายกำกับรับสินค้าด้วยตนเองจากการตั้งค่า WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"เมื่อเปิดใช้งาน "
+"ป้ายกำกับตัวเลือกรับสินค้าด้วยตนเองในหน้าชำระเงินจะตรงกับชื่อจากการตั้งค่าสถ"
+"านที่รับสินค้าของ WooCommerce เมื่อปิดใช้งาน ป้ายกำกับจะใช้ข้อความ "
+"&quot;รับสินค้าด้วยตนเอง&quot; ที่สามารถแปลได้จาก Fluid Checkout"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

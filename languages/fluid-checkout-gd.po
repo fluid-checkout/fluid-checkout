@@ -3593,14 +3593,6 @@ msgstr "Seòrsa lìbhrigidh bunaiteach"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Tagh dè an seòrsa lìbhrigidh a thèid a thaghadh gu bunaiteach."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Long"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Togail"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Achaidhean sòn luingeis"
@@ -4727,6 +4719,29 @@ msgstr ""
 "Gearmailtis airson WooCommerce. Feumaidh am plugan sin am putan "
 "òrduigh-àite agus bogsaichean-seic laghail a bhith air an taisbeanadh fon "
 "gheàrr-chunntas òrduigh."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Deasaich àiteachan togail"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Cuir gu seòladh"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Cleachd leubail togail ionadail bho roghainnean WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Nuair a bhios e comasach, bidh an leubail roghainn togail aig an "
+"àite-pàighidh a’ freagairt ris an tiotal bho roghainnean àite togail "
+"WooCommerce. Nuair a bhios e à comas, bidh an leubail a’ cleachdadh an "
+"teacsa “Togail ionadail” a ghabhas eadar-theangachadh bho Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -3512,14 +3512,6 @@ msgstr "డిఫాల్ట్ డెలివరీ రకం"
 msgid "Choose which delivery type will be selected by default."
 msgstr "డిఫాల్ట్‌గా ఏ డెలివరీ రకం ఎంపిక చేయబడాలో ఎంచుకోండి."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "ఓడ"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "పికప్"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "షిప్పింగ్ జోన్ ఫీల్డ్‌లు"
@@ -4607,6 +4599,29 @@ msgstr ""
 "ఎల్లప్పుడూ &quot;ఆర్డర్ సారాంశం క్రింద&quot;కు సెట్ చేయబడి ఉంటుంది. ఆ "
 "ప్లగిన్‌కు, ఆర్డర్ పెట్టే బటన్ మరియు చట్టపరమైన చెక్‌బాక్స్‌లు ఆర్డర్ "
 "సారాంశం క్రింద ప్రదర్శించబడాలి."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "పికప్ స్థానాలను సవరించండి"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "పంపవలసిన చిరునామా"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce సెట్టింగ్‌ల నుండి స్థానిక పికప్ లేబుల్‌ను ఉపయోగించండి"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"ఎనేబుల్ చేసినప్పుడు, చెక్అవుట్‌లోని పికప్ ఆప్షన్ లేబుల్, WooCommerce పికప్ "
+"లొకేషన్ సెట్టింగ్‌లలోని టైటిల్‌తో సరిపోలుతుంది. డిసేబుల్ చేసినప్పుడు, ఆ "
+"లేబుల్ Fluid Checkout నుండి అనువదించదగిన &quot;Local pickup&quot; "
+"టెక్స్ట్‌ను ఉపయోగిస్తుంది."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

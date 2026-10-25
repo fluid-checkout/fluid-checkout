@@ -3562,14 +3562,6 @@ msgstr "Tipo de entrega predefinido"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Escolha o tipo de entrega que será selecionado por predefinição."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Navio"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Recolha"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Campos da zona de envio"
@@ -4678,6 +4670,29 @@ msgstr ""
 "Esse plugin exige que o botão «Efetuar encomenda» e as caixas de seleção "
 "relativas aos termos legais sejam apresentados abaixo do resumo da "
 "encomenda."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Editar locais de recolha"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Endereço de entrega"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Utilizar a etiqueta de recolha local nas definições do WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Quando ativada, a etiqueta da opção de recolha no checkout corresponde ao "
+"título definido nas definições de local de recolha do WooCommerce. Quando "
+"desativada, a etiqueta utiliza o texto traduzível «Recolha local» do Fluid "
+"Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

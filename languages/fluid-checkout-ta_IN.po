@@ -3582,14 +3582,6 @@ msgstr ""
 "இயல்புநிலையாக எந்த விநியோக வகை தேர்ந்தெடுக்கப்பட வேண்டும் என்பதைத் "
 "தேர்வுசெய்யவும்."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "கப்பல்"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "பிக்கப்"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "கப்பல் மண்டல புலங்கள்"
@@ -4695,6 +4687,30 @@ msgstr ""
 "எப்போதும் &quot;ஆர்டர் சுருக்கத்திற்குக் கீழே&quot; என அமைக்கப்படுகிறது. "
 "அந்த பிளகினுக்கு, ஆர்டர் செய்யும் பொத்தானும் சட்டப்பூர்வ சரிபார்ப்புப் "
 "பெட்டிகளும் ஆர்டர் சுருக்கத்திற்குக் கீழே காட்டப்பட வேண்டும்."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "பிக்கப் இடங்களைத் திருத்தவும்"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "அனுப்ப வேண்டிய முகவரி"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce அமைப்புகளிலிருந்து உள்ளூர் பிக்கப் லேபிளைப் பயன்படுத்தவும்"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"இயக்கப்பட்டிருக்கும்போது, செக் அவுட்டில் உள்ள பிக்கப் விருப்ப லேபிள், "
+"WooCommerce பிக்கப் இருப்பிட அமைப்புகளில் உள்ள தலைப்புடன் பொருந்தும். "
+"முடக்கப்பட்டிருக்கும்போது, அந்த லேபிள் Fluid Checkout-இல் உள்ள "
+"மொழிபெயர்க்கக்கூடிய &quot;உள்ளூர் பிக்கப்&quot; என்ற உரையைப் "
+"பயன்படுத்துகிறது."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

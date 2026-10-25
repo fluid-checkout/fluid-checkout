@@ -3452,14 +3452,6 @@ msgstr "ડિફૉલ્ટ ડિલિવરી પ્રકાર"
 msgid "Choose which delivery type will be selected by default."
 msgstr "ડિફૉલ્ટ રૂપે કયો ડિલિવરી પ્રકાર પસંદ કરવામાં આવશે તે પસંદ કરો."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "જહાજ"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "પિકઅપ"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "શિપિંગ ઝોન ક્ષેત્રો"
@@ -4516,6 +4508,29 @@ msgstr ""
 "WooCommerce માટે જર્મનાઇઝ્ડનો ઉપયોગ કરતી વખતે પ્લેસ ઓર્ડર પોઝિશન હંમેશા "
 "&quot;ઓર્ડર સારાંશની નીચે&quot; પર સેટ કરેલી હોય છે. તે પ્લગઇન માટે ઓર્ડર "
 "સારાંશની નીચે પ્લેસ ઓર્ડર બટન અને કાનૂની ચેકબોક્સ પ્રદર્શિત કરવા જરૂરી છે."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "પિકઅપ સ્થાનોમાં ફેરફાર કરો"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "સરનામાં પર મોકલો"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce સેટિંગ્સમાંથી સ્થાનિક પિકઅપ લેબલનો ઉપયોગ કરો"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"જ્યારે સક્ષમ હોય, ત્યારે ચેકઆઉટ પર પિકઅપ વિકલ્પ લેબલ WooCommerce પિકઅપ "
+"સ્થાન સેટિંગ્સમાંથી શીર્ષક સાથે મેળ ખાય છે. જ્યારે અક્ષમ હોય, ત્યારે લેબલ "
+"ફ્લુઇડ ચેકઆઉટમાંથી અનુવાદ કરી શકાય તેવા &quot;સ્થાનિક પિકઅપ&quot; ટેક્સ્ટનો "
+"ઉપયોગ કરે છે."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

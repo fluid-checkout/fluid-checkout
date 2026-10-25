@@ -3446,14 +3446,6 @@ msgstr "Vaikimisi valitud kohaletoimetamise viis"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Valige, milline kohaletoimetamise viis on vaikimisi valitud."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Laev"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Kättesaamine"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Saadetiste tsoonide väljad"
@@ -4525,6 +4517,29 @@ msgstr ""
 "asukoht alati seatud valikule „Tellimuse kokkuvõtte all“. See plugin nõuab, "
 "et tellimuse esitamise nupp ja õiguslikud valikukastid kuvataks tellimuse "
 "kokkuvõtte all."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Muuda kättesaamiskohti"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Saaja aadress"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Kasuta WooCommerce’i seadistustest pärit kohaliku kättesaamise sildit"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Kui see on sisse lülitatud, vastab kassas kuvatav isikliku kättesaamise "
+"valiku silt pealkirjale, mis on määratud WooCommerce’i isikliku "
+"kättesaamise asukoha seadetes. Kui see on välja lülitatud, kasutatakse "
+"sildil Fluid Checkout’ist pärit tõlgitavat teksti „Isiklik kättesaamine”."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

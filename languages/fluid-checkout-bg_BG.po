@@ -3560,14 +3560,6 @@ msgstr "Стандартен начин на доставка"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Изберете кой тип доставка да бъде избран по подразбиране."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Кораб"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Вземане"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Полета за зони за доставка"
@@ -4671,6 +4663,29 @@ msgstr ""
 "поръчката“. Този плъгин изисква бутонът за потвърждаване на поръчката и "
 "отметъците за съгласие с правните условия да се показват под обобщението на "
 "поръчката."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Редактиране на местата за получаване"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Адрес за доставка"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Използвайте етикет за локално вземане от настройките на WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Когато тази опция е активирана, надписът на опцията за самовземане при "
+"финализиране на поръчката съвпада със заглавието от настройките за мястото "
+"на самовземане в WooCommerce. Когато е деактивирана, надписът използва "
+"преводимия текст „Самовземане на място“ от Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

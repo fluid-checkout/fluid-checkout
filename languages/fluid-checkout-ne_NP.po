@@ -3462,14 +3462,6 @@ msgstr "पूर्वनिर्धारित डेलिभरी प्�
 msgid "Choose which delivery type will be selected by default."
 msgstr "पूर्वनिर्धारित रूपमा कुन डेलिभरी प्रकार चयन गरिनेछ छनौट गर्नुहोस्।"
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "जहाज"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "पिकअप"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "ढुवानी क्षेत्र क्षेत्रहरू"
@@ -4530,6 +4522,28 @@ msgstr ""
 "WooCommerce को लागि Germanized प्रयोग गर्दा प्लेस अर्डर स्थिति सधैं "
 "&quot;अर्डर सारांशको तल&quot; मा सेट गरिएको हुन्छ। त्यो प्लगइनलाई अर्डर "
 "सारांशको तल प्लेस अर्डर बटन र कानुनी चेकबक्सहरू प्रदर्शन गर्न आवश्यक छ।"
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "पिकअप स्थानहरू सम्पादन गर्नुहोस्"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "ठेगानामा पठाउनुहोस्"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce सेटिङहरूबाट स्थानीय पिकअप लेबल प्रयोग गर्नुहोस्"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"सक्षम पार्दा, चेकआउटमा रहेको पिकअप विकल्प लेबलले WooCommerce पिकअप स्थान "
+"सेटिङहरूबाट शीर्षकसँग मेल खान्छ। असक्षम पार्दा, लेबलले Fluid Checkout बाट "
+"अनुवाद गर्न सकिने &quot;स्थानीय पिकअप&quot; पाठ प्रयोग गर्दछ।"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

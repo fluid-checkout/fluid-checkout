@@ -3514,14 +3514,6 @@ msgstr "Хүргэлтийн анхдагч төрөл"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Анхдагчаар ямар хүргэлтийн төрлийг сонгохоо сонгоно уу."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Хөлөг онгоц"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Авах"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Тээврийн бүсийн талбарууд"
@@ -4605,6 +4597,29 @@ msgstr ""
 "&quot;Захиалгын хураангуйгаас доош&quot; гэж тохируулдаг. Энэ залгаас нь "
 "захиалгын хураангуйгаас доош захиалга өгөх товчлуур болон хууль ёсны "
 "тэмдэглэгээний нүдийг харуулахыг шаарддаг."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Авах байршлыг засах"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Хаяг руу илгээх"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce тохиргооноос орон нутгийн авах шошгыг ашиглана уу"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Идэвхжүүлсэн үед төлбөр тооцооны хэсэгт байрлах авах сонголтын шошго нь "
+"WooCommerce авах байршлын тохиргооны гарчигтай тохирч байна. Идэвхгүй "
+"болгосон үед шошго нь Fluid Checkout-с орчуулж болох &quot;Орон нутгийн "
+"авах&quot; текстийг ашигладаг."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

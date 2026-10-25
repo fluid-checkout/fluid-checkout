@@ -3520,14 +3520,6 @@ msgstr "ნაგულისხმევი მიწოდების ტი�
 msgid "Choose which delivery type will be selected by default."
 msgstr "აირჩიეთ, მიწოდების რომელი ტიპი იქნება არჩეული სტანდარტულად."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "გემი"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "აღება"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "გადაზიდვის ზონის ველები"
@@ -4608,6 +4600,29 @@ msgstr ""
 "პოზიცია ყოველთვის დაყენებულია „შეკვეთის შეჯამების ქვემოთ“. ამ მოდულისთვის "
 "საჭიროა შეკვეთის განთავსების ღილაკის და იურიდიული ველების ჩვენება შეკვეთის "
 "შეჯამების ქვემოთ."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "აყვანის ადგილების რედაქტირება"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "მისამართზე გაგზავნა"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "გამოიყენეთ ადგილობრივი აღების ეტიკეტი WooCommerce-ის პარამეტრებიდან"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"ჩართვის შემთხვევაში, შეკვეთისას აღების ვარიანტის ეტიკეტი ემთხვევა "
+"WooCommerce-ის აღების ადგილმდებარეობის პარამეტრების სათაურს. გამორთვის "
+"შემთხვევაში, ეტიკეტი იყენებს Fluid Checkout-დან თარგმნად ტექსტს "
+"„ადგილობრივი აღება“."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

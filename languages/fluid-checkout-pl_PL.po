@@ -3656,14 +3656,6 @@ msgstr "Domyślny sposób dostawy"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Wybierz, który rodzaj dostawy ma być domyślnie wybierany."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Statek"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Odbiór"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Pola stref wysyłkowych"
@@ -4766,6 +4758,29 @@ msgstr ""
 "zamówienia”. Wtyczka ta wymaga, aby przycisk „Złóż zamówienie” oraz pola "
 "wyboru dotyczące informacji prawnych były wyświetlane poniżej podsumowania "
 "zamówienia."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Edytuj punkty odbioru"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Adres dostawy"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Użyj etykiety do odbioru osobistego z ustawień WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Gdy opcja jest włączona, etykieta opcji odbioru przy finalizacji zamówienia "
+"odpowiada tytułowi z ustawień lokalizacji odbioru w WooCommerce. Gdy opcja "
+"jest wyłączona, etykieta zawiera tekst „Odbiór lokalny” z modułu Fluid "
+"Checkout, który można przetłumaczyć."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

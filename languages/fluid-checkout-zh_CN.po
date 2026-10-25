@@ -3184,14 +3184,6 @@ msgstr "默认配送方式"
 msgid "Choose which delivery type will be selected by default."
 msgstr "选择默认选中的配送类型。"
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "船"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "取货"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "配送区域字段"
@@ -4146,6 +4138,27 @@ msgid ""
 msgstr ""
 "使用 Germanized for WooCommerce "
 "时，“提交订单”按钮的位置始终设置为“订单摘要下方”。该插件要求“提交订单”按钮和法律条款复选框显示在订单摘要下方。"
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "编辑取货地点"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "收货地址"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "在 WooCommerce 设置中使用本地自提标签"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"启用此选项后，结账页面上的自提选项标签将与 WooCommerce 自提地点设置中的标题一致。禁用此选项后，标签将使用 Fluid Checkout "
+"中可翻译的“本地自提”文本。"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

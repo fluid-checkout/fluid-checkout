@@ -3495,14 +3495,6 @@ msgstr "Noklusējuma piegādes veids"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Izvēlieties, kurš piegādes veids tiks izvēlēts pēc noklusējuma."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Kuģis"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Piegāde"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Piegādes zonas lauki"
@@ -4586,6 +4578,29 @@ msgstr ""
 "pozīcija vienmēr tiek iestatīta uz „Zem pasūtījuma kopsavilkuma“. Šis "
 "spraudnis prasa, lai pasūtījuma veikšanas poga un juridiskās atzīmes tiktu "
 "parādītas zem pasūtījuma kopsavilkuma."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Rediģēt preču saņemšanas vietas"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Piegādes adrese"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Izmanto vietējās saņemšanas etiķeti no WooCommerce iestatījumiem"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Ja šī funkcija ir ieslēgta, pasūtījuma apmaksas posmā redzamais saņemšanas "
+"opcijas nosaukums atbilst nosaukumam, kas norādīts WooCommerce saņemšanas "
+"vietas iestatījumos. Ja šī funkcija ir izslēgta, nosaukumā tiek izmantots "
+"tulkojams teksts „Saņemšana uz vietas” no Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

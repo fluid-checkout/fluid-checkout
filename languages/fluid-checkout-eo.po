@@ -3455,14 +3455,6 @@ msgstr "Defaŭlta livertipo"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Elektu, kiu livertipo estos elektita defaŭlte."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Ŝipo"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Prenado"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Kampoj de senda zono"
@@ -4533,6 +4525,29 @@ msgstr ""
 "mendresumo&quot; kiam oni uzas Germanized por WooCommerce. Tiu kromprogramo "
 "postulas, ke la butono por fari mendon kaj la laŭleĝaj markobutonoj estu "
 "montrataj sub la mendresumo."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Redakti kolektlokojn"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Sendu al adreso"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Uzu lokan kolektan etikedon el la agordoj de WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Kiam ebligita, la etikedo pri la elekto-opcio por reprenado ĉe la kaso "
+"kongruas kun la titolo el la agordoj de la loko por reprenado de "
+"WooCommerce. Kiam malebligita, la etikedo uzas la tradukeblan tekston "
+"&quot;Loka reprenado&quot; el Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -3518,14 +3518,6 @@ msgstr "Bidalketa mota lehenetsia"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Aukeratu zein entrega mota hautatuko den lehenespenez."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Itsasontzia"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Jasotzea"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Bidalketa-eremuaren eremuak"
@@ -4617,6 +4609,29 @@ msgstr ""
 "&quot;Eskaera laburpenaren azpian&quot; gisa ezartzen da. Plugin horrek "
 "eskaera egiteko botoia eta legezko kontrol-laukiak eskaera laburpenaren "
 "azpian bistaratzea eskatzen du."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Editatu bilketa-lekuak"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Helbidera bidali"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Erabili WooCommerce ezarpenetatik tokiko bilketa etiketa"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Gaituta dagoenean, ordainketa-prozesuko bilketa-aukeraren etiketa "
+"WooCommerce-ko bilketa-kokapenaren ezarpenetako izenburuarekin bat dator. "
+"Desgaituta dagoenean, etiketak Fluid Checkout-eko itzulgarria den "
+"&quot;Tokiko bilketa&quot; testua erabiltzen du."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

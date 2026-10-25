@@ -3678,14 +3678,6 @@ msgstr "Tipo de envío predeterminado"
 msgid "Choose which delivery type will be selected by default."
 msgstr "Elige qué tipo de entrega se seleccionará por defecto."
 
-#: inc/admin/admin-settings-local-pickup.php:98
-msgid "Ship"
-msgstr "Barco"
-
-#: inc/admin/admin-settings-local-pickup.php:99
-msgid "Pickup"
-msgstr "Recogida"
-
 #: inc/admin/admin-settings-local-pickup.php:112
 msgid "Shipping zone fields"
 msgstr "Campos de zonas de envío"
@@ -4802,6 +4794,29 @@ msgstr ""
 "resumen del pedido» cuando se utiliza Germanized para WooCommerce. Este "
 "complemento requiere que el botón «Realizar pedido» y las casillas de "
 "verificación legales se muestren debajo del resumen del pedido."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Editar puntos de recogida"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgid "Ship to address"
+msgstr "Dirección de envío"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Utiliza la etiqueta de recogida en tienda de la configuración de WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Cuando está activada, la etiqueta de la opción de recogida en caja coincide "
+"con el título de la configuración de la ubicación de recogida de "
+"WooCommerce. Cuando está desactivada, la etiqueta utiliza el texto "
+"traducible «Recogida local» de Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
