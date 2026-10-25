@@ -36,10 +36,8 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		// Enqueue assets
 		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
-		// Notice only. The settings page does not depend on WooCommerce being bootstrapped.
-		if ( ! $this->is_woocommerce_activated() ) {
-			add_filter( 'fc_admin_notices', array( $this, 'add_woocommerce_required_notice' ), 10 );
-		}
+		// WooCommerce dependency notice (checked when notices are built, not at load time)
+		add_filter( 'fc_admin_notices', array( $this, 'add_woocommerce_required_notice' ), 10 );
 	}
 
 	/**
@@ -297,6 +295,9 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	public function add_woocommerce_required_notice( $notices = array() ) {
 		// Bail if user does not have enough permissions
 		if ( ! current_user_can( 'install_plugins' ) ) { return $notices; }
+
+		// Bail if WooCommerce is already active (check at display time; WC may not be loaded yet during plugin bootstrap)
+		if ( $this->is_woocommerce_activated() ) { return $notices; }
 
 		$required_plugin_name = __( 'WooCommerce', 'fluid-checkout' );
 		$required_plugin_path_name = 'woocommerce/woocommerce.php';
