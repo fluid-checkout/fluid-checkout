@@ -4524,10 +4524,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "රැගෙන යාමේ ස්ථාන සංස්කරණය කරන්න"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "ලිපිනයට නැව්ගත කරන්න"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "WooCommerce සැකසුම් වලින් දේශීය පිකප් ලේබලය භාවිතා කරන්න."
@@ -4792,3 +4788,13 @@ msgstr "විකල්ප"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "අවශ්‍යයි"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "ලිපිනයට නැව්ගත කිරීම"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "දේශීය ලබා ගැනීම"

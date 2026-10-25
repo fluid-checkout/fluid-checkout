@@ -4646,10 +4646,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "Измени локације за преузимање"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Пошаљите на адресу"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "Користите локалну етикету за преузимање из подешавања WooCommerce-а"
@@ -4917,3 +4913,13 @@ msgstr "Опционо"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Обавезно"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Достава на адресу"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Локално преузимање"

@@ -4693,10 +4693,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "Editează locațiile de preluare"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Adresa de livrare"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "Utilizați eticheta de ridicare locală din setările WooCommerce"
@@ -4965,3 +4961,13 @@ msgstr "Opțional"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Obligatoriu"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Adresa de livrare"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Ridicare de la sediu"

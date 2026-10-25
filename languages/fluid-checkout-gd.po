@@ -4724,10 +4724,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "Deasaich àiteachan togail"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Cuir gu seòladh"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "Cleachd leubail togail ionadail bho roghainnean WooCommerce"
@@ -4995,3 +4991,13 @@ msgstr "Roghainneil"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Riatanach"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Luingearachd gu seòladh"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Togail ionadail"

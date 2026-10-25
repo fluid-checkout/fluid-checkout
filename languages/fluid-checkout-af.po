@@ -4875,9 +4875,9 @@ msgstr "Vereis"
 #: inc/admin/admin-settings-local-pickup.php:117
 msgctxt "Delivery type"
 msgid "Shipping to address"
-msgstr ""
+msgstr "Versending na adres"
 
 #: inc/admin/admin-settings-local-pickup.php:118
 msgctxt "Delivery type"
 msgid "Local pickup"
-msgstr ""
+msgstr "Plaaslike afhaal"

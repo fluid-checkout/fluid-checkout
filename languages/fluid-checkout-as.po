@@ -4533,10 +4533,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "পিকআপৰ স্থান সম্পাদনা কৰক"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "ঠিকনালৈ জাহাজ কৰক"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "WooCommerce ছেটিংছৰ পৰা স্থানীয় পিকআপ লেবেল ব্যৱহাৰ কৰক"
@@ -4801,3 +4797,13 @@ msgstr "বৈকল্পিক"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "প্ৰয়োজনীয়"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "ঠিকনালৈ শিপিং কৰা হৈছে"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "স্থানীয় পিকআপ"

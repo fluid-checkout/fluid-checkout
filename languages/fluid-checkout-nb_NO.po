@@ -4577,10 +4577,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "Rediger hentesteder"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Leveringsadresse"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "Bruk etikett for lokal henting fra WooCommerce-innstillingene"
@@ -4847,3 +4843,13 @@ msgstr "Valgfritt"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Påkrevd"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Leveringsadresse"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Lokal henting"

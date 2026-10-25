@@ -4515,10 +4515,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "پڪ اپ جي جڳهن کي تبديل ڪريو"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "پتي تي موڪليو"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "WooCommerce سيٽنگن مان مقامي پڪ اپ ليبل استعمال ڪريو"
@@ -4786,3 +4782,13 @@ msgstr "اختياري"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "گهربل"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "پتي تي پهچائڻ"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "مقامي پڪ اپ"

@@ -4740,10 +4740,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "Teslim alma noktalarını düzenle"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Teslimat adresi"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "WooCommerce ayarlarından yerel teslim alma etiketini kullanın"
@@ -5015,3 +5011,13 @@ msgstr "İsteğe bağlı"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Zorunlu"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Teslimat adresi"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Yerinden teslim alma"

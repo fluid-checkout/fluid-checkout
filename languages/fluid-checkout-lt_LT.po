@@ -4690,10 +4690,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "Redaguoti paėmimo vietas"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Pristatymo adresas"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "Naudokite vietinio atsiėmimo etiketę iš „WooCommerce“ nustatymų"
@@ -4962,3 +4958,13 @@ msgstr "Neprivaloma"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Privaloma"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Pristatymas į adresą"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Paėmimas vietoje"

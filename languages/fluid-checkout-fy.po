@@ -4607,10 +4607,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "Ophelplakken bewurkje"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Ferstjoere nei adres"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "Brûk it lokale ophellabel fanút WooCommerce-ynstellingen"
@@ -4878,3 +4874,13 @@ msgstr "Fakultatyf"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Ferplicht"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Ferstjoering nei adres"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Lokale ophelplak"

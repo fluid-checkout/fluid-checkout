@@ -4551,10 +4551,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "Breyta afhendingarstöðum"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Senda á heimilisfang"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "Nota staðbundna afhendingarmiða úr WooCommerce stillingum"
@@ -4822,3 +4818,13 @@ msgstr "Valfrjálst"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Nauðsynlegt"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Sending á heimilisfang"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Sækja á staðnum"

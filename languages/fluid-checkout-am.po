@@ -4568,9 +4568,9 @@ msgstr "ያስፈልጋል"
 #: inc/admin/admin-settings-local-pickup.php:117
 msgctxt "Delivery type"
 msgid "Shipping to address"
-msgstr ""
+msgstr "ወደ አድራሻው የሚላክ ጭነት"
 
 #: inc/admin/admin-settings-local-pickup.php:118
 msgctxt "Delivery type"
 msgid "Local pickup"
-msgstr ""
+msgstr "የአካባቢው ፒክአፕ"

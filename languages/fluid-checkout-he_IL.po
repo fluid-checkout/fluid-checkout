@@ -4380,10 +4380,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "עריכת מיקומי איסוף"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "לשלוח לכתובת"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "השתמש בתווית איסוף מקומית מהגדרות WooCommerce"
@@ -4648,3 +4644,13 @@ msgstr "אופציונלי"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "דָרוּשׁ"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "משלוח לכתובת"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "איסוף מקומי"

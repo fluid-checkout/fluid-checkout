@@ -4637,10 +4637,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "Editar os lugares de recollida"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Enviar a enderezo"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "Usar a etiqueta de recollida local desde a configuración de WooCommerce"
@@ -4906,3 +4902,13 @@ msgstr "Opcional"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Obrigatorio"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Envío a enderezo"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Recollida local"

@@ -4602,10 +4602,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "Upraviť miesta vyzdvihnutia"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Adresa doručenia"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "Použiť štítok na osobný odber z nastavení WooCommerce"
@@ -4874,3 +4870,13 @@ msgstr "Voliteľné"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Povinné"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Doručenie na adresu"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Osobný odber"

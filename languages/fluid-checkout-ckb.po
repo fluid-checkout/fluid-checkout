@@ -4597,10 +4597,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "Cihên wergirtinê biguherîne"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Şandin bo navnîşanê"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "Etîketa wergirtina herêmî ji mîhengên WooCommerce bikar bînin"
@@ -4868,3 +4864,13 @@ msgstr "Bixwe"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Pêwîst"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Şandin bo navnîşanê"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Wergirtina herêmî"

@@ -4513,10 +4513,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "ویرایش مکان‌های تحویل"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "ارسال به آدرس"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "استفاده از برچسب تحویل محلی از تنظیمات ووکامرس"
@@ -4783,3 +4779,13 @@ msgstr "اختیاری"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "مورد نیاز"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "ارسال به آدرس"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "وانت محلی"

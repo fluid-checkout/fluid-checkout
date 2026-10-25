@@ -4615,10 +4615,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "Алып кетүү жерлерин түзөтүү"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Дарекке жөнөтүү"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "WooCommerce жөндөөлөрүнөн жергиликтүү алып кетүү энбелгисин колдонуңуз"
@@ -4886,3 +4882,13 @@ msgstr "Кошумча"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Талап кылынат"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Дарекке жеткирүү"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Жергиликтүү алып кетүү"

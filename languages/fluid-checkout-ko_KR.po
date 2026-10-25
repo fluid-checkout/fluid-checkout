@@ -4228,10 +4228,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "수령 장소 편집"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "배송지 주소"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "WooCommerce 설정에서 ‘매장 수령’ 라벨 사용"
@@ -4496,3 +4492,13 @@ msgstr "선택 사항"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "필수"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "배송지 주소"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "매장 수령"

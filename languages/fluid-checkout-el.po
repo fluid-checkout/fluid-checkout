@@ -4854,10 +4854,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "Επεξεργασία σημείων παραλαβής"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Διεύθυνση αποστολής"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr ""
@@ -5131,3 +5127,13 @@ msgstr "Προαιρετικό"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Απαιτείται"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Διεύθυνση αποστολής"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Παραλαβή από το κατάστημα"

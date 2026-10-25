@@ -4662,10 +4662,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "I-edit ang mga lokasyon sa pagkuha"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Ipadala sa adres"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "Gamita ang lokal nga label sa pagkuha gikan sa mga setting sa WooCommerce"
@@ -4933,3 +4929,13 @@ msgstr "Opsyonal"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Gikinahanglan"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Pagpadala sa adres"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Lokal nga pagkuha"

@@ -4678,10 +4678,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "Olib ketish joylarini tahrirlash"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Manzilga yetkazib berish"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "WooCommerce sozlamalaridan mahalliy olib ketish yorlig&#39;idan foydalaning"
@@ -4949,3 +4945,13 @@ msgstr "Ixtiyoriy"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Majburiy"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Manzilga yetkazib berish"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Mahalliy olib ketish"

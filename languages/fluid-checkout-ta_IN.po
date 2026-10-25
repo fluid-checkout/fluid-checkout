@@ -4692,10 +4692,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "பிக்கப் இடங்களைத் திருத்தவும்"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "அனுப்ப வேண்டிய முகவரி"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "WooCommerce அமைப்புகளிலிருந்து உள்ளூர் பிக்கப் லேபிளைப் பயன்படுத்தவும்"
@@ -4964,3 +4960,13 @@ msgstr "விருப்பத்தேர்வு"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "தேவைப்படும்"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "அனுப்ப வேண்டிய முகவரி"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "உள்ளூர் பிக்கப்"

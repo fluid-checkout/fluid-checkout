@@ -4522,10 +4522,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "Muuda kättesaamiskohti"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "Saaja aadress"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "Kasuta WooCommerce’i seadistustest pärit kohaliku kättesaamise sildit"
@@ -4792,3 +4788,13 @@ msgstr "Vabatahtlik"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "Kohustuslik"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Saadetise aadress"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Kohapealne kättesaamine"

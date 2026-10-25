@@ -4584,10 +4584,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "កែសម្រួលទីតាំងទទួល"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "ផ្ញើទៅកាន់អាសយដ្ឋាន"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "ប្រើប្រាស់ស្លាកទទួលទំនិញក្នុងស្រុកពីការកំណត់ WooCommerce"
@@ -4855,3 +4851,13 @@ msgstr "ជាជម្រើស"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "តម្រូវឲ្យមាន"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "ការដឹកជញ្ជូនទៅកាន់អាសយដ្ឋាន"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "ការទទួលទំនិញក្នុងស្រុក"

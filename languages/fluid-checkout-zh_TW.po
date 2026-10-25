@@ -4142,10 +4142,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "編輯取貨地點"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "寄送到地址"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "使用 WooCommerce 設定中的本地取貨標籤"
@@ -4407,3 +4403,13 @@ msgstr "選修的"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "必需的"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "出貨至地址"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "本地自取"

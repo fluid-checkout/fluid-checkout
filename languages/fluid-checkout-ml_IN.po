@@ -4644,10 +4644,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "പിക്കപ്പ് ലൊക്കേഷനുകൾ എഡിറ്റ് ചെയ്യുക"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "വിലാസത്തിലേക്ക് അയയ്ക്കുക"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "WooCommerce ക്രമീകരണങ്ങളിൽ നിന്ന് ലോക്കൽ പിക്കപ്പ് ലേബൽ ഉപയോഗിക്കുക"
@@ -4915,3 +4911,13 @@ msgstr "ഓപ്ഷണൽ"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "ആവശ്യമാണ്"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "വിലാസത്തിലേക്ക് അയയ്ക്കുന്നു"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "പ്രാദേശിക പിക്കപ്പ്"

@@ -4605,10 +4605,6 @@ msgstr ""
 msgid "Edit pickup locations"
 msgstr "აყვანის ადგილების რედაქტირება"
 
-#: inc/admin/admin-settings-local-pickup.php:117
-msgid "Ship to address"
-msgstr "მისამართზე გაგზავნა"
-
 #: inc/admin/admin-settings-local-pickup.php:132
 msgid "Use local pickup label from WooCommerce settings"
 msgstr "გამოიყენეთ ადგილობრივი აღების ეტიკეტი WooCommerce-ის პარამეტრებიდან"
@@ -4876,3 +4872,13 @@ msgstr "არასავალდებულო"
 msgctxt "VAT number field visibility"
 msgid "Required"
 msgstr "სავალდებულო"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "მიწოდება მისამართზე"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "ადგილობრივი აღება"
