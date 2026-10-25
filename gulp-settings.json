@@ -57,18 +57,6 @@
 	},
 	"watch": [
 		[
-			"./sass/**/*.scss",
-			[
-				"build-css"
-			]
-		],
-		[
-			"./js-src/**/*.js",
-			[
-				"build-js"
-			]
-		],
-		[
 			"./blocks/**/*.*",
 			[
 				"npm-run-build"
