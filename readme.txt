@@ -13,7 +13,7 @@ Fluid Checkout is a free WooCommerce checkout plugin for more completed orders: 
 
 == Description ==
 
-**Get more completed orders from a WooCommerce checkout that's easy for first time buyers and faster for repeat purchases.**
+**Help more shoppers finish their order with a WooCommerce checkout that's easy for first time buyers and faster for repeat purchases.**
 
 Fluid Checkout Lite is a free WooCommerce checkout plugin that replaces the default checkout page with a mobile first, multi-step or one page checkout. Built to finish more orders, it asks for each piece of information at the right moment, shows fewer checkout fields, and still looks and feels like your own store.
 
@@ -21,7 +21,9 @@ Works with popular themes and payment gateways like Stripe and PayPal. Using the
 
 Built with accessibility in mind and designed to support WCAG 2.2 Level AA on the checkout page, so shoppers in the US, the EU and everywhere else can complete their order.
 
-Trusted by 20,000+ active WooCommerce sites.
+Trusted by thousands of active WooCommerce sites.
+
+Usage tracking is optional and off by default. You can preview the data before it is sent and turn it off at any time.
 
 = Live demo =
 
@@ -49,7 +51,7 @@ Cleanest and easiest checkout plugin on the market - it will save you a lot of h
 <strong> Insane how great this is!</strong>
 
 This plugin radically modernizes and cleans up the WooCommerce checkout.
-While doing a better job at UX & Conversion Optimization, it's also more compatible with plugins… even ahead of the new Gutenberg WooCommerce Checkout block that's been under development!
+While doing a better job at UX & Conversion Optimization, it's also more compatible with plugins.
 Quite insane how the developer is doing this. And a free plugin!!
 
 <cite>@allancaeg</cite>
@@ -88,7 +90,7 @@ Fluid Checkout PRO is one standalone plugin: all Lite features, all PRO features
 
 * **Shipping phone field**: Add a separate phone field for delivery questions, in addition to the billing phone field.
 
-* **Works with the WooCommerce Checkout block**: Fluid Checkout Lite 3.1.3 and newer automatically replaces the WooCommerce Checkout block with its own checkout form.
+* **Works with the WooCommerce Checkout block**: Fluid Checkout automatically replaces the WooCommerce Checkout block with its own checkout form.
 
 * **Better accessibility**: Support for keyboard navigation and screen readers on the checkout page.
 
@@ -103,9 +105,9 @@ Fluid Checkout PRO is a single plugin with everything for your checkout: all fea
 
 * **Address Book**: Customers can save multiple shipping and billing addresses, choose default ones, and pick a saved address at checkout and in the cart shipping calculator.
 
-* **Account matching**: Returning customers can check out as guests. No more "an account is already registered" error. The order is still linked to their existing account.
+* **Account matching**: Guests whose email already has an account can still check out. No more "an account is already registered" error. The order is still linked to their existing account.
 
-* **Delayed account creation**: No account fields to distract at checkout and no forced account, so more buyers finish their order. Customers can create an account after the order is placed.
+* **Delayed account creation**: No account fields to distract at checkout and no forced account, which can help more buyers finish their order. Customers can create an account after the order is placed.
 
 * **Optimized cart page and edit cart at checkout**: Cart contents and totals update automatically, with no "Update cart" button. Mobile friendly quantity buttons, inline stock messages, cross sells and a layout that matches your checkout. Customers can also change quantities or remove products right on the checkout page, so you might even skip the cart page.
 
@@ -117,7 +119,7 @@ Fluid Checkout PRO is a single plugin with everything for your checkout: all fea
 
 * **Thank you and order pay pages**: A clear order overview with relevant actions, an order status progress bar and payment instructions when needed. The same layout is used for orders in the customer account. The order pay page matches your checkout, with the most relevant order details at the top.
 
-* **Billing before shipping, or a single address**: Address options: ask for billing first, or use one address for both. Billing first works well for gifts and B2B orders.
+* **Billing first, or one address for both**: Choose the address order that fits your store. Billing first works well for gifts and B2B orders.
 
 * **International phone numbers**: Phone numbers with country code, checked for the right length.
 
@@ -297,7 +299,7 @@ Most payment gateways work out of the box, including popular ones such as Stripe
 
 = What is the best checkout plugin for WooCommerce? =
 
-The best checkout plugin is the one that helps your customers finish their order without changing how your store works. Look for a mobile first checkout, fewer checkout fields, guest checkout, and compatibility with your theme and payment gateways. Fluid Checkout covers all of these, is free to start with Fluid Checkout Lite, and is trusted by 20,000+ active WooCommerce sites.
+The best checkout plugin is the one that helps your customers finish their order without changing how your store works. Look for a mobile first checkout, fewer checkout fields, guest checkout, and compatibility with your theme and payment gateways. Fluid Checkout covers all of these, is free to start with Fluid Checkout Lite, and is trusted by thousands of active WooCommerce sites.
 
 
 = How can I speed up checkout and reduce abandoned carts in WooCommerce? =
@@ -312,7 +314,7 @@ Yes. Fluid Checkout Lite is free and lets you choose a one page checkout or a mu
 
 = Does Fluid Checkout work with the WooCommerce block based checkout? =
 
-Yes. Fluid Checkout Lite 3.1.3 and newer automatically replaces the WooCommerce Checkout block with its own checkout form, so you don't need to rebuild your checkout page. With the optimized cart page turned on, Fluid Checkout PRO 2.1.2 and newer does the same for the WooCommerce Cart block.
+Yes. Fluid Checkout automatically replaces the WooCommerce Checkout block with its own checkout form, so you don't need to rebuild your checkout page. With the optimized cart page turned on, Fluid Checkout PRO does the same for the WooCommerce Cart block.
 
 
 = Can I hide checkout fields? =
@@ -332,7 +334,7 @@ Yes, through your payment plugin. Google Pay, Apple Pay and other express button
 
 = What happens if I deactivate Fluid Checkout? =
 
-Your store goes back to the default WooCommerce checkout. Your Fluid Checkout settings are not deleted, so they are available again if you reactivate the plugin.
+Your store goes back to the default WooCommerce checkout. Fluid Checkout does not change or delete your settings or any other data when you deactivate or delete the plugin, so your settings are still there if you activate it again.
 
 
 = Is Fluid Checkout compatible with High-Performance Order Storage (HPOS)? =
@@ -381,9 +383,14 @@ Yes. Fluid Checkout is built to follow WCAG 2.2 Level AA on the checkout page, b
 We always strive to make Fluid Checkout better for accessibility. If you notice any accessibility issue on the checkout, please let us know through our [support page](https://fluidcheckout.com/support/) and we will fix it.
 
 
-= How do I add trust symbols to the checkout page? =
+= How do I add trust badges to the checkout page? =
 
-The plugin provides widget areas in strategic positions on the checkout page for adding the trust symbols. Head over to WP Admin > Appearance > Widget Areas, and add any type of widget to boost the perceived trust customers have on the website.
+The plugin provides widget areas in strategic positions on the checkout page for adding the trust badges. Head over to WP Admin > Appearance > Widget Areas, and add any type of widget to boost the perceived trust customers have on the website.
+
+
+= How do I get support? =
+
+Fluid Checkout Lite users can get help on our [support page](https://fluidcheckout.com/support/), which is the preferred way, or in the [support forum on WordPress.org](https://wordpress.org/support/plugin/fluid-checkout/). Fluid Checkout PRO users get priority support.
 
 
 == Screenshots ==
