@@ -31,12 +31,13 @@ class FluidCheckout_Admin_SettingType_Telemetry extends FluidCheckout {
 	 * @param array $value Admin settings args values.
 	 */
 	public function output_field( $value ) {
-		$renderer     = FluidCheckout_Admin_Settings_Renderer::instance();
-		$option_value = $value[ 'value' ];
-		$has_title    = '' !== $value[ 'title' ];
-		$is_disabled  = $renderer->is_field_disabled( $value );
-		$use_toggle   = $renderer->uses_toggle_checkboxes();
-		$label_text   = ! empty( $value[ 'desc' ] ) ? wp_kses_post( $value[ 'desc' ] ) : '';
+		$renderer              = FluidCheckout_Admin_Settings_Renderer::instance();
+		$option_value          = $value[ 'value' ];
+		$has_title             = '' !== $value[ 'title' ];
+		$disabled_by_constant  = FC_Telemetry_Client::is_disabled_by_constant();
+		$is_disabled           = $renderer->is_field_disabled( $value ) || $disabled_by_constant;
+		$use_toggle            = $renderer->uses_toggle_checkboxes();
+		$label_text            = ! empty( $value[ 'desc' ] ) ? wp_kses_post( $value[ 'desc' ] ) : '';
 
 		$renderer->output_field_start( $value, array( 'fieldset' => true, 'label_for' => false ) );
 		?>
@@ -73,17 +74,22 @@ class FluidCheckout_Admin_SettingType_Telemetry extends FluidCheckout {
 				<?php echo $label_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</label>
 		<?php endif; ?>
+		<?php if ( $disabled_by_constant ) : ?>
+			<p class="description"><?php echo esc_html( FC_Telemetry_Client::get_disabled_by_constant_message() ); ?></p>
+		<?php endif; ?>
 		<p class="fc-telemetry-enable-actions">
 			<button
 				type="button"
 				class="button button-secondary fc-telemetry-preview-button"
 				aria-haspopup="dialog"
-			><?php esc_html_e( 'Preview what would be sent', 'fluid-checkout' ); ?></button>
-			<button
-				type="button"
-				class="button button-secondary fc-telemetry-send-now-button"
-				<?php disabled( 'yes' !== $option_value ); ?>
-			><?php esc_html_e( 'Send now', 'fluid-checkout' ); ?></button>
+			><?php echo esc_html( $disabled_by_constant ? __( 'Preview data', 'fluid-checkout' ) : __( 'Preview what would be sent', 'fluid-checkout' ) ); ?></button>
+			<?php if ( ! $disabled_by_constant ) : ?>
+				<button
+					type="button"
+					class="button button-secondary fc-telemetry-send-now-button"
+					<?php disabled( 'yes' !== $option_value ); ?>
+				><?php esc_html_e( 'Send now', 'fluid-checkout' ); ?></button>
+			<?php endif; ?>
 		</p>
 		<p class="fc-telemetry-enable-actions__feedback is-hidden" aria-live="polite"></p>
 		<?php

@@ -52,26 +52,30 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 		// Bail if not on the settings screen
 		if ( ! $this->is_settings_screen() ) { return $settings; }
 
+		$disabled_by_constant = FC_Telemetry_Client::is_disabled_by_constant();
+
 		$settings[ 'telemetry' ] = array(
-			'ajaxUrl'        => admin_url( 'admin-ajax.php' ),
-			'nonce'          => wp_create_nonce( 'fc_telemetry_admin' ),
-			'isEnabledSaved' => 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_telemetry_enabled', 'no' ),
-			'i18n'           => array(
-				'modalTitle'       => __( 'Usage data preview', 'fluid-checkout' ),
-				'modalDescription' => __( 'This is the exact usage data that would be sent with your current choices.', 'fluid-checkout' ),
-				'loading'          => __( 'Loading preview...', 'fluid-checkout' ),
-				'loadError'        => __( 'Could not load the preview. Try again.', 'fluid-checkout' ),
-				'sendError'        => __( 'Could not send the usage data. Try again.', 'fluid-checkout' ),
-				'sendSuccess'      => __( 'Usage data sent.', 'fluid-checkout' ),
-				'sendNow'          => __( 'Send now', 'fluid-checkout' ),
-				'enableAndSendNow' => __( 'Turn on and send now', 'fluid-checkout' ),
-				'close'            => __( 'Close', 'fluid-checkout' ),
-				'inProgress'       => __( 'Usage data is already being sent. Try again in a moment.', 'fluid-checkout' ),
-				'disabled'         => __( 'Usage tracking is turned off.', 'fluid-checkout' ),
-				'emptyPayload'     => __( 'There is no usage data to send.', 'fluid-checkout' ),
-				'ineligibleDomain' => __( 'This site cannot send usage data. Local and development sites are excluded.', 'fluid-checkout' ),
-				'rateLimited'      => __( 'Usage data was sent recently. Try again later.', 'fluid-checkout' ),
-				'requestFailed'    => __( 'The usage data could not be sent. Try again later.', 'fluid-checkout' ),
+			'ajaxUrl'               => admin_url( 'admin-ajax.php' ),
+			'nonce'                 => wp_create_nonce( 'fc_telemetry_admin' ),
+			'isEnabledSaved'        => 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_telemetry_enabled', 'no' ),
+			'isDisabledByConstant'  => $disabled_by_constant,
+			'i18n'                  => array(
+				'modalTitle'         => __( 'Usage data preview', 'fluid-checkout' ),
+				'modalDescription'   => __( 'This is the exact usage data that would be sent with your current choices.', 'fluid-checkout' ),
+				'loading'            => __( 'Loading preview...', 'fluid-checkout' ),
+				'loadError'          => __( 'Could not load the preview. Try again.', 'fluid-checkout' ),
+				'sendError'          => __( 'Could not send the usage data. Try again.', 'fluid-checkout' ),
+				'sendSuccess'        => __( 'Usage data sent.', 'fluid-checkout' ),
+				'sendNow'            => __( 'Send now', 'fluid-checkout' ),
+				'enableAndSendNow'   => __( 'Turn on and send now', 'fluid-checkout' ),
+				'close'              => __( 'Close', 'fluid-checkout' ),
+				'inProgress'         => __( 'Usage data is already being sent. Try again in a moment.', 'fluid-checkout' ),
+				'disabled'           => __( 'Usage tracking is turned off.', 'fluid-checkout' ),
+				'emptyPayload'       => __( 'There is no usage data to send.', 'fluid-checkout' ),
+				'ineligibleDomain'   => __( 'This site cannot send usage data. Local and development sites are excluded.', 'fluid-checkout' ),
+				'rateLimited'        => __( 'Usage data was sent recently. Try again later.', 'fluid-checkout' ),
+				'requestFailed'      => __( 'The usage data could not be sent. Try again later.', 'fluid-checkout' ),
+				'disabledByConstant' => FC_Telemetry_Client::get_disabled_by_constant_message(),
 			),
 		);
 
@@ -85,6 +89,8 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 	 */
 	public function output_modal_markup() {
 		if ( ! $this->is_settings_screen() ) { return; }
+
+		$disabled_by_constant = FC_Telemetry_Client::is_disabled_by_constant();
 		?>
 		<div id="fc-telemetry-modal" class="fc-telemetry-modal" aria-hidden="true">
 			<div class="fc-telemetry-modal__backdrop" data-fc-telemetry-close></div>
@@ -94,13 +100,24 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 					<button type="button" class="fc-telemetry-modal__close" data-fc-telemetry-close aria-label="<?php esc_attr_e( 'Close', 'fluid-checkout' ); ?>">&times;</button>
 				</div>
 				<div class="fc-telemetry-modal__body">
-					<p class="description"><?php esc_html_e( 'This is the exact usage data that would be sent with your current choices.', 'fluid-checkout' ); ?></p>
+					<p class="description">
+						<?php
+						if ( $disabled_by_constant ) {
+							echo esc_html( FC_Telemetry_Client::get_disabled_by_constant_message() );
+						}
+						else {
+							esc_html_e( 'This is the exact usage data that would be sent with your current choices.', 'fluid-checkout' );
+						}
+						?>
+					</p>
 					<pre class="fc-telemetry-modal__payload" aria-live="polite"></pre>
 					<p class="fc-telemetry-modal__feedback is-hidden"></p>
 				</div>
 				<div class="fc-telemetry-modal__footer">
 					<button type="button" class="button" data-fc-telemetry-close><?php esc_html_e( 'Close', 'fluid-checkout' ); ?></button>
-					<button type="button" class="button button-primary fc-telemetry-modal__send-button is-hidden"><?php esc_html_e( 'Send now', 'fluid-checkout' ); ?></button>
+					<?php if ( ! $disabled_by_constant ) : ?>
+						<button type="button" class="button button-primary fc-telemetry-modal__send-button is-hidden"><?php esc_html_e( 'Send now', 'fluid-checkout' ); ?></button>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
@@ -156,6 +173,17 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 	 */
 	public function ajax_send_telemetry_now() {
 		$this->verify_ajax_request();
+
+		// Bail before a manual send when usage tracking is turned off in wp-config.php
+		if ( FC_Telemetry_Client::is_disabled_by_constant() ) {
+			wp_send_json_error(
+				array(
+					'message'    => FC_Telemetry_Client::get_disabled_by_constant_message(),
+					'error_code' => 'disabled_by_constant',
+				),
+				400
+			);
+		}
 
 		$groups = $this->get_request_data_groups();
 
@@ -260,12 +288,13 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 	 */
 	private function get_send_error_message( $result ) {
 		$messages = array(
-			'in_progress'        => __( 'Usage data is already being sent. Try again in a moment.', 'fluid-checkout' ),
-			'disabled'           => __( 'Usage tracking is turned off.', 'fluid-checkout' ),
-			'empty_payload'      => __( 'There is no usage data to send.', 'fluid-checkout' ),
-			'ineligible_domain'  => __( 'This site cannot send usage data. Local and development sites are excluded.', 'fluid-checkout' ),
-			'rate_limited'       => __( 'Usage data was sent recently. Try again later.', 'fluid-checkout' ),
-			'request_failed'     => __( 'The usage data could not be sent. Try again later.', 'fluid-checkout' ),
+			'in_progress'          => __( 'Usage data is already being sent. Try again in a moment.', 'fluid-checkout' ),
+			'disabled'             => __( 'Usage tracking is turned off.', 'fluid-checkout' ),
+			'empty_payload'        => __( 'There is no usage data to send.', 'fluid-checkout' ),
+			'ineligible_domain'    => __( 'This site cannot send usage data. Local and development sites are excluded.', 'fluid-checkout' ),
+			'rate_limited'         => __( 'Usage data was sent recently. Try again later.', 'fluid-checkout' ),
+			'request_failed'       => __( 'The usage data could not be sent. Try again later.', 'fluid-checkout' ),
+			'disabled_by_constant' => FC_Telemetry_Client::get_disabled_by_constant_message(),
 		);
 
 		$error_code = $result['error_code'] ?? 'request_failed';

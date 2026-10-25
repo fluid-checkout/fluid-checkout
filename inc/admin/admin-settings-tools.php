@@ -80,6 +80,7 @@ class FluidCheckout_Settings_Tools {
 				'data-conditional-id'    => 'fc_telemetry_enabled',
 				'data-conditional-value' => 'yes',
 			);
+			$telemetry_disabled_by_constant = FC_Telemetry_Client::is_disabled_by_constant();
 
 			$settings = array(
 
@@ -97,6 +98,7 @@ class FluidCheckout_Settings_Tools {
 					'id'              => 'fc_telemetry_enabled',
 					'type'            => 'fc_telemetry_enable',
 					'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_telemetry_enabled' ),
+					'disabled'        => $telemetry_disabled_by_constant,
 					'autoload'        => false,
 				),
 				array(
@@ -380,6 +382,12 @@ class FluidCheckout_Settings_Tools {
 
 		$api_url = FluidCheckout::get_telemetry_api_url();
 		$config  = FC_Telemetry_Client::get_telemetry_config( $api_url );
+
+		// Clear the schedule on save without changing the saved choice
+		if ( FC_Telemetry_Client::is_disabled_by_constant() ) {
+			FC_Telemetry_Client::unschedule_telemetry_cron( $api_url );
+			return;
+		}
 
 		// Maybe schedule telemetry cron if enabled
 		if ( FC_Telemetry_Client::is_telemetry_enabled( $api_url ) ) {

@@ -46,6 +46,9 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 	 * Whether the telemetry opt-in prompt should be shown.
 	 */
 	public function should_show_telemetry_prompt() {
+		// Bail if usage tracking is turned off in wp-config.php, whether or not the notice was dismissed
+		if ( FC_Telemetry_Client::is_disabled_by_constant() ) { return false; }
+
 		// Bail if user does not have enough permissions
 		if ( ! current_user_can( 'install_plugins' ) ) { return false; }
 
@@ -162,6 +165,9 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 	 * Enable site report telemetry and schedule the weekly cron.
 	 */
 	public function enable_telemetry() {
+		// Bail without changing the saved choice when usage tracking is turned off in wp-config.php
+		if ( FC_Telemetry_Client::is_disabled_by_constant() ) { return; }
+
 		// Bail if telemetry client class is not available
 		if ( ! class_exists( 'FC_Telemetry_Client' ) ) { return; }
 
@@ -187,6 +193,9 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 	 * Maybe enable telemetry from an admin request.
 	 */
 	public function maybe_handle_enable_request() {
+		// Bail if usage tracking is turned off in wp-config.php
+		if ( FC_Telemetry_Client::is_disabled_by_constant() ) { return; }
+
 		// Bail if not an enable request
 		if ( ! array_key_exists( 'fc_action', $_GET ) || 'enable_telemetry' !== sanitize_text_field( wp_unslash( $_GET['fc_action'] ) ) ) { return; }
 

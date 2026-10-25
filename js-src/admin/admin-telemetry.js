@@ -49,6 +49,7 @@
 		sendContextInline:                    'inline',
 		enabledYesValue:                      'yes',
 		enabledNoValue:                       'no',
+		isDisabledByConstant:                 false,
 
 		ajaxUrl:                              '',
 		nonce:                                '',
@@ -65,6 +66,7 @@
 			ineligibleDomain:                 'This site cannot send usage data. Local and development sites are excluded.',
 			rateLimited:                      'Usage data was sent recently. Try again later.',
 			requestFailed:                    'The usage data could not be sent. Try again later.',
+			disabledByConstant:               'Usage tracking is turned off by the FC_DISABLE_TELEMETRY constant in wp-config.php.',
 		},
 	};
 
@@ -176,12 +178,13 @@
 
 		errorCode = data.error_code || '';
 		messagesByCode = {
-			rate_limited:      _settings.i18n.rateLimited,
-			in_progress:       _settings.i18n.inProgress,
-			disabled:          _settings.i18n.disabled,
-			empty_payload:     _settings.i18n.emptyPayload,
-			ineligible_domain: _settings.i18n.ineligibleDomain,
-			request_failed:    _settings.i18n.requestFailed,
+			rate_limited:         _settings.i18n.rateLimited,
+			in_progress:          _settings.i18n.inProgress,
+			disabled:             _settings.i18n.disabled,
+			empty_payload:        _settings.i18n.emptyPayload,
+			ineligible_domain:    _settings.i18n.ineligibleDomain,
+			request_failed:       _settings.i18n.requestFailed,
+			disabled_by_constant: _settings.i18n.disabledByConstant,
 		};
 
 		// Maybe return a mapped error code message
@@ -336,6 +339,14 @@
 		var label = enabled
 			? ( _settings.i18n.sendNow || 'Send now' )
 			: ( _settings.i18n.enableAndSendNow || 'Turn on and send now' );
+
+		// Bail if usage tracking is turned off in wp-config.php
+		if ( true === _settings.isDisabledByConstant ) {
+			if ( _sendButton ) {
+				_sendButton.classList.add( _settings.isHiddenClass );
+			}
+			return;
+		}
 
 		// Bail if send button is missing
 		if ( ! _sendButton ) { return; }
@@ -595,6 +606,9 @@
 		var feedbackTarget;
 
 		e.preventDefault();
+
+		// Bail if usage tracking is turned off in wp-config.php
+		if ( true === _settings.isDisabledByConstant ) { return; }
 
 		context = context || _settings.sendContextModal;
 		formState = getFormState();
