@@ -8,7 +8,7 @@ Domain Path: /languages
 Version: 5.0.0-alpha-5
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
-WC requires at least: 5.0
+WC requires at least: 6.5
 WC tested up to: 11.3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
@@ -33,7 +33,7 @@ defined( 'ABSPATH' ) || exit;
 
 
 
-// Maybe load if was not already loaded
+// Only load if not already loaded
 if ( ! class_exists( 'FluidCheckout' ) ) {
 
 	// Plugin activation and deactivation
