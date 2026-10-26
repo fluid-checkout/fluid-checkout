@@ -92,7 +92,7 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 			array(
 				'id'    => 'tracking',
 				/* translators: %s: Tools settings URL. */
-				'label' => sprintf( __( 'Usage tracking is optional and off by default. <a href="%s">Review usage tracking</a> in the tools settings. You can preview the data and turn it off at any time.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'tools' ) ) ),
+				'label' => sprintf( __( 'Get faster support and help us improve compatibility and measure impact. Usage tracking is optional and off by default. <a href="%s">Review usage tracking</a> in the tools settings. You can preview the data and turn it off at any time.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'tools' ) ) ),
 			),
 		);
 

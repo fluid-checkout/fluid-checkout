@@ -9,9 +9,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 	class FC_Telemetry_Client {
 
 		/**
-		 * wp-config.php constant that turns usage tracking off.
-		 *
-		 * @since 5.0.0
+		 * PHP constant that turns off usage tracking.
 		 */
 		const DISABLE_CONSTANT = 'FC_DISABLE_TELEMETRY';
 

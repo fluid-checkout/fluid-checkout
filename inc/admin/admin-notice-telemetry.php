@@ -46,7 +46,7 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 	 * Whether the telemetry opt-in prompt should be shown.
 	 */
 	public function should_show_telemetry_prompt() {
-		// Bail if usage tracking is turned off in wp-config.php, whether or not the notice was dismissed
+		// Bail if usage tracking is turned off in PHP constant, whether or not the notice was dismissed
 		if ( FC_Telemetry_Client::is_disabled_by_constant() ) { return false; }
 
 		// Bail if user does not have enough permissions
