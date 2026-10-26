@@ -75,6 +75,7 @@
 	 * @param  {Element}  field  CSS value field element.
 	 */
 	var syncSwatch = function( field ) {
+		// Get the swatch and the input of the field
 		var swatch = field.querySelector( _settings.swatchSelector );
 		var input = field.querySelector( _settings.inputSelector );
 
@@ -107,6 +108,7 @@
 	 * @param  {Element}  field  CSS value field element.
 	 */
 	var syncError = function( field ) {
+		// Get the input and the error of the field
 		var input = field.querySelector( _settings.inputSelector );
 		var error = field.parentNode.querySelector( _settings.errorSelector );
 		var isValid;
@@ -125,6 +127,7 @@
 	 * Show the errors of all CSS value fields with values that are not valid, such as values saved before the browser checked them.
 	 */
 	var syncErrors = function() {
+		// Get the CSS value fields
 		var fields = document.querySelectorAll( _settings.fieldSelector );
 		var i;
 
@@ -142,6 +145,7 @@
 	 * @param  {Event}  e  Input event.
 	 */
 	var handleInput = function( e ) {
+		// Get the CSS value field of the event
 		var field = e.target.closest( _settings.fieldSelector );
 
 		// Bail if the event is not from a CSS value field
@@ -181,6 +185,7 @@
 	 * @param  {Event}  e  Click event.
 	 */
 	var handleClick = function( e ) {
+		// Get the clicked clear button
 		var button = e.target.closest( _settings.clearSelector );
 		var field;
 		var input;
@@ -206,6 +211,7 @@
 	 * Show the colors of all CSS value fields on their swatches, also for values the server cannot convert to hex colors.
 	 */
 	_publicMethods.syncSwatches = function() {
+		// Get the CSS value fields
 		var fields = document.querySelectorAll( _settings.fieldSelector );
 		var i;
 
@@ -222,6 +228,7 @@
 	 * @return  {boolean}         Whether the value is valid, also when it is empty or the input has no CSS property to check.
 	 */
 	_publicMethods.isValidValue = function( input ) {
+		// Get the CSS property to check, and the value
 		var property = input.getAttribute( _settings.propertyAttribute );
 		var value = input.value.trim();
 

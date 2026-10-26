@@ -37,7 +37,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	private $tab_preview_modes = null;
 
 	/**
-	 * Settings tab, or the slug of another admin page, whose preview pane configuration the preview script gets, set when enqueueing its assets.
+	 * Settings tab, or the slug of another admin page, whose preview pane configuration the preview script gets, set before enqueueing its assets.
 	 *
 	 * @var string|null
 	 */
@@ -250,14 +250,10 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	}
 
 	/**
-	 * Enqueue preview assets, with the preview pane configuration of a settings tab or of another admin page that outputs the preview.
-	 *
-	 * @param  string  $tab  Settings tab slug, or the slug another admin page uses for its preview pane configuration.
+	 * Enqueue preview assets.
 	 */
-	public function enqueue_assets( $tab ) {
-		// Remember the tab, whose preview pane configuration the preview script gets
-		$this->preview_tab = $tab;
-
+	public function enqueue_assets() {
+		// Scripts
 		wp_enqueue_script( 'fc-admin-settings-preview' );
 	}
 
@@ -276,7 +272,19 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		// Bail if not on the Fluid Checkout settings page
 		if ( ! $page->is_settings_page() ) { return; }
 
-		$this->enqueue_assets( $page->get_current_tab() );
+		// Set the tab whose preview pane configuration the preview script gets
+		$this->set_preview_tab( $page->get_current_tab() );
+
+		$this->enqueue_assets();
+	}
+
+	/**
+	 * Set the settings tab, or the slug another admin page uses for its preview pane configuration, whose configuration the preview script gets.
+	 *
+	 * @param  string  $tab  Settings tab slug, or the slug another admin page uses for its preview pane configuration.
+	 */
+	public function set_preview_tab( $tab ) {
+		$this->preview_tab = $tab;
 	}
 
 	/**

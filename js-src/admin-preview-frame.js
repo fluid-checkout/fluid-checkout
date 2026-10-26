@@ -516,18 +516,23 @@
 	 * @param {Array}          colorSchemes  Color schemes to read the values for, `light` or `dark`.
 	 */
 	var sendComputedCssVariables = function( requestId, className, names, colorSchemes ) {
-		var probe = document.createElement( 'div' );
-		var colorScheme = _colorScheme;
-		var cssVariables = _cssVariables;
 		var values = {};
+		var probe;
+		var colorScheme;
+		var cssVariables;
 		var computedStyle;
 		var i;
 		var j;
 
 		// Add the hidden element with the class
+		probe = document.createElement( 'div' );
 		probe.className = className;
 		probe.hidden = true;
 		document.body.appendChild( probe );
+
+		// Remember the color scheme and the CSS variables set by the admin page, restored after reading the values
+		colorScheme = _colorScheme;
+		cssVariables = _cssVariables;
 
 		// Read the values, restoring the page preview afterwards
 		try {

@@ -672,13 +672,15 @@
 	 * @param   {boolean}  isDismissed  Whether to dismiss the message, or show it again.
 	 */
 	var setMovedSettingMessageDismissed = function( button, isDismissed ) {
-		var message = button.closest( _settings.movedMessageSelector );
-		var formData = new FormData();
+		var message;
+		var formData;
 
 		// Prevent sending the request twice
 		button.disabled = true;
 
-		// Get the request data
+		// Get the request data, with the setting of the message
+		message = button.closest( _settings.movedMessageSelector );
+		formData = new FormData();
 		formData.append( 'action', _settings.movedMessageAction );
 		formData.append( 'nonce', _settings.movedMessageNonce );
 		formData.append( 'option_name', message.getAttribute( _settings.movedMessageAttribute ) );
@@ -915,6 +917,7 @@
 		// Bail if the field is not a setting of the settings form
 		if ( ! field.name || ! field.form || ! field.form.matches( _settings.formSelector ) || ! field.closest( _settings.settingsTabSelector ) ) { return; }
 
+		// Remember the unsaved changes
 		_hasUnsavedChanges = true;
 	};
 
@@ -1192,6 +1195,7 @@
 		// Mark the changes as saved now, so changes made while saving stay unsaved
 		_hasUnsavedChanges = false;
 
+		// Get the settings form values, with the names of its fields
 		formData = _publicMethods.getFormData( form );
 		formData.append( 'action', _settings.saveAction );
 
@@ -1518,6 +1522,7 @@
 	 * @return  {FormData}        Values and field names of the form.
 	 */
 	_publicMethods.getFormData = function( form ) {
+		// Get the values of the form
 		var formData = new FormData( form );
 		var fieldNames = {};
 		var i;

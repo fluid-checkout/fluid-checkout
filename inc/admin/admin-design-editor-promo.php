@@ -73,7 +73,9 @@ class FluidCheckout_Admin_DesignEditorPromo extends FluidCheckout {
 		if ( ! is_admin() ) { return false; }
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		return isset( $_GET[ 'page' ] ) && self::PAGE_SLUG === sanitize_text_field( wp_unslash( $_GET[ 'page' ] ) );
+		$page = isset( $_GET[ 'page' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'page' ] ) ) : '';
+
+		return self::PAGE_SLUG === $page;
 	}
 
 	/**

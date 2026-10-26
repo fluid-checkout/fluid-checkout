@@ -567,6 +567,7 @@
 	 * @param  {string}   value      URL or HTML of the document.
 	 */
 	var loadFrameDocument = function( frame, attribute, value ) {
+		// Get a copy of the iframe
 		var newFrame = frame.cloneNode( false );
 
 		// Set the document of the new iframe, before it is in the page
@@ -845,6 +846,7 @@
 	 * @param  {Object}         values     Computed values by color scheme and CSS variable name.
 	 */
 	var resolveComputedCssVariablesRequest = function( requestId, values ) {
+		// Get the request
 		var request = _computedCssVariablesRequests[ requestId ];
 
 		// Bail if the request is already resolved
@@ -972,6 +974,7 @@
 			// Bail if the header and footer are already visible
 			if ( _isHeaderFooterVisible ) { return; }
 
+			// Show the header and footer, remembering that the tab shows them
 			setHeaderFooterVisible( true );
 			_isHeaderFooterShownForTab = true;
 		}

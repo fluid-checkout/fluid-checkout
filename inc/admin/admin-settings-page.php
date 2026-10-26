@@ -569,7 +569,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		// Maybe keep all settings except those moved to another page, when the form does not send its field names
 		if ( empty( $field_names ) ) {
 			$settings = array_filter( $settings, function( $setting ) {
-				return ! FluidCheckout_Settings::instance()->is_settings_field_moved( $setting );
+				return ! $this->is_settings_field_moved( $setting );
 			} );
 		}
 		// Otherwise, keep the settings of the fields in the form
@@ -717,6 +717,39 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 
 	/**
+	 * Move a settings field to another page, so the settings page shows a message with a link to its new place instead of the field.
+	 * Other pages that show the field, such as its new place, still show and save it.
+	 *
+	 * @param  array   $settings     Admin settings argument values.
+	 * @param  string  $option_name  Option name of the settings field to move.
+	 * @param  array   $moved        Where the settings field moved: the `url` of its new place, and optionally the `text` of the message, with `%s` for the link, and the `link_text`.
+	 */
+	public function move_settings_field( $settings, $option_name, $moved ) {
+		// Bail if the settings arguments are not valid
+		if ( ! is_array( $settings ) ) { return $settings; }
+
+		// Iterate settings
+		foreach ( $settings as $key => $setting_args ) {
+			// Skip settings other than the target settings field
+			if ( ! is_array( $setting_args ) || ! array_key_exists( 'id', $setting_args ) || $option_name !== $setting_args[ 'id' ] ) { continue; }
+
+			// Move the settings field
+			$settings[ $key ][ 'moved' ] = $moved;
+		}
+
+		return $settings;
+	}
+
+	/**
+	 * Check whether a settings field was moved to another page.
+	 *
+	 * @param  array  $setting_args  Settings field arguments.
+	 */
+	public function is_settings_field_moved( $setting_args ) {
+		return is_array( $setting_args ) && ! empty( $setting_args[ 'moved' ][ 'url' ] );
+	}
+
+	/**
 	 * Check whether the message of a setting moved to another page was dismissed.
 	 *
 	 * @param  string  $option_name  Option name of the setting.
@@ -744,7 +777,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			// Iterate settings of the tab
 			foreach ( $this->get_tab_settings( $tab ) as $setting ) {
 				// Skip other settings, and settings that did not move
-				if ( ! isset( $setting[ 'id' ] ) || $option_name !== $setting[ 'id' ] || ! FluidCheckout_Settings::instance()->is_settings_field_moved( $setting ) ) { continue; }
+				if ( ! isset( $setting[ 'id' ] ) || $option_name !== $setting[ 'id' ] || ! $this->is_settings_field_moved( $setting ) ) { continue; }
 
 				// Dismiss the message, or show it again
 				FluidCheckout_AdminNotices::instance()->set_dismissed( self::MOVED_SETTING_NOTICE_PREFIX . $option_name, $is_dismissed );

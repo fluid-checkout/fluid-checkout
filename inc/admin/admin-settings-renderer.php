@@ -310,7 +310,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		$field_type = $value[ 'type' ];
 
 		// Maybe output the message of a field moved to another page in place of the field, on the settings page it moved from
-		if ( FluidCheckout_Settings::instance()->is_settings_field_moved( $value ) && FluidCheckout_Admin_Settings_Page::instance()->is_settings_page() ) {
+		if ( FluidCheckout_Admin_Settings_Page::instance()->is_settings_field_moved( $value ) && FluidCheckout_Admin_Settings_Page::instance()->is_settings_page() ) {
 			// Maybe output the message, unless it was dismissed
 			if ( ! FluidCheckout_Admin_Settings_Page::instance()->is_moved_setting_message_dismissed( $value[ 'id' ] ) ) {
 				$this->output_field_moved_message( $value );
@@ -385,6 +385,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		/* translators: %s: Settings field title. */
 		$dismiss_label = sprintf( __( 'Dismiss the message of %s', 'fluid-checkout' ), $value[ 'title' ] );
 
+		// Output the message in place of the field
 		$this->output_field_start( $value, array( 'label_for' => false, 'tooltip' => false ) );
 		?>
 		<?php // Keep the custom attributes of the field, such as its conditions, so the message shows where the field would ?>

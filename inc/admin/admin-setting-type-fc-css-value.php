@@ -31,6 +31,7 @@ class FluidCheckout_Admin_SettingType_CssValue extends FluidCheckout {
 	 * @param   array  $value  Admin settings argument values, with the optional `swatch` and `css_property` arguments.
 	 */
 	public function output_field( $value ) {
+		// Get the field arguments
 		$renderer = FluidCheckout_Admin_Settings_Renderer::instance();
 		$field_description = $renderer->get_field_description( $value );
 		$field_html_id = $renderer->get_field_html_id( $value );
@@ -56,6 +57,7 @@ class FluidCheckout_Admin_SettingType_CssValue extends FluidCheckout {
 		/* translators: %s: Settings field title. */
 		$clear_label = sprintf( __( 'Clear %s', 'fluid-checkout' ), $value[ 'title' ] );
 
+		// Output the field, with its color swatch and clear button
 		$renderer->output_field_start( $value );
 		?>
 		<span class="fc-settings-input-group fc-settings-css-value" data-fc-settings-css-value>

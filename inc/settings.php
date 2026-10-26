@@ -1354,41 +1354,6 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 		return null;
 	}
 
-
-
-	/**
-	 * Move a settings field to another page, so the settings page shows a message with a link to its new place instead of the field.
-	 * Other pages that show the field, such as its new place, still show and save it.
-	 *
-	 * @param  array   $settings     Admin settings argument values.
-	 * @param  string  $option_name  Option name of the settings field to move.
-	 * @param  array   $moved        Where the settings field moved: the `url` of its new place, and optionally the `text` of the message, with `%s` for the link, and the `link_text`.
-	 */
-	public function move_settings_field( $settings, $option_name, $moved ) {
-		// Bail if the settings arguments are not valid
-		if ( ! is_array( $settings ) ) { return $settings; }
-
-		// Iterate settings
-		foreach ( $settings as $key => $setting_args ) {
-			// Skip settings other than the target settings field
-			if ( ! is_array( $setting_args ) || ! array_key_exists( 'id', $setting_args ) || $option_name !== $setting_args[ 'id' ] ) { continue; }
-
-			// Move the settings field
-			$settings[ $key ][ 'moved' ] = $moved;
-		}
-
-		return $settings;
-	}
-
-	/**
-	 * Check whether a settings field was moved to another page.
-	 *
-	 * @param  array  $setting_args  Settings field arguments.
-	 */
-	public function is_settings_field_moved( $setting_args ) {
-		return is_array( $setting_args ) && ! empty( $setting_args[ 'moved' ][ 'url' ] );
-	}
-
 }
 
 FluidCheckout_Settings::instance();

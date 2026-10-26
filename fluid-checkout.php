@@ -610,6 +610,8 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 			if ( is_admin() && ! wp_doing_ajax() ) {
 				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Admin menu page slug.
 				$page = isset( $_GET[ 'page' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'page' ] ) ) : '';
+
+				// Maybe load it on pages with a Fluid Checkout page slug
 				if ( 0 === strpos( $page, 'fluid-checkout' ) ) {
 					return true;
 				}

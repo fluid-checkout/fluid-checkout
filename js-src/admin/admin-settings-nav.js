@@ -473,6 +473,7 @@
 	 * Runs once the page has loaded, as other scripts change the layout until then.
 	 */
 	var scrollToLinkedField = function() {
+		// Get the field that the page URL links to
 		var field = window.location.hash ? document.getElementById( window.location.hash.slice( 1 ) ) : null;
 		var fieldRow;
 
