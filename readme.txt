@@ -86,8 +86,6 @@ Fluid Checkout PRO is one standalone plugin: all Lite features, all PRO features
 
 * **Skip completed steps**: Repeat customers skip the steps that already have all required information. They can still review and change any detail before placing the order.
 
-* **Guest checkout and login without leaving the checkout**: Guests can check out without an account, and customers with an account can log in right on the checkout page.
-
 * **Shipping phone field**: Add a separate phone field for delivery questions, in addition to the billing phone field.
 
 * **Works with the WooCommerce Checkout block**: Fluid Checkout automatically replaces the WooCommerce Checkout block with its own checkout form.
@@ -334,7 +332,7 @@ Yes, through your payment plugin. Google Pay, Apple Pay and other express button
 
 = What happens if I deactivate Fluid Checkout? =
 
-Your store goes back to the default WooCommerce checkout. Fluid Checkout does not change or delete your settings or any other data when you deactivate or delete the plugin, so your settings are still there if you activate it again.
+Your store goes back to the default WooCommerce checkout. Fluid Checkout does not change your checkout page, and does not delete your settings or any other data when you deactivate or delete the plugin, so your settings are still there if you activate it again.
 
 
 = Is Fluid Checkout compatible with High-Performance Order Storage (HPOS)? =
@@ -374,7 +372,7 @@ Agencies and developers can turn usage tracking off for a site by adding the FC_
 
 = Is Fluid Checkout compatible with WCAG 2.2 Level AA accessibility requirements? Will it make my webshop compliant? =
 
-Yes. Fluid Checkout is built to follow WCAG 2.2 Level AA on the checkout page, but we can't promise that your webshop is compliant. Compliance depends on your whole website, including your theme, your content and the other plugins you use. On the checkout page, Fluid Checkout supports:
+Fluid Checkout is built to follow WCAG 2.2 Level AA on the checkout page, but we can't promise that your webshop is compliant. Compliance depends on your whole website, including your theme, your content and the other plugins you use. On the checkout page, Fluid Checkout supports:
 
 * Keyboard-only navigation, including moving between steps and using form fields without a mouse.
 * Screen readers, with labeled fields, buttons and sections.
