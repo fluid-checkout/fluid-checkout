@@ -84,6 +84,22 @@ abstract class FluidCheckout_ProfileStorage extends FluidCheckout {
 	}
 
 	/**
+	 * Get the active profile slug, setting the default profile as active when none is, as saving values needs a profile.
+	 */
+	public function get_or_set_active_profile_slug() {
+		// Get active profile slug
+		$slug = $this->get_active_profile_slug();
+
+		// Maybe set the default profile as active when none is
+		if ( '' === $slug ) {
+			$slug = 'default';
+			$this->set_active_profile( $slug );
+		}
+
+		return $slug;
+	}
+
+	/**
 	 * Set the active profile slug.
 	 *
 	 * @param  string  $slug  Profile slug.
@@ -374,13 +390,7 @@ abstract class FluidCheckout_ProfileStorage extends FluidCheckout {
 		if ( empty( $values ) ) { return false; }
 
 		// Get active profile slug
-		$active_slug = $this->get_active_profile_slug();
-
-		// Maybe create the default profile when none is active
-		if ( '' === $active_slug ) {
-			$active_slug = 'default';
-			$this->set_active_profile( $active_slug );
-		}
+		$active_slug = $this->get_or_set_active_profile_slug();
 
 		// Merge new values into the active profile values
 		$current = $this->get_profile_values( $active_slug );
