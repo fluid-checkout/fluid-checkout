@@ -34,6 +34,19 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 	const MIGRATION_TIME_OPTION = 'fc_settings_profiles_migrated_time';
 
 	/**
+	 * Option key set after Google API key values are moved out of settings profiles into site-wide options.
+	 */
+	const GAA_API_KEY_SITEWIDE_MIGRATION_FLAG = 'fc_gaa_api_key_sitewide_migrated';
+
+	/**
+	 * Site-wide option keys that must not live in settings profiles (one value per website).
+	 */
+	const SITE_WIDE_OPTION_KEYS = array(
+		'fc_gaa_google_places_api_key',
+		'fc_gaa_google_places_api_key_validated_hash',
+	);
+
+	/**
 	 * Object cache group.
 	 */
 	const CACHE_GROUP = 'fluid-checkout';
@@ -81,6 +94,7 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 
 		// Migration and pre_option bootstrap
 		add_action( 'init', array( $this, 'maybe_migrate_legacy_options' ), 6 );
+		add_action( 'init', array( $this, 'maybe_migrate_gaa_api_key_to_sitewide_options' ), 6 );
 		add_action( 'init', array( $this, 'maybe_register_pre_option_filters' ), 7 );
 
 		// Keep `update_option()` writes for managed keys on the active profile
@@ -163,6 +177,7 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 			// =============================== LOCAL PICKUP ===============================
 			'fc_enable_checkout_local_pickup'                               => 'no',
 			'fc_local_pickup_default_delivery_type'                         => 'ship',
+			'fc_local_pickup_use_woocommerce_pickup_label'                  => 'no',
 			'fc_local_pickup_shipping_zone_fields'                          => array(),
 			'fc_local_pickup_save_shipping_address'                         => 'no',
 
@@ -265,8 +280,7 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 
 			// =============================== GOOGLE ADDRESS AUTOCOMPLETE ===============================
 			'fc_gaa_enabled'                                                => 'no',
-			'fc_gaa_google_places_api_key'                                  => '',
-			'fc_gaa_google_places_api_key_validated_hash'                   => '',
+			// `fc_gaa_google_places_api_key` and `fc_gaa_google_places_api_key_validated_hash` are site-wide wp_options (not profile-managed).
 			'fc_gaa_google_places_api_version'                              => 'current',
 			'fc_gaa_google_places_api_language'                             => '',
 			'fc_gaa_search_results_types'                                   => 'address',
@@ -439,10 +453,25 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 	 * @param  string  $option   Option name.
 	 * @param  mixed   $default  The fallback value to return if the option does not exist.
 	 */
+	/**
+	 * Whether an option key is site-wide (never stored in settings profiles).
+	 *
+	 * @param  string  $option  Option name.
+	 */
+	public function is_site_wide_option( $option ) {
+		return is_string( $option ) && in_array( $option, self::SITE_WIDE_OPTION_KEYS, true );
+	}
+
 	public function get_option( $option, $default = null ) {
 		// Maybe get default from the default values array.
 		if ( null === $default ) {
 			$default = $this->get_option_default( $option );
+		}
+
+		// Site-wide keys always read from wp_options (one value for the website)
+		if ( $this->is_site_wide_option( $option ) ) {
+			$value = $this->get_raw_option( $option, null !== $default ? $default : '' );
+			return $this->maybe_force_lite_option_value( $option, $value );
 		}
 
 		$effective = $this->get_effective_values();
@@ -581,6 +610,22 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 		return $effective;
 	}
 
+	/**
+	 * Update values on the active settings profile, without the site-wide settings, which are never stored in a settings profile.
+	 *
+	 * @param  array  $values  Key => value map to merge.
+	 */
+	public function update_active_profile_values( $values ) {
+		$values = is_array( $values ) ? $values : array();
+
+		// Never write site-wide keys into a settings profile
+		foreach ( self::SITE_WIDE_OPTION_KEYS as $site_wide_key ) {
+			unset( $values[ $site_wide_key ] );
+		}
+
+		return parent::update_active_profile_values( $values );
+	}
+
 
 
 	/**
@@ -637,6 +682,42 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 		if ( $had_legacy_fc_options ) {
 			$this->update_raw_option( self::CLEANUP_NOTICE_OPTION, 'yes', false );
 		}
+	}
+
+	/**
+	 * Move Google API key values from settings profiles into site-wide wp_options once.
+	 */
+	public function maybe_migrate_gaa_api_key_to_sitewide_options() {
+		// Bail if already migrated
+		if ( 'yes' === $this->get_raw_option( self::GAA_API_KEY_SITEWIDE_MIGRATION_FLAG, 'no' ) ) {
+			return;
+		}
+
+		$active_slug = $this->get_active_profile_slug();
+		$profile_values = '' !== $active_slug ? $this->get_profile_values( $active_slug ) : array();
+		$profile_values = is_array( $profile_values ) ? $profile_values : array();
+		$changed = false;
+
+		foreach ( self::SITE_WIDE_OPTION_KEYS as $option_key ) {
+			$raw = $this->get_raw_option( $option_key, null );
+
+			// Copy from the active profile when the site-wide option is empty
+			if ( ( null === $raw || '' === $raw ) && array_key_exists( $option_key, $profile_values ) && '' !== $profile_values[ $option_key ] && null !== $profile_values[ $option_key ] ) {
+				$this->update_raw_option( $option_key, $profile_values[ $option_key ], false );
+			}
+
+			// Drop the key from the active profile payload when present
+			if ( array_key_exists( $option_key, $profile_values ) ) {
+				unset( $profile_values[ $option_key ] );
+				$changed = true;
+			}
+		}
+
+		if ( $changed && '' !== $active_slug ) {
+			$this->save_profile_values( $active_slug, $profile_values );
+		}
+
+		$this->update_raw_option( self::GAA_API_KEY_SITEWIDE_MIGRATION_FLAG, 'yes', false );
 	}
 
 	/**

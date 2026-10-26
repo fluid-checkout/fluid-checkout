@@ -11,6 +11,11 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 */
 	private static $has_output_settings_inline_script = false;
 
+	/**
+	 * Holds the flag to determine if the admin settings inline script has been output.
+	 */
+	private static $has_output_settings_inline_script_admin = false;
+
 
 
 
@@ -120,7 +125,13 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Register WooCommerce scripts with modified version
 		wp_register_script( 'woocommerce', $this->get_script_url( 'js/woocommerce' ), $woocommerce_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_register_script( 'wc-country-select', $this->get_script_url( 'js/country-select' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+
+		$country_select_deps = array( 'jquery', 'fc-utils' );
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
+			$country_select_deps[] = 'selectWoo';
+		}
+
+		wp_register_script( 'wc-country-select', $this->get_script_url( 'js/country-select' ), $country_select_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-address-i18n', $this->get_script_url( 'js/address-i18n' ), array( 'jquery', 'wc-country-select' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-checkout', $this->get_script_url( 'js/checkout' ), $checkout_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-password-strength-meter', $this->get_script_url( 'js/password-strength-meter' ), array( 'jquery', 'password-strength-meter' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -293,7 +304,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_script( 'fc-polyfill-inert', $this->get_script_url( 'js/lib/inert' ), array(), NULL, array( 'in_footer' => false ) ); // Should be loaded at the `<head>`
 		wp_register_script( 'fc-animate-helper', $this->get_script_url( 'js/lib/animate-helper' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-collapsible-block', $this->get_script_url( 'js/lib/collapsible-block' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-collapsible-block', 'window.addEventListener("load",function(){CollapsibleBlock.init(fcSettings.collapsibleBlock);});' );
+		wp_add_inline_script( 'fc-collapsible-block', 'window.addEventListener("load",function(){var s=(window.fcSettings&&fcSettings.collapsibleBlock)||(window.fcSettingsAdmin&&fcSettingsAdmin.collapsibleBlock)||{};CollapsibleBlock.init(s);});' );
 		wp_register_script( 'fc-flyout-block', $this->get_script_url( 'js/lib/flyout-block' ), array( 'fc-polyfill-inert', 'fc-animate-helper' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-flyout-block', 'window.addEventListener("load",function(){FlyoutBlock.init(fcSettings.flyoutBlock);});' );
 		wp_register_script( 'fc-sticky-states', $this->get_script_url( 'js/lib/sticky-states' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -345,6 +356,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Bail if already output settings object
 		if ( true === self::$has_output_settings_inline_script ) { return; }
 
+		// Set flag
+		self::$has_output_settings_inline_script = true;
+
 		// Output settings object
 		echo '<script type="text/javascript">var fcSettings = ' . wp_json_encode( $this->get_js_settings() ) . ';</script>';
 	}
@@ -358,6 +372,48 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Output settings object
 		$this->output_settings_inline_script();
+	}
+
+
+
+	/**
+	 * Returns the JS settings for admin screens.
+	 *
+	 * @return  array  Admin JS settings.
+	 */
+	public function get_js_settings_admin() {
+		$settings = array(
+			'ver'              => self::$version,
+			'assetsVersion'    => self::$asset_version,
+			'ajaxUrl'          => admin_url( 'admin-ajax.php' ),
+			'collapsibleBlock' => array(),
+		);
+
+		/**
+		 * Filters the JavaScript settings passed to Fluid Checkout admin scripts as `fcSettingsAdmin`.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param array $settings Settings to output.
+		 */
+		$settings = apply_filters( 'fc_js_settings_admin', $settings );
+
+		return $settings;
+	}
+
+	/**
+	 * Output admin JS settings object.
+	 * Call only from admin screens that enqueue scripts which read `fcSettingsAdmin`.
+	 */
+	public function output_settings_inline_script_admin() {
+		// Bail if already output admin settings object
+		if ( true === self::$has_output_settings_inline_script_admin ) { return; }
+
+		// Set flag
+		self::$has_output_settings_inline_script_admin = true;
+
+		// Output settings object
+		echo '<script type="text/javascript">var fcSettingsAdmin = ' . wp_json_encode( $this->get_js_settings_admin() ) . ';</script>';
 	}
 
 

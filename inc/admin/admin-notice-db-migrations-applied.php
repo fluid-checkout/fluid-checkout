@@ -56,8 +56,7 @@ class FluidCheckout_AdminNotices_DBMigrationsApplied extends FluidCheckout {
 			'description'    => __( 'The database changes where applied successfully.', 'fluid-checkout' ),
 			'dismissible'    => false,
 			'actions'        => array(
-				sprintf( '<a href="%s" class="button button-primary">%s</a>', $database_update_url, __( 'Ok', 'fluid-checkout' ) ),
-				sprintf( '<a href="%s" class="button button-secondary">%s</a>', $database_update_url, __( 'Dismiss', 'fluid-checkout' ) ),
+				sprintf( '<a href="%s" class="button button-primary">%s</a>', $database_update_url, __( 'Dismiss', 'fluid-checkout' ) ),
 			),
 		);
 

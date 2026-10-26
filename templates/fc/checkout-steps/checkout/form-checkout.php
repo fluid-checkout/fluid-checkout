@@ -61,6 +61,10 @@ if ( ! empty( $custom_attributes ) && is_array( $custom_attributes ) ) {
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data" aria-label="<?php echo esc_attr__( 'Checkout', 'woocommerce' ); ?>">
 
 	<?php // CHANGE: Replace checkout fields and order summary output with new page structure and hooks ?>
+	<?php // CHANGE: Remove get_checkout_fields conditional / customer_details col2-set / col-1 / col-2 ?>
+	<?php // CHANGE: Remove woocommerce_checkout_after_customer_details action ?>
+	<?php // CHANGE: Remove woocommerce_checkout_before_order_review_heading / order_review_heading ?>
+	<?php // CHANGE: Remove woocommerce_checkout_before_order_review / order_review / woocommerce_checkout_order_review / woocommerce_checkout_after_order_review ?>
 	<div id="fc-wrapper" class="fc-wrapper <?php
 		/**
 		 * Filters the CSS classes for the wrapper.
@@ -135,6 +139,7 @@ if ( ! empty( $custom_attributes ) && is_array( $custom_attributes ) ) {
 
 	</div>
 	<?php // CHANGE: END - Replace checkout fields and order summary output with new page structure and hooks ?>
+	<?php // CHANGE: Remove remaining order_review_heading / order_review markup after FC wrapper ?>
 
 </form>
 

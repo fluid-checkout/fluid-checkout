@@ -270,10 +270,6 @@ msgstr "Fluid Checkout 資料庫更新成功"
 msgid "The database changes where applied successfully."
 msgstr "資料庫變更已成功應用。"
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "好的"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "解僱"
@@ -378,32 +374,9 @@ msgstr "閱讀文件"
 msgid "Don't show this again"
 msgstr "不再顯示此內容"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "特別優惠"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr "將 Fluid Checkout 的所有優點擴展到您的購物車頁面和感謝頁面。"
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "流體檢測 PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr "設計模板、優化購物車和訂單接收頁面、帳戶匹配等等。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr "進一步<strong>提高您的 WooCommerce 結帳轉換率</strong>並使整個旅程的購買體驗一致的最佳工具。"
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -425,10 +398,6 @@ msgstr "在結帳頁面編輯購物車內容"
 msgid "Account matching / user matching"
 msgstr "帳戶匹配/用戶匹配"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "支援的付款方式的「快速結帳」按鈕"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "購物車和感謝頁面上的信任符號"
@@ -436,10 +405,6 @@ msgstr "購物車和感謝頁面上的信任符號"
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "結帳頁面上的優惠券代碼的更多位置"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "購物車頁面上整合的優惠券代碼字段"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -453,219 +418,25 @@ msgstr "禮品訊息和裝箱單"
 msgid "Local pickup and in-store collection"
 msgstr "本地取貨和店內取貨"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "升級至 PRO — 99 歐元"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Fluid Checkout PRO – 套裝"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "所有 PRO 功能 + 所有附加元件均以特價提供。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr "此套裝組合包括我們目前提供的所有附加元件以及我們將來推出的 Fluid Checkout 附加元件。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "價值 226 歐元（節省 42%）"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Google 位址自動完成"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "地址簿"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "歐盟增值稅助手"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "所有未來附加元件 *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* 只要您有有效訂閱。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "購買套裝 – 只要 129 歐元"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr "所有價格均以歐元顯示。如果我們網站上的價格有任何差異，則以網站上顯示的報價為準。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "附加元件"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "使用這些附加元件可以增強您的結帳體驗。"
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "我已經擁有 – 隱藏此優惠"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "已安裝 — 激活"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "活性"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "需要填寫的結帳欄位減少高達 40%。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr "避免交貨延遲和客戶不滿意。從他們第一次向您購買時就收集<strong>正確的地址資訊</strong>。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "取得此附加元件 — 29 歐元"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "地址簿"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "保存多個用於運送和帳單的地址。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr "讓客戶在他們的帳戶中<strong>保存多個送貨和帳單地址</strong>，並選擇在結帳和購物車頁面上使用哪些地址。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "取得此附加元件 — 59 歐元"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "簡化您商店的歐盟增值稅驗證。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr "<strong>在結帳頁面收集並驗證歐盟增值稅號</strong>，以反向收費方式免除稅費，並在需要時確認客戶位置。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "取得此附加元件 — 39 歐元"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr "所有附加元件均單獨出售，且需安裝並啟用<strong>Fluid Checkout Lite</strong>插件，除非另有說明。"
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "選擇影像"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" "
-"target=\"_blank\">登入您的帳戶</a>以取得許可證密鑰，或<a href=\"%s\" "
-"target=\"_blank\">購買新的許可證密鑰</a>。"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "有效期限至 %s。"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "已於 %s 到期。"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" "
-"target=\"_blank\">登入您的帳戶</a>以更新您的許可證金鑰並繼續接收更新和支援。"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "許可證密鑰已取消。"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr "<a href=\"%s\" target=\"_blank\">購買新的許可證密鑰</a>並繼續接收更新和支援。"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "錯誤： "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "設定和文檔"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "偉大的！您的結帳頁面現在正在 Fluid Checkout 上運行。"
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "這裡有一些可供您入門的資源："
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr "閱讀安裝指南<a href=\"%s\" target=\"_blank\">，開始使用 Fluid Checkout</a> 。"
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "設定<a href=\"%s\">結帳選項的</a>佈局和設計。"
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr "檢查您安裝的其他插件是否有可用的<a href=\"%s\">整合選項</a>。"
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr "請造訪<a href=\"%s\" target=\"_blank\">我們的文件</a>以取得有關 Fluid Checkout 功能的更多資訊。"
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr "如果您需要協助，請在我們的官方支援管道上<a href=\"%s\" target=\"_blank\">開立支援票</a>。"
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -678,14 +449,6 @@ msgstr "購物車優化"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "啟用購物車頁面優化"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "顯示具有與結帳頁面類似佈局的購物車頁面。"
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "頁首和頁尾"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -716,13 +479,6 @@ msgstr "使訂單摘要在滾動時保持在購物車頁面上可見"
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "優惠券代碼"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr "選擇在購物車頁面上顯示優惠券代碼部分的位置。僅適用於啟用 AJAX 購物車和結帳頁面中的整合優惠券代碼時。"
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -814,10 +570,6 @@ msgstr "主題的交叉銷售佈局"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "購物車頁面上顯示的交叉銷售商品數量"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "信任符號和徽章"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "將小工具區域加入購物車頁面"
@@ -831,10 +583,6 @@ msgstr "這些小部件區域用於在購物車頁面上添加信任符號和信
 #: inc/admin/admin-settings-checkout.php:50
 msgid "Checkout"
 msgstr "查看"
-
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "佈局與設計"
 
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
@@ -851,21 +599,6 @@ msgstr "暗黑模式"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "啟用暗模式"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "頁首和頁尾模板"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"我們建議使用無幹擾的頁首和頁腳，以避免在結帳頁面受到干擾。<a "
-"href=\"https://baymard.com/blog/cart-abandonment\" "
-"target=\"_blank\">閱讀有關購物車放棄的研究</a>。"
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -910,10 +643,6 @@ msgid ""
 "Choose a background color for the checkout page footer. Only applies when "
 "using the distraction free header and footer."
 msgstr "選擇結帳頁腳的背景顏色。僅適用於使用無幹擾的頁首和頁尾時。"
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "結帳元素"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -990,16 +719,6 @@ msgstr "連結至商店頁面"
 msgid "Cart items"
 msgstr "購物車商品"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "啟用在結帳頁面上編輯購物車商品的選項"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr "允許顧客直接在結帳頁面更改產品數量或刪除商品。"
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "在結帳頁面隱藏購物車商品錯誤"
@@ -1045,31 +764,9 @@ msgid ""
 "checkout page."
 msgstr "這些小工具區域用於在結帳頁面上新增信任符號和信任徽章。"
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr "使用多步驟結帳佈局時，僅在行動裝置上查看最後一個結帳步驟時顯示結帳側欄小工具"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "啟用整合優惠券代碼部分"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr "僅在 WooCommerce 設定中啟用優惠券代碼時才適用。"
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "顯示優惠券代碼部分標題"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr "僅適用於優惠券代碼在結帳或購物車頁面上顯示為單獨部分的情況。"
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1088,13 +785,6 @@ msgstr "作為付款方式之前的子步驟"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "作為付款方式之後的子步驟"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr "選擇“使用優惠券”按鈕的樣式。僅適用於優惠券代碼部分在結帳頁面的「結帳步驟之前」或購物車頁面的「購物車商品部分之前」顯示時。"
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1139,19 +829,6 @@ msgid ""
 "field, or when getting the right shipping address is crucial (ie. if "
 "delivering food and other perishable products)."
 msgstr "只有當大多數客戶確實需要“地址行 2”字段，或者獲取正確的送貨地址至關重要時（即運送食品和其他易腐爛產品時）才推薦。"
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "以小寫顯示「新增」連結按鈕"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"將可選欄位「新增」連結按鈕的標籤設為<code>lowercase</code> "
-"（即「新增電話號碼」而非「新增電話號碼」）。此選項也會影響優惠券代碼欄位的連結按鈕。"
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1237,21 +914,6 @@ msgstr "出貨前地址"
 msgid "After shipping address"
 msgstr "發貨地址後"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "防止自動選擇第一種送貨方式"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"啟用後，如果每個運輸包裹之前沒有選擇其他運輸方式，則不會自動選擇第一個可用的運輸方式。<br>如果為本地取貨功能啟用了清除所選運送方式的選項，則此選項將"
-"自動啟用。"
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "本地取貨"
@@ -1267,17 +929,6 @@ msgid ""
 "Replaces the shipping address with the pickup point location when a local "
 "pickup shipping method is selected."
 msgstr "當選擇本地取貨運送方式時，將送貨地址替換為取貨點位置。"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "在取貨地點子步驟中顯示清除運送方式的選項"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr "在取貨地點子步驟上顯示一個連結按鈕，以清除所選的運送方式。如果之前選擇了本地取貨方式，則可以使用它來再次顯示送貨地址部分。"
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1349,27 +1000,6 @@ msgstr "在結帳表單中新增帳單電話欄位。"
 msgid "Choose in which step to display the billing phone field."
 msgstr "選擇在哪一步顯示計費電話欄位。"
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "根據國家規則啟用電話號碼驗證"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr "停用時，電話欄位驗證將不會檢查國家或地區代碼是否對該國家有效。"
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "僅顯示允許送貨或付款的國家/地區"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr "啟用後，只有允許運送的國家/地區才會在運送電話欄位中可用，並且只有允許結算的國家/地區才會在結算電話欄位中可用。"
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "在旗幟旁顯示國家代碼"
@@ -1402,19 +1032,11 @@ msgstr "定義附加訂單備註欄位的可見性。"
 msgid "Gift options"
 msgstr "禮品選項"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "在結帳頁面顯示禮物資訊和其他禮品選項"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
 "order."
 msgstr "允許顧客在訂單中添加禮品資訊和其他與禮品相關的選項。"
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "始終展開顯示禮品資訊字段"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1461,22 +1083,9 @@ msgstr "儀表板"
 msgid "Integrations"
 msgstr "整合"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr "此部分目前沒有可用的整合。每個插件相關的選項只有在該插件被啟動時才會出現在這裡。"
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "許可證密鑰"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr "此部分目前沒有可用的許可證密鑰選項。當每個外掛程式或附加元件被啟動時，與其相關的選項會出現在這裡。"
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1563,12 +1172,6 @@ msgid ""
 "These widget areas are used to add trust symbols and trust badges on the "
 "thank you page."
 msgstr "這些小部件區域用於在感謝頁面上添加信任符號和信任徽章。"
-
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr "這些選項會影響感謝頁面、在帳戶頁面和電子郵件通知上查看訂單詳情。"
 
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
@@ -1660,19 +1263,6 @@ msgstr "載入未縮小的資源"
 msgid "Enhanced select fields"
 msgstr "增強選擇字段"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr "用<code>TomSelect</code>取代<code>select2</code>下拉組件"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect 是更簡單的下拉選擇元件，與 Select2 相比，它更不容易出錯，同時提供與 WooCommerce "
-"結帳頁面上實際使用的相同的功能。"
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "修復表單欄位自動放大問題"
@@ -1680,28 +1270,6 @@ msgstr "修復表單欄位自動放大問題"
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "將表單欄位內的<code>font-size</code>設定為 16px"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"當表單欄位內的字體大小小於 16px 時，Safari 和其他瀏覽器可能會在行動裝置上自動放大以使文字更易於閱讀。啟用此選項時，它將在由 Fluid "
-"Checkout 優化的頁面上將表單欄位內的字體大小設為 16px，以避免其放大。"
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"當 Fluid Checkout 啟動時，運輸目的地始終設定為「預設為客戶運送地址」。客戶仍然可以在結帳時提供不同的送貨和帳單地址，可以在 "
-"WooCommerce &gt; 設定 &gt; Fluid Checkout 中將預設帳單地址設定為與送貨地址相同的選項。"
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1726,14 +1294,6 @@ msgstr "（專業版）"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "（實驗）"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "確認"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "驗證電話號碼"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2208,10 +1768,6 @@ msgstr "進度條之後"
 msgid "Before coupon codes section"
 msgstr "優惠券代碼部分之前"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "啟用國際電話號碼字段"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "請依各國規定格式化電話號碼。"
@@ -2219,16 +1775,6 @@ msgstr "請依各國規定格式化電話號碼。"
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "使用精確的電話號碼驗證"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"請盡量確保輸入的電話號碼是符合所選國家/地區代碼規則的有效手機號碼或座機號碼。此選項使用<code>intl-tel-input</"
-"code>精確驗證功能，但可能會對某些電話號碼產生誤報。"
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2267,20 +1813,6 @@ msgstr "2列"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1列"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr "結帳步驟、訂單摘要和其他部分的通用樣式。<br>也可能適用於其他頁面，例如購物車、訂單已接收和查看訂單頁面。"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr "使用<em>「1 列」</em>佈局時， <em>「分割」</em>設計範本不可用，如果選擇該模板，則會回退到<em>「極簡」佈局</em>。"
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2365,6 +1897,2263 @@ msgid ""
 msgstr ""
 "如果帳單地址顯示在收貨地址之前，且收貨電話設定為“必填”，則帳單電話欄位可能會強制設定為“必填”。這是為了確保在選取該選項時，收貨地址可以複製到帳單地址"
 "，否則客戶可能無法完成結帳表單。"
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "設定設定檔"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "設定設定檔"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "您沒有執行此操作的權限。"
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "您沒有啟動插件的權限。"
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "缺少插件。"
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "插件已啟用。"
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "將實施以下變更："
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr "自 Fluid Checkout 5.0 版本起，設定的儲存方式有所不同。舊版選項仍儲存在資料庫中，以便在需要時降級到先前的版本。"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr "您的店鋪已在新設定下運行約兩週，因此您可以清理資料庫中儲存的舊版本選項。請注意，清理完成後，如果您需要降級到插件的早期版本，所有設定都將使用預設值。"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "Fluid Checkout 設定清理"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "刪除剩餘選項"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "請幫我們改進 Fluid Checkout"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"使用 Fluid Checkout "
+"分享匿名網站環境報告，即可獲得更快捷的支持，並協助我們提升相容性、評估影響。報告不包含任何客戶、使用者或敏感資料。您可以隨時在「工具」設定中選擇要分享的"
+"內容。"
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "啟用網站環境報告"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "查看設定"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr "此預覽已過期。請重新載入管理頁面以開始新的預覽。"
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "預覽已過期"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "預覽模式下無法下單。"
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "預覽版中不支援登入功能。"
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "預覽版中無法建立帳戶。"
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "預覽中已封鎖其他網站的請求。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "加工…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "出錯了，請重試。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "啟用插件"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - 完整的結帳軟體包"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr "所有專業版功能 + 所有附加元件，只需一個價格。設計模板、優化的購物車和訂單接收頁面、帳戶匹配等等。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "優化後的訂單支付頁面"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "支援的付款方式的快捷結帳按鈕"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "帳戶創建延遲"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "使用谷歌地圖API實現地址自動補全"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "地址簿中保存了多個地址"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "歐盟增值稅助手"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "隱藏此部分"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "了解更多"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "搶先體驗"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "啟用插件"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "讓您的結帳過程更加順暢"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "測試 API 金鑰"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "引導式設定"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "選項"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "設定<a href=\"%s\">結帳選項的</a>佈局和設計。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr "啟用訪客結帳和/或查看<a href=\"%s\">客戶帳戶設定</a>。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"啟用優化的<a href=\"%1$s\">購物車</a>、<a href=\"%2$s\">感謝頁面</a>和<a "
+"href=\"%3$s\">訂單支付</a>頁面。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr "啟用Google地圖<a href=\"%s\">位址自動補全功能</a>。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr "使用<a href=\"%s\">地址簿</a>保存多個地址。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr "檢查你安裝的主題或其他外掛程式是否有任何<a href=\"%s\">整合選項</a>。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr "獲得更快捷的支持，並幫助我們提升相容性、評估影響。請在工具設定中<a href=\"%s\">啟用使用情況追蹤</a>。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "缺少設定選項卡。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "入門"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr "<strong>太棒了！您的結帳頁面現在已基於 Fluid Checkout 運作。</strong>以下是一些入門步驟："
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "完全的"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "預覽報告數據"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "立即發送"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "自動偵測"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "南非荷蘭語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "阿爾巴尼亞語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "阿姆哈拉語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "阿拉伯"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "亞美尼亞"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "亞塞拜然"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "巴斯克"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "白俄羅斯"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "孟加拉"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "波士尼亞"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "保加利亞語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "緬甸"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "加泰隆尼亞語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "中國人"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "中文（簡體）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "中文（香港）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "中文（繁體）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "克羅埃西亞語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "捷克語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "丹麥語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "荷蘭語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "英語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "英語（澳洲）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "英語（英國）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "愛沙尼亞語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "波斯語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "芬蘭"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "菲律賓人"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "法語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "法語（加拿大）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "加利西亞語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "喬治亞"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "德文"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "希臘文"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "古吉拉特語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "希伯來文"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "印地語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "匈牙利"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "冰島語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "印尼"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "義大利語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "日本人"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "卡納達語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "哈薩克"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "高棉語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "韓國人"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "吉爾吉斯"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "寮國"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "拉脫維亞語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "立陶宛語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "馬其頓"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "馬來語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "馬拉雅拉姆語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "馬拉地語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "蒙"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "尼泊爾語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "挪威"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "拋光"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "葡萄牙語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "葡萄牙語（巴西）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "葡萄牙語（葡萄牙）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "旁遮普語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "羅馬尼亞語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "俄文"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "塞爾維亞"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "僧伽羅語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "斯洛伐克"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "斯洛維尼亞語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "西班牙語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "西班牙語（拉丁美洲）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "斯瓦希里語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "瑞典"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "泰米爾語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "泰盧固語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "泰國"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "土耳其"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "烏克蘭"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "烏爾都語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "越南語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "祖魯語"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Google 網址自動補全"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Google Places API 版本"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr "選擇要使用的 Google Places API 版本。我們建議您盡快遷移到新版 Places API。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"我們建議您使用“Places API（新版）”，因為自 2025 年 3 月 1 日起，Google 將把“Places "
+"API（舊版）”版本轉為舊版，這意味著您將無法再為新的 API 金鑰啟用此服務，並且該版本的 API 最終將不再可用。已在使用舊版 API "
+"的現有帳戶可以繼續正常使用，不會受到任何影響。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "（受到推崇的）"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Google API 金鑰"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"貼上您的 Google API "
+"金鑰，然後使用測試按鈕確認它適用於此網站。請確保金鑰有效且已授權給您的域名，否則地址欄位可能會被屏蔽，導致客戶無法完成訂單。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "啟用 Google 位址自動填入功能"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr "使用 Google Maps API 啟用位址自動補全功能。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Google API 語言"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr "此語言將用於顯示 Google Places API 位址建議，位址也將以這種語言自動補全。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "結果類型"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"留空則接受任何類型的結果，通常這樣可以獲得更準確的匹配結果。<a href=\"%s\" "
+"target=\"_blank\">更多詳情請參閱文件</a>。<br>在位址自動完成欄位中，最多可以選擇 5 種類型的位址搜尋結果返回。<br>造訪 "
+"Google Maps 文檔，以了解有關 <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">支援類型的</a>更多資訊。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "結果類型（舊版 API）"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"使用 Places API（舊版）時，要傳回哪種類型的位址搜尋結果？<br>造訪舊版 Google Places API 的文檔，以了解有關<a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">支援類型的</a>更多資訊。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "公司領域"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "如果可用，請啟用公司名稱的自動完成功能。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr "啟用公司欄位自動填入功能，當從 Google Maps API 傳回公司名稱資訊時，自動填入公司欄位。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "商業搜尋"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "啟用公司欄位中的企業搜尋功能"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr "在公司名稱欄位中輸入公司名稱時，啟用與公司相關的地址建議；然後，從建議中選擇公司時，自動完成所有地址欄位。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "公司業績類型"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"選擇最多 5 種類型的地址搜尋結果，以便在自動完成公司欄位中傳回。<br>建議值是<code>establishment</code> "
+"，其中包括大多數類型的企業。<br>留空則接受任何類型的結果，包括與企業無關的結果。<br>造訪 Google Maps 文檔，以了解有關 <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">支援類型的</a>更多資訊。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Google標誌"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "顯示文字和徽標“由 Google 提供支援”"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr "選取後，地址自動完成建議框底部將顯示「Powered by Google」字樣和標誌。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "巴西 API 位址自動補全"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "巴西 API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "啟用巴西 API 位址自動補全功能（CEP 欄位）"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr "使用巴西 API，透過 CEP/郵遞區號欄位檢索並自動填入地址。僅適用於巴西地址。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "API 版本"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "選擇要使用的巴西 API CEP 方法的版本。"
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "地址簿遷移"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "WooCommerce 地址"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr "將 WooCommerce 中現有的收貨地址和帳單地址複製到客戶的地址簿中。"
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "啟用地址簿功能"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr "允許客戶保存多個地址，並定義用於發貨和帳單的預設地址。"
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "地址標籤"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "允許客戶為每個地址添加自訂標籤"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr "地址標籤方便客戶區分已儲存的地址（例如：「媽媽家」）。地址標籤僅供客戶查看，不會顯示在訂單詳情頁面或發票上。"
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "顯示佈局"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr "選擇在結帳和購物車中如何顯示已儲存的地址。"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr "結帳和購物車頁面均適用。帳戶頁面保存的地址始終使用卡片式佈局。"
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "地址卡"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "地址列表"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "下拉式選單字段"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "地址搜尋"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr "當客戶保存的地址數量達到一定數量時，在前端顯示地址搜尋篩選器。"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "當顯示佈局設定為下拉欄位時，不使用此方法。"
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "地址"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "啟用購物車頁面優化以查看更多選項"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "黏性訂單摘要"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr "選擇購物車頁面上優惠券代碼部分的顯示位置。僅當啟用 AJAX 購物車且在 WooCommerce 設定中啟用優惠券代碼功能時才適用。"
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "交叉銷售佈局"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "交叉銷售訊息"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "專案"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "購物車頁面優化"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr "購物車頁面應採用與結帳頁面相同的清晰、以轉換率為導向的佈局。"
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr "為了確保購物流程的一致性，購物車佈局應與結帳頁面保持一致。"
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr "購物車資料在後台始終保持更新，數量變化時無需重新加載整個頁面。"
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr "將優惠券代碼、運費和交叉銷售資訊準確地放置在轉換率最高的位置。"
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr "在捲動頁面時保持訂單摘要可見，並在購物者需要放心的地方添加信任符號。"
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "列"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr "結帳步驟、訂單摘要和其他部分的通用樣式。適用於其他結帳頁面、購物車頁面、感謝頁面（訂單已收到）和查看訂單頁面。"
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"當使用<em>「單列」</em>佈局和<em>「分割」</"
+"em>設計範本時，僅當頁面側邊欄小工具區域（結帳側邊欄、購物車側邊欄或訂單接收側邊欄）處於活動狀態時，才會顯示右側欄。否則，頁面將保持單列佈局，並套用拆"
+"分樣式。"
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "分欄背景"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr "為拆分設計中的輔助列選擇背景顏色。留空則使用訂單摘要的背景顏色。"
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "頁面模板"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "結帳模板"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"建議減少結帳時的干擾。<a href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">閱讀有關購物車遺棄的研究報告</a>。"
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "黏性進度條"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "進度條樣式"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "訂單總額"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "背景顏色"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "操作連結"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "行動端訂單摘要"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "移動初始狀態"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "允許在結帳時編輯購物車商品"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr "允許顧客在結帳頁面直接更改產品數量或刪除商品。"
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "購物車商品錯誤"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr "只有當優惠券代碼在結帳或購物車頁面作為單獨部分顯示，並且在 WooCommerce 設定中啟用了優惠券代碼的使用時才適用。"
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "優惠券代碼位置"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "應用程式優惠券按鈕"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "選擇「套用優惠券」按鈕的樣式。"
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "地址行 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"此設定同時適用於「結帳」和「本地自提」頁面。在「本地自提」頁面，它也決定了「出貨/"
+"自提」選擇器是顯示在配送方式部分內（地址之前）還是作為單獨的部分（地址之後）。"
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "客戶帳戶"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "訪客結帳"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr "您可以在 WooCommerce 帳戶設定頁面中找到訪客結帳、登入和帳戶建立選項。這些選項都集中在此處進行管理，方便您根據不同的設定設定檔使用不同的值。"
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "允許顧客無需註冊帳戶即可結帳。"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr "<strong>建議</strong>不要在結帳時要求客戶建立帳戶或登錄，以免降低轉換率。"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr "停用此功能後，客戶必須登入或建立帳戶才能完成購買。"
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "結帳時登入"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "結帳時啟用登入功能"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr "在結帳頁面顯示一個鏈接，方便老客戶登入。"
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "建立帳戶"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "允許顧客在結帳時建立帳戶"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "顧客可以在下單前建立帳戶。"
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "允許客戶從「我的帳戶」頁面建立帳戶。"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "客戶可以從「我的帳戶」頁面註冊新帳戶。"
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "使用者名稱"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "根據客戶姓名生成"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr "<strong>建議</strong>這樣做，這樣客戶在結帳時就不會被要求選擇用戶名，從而避免降低轉換率。"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr "使用者名稱由客戶姓名產生；如果不能使用姓名，則由電子郵件地址產生。"
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "密碼"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "發送密碼設定連結"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr "<strong>建議</strong>這樣做，以免結帳時要求客戶設定密碼，進而降低轉換率。"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "客戶會收到一封電子郵件，用於安全地建立密碼。"
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr "允許已註冊客戶無需登入即可完成結帳，並在聯絡資訊相符的情況下將訂單與其現有帳戶關聯。"
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "現有帳戶訊息"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr "允許顧客在下單後，從感謝頁面建立帳戶。"
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr "啟用訪客結帳和帳戶匹配功能後，此部分中的選項才可用。啟用以上兩項功能即可設定延遲建立帳戶。"
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "啟用延遲建立帳戶功能"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr "當同時啟用訪客結帳和帳戶匹配時，啟用延遲建立帳戶功能。"
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "部門位置"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "在客戶詳細資料部分之前"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "客戶詳情部分之後"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "創建帳戶的好處"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "如果將此欄位留空，則會顯示預設文字。"
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "內聯按鈕"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "必填字段"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "結帳時啟用禮品留言字段"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "擴充禮品留言"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "始終展開顯示禮品留言字段"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "訂單詳情中的禮品留言"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr "目前此部分暫無整合功能。只有當外掛程式或主題啟動後，其相關選項才會顯示在此。"
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "電話字段"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "場地可見性"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "場上位置"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "電話國家代碼和驗證"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "國家"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "在手機欄位中啟用國家/地區"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "篩選收貨或帳單國家/地區"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr "將每個電話號碼欄位中的國家/地區選擇器限制為您的商店允許發貨或結算的國家/地區。"
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "驗證"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "啟用基於國家/地區規則的簡單驗證"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr "檢查電話號碼在所選國家/地區是否有效，包括國家/地區代碼和長度。"
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr "更嚴格檢查號碼是否為所選國家/地區認可的有效手機號碼、固定電話號碼或其他類型。某些有效號碼可能會被拒絕。"
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "驗證類型"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "佔位符"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr "目前無需管理任何許可證密鑰。當已授權的 Fluid Checkout 外掛程式或附加元件啟動時，許可證金鑰將顯示在此。"
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "預設交付類型"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "選擇預設的配送方式。"
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "運輸區域字段"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr "選擇要在本機自提配送區域篩選欄位中顯示的欄位。留空則顯示所有可用選項。"
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr "這些欄位將作為本地自提配送方式的篩選條件。如果相容的插件需要某些欄位才能正常運作，即使未在此處選擇，這些欄位仍可能在結帳時顯示。"
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "訂單收貨地址"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "訂單支付頁面優化"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr "未付款訂單應採用與結帳頁面相同的清晰、以轉換率為導向的佈局。"
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr "優化待付款訂單的訂單支付頁面佈局。"
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr "將訂單支付體驗與您的結帳流程相匹配，以實現一致的購買體驗。"
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr "在購物者付款前需要獲得信任保障的地方，添加信任標誌和徽章。"
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "感謝您的頁面優化"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr "讓顧客在購買後更清楚地看到感謝頁面和訂單詳情。"
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr "優化感謝頁面和帳號訂單詳情，使其佈局更清晰。"
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr "在適當的地方顯示訂單狀態進度、操作、下載和備註。"
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "自訂電子郵件通知中的訂單詳情部分。"
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr "在購物者購買後需要獲得信任保障的地方，添加信任標誌和徽章。"
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "電子郵件通知"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr "啟用感謝頁面和訂單詳情優化，即可查看更多選項"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "感謝頁面使用寬版佈局"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr "這些選項會影響感謝頁面、帳戶頁面上的訂單詳情查看以及電子郵件通知。"
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "儲存設定"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "文件"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "大車"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "謝謝"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "地址自動補全"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "信任徽章"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "您沒有權限保存這些設定。"
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "無效的保存請求。"
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "您的設定已儲存。"
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "儲存..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "設定無法儲存，請重試。"
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "駁回通知"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "開啟設定選單"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "關閉設定選單"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "預覽"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "展開預覽"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "折疊預覽"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "顯示頁首和頁尾"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "隱藏頁首和頁尾"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "頁面預覽"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "預覽視口"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "藥片"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "桌面"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "預覽寬度"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "減小寬度"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "預覽寬度（像素）"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "增加寬度"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "預覽"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "客人"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "已登入"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "預覽頁面"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "展開預覽查看詳情"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "可用%s。"
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "打開它們"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr "此頁面的優化已關閉。輸入 %s 可預覽頁面。"
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "%s 預覽"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "獨立會話 · 未儲存任何內容"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "使用情況追蹤"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr "傳送非敏感網站環境報告，以協助 Fluid Checkout 提升相容性。報告功能需在下方選項中啟用後才會發送。"
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "將使用情況追蹤報告發送至 Fluid Checkout"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr "這些報告有助於我們改善您網站的相容性和支持，啟用後每週都會發送。"
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr "報告中不包含任何客戶、管理員使用者或任何其他敏感資料。"
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "基本環境資訊"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr "WordPress、PHP、WooCommerce、主題和外掛程式清單資料。啟用報告功能後，資料始終包含在內。這有助於我們了解您網站的運作環境。"
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "插件設定"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr "發送 Fluid Checkout 插件設置，以幫助我們處理支援請求，並幫助我們了解您如何使用我們的插件。"
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "即將推出"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "銷售指標"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"我們會統計您安裝 Fluid Checkout "
+"外掛程式前後一年內的月訂單量和總銷售額，以幫助您了解安裝我們的外掛程式是否提升了您的收益。我們絕不會發送任何客戶或用戶資料。"
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "公用事業"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr "使用<code>TomSelect</code>下拉組件代替<code>select2</code>"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr "TomSelect 是更簡單的下拉選擇組件，與 Select2 相比，它出錯的機率更低，同時提供了相同的功能。"
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr "在經過此外掛程式優化的頁面上，將表單欄位內的字體大小設為 16px，以避免在小型裝置上與表單欄位互動時自動放大。"
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr "當字體大小小於 16px 時，Safari 和其他瀏覽器可能會在行動裝置上自動放大文本，使文字更易於閱讀。"
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "在瀏覽器控制台中啟用腳本處理追蹤。"
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "未計入資產"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Google 地圖腳本"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "請勿刪除重複的Google地圖腳本。"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr "啟用此選項後，重複的 Google Maps 腳本將不會被刪除，這可能會導致錯誤和效能問題。請僅在排查故障時使用此選項。"
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "小部件區域"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "手機上的最後一步"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "在行動裝置上，僅在最後一步顯示小部件"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr "僅在行動裝置上查看結帳的最後一個步驟時顯示結帳信任徽章小部件"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "標準"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "增值稅號字段"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "在帳單表格中新增增值稅號欄位。"
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "字段標籤"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr "設定增值稅號欄位的標籤（例如：增值稅號）。在多語言網站上，最好將此欄位留空並翻譯原始字串。"
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "增值稅號"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "歐盟增值稅"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "啟用增值稅號欄位以查看更多選項"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "增值稅驗證"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "結帳時驗證歐盟增值稅號欄位。"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr "檢查所提供的增值稅號碼是否為已在歐洲增值稅資訊交換系統 (VIES) 資料庫中註冊的有效增值稅號碼。"
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "商店增值稅號"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"商店的增值稅號碼用於申請歐盟增值稅驗證，並印在發票上。<br><strong>我們強烈建議您新增您的店鋪增值稅號</strong>，否則 VIES "
+"諮詢結果可能不適用於會計。<br>即： <code>ATU99999999</code>或<code>EE999999999</code> 。"
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "反向充電"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "應用反向充電機制"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr "當客戶的增值稅號有效時，將稅率設為零，並在發票上顯示「反向徵收」。根據商店所在國家/地區的不同，可能需要使用不同的“反向徵收”文本。"
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "同一個國家"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr "對商店所在國家的交易採用反向收費機制："
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr "允許對與店舖位於同一國家/地區的公司之間的交易應用反向收費機制。"
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "反向收費例外情況"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr "選擇其他國家以跳過反向徵稅機制。"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr "即使提供了有效的增值稅號，來自這些國家的訂單仍需繳稅。"
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "發票上的反向收費標籤"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr "在結帳頁面和訂單詳情中設定「反向收費」標籤。"
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "發票上的反向收費文本"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "在發票上設定「反向收費」標籤文字。"
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "按反向徵收機制繳稅"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "公司名稱"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "根據增值稅號自動補全公司名稱"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr "根據客戶提供的有效增值稅號填寫帳單公司名稱。"
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "公司名稱編輯"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "允許編輯自動填入的公司名稱"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr "啟用此功能後，客戶可以變更與提供的增值稅號關聯的公司名稱。"
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "歐盟數位商品增值稅"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"自2015年1月1日起，歐盟增值稅法規對數位商品進行了修訂，該修訂僅影響B2"
+"C交易。數位商品的增值稅必須根據客戶的所在地計算，並且需要收集相關證明（IP地址和帳單地址）。"
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "數位商品的稅收類別"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "選擇一些稅類"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "位置證據"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "收集客戶位置證據"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"儲存 IP 位址並將其與客戶的帳單位址進行驗證。如果客戶的帳單位址和 IP "
+"位址所在的國家/地區不匹配，則客戶必須在結帳頁面上勾選複選框以確認其帳單位址。"
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr "此選項在 Fluid Checkout 中進行管理。<a href=\"%s\">請在客戶帳戶設定中更改它</a>。"
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr "此選項在 Fluid Checkout 中進行管理。請在 Fluid Checkout &gt; 客戶帳戶中變更。"
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"此選項在 Fluid Checkout 中進行管理。啟用 Fluid Checkout "
+"後，收貨地址始終設定為「預設客戶收貨地址」。客戶在結帳時仍可提供不同的收貨地址和帳單地址。<br><br> <a href=\"%s\">Fluid "
+"Checkout 設定</a>中提供了一個選項，可以將預設帳單地址設定為與收貨地址相同。"
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"此選項在 Fluid Checkout 中進行管理。啟用 Fluid Checkout "
+"後，收貨地址始終設定為「預設客戶收貨地址」。客戶仍然可以在結帳時提供不同的收貨地址和帳單地址。<br><br>在 WooCommerce &gt; "
+"設定 &gt; Fluid Checkout 中，可以選擇將預設帳單地址設定為與收貨地址相同。"
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr "這些設定已移至 WP 管理背景 &gt; Fluid Checkout &gt; 設定。"
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr "此 WooCommerce 設定標籤已棄用，將在 Fluid Checkout 6.0 中移除。"
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "前往設定頁面"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "永久隱藏此標籤頁"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "網站報告預覽"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr "根據您目前的設置，以下數據將包含在下一份站點環境報告中。"
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "正在載入報告預覽..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "網站報告預覽無法加載，請重試。"
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "無法傳送網站報告，請重試。"
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "現場報告已成功發送。"
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "立即啟用並發送"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "關閉"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr "網站報告請求正在處理中，請稍後再試。"
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "站點環境報告功能已停用。"
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "沒有可供發送的站點報告資料。"
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr "此網站網域無法傳送環境報告（本機或開發網域除外）。"
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "近期已發送一份站點報告。請稍後再試。"
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "網站報告發送失敗，請稍後再試。"
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "無法提供站點環境報告。"
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "所選設定下沒有可用的站點報告資料。"
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "您無權管理站點報告。"
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "專業功能"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "其他插件"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "僅取得此附加元件 — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "安裝插件"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "升級到專業版 — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr "<a target=\"_blank\" href=\"%1$s\">取得 %2$s</a>以解鎖這些選項。"
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "添加在"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "查看文件"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"請求需要已登入的 WordPress 使用者。省略 user_id 參數可使用目前使用者的數據，或當呼叫者擁有編輯使用者權限（edit_user "
+"功能）時，傳遞 user_id 參數可指向其他帳號。未經身份驗證的請求將傳回 fc_api_forbidden 錯誤。無效的 user_id 將傳回 "
+"fc_api_user_not_found 錯誤。"
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr "當處理程序傳回有效負載時，HTTP 200 狀態碼為 { &quot;data&quot;: { ... } }。"
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr "當沒有有效負載時（例如 DELETE），HTTP 200 傳回 { &quot;success&quot;: true }。"
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"失敗時，WordPress REST 請求會從 WP_Error 物件傳回錯誤 JSON 資料（包含 code、message 和 "
+"data.status）。請求代碼使用 fc_api_* 前綴。"
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "禁止訪問。"
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "未找到目標用戶。"
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "此功能不可用。"
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "地址欄位必填項缺失。"
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "郵遞區號無效。"
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "電話號碼無效。"
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "州或縣無效。"
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "國家/地區資訊無效或缺少地址欄位。"
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "請求無法處理。"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "返回上一步"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "跳至設定"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "重新開始，回到第一個引導設定步驟。"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "重新開始"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "請先完成所有子步驟再繼續。"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "擴張"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "坍塌"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "跳過"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "標記為已完成"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "標記為未完成"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "查看完整尺寸圖像：%s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "全尺寸安裝指南圖片"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "關閉影像"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "Fluid Checkout 引導式設置"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "歡迎"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "探索您的結帳流程"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "一切就緒"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "您沒有權限存取此頁面。"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "轉到步驟 %1$d: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr "本引導式設定可協助您熟悉 Fluid Checkout。以下步驟目前僅為佔位符。"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "準備就緒後，請繼續下一步。"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "開啟您的商店結帳頁面，即可查看 Fluid Checkout 的實際應用程式。"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "查看結帳頁面"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr "您可以返回 Fluid Checkout 設定繼續配置您的商店。"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "查看結帳和購物車設置"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "從控制台瀏覽插件。"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "完成並進入設置"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr "將帳單電話欄位可見性選項從舊值更新為符合 WooCommerce 規範。"
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr "將收貨電話欄位可見性選項從舊值更新為符合 WooCommerce 規範。"
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr "將訂單摘要背景顏色設定複製到新的分割設計輔助列背景顏色選項。"
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr "使用 Bitship 外掛程式時，增強型選擇欄位功能始終處於停用狀態。"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr "使用 German Market 外掛程式時，「下單」按鈕的位置始終設定為「訂單摘要下方」。該插件要求“下單”按鈕和法律複選框顯示在訂單摘要下方。"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"使用 Germanized for WooCommerce "
+"時，「下單」按鈕的位置始終設定為「訂單摘要下方」。該插件要求“下單”按鈕和法律複選框顯示在訂單摘要下方。"
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "編輯取貨地點"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "使用 WooCommerce 設定中的本地取貨標籤"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"啟用後，結帳頁面上的取貨選項標籤將與 WooCommerce 取貨地點設定中的標題一致。停用後，標籤將使用 Fluid Checkout "
+"中可翻譯的「本地取貨」文字。"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2516,3 +4305,111 @@ msgstr "是的"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "約翰"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "牝鹿"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "範例公司"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "主街123號"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "安尼鎮"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "請將包裹放在前門。"
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "毛線帽"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "帽子"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "T恤"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr "我們已收到您的訂單，出貨後會發送更新通知給您。"
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "使用者指南"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "地點 API（新增）"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "Places API（舊版）"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "版本 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "版本 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr "✔ 下次結帳更快 ✔ 管理您的付款偏好設定 ✔ 查看訂單狀態和歷史記錄"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "隱"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "選修的"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "必需的"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "出貨至地址"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "本地自取"

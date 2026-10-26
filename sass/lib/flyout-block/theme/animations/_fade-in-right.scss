@@ -1,0 +1,14 @@
+@use '../../../../abstract' as *;
+
+.fade-in-right { animation: fade-in-right $global-animation-duration $global-animation-easing; }
+@keyframes fade-in-right {
+	from {
+		opacity: 0;
+		transform: translate3d(10%, 0, 0);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}

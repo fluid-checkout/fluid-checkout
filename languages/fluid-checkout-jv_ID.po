@@ -277,10 +277,6 @@ msgstr "Database Fluid Checkout dianyari kanthi sukses"
 msgid "The database changes where applied successfully."
 msgstr "Basis data owah-owahan ing ngendi ditrapake kanthi sukses."
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "oke"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "Mbucal"
@@ -399,39 +395,9 @@ msgstr "Maca dokumentasi"
 msgid "Don't show this again"
 msgstr "Aja nuduhake iki maneh"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "Penawaran khusus"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"Ngluwihi kabeh kabecikan Fluid Checkout menyang kaca cart lan kaca matur "
-"nuwun."
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Cairan Checkout PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"Cithakan desain, cart sing dioptimalake lan kaca sing ditampa pesenan, "
-"pencocokan akun, lan liya-liyane."
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"Alat paling apik kanggo <strong>nambah tingkat konversi checkout "
-"WooCommerce</strong> lan nggawe pengalaman tuku konsisten ing kabeh "
-"perjalanan."
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -453,10 +419,6 @@ msgstr "Owahi isi cart ing kaca checkout"
 msgid "Account matching / user matching"
 msgstr "Pencocokan akun / cocog pangguna"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "Tombol Express Checkout saka cara pembayaran sing didhukung"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "Simbol kepercayaan ing cart lan kaca matur nuwun"
@@ -464,10 +426,6 @@ msgstr "Simbol kepercayaan ing cart lan kaca matur nuwun"
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "Posisi liyane kanggo kode coupon ing kaca checkout"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "Kolom kode kupon terpadu ing kaca cart"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -481,246 +439,25 @@ msgstr "Pesen hadiah lan slip packing"
 msgid "Local pickup and in-store collection"
 msgstr "Pickup lokal lan koleksi ing toko"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "Nganyarke menyang PRO - 99 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Cairan Checkout PRO - Bundel"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "Kabeh fitur PRO + Kabeh tambahan kanggo rega khusus."
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"Bundel kasebut kalebu kabeh tambahan sing saiki ditawakake lan tambahan "
-"Fluid Checkout sing bakal diluncurake ing mangsa ngarep."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "Nilai 226 EUR (Ngirit 42%)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Ngrampungake Otomatis Alamat Google"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "Buku Alamat"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "Asisten EU-VAT"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "Kabeh tambahan ing mangsa ngarep *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* Anggere sampeyan duwe langganan aktif."
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "Entuk Bundle - Mung 129 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"Kabeh prices ditampilake ing EUR. Yen ana prabédan karo rega ing situs web "
-"kita, tawaran sing ditampilake ing situs web bakal diganti lan bakal "
-"ditrapake."
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "Tambahan"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "Ningkatake pengalaman checkout kanthi tambahan iki."
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "Aku wis duwe - Singidaken tawaran iki"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "Diinstal - Aktifake"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "Diaktifake"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "Nganti 40% kothak checkout kurang kanggo diisi."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"Ngindhari telat pangiriman lan pelanggan sing ora marem. Nglumpukake "
-"<strong>informasi alamat sing bener</strong> saka pisanan padha tuku karo "
-"sampeyan."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "Entuk tambahan iki - 29 EUR"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "Buku alamat"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "Akeh alamat sing disimpen kanggo pengiriman lan tagihan."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"Ayo pelanggan <strong>nyimpen pirang-pirang alamat pengiriman lan "
-"tagihan</strong> ing akun lan pilih sing digunakake ing kaca checkout lan "
-"cart."
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "Entuk tambahan iki - 59 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "Validasi EU-VAT sing disederhanakake kanggo toko sampeyan."
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"Nglumpukake lan <strong>validasi nomer VAT EU ing kaca checkout</strong> , "
-"mbusak biaya pajak kanthi mbalikke lan konfirmasi lokasi pelanggan yen "
-"dibutuhake."
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "Entuk tambahan iki - 39 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"Kabeh tambahan didol kanthi kapisah lan mbutuhake plugin <strong>Fluid "
-"Checkout Lite</strong> kanggo diinstal lan diaktifake, kajaba yen dicathet."
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Pilih gambar"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Mlebu "
-"menyang akun</a> kanggo entuk kunci lisensi, utawa <a href=\"%s\" "
-"target=\"_blank\">tuku kunci lisensi anyar</a> ."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "Valid nganti %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "Kadaluwarsa ing %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Mlebu "
-"menyang akun</a> kanggo nganyari kunci lisensi lan terus nampa nganyari lan "
-"dhukungan."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "Kunci lisensi dibatalake."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">Tuku kunci lisensi anyar</a> lan terus "
-"nampa nganyari lan dhukungan."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "kesalahan: "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "Setup &amp; Dokumentasi"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "apik tenan! Kaca checkout sampeyan saiki mlaku ing Fluid Checkout."
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "Ing ngisor iki sawetara sumber kanggo sampeyan miwiti:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"Waca pandhuan instalasi <a href=\"%s\" target=\"_blank\">Njupuk nyatakake "
-"karo Fluid Checkout</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "Setel tata letak lan desain ing <a href=\"%s\">opsi checkout</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"Priksa manawa ana <a href=\"%s\">pilihan integrasi</a> sing kasedhiya "
-"kanggo plugin liyane sing wis diinstal."
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"Dolan maring <a href=\"%s\" target=\"_blank\">dokumentasi</a> kanggo "
-"informasi luwih lengkap babagan fitur Fluid Checkout."
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"Yen sampeyan butuh bantuan, <a href=\"%s\" target=\"_blank\">bukak tiket "
-"dhukungan</a> ing saluran dhukungan resmi."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -733,14 +470,6 @@ msgstr "Optimizations cart"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "Aktifake optimasi kaca cart"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "Tampilake kaca cart kanthi tata letak sing padha karo kaca checkout."
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "Header lan footer"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -773,16 +502,6 @@ msgstr "Nggawe ringkesan pesenan tetep katon ing kaca cart nalika nggulung"
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "kode kupon"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"Pilih posisi kanggo nampilake bagean kode kupon ing kaca cart. Mung "
-"ditrapake nalika AJAX cart lan kode kupon terpadu ing kaca checkout "
-"diaktifake."
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -874,10 +593,6 @@ msgstr "Tata letak lintas-sade tema"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "Jumlah item cross-sell kanggo ditampilake ing kaca cart"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "Simbol kepercayaan &amp; lencana"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "Tambah area widget menyang kaca cart"
@@ -894,10 +609,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "Checkout"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "Tata letak &amp; desain"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "tata letak checkout"
@@ -913,22 +624,6 @@ msgstr "Mode peteng"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "Aktifake mode peteng"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "Cithakan header lan footer"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"Disaranake nggunakake header lan footer bebas gangguan kanggo ngindhari "
-"gangguan ing kaca checkout. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Maca "
-"riset babagan ninggalake kreta</a> ."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -981,10 +676,6 @@ msgid ""
 msgstr ""
 "Pilih werna latar mburi kanggo footer kaca checkout. Mung ditrapake nalika "
 "nggunakake header lan footer bebas gangguan."
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "Elemen checkout"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1072,18 +763,6 @@ msgstr "Link menyang kaca toko"
 msgid "Cart items"
 msgstr "Barang kréta"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "Aktifake opsi kanggo ngowahi item cart ing kaca checkout"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"Ngidini pelanggan ngganti jumlah produk utawa mbusak item langsung ing kaca "
-"checkout."
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "Singidaken kesalahan item cart ing kaca checkout"
@@ -1136,36 +815,9 @@ msgstr ""
 "Wilayah widget iki digunakake kanggo nambah simbol kepercayaan lan lencana "
 "kepercayaan ing kaca checkout."
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"Tampilake widget sidebar checkout mung nalika ndeleng langkah checkout "
-"pungkasan ing piranti seluler nalika nggunakake tata letak checkout "
-"multi-langkah"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "Aktifake bagean kode kupon terpadu"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr "Mung ditrapake yen panggunaan kode kupon diaktifake ing setelan WooCommerce."
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "Tampilake judhul bagean kode kupon"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"Mung ditrapake nalika kode kupon ditampilake minangka bagean kapisah ing "
-"kaca checkout utawa cart."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1184,16 +836,6 @@ msgstr "Minangka substep sadurunge cara pembayaran"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "Minangka substep sawise cara pembayaran"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"Pilih gaya tombol &quot;aplikasi kupon&quot;. Mung ditrapake nalika bagean "
-"kode coupon ditampilake &quot;Sadurunge langkah checkout&quot; ing kaca "
-"checkout, utawa &quot;Sadurunge bagean item cart&quot; ing kaca cart."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1242,21 +884,6 @@ msgstr ""
 "Dianjurake mung nalika paling pelanggan bener mbutuhake lapangan "
 "&quot;Alamat baris 2&quot;, utawa nalika njupuk alamat kapal tengen iku "
 "wigati (ie. yen ngirim pangan lan produk rusak liyane)."
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "Tampilake tombol link &quot;Tambah&quot; ing huruf cilik"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"Nggawe label ing kolom opsional tombol link &quot;Tambah&quot; minangka "
-"<code>lowercase</code> (ie. &quot;Tambah nomer telpon&quot; tinimbang "
-"&quot;Tambah Nomer Telpon&quot;). Opsi iki uga mengaruhi tombol link kanggo "
-"kolom kode kupon."
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1346,24 +973,6 @@ msgstr "Sadurunge alamat pengiriman"
 msgid "After shipping address"
 msgstr "Sawise alamat pengiriman"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "Nyegah pilihan otomatis saka cara pengiriman pisanan"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Yen diaktifake, cara pengiriman pisanan sing kasedhiya ora bakal dipilih "
-"kanthi otomatis nalika ora ana cara pengiriman liyane sing sadurunge "
-"dipilih kanggo saben paket pengiriman.<br> Opsi iki bakal diaktifake kanthi "
-"otomatis yen opsi kanggo mbusak cara pengiriman sing dipilih diaktifake "
-"kanggo fitur Pickup Lokal."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Pickup lokal"
@@ -1381,20 +990,6 @@ msgid ""
 msgstr ""
 "Ngganti alamat pengiriman karo lokasi titik pickup nalika cara pengiriman "
 "pickup lokal dipilih."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "Tampilake pilihan kanggo mbusak cara pengiriman ing substep lokasi pickup"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Tampilake tombol link ing substep lokasi pickup kanggo mbusak cara "
-"pengiriman sing dipilih. Iki bisa digunakake kanggo ngidini nuduhake bagean "
-"alamat pengiriman maneh yen cara pickup lokal sadurunge dipilih."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1473,32 +1068,6 @@ msgstr "Tambah kolom telpon tagihan menyang formulir checkout."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Pilih ing langkah kanggo nampilake kolom telpon tagihan."
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "Aktifake validasi nomer telpon adhedhasar aturan negara"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"Yen dipateni, validasi kolom telpon ora bakal mriksa yen kode negara utawa "
-"wilayah valid kanggo negara kasebut."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "Mung nuduhake negara sing diijini kanggo pengiriman utawa tagihan"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"Yen diaktifake, mung negara sing diidini kanggo ngirim sing kasedhiya ing "
-"kolom telpon pengiriman, lan mung negara sing diidini kanggo tagihan sing "
-"kasedhiya kanggo kolom telpon tagihan."
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "Tampilake kode negara ing jejere gendéra"
@@ -1531,10 +1100,6 @@ msgstr "Netepake visibilitas lapangan cathetan pesenan tambahan."
 msgid "Gift options"
 msgstr "Pilihan hadiah"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "Tampilake pesen hadiah lan pilihan hadiah liyane ing kaca checkout"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1542,10 +1107,6 @@ msgid ""
 msgstr ""
 "Ngidini pelanggan nambah pesen hadiah lan opsi liyane sing gegandhengan "
 "karo hadiah menyang pesenan."
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "Tampilake kothak pesen hadiah tansah ditambahi"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1601,27 +1162,9 @@ msgstr "Dashboard"
 msgid "Integrations"
 msgstr "Integrasi"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"Ora ana integrasi sing kasedhiya ing bagean iki. Opsi sing ana gandhengane "
-"karo saben plugin mung bakal katon ing kene yen plugin kasebut diaktifake."
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "Tombol lisensi"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"Ora ana pilihan kunci lisensi sing kasedhiya ing bagean iki. Opsi sing ana "
-"gandhengane karo saben plugin utawa tambahan bakal katon ing kene nalika "
-"plugin kasebut diaktifake."
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1721,14 +1264,6 @@ msgstr ""
 "Wilayah widget iki digunakake kanggo nambah simbol kepercayaan lan lencana "
 "kepercayaan ing kaca matur nuwun."
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"Opsi iki mengaruhi kaca matur nuwun, ndeleng rincian pesenan ing kaca akun "
-"lan kabar email."
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "Tumindak dhawuh"
@@ -1821,20 +1356,6 @@ msgstr "Muat aset sing ora dikurangi"
 msgid "Enhanced select fields"
 msgstr "Bidang pilih sing ditingkatake"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr "Ganti komponen dropdown <code>select2</code> karo <code>TomSelect</code>"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect minangka komponen pilihan dropdown sing luwih gampang sing kurang "
-"rawan kesalahan tinimbang Select2, nalika nawakake fitur sing padha sing "
-"digunakake ing kaca checkout WooCommerce."
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "Ndandani zoom-in otomatis ing kolom formulir"
@@ -1842,34 +1363,6 @@ msgstr "Ndandani zoom-in otomatis ing kolom formulir"
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "Setel <code>font-size</code> ing kolom formulir dadi 16px"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"Nalika ukuran font ing kolom formulir luwih cilik tinimbang 16px, Safari "
-"lan browser liyane bisa kanthi otomatis nggedhekake piranti seluler kanggo "
-"nggawe teks luwih gampang diwaca. Yen opsi iki diaktifake, bakal nyetel "
-"ukuran font ing kolom formulir menyang 16px ing kaca sing dioptimalake "
-"dening Fluid Checkout supaya ora nggedhekake."
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"Tujuan pengiriman tansah disetel menyang &quot;Default kanggo alamat "
-"pengiriman pelanggan&quot; nalika Fluid Checkout diaktifake. Pelanggan isih "
-"bisa nyedhiyakake alamat pengiriman lan tagihan sing beda-beda sajrone "
-"checkout, pilihan kanggo nyetel alamat tagihan standar supaya padha karo "
-"alamat pengiriman kasedhiya ing WooCommerce&gt; Setelan&gt; Checkout Cairan."
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1896,14 +1389,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimental)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "Konfirmasi"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "Verifikasi Nomer Telpon"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2429,10 +1914,6 @@ msgstr "Sawise bar kemajuan"
 msgid "Before coupon codes section"
 msgstr "Sadurunge bagean kode coupon"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "Aktifake kolom nomer telpon internasional"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "Format nomer telpon miturut aturan kanggo saben negara."
@@ -2440,18 +1921,6 @@ msgstr "Format nomer telpon miturut aturan kanggo saben negara."
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "Gunakake validasi nomer telpon sing tepat"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"Coba priksa manawa nomer telpon minangka nomer seluler utawa landline sing "
-"bener adhedhasar aturan kanggo kode negara sing dipilih. Opsi iki "
-"nggunakake fitur validasi presisi <code>intl-tel-input</code> , sing bisa "
-"menehi positif palsu kanggo sawetara nomer telpon."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2498,26 +1967,6 @@ msgstr "2 kolom"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 kolom"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"Gaya umum kanggo langkah-langkah checkout, ringkesan pesenan, lan bagean "
-"liyane.<br> Uga bisa ditrapake kanggo kaca liyane kayata kaca Kranjang, "
-"Pesenan Diterima lan Deleng Pesenan."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"Cithakan desain <em>&quot;Split&quot;</em> ora kasedhiya nalika nggunakake "
-"tata letak <em>&quot;1 kolom&quot;</em> lan bakal bali menyang "
-"<em>&quot;Minimalis&quot;</em> yen dipilih."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2615,6 +2064,2521 @@ msgstr ""
 "dibutuhake kanggo mesthekake alamat pengiriman bisa disalin menyang alamat "
 "tagihan nalika opsi kasebut dicenthang, yen ora, pelanggan bisa uga ora "
 "bisa ngrampungake formulir checkout."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "Profil setelan"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "Profil setelan"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "Sampeyan ora duwe idin kanggo nindakake tumindak iki."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "Sampeyan ora duwe idin kanggo ngaktifake plugin."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "Plugin ilang."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "Plugin wis diaktifake."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "Owah-owahan ing ngisor iki bakal ditrapake:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Wiwit Fluid Checkout 5.0, setelan disimpen kanthi beda. Opsi lawas isih "
+"disimpen ing basis data kanggo ngidini downgrade menyang versi sadurunge "
+"yen prelu."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"Toko sampeyan wis mlaku udakara 2 minggu nganggo setelan anyar supaya "
+"sampeyan bisa ngresiki opsi lawas sing disimpen ing basis data. Elinga yen "
+"sawise ngresiki, yen sampeyan kudu mudhun menyang versi plugin sadurunge, "
+"bakal nggunakake nilai standar kanggo kabeh setelan."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "Reresik setelan Fluid Checkout"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "Busak opsi sing isih ana"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "Tulungi kita ningkatake Fluid Checkout"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"Nuduhake laporan lingkungan situs anonim karo Fluid Checkout kanggo entuk "
+"dhukungan sing luwih cepet lan mbantu kita ningkatake kompatibilitas lan "
+"ngukur dampak. Ora ana data pelanggan, pangguna, utawa sensitif sing "
+"kalebu. Sampeyan bisa milih apa sing dienggo bareng kapan wae saka setelan "
+"Piranti."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "Aktifake laporan lingkungan situs"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "Tinjau setelan"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"Pratayang iki wis kadaluwarsa. Muat maneh kaca admin kanggo miwiti "
+"pratayang anyar."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "Pratinjau wis kadaluwarsa"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "Pesenan ora bisa dilebokake ing pratinjau."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "Mlebu ora kasedhiya ing pratinjau."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "Akun ora bisa digawe ing pratinjau."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "Panjaluk menyang situs liya diblokir ing pratinjau."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "Ngolah…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "Ana sing ora beres. Coba maneh."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "Aktifake plugin"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - Paket checkout lengkap"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"Kabeh fitur PRO + kabeh tambahan, siji rega. Cithakan desain, kaca kranjang "
+"lan pesenan sing dioptimalake, pencocokan akun, lan liya-liyane."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "Kaca pambayaran pesenan sing dioptimalake"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "Tombol checkout cepet saka metode pembayaran sing didhukung"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "Nggawe akun telat"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Alamat otomatis dilengkapake nganggo API Google Maps"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "Alamat sing disimpen nganggo buku alamat pirang-pirang"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "Asisten EU-PPN"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "Ndhelikake bagean iki"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "Sinau luwih lengkap"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "Entuk akses awal"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "Aktifake tambahan"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "Entuk luwih akeh manfaat saka perjalanan checkout sampeyan"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "Kunci API uji coba"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "Persiapan sing dipandu"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "Pilihan"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "Atur tata letak lan desain ing <a href=\"%s\">opsi checkout</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"Aktifake checkout tamu lan/utawa deleng <a href=\"%s\">setelan akun "
+"pelanggan</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"Aktifake <a href=\"%1$s\">kaca kranjang</a> sing dioptimalake, <a "
+"href=\"%2$s\">matur nuwun</a> , lan <a href=\"%3$s\">pembayaran pesenan</a> "
+"."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr "Aktifake <a href=\"%s\">pelengkapan alamat otomatis</a> saka Google Maps."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr ""
+"Aktifake pirang-pirang alamat sing disimpen nganggo <a href=\"%s\">buku "
+"alamat</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"Priksa manawa ana <a href=\"%s\">opsi integrasi</a> sing kasedhiya kanggo "
+"tema utawa plugin liyane sing wis diinstal."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"Entuk dhukungan sing luwih cepet lan tulungi kita ningkatake kompatibilitas "
+"lan ngukur dampak. <a href=\"%s\">Aktifake pelacakan panggunaan</a> saka "
+"setelan piranti."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "Tab setelan ilang."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "Miwiti"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>Apik! Kaca pembayaran sampeyan saiki wis mlaku ing Fluid "
+"Checkout.</strong> Iki sawetara langkah kanggo miwiti:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "Rampung"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "Pratinjau data laporan"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "Kirim saiki"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "Deteksi otomatis"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "Basa Afrikaans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "Basa Albania"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "Basa Amharik"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "Basa Arab"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "Armenia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "Basa Azerbaijan"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "Basa Basque"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "Basa Belarusia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "Basa Bengali"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "Basa Bosnia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "Basa Bulgaria"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "Wong Burma"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "Basa Katalan"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "Cina"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "Basa Cina (Sederhana)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "Wong Tionghoa (Hong Kong)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "Basa Cina (Tradisional)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "Kroasia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "Ceko"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "basa Denmark"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "Walanda"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "Basa Inggris"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "Inggris (Australia)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "Inggris (Britania Raya)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "Basa Estonia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "Basa Persia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "Basa Finlandia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "Wong Filipina"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "Prancis"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "Prancis (Kanada)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "Galicia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "Georgia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "Jerman"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "Yunani"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "Basa Gujarati"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "Ibrani"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "Hindi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "Wong Hongaria"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "Islandia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "Basa Indonesia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "Italia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "Jepang"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "Basa Kannada"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "Kazakh"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "Khmer"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "Korea"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "Kirgiz"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "Lao"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "Basa Latvia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "Lithuania"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "Makedonia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "Melayu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "Malayalam"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "Marathi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "Wong Mongolia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "Wong Nepal"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "Basa Norwegia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "Polandia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "Portugis"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "Basa Portugis (Brasil)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "Basa Portugis (Portugal)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "Punjabi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "Wong Rumania"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "Rusia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "Basa Serbia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "Wong Sinhala"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "Slowakia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "Basa Slovenia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "Spanyol"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "Spanyol (Amerika Latin)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "Basa Swahili"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "Swedia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "Tamil"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "Telugu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "Wong Thailand"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "Turki"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "Ukraina"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "Basa Urdu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "Wong Vietnam"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "Zulu"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Alamat Google otomatis dilengkapake"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Versi API Google Places"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"Pilih versi Google Places API sing arep digunakake. Disaranake sampeyan "
+"pindhah menyang Places API anyar sanalika bisa."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"Disaranake nggunakake &quot;Places API (Anyar)&quot; wiwit 1 Maret 2025, "
+"Google bakal mindhah versi &quot;Places API (Legacy)&quot; menyang status "
+"Legacy, tegese sampeyan ora bakal bisa ngaktifake layanan iki kanggo kunci "
+"API anyar lan versi API kasebut pungkasane ora bakal kasedhiya maneh. Akun "
+"sing wis ana nggunakake Legacy API bisa terus bisa digunakake tanpa "
+"gangguan."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(Disaranake)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Kunci API Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"Tempel kunci API Google sampeyan lan gunakake tombol tes kanggo ngonfirmasi "
+"yen bisa digunakake kanggo situs web iki. Priksa manawa kunci kasebut valid "
+"lan diidini kanggo domain sampeyan, yen ora, kolom alamat bisa diblokir "
+"supaya pelanggan ora bisa ngrampungake pesenan."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "Aktifake alamat Google sing dilengkapake otomatis"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr "Aktifake pelengkapan otomatis alamat nggunakake Google Maps API."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Basa API Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"Basa iki bakal digunakake kanggo nampilake saran alamat Google Places API "
+"lan alamat uga bakal dirampungake kanthi otomatis ing basa iki."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "Jinis asil"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Kosongna wae kanggo nampa asil apa wae, sing biasane ngasilake asil sing "
+"cocog. <a href=\"%s\" target=\"_blank\">Deleng dokumentasi kanggo rincian "
+"liyane</a> .<br> Pilih nganti 5 jinis asil panelusuran alamat kanggo "
+"ngasilake kolom pelengkapan otomatis alamat.<br> Bukak dokumentasi Google "
+"Maps kanggo mangerteni sing luwih lengkap babagan <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">jinis sing didhukung</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "Jinis asil (API Legacy)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Jinis asil panelusuran alamat sing kudu dibalekake nalika nggunakake Places "
+"API (Legacy).<br> Bukak dokumentasi Legacy Google Places API kanggo "
+"mangerteni sing luwih lengkap babagan <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">jinis sing didhukung</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "Lapangan perusahaan"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "Aktifake pelengkapan otomatis kanggo jeneng perusahaan yen kasedhiya"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Aktifake pelengkapan otomatis kolom perusahaan nganggo informasi jeneng "
+"perusahaan nalika bali saka Google Maps API."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "Panelusuran bisnis"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "Aktifake panelusuran bisnis ing kolom perusahaan"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"Aktifake saran alamat sing ana gandhengane karo bisnis nalika ngetik ing "
+"kolom perusahaan, banjur isi otomatis kabeh kolom alamat nalika bisnis "
+"dipilih saka saran kasebut."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "Jinis asil perusahaan"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Pilih nganti 5 jinis asil panelusuran alamat kanggo ngasilake kolom "
+"perusahaan sing dilengkapake otomatis.<br> Nilai sing disaranake yaiku "
+"<code>establishment</code> , sing kalebu umume jinis bisnis.<br> Kosongna "
+"wae kanggo nampa asil apa wae, kalebu asil sing ora ana gandhengane karo "
+"bisnis.<br> Bukak dokumentasi Google Maps kanggo mangerteni sing luwih "
+"lengkap babagan <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">jinis sing didhukung</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Logo Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "Tampilake teks lan logo &quot;Didukung dening Google&quot;"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"Nalika dicenthang, teks lan logo &quot;Powered by Google&quot; bakal "
+"ditampilake ing sisih ngisor kothak saran pelengkapan otomatis alamat."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "Alamat API Brasil otomatis dilengkapake"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "API Brasil"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "Aktifake alamat API Brasil sing dilengkapake otomatis kanggo kolom CEP"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"Gunakna Brasil API kanggo njupuk lan ngisi alamat kanthi otomatis "
+"nggunakake kolom CEP/Kode Pos. Mung cocog kanggo alamat Brasil."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "Versi API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "Pilih versi metode CEP Brasil API sing arep digunakake."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "Migrasi buku alamat"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "Alamat WooCommerce"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"Salin alamat pengiriman lan tagihan sing wis ana saka WooCommerce menyang "
+"buku alamat pelanggan."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "Aktifake fitur buku alamat"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"Ngidini pelanggan nyimpen pirang-pirang alamat lan nemtokake alamat gawan "
+"sing bakal digunakake kanggo pengiriman lan tagihan."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "Label alamat"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "Ngidini pelanggan nambahake label khusus kanggo saben alamat"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"Label alamat nggampangake para pelanggan mbedakake antarane alamat sing "
+"disimpen (kayata: &quot;Omah Ibu&quot;). Label alamat kasebut pribadi "
+"kanggo para pelanggan, lan ora bakal ditampilake utawa dicithak ing kaca "
+"rincian pesenan utawa faktur."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "Tata letak tampilan"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr ""
+"Pilih kepiye alamat sing disimpen bakal ditampilake nalika checkout lan ing "
+"kranjang."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"Ditrapake nalika checkout lan ing kranjang. Alamat sing disimpen ing kaca "
+"akun mesthi nggunakake tata letak kertu."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "Kartu alamat"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "Daftar alamat"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "Kolom gulung mudhun"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "Panelusuran alamat"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"Tampilake filter telusuran alamat ing frontend nalika pelanggan duwe paling "
+"ora jumlah alamat sing disimpen iki."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr ""
+"Ora digunakake nalika tata letak tampilan disetel menyang kolom gulung "
+"mudhun."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "Alamat"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "Aktifake optimasi kaca kranjang kanggo ndeleng opsi liyane"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "Ringkesan pesenan sing tetep"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"Pilih posisi ing ngendi bagean kode kupon bakal ditampilake ing kaca "
+"kranjang. Mung ditrapake nalika kranjang AJAX diaktifake, lan yen "
+"panggunaan kode kupon diaktifake ing setelan WooCommerce."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "Tata letak penjualan silang"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "Penjualan silang ditampilake"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "Barang-barang"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "Optimisasi kaca kranjang"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"Wenehana tata letak sing jelas lan fokus ing konversi sing padha karo tata "
+"letak kasir sampeyan."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr ""
+"Cocokake tata letak kranjang karo kaca pembayaran supaya proses tuku "
+"konsisten."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"Tansah nganyari kranjang ing latar mburi, ora ana muat ulang kaca lengkap "
+"nalika jumlah owah."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"Selehake kode kupon, pengiriman, lan penjualan silang persis ing ngendi "
+"kode kasebut paling apik dikonversi."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"Jaga ringkesan pesenan tetep katon nalika nggulung, lan tambahake simbol "
+"kepercayaan ing ngendi para pembeli butuh kepastian."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "Kolom"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"Gaya umum kanggo langkah-langkah checkout, ringkesan pesenan, lan bagean "
+"liyane. Ditrapake kanggo checkout liyane, kranjang, matur nuwun (pesenan "
+"ditampa), lan ndeleng kaca pesenan."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"Nalika nggunakake tata letak <em>&quot;1 kolom&quot;</em> karo cithakan "
+"desain <em>&quot;Pisah&quot;</em> , kolom tengen mung ditampilake yen area "
+"widget sidebar kaca aktif (Checkout Sidebar, Cart Sidebar, utawa Order "
+"Received Sidebar). Yen ora, kaca tetep dadi siji kolom nganggo gaya Pisah."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "Latar mburi kolom sing dipérang"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"Pilih werna latar mburi kanggo kolom sekunder Desain pamisah. Kosongna wae "
+"kanggo nggunakake werna latar mburi ringkesan pesenan."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "Cithakan kaca"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "Cithakan pambayaran"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"Disaranake kanggo ngurangi gangguan nalika mbayar. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">Wacanen riset babagan ninggalake kranjang</a> ."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "Bilah kemajuan sing lengket"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "Gaya bilah kemajuan"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "Total pesenan"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "Werna latar mburi"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "Pranala tumindak"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "Ringkesan pesenan seluler"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "Kahanan awal seluler"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "Aktifake panyuntingan item kranjang nalika checkout"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"Ngidini pelanggan ngganti jumlah produk utawa mbusak barang langsung ing "
+"kaca checkout."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "Kasalahan barang kranjang"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"Mung ditrapake nalika kode kupon ditampilake minangka bagean sing kapisah "
+"ing kaca checkout utawa kranjang, lan yen panggunaan kode kupon diaktifake "
+"ing setelan WooCommerce."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "Posisi kode kupon"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "Tombol aplikasi kupon"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "Pilih gaya tombol &quot;aplikasi kupon&quot;."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "Baris alamat 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"Setelan iki dienggo bareng antarane bagean Checkout lan Pickup lokal. Ing "
+"bagean Pickup lokal, setelan iki uga nemtokake apa pemilih Ship/Pickup "
+"ditampilake ing njero bagean metode pengiriman (sadurunge alamat) utawa "
+"minangka bagean sing kapisah (sawise)."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "Akun pelanggan"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "Tamu sing mbayar"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"Pilihan checkout tamu, login, lan nggawe akun saka kaca setelan Akun "
+"WooCommerce. Kabeh mau dikelola ing kene kanggo penak sampeyan, mula "
+"sampeyan bisa nggunakake nilai sing beda-beda saben profil setelan."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "Ngidini pelanggan mbayar tanpa akun"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Disaranake</strong> supaya pelanggan ora dijaluk nggawe akun utawa "
+"mlebu log nalika checkout, sing bisa nyuda tingkat konversi."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"Nalika dipateni, pelanggan kudu mlebu log utawa nggawe akun kanggo "
+"ngrampungake tumbasan."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "Mlebu nalika mbayar"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "Aktifake login nalika checkout"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr ""
+"Tampilake pranala kanggo pelanggan sing bali supaya bisa mlebu saka kaca "
+"pembayaran."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "Nggawe akun"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "Ngidini pelanggan nggawe akun nalika checkout"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "Pelanggan bisa nggawe akun sadurunge nggawe pesenan."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "Ngidini pelanggan nggawe akun saka kaca Akunku"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "Pelanggan bisa ndhaftar akun anyar saka kaca Akunku."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "Jeneng panganggo"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "Nggawe saka jeneng pelanggan"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Disaranake</strong> supaya pelanggan ora dijaluk milih jeneng "
+"panganggo nalika checkout, sing bisa nyuda tingkat konversi."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"Jeneng panganggo digawe saka jeneng pelanggan, utawa saka alamat email "
+"nalika jeneng ora bisa digunakake."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "Sandi"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "Kirim pranala persiyapan sandhi"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Disaranake</strong> supaya pelanggan ora dijaluk nyetel sandhi "
+"nalika checkout, sing bisa nyuda tingkat konversi."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "Pelanggan nampa email kanggo nggawe sandhi kanthi aman."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"Ngidini pelanggan sing wis ndhaptar ngrampungake pembayaran tanpa kudu "
+"mlebu log lan nggandhengake pesenan karo akun sing wis ana nalika rincian "
+"kontak cocog."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "Pesen akun sing wis ana"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr ""
+"Ngidini para pelanggan nggawe akun sawise nggawe pesenan, saka kaca matur "
+"nuwun."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"Opsi ing bagean iki kasedhiya nalika checkout tamu lan pencocokan akun "
+"diaktifake. Aktifake loro fitur ing ndhuwur kanggo ngonfigurasi nggawe akun "
+"sing ditundha."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "Aktifake nggawe akun sing ditundha"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"Aktifake proses nggawe akun sing ditundha nalika checkout tamu lan "
+"pencocokan akun diaktifake."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "Posisi bagean"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "Sadurunge bagean rincian pelanggan"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "Sawise bagean rincian pelanggan"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "Keuntungan nggawe akun"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "Ninggalake kolom kosong bakal nampilake teks gawan."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "Tombol-tombol ing njero"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "Kolom sing dibutuhake"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "Aktifake kolom pesen hadiah nalika checkout"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "Pesen hadiah sing ditambahi"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "Tampilake kolom pesen hadiah sing tansah ditambahi"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "Pesen hadiah ing rincian pesenan"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"Ora ana integrasi sing kasedhiya ing bagean iki saiki. Opsi sing ana "
+"gandhengane karo saben plugin lan tema mung bakal katon ing kene nalika "
+"plugin utawa tema kasebut diaktifake."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "Kolom telpon"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "Visibilitas lapangan"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "Posisi lapangan"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "Kode negara telpon &amp; validasi"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "Negara"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "Aktifake kolom negara ing telpon"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "Filter negara kanggo pengiriman utawa tagihan"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"Watesi pamilih negara ing saben kolom telpon mung ing negara sing diidini "
+"kanggo pengiriman utawa tagihan ing toko sampeyan."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "Validasi"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "Aktifake validasi prasaja adhedhasar aturan negara"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"Priksa manawa nomer telpon valid kanggo negara sing dipilih, kalebu kode "
+"negara lan dawane."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"Priksa luwih ketat manawa nomer kasebut minangka nomer seluler, telpon "
+"tetep, utawa jinis liyane sing ditampa kanggo negara sing dipilih. Bisa uga "
+"nolak sawetara nomer sing valid."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "Jinis validasi"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "Panggonan panggon"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"Ora ana kunci lisensi sing kudu dikelola saiki. Kunci lisensi bakal katon "
+"ing kene nalika plugin utawa add-on Fluid Checkout sing dilisensi aktif."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "Jinis pangiriman gawan"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "Pilih jinis pangiriman sing bakal dipilih kanthi gawan."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "Lapangan zona pengiriman"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Pilih kolom endi sing bakal ditampilake kanggo kolom filter zona pengiriman "
+"pengambilan lokal. Kosongake kanggo nuduhake kabeh pilihan sing kasedhiya."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Kolom-kolom iki bakal ditampilake minangka filter kanggo metode pengiriman "
+"pengambilan lokal. Sawetara kolom isih bisa katon nalika checkout nalika "
+"ora dipilih ing kene, yen plugin sing kompatibel mbutuhake supaya bisa "
+"digunakake kanthi bener."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "Alamat pangiriman pesenan"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "Optimisasi kaca pembayaran pesenan"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"Wenehana tata letak sing jelas lan fokus ing konversi sing padha karo tata "
+"letak pembayaran kanggo pesenan sing durung dibayar."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"Optimalake tata letak kaca pambayaran pesenan kanggo pesenan sing lagi "
+"ditundha pembayaran."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"Cocokake pengalaman mbayar pesenan karo proses pembayaran sampeyan kanggo "
+"entuk pengalaman tuku sing konsisten."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"Tambahna simbol lan lencana kepercayaan ing ngendi para pembeli butuh "
+"kepastian sadurunge mbayar."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "Matur nuwun kanggo optimasi kaca"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"Gawe kaca matur nuwun lan rincian pesenan supaya luwih jelas kanggo para "
+"pelanggan sawise tuku."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr ""
+"Optimalake kaca matur nuwun lan rincian pesenan akun nganggo tata letak "
+"sing luwih jelas."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"Tampilake kemajuan status pesenan, tumindak, unduhan, lan cathetan ing "
+"ngendi wae sing masuk akal."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "Atur bagean rincian pesenan ing kabar email."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"Tambahna simbol lan lencana kepercayaan ing ngendi para pembeli butuh "
+"kepastian sawise tuku."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "Kabar liwat email"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"Aktifake kaca matur nuwun lan optimasi rincian pesenan kanggo ndeleng opsi "
+"liyane"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "Gunakake tata letak sing amba ing kaca matur nuwun"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"Opsi iki mengaruhi kaca matur nuwun, ndeleng rincian pesenan ing kaca akun, "
+"lan ing kabar email."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "Simpen setelan"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "Dokumen"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "Kranjang"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "Matur nuwun"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "Alamat otomatis dirampungake"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "Lencana kepercayaan"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "Sampeyan ora duwe idin kanggo nyimpen setelan iki."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "Panjaluk panyimpenan ora valid."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "Setelan sampeyan wis disimpen."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "Nyimpen..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "Setelan ora bisa disimpen. Coba maneh."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "Notifikasi penolakan"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "Bukak menu setelan"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "Tutup menu setelan"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "Pratinjau"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "Jembarna pratinjau"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "Ciutkan pratinjau"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "Tampilake header lan footer"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "Ndhelikake header lan footer"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "Pratinjau kaca"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "Pratinjau tampilan port"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "Tablet"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "Desktop"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "Ambane pratinjau"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "Kurangi jembar"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "Ambane pratinjau ing piksel"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "Tambah ambane"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "Pratinjau minangka"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "Tamu"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "Wis mlebu log"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "Kaca pratinjau"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "Bukak pratinjau kanggo ndeleng luwih cetha"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "Kasedhiya karo %s."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "Uripake"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr ""
+"Optimisasi kanggo kaca iki dipateni. %s kanggo ndeleng pratinjau kaca "
+"kasebut."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "Pratinjau %s"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "Sesi sing kapisah · ora ana sing disimpen"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "Pelacakan panggunaan"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Kirim laporan lingkungan situs sing ora sensitif kanggo mbantu Fluid "
+"Checkout ningkatake kompatibilitas. Laporan ora dikirim nganti diaktifake "
+"ing opsi ing ngisor iki."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "Kirim laporan pelacakan panggunaan menyang Fluid Checkout"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"Laporan iki mbantu kita ningkatake kompatibilitas lan dhukungan kanggo "
+"situs sampeyan lan dikirim saben minggu nalika diaktifake."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"Ora ana pelanggan, panganggo admin, utawa data sensitif liyane sing kalebu "
+"ing laporan kasebut."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "Informasi lingkungan dhasar"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"Data dhaptar WordPress, PHP, WooCommerce, tema, lan plugin. Tansah kalebu "
+"nalika pelaporan diaktifake. Mbantu kita mangerteni lingkungan sing "
+"digunakake situs sampeyan."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "Setelan plugin"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"Ngirim setelan plugin Fluid Checkout kanggo mbantu panjaluk dhukungan lan "
+"mbantu kita ngerti kepiye sampeyan nggunakake plugin kita."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "Bakal teka rauh"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "Metrik dodolan"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"Cacah pesenan saben wulan lan total dodolan sajrone setaun sadurunge "
+"nginstal Fluid Checkout nganti saiki. Mbantu kita ngerti apa sampeyan entuk "
+"dhuwit luwih akeh nganggo plugin sing diinstal. Ora ana data pelanggan "
+"utawa pangguna sing dikirim."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "Utilitas"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"Gunakake komponen gulung mudhun <code>TomSelect</code> tinimbang "
+"<code>select2</code>"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect kuwi komponen pilihan dropdown sing luwih prasaja sing kurang "
+"rawan kesalahan tinimbang Select2, nanging nawakake fungsi sing padha."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"Nyetel ukuran font ing njero kolom formulir dadi 16px ing kaca sing "
+"dioptimalake dening plugin iki supaya ora otomatis nggedhekake nalika "
+"sesambungan karo kolom formulir ing piranti cilik."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"Safari lan browser liyane bisa uga kanthi otomatis nggedhekake tampilan ing "
+"piranti seluler supaya teks luwih gampang diwaca nalika ukuran font luwih "
+"cilik tinimbang 16px."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "Aktifake pelacakan pamrosesan skrip ing konsol browser."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "Aset sing ora dikurangi"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Skrip Google Maps"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "Aja mbusak skrip Google Maps sing duplikat"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"Nalika diaktifake, skrip Google Maps duplikat ORA bakal dibusak sing bisa "
+"nyebabake kesalahan lan masalah kinerja. Gunakake opsi iki mung nalika "
+"ngatasi masalah."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "Area widget"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "Langkah pungkasan ing seluler"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "Tampilake widget mung ing langkah pungkasan ing seluler"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"Tampilake widget lencana kepercayaan checkout mung nalika ndeleng langkah "
+"checkout pungkasan ing piranti seluler"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "Standar"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "Kolom nomer PPN"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "Tambahna kolom nomer PPN menyang formulir tagihan."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "Label lapangan"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"Setel label kolom nomer PPN (kayata nomer PPN). Ing situs web multi-basa, "
+"luwih becik kolom iki dikosongake lan nerjemahake string asline."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "Nomer PPN"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "PPN EU"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "Aktifake kolom nomer PPN kanggo ndeleng opsi liyane"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "Validasi PPN"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "Validasi kolom nomer PPN kanggo EU-VAT nalika checkout"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"Ngecek apa Nomer PPN sing diwenehake minangka nomer PPN sing valid sing "
+"kadhaptar ing Database VIES Eropa (Sistem Pertukaran Informasi PPN)."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "Nomer PPN toko"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"Nomer PPN toko digunakake kanggo njaluk validasi EU-PPN, lan dicithak ing "
+"faktur.<br> <strong>Disaranake banget kanggo nambahake nomer PPN Toko "
+"sampeyan</strong> amarga yen ora, asil konsultasi VIES bisa uga ora valid "
+"kanggo tujuan akuntansi.<br> IE.: <code>ATU99999999</code> utawa "
+"<code>EE999999999</code> ."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "Pangisian daya mundur"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "Terapna mekanisme pangisian daya balik"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"Setel tarif pajak dadi nol lan tampilake &quot;Biaya balik&quot; ing faktur "
+"nalika nomer PPN pelanggan valid. Teks &quot;Biaya balik&quot; sing beda "
+"bisa uga dibutuhake gumantung saka negara toko kasebut."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "Negara sing padha"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr "Terapna mekanisme biaya balik kanggo transaksi ing negara toko:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"Ngidini ngetrapake mekanisme biaya terbalik kanggo transaksi antarane "
+"perusahaan ing negara sing padha karo toko."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "Pengecualian biaya balik"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr ""
+"Pilih negara tambahan kanggo nglewati penerapan mekanisme pangisian daya "
+"terbalik."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"Pajak bakal dikenani biaya kanggo pesenan saka negara-negara kasebut "
+"sanajan nomer PPN sing valid diwenehake."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "Label tagihan balik ing faktur"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr "Setel label &quot;biaya mundur&quot; ing kaca checkout lan rincian pesenan."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "Teks tagihan balik ing faktur"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "Setel label teks &quot;biaya balik&quot; ing faktur."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "Pajak sing kudu dibayar kanthi basis biaya terbalik"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "Jeneng perusahaan"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "Jeneng perusahaan sing diisi otomatis saka nomer PPN"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"Isi jeneng perusahaan tagihan adhedhasar nomer PPN sing sah sing diwenehake "
+"dening pelanggan."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "Suntingan jeneng perusahaan"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "Ngidini nyunting jeneng perusahaan sing diisi otomatis"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"Nalika diaktifake, pelanggan bisa ngganti jeneng perusahaan sing ana "
+"gandhengane karo nomer PPN sing diwenehake."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "EU-VAT kanggo barang digital"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"Wiwit tanggal 1 Januari 2015, modifikasi wis ditindakake ing peraturan PPN "
+"EU babagan barang digital, sing mung mengaruhi transaksi B2C. PPN kanggo "
+"barang digital kudu diitung adhedhasar lokasi pelanggan, lan bukti iki kudu "
+"dikumpulake (alamat IP lan alamat tagihan)."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "Kelas pajak kanggo barang digital"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "Pilih sawetara kelas pajak"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "Bukti lokasi"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "Ngumpulake bukti lokasi pelanggan"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"Nyimpen alamat IP lan validasi karo alamat tagihan pelanggan. Pelanggan "
+"kudu ngonfirmasi alamat tagihan kanthi mriksa kothak centhang ing kaca "
+"checkout yen negara saka alamat tagihan lan IP ora cocog."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"Opsi iki dikelola ing Fluid Checkout. <a href=\"%s\">Owahi ing setelan akun "
+"Pelanggan</a> ."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"Opsi iki dikelola ing Fluid Checkout. Owahi ing Fluid Checkout &gt; Akun "
+"pelanggan."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"Opsi iki dikelola ing Fluid Checkout. Tujuan pengiriman mesthi disetel dadi "
+"&quot;Default to customer shipping address&quot; nalika Fluid Checkout "
+"diaktifake. Pelanggan isih bisa menehi alamat pengiriman lan tagihan sing "
+"beda-beda sajrone checkout.<br><br> Pilihan kanggo nyetel alamat tagihan "
+"gawan supaya padha karo alamat pengiriman kasedhiya ing <a "
+"href=\"%s\">setelan Fluid Checkout</a> ."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"Opsi iki dikelola ing Fluid Checkout. Tujuan pengiriman mesthi disetel dadi "
+"&quot;Default to customer shipping address&quot; nalika Fluid Checkout "
+"diaktifake. Pelanggan isih bisa menehi alamat pengiriman lan tagihan sing "
+"beda-beda sajrone checkout.<br><br> Pilihan kanggo nyetel alamat tagihan "
+"standar supaya padha karo alamat pengiriman kasedhiya ing WooCommerce &gt; "
+"Setelan &gt; Pembayaran Cairan."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr "Setelan iki wis dipindhah menyang WP Admin &gt; Fluid Checkout &gt; Setelan."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"Tab Setelan WooCommerce iki wis ora digunakake maneh lan bakal dibusak ing "
+"Fluid Checkout 6.0."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "Bukak kaca setelan"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "Ndhelikake tab iki permanen"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "Pratinjau laporan situs"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"Iki data sing bakal dilebokake ing laporan lingkungan situs sabanjure "
+"adhedhasar setelan sampeyan saiki."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "Ngunggah pratinjau laporan..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "Ora bisa mbukak pratinjau laporan situs. Coba maneh."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "Ora bisa ngirim laporan situs. Coba maneh."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "Laporan situs wis kasil dikirim."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "Aktifake lan kirim saiki"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "Tutup"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr "Panjaluk laporan situs wis lagi diproses. Coba maneh sakcepete."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "Pelaporan lingkungan situs dipateni."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "Ora ana data laporan situs sing kasedhiya kanggo dikirim."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"Domain situs iki ora bisa ngirim laporan lingkungan (domain lokal utawa "
+"pangembangan ora kalebu)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "Laporan situs wis dikirim bubar iki. Coba maneh mengko."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "Laporan situs ora bisa dikirim. Coba maneh mengko."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "Pelaporan lingkungan situs ora kasedhiya."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "Ora ana data laporan situs sing kasedhiya kanggo setelan sing dipilih."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "Sampeyan ora diidini ngatur laporan situs."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "Fitur PRO"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "Plugin liyane"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "Entuk mung add-on iki — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "Instal tambahan"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "Nganyarke menyang PRO — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"<a target=\"_blank\" href=\"%1$s\">Entuk %2$s</a> kanggo mbukak kunci opsi "
+"iki."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "Tambahan"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "Deleng dokumentasi"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"Panjaluk mbutuhake panganggo WordPress sing wis mlebu log. Ora perlu "
+"nganggo user_id kanggo nggunakake data panganggo saiki, utawa lebokna "
+"user_id kanggo nargetake akun liyane nalika sing nelpon bisa nyunting "
+"panganggo kasebut (kemampuan edit_user). Panjaluk sing ora diautentikasi "
+"bakal ngasilake fc_api_forbidden. User_id sing ora valid bakal ngasilake "
+"fc_api_user_not_found."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr ""
+"HTTP 200 nganggo { &quot;data&quot;: { ... } } nalika pawang ngasilake "
+"payload."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"HTTP 200 nganggo {&quot;success&quot;: true} nalika ora ana payload "
+"(contone DELETE)."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"Gagal bakal ngasilake kesalahan REST WordPress JSON saka WP_Error (kode, "
+"pesen, data.status). Kode kabel nggunakake awalan fc_api_*."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "Akses sing dilarang."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "Panganggo target ora ditemokake."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "Fitur iki ora kasedhiya."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "Kolom alamat sing dibutuhake ilang."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "Kode pos utawa Kode Pos ora valid."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "Nomer telpon ora valid."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "Negara utawa kabupaten ora sah."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "Negara ora valid utawa ora ana kolom alamat."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "Panjaluk kasebut ora bisa diproses."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "Bali menyang langkah sadurunge"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "Langsung menyang setelan"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr ""
+"Miwiti maneh saka wiwitan lan bali menyang langkah persiyapan sing dipandu "
+"pisanan"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "Miwiti maneh"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "Mangga rampungake kabeh sub-langkah sadurunge nerusake."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "Ngembangake"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "Ciut"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "Lompati"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "Tandhani minangka rampung"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "Tandhani minangka durung rampung"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "Deleng gambar ukuran lengkap: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "Gambar pandhuan persiyapan ukuran lengkap"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "Tutup gambar"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "Persiapan sing Dipandu dening Pamriksan Cairan"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "Sugeng rawuh"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "Jelajahi kasir sampeyan"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "Kabeh wis siyap"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "Sampeyan ora duwe idin kanggo ngakses kaca iki."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "Pindhah menyang langkah %1$d: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"Pandhuan persiyapan iki mbantu sampeyan luwih kenal karo Fluid Checkout. "
+"Langkah-langkah ing ngisor iki mung minangka papan dununge kanggo saiki."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "Terusake menyang langkah sabanjure nalika sampeyan wis siyap."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "Bukak kasir toko sampeyan kanggo ndeleng Fluid Checkout lagi aktif."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "Deleng kaca pambayaran"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"Sampeyan bisa bali menyang setelan Fluid Checkout kanggo nerusake "
+"konfigurasi toko sampeyan."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "Priksa setelan checkout lan kranjang"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "Jelajahi add-on saka dashboard"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "Rampung &amp; pindhah menyang setelan"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Nganyari opsi visibilitas kolom telpon tagihan saka nilai lawas supaya "
+"cocog karo konvensi WooCommerce."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Nganyari opsi visibilitas kolom telpon pengiriman saka nilai lawas supaya "
+"cocog karo konvensi WooCommerce."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"Salin setelan warna latar mburi ringkesan pesenan menyang pilihan warna "
+"latar mburi kolom sekunder desain Split sing anyar."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"Fitur kolom pilihan sing ditingkatake mesthi dipateni nalika nggunakake "
+"plugin Biteship."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"Posisi pesenan tansah disetel menyang &quot;Ing ngisor ringkesan "
+"pesenan&quot; nalika nggunakake Pasar Jerman. Plugin kasebut mbutuhake "
+"tombol pesenan lan kothak centhang legal supaya ditampilake ing ngisor "
+"ringkesan pesenan."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"Posisi pesenan tansah disetel menyang &quot;Ing ngisor ringkesan "
+"pesenan&quot; nalika nggunakake Germanized kanggo WooCommerce. Plugin "
+"kasebut mbutuhake tombol pesenan lan kothak centhang legal supaya "
+"ditampilake ing ngisor ringkesan pesenan."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Sunting lokasi pengambilan"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Gunakake label pickup lokal saka setelan WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Nalika diaktifake, label opsi pengambilan nalika checkout cocog karo judhul "
+"saka setelan lokasi pengambilan WooCommerce. Nalika dipateni, label kasebut "
+"nggunakake teks &quot;Pengambilan lokal&quot; sing bisa diterjemahake saka "
+"Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2766,3 +4730,115 @@ msgstr "Ya"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "Yohanes"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "Doe"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "Perusahaan Tuladha"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "123 Dalan Utama"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "Kutha endi wae"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "Tulung tinggalna paket iki ing ngarep lawang."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "Beanie"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "Topi"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "Kaos"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr ""
+"Pesenan panjenengan sampun dipuntampi lan badhé dipunberi kabar nalika "
+"sampun dipunkirim."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "Pandhuan panganggo"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "API Panggonan (Anyar)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "API Panggonan (Warisan)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "Versi 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "Versi 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ Pembayaran luwih cepet ing wektu sabanjure ✔ Atur preferensi pembayaran "
+"sampeyan ✔ Deleng status lan riwayat pesenan"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "Didhelikake"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "Opsional"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "Dibutuhake"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Pangiriman menyang alamat"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Jemputan lokal"

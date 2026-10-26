@@ -277,10 +277,6 @@ msgstr "फ्लुइड चेकआउट डाटाबेस सफलत
 msgid "The database changes where applied successfully."
 msgstr "सफलतापूर्वक लागू गरिएको ठाउँमा डाटाबेस परिवर्तन हुन्छ।"
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "ठिक छ"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "खारेज गर्नुहोस्"
@@ -398,38 +394,9 @@ msgstr "कागजात पढ्नुहोस्"
 msgid "Don't show this again"
 msgstr "यो फेरि नदेखाउनुहोस्"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "विशेष प्रस्तावहरू"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"फ्लुइड चेकआउटको सबै राम्रो पक्षलाई आफ्नो कार्ट पृष्ठ र धन्यवाद पृष्ठहरूमा "
-"विस्तार गर्नुहोस्।"
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "फ्लुइड चेकआउट प्रो"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"टेम्प्लेटहरू डिजाइन गर्नुहोस्, अनुकूलित कार्ट र अर्डर प्राप्त पृष्ठहरू, "
-"खाता मिलान, र धेरै कुराहरू।"
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"<strong>तपाईंको WooCommerce चेकआउट रूपान्तरण दरलाई अझ सुधार गर्न</strong> र "
-"सम्पूर्ण यात्रामा खरिद अनुभवलाई एकरूप बनाउनको लागि उत्तम उपकरणहरू।"
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -451,10 +418,6 @@ msgstr "चेकआउट पृष्ठमा कार्ट सामग्
 msgid "Account matching / user matching"
 msgstr "खाता मिलान / प्रयोगकर्ता मिलान"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "समर्थित भुक्तानी विधिहरूबाट एक्सप्रेस चेकआउट बटनहरू"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "कार्ट र धन्यवाद पृष्ठहरूमा विश्वास प्रतीकहरू"
@@ -462,10 +425,6 @@ msgstr "कार्ट र धन्यवाद पृष्ठहरूमा
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "चेकआउट पृष्ठमा कुपन कोडको लागि थप स्थानहरू"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "कार्ट पृष्ठमा एकीकृत कुपन कोड क्षेत्र"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -479,245 +438,25 @@ msgstr "उपहार सन्देशहरू र प्याकिङ �
 msgid "Local pickup and in-store collection"
 msgstr "स्थानीय पिकअप र स्टोरमा सङ्कलन"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "PRO मा स्तरोन्नति गर्नुहोस् — ९९ EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "फ्लुइड चेकआउट प्रो - बन्डल"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "सबै PRO सुविधाहरू + सबै एड-अनहरू विशेष मूल्यमा।"
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"यस बन्डलमा हामीले हाल प्रदान गर्ने सबै एड-अनहरू र भविष्यमा सुरु गर्ने "
-"फ्लुइड चेकआउट एड-अनहरू समावेश छन्।"
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "२२६ EUR मूल्य (४२% बचत गर्नुहोस्)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "गुगल ठेगाना स्वतः पूर्ण"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "ठेगाना पुस्तिका"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "EU-VAT सहायक"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "भविष्यका सबै एड-अनहरू *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* जबसम्म तपाईंसँग सक्रिय सदस्यता छ।"
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "बन्डल पाउनुहोस् – केवल १२९ EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"EUR मा देखाइएका सबै मूल्यहरू। यदि हाम्रो वेबसाइटमा देखाइएका मूल्यहरूमा कुनै "
-"भिन्नता छ भने, वेबसाइटमा देखाइएका प्रस्तावहरूले तिनीहरूलाई हटाउँछन् र लागू "
-"गरिनेछ।"
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "एड-अनहरू"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "यी एड-अनहरूको साथ आफ्नो चेकआउट अनुभव बढाउनुहोस्।"
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "मसँग पहिले नै छ - यो प्रस्ताव लुकाउनुहोस्"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "स्थापित - सक्रिय गर्नुहोस्"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "सक्रिय गरियो"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "भर्नको लागि ४०% सम्म कम चेकआउट फिल्डहरू।"
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"डेलिभरी ढिलाइ र असन्तुष्ट ग्राहकहरूबाट बच्नुहोस्। उनीहरूले पहिलो पटक "
-"तपाईंबाट किन्दा <strong>सही ठेगाना जानकारी</strong> सङ्कलन गर्नुहोस्।"
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "यो एड-अन पाउनुहोस् — २९ EUR"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "ठेगाना पुस्तिका"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "ढुवानी र बिलिङको लागि धेरै सुरक्षित ठेगानाहरू।"
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"ग्राहकहरूलाई आफ्नो खातामा <strong>धेरै ढुवानी र बिलिङ ठेगानाहरू बचत "
-"गर्न</strong> दिनुहोस् र चेकआउट र कार्ट पृष्ठहरूमा कुन प्रयोग गर्ने भनेर "
-"छनौट गर्नुहोस्।"
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "यो एड-अन पाउनुहोस् — ५९ EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "तपाईंको स्टोरको लागि सरलीकृत EU-VAT प्रमाणीकरण।"
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"<strong>चेकआउट पृष्ठमा EU VAT नम्बरहरू सङ्कलन र प्रमाणित गर्नुहोस्</strong> "
-", रिभर्स चार्जको आधारमा कर शुल्कहरू हटाउनुहोस् र आवश्यक पर्दा ग्राहकको "
-"स्थान पुष्टि गर्नुहोस्।"
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "यो एड-अन पाउनुहोस् — ३९ EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"सबै एड-अनहरू छुट्टाछुट्टै बेचिन्छन् र <strong>फ्लुइड चेकआउट लाइट</strong> "
-"प्लगइन स्थापना र सक्रिय गर्न आवश्यक पर्दछ, उल्लेख गरिएको अवस्थामा बाहेक।"
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "एउटा छवि चयन गर्नुहोस्"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"आफ्नो लाइसेन्स साँचो प्राप्त गर्न वा <a href=\"%s\" target=\"_blank\">नयाँ "
-"लाइसेन्स साँचो खरिद गर्न</a> <a href=\"https://fluidcheckout.com/account/\" "
-"target=\"_blank\">आफ्नो खातामा लग इन गर्नुहोस्</a> ।"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "%s सम्म मान्य।"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "%s मा म्याद सकियो।"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"आफ्नो लाइसेन्स कुञ्जी नवीकरण गर्न र अद्यावधिकहरू र समर्थन प्राप्त गर्न जारी "
-"राख्न <a href=\"https://fluidcheckout.com/account/\" "
-"target=\"_blank\">आफ्नो खातामा लग इन गर्नुहोस्</a> ।"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "लाइसेन्स कुञ्जी रद्द गरियो।"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">नयाँ लाइसेन्स कुञ्जी खरिद गर्नुहोस्</a> र "
-"अद्यावधिकहरू र समर्थन प्राप्त गर्न जारी राख्नुहोस्।"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "त्रुटि: "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "सेटअप र कागजात"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "राम्रो! तपाईंको चेकआउट पृष्ठ अब फ्लुइड चेकआउटमा चलिरहेको छ।"
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "सुरु गर्नको लागि यहाँ केही स्रोतहरू छन्:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">फ्लुइड चेकआउटसँग सम्बन्धित जानकारी प्राप्त "
-"गर्ने</a> स्थापना गाइड पढ्नुहोस्।"
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "<a href=\"%s\">चेकआउट विकल्पहरूमा</a> लेआउट र डिजाइन सेटअप गर्नुहोस्।"
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"तपाईंले स्थापना गर्नुभएका अन्य प्लगइनहरूको लागि कुनै <a href=\"%s\">एकीकरण "
-"विकल्पहरू</a> उपलब्ध छन् कि छैनन् जाँच गर्नुहोस्।"
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"फ्लुइड चेकआउट सुविधाहरूको बारेमा थप जानकारीको लागि <a href=\"%s\" "
-"target=\"_blank\">हाम्रो कागजातमा</a> जानुहोस्।"
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"यदि तपाईंलाई कहिल्यै मद्दत चाहिन्छ भने, हाम्रो आधिकारिक समर्थन च्यानलमा <a "
-"href=\"%s\" target=\"_blank\">समर्थन टिकट खोल्नुहोस्</a> ।"
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -730,14 +469,6 @@ msgstr "कार्ट अप्टिमाइजेसनहरू"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "कार्ट पृष्ठ अप्टिमाइजेसनहरू सक्षम गर्नुहोस्"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "चेकआउट पृष्ठ जस्तै लेआउट भएको कार्ट पृष्ठ प्रदर्शन गर्नुहोस्।"
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "हेडर र फुटर"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -770,16 +501,6 @@ msgstr "स्क्रोल गर्दा कार्ट पृष्ठम
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "कुपन कोडहरू"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"कार्ट पृष्ठमा कुपन कोड खण्ड कहाँ प्रदर्शन गर्ने भन्ने स्थान चयन गर्नुहोस्। "
-"AJAX कार्ट र चेकआउट पृष्ठमा एकीकृत कुपन कोडहरू सक्षम पारिएको बेला मात्र "
-"लागू हुन्छ।"
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -871,10 +592,6 @@ msgstr "थिमको क्रस-सेल लेआउट"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "कार्ट पृष्ठमा प्रदर्शन गर्न क्रस-सेल वस्तुहरूको संख्या"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "विश्वासका प्रतीकहरू र ब्याजहरू"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "कार्ट पृष्ठमा विजेट क्षेत्रहरू थप्नुहोस्"
@@ -891,10 +608,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "चेकआउट"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "लेआउट र डिजाइन"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "चेकआउट लेआउट"
@@ -910,21 +623,6 @@ msgstr "अँध्यारो मोड"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "अँध्यारो मोड सक्षम पार्नुहोस्"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "हेडर र फुटर टेम्प्लेटहरू"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"चेकआउट पृष्ठमा अवरोधहरूबाट बच्न हामी व्याकुलतामुक्त हेडर र फुटर प्रयोग गर्न "
-"सिफारिस गर्छौं। <a href=\"https://baymard.com/blog/cart-abandonment\" "
-"target=\"_blank\">कार्ट त्यागको बारेमा अनुसन्धान पढ्नुहोस्</a> ।"
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -977,10 +675,6 @@ msgid ""
 msgstr ""
 "चेकआउट पृष्ठ फुटरको लागि पृष्ठभूमि रङ छनौट गर्नुहोस्। यो "
 "डिस्ट्र्याक्सन-रहित हेडर र फुटर प्रयोग गर्दा मात्र लागू हुन्छ।"
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "चेकआउट तत्वहरू"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1064,18 +758,6 @@ msgstr "पसल पृष्ठको लिङ्क"
 msgid "Cart items"
 msgstr "कार्टका वस्तुहरू"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "चेकआउट पृष्ठमा कार्ट वस्तुहरू सम्पादन गर्न विकल्पहरू सक्षम गर्नुहोस्"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"ग्राहकहरूलाई चेकआउट पृष्ठमा सिधै उत्पादनको मात्रा परिवर्तन गर्न वा वस्तुहरू "
-"हटाउन अनुमति दिनुहोस्।"
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "चेकआउट पृष्ठमा कार्ट वस्तु त्रुटिहरू लुकाउनुहोस्"
@@ -1128,37 +810,9 @@ msgstr ""
 "यी विजेट क्षेत्रहरू चेकआउट पृष्ठमा विश्वास प्रतीकहरू र विश्वास ब्याजहरू "
 "थप्न प्रयोग गरिन्छ।"
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"बहु-चरण चेकआउट लेआउट प्रयोग गर्दा मोबाइल उपकरणहरूमा अन्तिम चेकआउट चरण "
-"हेर्दा मात्र चेकआउट साइडबार विजेटहरू प्रदर्शन गर्नुहोस्।"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "एकीकृत कुपन कोड खण्ड सक्षम गर्नुहोस्"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr ""
-"WooCommerce सेटिङहरूमा कुपन कोडहरूको प्रयोग सक्षम पारिएको खण्डमा मात्र लागू "
-"हुन्छ।"
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "कुपन कोड खण्ड शीर्षक प्रदर्शन गर्नुहोस्"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"चेकआउट वा कार्ट पृष्ठहरूमा कुपन कोड छुट्टै खण्डको रूपमा प्रदर्शित हुँदा "
-"मात्र लागू हुन्छ।"
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1177,16 +831,6 @@ msgstr "भुक्तानी विधिहरू अघिको उप-�
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "भुक्तानी विधिहरू पछिको उप-चरणको रूपमा"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"&quot;कुपन लागू गर्नुहोस्&quot; बटनको शैली चयन गर्नुहोस्। चेकआउट पृष्ठमा "
-"&quot;चेकआउट चरणहरू अघि&quot; वा कार्ट पृष्ठमा &quot;कार्ट वस्तुहरू "
-"अघि&quot; कुपन कोड खण्ड प्रदर्शित हुँदा मात्र लागू हुन्छ।"
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1235,21 +879,6 @@ msgstr ""
 "धेरैजसो ग्राहकहरूलाई &quot;ठेगाना लाइन २&quot; फिल्डको आवश्यकता पर्दा वा "
 "सही ढुवानी ठेगाना प्राप्त गर्नु महत्त्वपूर्ण हुँदा (अर्थात्, खाना र अन्य "
 "नाश हुने उत्पादनहरू डेलिभर गर्दा) मात्र सिफारिस गरिन्छ।"
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "&quot;थप्नुहोस्&quot; लिङ्क बटनहरू सानो अक्षरमा प्रदर्शन गर्नुहोस्।"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"वैकल्पिक फिल्ड &quot;थप्नुहोस्&quot; लिङ्क बटनको लेबलहरूलाई "
-"<code>lowercase</code> बनाउनुहोस् (जस्तै &quot;फोन नम्बर थप्नुहोस्&quot; को "
-"सट्टा &quot;फोन नम्बर थप्नुहोस्&quot;)। यो विकल्पले कुपन कोड फिल्डहरूको "
-"लागि लिङ्क बटनहरूलाई पनि असर गर्छ।"
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1341,23 +970,6 @@ msgstr "ढुवानी ठेगाना अघि"
 msgid "After shipping address"
 msgstr "ढुवानी ठेगाना पछि"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "पहिलो ढुवानी विधिको स्वचालित चयन रोक्नुहोस्"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"सक्षम पार्दा, प्रत्येक ढुवानी प्याकेजको लागि पहिले कुनै अन्य ढुवानी विधि "
-"चयन गरिएको नभएको बेला उपलब्ध पहिलो ढुवानी विधि स्वचालित रूपमा चयन गरिने "
-"छैन।<br> स्थानीय पिकअप सुविधाको लागि चयन गरिएको ढुवानी विधि खाली गर्ने "
-"विकल्प सक्षम पारिएको खण्डमा यो विकल्प स्वतः सक्षम हुनेछ।"
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "स्थानीय पिकअप"
@@ -1375,20 +987,6 @@ msgid ""
 msgstr ""
 "स्थानीय पिकअप ढुवानी विधि चयन गर्दा ढुवानी ठेगानालाई पिकअप पोइन्ट स्थानले "
 "प्रतिस्थापन गर्छ।"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "पिकअप स्थान उपचरणमा ढुवानी विधिहरू खाली गर्ने विकल्प देखाउनुहोस्"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"छनौट गरिएका ढुवानी विधिहरू खाली गर्न पिकअप स्थान उप-चरणमा लिङ्क बटन "
-"देखाउनुहोस्। यदि स्थानीय पिकअप विधि पहिले चयन गरिएको थियो भने ढुवानी ठेगाना "
-"खण्ड फेरि देखाउन अनुमति दिन यो प्रयोग गर्न सकिन्छ।"
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1467,32 +1065,6 @@ msgstr "चेकआउट फारममा बिलिङ फोन फि�
 msgid "Choose in which step to display the billing phone field."
 msgstr "कुन चरणमा बिलिङ फोन फिल्ड प्रदर्शन गर्ने छनौट गर्नुहोस्।"
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "देशका नियमहरूको आधारमा फोन नम्बर प्रमाणीकरण सक्षम पार्नुहोस्"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"असक्षम पार्दा, फोन फिल्ड प्रमाणीकरणले देश वा क्षेत्र कोडहरू देशको लागि "
-"मान्य छन् कि छैनन् भनेर जाँच गर्दैन।"
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "ढुवानी वा बिलिङको लागि अनुमति दिइएका देशहरू मात्र देखाउनुहोस्"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"सक्षम पार्दा, ढुवानीको लागि अनुमति दिइएका देशहरू मात्र ढुवानी फोन क्षेत्रमा "
-"उपलब्ध हुनेछन्, र बिलिङको लागि अनुमति दिइएका देशहरू मात्र बिलिङ फोन "
-"क्षेत्रमा उपलब्ध हुनेछन्।"
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "झण्डाको छेउमा देशको कोड देखाउनुहोस्"
@@ -1525,10 +1097,6 @@ msgstr "अतिरिक्त अर्डर नोट क्षेत्र
 msgid "Gift options"
 msgstr "उपहार विकल्पहरू"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "चेकआउट पृष्ठमा उपहार सन्देश र अन्य उपहार विकल्पहरू प्रदर्शन गर्नुहोस्"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1536,10 +1104,6 @@ msgid ""
 msgstr ""
 "ग्राहकहरूलाई अर्डरमा उपहार सन्देश र अन्य उपहार सम्बन्धित विकल्पहरू थप्न "
 "अनुमति दिनुहोस्।"
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "उपहार सन्देश क्षेत्रहरू सधैं विस्तारित प्रदर्शन गर्नुहोस्"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1595,27 +1159,9 @@ msgstr "ड्यासबोर्ड"
 msgid "Integrations"
 msgstr "एकीकरणहरू"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"यस खण्डमा हाल कुनै पनि एकीकरण उपलब्ध छैन। प्रत्येक प्लगइनसँग सम्बन्धित "
-"विकल्पहरू यहाँ केवल त्यो प्लगइन सक्रिय भएमा मात्र देखा पर्नेछ।"
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "लाइसेन्स कुञ्जीहरू"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"यस खण्डमा हाल कुनै पनि लाइसेन्स कुञ्जी विकल्पहरू उपलब्ध छैनन्। प्रत्येक "
-"प्लगइन वा एड-अनसँग सम्बन्धित विकल्पहरू त्यो प्लगइन सक्रिय हुँदा यहाँ देखा "
-"पर्नेछ।"
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1715,14 +1261,6 @@ msgstr ""
 "यी विजेट क्षेत्रहरू धन्यवाद पृष्ठमा विश्वास प्रतीकहरू र विश्वास ब्याजहरू "
 "थप्न प्रयोग गरिन्छ।"
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"यी विकल्पहरूले धन्यवाद पृष्ठलाई असर गर्छ, खाता पृष्ठहरूमा र इमेल सूचनाहरूमा "
-"अर्डर विवरणहरू हेर्नुहोस्।"
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "कार्यहरू अर्डर गर्नुहोस्"
@@ -1815,22 +1353,6 @@ msgstr "अप्रमाणित सम्पत्तिहरू लोड 
 msgid "Enhanced select fields"
 msgstr "परिष्कृत चयन क्षेत्रहरू"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr ""
-"<code>select2</code> ड्रपडाउन कम्पोनेन्टहरूलाई <code>TomSelect</code> ले "
-"बदल्नुहोस्।"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect एउटा सरल ड्रपडाउन चयन घटक हो जुन Select2 भन्दा कम त्रुटिहरूको "
-"सम्भावना हुन्छ, जबकि यसले WooCommerce चेकआउट पृष्ठहरूमा वास्तवमा प्रयोग "
-"हुने सुविधाहरू प्रदान गर्दछ।"
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "फारम फिल्डहरूमा स्वचालित जुम-इन समाधान गर्नुहोस्"
@@ -1838,34 +1360,6 @@ msgstr "फारम फिल्डहरूमा स्वचालित ज
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "फारम फिल्ड भित्र <code>font-size</code> १६ पिक्सेलमा सेट गर्नुहोस्"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"जब फारम फिल्ड भित्रको फन्ट साइज १६ पिक्सेल भन्दा सानो हुन्छ, सफारी र अन्य "
-"ब्राउजरहरूले पाठ पढ्न सजिलो बनाउन मोबाइल उपकरणहरूमा स्वचालित रूपमा जुम इन "
-"गर्न सक्छन्। जब यो विकल्प सक्षम हुन्छ, यसले फ्लुइड चेकआउट द्वारा अनुकूलित "
-"पृष्ठहरूमा फारम फिल्ड भित्रको फन्ट साइज १६ पिक्सेलमा सेट गर्नेछ ताकि यसलाई "
-"जुम इन हुनबाट बचाउन सकियोस्।"
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"फ्लुइड चेकआउट सक्रिय हुँदा ढुवानी गन्तव्य सधैं &quot;ग्राहक ढुवानी ठेगानामा "
-"पूर्वनिर्धारित&quot; मा सेट गरिएको हुन्छ। ग्राहकहरूले चेकआउटको समयमा अझै "
-"पनि फरक ढुवानी र बिलिङ ठेगानाहरू प्रदान गर्न सक्छन्, पूर्वनिर्धारित बिलिङ "
-"ठेगानालाई ढुवानी ठेगाना जस्तै सेट गर्ने विकल्प WooCommerce &gt; Settings "
-"&gt; Fluid Checkout मा उपलब्ध छ।"
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1892,14 +1386,6 @@ msgstr "(प्रो)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(प्रयोगात्मक)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "पुष्टि गर्नुहोस्"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "फोन नम्बर प्रमाणित गर्नुहोस्"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2418,10 +1904,6 @@ msgstr "प्रगति पट्टी पछि"
 msgid "Before coupon codes section"
 msgstr "कुपन कोड खण्ड अघि"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "अन्तर्राष्ट्रिय फोन नम्बर क्षेत्रहरू सक्षम गर्नुहोस्"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "प्रत्येक देशको नियम अनुसार फोन नम्बरहरू ढाँचा गर्नुहोस्।"
@@ -2429,18 +1911,6 @@ msgstr "प्रत्येक देशको नियम अनुसार
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "सटीक फोन नम्बर प्रमाणीकरण प्रयोग गर्नुहोस्"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"चयन गरिएको देश कोडको नियमहरूको आधारमा फोन नम्बर मान्य मोबाइल वा ल्यान्डलाइन "
-"नम्बर हो भनी सुनिश्चित गर्ने प्रयास गर्नुहोस्। यो विकल्पले "
-"<code>intl-tel-input</code> सटीक प्रमाणीकरण सुविधा प्रयोग गर्दछ, जसले केही "
-"फोन नम्बरहरूको लागि गलत सकारात्मक परिणाम दिन सक्छ।"
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2487,26 +1957,6 @@ msgstr "२ स्तम्भहरू"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "१ स्तम्भ"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"चेकआउट चरणहरू, अर्डर सारांश र अन्य खण्डहरूको लागि सामान्य शैलीहरू।<br> "
-"कार्ट, अर्डर प्राप्त र अर्डर हेर्नुहोस् पृष्ठहरू जस्ता अन्य पृष्ठहरूमा पनि "
-"लागू हुन सक्छ।"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"<em>&quot;१ स्तम्भ&quot;</em> लेआउट प्रयोग गर्दा डिजाइन टेम्प्लेट "
-"<em>&quot;स्प्लिट&quot;</em> उपलब्ध हुँदैन र छनोट भएमा "
-"<em>&quot;मिनिमलिस्ट&quot;</em> मा फर्किनेछ।"
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2600,6 +2050,2496 @@ msgstr ""
 "ढुवानी फोन फिल्ड &quot;आवश्यक&quot; को रूपमा सेट गरिएको छ। त्यो विकल्प जाँच "
 "गर्दा ढुवानी ठेगाना बिलिङ ठेगानामा प्रतिलिपि गर्न सकिन्छ भनेर सुनिश्चित "
 "गर्न यो आवश्यक छ, अन्यथा ग्राहकले चेकआउट फारम पूरा गर्न सक्षम नहुन सक्छ।"
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "सेटिङ प्रोफाइलहरू"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "सेटिङ प्रोफाइल"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "तपाईंलाई यो कार्य गर्ने अनुमति छैन।"
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "तपाईंलाई प्लगइनहरू सक्रिय गर्ने अनुमति छैन।"
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "प्लगइन हराइरहेको छ।"
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "प्लगइन सक्रिय गरियो।"
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "निम्न परिवर्तनहरू लागू हुनेछन्:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"फ्लुइड चेकआउट ५.० देखि, सेटिङहरू फरक तरिकाले सुरक्षित गरिएका छन्। आवश्यक "
+"परेमा अघिल्लो संस्करणहरूमा डाउनग्रेड गर्न अनुमति दिन लिगेसी विकल्पहरू अझै "
+"पनि डाटाबेसमा भण्डारण गरिएका छन्।"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"तपाईंको स्टोर लगभग २ हप्तादेखि नयाँ सेटिङहरूमा चलिरहेको छ त्यसैले तपाईंले "
+"डाटाबेसमा भण्डारण गरिएका लिगेसी विकल्पहरू सफा गर्न सक्नुहुन्छ। कृपया ध्यान "
+"दिनुहोस् कि सफा गरेपछि, यदि तपाईंलाई प्लगइनको अघिल्लो संस्करणहरूमा "
+"डाउनग्रेड गर्न आवश्यक छ भने यसले सबै सेटिङहरूको लागि पूर्वनिर्धारित मानहरू "
+"प्रयोग गर्नेछ।"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "फ्लुइड चेकआउट सेटिङहरू सफा गर्ने"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "बाँकी रहेका विकल्पहरू मेटाउनुहोस्"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "फ्लुइड चेकआउट सुधार गर्न हामीलाई मद्दत गर्नुहोस्"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"छिटो समर्थन प्राप्त गर्न र अनुकूलता सुधार गर्न र प्रभाव मापन गर्न मद्दत "
+"गर्न फ्लुइड चेकआउटसँग बेनामी साइट वातावरण रिपोर्टहरू साझा गर्नुहोस्। कुनै "
+"पनि ग्राहक, प्रयोगकर्ता, वा संवेदनशील डेटा समावेश गरिएको छैन। तपाईंले उपकरण "
+"सेटिङहरूबाट जुनसुकै बेला के साझा गर्ने भनेर छनौट गर्न सक्नुहुन्छ।"
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "साइट वातावरण रिपोर्टहरू सक्षम गर्नुहोस्"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "सेटिङहरूको समीक्षा गर्नुहोस्"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"यो पूर्वावलोकनको म्याद सकिएको छ। नयाँ पूर्वावलोकन सुरु गर्न व्यवस्थापक "
+"पृष्ठ पुन: लोड गर्नुहोस्।"
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "पूर्वावलोकनको म्याद सकियो"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "पूर्वावलोकनमा अर्डरहरू राख्न सकिँदैन।"
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "पूर्वावलोकनमा लग इन गर्ने सुविधा उपलब्ध छैन।"
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "पूर्वावलोकनमा खाताहरू सिर्जना गर्न सकिँदैन।"
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "पूर्वावलोकनमा अन्य साइटहरूमा गरिएका अनुरोधहरू रोकिएका छन्।"
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "प्रशोधन गर्दै..."
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "केही गडबड भयो। कृपया फेरि प्रयास गर्नुहोस्।"
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "प्लगइन सक्रिय गर्नुहोस्"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "फ्लुइड चेकआउट प्रो - पूर्ण चेकआउट प्याकेज"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"सबै PRO सुविधाहरू + सबै एड-अनहरू, एउटै मूल्य। डिजाइन टेम्प्लेटहरू, अनुकूलित "
+"कार्ट र अर्डर प्राप्त पृष्ठहरू, खाता मिलान, र धेरै धेरै।"
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "अनुकूलित अर्डर भुक्तानी पृष्ठ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "समर्थित भुक्तानी विधिहरूबाट एक्सप्रेस चेकआउट बटनहरू"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "खाता सिर्जनामा ढिलाइ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "गुगल नक्सा एपीआईको साथ ठेगाना स्वत: पूर्ण"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "ठेगाना पुस्तिकाको साथ धेरै सुरक्षित ठेगानाहरू"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "EU-VAT सहायक"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "यो खण्ड लुकाउनुहोस्"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "थप जान्नुहोस्"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "प्रारम्भिक पहुँच प्राप्त गर्नुहोस्"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "एड-अन सक्रिय गर्नुहोस्"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "आफ्नो चेकआउट यात्राबाट धेरै भन्दा धेरै लाभ उठाउनुहोस्"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "API कुञ्जी परीक्षण गर्नुहोस्"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "निर्देशित सेटअप"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "विकल्पहरू"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "<a href=\"%s\">चेकआउट विकल्पहरूमा</a> लेआउट र डिजाइन सेट अप गर्नुहोस्।"
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"अतिथि चेकआउट सक्षम गर्नुहोस् र/वा <a href=\"%s\">ग्राहक खाता सेटिङहरूको</a> "
+"समीक्षा गर्नुहोस्।"
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"अनुकूलित <a href=\"%1$s\">कार्ट</a> सक्षम गर्नुहोस्, <a "
+"href=\"%2$s\">धन्यवाद दिनुहोस्</a> र <a href=\"%3$s\">भुक्तानी पृष्ठहरू "
+"अर्डर गर्नुहोस्</a> ।"
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr ""
+"गुगल नक्साबाट <a href=\"%s\">ठेगाना स्वतः पूर्ण गर्ने</a> सुविधा सक्षम "
+"पार्नुहोस्।"
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr ""
+"<a href=\"%s\">ठेगाना पुस्तिकाको</a> साथ धेरै बचत गरिएका ठेगानाहरू सक्षम "
+"गर्नुहोस्।"
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"तपाईंले स्थापना गर्नुभएको विषयवस्तु वा अन्य प्लगइनहरूको लागि कुनै <a "
+"href=\"%s\">एकीकरण विकल्पहरू</a> उपलब्ध छन् कि छैनन् जाँच गर्नुहोस्।"
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"छिटो सहयोग प्राप्त गर्नुहोस् र हामीलाई अनुकूलता सुधार गर्न र प्रभाव मापन "
+"गर्न मद्दत गर्नुहोस्। उपकरण सेटिङहरूबाट <a href=\"%s\">प्रयोग ट्र्याकिङ "
+"सक्षम गर्नुहोस्</a> ।"
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "सेटिङ ट्याब हराइरहेको छ।"
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "सुरु गर्दै"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>राम्रो! तपाईंको चेकआउट पृष्ठ अब फ्लुइड चेकआउटमा चलिरहेको "
+"छ।</strong> सुरु गर्न यहाँ केही चरणहरू दिइएका छन्:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "पूरा भयो"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "रिपोर्ट डेटा पूर्वावलोकन गर्नुहोस्"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "अहिले नै पठाउनुहोस्"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "स्वतः पत्ता लगाउने"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "अफ्रिकीहरू"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "अल्बेनियाली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "अम्हारिक"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "अरबी"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "अर्मेनियाली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "अजरबैजानी"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "बास्क"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "बेलारूसी"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "बंगाली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "बोस्नियाली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "बुल्गेरियन"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "बर्मेली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "क्याटालान"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "चिनियाँ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "चिनियाँ (सरलीकृत)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "चिनियाँ (हङकङ)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "चिनियाँ (परम्परागत)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "क्रोएसियाली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "चेक"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "डेनिस"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "डच"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "अंग्रेजी"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "अंग्रेजी (अस्ट्रेलियाली)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "अंग्रेजी (ग्रेट ब्रिटेन)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "इस्टोनियाली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "फारसी"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "फिनिस"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "फिलिपिनो"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "फ्रान्सेली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "फ्रान्सेली (क्यानाडाली)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "ग्यालिसियन"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "जर्जियाली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "जर्मन"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "ग्रीक"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "गुजराती"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "हिब्रू"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "हिन्दी"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "हंगेरी"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "आइसल्याण्डिक"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "इन्डोनेसियाली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "इटालियन"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "जापानी"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "कन्नड"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "कजाख"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "खमेर"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "कोरियाली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "किर्गिज"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "लाओ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "लाटभियन"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "लिथुआनियाली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "म्यासेडोनियन"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "मलेसियाली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "मलयालम"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "मराठी"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "मङ्गोलियन"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "नेपाली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "नर्वेजियन"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "पोलिश"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "पोर्चुगिज"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "पोर्चुगिज (ब्राजिल)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "पोर्चुगिज (पोर्चुगल)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "पञ्जाबी"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "रोमानियाली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "रुसी"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "सर्बियाली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "सिंहली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "स्लोभाक"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "स्लोभेनियाली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "स्पेनी"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "स्पेनी (ल्याटिन अमेरिका)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "स्वाहिली"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "स्विडेनी"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "तमिल"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "तेलुगु"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "थाई"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "टर्की"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "युक्रेनी"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "उर्दू"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "भियतनामी"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "जुलु"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "गुगल ठेगाना स्वतः पूर्ण"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "गुगल प्लेस एपीआई संस्करण"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"Google Places API को कुन संस्करण प्रयोग गर्ने भनेर छनौट गर्नुहोस्। हामी "
+"सकेसम्म चाँडो नयाँ Places API मा सर्ने सिफारिस गर्छौं।"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"हामी मार्च १, २०२५ देखि लागू हुने गरी &quot;Places API (नयाँ)&quot; प्रयोग "
+"गर्न सिफारिस गर्छौं। Google ले &quot;Places API (Legacy)&quot; संस्करणलाई "
+"Legacy स्थितिमा सार्नेछ, जसको अर्थ तपाईंले अब नयाँ API कुञ्जीहरूको लागि यो "
+"सेवा सक्षम गर्न सक्नुहुने छैन र API को त्यो संस्करण अन्ततः अब उपलब्ध "
+"हुनेछैन। पहिले नै Legacy API प्रयोग गरिरहेका अवस्थित खाताहरूले कुनै अवरोध "
+"बिना काम गर्न जारी राख्न सक्छन्।"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(सिफारिस गरिएको)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "गुगल एपीआई कुञ्जी"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"तपाईंको गुगल एपीआई कुञ्जी टाँस्नुहोस् र यो वेबसाइटको लागि काम गर्छ भनेर "
+"पुष्टि गर्न परीक्षण बटन प्रयोग गर्नुहोस्। कुञ्जी मान्य छ र तपाईंको डोमेनको "
+"लागि अनुमति दिइएको छ भनी सुनिश्चित गर्नुहोस्, अन्यथा ठेगाना क्षेत्र अवरुद्ध "
+"हुन सक्छ जसले गर्दा ग्राहकहरूले आफ्ना अर्डरहरू पूरा गर्न सक्दैनन्।"
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "गुगल ठेगाना स्वत: पूर्णता सक्षम गर्नुहोस्"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr "गुगल नक्सा एपीआई प्रयोग गरेर ठेगाना स्वत: समाप्ति सक्षम गर्नुहोस्।"
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "गुगल एपीआई भाषा"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"यो भाषा Google Places API ठेगाना सुझावहरू प्रदर्शन गर्न प्रयोग गरिनेछ र "
+"ठेगानाहरू पनि यस भाषामा स्वतः पूर्ण हुनेछन्।"
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "परिणामका प्रकारहरू"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"कुनै पनि प्रकारको नतिजा स्वीकार गर्न खाली छोड्नुहोस्, जसले सामान्यतया "
+"राम्रो मिल्दो नतिजा दिन्छ। <a href=\"%s\" target=\"_blank\">थप विवरणहरूको "
+"लागि कागजात हेर्नुहोस्</a> ।<br> ठेगाना स्वत: पूर्ण क्षेत्रहरूमा फर्कन ५ "
+"प्रकारका ठेगाना खोज परिणामहरू चयन गर्नुहोस्।<br> <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">समर्थित प्रकारहरूको</a> बारेमा थप जान्नको लागि "
+"गुगल नक्सा कागजातमा जानुहोस्।"
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "परिणाम प्रकारहरू (लिगेसी API)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Places API (Legacy) प्रयोग गर्दा कुन प्रकारको ठेगाना खोज परिणामहरू "
+"फर्काउने।<br> <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">समर्थित प्रकारहरूको</a> बारेमा "
+"थप जान्नको लागि Legacy Google Places API को कागजातमा जानुहोस्।"
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "कम्पनी क्षेत्रहरू"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "उपलब्ध भएमा कम्पनीको नामको लागि स्वतः पूर्णता सक्षम पार्नुहोस्"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"गुगल नक्सा एपीआईहरूबाट फिर्ता गर्दा कम्पनीको नाम जानकारी सहित कम्पनी "
+"फिल्डको स्वत: समाप्ति सक्षम गर्नुहोस्।"
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "व्यवसाय खोजी"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "कम्पनी क्षेत्रमा व्यवसायहरूको खोजी सक्षम गर्नुहोस्"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"कम्पनी क्षेत्रमा टाइप गर्दा व्यवसायसँग सम्बन्धित ठेगानाहरूको सुझाव सक्षम "
+"गर्नुहोस्, त्यसपछि सुझावहरूबाट व्यवसाय चयन गर्दा सबै ठेगाना क्षेत्रहरू "
+"स्वतः पूर्ण गर्नुहोस्।"
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "कम्पनीको नतिजाका प्रकारहरू"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"स्वत: पूर्ण कम्पनी क्षेत्रहरूमा फर्कन ५ प्रकारका ठेगाना खोज परिणामहरू चयन "
+"गर्नुहोस्।<br> सिफारिस गरिएको मूल्य <code>establishment</code> हो, जसमा "
+"धेरैजसो प्रकारका व्यवसायहरू समावेश हुन्छन्।<br> व्यवसायसँग सम्बन्धित नभएका "
+"परिणामहरू सहित कुनै पनि प्रकारका परिणामहरू स्वीकार गर्न खाली "
+"छोड्नुहोस्।<br> <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">समर्थित प्रकारहरूको</a> बारेमा थप जान्नको लागि "
+"गुगल नक्सा कागजातमा जानुहोस्।"
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "गुगल लोगो"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "&quot;Google द्वारा संचालित&quot; पाठ र लोगो देखाउनुहोस्।"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"जाँच गर्दा, ठेगाना स्वत: पूर्ण सुझाव बक्सको तल &quot;Google द्वारा "
+"संचालित&quot; पाठ र लोगो प्रदर्शित हुनेछ।"
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "ब्राजिल API ठेगाना स्वतः पूर्ण"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "ब्राजिल एपीआई"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "CEP क्षेत्रहरूको लागि ब्राजिल API ठेगाना स्वत: पूर्णता सक्षम गर्नुहोस्"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"CEP/पोस्टकोड फिल्ड प्रयोग गरेर ठेगानाहरू पुन: प्राप्त गर्न र स्वतः भर्न "
+"ब्राजिल API प्रयोग गर्नुहोस्। ब्राजिलियन ठेगानाहरूको लागि मात्र सान्दर्भिक।"
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "एपीआई संस्करण"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "ब्राजिल API CEP विधिको कुन संस्करण प्रयोग गर्ने छनौट गर्नुहोस्।"
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "ठेगाना पुस्तिका माइग्रेसन"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "WooCommerce ठेगानाहरू"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"WooCommerce बाट अवस्थित ढुवानी र बिलिङ ठेगानाहरू ग्राहकहरूको ठेगाना "
+"पुस्तिकामा प्रतिलिपि गर्नुहोस्।"
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "ठेगाना पुस्तिका सुविधा सक्षम गर्नुहोस्"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"ग्राहकहरूलाई धेरै ठेगानाहरू बचत गर्न र ढुवानी र बिलिङको लागि प्रयोग गरिने "
+"पूर्वनिर्धारित ठेगाना परिभाषित गर्न अनुमति दिनुहोस्।"
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "ठेगाना लेबलहरू"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "ग्राहकहरूलाई प्रत्येक ठेगानाको लागि अनुकूलन लेबल थप्न अनुमति दिनुहोस्"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"ठेगाना लेबलहरूले ग्राहकहरूलाई उनीहरूको सुरक्षित गरिएका ठेगानाहरू (जस्तै: "
+"&quot;आमाको घर&quot;) बीच छुट्याउन सजिलो बनाउँछ। ठेगाना लेबलहरू ग्राहकहरूको "
+"लागि निजी हुन्, र अर्डर विवरण पृष्ठ वा इनभ्वाइसहरूमा प्रदर्शित वा छापिने "
+"छैनन्।"
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "प्रदर्शन लेआउट"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr ""
+"चेकआउटमा र कार्टमा सुरक्षित गरिएका ठेगानाहरू कसरी प्रदर्शित हुन्छन् छनौट "
+"गर्नुहोस्।"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"चेकआउट र कार्टमा लागू हुन्छ। खाता पृष्ठमा सुरक्षित गरिएका ठेगानाहरूले सधैं "
+"कार्ड लेआउट प्रयोग गर्छन्।"
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "ठेगाना कार्डहरू"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "ठेगाना सूची"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "ड्रपडाउन फिल्ड"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "ठेगाना खोजी"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"ग्राहकसँग कम्तिमा यति संख्यामा सुरक्षित गरिएका ठेगानाहरू उपलब्ध हुँदा "
+"फ्रन्टएन्डमा ठेगाना खोज फिल्टर देखाउनुहोस्।"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "डिस्प्ले लेआउट ड्रपडाउन फिल्डमा सेट गरिएको बेला प्रयोग गरिँदैन।"
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "ठेगानाहरू"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "थप विकल्पहरू हेर्न कार्ट पृष्ठ अप्टिमाइजेसनहरू सक्षम गर्नुहोस्"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "स्टिकी अर्डर सारांश"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"कार्ट पृष्ठमा कुपन कोड खण्ड कहाँ प्रदर्शन गर्ने भन्ने स्थान चयन गर्नुहोस्। "
+"AJAX कार्ट सक्षम पारिएको बेला र WooCommerce सेटिङहरूमा कुपन कोडहरूको प्रयोग "
+"सक्षम पारिएको बेला मात्र लागू हुन्छ।"
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "क्रस-सेलको लेआउट"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "क्रस-सेलहरू प्रदर्शित छन्"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "वस्तुहरू"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "कार्ट पृष्ठ अप्टिमाइजेसन"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"तपाईंको कार्टलाई तपाईंको चेकआउट जस्तै स्पष्ट, रूपान्तरण-केन्द्रित लेआउट "
+"दिनुहोस्।"
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr "एकरूप खरिद यात्राको लागि चेकआउट पृष्ठमा कार्ट लेआउट मिलाउनुहोस्।"
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"कार्टलाई सधैं पृष्ठभूमिमा अपडेट राख्नुहोस्, परिमाण परिवर्तन हुँदा पूरा "
+"पृष्ठ पुन: लोड हुँदैन।"
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"कुपन कोडहरू, ढुवानी, र क्रस-सेलहरू ठ्याक्कै त्यहीँ राख्नुहोस् जहाँ तिनीहरू "
+"उत्तम रूपमा रूपान्तरण हुन्छन्।"
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"स्क्रोल गर्दा अर्डर सारांश दृश्यात्मक राख्नुहोस्, र खरीददारहरूलाई आश्वासन "
+"आवश्यक पर्ने ठाउँमा विश्वास प्रतीकहरू थप्नुहोस्।"
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "स्तम्भहरू"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"चेकआउट चरणहरू, अर्डर सारांश र अन्य खण्डहरूको लागि सामान्य शैलीहरू। अन्य "
+"चेकआउट, कार्ट, धन्यवाद (अर्डर प्राप्त भयो), र अर्डर पृष्ठहरू हेर्नुहोस् मा "
+"लागू हुन्छ।"
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"<em>&quot;स्प्लिट&quot;</em> डिजाइन टेम्प्लेटको साथ <em>&quot;१ "
+"स्तम्भ&quot;</em> लेआउट प्रयोग गर्दा, पृष्ठ साइडबार विजेट क्षेत्र सक्रिय "
+"भएमा मात्र दायाँ स्तम्भ देखाइन्छ (चेकआउट साइडबार, कार्ट साइडबार, वा अर्डर "
+"प्राप्त साइडबार)। अन्यथा पृष्ठ स्प्लिट शैलीहरूको साथ एकल स्तम्भको रूपमा "
+"रहन्छ।"
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "स्तम्भ पृष्ठभूमि विभाजित गर्नुहोस्"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"स्प्लिट डिजाइन माध्यमिक स्तम्भको लागि पृष्ठभूमि रङ छान्नुहोस्। अर्डर सारांश "
+"पृष्ठभूमि रङ प्रयोग गर्न खाली छोड्नुहोस्।"
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "पृष्ठ टेम्प्लेटहरू"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "चेकआउट टेम्प्लेट"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"चेकआउटमा कम अवरोधहरूको लागि सिफारिस गरिएको। <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">कार्ट "
+"त्यागको बारेमा अनुसन्धान पढ्नुहोस्</a> ।"
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "टाँसिने प्रगति पट्टी"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "प्रगति पट्टी शैली"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "अर्डरको कुल संख्या"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "पृष्ठभूमि रङ"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "कार्य लिङ्क"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "मोबाइल अर्डर सारांश"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "मोबाइलको सुरुवाती अवस्था"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "चेकआउटमा कार्टका वस्तुहरू सम्पादन गर्ने सुविधा सक्षम पार्नुहोस्"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"ग्राहकहरूलाई चेकआउट पृष्ठमा सिधै उत्पादन मात्रा परिवर्तन गर्न वा वस्तुहरू "
+"हटाउन अनुमति दिनुहोस्।"
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "कार्ट वस्तु त्रुटिहरू"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"चेकआउट वा कार्ट पृष्ठहरूमा कुपन कोड छुट्टै खण्डको रूपमा प्रदर्शित हुँदा र "
+"WooCommerce सेटिङहरूमा कुपन कोडहरूको प्रयोग सक्षम पारिएको अवस्थामा मात्र "
+"लागू हुन्छ।"
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "कुपन कोडहरूको स्थिति"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "कुपन बटन लागू गर्नुहोस्"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "&quot;कुपन लागू गर्नुहोस्&quot; बटनको शैली चयन गर्नुहोस्।"
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "ठेगाना लाइन २"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"यो सेटिङ चेकआउट र स्थानीय पिकअप खण्डहरू बीच साझा गरिएको छ। स्थानीय पिकअप "
+"खण्डमा, यसले ढुवानी/पिकअप चयनकर्ता ढुवानी विधि खण्ड भित्र (ठेगाना अघि) वा "
+"छुट्टै खण्ड (पछि) को रूपमा देखाउने निर्णय पनि गर्छ।"
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "ग्राहक खाताहरू"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "पाहुना चेकआउट"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"WooCommerce खाता सेटिङ पृष्ठबाट अतिथि चेकआउट, लगइन, र खाता सिर्जना "
+"विकल्पहरू। तिनीहरू तपाईंको सुविधाको लागि यहाँ व्यवस्थित गरिएका छन्, र "
+"त्यसैले तपाईं प्रति सेटिङ प्रोफाइल फरक मानहरू प्रयोग गर्न सक्नुहुन्छ।"
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "ग्राहकहरूलाई खाता बिना नै चेकआउट गर्न अनुमति दिनुहोस्"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"चेकआउटको समयमा ग्राहकहरूलाई खाता सिर्जना गर्न वा लग इन गर्न नभनियोस् भनेर "
+"<strong>सिफारिस गरिएको</strong> छ, जसले रूपान्तरण दरहरू कम गर्न सक्छ।"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"असक्षम पारिएको बेला, ग्राहकहरूले खरिद पूरा गर्न लग इन गर्नुपर्छ वा खाता "
+"सिर्जना गर्नुपर्छ।"
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "चेकआउट गर्दा लगइन गर्नुहोस्"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "चेकआउटको समयमा लग-इन सक्षम गर्नुहोस्"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr "फर्कने ग्राहकहरूलाई चेकआउट पृष्ठबाट लग इन गर्नको लागि लिङ्क देखाउनुहोस्।"
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "खाता सिर्जना"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "चेकआउटको समयमा ग्राहकहरूलाई खाता सिर्जना गर्न अनुमति दिनुहोस्"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "ग्राहकहरूले आफ्नो अर्डर राख्नु अघि खाता सिर्जना गर्न सक्छन्।"
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "ग्राहकहरूलाई मेरो खाता पृष्ठबाट खाता सिर्जना गर्न अनुमति दिनुहोस्"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "ग्राहकहरूले मेरो खाता पृष्ठबाट नयाँ खाता दर्ता गर्न सक्छन्।"
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "प्रयोगकर्ता नाम"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "ग्राहकको नामबाट उत्पन्न गर्नुहोस्"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"चेकआउटको समयमा ग्राहकहरूलाई प्रयोगकर्ता नाम छनौट गर्न नभनियोस् भनेर "
+"<strong>सिफारिस गरिएको</strong> छ, जसले रूपान्तरण दरहरू कम गर्न सक्छ।"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"ग्राहकको नामबाट वा नाम प्रयोग गर्न नसकिने बेलामा इमेल ठेगानाबाट प्रयोगकर्ता "
+"नाम उत्पन्न हुन्छ।"
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "पासवर्ड"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "पासवर्ड सेटअप लिङ्क पठाउनुहोस्"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"चेकआउटको समयमा ग्राहकहरूलाई पासवर्ड सेट गर्न नभनियोस् भनेर <strong>सिफारिस "
+"गरिएको</strong> छ, जसले रूपान्तरण दरहरू कम गर्न सक्छ।"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "ग्राहकहरूले आफ्नो पासवर्ड सुरक्षित रूपमा सिर्जना गर्न इमेल प्राप्त गर्छन्।"
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"दर्ता भएका ग्राहकहरूलाई लगइन नगरी चेकआउट पूरा गर्न दिनुहोस् र सम्पर्क "
+"विवरणहरू मिल्दा अर्डरलाई उनीहरूको अवस्थित खातासँग सम्बद्ध गर्नुहोस्।"
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "अवस्थित खाता सन्देश"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr "ग्राहकहरूलाई धन्यवाद पृष्ठबाट आफ्नो अर्डर गरेपछि खाता सिर्जना गर्न दिनुहोस्।"
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"अतिथि चेकआउट र खाता मिलान सक्षम पारिएको बेला यस खण्डमा विकल्पहरू उपलब्ध "
+"हुन्छन्। ढिलाइ भएको खाता सिर्जना कन्फिगर गर्न माथिका दुवै सुविधाहरू सक्षम "
+"गर्नुहोस्।"
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "ढिलाइ भएको खाता सिर्जना सक्षम पार्नुहोस्"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"अतिथि चेकआउट र खाता मिलान दुवै सक्षम हुँदा ढिलाइ भएको खाता सिर्जना सक्षम "
+"गर्नुहोस्।"
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "खण्डको स्थिति"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "ग्राहक विवरण खण्ड अघि"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "ग्राहक विवरण खण्ड पछि"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "खाता सिर्जना गर्ने फाइदाहरू"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "फिल्ड खाली छोड्दा पूर्वनिर्धारित पाठ प्रदर्शित हुनेछ।"
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "इनलाइन बटनहरू"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "आवश्यक क्षेत्रहरू"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "चेकआउटमा उपहार सन्देश क्षेत्रहरू सक्षम पार्नुहोस्"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "विस्तारित उपहार सन्देश"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "उपहार सन्देश क्षेत्र सधैं विस्तारित प्रदर्शन गर्नुहोस्"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "अर्डर विवरणमा उपहार सन्देश"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"यस खण्डमा हाल कुनै पनि एकीकरण उपलब्ध छैन। प्रत्येक प्लगइन र विषयवस्तुसँग "
+"सम्बन्धित विकल्पहरू त्यो प्लगइन वा विषयवस्तु सक्रिय हुँदा मात्र यहाँ देखा "
+"पर्नेछ।"
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "फोन क्षेत्रहरू"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "क्षेत्र दृश्यता"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "क्षेत्र स्थिति"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "फोन देश कोड र प्रमाणीकरण"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "देश"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "फोन क्षेत्रहरूमा देश सक्षम गर्नुहोस्"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "ढुवानी वा बिलिङका लागि देशहरू फिल्टर गर्नुहोस्"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"प्रत्येक फोन फिल्डमा रहेको देश चयनकर्तालाई तपाईंको स्टोरमा ढुवानी वा "
+"बिलिङको लागि अनुमति दिइएको देशहरूमा सीमित गर्नुहोस्।"
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "प्रमाणीकरण"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "देशका नियमहरूमा आधारित सरल प्रमाणीकरण सक्षम पार्नुहोस्"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"देशको कोड र लम्बाइ सहित, चयन गरिएको देशको लागि फोन नम्बर मान्य छ कि छैन "
+"जाँच गर्छ।"
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"चयन गरिएको देशको लागि नम्बर मान्य मोबाइल, फिक्स्ड लाइन, वा अन्य स्वीकृत "
+"प्रकार हो कि होइन भनेर कडाइका साथ जाँच गर्नुहोस्। केही मान्य नम्बरहरू "
+"अस्वीकार गर्न सक्छन्।"
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "प्रमाणीकरणका प्रकारहरू"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "प्लेसहोल्डरहरू"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"हाल व्यवस्थापन गर्न कुनै पनि लाइसेन्स कुञ्जीहरू छैनन्। लाइसेन्स प्राप्त "
+"फ्लुइड चेकआउट प्लगइन वा एड-अन सक्रिय हुँदा लाइसेन्स कुञ्जीहरू यहाँ देखा "
+"पर्नेछन्।"
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "पूर्वनिर्धारित डेलिभरी प्रकार"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "पूर्वनिर्धारित रूपमा कुन डेलिभरी प्रकार चयन गरिनेछ छनौट गर्नुहोस्।"
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "ढुवानी क्षेत्र क्षेत्रहरू"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"स्थानीय पिकअप ढुवानी क्षेत्र फिल्टर क्षेत्रहरूको लागि कुन क्षेत्रहरू "
+"प्रदर्शित हुनेछन् छनौट गर्नुहोस्। सबै उपलब्ध विकल्पहरू देखाउन खाली "
+"छोड्नुहोस्।"
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"यी क्षेत्रहरू स्थानीय पिकअप ढुवानी विधिहरूको लागि फिल्टरको रूपमा प्रदर्शित "
+"हुनेछन्। यदि उपयुक्त प्लगइनहरूलाई राम्ररी काम गर्न आवश्यक छ भने, यहाँ चयन "
+"नगरिएको बेला पनि केही क्षेत्रहरू चेकआउटमा देखा पर्न सक्छन्।"
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "अर्डर ढुवानी ठेगाना"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "अर्डर भुक्तानी पृष्ठ अनुकूलन"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"भुक्तानी नगरिएका अर्डरहरूलाई चेकआउट जस्तै स्पष्ट, रूपान्तरण-केन्द्रित लेआउट "
+"दिनुहोस्।"
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"भुक्तानी बाँकी रहेका अर्डरहरूको लागि अर्डर भुक्तानी पृष्ठको लेआउटलाई "
+"अनुकूलन गर्नुहोस्।"
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"एकरूप खरिद यात्राको लागि अर्डर भुक्तानी अनुभवलाई आफ्नो चेकआउटसँग "
+"मिलाउनुहोस्।"
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"भुक्तानी गर्नुअघि खरिदकर्ताहरूलाई आश्वासन आवश्यक पर्ने ठाउँमा विश्वास "
+"प्रतीक र ब्याजहरू थप्नुहोस्।"
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "पृष्ठ अनुकूलन धन्यवाद"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr "ग्राहकहरूले खरिद गरेपछि धन्यवाद पृष्ठ र अर्डर विवरणहरू स्पष्ट बनाउनुहोस्।"
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr "स्पष्ट लेआउटको साथ धन्यवाद पृष्ठ र खाता अर्डर विवरणहरू अनुकूलन गर्नुहोस्।"
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"अर्डर स्थिति प्रगति, कार्यहरू, डाउनलोडहरू, र नोटहरू जहाँ अर्थपूर्ण हुन्छन् "
+"त्यहाँ देखाउनुहोस्।"
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "इमेल सूचनाहरूमा अर्डर विवरण खण्डहरू अनुकूलित गर्नुहोस्।"
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"खरिदकर्ताहरूलाई खरिद पछि आश्वासन आवश्यक पर्ने ठाउँमा विश्वास प्रतीक र "
+"ब्याजहरू थप्नुहोस्।"
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "इमेल सूचनाहरू"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr "थप विकल्पहरू हेर्न धन्यवाद पृष्ठ र अर्डर विवरणहरू अनुकूलन सक्षम गर्नुहोस्"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "धन्यवाद पृष्ठमा फराकिलो लेआउट प्रयोग गर्नुहोस्"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"यी विकल्पहरूले धन्यवाद पृष्ठलाई असर गर्छ, खाता पृष्ठहरूमा र इमेल सूचनाहरूमा "
+"अर्डर विवरणहरू हेर्नुहोस्।"
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "सेटिङहरू बचत गर्नुहोस्"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "कागजातहरू"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "गाडी"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "धन्यवाद"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "ठेगाना स्वतः पूर्ण"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "ट्रस्ट ब्याजहरू"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "तपाईंलाई यी सेटिङहरू बचत गर्ने अनुमति छैन।"
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "अमान्य बचत अनुरोध।"
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "तपाईंको सेटिङहरू बचत गरिएका छन्।"
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "बचत गर्दै..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "सेटिङहरू सुरक्षित गर्न सकिएन। कृपया फेरि प्रयास गर्नुहोस्।"
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "सूचना खारेज गर्नुहोस्"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "सेटिङ मेनु खोल्नुहोस्"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "सेटिङ मेनु बन्द गर्नुहोस्"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "पूर्वावलोकन"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "पूर्वावलोकन विस्तृत गर्नुहोस्"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "पूर्वावलोकन संक्षिप्त गर्नुहोस्"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "हेडर र फुटर देखाउनुहोस्"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "हेडर र फुटर लुकाउनुहोस्"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "पृष्ठ पूर्वावलोकन"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "भ्यूपोर्टको पूर्वावलोकन गर्नुहोस्"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "ट्याब्लेट"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "डेस्कटप"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "पूर्वावलोकन चौडाइ"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "चौडाइ घटाउनुहोस्"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "पिक्सेलमा पूर्वावलोकन चौडाइ"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "चौडाइ बढाउनुहोस्"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "पूर्वावलोकन गर्नुहोस्"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "अतिथि"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "लग इन गरियो"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "पृष्ठको पूर्वावलोकन गर्नुहोस्"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "नजिकबाट हेर्नको लागि पूर्वावलोकन विस्तार गर्नुहोस्"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "%s सँग उपलब्ध छ।"
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "तिनीहरूलाई खोल्नुहोस्"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr "यस पृष्ठको लागि अनुकूलनहरू बन्द गरिएका छन्। पृष्ठ पूर्वावलोकन गर्न %s।"
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "%s पूर्वावलोकन"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "पृथक सत्र · केहि पनि बचत गरिएको छैन"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "प्रयोग ट्र्याकिङ"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"फ्लुइड चेकआउटलाई अनुकूलता सुधार गर्न मद्दत गर्न गैर-संवेदनशील साइट वातावरण "
+"रिपोर्टहरू पठाउनुहोस्। तलका विकल्पहरूमा सक्षम नगरिएसम्म रिपोर्टहरू "
+"पठाइँदैनन्।"
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "फ्लुइड चेकआउटमा प्रयोग ट्र्याकिङ रिपोर्टहरू पठाउनुहोस्"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"यी रिपोर्टहरूले हामीलाई तपाईंको साइटको लागि अनुकूलता र समर्थन सुधार गर्न "
+"मद्दत गर्छन् र सक्षम पारिएपछि साप्ताहिक रूपमा पठाइन्छ।"
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"रिपोर्टहरूमा कुनै पनि ग्राहक, व्यवस्थापक प्रयोगकर्ता, वा अन्य कुनै पनि "
+"संवेदनशील डेटा समावेश गरिएको छैन।"
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "आधारभूत वातावरण जानकारी"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"WordPress, PHP, WooCommerce, विषयवस्तु, र प्लगइन सूची डेटा। रिपोर्टिङ सक्षम "
+"पारिएको बेला सधैं समावेश गरिन्छ। तपाईंको साइट कुन वातावरणमा चलिरहेको छ भनेर "
+"बुझ्न हामीलाई मद्दत गर्दछ।"
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "प्लगइन सेटिङहरू"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"समर्थन अनुरोधहरूमा मद्दत गर्न फ्लुइड चेकआउट प्लगइन सेटिङहरू पठाउँछ र "
+"तपाईंले हाम्रा प्लगइनहरू कसरी प्रयोग गरिरहनुभएको छ भनेर बुझ्न मद्दत गर्छ।"
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "चाँडै आउँदैछ"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "बिक्री मेट्रिक्स"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"फ्लुइड चेकआउट स्थापना गर्नुभन्दा एक वर्षको मासिक अर्डर गणना र आजसम्मको कुल "
+"बिक्री। हाम्रा प्लगइनहरू स्थापना गरेर तपाईं बढी पैसा कमाउँदै हुनुहुन्छ कि "
+"भनेर बुझ्न हामीलाई मद्दत गर्दछ। कुनै पनि ग्राहक वा प्रयोगकर्ता डेटा कहिल्यै "
+"पठाइँदैन।"
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "उपयोगिताहरू"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"<code>select2</code> को सट्टा <code>TomSelect</code> ड्रपडाउन कम्पोनेन्टहरू "
+"प्रयोग गर्नुहोस्।"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect एउटा सरल ड्रपडाउन चयन घटक हो जुन Select2 भन्दा कम त्रुटिहरूको "
+"सम्भावना हुन्छ, जबकि उही कार्यक्षमता प्रदान गर्दछ।"
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"साना उपकरणहरूमा फारम फिल्डहरूसँग अन्तर्क्रिया गर्दा स्वचालित रूपमा जुम इन "
+"हुनबाट बच्नको लागि यस प्लगइनद्वारा अनुकूलित पृष्ठहरूमा फारम फिल्डहरू "
+"भित्रको फन्ट साइज १६ पिक्सेलमा सेट गर्दछ।"
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"फन्ट साइज १६ पिक्सेल भन्दा सानो हुँदा पाठ पढ्न सजिलो बनाउन सफारी र अन्य "
+"ब्राउजरहरूले मोबाइल उपकरणहरूमा स्वचालित रूपमा जुम इन गर्न सक्छन्।"
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "ब्राउजर कन्सोलमा स्क्रिप्ट प्रशोधन ट्र्याकिङ सक्षम गर्नुहोस्।"
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "अक्षुण्ण सम्पत्तिहरू"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "गुगल नक्सा स्क्रिप्टहरू"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "डुप्लिकेट गुगल नक्सा स्क्रिप्टहरू नहटाउनुहोस्"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"सक्षम पार्दा, डुप्लिकेट गुगल नक्सा स्क्रिप्टहरू हटाइने छैनन् जसले गर्दा "
+"त्रुटिहरू र कार्यसम्पादन समस्याहरू हुन सक्छन्। समस्या निवारण गर्दा मात्र यो "
+"विकल्प प्रयोग गर्नुहोस्।"
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "विजेट क्षेत्रहरू"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "मोबाइलमा अन्तिम चरण"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "मोबाइलमा अन्तिम चरणमा मात्र विजेटहरू प्रदर्शन गर्नुहोस्"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"मोबाइल उपकरणहरूमा अन्तिम चेकआउट चरण हेर्दा मात्र चेकआउट ट्रस्ट ब्याज "
+"विजेटहरू प्रदर्शन गर्नुहोस्"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "मानक"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "VAT नम्बर क्षेत्र"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "बिलिङ फारममा VAT नम्बर फिल्ड थप्नुहोस्।"
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "क्षेत्र लेबल"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"VAT नम्बर फिल्डको लेबल सेट गर्नुहोस् (अर्थात् VAT नम्बर)। बहु-भाषा "
+"वेबसाइटहरूमा, यो फिल्ड खाली छोड्नु र मूल स्ट्रिङ अनुवाद गर्नु राम्रो हुन्छ।"
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "VAT नम्बर"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "EU-भ्याट"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "थप विकल्पहरू हेर्न VAT नम्बर क्षेत्र सक्षम गर्नुहोस्।"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "VAT प्रमाणीकरण"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "चेकआउटको समयमा EU-VAT को लागि VAT नम्बर फिल्ड प्रमाणित गर्नुहोस्"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"प्रदान गरिएको VAT नम्बर युरोपेली VIES डाटाबेस (VAT सूचना विनिमय प्रणाली) मा "
+"दर्ता गरिएको मान्य VAT नम्बर हो कि होइन भनेर जाँच गर्छ।"
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "पसलको VAT नम्बर"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"EU-VAT प्रमाणीकरण अनुरोध गर्न प्रयोग गरिएको पसलको VAT नम्बर, र बीजकहरूमा "
+"छापिएको।<br> <strong>हामी तपाईंको पसल VAT नम्बर थप्न दृढताका साथ सिफारिस "
+"गर्छौं</strong> किनभने अन्यथा VIES परामर्श परिणामहरू लेखा उद्देश्यका लागि "
+"मान्य नहुन सक्छन्।<br> अर्थात्: <code>ATU99999999</code> वा "
+"<code>EE999999999</code> ।"
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "रिभर्स चार्ज"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "रिभर्स चार्ज मेकानिज्म लागू गर्नुहोस्"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"ग्राहकको VAT नम्बर मान्य हुँदा कर दर शून्यमा सेट गर्नुहोस् र बीजकहरूमा "
+"&quot;रिभर्स चार्ज&quot; प्रदर्शन गर्नुहोस्। स्टोरको देशको आधारमा फरक "
+"&quot;रिभर्स चार्ज&quot; पाठ आवश्यक पर्न सक्छ।"
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "उही देश"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr "पसल देशमा कारोबारको लागि रिभर्स चार्ज संयन्त्र लागू गर्नुहोस्:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"पसल भएको देशमा रहेका कम्पनीहरू बीचको कारोबारको लागि रिभर्स चार्ज संयन्त्र "
+"लागू गर्न सक्षम बनाउँछ।"
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "रिभर्स चार्ज अपवादहरू"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr "रिभर्स चार्ज मेकानिज्म लागू गर्न छोड्न थप देशहरू चयन गर्नुहोस्।"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr "यी देशहरूबाट आउने अर्डरहरूमा वैध VAT नम्बर प्रदान गरिएको भए पनि कर लगाइनेछ।"
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "बीजकहरूमा उल्टो शुल्क लेबल"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr ""
+"चेकआउट पृष्ठ र अर्डर विवरणहरूमा &quot;रिभर्स चार्ज&quot; को लेबल सेट "
+"गर्नुहोस्।"
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "बीजकहरूमा उल्टो शुल्क पाठ"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "बीजकहरूमा &quot;रिभर्स चार्ज&quot; पाठको लेबल सेट गर्नुहोस्।"
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "रिभर्स चार्जको आधारमा कर तिर्नु पर्ने"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "कम्पनीको नाम"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "VAT नम्बरबाट कम्पनीको नाम स्वतः पूर्ण गर्नुहोस्"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr "ग्राहकले प्रदान गरेको मान्य VAT नम्बरको आधारमा बिलिङ कम्पनीको नाम भर्नुहोस्।"
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "कम्पनीको नाम सम्पादन"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "स्वतः भरिएको कम्पनीको नाम सम्पादन गर्न अनुमति दिनुहोस्"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"सक्षम पारिएपछि, ग्राहकहरूले प्रदान गरिएको VAT नम्बरसँग सम्बन्धित कम्पनीको "
+"नाम परिवर्तन गर्न सक्छन्।"
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "डिजिटल सामानहरूको लागि EU-VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"जनवरी १, २०१५ देखि, डिजिटल सामानहरू सम्बन्धी EU VAT नियमहरूमा परिमार्जनहरू "
+"गरिएको छ, जसले विशेष रूपमा B2C लेनदेनहरूलाई असर गर्छ। डिजिटल सामानहरूमा VAT "
+"ग्राहकको स्थानको आधारमा गणना गरिनुपर्छ, र यसको प्रमाणहरू सङ्कलन गर्न आवश्यक "
+"छ (IP ठेगाना र बिलिङ ठेगाना)।"
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "डिजिटल सामानहरूको लागि कर वर्गहरू"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "केही कर वर्गहरू चयन गर्नुहोस्"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "स्थान प्रमाण"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "ग्राहकको स्थान प्रमाण सङ्कलन गर्नुहोस्"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"IP ठेगाना सुरक्षित गर्छ र ग्राहकको बिलिङ ठेगाना विरुद्ध प्रमाणित गर्छ। यदि "
+"ग्राहकको बिलिङ ठेगाना र IP बाट देश मेल खाँदैन भने चेकआउट पृष्ठमा चेकबक्स "
+"जाँच गरेर ग्राहकले आफ्नो बिलिङ ठेगाना पुष्टि गर्नुपर्छ।"
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"यो विकल्प फ्लुइड चेकआउटमा व्यवस्थित गरिएको छ। <a href=\"%s\">यसलाई ग्राहक "
+"खाता सेटिङहरूमा परिवर्तन गर्नुहोस्</a> ।"
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"यो विकल्प फ्लुइड चेकआउटमा व्यवस्थित गरिएको छ। यसलाई फ्लुइड चेकआउट &gt; "
+"ग्राहक खाताहरू अन्तर्गत परिवर्तन गर्नुहोस्।"
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"यो विकल्प फ्लुइड चेकआउटमा व्यवस्थित गरिएको छ। फ्लुइड चेकआउट सक्रिय हुँदा "
+"ढुवानी गन्तव्य सधैं &quot;ग्राहक ढुवानी ठेगानामा पूर्वनिर्धारित&quot; मा "
+"सेट गरिएको हुन्छ। ग्राहकहरूले चेकआउटको समयमा अझै पनि फरक ढुवानी र बिलिङ "
+"ठेगानाहरू प्रदान गर्न सक्छन्।<br><br> <a href=\"%s\">फ्लुइड चेकआउट "
+"सेटिङहरूमा</a> पूर्वनिर्धारित बिलिङ ठेगानालाई ढुवानी ठेगाना जस्तै सेट गर्ने "
+"विकल्प उपलब्ध छ।"
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"यो विकल्प फ्लुइड चेकआउटमा व्यवस्थित गरिएको छ। फ्लुइड चेकआउट सक्रिय हुँदा "
+"ढुवानी गन्तव्य सधैं &quot;ग्राहक ढुवानी ठेगानामा पूर्वनिर्धारित&quot; मा "
+"सेट गरिएको हुन्छ। ग्राहकहरूले चेकआउटको समयमा अझै पनि फरक ढुवानी र बिलिङ "
+"ठेगानाहरू प्रदान गर्न सक्छन्।<br><br> पूर्वनिर्धारित बिलिङ ठेगानालाई ढुवानी "
+"ठेगाना जस्तै सेट गर्ने विकल्प WooCommerce &gt; Settings &gt; Fluid Checkout "
+"मा उपलब्ध छ।"
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr "यी सेटिङहरू WP Admin &gt; Fluid Checkout &gt; Settings मा सारिएका छन्।"
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"यो WooCommerce सेटिङ्स ट्याबलाई चल्तीबाट हटाइएको छ र Fluid Checkout 6.0 मा "
+"हटाइनेछ।"
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "सेटिङ पृष्ठमा जानुहोस्"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "यो ट्याब स्थायी रूपमा लुकाउनुहोस्"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "साइट रिपोर्ट पूर्वावलोकन"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"यो तपाईंको हालको सेटिङहरूको आधारमा अर्को साइट वातावरण रिपोर्टमा समावेश "
+"गरिने डेटा हो।"
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "रिपोर्ट पूर्वावलोकन लोड हुँदै..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "साइट रिपोर्ट पूर्वावलोकन लोड गर्न सकिएन। फेरि प्रयास गर्नुहोस्।"
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "साइट रिपोर्ट पठाउन सकिएन। फेरि प्रयास गर्नुहोस्।"
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "साइट रिपोर्ट सफलतापूर्वक पठाइयो।"
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "सक्षम पार्नुहोस् र अहिले नै पठाउनुहोस्"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "बन्द गर्नुहोस्"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr "साइट रिपोर्ट अनुरोध पहिले नै प्रगतिमा छ। केही बेरमा फेरि प्रयास गर्नुहोस्।"
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "साइट वातावरण रिपोर्टिङ असक्षम पारिएको छ।"
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "पठाउनको लागि कुनै साइट रिपोर्ट डेटा उपलब्ध छैन।"
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"यो साइट डोमेनले वातावरण रिपोर्टहरू पठाउन सक्दैन (स्थानीय वा विकास डोमेनहरू "
+"समावेश छैनन्)।"
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "हालसालै एउटा साइट रिपोर्ट पठाइएको थियो। पछि फेरि प्रयास गर्नुहोस्।"
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "साइट रिपोर्ट पठाउन सकिएन। पछि फेरि प्रयास गर्नुहोस्।"
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "साइट वातावरण रिपोर्टिङ उपलब्ध छैन।"
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "चयन गरिएका सेटिङहरूको लागि कुनै साइट रिपोर्ट डेटा उपलब्ध छैन।"
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "तपाईंलाई साइट रिपोर्टहरू व्यवस्थापन गर्न अनुमति छैन।"
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "प्रो सुविधा"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "अन्य प्लगइनहरू"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "यो एड-अन मात्र प्राप्त गर्नुहोस् — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "एड-अन स्थापना गर्नुहोस्"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "PRO मा स्तरोन्नति गर्नुहोस् — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"यी विकल्पहरू अनलक गर्न <a target=\"_blank\" href=\"%1$s\">%2$s प्राप्त "
+"गर्नुहोस्</a> ।"
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "एड-अन"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "कागजात हेर्नुहोस्"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"अनुरोधहरूको लागि लग-इन गरिएको WordPress प्रयोगकर्ता आवश्यक पर्दछ। हालको "
+"प्रयोगकर्ताको डेटा प्रयोग गर्न user_id छोड्नुहोस्, वा कलरले त्यो "
+"प्रयोगकर्तालाई सम्पादन गर्न सक्ने बेला अर्को खातालाई लक्षित गर्न user_id "
+"पास गर्नुहोस् (edit_user क्षमता)। अप्रमाणित अनुरोधहरूले fc_api_forbidden "
+"फर्काउँछ। अवैध user_id ले fc_api_user_not_found फर्काउँछ।"
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr ""
+"जब ह्यान्डलरले पेलोड फिर्ता गर्छ तब HTTP २०० { &quot;data&quot;: { ... } } "
+"सँग।"
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"कुनै पेलोड नभएको बेला HTTP २०० { &quot;सफलता&quot;: true } सँग (उदाहरणका "
+"लागि DELETE)।"
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"विफलताहरूले WP_Error (कोड, सन्देश, data.status) बाट WordPress REST त्रुटि "
+"JSON फर्काउँछ। वायर कोडहरूले fc_api_* उपसर्ग प्रयोग गर्छन्।"
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "निषेधित प्रवेश।"
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "लक्षित प्रयोगकर्ता फेला परेन।"
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "यो सुविधा उपलब्ध छैन।"
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "आवश्यक ठेगाना क्षेत्र छुटेको छ।"
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "हुलाक कोड वा जिप अमान्य छ।"
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "फोन नम्बर अमान्य छ।"
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "राज्य वा काउन्टी अमान्य छ।"
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "देश अमान्य छ वा कुनै ठेगाना क्षेत्रहरू छैनन्।"
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "अनुरोध प्रशोधन गर्न सकिएन।"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "अघिल्लो चरणमा फर्कनुहोस्"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "सेटिङहरूमा जानुहोस्"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "फेरि सुरु गर्नुहोस् र पहिलो निर्देशित सेटअप चरणमा फर्कनुहोस्"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "फेरि सुरु गर्नुहोस्"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "जारी राख्नु अघि कृपया सबै उप-चरणहरू पूरा गर्नुहोस्।"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "विस्तार गर्नुहोस्"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "संक्षिप्त गर्नुहोस्"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "छोड्नुहोस्"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "पूरा भएको भनी चिन्ह लगाउनुहोस्"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "अपूर्ण भनी चिन्ह लगाउनुहोस्"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "पूर्ण आकारको छवि हेर्नुहोस्: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "पूर्ण आकारको सेटअप गाइड छवि"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "छवि बन्द गर्नुहोस्"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "तरल पदार्थ जाँच निर्देशित सेटअप"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "स्वागत छ"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "आफ्नो चेकआउट अन्वेषण गर्नुहोस्"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "सबै सेट भयो"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "तपाईंलाई यो पृष्ठ पहुँच गर्ने अनुमति छैन।"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "चरण %1$d मा जानुहोस्: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"यो निर्देशित सेटअपले तपाईंलाई फ्लुइड चेकआउटसँग परिचित हुन मद्दत गर्छ। तलका "
+"चरणहरू अहिलेका लागि प्लेसहोल्डरहरू हुन्।"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "तपाईं तयार भएपछि अर्को चरणमा जानुहोस्।"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "फ्लुइड चेकआउट कार्यमा रहेको हेर्न आफ्नो स्टोर चेकआउट खोल्नुहोस्।"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "चेकआउट पृष्ठ हेर्नुहोस्"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"आफ्नो स्टोर कन्फिगर गर्न जारी राख्न तपाईं फ्लुइड चेकआउट सेटिङहरूमा फर्कन "
+"सक्नुहुन्छ।"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "चेकआउट र कार्ट सेटिङहरूको समीक्षा गर्नुहोस्"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "ड्यासबोर्डबाट एड-अनहरू अन्वेषण गर्नुहोस्"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "समाप्त गर्नुहोस् र सेटिङहरूमा जानुहोस्"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"WooCommerce कन्भेन्सनहरूसँग मिलाउन लिगेसी मानबाट बिलिङ फोन फिल्ड दृश्यता "
+"विकल्प अपडेट गर्नुहोस्।"
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"WooCommerce कन्भेन्सनहरूसँग मिलाउन लिगेसी मानबाट ढुवानी फोन फिल्ड दृश्यता "
+"विकल्प अपडेट गर्नुहोस्।"
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"अर्डर सारांश पृष्ठभूमि रङ सेटिङलाई नयाँ स्प्लिट डिजाइन माध्यमिक स्तम्भ "
+"पृष्ठभूमि रङ विकल्पमा प्रतिलिपि गर्नुहोस्।"
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"बाइटशिप प्लगइन प्रयोग गर्दा परिष्कृत चयन क्षेत्र सुविधा सधैं असक्षम पारिएको "
+"हुन्छ।"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"जर्मन बजार प्रयोग गर्दा प्लेस अर्डर स्थिति सधैं &quot;अर्डर सारांशको "
+"तल&quot; मा सेट गरिएको हुन्छ। त्यो प्लगइनलाई अर्डर सारांशको तल प्लेस अर्डर "
+"बटन र कानुनी चेकबक्सहरू प्रदर्शन गर्न आवश्यक पर्दछ।"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"WooCommerce को लागि Germanized प्रयोग गर्दा प्लेस अर्डर स्थिति सधैं "
+"&quot;अर्डर सारांशको तल&quot; मा सेट गरिएको हुन्छ। त्यो प्लगइनलाई अर्डर "
+"सारांशको तल प्लेस अर्डर बटन र कानुनी चेकबक्सहरू प्रदर्शन गर्न आवश्यक छ।"
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "पिकअप स्थानहरू सम्पादन गर्नुहोस्"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce सेटिङहरूबाट स्थानीय पिकअप लेबल प्रयोग गर्नुहोस्"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"सक्षम पार्दा, चेकआउटमा रहेको पिकअप विकल्प लेबलले WooCommerce पिकअप स्थान "
+"सेटिङहरूबाट शीर्षकसँग मेल खान्छ। असक्षम पार्दा, लेबलले Fluid Checkout बाट "
+"अनुवाद गर्न सकिने &quot;स्थानीय पिकअप&quot; पाठ प्रयोग गर्दछ।"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2751,3 +4691,115 @@ msgstr "हो"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%१$s: %२$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "यूहन्ना"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "डो"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "उदाहरण कम्पनी"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "१२३ मुख्य सडक"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "कुनै पनि शहर"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "कृपया प्याकेज अगाडिको ढोकामा छोड्नुहोस्।"
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "बिनी"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "टोपी"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "टि-शर्ट"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr ""
+"हामीले तपाईंको अर्डर प्राप्त गर्यौं र यो ढुवानी भएपछि तपाईंलाई अद्यावधिक "
+"पठाउनेछौं।"
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "प्रयोगकर्ता गाइड"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "स्थान API (नयाँ)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "स्थान API (लिगेसी)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "संस्करण १"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "संस्करण २"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ अर्को पटक छिटो चेकआउट गर्नुहोस् ✔ आफ्नो भुक्तानी प्राथमिकताहरू व्यवस्थापन "
+"गर्नुहोस् ✔ अर्डर स्थिति र इतिहास हेर्नुहोस्"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "लुकेको"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "वैकल्पिक"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "आवश्यक छ"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "ठेगानामा ढुवानी"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "स्थानीय पिकअप"

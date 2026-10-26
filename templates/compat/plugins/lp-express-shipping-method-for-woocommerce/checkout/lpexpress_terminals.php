@@ -1,4 +1,5 @@
 <?php defined( 'ABSPATH' ) or die( 'No script kiddies please!' ); ?>
+<?php // CHANGE: Removed table wrappers `tr.wc_shipping_lpexpress-terminals` and `td colspan="2"` ?>
 <?php // CHANGE: Replace `tr > td` elements with `div > span` as a form field as this section is moved out of the order summary table on the checkout page ?>
 <div class="lpexpress-terminals-field form-row form-row-wide fc-select2-field validate-required">
 	<?php // CHANGE: Add a label to the field ?>

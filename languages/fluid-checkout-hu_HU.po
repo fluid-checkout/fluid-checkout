@@ -291,10 +291,6 @@ msgstr "Fluid Checkout adatbázis sikeresen frissült"
 msgid "The database changes where applied successfully."
 msgstr "Az adatbázis módosításait sikeresen alkalmazták."
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "Oké"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "Elutasíthatod"
@@ -415,18 +411,6 @@ msgstr "Dokumentáció olvasása"
 msgid "Don't show this again"
 msgstr "Ne mutasd meg ezt még egyszer!"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "Különleges ajánlatok"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"Terjessze ki a Fluid Checkout minden előnyét a kosároldalra és a köszönöm "
-"oldalakra."
-
 #: inc/admin/admin-setting-type-fc-addons.php:48,
 #: inc/admin/admin-setting-type-fc-addons.php:50,
 #: inc/admin/admin-setting-type-fc-addons.php:88,
@@ -435,26 +419,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Fluid Checkout PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51,
-#: inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"Tervezési sablonok, optimalizált kosár és megrendelés fogadott oldalak, "
-"számlaegyeztetés és még sok más."
-
-#: inc/admin/admin-setting-type-fc-addons.php:55,
-#: inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"A legjobb eszközök a WooCommerce pénztárgépes konverziós arány további "
-"<strong>javításához</strong> és a vásárlási élmény konzisztensé tételéhez a "
-"teljes út során."
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -476,10 +440,6 @@ msgstr "Kosár tartalmának szerkesztése a pénztár oldalon"
 msgid "Account matching / user matching"
 msgstr "Számlaillesztés / felhasználóillesztés"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "Express Checkout gombok a támogatott fizetési módok közül"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "Bizalom szimbólumok a kosár és a köszönöm oldalakon"
@@ -487,10 +447,6 @@ msgstr "Bizalom szimbólumok a kosár és a köszönöm oldalakon"
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "További pozíciók a kuponkód a pénztár oldalon"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "Integrált kuponkód mező a kosár oldalon"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66,
 #: inc/admin/admin-settings-checkout.php:633
@@ -505,95 +461,15 @@ msgstr "Ajándéküzenetek és csomagolólapok"
 msgid "Local pickup and in-store collection"
 msgstr "Helyi átvétel és bolti átvétel"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "Frissítés PRO-ra &mdash; 99 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78,
-#: inc/admin/admin-setting-type-fc-addons.php:80,
-#: inc/admin/admin-setting-type-fc-addons.php:125,
-#: inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Fluid Checkout PRO - csomag"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81,
-#: inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "Minden PRO funkció + minden kiegészítő kedvezményes áron."
-
-#: inc/admin/admin-setting-type-fc-addons.php:85,
-#: inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"A csomag tartalmazza a jelenleg kínált összes kiegészítőt és a jövőben "
-"bevezetésre kerülő Fluid Checkout kiegészítőket."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87,
-#: inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "226 EUR érték (42%-os megtakarítás)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89,
-#: inc/admin/admin-setting-type-fc-addons.php:165,
-#: inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Google cím automatikus kitöltése"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90,
-#: inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "Címjegyzék"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91,
 #: inc/admin/admin-setting-type-fc-addons.php:209,
 #: inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "EU-VAT asszisztens"
 
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "Minden jövőbeli bővítmény *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* Amíg aktív előfizetéssel rendelkezik."
-
-#: inc/admin/admin-setting-type-fc-addons.php:97,
-#: inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "Szerezd meg a csomagot - Csak 129 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104,
-#: inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"Minden ár EUR-ban értendő. Amennyiben a weboldalunkon feltüntetett árak "
-"eltérnek, a weboldalon feltüntetett ajánlatok felülírják és alkalmazásra "
-"kerülnek."
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "Kiegészítők"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "Fokozza a pénztárgépes élményt ezekkel a kiegészítőkkel."
-
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "Már megvan - Rejtsd el ezt az ajánlatot"
-
-#: inc/admin/admin-setting-type-fc-addons.php:157,
-#: inc/admin/admin-setting-type-fc-addons.php:178,
-#: inc/admin/admin-setting-type-fc-addons.php:200,
-#: inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "Telepítve &mdash; Aktiválás"
 
 #: inc/admin/admin-setting-type-fc-addons.php:155,
 #: inc/admin/admin-setting-type-fc-addons.php:176,
@@ -602,174 +478,15 @@ msgstr "Telepítve &mdash; Aktiválás"
 msgid "Activated"
 msgstr "Aktivált"
 
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "Akár 40%-kal kevesebb kitöltendő pénztármező."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"Kerülje el a szállítási késedelmeket és az elégedetlen ügyfeleket. Gyűjtse "
-"össze a <strong>helyes címadatokat</strong> már az első alkalommal, amikor "
-"Önnél vásárolnak."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "Szerezd meg ezt a kiegészítőt &mdash; 29 EUR"
-
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "Címjegyzék"
-
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "Több elmentett cím a szállításhoz és a számlázáshoz."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"Hagyja, hogy az ügyfelek <strong>több szállítási és számlázási "
-"címet</strong> tároljanak a fiókjukban, és kiválaszthassák, melyiket "
-"használják a pénztár és a kosár oldalain."
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "Szerezd meg ezt a kiegészítőt &mdash; 59 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "Egyszerűsített EU-VAT érvényesítés az Ön üzletében."
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"Összegyűjti és <strong>hitelesíti az EU-s HÉA-számokat a pénztár "
-"oldal</strong>, eltávolítja az adóterheket fordított adózás alapján, és "
-"szükség esetén megerősíti a vásárló tartózkodási helyét."
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "Szerezd meg ezt a kiegészítőt &mdash; 39 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"Minden bővítményt külön értékesítenek, és a <strong>Fluid Checkout "
-"Lite</strong> bővítményt kell telepíteni és aktiválni, kivéve, ha ez nem "
-"szerepel."
 
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97,
 #: inc/admin/admin-setting-type-fc-image-uploader.php:98,
 #: inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Kép kiválasztása"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Logoljon "
-"be a fiókjába</a> a licenckulcs megszerzéséhez, vagy <a href=\"%s\" "
-"target=\"_blank\">vásároljon új licenckulcsot</a>."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "Érvényes %s-ig."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "Lejárt %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Logoljon "
-"be fiókjába</a> a licenckulcs megújításához, valamint a frissítések és a "
-"támogatás további igénybevételéhez."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "A licenckulcs törlésre került."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">Vásároljon új licenckulcsot</a>, és "
-"továbbra is megkapja a frissítéseket és a támogatást."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "Hiba:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "Beállítás és dokumentáció"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "Nagyszerű! A pénztár oldal mostantól a Fluid Checkout-on fut."
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "Íme néhány forrás, amelyből elindulhat:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"Olvassa el a telepítési útmutatót <a href=\"%s\" target=\"_blank\">A Fluid "
-"Checkout használata</a>."
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr ""
-"A <a href=\"%s\">pénztárbeállítások</a> elrendezésének és kialakításának "
-"beállítása."
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"Ellenőrizze, hogy vannak-e <a href=\"%s\">integrációs lehetőségek</a> más "
-"telepített bővítményekhez."
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"Látogasson el a <a href=\"%s\" target=\"_blank\">dokumentációnkba</a> a "
-"Fluid Checkout funkcióiról szóló további információkért."
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"Ha bármikor segítségre van szüksége, <a href=\"%s\" "
-"target=\"_blank\">nyisson támogatási jegyet</a> a hivatalos támogatási "
-"csatornánkon."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -782,15 +499,6 @@ msgstr "Kosár optimalizálás"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "Engedélyezze a kosároldal optimalizálását"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "A kosár oldal megjelenítése a pénztár oldalhoz hasonló elrendezéssel."
-
-#: inc/admin/admin-settings-cart.php:96,
-#: inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "Fejléc és lábléc"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -828,16 +536,6 @@ msgstr "Legyen látható a rendelés összefoglalója a kosár oldalon görgeté
 #: inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "Kupon kódok"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"Válassza ki, hogy hol jelenjen meg a kuponkódok szakasz a kosár oldalon. "
-"Csak akkor alkalmazható, ha az AJAX kosár és a pénztár oldalra integrált "
-"kuponkódok engedélyezve vannak."
 
 #: inc/admin/admin-settings-cart.php:146,
 #: inc/admin/admin-settings-cart.php:169,
@@ -941,13 +639,6 @@ msgstr "A téma keresztértékesítések elrendezése"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "A kosároldalon megjelenítendő keresztértékesítési tételek száma"
 
-#: inc/admin/admin-settings-cart.php:219,
-#: inc/admin/admin-settings-checkout.php:328,
-#: inc/admin/admin-settings-order-pay.php:91,
-#: inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "Bizalmi szimbólumok és jelvények"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "Widget területek hozzáadása a kosár oldalhoz"
@@ -964,10 +655,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "Pénztár"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "Layout &amp; design"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "Pénztár elrendezése"
@@ -983,22 +670,6 @@ msgstr "Sötét üzemmód"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "Sötét üzemmód engedélyezése"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "Fejléc és lábléc sablonok"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"Javasoljuk a figyelemelterelésmentes fejléc és lábléc használatát, hogy "
-"elkerülje a zavaró tényezőket a pénztár oldalnál. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" "
-"target=\"_blank\">Olvassa el a kosárelhagyással kapcsolatos kutatásokat</a>."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -1054,10 +725,6 @@ msgid ""
 msgstr ""
 "Válasszon háttérszínt a pénztár oldal láblécéhez. Csak akkor érvényes, ha a "
 "figyelemelterelésmentes fejlécet és láblécet használja."
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "Pénztári elemek"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1144,20 +811,6 @@ msgstr "Link a bolt oldalához"
 msgid "Cart items"
 msgstr "Kosár elemek"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr ""
-"A kosár elemeinek szerkesztési lehetőségeinek engedélyezése a pénztár "
-"oldalon"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"Lehetővé teszi a vásárlók számára, hogy közvetlenül a pénztár oldalon "
-"módosítsák a termékmennyiséget vagy eltávolítsák a tételeket."
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "A kosár tételek hibáinak elrejtése a pénztár oldalon"
@@ -1212,38 +865,9 @@ msgstr ""
 "Ezeket a widget területeket arra használják, hogy bizalmi szimbólumokat és "
 "bizalmi jelvényeket adjanak hozzá a pénztároldalon."
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"A pénztár oldalsáv widgetek megjelenítése csak az utolsó pénztári lépés "
-"megtekintésekor mobil eszközökön, ha többlépcsős pénztár elrendezést "
-"használnak."
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "Integrált kuponkód szekció engedélyezése"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr ""
-"Csak akkor alkalmazható, ha a kuponkódok használata engedélyezve van a "
-"WooCommerce beállításaiban."
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "A kupon kódok szakasz címének megjelenítése"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"Csak akkor alkalmazható, ha a kuponkód külön szakaszban jelenik meg a "
-"pénztár vagy a kosár oldalán."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1262,16 +886,6 @@ msgstr "A fizetési módok előtti allépésként"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "A fizetési módok utáni allépésként"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"Válassza ki a \"kupon alkalmazása\" gomb stílusát. Csak akkor alkalmazható, "
-"ha a kuponkód rész \"A pénztár lépései előtt\" jelenik meg a pénztár "
-"oldalon, vagy \"A kosár elemei előtt\" a kosár oldalon."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1322,21 +936,6 @@ msgstr ""
 "Csak akkor ajánlott, ha a legtöbb ügyfélnek valóban szüksége van a \"Címsor "
 "2\" mezőre, vagy ha a helyes szállítási cím megadása döntő fontosságú (pl. "
 "élelmiszerek és más romlandó termékek szállítása esetén)."
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "A \"Hozzáadás\" link gombok kisbetűs megjelenítése"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"Az opcionális \"Hozzáadás\" mező \"Hozzáadás\" link gombjának feliratai "
-"legyenek <code>kisbetűs</code> (pl. \"Telefonszám hozzáadása\" helyett "
-"\"Telefonszám hozzáadása\"). Ez az opció a kuponkódmezők linkgombjaira is "
-"hatással van."
 
 #: inc/admin/admin-settings-checkout.php:460,
 #: inc/admin/admin-settings-checkout.php:625
@@ -1432,24 +1031,6 @@ msgstr "Szállítási cím előtt"
 msgid "After shipping address"
 msgstr "Szállítási cím után"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "Az első szállítási mód automatikus kiválasztásának megakadályozása"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Ha engedélyezve van, nem lesz automatikusan kiválasztva az első elérhető "
-"szállítási mód, ha korábban nem volt más szállítási mód kiválasztva az "
-"egyes szállítási csomagokhoz. <br>Ez az opció automatikusan engedélyezve "
-"lesz, ha a Helyi átvétel funkcióhoz engedélyezve van a kiválasztott "
-"szállítási mód törlése opció."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Helyi átvétel"
@@ -1469,20 +1050,6 @@ msgid ""
 msgstr ""
 "A szállítási címet a helyi átvételi pont helyével helyettesíti, ha helyi "
 "átvételi szállítási módot választ."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "A szállítási módok törlésének lehetősége az átvételi hely allépésében"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Mutasson egy link gombot az átvételi hely allépésen a kiválasztott "
-"szállítási módok törléséhez. Ezzel lehetővé teheti a szállítási cím szakasz "
-"újbóli megjelenítését, ha korábban helyi átvételi módszer volt kiválasztva."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1569,32 +1136,6 @@ msgstr "Számlázási telefon mező hozzáadása a pénztár űrlaphoz."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Válassza ki, hogy melyik lépésben jelenjen meg a számlázási telefon mező."
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "A telefonszám érvényesítésének engedélyezése az ország szabályai alapján"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"Ha letiltva van, a telefonmező érvényesítés nem ellenőrzi, hogy az ország- "
-"vagy körzetszámok érvényesek-e az adott országban."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "Csak a szállításhoz vagy számlázáshoz engedélyezett országok megjelenítése"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"Ha engedélyezve van, akkor csak a szállításra engedélyezett országok "
-"lesznek elérhetőek a szállítási telefon mezőben, és csak a számlázásra "
-"engedélyezett országok lesznek elérhetőek a számlázási telefon mezőben."
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "Országkód megjelenítése a zászló mellett"
@@ -1628,12 +1169,6 @@ msgstr "A további rendelési megjegyzések mező láthatóságának meghatároz
 msgid "Gift options"
 msgstr "Ajándékozási lehetőségek"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr ""
-"Ajándék üzenet és egyéb ajándékozási lehetőségek megjelenítése a pénztár "
-"oldalon"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1641,10 +1176,6 @@ msgid ""
 msgstr ""
 "Lehetővé teszi az ügyfelek számára, hogy ajándéküzenetet és egyéb "
 "ajándékkal kapcsolatos opciókat adjanak a megrendeléshez."
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "Az ajándéküzenet mezőinek megjelenítése mindig kibővítve"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1702,28 +1233,9 @@ msgstr "Műszerfal"
 msgid "Integrations"
 msgstr "Integrációk"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"Ebben a szakaszban jelenleg nem állnak rendelkezésre integrációk. Az egyes "
-"bővítményekhez kapcsolódó opciók csak akkor jelennek meg itt, ha az adott "
-"bővítmény aktiválva van."
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "Licenckulcsok"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"Ebben a szakaszban jelenleg nem állnak rendelkezésre licenckulcsok. Az "
-"egyes bővítményekhez vagy bővítményekhez kapcsolódó opciók akkor jelennek "
-"meg itt, amikor az adott bővítményt aktiválja."
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1829,14 +1341,6 @@ msgstr ""
 "Ezeket a widget területeket arra használják, hogy bizalmi szimbólumokat és "
 "bizalmi jelvényeket adjanak hozzá a köszönőoldalon."
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"Ezek a beállítások a köszönöm oldalra , a rendelés részleteinek "
-"megtekintésére a számlaoldalakon és az e-mail értesítéseken vannak hatással."
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "Megrendelési műveletek"
@@ -1941,22 +1445,6 @@ msgstr "Minimalizálatlan eszközök betöltése"
 msgid "Enhanced select fields"
 msgstr "Továbbfejlesztett mezők kiválasztása"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr ""
-"A <code>select2</code> legördülő komponensek cseréje "
-"<code>TomSelect</code>-re."
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"A TomSelect egy egyszerűbb legördülő kiválasztó komponens, amely kevésbé "
-"hajlamos a hibákra, mint a Select2, miközben ugyanazokat a funkciókat "
-"kínálja, amelyeket a WooCommerce pénztár oldalain ténylegesen használnak."
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "Az űrlapmezők automatikus nagyításának javítása"
@@ -1964,35 +1452,6 @@ msgstr "Az űrlapmezők automatikus nagyításának javítása"
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "<code>font-size</code> beállítása az űrlapmezőkben 16px-re"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"Ha az űrlapmezőkben a betűméret kisebb, mint 16px, a Safari és más "
-"böngészők a mobileszközökön automatikusan nagyíthatják a szöveget, hogy "
-"könnyebben olvasható legyen. Ha ez az opció engedélyezve van, akkor a Fluid "
-"Checkout által optimalizált oldalakon az űrlapmezőkön belüli betűméretet "
-"16px-re állítja be, hogy elkerülje a nagyítást."
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"A szállítási célállomás mindig az \"Alapértelmezett szállítási cím\" "
-"értékre van állítva, amikor a Fluid Checkout aktiválva van. A vásárlók "
-"továbbra is megadhatnak különböző szállítási és számlázási címeket a "
-"fizetés során, a WooCommerce > Beállítások > Fluid Checkout menüpontban "
-"elérhető egy lehetőség az alapértelmezett számlázási cím beállítására, hogy "
-"az megegyezzen a szállítási címmel."
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -2019,14 +1478,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(kísérleti)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "Megerősítés"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "Telefonszám ellenőrzése"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375,
 #: inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
@@ -2581,10 +2032,6 @@ msgstr "Az előrehaladási sáv után"
 msgid "Before coupon codes section"
 msgstr "Mielőtt kupon kódok szakasz"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "Nemzetközi telefonszám mezők engedélyezése"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "Formázza a telefonszámokat az egyes országok szabályainak megfelelően."
@@ -2592,18 +2039,6 @@ msgstr "Formázza a telefonszámokat az egyes országok szabályainak megfelelő
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "Használjon pontos telefonszám-érvényesítést"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"Próbáljon meggyőződni arról, hogy a telefonszám a kiválasztott országkódra "
-"vonatkozó szabályok alapján érvényes mobil- vagy vezetékes telefonszám. Ez "
-"az opció a <code>intl-tel-input</code> pontos érvényesítési funkciót "
-"használja, amely néhány telefonszám esetében téves pozitív eredményt adhat."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2650,26 +2085,6 @@ msgstr "2 oszlop"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 oszlop"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"Általános stílusok a pénztári lépésekhez, a rendelés összefoglalójához és "
-"más részekhez. <br>Elképzelhető, hogy más oldalakra is vonatkozik, például "
-"a Kosár, a Megrendelés beérkezett és a Megrendelés megtekintése oldalakra."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"A <em>\"Osztott\"</em> tervezési sablon nem érhető el, ha az <em>\"1 "
-"oszlop\"</em> elrendezést használja, és visszaáll a "
-"<em>\"Minimalista\"</em> elrendezésre, ha azt választja."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2766,6 +2181,2570 @@ msgstr ""
 "hogy a szállítási cím átmásolható legyen a számlázási címbe, ha az adott "
 "opció be van jelölve; ellenkező esetben előfordulhat, hogy az ügyfél nem "
 "tudja kitölteni a fizetési űrlapot."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "Beállítási profilok"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "Beállítási profil"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "Nincs jogosultsága erre a műveletre."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "Nincs jogosultsága a bővítmények aktiválására."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "Hiányzó bővítmény."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "A bővítmény aktiválva."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "A következő módosítások kerülnek végrehajtásra:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"A Fluid Checkout 5.0 verziótól kezdve a beállítások mentése más módon "
+"történik. A korábbi beállítások továbbra is az adatbázisban maradnak, hogy "
+"szükség esetén vissza lehessen állni a korábbi verziókra."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"Az üzleted már körülbelül 2 hete az új beállításokkal működik, így "
+"lehetőséged volt megtisztítani az adatbázisban tárolt régi beállításokat. "
+"Kérjük, vedd figyelembe, hogy a tisztítás után, ha vissza kell állítanod a "
+"bővítmény korábbi verzióira, az minden beállításnál az alapértelmezett "
+"értékeket fogja használni."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "A „Fluid Checkout” beállítások tisztítása"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "A fennmaradó opciók törlése"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "Segítsen nekünk a Fluid Checkout fejlesztésében!"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"Ossza meg névtelen rendszerkörnyezeti jelentéseit a Fluid Checkouttal, hogy "
+"gyorsabb támogatást kapjon, és segítsen nekünk a kompatibilitás javításában "
+"és a hatások felmérésében. Az adatok nem tartalmaznak ügyfél-, felhasználói "
+"vagy érzékeny adatokat. Az „Eszközök” beállítások menüpontban bármikor "
+"kiválaszthatja, hogy milyen adatokat szeretne megosztani."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "A webhelykörnyezeti jelentések engedélyezése"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "Beállítások áttekintése"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"Ez az előnézet lejárt. Frissítse az adminisztrációs oldalt egy új előnézet "
+"elindításához."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "Az előnézet lejárt"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "Az előnézetben nem lehet megrendelést leadni."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "A bejelentkezés az előnézeti verzióban nem elérhető."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "Az előnézetben nem lehet fiókot létrehozni."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "Az előnézetben a más webhelyekre irányuló lekérdezések blokkolva vannak."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "Feldolgozás…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "Hiba történt. Kérjük, próbálja meg újra."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "A bővítmény aktiválása"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO – A teljes pénztárcsomag"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"Minden PRO funkció + minden kiegészítő, egyetlen áron. Tervezési sablonok, "
+"optimalizált kosár- és megrendelés-visszaigazoló oldalak, fiókok "
+"összehangolása és még sok más."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "Optimalizált fizetési oldal"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "A támogatott fizetési módok gyors fizetési gombjai"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "A fiók létrehozásának késedelme"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Címkiegészítés a Google Maps API-k segítségével"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "Több elmentett cím a címjegyzékben"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "EU-áfa-segédprogram"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "E szakasz elrejtése"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "További információk"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "Korai hozzáférés"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "Kiegészítő aktiválása"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "Hozzon ki többet a fizetési folyamatból"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "API-kulcs tesztelése"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "Lépésről lépésre történő beállítás"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "Beállítások"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr ""
+"Állítsa be az elrendezést és a megjelenést a <a href=\"%s\">fizetési "
+"lehetőségek</a> oldalon."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"Engedélyezze a vendégként történő fizetést és/vagy tekintse át a <a "
+"href=\"%s\">ügyfélfiókok beállításait</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"Engedélyezze az optimalizált <a href=\"%1$s\">kosár</a>, <a "
+"href=\"%2$s\">köszönő</a> és <a href=\"%3$s\">fizetési</a> oldalakat."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr "Engedélyezze a Google Maps <a href=\"%s\">cím-autokomplett</a> funkcióját."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr "A <a href=\"%s\">címjegyzék</a> segítségével több címet is elmenthet."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"Ellenőrizd, hogy vannak-e <a href=\"%s\">integrációs lehetőségek</a> a "
+"témához vagy a telepített egyéb bővítményekhez."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"Gyorsabb támogatást kaphat, és segíthet nekünk a kompatibilitás javításában "
+"és a hatások felmérésében. <a href=\"%s\">Kapcsolja be a használati nyomon "
+"követést</a> az eszköz beállításaiban."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "Hiányzik a „Beállítások” fül."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "Első lépések"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>Remek! A fizetési oldalad mostantól a Fluid Checkout rendszeren "
+"fut.</strong> Íme néhány lépés az induláshoz:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "Befejezve"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "A jelentés adatainak előnézete"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "Küldés most"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "Automatikus felismerés"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "afrikaans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "albán"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "amharául"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "arab"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "örmény"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "azeri"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "baszk"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "fehérorosz"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "bengáli"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "bosnyák"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "bolgár"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "burmai"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "katalán"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "kínai"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "Kínai (egyszerűsített)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "Kínai (Hongkong)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "Kínai (hagyományos)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "horvát"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "cseh"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "dán"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "holland"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "angol"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "angol (ausztrál)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "angol (Nagy-Britannia)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "észt"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "perzsa"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "finn"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "filippínó"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "francia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "francia (kanadai)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "galíciai"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "grúz"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "német"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "görög"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "gudzsaráti"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "héber"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "hindi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "magyar"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "izlandi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "indonéz"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "olasz"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "japán"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "kannada"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "kazah"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "khmer"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "koreai"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "kirgiz"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "Lao"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "lett"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "litván"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "macedón"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "maláj"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "malajálam"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "maráti"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "mongol"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "nepáli"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "norvég"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "lengyel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "portugál"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "portugál (brazíliai)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "portugál (Portugália)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "pandzsábi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "román"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "orosz"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "szerb"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "szingaléz"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "szlovák"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "szlovén"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "spanyol"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "spanyol (Latin-Amerika)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "szuahéli"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "svéd"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "tamil"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "telugu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "thai"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "török"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "ukrán"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "urdú"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "vietnámi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "zulu"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "A Google cím-autokomplett funkciója"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "A Google Places API verziója"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"Válassza ki, hogy a Google Places API melyik verzióját szeretné használni. "
+"Javasoljuk, hogy a lehető leghamarabb váltson át az új Places API-ra."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"Javasoljuk a „Places API (New)” használatát, mivel 2025. március 1-jétől a "
+"Google a „Places API (Legacy)” verziót „Legacy” státuszba helyezi át, ami "
+"azt jelenti, hogy új API-kulcsok esetében már nem lesz lehetőség ennek a "
+"szolgáltatásnak az engedélyezésére, és az API ezen verziója idővel teljesen "
+"elérhetetlenné válik. A már meglévő, a Legacy API-t használó fiókok "
+"továbbra is zavartalanul működhetnek."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(Ajánlott)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Google API-kulcs"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"Illessze be a Google API-kulcsát, majd a „Teszt” gomb segítségével "
+"ellenőrizze, hogy működik-e ezen a weboldalon. Győződjön meg arról, hogy a "
+"kulcs érvényes és engedélyezett a domainjéhez, ellenkező esetben a címmező "
+"blokkolódhat, ami megakadályozhatja az ügyfeleket a megrendelések "
+"véglegesítésében."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "A Google cím-autokomplett funkciójának engedélyezése"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr ""
+"A Google Maps API-k segítségével engedélyezze a címek automatikus "
+"kiegészítését."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Google API nyelv"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"Ezt a nyelvet fogjuk használni a Google Places API címjavaslatainak "
+"megjelenítésére, és a címek automatikus kiegészítése is ezen a nyelven "
+"történik majd."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "Eredménytípusok"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Hagyja üresen, ha bármilyen típusú találatot elfogadni szeretne; ez "
+"általában jobb találati egyezéseket eredményez. <a href=\"%s\" "
+"target=\"_blank\">További részletekért lásd a dokumentációt</a>. "
+"<br>Válasszon ki legfeljebb 5 típusú címkeresési találatot, amelyek "
+"megjelenjenek a cím-autokomplett mezőkben. <br>Látogasson el a Google Maps "
+"dokumentációjába, hogy többet tudjon meg a <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">támogatott típusokról</a>."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "Eredménytípusok (régi API)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Milyen típusú címkeresési eredményeket kell visszaadni a Places API "
+"(Legacy) használata során? <br>Látogasson el a Legacy Google Places API "
+"dokumentációjába, hogy többet tudjon meg a <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">támogatott típusokról</a>."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "Vállalati mezők"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "Ha lehetséges, engedélyezze a cégnév automatikus kiegészítését"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Engedélyezze a „cég” mező automatikus kiegészítését a Google Maps API-kból "
+"kapott cégnév-adatokkal."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "Cégkeresés"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "A „cég” mezőben a vállalkozásokra vonatkozó keresés engedélyezése"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"A „Cég” mezőbe történő beíráskor engedélyezze a vállalkozáshoz tartozó "
+"címek javaslatainak megjelenítését, majd a javaslatok közül egy vállalkozás "
+"kiválasztásakor töltse ki automatikusan az összes címmezőt."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "A vállalat eredménytípusai"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Válasszon ki legfeljebb 5 típusú címkeresési eredményt, amelyek "
+"megjelenjenek a vállalati mezők automatikus kiegészítésénél. <br>Az "
+"ajánlott érték a <code>létesítmény</code>, amely magában foglalja a "
+"vállalkozások legtöbb típusát. <br>Ha üresen hagyja, akkor bármilyen típusú "
+"eredményt elfogad, beleértve azokat is, amelyek nem kapcsolódnak "
+"vállalkozásokhoz. <br>Látogasson el a Google Maps dokumentációjába, hogy "
+"többet tudjon meg a <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">támogatott típusokról</a>."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "A Google logója"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "A „Powered by Google” szöveg és logó megjelenítése"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"Ha bejelölöd, a „Powered by Google” szöveg és logó megjelenik a "
+"cím-autokomplett javaslatok mezőjének alján."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "Brazíliai API-cím-autokomplett"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "Brazília API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "A CEP-mezők esetében engedélyezze a Brasil API cím-autokomplett funkcióját"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"A Brasil API segítségével a CEP/irányítószám mező alapján lekérdezheti és "
+"automatikusan kitöltheti a címeket. Ez kizárólag brazil címekre vonatkozik."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "API-verzió"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr ""
+"Válassza ki, hogy a Brasil API CEP-módszer melyik változatát kívánja "
+"használni."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "Címjegyzék-átvitel"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "WooCommerce-címek"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"A WooCommerce-ből másolja át a meglévő szállítási és számlázási címeket az "
+"ügyfelek címjegyzékébe."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "A címjegyzék funkció engedélyezése"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"Lehetővé teszi az ügyfelek számára, hogy több címet is elmenthessenek, és "
+"megadják a szállításhoz és a számlázáshoz használandó alapértelmezett címet."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "Címcímkék"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr ""
+"Lehetővé kell tenni az ügyfelek számára, hogy minden címhez egyedi címkét "
+"adjanak hozzá"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"A címcímkék megkönnyítik az ügyfelek számára a mentett címek (pl.: „Anyu "
+"háza”) megkülönböztetését. A címcímkék az ügyfelek számára személyesek, és "
+"nem jelennek meg, illetve nem kerülnek kinyomtatásra sem a megrendelés "
+"részletei oldalon, sem a számlákon."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "Kijelző elrendezése"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr ""
+"Válassza ki, hogy a mentett címek hogyan jelenjenek meg a fizetés során és "
+"a kosárban."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"A kedvezmény a fizetéskor és a kosárban érvényes. A fiókoldalon elmentett "
+"címeknél mindig a kártyás elrendezés jelenik meg."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "Címkártyák"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "Címlista"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "Legördülő menü"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "Címkeresés"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"A címkeresési szűrőt akkor jelenítse meg a felhasználói felületen, ha az "
+"ügyfélnek legalább ennyi mentett címe van."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr ""
+"Nem kerül felhasználásra, ha a megjelenítési elrendezés legördülő menüre "
+"van beállítva."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "Címek"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr ""
+"Kapcsolja be a kosár oldalának optimalizálását, hogy további lehetőségeket "
+"láthasson"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "Rögzített megrendelés-összefoglaló"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"Válassza ki, hogy a kosár oldalon hol jelenjen meg a kuponkódok szakasz. Ez "
+"csak akkor érvényes, ha az AJAX-kosár engedélyezve van, és ha a WooCommerce "
+"beállításaiban engedélyezve van a kuponkódok használata."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "A keresztértékesítés felépítése"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "Megjelenített kiegészítő termékek"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "Tételek"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "Kosár oldal optimalizálása"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"A kosárnak is ugyanolyan áttekinthető, konverzióra irányuló elrendezést "
+"adjon, mint a fizetési oldalnak."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr ""
+"A koherens vásárlási élmény érdekében igazítsa a kosár elrendezését a "
+"fizetési oldalhoz."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"A kosár tartalmát mindig frissítsd a háttérben; a mennyiségek változásakor "
+"ne töltődjön be újra az egész oldal."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"Helyezze el a kuponkódokat, a szállítási információkat és a kiegészítő "
+"termékeket pontosan oda, ahol a leghatékonyabban eredményeznek konverziót."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"Görgetés közben is láthatóvá tegye a rendelés összefoglalóját, és helyezzen "
+"el bizalomkeltő szimbólumokat ott, ahol a vásárlóknak megnyugtatásra van "
+"szükségük."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "Oszlopok"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"A fizetési lépések, a megrendelés összefoglalása és egyéb szakaszok "
+"általános stílusai. Alkalmazható a többi fizetési, kosár, köszönő "
+"(megrendelés beérkezett) és megrendelés-megtekintő oldalra is."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"Ha a <em>„1 oszlop”</em> elrendezést a <em>„Split”</em> tervezési sablonnal "
+"együtt használja, a jobb oldali oszlop csak akkor jelenik meg, ha az oldal "
+"oldalsáv-widgetterülete aktív (Pénztár oldalsáv, Kosár oldalsáv vagy "
+"Megrendelés beérkezett oldalsáv). Ellenkező esetben az oldal egyoszlopos "
+"marad, a „Split” stílusokkal."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "Oszlopok háttérének felosztása"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"Válasszon háttérszínt a „Split” elrendezés másodlagos oszlopához. Ha üresen "
+"hagyja, akkor a rendelésösszefoglaló háttérszíne kerül alkalmazásra."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "Oldalsablonok"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "Pénztár-sablon"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"Ajánlott, ha szeretné csökkenteni a fizetés során felmerülő zavaró "
+"tényezőket. <a href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">Olvassa el a kosárelhagyással kapcsolatos kutatást</a>."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "Rögzített haladási sáv"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "A haladási sáv stílusa"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "Rendelési összegek"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "Háttérszín"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "Cselekvési link"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "Mobil megrendelések összefoglalása"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "A mobil eszköz kezdeti állapota"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "A kosárban lévő termékek szerkesztésének engedélyezése a fizetés során"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"Lehetővé kell tenni az ügyfelek számára, hogy közvetlenül a fizetési "
+"oldalon módosítsák a termékek mennyiségét, illetve eltávolítsák az "
+"árucikkeket."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "Kosárban lévő termékekkel kapcsolatos hibák"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"Ez csak akkor érvényes, ha a kuponkód külön szakaszban jelenik meg a "
+"fizetési vagy a kosár oldalon, és ha a WooCommerce beállításaiban "
+"engedélyezve van a kuponkódok használata."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "Kuponkódok helye"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "„Kupon alkalmazása” gomb"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "Válassza ki a „kupon alkalmazása” gomb stílusát."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "2. cím sor"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"Ez a beállítás a „Pénztár” és a „Helyi átvétel” szakaszokban egyaránt "
+"érvényes. A „Helyi átvétel” szakaszban ez határozza meg azt is, hogy a "
+"„Szállítás/Átvétel” választómező a szállítási módok szakaszán belül (a cím "
+"előtt) vagy külön szakaszban (utána) jelenjen-e meg."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "Ügyfélfiókok"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "Vendégként történő fizetés"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"A WooCommerce „Fiókok” beállítási oldalán található vendégként történő "
+"fizetés, bejelentkezés és fiók létrehozás opciói. Ezeket az Ön kényelme "
+"érdekében itt kezeljük, így beállítási profilonként különböző értékeket "
+"állíthat be."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "Lehetővé kell tenni az ügyfelek számára, hogy fiók nélkül is fizessenek"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Ajánlott</strong>, így a vásárlóknak nem kell fiókot létrehozniuk "
+"vagy bejelentkezniük a fizetés során, ami csökkentheti a konverziós arányt."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"Ha ez a funkció ki van kapcsolva, az ügyfeleknek be kell jelentkezniük vagy "
+"fiókot kell létrehozniuk a vásárlás befejezéséhez."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "Bejelentkezés a fizetéskor"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "A bejelentkezés engedélyezése a fizetési folyamat során"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr ""
+"A pénztár oldalon jelenítsen meg egy linket, amelyen keresztül a visszatérő "
+"ügyfelek bejelentkezhetnek."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "Fiók létrehozása"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr ""
+"Lehetővé kell tenni az ügyfelek számára, hogy a fizetési folyamat során "
+"fiókot hozzanak létre"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "Az ügyfelek a megrendelés leadása előtt fiókot hozhatnak létre."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr ""
+"Lehetővé kell tenni az ügyfelek számára, hogy a „Saját fiók” oldalon fiókot "
+"hozzanak létre"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "Az ügyfelek a „Saját fiók” oldalon regisztrálhatnak új fiókot."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "Felhasználónév"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "Az ügyfél neve alapján generálás"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Ajánlott</strong>, így a vásárlóknak a fizetés során nem kell "
+"felhasználónevet választaniuk, ami csökkentheti a konverziós arányt."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"A felhasználónév az ügyfél nevéből, illetve – amennyiben a név nem "
+"használható – az e-mail-címből kerül generálásra."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "Jelszó"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "Jelszóbeállítási link elküldése"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Ajánlott</strong>, így a vásárlóknak nem kell jelszót megadniuk a "
+"fizetés során, ami csökkentheti a konverziós arányt."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "Az ügyfelek e-mailt kapnak, amelyben biztonságos jelszót hozhatnak létre."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"Lehetővé tesszük a regisztrált ügyfelek számára, hogy bejelentkezés nélkül "
+"is végrehajtsák a fizetést, és a megrendelést a meglévő fiókjukhoz "
+"rendeljük, amennyiben az elérhetőségi adatok egyeznek."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "Üzenet a meglévő fiókról"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr ""
+"Lehetővé tesszük az ügyfelek számára, hogy a megrendelés leadása után, az "
+"„Köszönjük!” oldalon hozzanak létre fiókot."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"A szakaszban található beállítások akkor érhetők el, ha a vendégként "
+"történő fizetés és a fiókok összekapcsolása engedélyezve van. A "
+"késleltetett fiók létrehozás beállításához engedélyezze a fenti két "
+"funkciót is."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "A fiók létrehozásának késleltetése engedélyezése"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"Engedélyezze a fiók létrehozásának késleltetését, ha mind a vendégként "
+"történő fizetés, mind a fiók-összehangolás engedélyezve van."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "Szekció pozíciója"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "Az ügyféladatok szakasza előtt"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "Az ügyféladatok szakasza után"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "A fiók létrehozásának előnyei"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "Ha a mezőt üresen hagyja, az alapértelmezett szöveg jelenik meg."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "Beágyazott gombok"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "Kötelező mezők"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "Az ajándéküzenet mezők engedélyezése a fizetés során"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "Bővített ajándéküzenet"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "Az ajándéküzenet mező mindig legyen kibontva"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "Ajándéküzenet a megrendelés részleteiben"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"Jelenleg ebben a részben nincs elérhető integráció. Az egyes bővítményekhez "
+"és témákhoz kapcsolódó beállítások csak akkor jelennek meg itt, ha az adott "
+"bővítményt vagy témát aktiválják."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "Telefonos mezők"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "A mező láthatósága"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "Pályapozíció"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "Országkód és érvényesítés"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "Ország"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "Az „Ország a telefonon” mezők engedélyezése"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "Országok szűrése szállítási vagy számlázási célból"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"Az egyes telefonszám-mezők országválasztóját korlátozza azokra az "
+"országokra, amelyek az Ön webáruházában szállításra vagy számlázásra "
+"engedélyezettek."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "Érvényesítés"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "Egyszerű, az országonkénti szabályokon alapuló érvényesítés engedélyezése"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"Ellenőrzi, hogy a telefonszám érvényes-e a kiválasztott országban, "
+"beleértve az országkódot és a számhosszt is."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"Szigorúbb ellenőrzés annak megállapítására, hogy a szám érvényes mobilszám, "
+"vezetékes szám vagy az adott országban elfogadott egyéb típusú szám-e. "
+"Előfordulhat, hogy egyes érvényes számokat elutasít."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "Ellenőrzési típusok"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "Helyőrzők"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"Jelenleg nincs kezelendő licenckulcs. A licenckulcsok akkor jelennek meg "
+"itt, ha egy licencelt Fluid Checkout bővítmény vagy kiegészítő aktív."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "Alapértelmezett szállítási mód"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "Válassza ki, melyik szállítási mód legyen az alapértelmezett."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "Szállítási zóna mezők"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Válassza ki, mely mezők jelenjenek meg a helyi átvételi szállítási zóna "
+"szűrőmezőiben. Ha üresen hagyja, az összes elérhető lehetőség megjelenik."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Ezek a mezők szűrőként jelennek meg a helyi átvételi szállítási módoknál. "
+"Előfordulhat, hogy egyes mezők akkor is megjelennek a fizetési oldalon, ha "
+"itt nem választják ki őket, amennyiben a kompatibilis bővítmények "
+"működéséhez szükségesek."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "A megrendelés szállítási címe"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "A fizetési oldal optimalizálása"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"A ki nem fizetett megrendeléseknek is biztosítsuk ugyanazt a világos, "
+"konverzióra fókuszáló elrendezést, mint a fizetési oldalon."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"Optimalizálja a fizetésre váró megrendelések fizetési oldalának "
+"elrendezését."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"A következetes vásárlási élmény érdekében hangolja össze a fizetési "
+"folyamatot a pénztárral."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"Helyezzen el bizalmi szimbólumokat és jelvényeket azokon a helyeken, ahol a "
+"vásárlóknak biztosítékra van szükségük a fizetés előtt."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "A köszönőoldal optimalizálása"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"Tegye áttekinthetőbbé az ügyfelek számára a vásárlás utáni köszönőoldalt és "
+"a rendelés részleteit."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr ""
+"Optimalizálja a köszönőoldalt és a megrendelés részleteit egy "
+"áttekinthetőbb elrendezéssel."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"Jelenítsd meg a megrendelés állapotának alakulását, a műveleteket, a "
+"letöltéseket és a megjegyzéseket ott, ahol azok relevánsak."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr ""
+"Az e-mailes értesítésekben található megrendelés-adatok szakaszainak "
+"testreszabása."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"Helyezzen el bizalmi szimbólumokat és jelvényeket ott, ahol a vásárlóknak a "
+"vásárlás után megnyugtatásra van szükségük."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "E-mailes értesítések"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"Kapcsolja be a köszönőoldal és a rendelési adatok optimalizálását, hogy "
+"további lehetőségeket láthasson"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "Használjon széles elrendezést a köszönőoldalon"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"Ezek a beállítások a köszönőoldalt, a megrendelés részleteinek "
+"megjelenítését a fiókoldalakon, valamint az e-mailes értesítéseket érintik."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "Beállítások mentése"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "Dokumentumok"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "Kosár"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "Köszönöm"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "Cím-autokomplett"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "Bizalmi jelvények"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "Nincs jogosultsága ezeket a beállításokat elmenteni."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "Érvénytelen mentési kérés."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "A beállítások el lettek mentve."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "Mentés..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "A beállítások mentése nem sikerült. Kérjük, próbálja meg újra."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "Értesítés elutasítása"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "A beállítások menü megnyitása"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "A beállítások menü bezárása"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "Előnézet"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "Előnézet kibontása"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "Előnézet összecsukása"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "Fejléc és lábléc megjelenítése"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "Fejléc és lábléc elrejtése"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "Oldalelőnézet"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "Előnézeti nézőtér"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "Táblagép"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "Asztali számítógép"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "Előnézeti szélesség"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "Szélesség csökkentése"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "Előnézeti szélesség pixelben"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "Szélesség növelése"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "Előnézet formátumként"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "Vendég"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "Bejelentkezett"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "Előnézeti oldal"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "Az előnézet kibontásával részletesebben megtekintheti a képet"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "A %s-sel kapható."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "Kapcsold be őket!"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr "Az oldal optimalizálása ki van kapcsolva. %s az oldal előnézetéhez."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "%s előnézet"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "Elszigetelt munkamenet · semmi sem kerül mentésre"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "Használati nyomon követés"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Kérjük, küldje el a nem bizalmas webhelykörnyezeti jelentéseket, hogy "
+"segítsen a Fluid Checkoutnak a kompatibilitás javításában. A jelentések "
+"csak akkor kerülnek elküldésre, ha az alábbi beállításokban engedélyezte "
+"ezt a funkciót."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "Használati nyomonkövetési jelentések elküldése a Fluid Checkoutnak"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"Ezek a jelentések segítenek nekünk javítani a webhelyed kompatibilitását és "
+"támogatását, és ha engedélyezve vannak, hetente kerülnek elküldésre."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"A jelentések nem tartalmaznak sem ügyfél-, sem rendszergazdai, sem egyéb "
+"érzékeny adatokat."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "Alapvető környezeti adatok"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"WordPress, PHP, WooCommerce, témák és bővítmények listájának adatai. A "
+"jelentéskészítés engedélyezése esetén mindig szerepelnek. Segítenek "
+"megérteni, milyen környezetben működik a webhelyed."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "A bővítmény beállításai"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"Elküldi a Fluid Checkout bővítmény beállításait, hogy megkönnyítse a "
+"támogatási kérések kezelését, és segítse nekünk megérteni, hogyan használja "
+"a bővítményeinket."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "Hamarosan elérhető"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "Értékesítési mutatók"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"A Fluid Checkout telepítését megelőző egy évtől a mai napig terjedő időszak "
+"havi megrendelésszáma és összértékesítése. Ez segít nekünk megérteni, hogy "
+"többet keres-e a bővítményeink telepítésével. Ügyfél- vagy felhasználói "
+"adatokat soha nem továbbítunk."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "Közművek"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"A <code>select2</code> helyett használja a <code>TomSelect</code> legördülő "
+"menü-összetevőket"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"A TomSelect egy egyszerűbb legördülő menü-komponens, amely ugyanazt a "
+"funkcionalitást kínálja, mint a Select2, ugyanakkor kevésbé hajlamos a "
+"hibákra."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"A bővítmény által optimalizált oldalakon az űrlapmezők betűméretét 16px-re "
+"állítja be, hogy kis képernyős eszközökön az űrlapmezőkkel való interakció "
+"során ne történjen automatikus nagyítás."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"A Safari és más böngészők mobil eszközökön automatikusan nagyíthatják a "
+"szöveget, hogy az könnyebben olvasható legyen, ha a betűméret kisebb, mint "
+"16px."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "Engedélyezze a szkriptfeldolgozás nyomon követését a böngésző konzolján."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "Nem minimalizált erőforrások"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Google Maps szkriptek"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "Ne távolítsd el az ismétlődő Google Maps-szkripteket!"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"Ha ez az opció engedélyezve van, a Google Maps-szkriptek duplikátumai NEM "
+"kerülnek eltávolításra, ami hibákat és teljesítményproblémákat okozhat. Ezt "
+"az opciót kizárólag hibaelhárítás céljából használja."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "Widget-területek"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "Utolsó lépés mobilon"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "Mobil eszközökön a widgeteket csak az utolsó lépésben jelenítsd meg"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"A fizetési folyamat megbízhatósági jelvényét tartalmazó widgeteket csak "
+"akkor jelenítsd meg, ha mobil eszközön az utolsó fizetési lépés látható"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "Szabványos"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "ÁFA-szám mező"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "Adjon hozzá egy áfa-szám mezőt a számlázási űrlaphoz."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "Mezőcímke"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"Állítsa be az áfa-szám mező címkéjét (pl. „Áfa-szám”). Többnyelvű "
+"weboldalakon célszerűbb ezt a mezőt üresen hagyni, és az eredeti szöveget "
+"lefordítani."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "ÁFA-szám"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "EU-áfa"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "Jelölje be az áfa-szám mezőt a további lehetőségek megjelenítéséhez"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "ÁFA-ellenőrzés"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "Az EU-áfa-szám mező érvényességének ellenőrzése a fizetési folyamat során"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"Ellenőrzi, hogy a megadott áfa-szám érvényes-e, és szerepel-e az európai "
+"VIES-adatbázisban (ÁFA-információcsere-rendszer)."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "A bolt áfa-száma"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"Az üzlet áfa-száma, amelyet az EU-áfa-ellenőrzés igényléséhez használnak, "
+"és amelyet a számlákra is rányomtatnak. <br><strong>Nyomatékosan "
+"javasoljuk, hogy adja meg az üzlet áfa-számát</strong>, mivel ellenkező "
+"esetben a VIES-lekérdezés eredményei könyvelési szempontból érvénytelenek "
+"lehetnek. <br>Például: <code>ATU99999999</code> vagy "
+"<code>EE999999999</code>."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "Fordított adókötelezettség"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "A fordított adókötelezettség-rendszer alkalmazása"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"Állítsa az adókulcsot nullára, és a számlákon jelenítse meg a „Fordított "
+"adókötelezettség” feliratot, ha a vevő áfa-száma érvényes. Az üzlet "
+"országától függően eltérő „Fordított adókötelezettség” felirat használata "
+"lehet szükséges."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "Ugyanaz az ország"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr ""
+"Alkalmazzák a fordított adókötelezettség-rendszert az üzlet székhelye "
+"szerinti országban lebonyolított ügyletekre:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"Lehetővé teszi a fordított adókötelezettség-rendszer alkalmazását az üzlet "
+"székhelyével azonos országban működő vállalatok közötti tranzakciók "
+"esetében."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "A fordított adókötelezettség alóli kivételek"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr ""
+"Válasszon ki további országokat, amelyek esetében el kívánja kerülni a "
+"fordított adókötelezettség-rendszer alkalmazását."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"Ezekből az országokból érkező megrendelésekre adót számítunk fel akkor is, "
+"ha érvényes áfa-számot adnak meg."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "A számlákon szereplő fordított adókötelezettségre vonatkozó megjelölés"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr ""
+"Állítsa be a „fordított adókötelezettség” jelölést a fizetési oldalon és a "
+"megrendelés részleteiben."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "A számlákon szereplő fordított adókötelezettségre vonatkozó szöveg"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "Állítsa be a „fordított adókötelezettség” szöveg címkéjét a számlákon."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "A fizetendő adó fordított adókötelezettség alapján kerül kiszámításra"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "Cégnév"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "A cégnév automatikus kiegészítése az áfa-szám alapján"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"Írja be a számlázó cég nevét az ügyfél által megadott érvényes áfa-szám "
+"alapján."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "Cégnév szerkesztése"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "Lehetővé teszi az automatikusan kitöltött cégnév szerkesztését"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"Ha ez a beállítás engedélyezve van, az ügyfelek módosíthatják a megadott "
+"áfa-számhoz tartozó cégnevet."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "Az EU-ban a digitális termékekre vonatkozó áfa"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"2015. január 1-jétől módosultak az EU digitális termékekre vonatkozó "
+"áfa-szabályai, amelyek kizárólag a B2C-tranzakciókat érintik. A digitális "
+"termékekre vonatkozó áfát a vásárló tartózkodási helye alapján kell "
+"kiszámítani, és erről bizonyítékot kell gyűjteni (IP-cím és számlázási cím)."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "A digitális termékek adóbesorolása"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "Válasszon ki néhány adóosztályt"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "Helymeghatározás"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "Az ügyfél tartózkodási helyére vonatkozó bizonyítékok összegyűjtése"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"Elmenti az IP-címet, és összehasonlítja azt az ügyfél számlázási címével. "
+"Ha a számlázási cím és az IP-cím országai nem egyeznek, az ügyfeleknek a "
+"fizetési oldalon egy jelölőnégyzet bejelölésével kell megerősíteniük a "
+"számlázási címüket."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"Ezt a beállítást a Fluid Checkoutban lehet kezelni. <a href=\"%s\">A "
+"módosítást az Ügyfélfiókok beállításaiban végezheti el</a>."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"Ezt a beállítást a Fluid Checkout alkalmazásban lehet kezelni. A Fluid "
+"Checkout > Ügyfélfiókok menüpont alatt módosíthatja."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"Ezt a beállítást a Fluid Checkout-ban lehet kezelni. A Fluid Checkout "
+"aktiválásakor a szállítási cím mindig „Alapértelmezés szerint a vásárló "
+"szállítási címe” értékre van állítva. A vásárlók a fizetési folyamat során "
+"továbbra is megadhatnak eltérő szállítási és számlázási címet.<br><br>A <a "
+"href=\"%s\">Fluid Checkout beállítások</a> között elérhető egy opció, "
+"amellyel az alapértelmezett számlázási címet a szállítási címmel "
+"megegyezővé lehet állítani."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"Ezt a beállítást a Fluid Checkout-ban lehet kezelni. A Fluid Checkout "
+"aktiválásakor a szállítási cím mindig „Alapértelmezés szerint az ügyfél "
+"szállítási címe” beállításra van állítva. A vásárlók a fizetési folyamat "
+"során továbbra is megadhatnak eltérő szállítási és számlázási "
+"címet.<br><br>A WooCommerce > Beállítások > Fluid Checkout menüpontban "
+"elérhető egy beállítás, amellyel az alapértelmezett számlázási címet a "
+"szállítási címmel megegyezővé lehet tenni."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr ""
+"Ezeket a beállításokat áthelyeztük a WP Admin > Fluid Checkout > "
+"Beállítások menüpontba."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"Ez a WooCommerce „Beállítások” fül elavult, és a Fluid Checkout 6.0 "
+"verzióban eltávolításra kerül."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "Ugrás a beállítások oldalára"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "Ezt a lapot véglegesen elrejtem"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "A helyszíni jelentés előnézete"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"Ezek azok az adatok, amelyek a jelenlegi beállítások alapján a következő "
+"telephelyi környezeti jelentésben szerepelnének."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "A jelentés előnézete betöltése..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "Nem sikerült betölteni a webhely-jelentés előnézetét. Próbálja meg újra."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "A webhelyjelentés elküldése nem sikerült. Kérjük, próbálja meg újra."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "A helyszíni jelentés sikeresen elküldve."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "Engedélyezés és azonnali elküldés"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "Bezárás"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr ""
+"A helyszíni jelentés iránti kérelem feldolgozása már folyamatban van. "
+"Kérjük, próbálja meg újra egy kicsit később."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "A webhely környezeti jelentései le vannak tiltva."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "Nincs elküldhető helyszíni jelentés."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"Ez a webhely-domain nem tud környezeti jelentéseket küldeni (a helyi és "
+"fejlesztési domainek kivételt képeznek)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "Nemrég elküldtünk egy helyszíni jelentést. Kérjük, próbálja meg később újra."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr ""
+"A helyszíni jelentés elküldése nem sikerült. Kérjük, próbálja meg később "
+"újra."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "A telephely környezeti jelentései nem állnak rendelkezésre."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr ""
+"A kiválasztott beállításokhoz nem állnak rendelkezésre helyszíni jelentési "
+"adatok."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "Önnek nincs jogosultsága a webhelyjelentések kezelésére."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "PRO funkció"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "Egyéb bővítmények"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "Csak ezt a kiegészítőt vásárolja meg — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "Kiegészítő telepítése"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "Frissíts PRO-ra &mdash; %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"<a target=\"_blank\" href=\"%1$s\">Szerezd be a %2$s</a>-t, hogy feloldd "
+"ezeket az opciókat."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "Kiegészítő"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "Dokumentáció megtekintése"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"A lekérdezésekhez bejelentkezett WordPress-felhasználóra van szükség. A "
+"user_id paraméter kihagyásával az aktuális felhasználó adatai kerülnek "
+"felhasználásra; a user_id paraméter megadásával pedig egy másik fiókra "
+"lehet hivatkozni, amennyiben a lekérdező rendelkezik az adott felhasználó "
+"szerkesztéséhez szükséges jogosultsággal (edit_user jogosultság). A "
+"hitelesítetlen lekérdezések fc_api_forbidden hibát adnak vissza. "
+"Érvénytelen user_id esetén az fc_api_user_not_found hibaüzenet kerül "
+"visszaadásra."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr ""
+"HTTP 200, { \"data\": { ... } } kóddal, amikor a kezelő adatcsomagot ad "
+"vissza."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"HTTP 200-as kód { \"success\": true } értékkel, ha nincs hasznos adat "
+"(például DELETE esetén)."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"A hibák a WP_Error-ból származó WordPress REST-hiba JSON-adatokat adnak "
+"vissza (kód, üzenet, data.status). A hiba-kódok az fc_api_* előtagot "
+"használják."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "Belépés tilos."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "A célfelhasználó nem található."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "Ez a funkció nem érhető el."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "Hiányzik egy kötelezően kitöltendő címmező."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "Az irányítószám vagy a ZIP-kód érvénytelen."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "A telefonszám érvénytelen."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "Az állam vagy a megye megadása érvénytelen."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "Az ország megadása érvénytelen, vagy nincs címmező."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "A kérés feldolgozása nem sikerült."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "Vissza az előző lépéshez"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "Ugrás a beállításokra"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "Kezdje elölről, és térjen vissza az első vezérelt beállítási lépéshez"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "Újrakezdés"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "Kérjük, hajtsa végre az összes al-lépést, mielőtt továbbhaladna."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "Bontás"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "Összecsukás"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "Ugrás"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "Befejezettként jelölés"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "Jelölje meg befejezetlenként"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "Kép teljes méretben: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "Teljes méretű telepítési útmutató kép"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "Kép bezárása"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "Fluid Checkout vezérelt beállítás"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "Üdvözöljük!"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "Fedezze fel a fizetési folyamatot"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "Minden készen áll"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "Nincs jogosultsága az oldal eléréséhez."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "Ugrás a %1$d. lépésre: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"Ez az irányított beállítási útmutató segít megismerkedni a Fluid Checkout "
+"szolgáltatással. Az alábbi lépések egyelőre csak helyfoglalók."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "Ha készen áll, folytassa a következő lépéssel."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr ""
+"Nyissa meg az üzlet pénztárát, hogy élőben megtekintse a Fluid Checkout "
+"működését."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "A fizetési oldal megtekintése"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"Visszatérhet a Fluid Checkout beállításaihoz, hogy folytassa az áruház "
+"konfigurálását."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "A fizetési és kosárbeállítások áttekintése"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "Fedezze fel a kiegészítőket a vezérlőpulton"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "Befejezés és a beállításokhoz lépés"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"A számlázási telefonszám mező láthatósági beállítását módosítsa a korábbi "
+"értékről úgy, hogy az megfeleljen a WooCommerce szabályainak."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"A szállítási telefonszám mező láthatósági beállítását módosítsd a korábbi "
+"értékről úgy, hogy az megfeleljen a WooCommerce szabályainak."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"Másolja át a megrendelés-összefoglaló háttérszín-beállítását az új „Split” "
+"terv másodlagos oszlop háttérszín-beállításába."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"A „Kiterjesztett mezőválasztás” funkció a Biteship bővítmény használata "
+"esetén mindig le van tiltva."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"A „German Market” használata esetén a megbízás elhelyezésének pozíciója "
+"mindig „A megbízás összefoglalása alatt” beállításra van állítva. Ez a "
+"bővítmény megköveteli, hogy a megbízás elhelyezése gomb és a jogi "
+"jelölőnégyzetek a megbízás összefoglalása alatt jelenjenek meg."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"A „Germanized for WooCommerce” bővítmény használata esetén a megrendelés "
+"leadásának helye mindig „A megrendelés összefoglalása alatt” beállításra "
+"van állítva. Ez a bővítmény előírja, hogy a megrendelés leadására szolgáló "
+"gomb és a jogi nyilatkozatokhoz tartozó jelölőnégyzetek a megrendelés "
+"összefoglalása alatt jelenjenek meg."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "A felvételi helyek szerkesztése"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "A WooCommerce beállításaiból válassza ki a helyi átvételi címkét"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Ha engedélyezve van, a fizetés során megjelenő „átvétel” opció felirata "
+"megegyezik a WooCommerce átvételi hely beállításaiban megadott címmel. Ha "
+"letiltva van, a felirat a Fluid Checkoutból származó, lefordítható „Helyi "
+"átvétel” szöveget használja."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2919,3 +4898,114 @@ msgstr "Igen"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "John"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "Doe"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "Példa cég"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "123 Főutca"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "Bármelyik város"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "Kérjük, hagyja a csomagot a bejárati ajtó előtt."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "Sapka"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "Sapka"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "Póló"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr "Megkaptuk a megrendelését, és értesítjük Önt, amint a csomagot feladjuk."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "Használati útmutató"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "Places API (Új)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "Places API (régi verzió)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "1. verzió"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "2. verzió"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ Legközelebb gyorsabban fizessen\n"
+"✔ Fizetési beállítások kezelése\n"
+"✔ A megrendelések állapotának és előzményeinek megtekintése"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "Rejtett"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "Opcionális"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "Kötelező"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Szállítási cím"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Helyi átvétel"

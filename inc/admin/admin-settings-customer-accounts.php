@@ -35,7 +35,7 @@ class FluidCheckout_Settings_AccountMatching {
 	 */
 	public static function add_sections( $sections ) {
 		$sections = array_merge( $sections, array(
-			'account_matching' => __( 'Customer accounts', 'fluid-checkout' ),
+			'customer_accounts' => __( 'Customer accounts', 'fluid-checkout' ),
 		) );
 
 		return $sections;
@@ -51,7 +51,7 @@ class FluidCheckout_Settings_AccountMatching {
 	 */
 	public static function add_settings( $settings, $current_section ) {
 		// Bail if not the customer accounts section
-		if ( 'account_matching' !== $current_section ) { return $settings; }
+		if ( 'customer_accounts' !== $current_section ) { return $settings; }
 
 		// Define conditionals for the username and password fields
 		$account_fields_conditional_id = 'woocommerce_enable_signup_and_login_from_checkout|woocommerce_enable_myaccount_registration';

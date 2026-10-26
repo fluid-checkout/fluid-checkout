@@ -7,10 +7,18 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_Admin extends FluidCheckout {
 
 	/**
+	 * Installs on or after this date (site timezone, start of day) ship with the new settings experience.
+	 */
+	const INSTALL_CUTOFF_DATE_V5 = '2026-11-09';
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
 		$this->load_settings_access();
+		$this->load_guided_setup();
 		$this->hooks();
 	}
 
@@ -56,13 +64,59 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 
 	/**
+	 * Whether the site was installed before the new settings experience cutoff.
+	 */
+	public static function is_legacy_install() {
+		$install_date = (int) get_option( 'fc_plugin_activation_time', 0 );
+		$cutoff       = strtotime( self::INSTALL_CUTOFF_DATE_V5 . ' 00:00:00' );
+
+		// Bail if the cutoff timestamp is invalid
+		if ( false === $cutoff ) { return true; }
+
+		// Treat missing activation time as a legacy install
+		if ( $install_date < 1 ) { return true; }
+
+		return $install_date < $cutoff;
+	}
+
+	/**
+	 * Strip third-party WordPress admin notices on FC admin screens.
+	 *
+	 * Guided setup: remove all `admin_notices` / `all_admin_notices` callbacks.
+	 * Settings: remove all, then re-register the Fluid Checkout notice renderer only.
+	 *
+	 * @param   bool  $re_register_fc_notices  Whether to re-attach FC notice display callbacks.
+	 */
+	public static function strip_non_fc_admin_notices_on_load( $re_register_fc_notices = false ) {
+		remove_all_actions( 'admin_notices' );
+		remove_all_actions( 'all_admin_notices' );
+
+		// Bail if FC notices should stay hidden (guided setup)
+		if ( ! $re_register_fc_notices ) { return; }
+
+		// Re-attach Fluid Checkout notices (Lite renderer; PRO notices register on `fc_admin_notices`)
+		if ( class_exists( 'FluidCheckout_AdminNotices' ) ) {
+			add_action( 'admin_notices', array( FluidCheckout_AdminNotices::instance(), 'display_notices' ), 10 );
+		}
+	}
+
+
+
+	/**
 	 * Register admin settings assets.
 	 * `fc-settings-page` is registered by the settings page class.
 	 */
 	public function register_assets() {
+		// Bail if checkout assets are not loaded yet
+		if ( ! class_exists( 'FluidCheckout_Enqueue' ) ) { return; }
+
 		// Styles
 		wp_register_style( 'fc-admin-options', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-options' ), array(), NULL );
 		wp_register_style( 'fc-admin-dashboard', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-dashboard' ), array(), NULL );
+		wp_register_style( 'fc-admin-guided-setup', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-guided-setup' ), array(), NULL );
+
+		// Scripts
+		wp_register_script( 'fc-guided-setup', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-guided-setup' ), array( 'fc-utils', 'fc-collapsible-block' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 
@@ -72,6 +126,14 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 */
 	public function load_settings_access() {
 		include_once self::$directory_path . 'inc/admin/admin-settings-access.php';
+	}
+
+	/**
+	 * Load the guided setup base class and Fluid Checkout smoke wizard.
+	 */
+	public function load_guided_setup() {
+		require_once self::$directory_path . 'inc/admin/guided-setup/abstract-guided-setup.php';
+		require_once self::$directory_path . 'inc/admin/guided-setup/guided-setup-fluid-checkout.php';
 	}
 
 
@@ -162,7 +224,6 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-dashboard-actions.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-setup.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-addons.php';
-		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-plugins-catalog.php';
 	}
 
 	/**
@@ -179,17 +240,22 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-select.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-multiselect.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-telemetry.php';
-		include_once self::$directory_path . 'inc/admin/admin-telemetry.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-textarea.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-layout-selector.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-template-selector.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-image-uploader.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-gaa-google-api-key.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-button.php';
+
+		// Telemetry controls
+		include_once self::$directory_path . 'inc/admin/admin-telemetry.php';
 	}
 
 	/**
 	 * Load settings providers that register tabs, sections and fields on FC hooks.
 	 */
 	public function load_settings_providers() {
+		// Settings pages
 		include_once self::$directory_path . 'inc/admin/admin-settings-wc-shipping.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-wc-accounts.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-dashboard.php';
@@ -210,7 +276,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-settings-tools.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-license-keys.php';
 
-		// Preview column
+		// Live preview
 		include_once self::$directory_path . 'inc/admin/admin-settings-preview.php';
 	}
 
@@ -351,6 +417,8 @@ class FluidCheckout_Admin extends FluidCheckout {
 			esc_html( __( 'Other plugins', 'fluid-checkout' ) )
 		);
 	}
+
+
 
 	/**
 	 * Get the purchase button label for an add-on.
@@ -518,6 +586,13 @@ class FluidCheckout_Admin extends FluidCheckout {
 			esc_url( $url ),
 			esc_attr( $label )
 		);
+	}
+
+	/**
+	 * Get HTML for an external-link icon, typically shown on settings buttons that open a new tab.
+	 */
+	public function get_external_tab_icon_html() {
+		return '<span class="fc-settings-external-tab-icon dashicons dashicons-external" aria-hidden="true"></span>';
 	}
 
 

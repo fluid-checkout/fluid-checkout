@@ -282,10 +282,6 @@ msgstr "Diweddarwyd cronfa ddata Hylif Checkout yn llwyddiannus"
 msgid "The database changes where applied successfully."
 msgstr "Mae&#39;r gronfa ddata yn newid lle cymhwysir yn llwyddiannus."
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "Iawn"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "Diystyru"
@@ -405,39 +401,9 @@ msgstr "Darllen dogfennaeth"
 msgid "Don't show this again"
 msgstr "Peidiwch â dangos hyn eto"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "Cynigion arbennig"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"Ymestyn holl ddaioni Hylif Desg i&#39;ch tudalen cart a&#39;ch tudalennau "
-"diolch."
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Hylif Checkout PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"Dylunio templedi, tudalennau wedi&#39;u optimeiddio ar gyfer cert a archeb, "
-"paru cyfrifon, a llawer mwy."
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"Yr offer gorau i <strong>wella&#39;ch cyfradd trosi til "
-"WooCommerce</strong> ymhellach a gwneud y profiad prynu yn gyson ar y daith "
-"gyfan."
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -459,10 +425,6 @@ msgstr "Golygu cynnwys y drol ar y dudalen ddesg dalu"
 msgid "Account matching / user matching"
 msgstr "Paru cyfrif / paru defnyddwyr"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "Botymau Talu Cyflym o ddulliau talu â chymorth"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "Ymddiriedwch symbolau ar y drol a thudalennau diolch"
@@ -470,10 +432,6 @@ msgstr "Ymddiriedwch symbolau ar y drol a thudalennau diolch"
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "Mwy o swyddi ar gyfer y cod cwpon ar y dudalen ddesg dalu"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "Maes cod cwpon integredig ar dudalen y drol"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -487,248 +445,25 @@ msgstr "Negeseuon rhodd a slipiau pacio"
 msgid "Local pickup and in-store collection"
 msgstr "Casglu lleol a chasglu yn y siop"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "Uwchraddio i PRO - 99 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Hylif Checkout PRO - Bwndel"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "Holl nodweddion PRO + Pob ychwanegiad am bris arbennig."
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"Mae&#39;r bwndel yn cynnwys yr holl ychwanegion rydyn ni&#39;n eu cynnig ar "
-"hyn o bryd ac ychwanegion Fluid Checkout rydyn ni&#39;n eu lansio yn y "
-"dyfodol."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "Gwerth 226 EUR (Arbed 42%)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Cyfeiriad Google Autocomplete"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "Llyfr Cyfeiriadau"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "Cynorthwy-ydd UE-TAW"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "Pob ychwanegiad yn y dyfodol *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* Cyhyd â bod gennych danysgrifiad gweithredol."
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "Cael y Bwndel - Dim ond 129 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"Dangosir yr holl brisiau yn EUR. Os oes unrhyw wahaniaethau gyda&#39;r "
-"prisiau ar ein gwefan, mae&#39;r cynigion a ddangosir ar y wefan yn "
-"disodli&#39;r rhain a byddant yn cael eu cymhwyso."
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "Ychwanegion"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "Gwella&#39;ch profiad desg dalu gyda&#39;r ychwanegion hyn."
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "Mae gen i eisoes - Cuddiwch y cynnig hwn"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "Wedi&#39;i osod - Activate"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "Wedi&#39;i actifadu"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "Hyd at 40% yn llai o feysydd talu i&#39;w llenwi."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"Osgoi oedi wrth ddosbarthu a chwsmeriaid anfodlon. Casglwch y "
-"<strong>wybodaeth cyfeiriad cywir</strong> o&#39;r tro cyntaf y byddant yn "
-"prynu gyda chi."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "Mynnwch yr ychwanegyn hwn - 29 EUR"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "Llyfr cyfeiriadau"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "Cyfeiriadau lluosog wedi&#39;u cadw ar gyfer cludo a bilio."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"Gadael i gwsmeriaid <strong>arbed sawl cyfeiriad cludo a bilio</strong> ar "
-"eu cyfrif a dewis pa rai i&#39;w defnyddio ar dudalennau til a throl."
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "Mynnwch yr ychwanegyn hwn - 59 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "Dilysiad UE-TAW symlach ar gyfer eich siop."
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"Casglu a <strong>dilysu rhifau TAW yr UE ar y dudalen ddesg dalu</strong> , "
-"yn dileu taliadau treth ar sail gwrth-dâl ac yn cadarnhau lleoliad y cwsmer "
-"pan fo angen."
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "Mynnwch yr ychwanegiad hwn - 39 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"Mae&#39;r holl ychwanegion yn cael eu gwerthu ar wahân ac mae angen gosod "
-"yr ategyn <strong>Fluid Checkout Lite</strong> a&#39;i actifadu, ac eithrio "
-"pan gaiff ei nodi."
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Dewiswch ddelwedd"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" "
-"target=\"_blank\">Mewngofnodwch i&#39;ch cyfrif</a> i gael allwedd eich "
-"trwydded, neu <a href=\"%s\" target=\"_blank\">prynwch allwedd trwydded "
-"newydd</a> ."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "Yn ddilys tan %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "Wedi dod i ben ar %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" "
-"target=\"_blank\">Mewngofnodwch i&#39;ch cyfrif</a> i adnewyddu allwedd "
-"eich trwydded a pharhau i dderbyn diweddariadau a chefnogaeth."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "Allwedd trwydded wedi&#39;i chanslo."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">Prynu allwedd trwydded newydd</a> a "
-"pharhau i dderbyn diweddariadau a chefnogaeth."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "Gwall: "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "Gosod a Dogfennaeth"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "Gwych! Mae eich tudalen ddesg dalu bellach yn rhedeg ar Hylif Desg."
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "Dyma ychydig o adnoddau i chi ddechrau arni:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"Darllenwch y canllaw gosod <a href=\"%s\" target=\"_blank\">Cael datgan "
-"gyda Hylif Checkout</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "Gosod gosodiad a dyluniad ar yr <a href=\"%s\">opsiynau desg dalu</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"Gwiriwch a oes unrhyw <a href=\"%s\">opsiynau integreiddio</a> ar gael ar "
-"gyfer ategion eraill rydych chi wedi&#39;u gosod."
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"Ewch <a href=\"%s\" target=\"_blank\">i&#39;n dogfennaeth</a> am ragor o "
-"wybodaeth am nodweddion Hylif Desg."
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"Os oes angen help arnoch chi erioed, <a href=\"%s\" "
-"target=\"_blank\">agorwch docyn cymorth</a> ar ein sianel gymorth swyddogol."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -741,14 +476,6 @@ msgstr "Optimeiddio cart"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "Galluogi optimeiddio tudalennau cart"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "Dangoswch dudalen y drol gyda chynllun tebyg i&#39;r dudalen ddesg dalu."
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "Pennawd a throedyn"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -784,16 +511,6 @@ msgstr ""
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "Codau cwpon"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"Dewiswch safle lle i arddangos yr adran codau cwpon ar dudalen y drol. Dim "
-"ond yn berthnasol pan fydd trol AJAX a&#39;r codau cwpon integredig yn y "
-"dudalen ddesg dalu wedi&#39;u galluogi."
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -887,10 +604,6 @@ msgstr "Mae cynllun traws-werthu Thema"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "Nifer yr eitemau traws-werthu i&#39;w harddangos ar dudalen y drol"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "Symbolau a bathodynnau ymddiriedaeth"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "Ychwanegu ardaloedd teclyn i dudalen y drol"
@@ -907,10 +620,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "Desg dalu"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "Cynllun a dyluniad"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "Cynllun desg dalu"
@@ -926,22 +635,6 @@ msgstr "Modd tywyll"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "Galluogi modd tywyll"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "Templedi pennyn a throedyn"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"Rydym yn argymell defnyddio&#39;r pennyn a&#39;r troedyn heb unrhyw "
-"wrthdyniadau i osgoi unrhyw wrthdyniadau ar y dudalen ddesg dalu. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" "
-"target=\"_blank\">Darllenwch yr ymchwil am adael cert</a> ."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -997,10 +690,6 @@ msgstr ""
 "Dewiswch liw cefndir ar gyfer troedyn y dudalen ddesg dalu. Dim ond wrth "
 "ddefnyddio&#39;r pennyn a&#39;r troedyn heb dynnu sylw y mae&#39;n "
 "berthnasol."
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "Elfennau desg dalu"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1084,18 +773,6 @@ msgstr "Dolen i dudalen siop"
 msgid "Cart items"
 msgstr "Eitemau cert"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "Galluogi opsiynau i olygu eitemau cert ar y dudalen ddesg dalu"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"Caniatáu i gwsmeriaid newid meintiau cynnyrch neu dynnu eitemau yn "
-"uniongyrchol ar y dudalen ddesg dalu."
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "Cuddio gwallau eitemau cart ar y dudalen ddesg dalu"
@@ -1148,37 +825,9 @@ msgstr ""
 "Defnyddir yr ardaloedd teclyn hyn i ychwanegu symbolau ymddiriedaeth a "
 "bathodynnau ymddiriedaeth ar y dudalen ddesg dalu."
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"Arddangos teclynnau bar ochr y ddesg dalu dim ond wrth edrych ar y cam til "
-"olaf ar ddyfeisiau symudol wrth ddefnyddio cynllun desg dalu aml-gam"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "Galluogi adran cod cwpon integredig"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr ""
-"Dim ond yn berthnasol os yw&#39;r defnydd o godau cwpon wedi&#39;i alluogi "
-"yn y gosodiadau WooCommerce."
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "Dangoswch deitl yr adran codau cwpon"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"Dim ond yn berthnasol pan fydd cod cwpon yn cael ei arddangos fel adran ar "
-"wahân ar y tudalennau til neu drol."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1199,17 +848,6 @@ msgstr "Fel is-gam cyn dulliau talu"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "Fel is-gam ar ôl dulliau talu"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"Dewiswch arddull y botwm &quot;gwneud cais cwpon&quot;. Dim ond yn "
-"berthnasol pan fydd yr adran cod cwpon yn cael ei harddangos &quot;Cyn y "
-"camau desg dalu&quot; ar y dudalen ddesg dalu, neu &quot;Cyn yr adran "
-"eitemau drol&quot; ar y dudalen drol."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1261,21 +899,6 @@ msgstr ""
 "angen y maes &quot;Llinell Cyfeiriad 2&quot;, neu pan fydd cael y cyfeiriad "
 "cludo cywir yn hanfodol (hy os ydynt yn danfon bwyd a chynhyrchion darfodus "
 "eraill)."
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "Dangoswch y botymau cyswllt &quot;Ychwanegu&quot; mewn llythrennau bach"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"Gwnewch y labeli maes dewisol botwm cyswllt &quot;Ychwanegu&quot; fel "
-"<code>lowercase</code> (hy. &quot;Ychwanegu rhif ffôn&quot; yn lle "
-"&quot;Ychwanegu Rhif Ffôn&quot;). Mae&#39;r opsiwn hwn hefyd yn effeithio "
-"ar y botymau cyswllt ar gyfer meysydd cod cwpon."
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1370,24 +993,6 @@ msgstr "Cyfeiriad cyn cludo"
 msgid "After shipping address"
 msgstr "Ar ôl cyfeiriad cludo"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "Atal dewis awtomatig o&#39;r dull cludo cyntaf"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Pan fydd wedi&#39;i alluogi, ni fydd y dull cludo cyntaf sydd ar gael yn "
-"cael ei ddewis yn awtomatig pan na ddewiswyd unrhyw ddull cludo arall "
-"o&#39;r blaen ar gyfer pob pecyn cludo.<br> Bydd yr opsiwn hwn yn cael ei "
-"alluogi&#39;n awtomatig os yw&#39;r opsiwn ar gyfer clirio&#39;r dull cludo "
-"a ddewiswyd wedi&#39;i alluogi ar gyfer y nodwedd Pickup Lleol."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Pickup lleol"
@@ -1405,20 +1010,6 @@ msgid ""
 msgstr ""
 "Yn disodli&#39;r cyfeiriad cludo gyda lleoliad y pwynt codi pan ddewisir "
 "dull cludo lleol."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "Dangos yr opsiwn i glirio dulliau cludo yn yr is-gam lleoliad codi"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Dangoswch fotwm cyswllt ar is-gam y lleoliad codi i glirio&#39;r dulliau "
-"cludo a ddewiswyd. Gellir defnyddio hwn i ganiatáu dangos yr adran "
-"cyfeiriad cludo eto os dewiswyd dull casglu lleol yn flaenorol."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1497,32 +1088,6 @@ msgstr "Ychwanegu maes ffôn bilio at y ffurflen ddesg dalu."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Dewiswch ym mha gam i arddangos y maes ffôn bilio."
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "Galluogi dilysu rhif ffôn yn seiliedig ar reolau gwlad"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"Pan fydd yn anabl, ni fydd y dilysiad maes ffôn yn gwirio a yw codau gwlad "
-"neu ardal yn ddilys ar gyfer y wlad."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "Dangoswch wledydd a ganiateir ar gyfer cludo neu filio yn unig"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"Pan fydd wedi&#39;i alluogi, dim ond y gwledydd a ganiateir ar gyfer cludo "
-"fydd ar gael yn y maes ffôn cludo, a dim ond gwledydd y caniateir bilio "
-"fydd ar gael ar gyfer y maes ffôn bilio."
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "Dangos cod gwlad wrth ymyl y faner"
@@ -1555,10 +1120,6 @@ msgstr "Diffiniwch welededd y maes nodiadau archeb ychwanegol."
 msgid "Gift options"
 msgstr "Opsiynau rhodd"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "Arddangos neges anrheg ac opsiynau rhodd eraill ar y dudalen ddesg dalu"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1566,10 +1127,6 @@ msgid ""
 msgstr ""
 "Caniatáu i gwsmeriaid ychwanegu neges anrheg ac opsiynau eraill sy&#39;n "
 "gysylltiedig â rhoddion at yr archeb."
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "Arddangos y meysydd neges rhodd ehangu bob amser"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1627,28 +1184,9 @@ msgstr "Dangosfwrdd"
 msgid "Integrations"
 msgstr "Integreiddiadau"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"Nid oes unrhyw integreiddiadau ar gael yn yr adran hon ar hyn o bryd. Dim "
-"ond os yw&#39;r ategyn hwnnw wedi&#39;i actifadu y bydd yr opsiynau "
-"sy&#39;n gysylltiedig â phob ategyn yn ymddangos yma."
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "Allweddi trwydded"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"Nid oes unrhyw opsiynau allweddi trwydded ar gael ar hyn o bryd yn yr adran "
-"hon. Bydd yr opsiynau sy&#39;n gysylltiedig â phob ategyn neu ychwanegyn yn "
-"ymddangos yma pan fydd yr ategyn hwnnw wedi&#39;i actifadu."
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1746,14 +1284,6 @@ msgstr ""
 "Defnyddir yr ardaloedd teclyn hyn i ychwanegu symbolau ymddiriedaeth a "
 "bathodynnau ymddiriedaeth ar y dudalen diolch."
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"Mae&#39;r opsiynau hyn yn effeithio ar y dudalen diolch , gweld manylion "
-"archeb ar dudalennau cyfrifon ac ar hysbysiadau e-bost."
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "Gorchymyn gweithredoedd"
@@ -1846,20 +1376,6 @@ msgstr "Llwytho asedau heb eu miniogi"
 msgid "Enhanced select fields"
 msgstr "Gwell meysydd dethol"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr "Disodli cydrannau dropdown <code>select2</code> gyda <code>TomSelect</code>"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"Mae TomSelect yn gydran dewis cwymplen symlach sy&#39;n llai tueddol o gael "
-"gwallau na Select2, wrth gynnig yr un nodweddion a ddefnyddir mewn "
-"gwirionedd ar dudalennau til WooCommerce."
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "Trwsio chwyddo awtomatig ar feysydd ffurflen"
@@ -1867,36 +1383,6 @@ msgstr "Trwsio chwyddo awtomatig ar feysydd ffurflen"
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "Gosod <code>font-size</code> y tu mewn i feysydd ffurflen i 16px"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"Pan fydd maint y ffont y tu mewn i feysydd ffurflen yn llai na 16px, "
-"efallai y bydd Safari a phorwyr eraill yn chwyddo i mewn yn awtomatig ar "
-"ddyfeisiau symudol i wneud y testun yn haws ei ddarllen. Pan fydd yr opsiwn "
-"hwn wedi&#39;i alluogi, bydd yn gosod maint y ffont ar gyfer y tu mewn "
-"i&#39;r meysydd ffurflen i 16px ar dudalennau sydd wedi&#39;u optimeiddio "
-"gan Fluid Checkout i osgoi chwyddo i mewn."
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"Mae&#39;r cyrchfan llongau bob amser wedi&#39;i osod i &quot;Gyfeiriad "
-"cludo diofyn i gwsmeriaid&quot; pan fydd Hylif Desg yn cael ei actifadu. "
-"Gall cwsmeriaid barhau i ddarparu gwahanol gyfeiriadau cludo a bilio yn "
-"ystod y ddesg dalu, ac mae opsiwn ar gyfer gosod y cyfeiriad bilio diofyn i "
-"fod yr un fath â&#39;r cyfeiriad cludo ar gael yn WooCommerce&gt; "
-"Gosodiadau&gt; Talu Hylif."
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1923,14 +1409,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(arbrofol)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "Cadarnhau"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "Dilysu Rhif Ffôn"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2466,10 +1944,6 @@ msgstr "Ar ôl y bar cynnydd"
 msgid "Before coupon codes section"
 msgstr "Cyn yr adran codau cwpon"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "Galluogi meysydd rhif ffôn rhyngwladol"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "Fformatiwch rifau ffôn yn ôl y rheolau ar gyfer pob gwlad."
@@ -2477,19 +1951,6 @@ msgstr "Fformatiwch rifau ffôn yn ôl y rheolau ar gyfer pob gwlad."
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "Defnyddiwch ddilysu rhif ffôn manwl gywir"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"Ceisiwch sicrhau bod y rhif ffôn yn rhif ffôn symudol neu linell dir dilys "
-"yn seiliedig ar y rheolau ar gyfer y cod gwlad a ddewiswyd. Mae&#39;r "
-"opsiwn hwn yn defnyddio&#39;r nodwedd dilysu manwl gywir "
-"<code>intl-tel-input</code> , a all roi canlyniadau positif ffug ar gyfer "
-"rhai rhifau ffôn."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2536,26 +1997,6 @@ msgstr "2 golofn"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 golofn"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"Arddulliau cyffredinol ar gyfer y camau talu, crynodeb yr archeb ac "
-"adrannau eraill.<br> Gallai hefyd fod yn berthnasol i dudalennau eraill fel "
-"y tudalennau Basged, Gorchymyn a Dderbyniwyd a Gweld Gorchymyn."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"Nid yw&#39;r templed dylunio <em>&quot;Rhannu&quot;</em> ar gael wrth "
-"ddefnyddio&#39;r cynllun <em>&quot;1 colofn&quot;</em> a bydd yn disgyn yn "
-"ôl i <em>&quot;Minimalist&quot;</em> os caiff ei ddewis."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2653,6 +2094,2536 @@ msgstr ""
 "cyfeiriad cludo i&#39;r cyfeiriad bilio pan fydd yr opsiwn hwnnw wedi&#39;i "
 "dicio, fel arall efallai na fydd y cwsmer yn gallu cwblhau&#39;r ffurflen "
 "dalu."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "Proffiliau gosodiadau"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "Proffil gosodiadau"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "Nid oes gennych ganiatâd i gyflawni&#39;r weithred hon."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "Nid oes gennych ganiatâd i actifadu ategion."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "Ategyn ar goll."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "Ategyn wedi&#39;i actifadu."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "Bydd y newidiadau canlynol yn cael eu cymhwyso:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Ers Fluid Checkout 5.0, mae gosodiadau&#39;n cael eu cadw&#39;n wahanol. "
+"Mae opsiynau etifeddol yn dal i gael eu storio yn y gronfa ddata i ganiatáu "
+"israddio i fersiynau blaenorol os oes angen."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"Mae eich siop wedi bod yn rhedeg ers tua phythefnos ar y gosodiadau newydd "
+"felly gallech lanhau opsiynau etifeddol sydd wedi&#39;u storio yn y gronfa "
+"ddata. Noder, ar ôl glanhau, os oes angen i chi israddio i fersiynau "
+"blaenorol o&#39;r ategyn, bydd yn defnyddio gwerthoedd diofyn ar gyfer pob "
+"gosodiad."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "Glanhau gosodiadau Fluid Checkout"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "Dileu opsiynau sy&#39;n weddill"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "Helpwch ni i wella Fluid Checkout"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"Rhannwch adroddiadau amgylchedd safle dienw gyda Fluid Checkout i gael "
+"cymorth cyflymach a&#39;n helpu i wella cydnawsedd a mesur effaith. Nid oes "
+"unrhyw ddata cwsmeriaid, defnyddwyr na sensitif wedi&#39;i gynnwys. Gallwch "
+"ddewis beth sy&#39;n cael ei rannu unrhyw bryd o&#39;r gosodiadau Offer."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "Galluogi adroddiadau amgylchedd y safle"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "Adolygu gosodiadau"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"Mae&#39;r rhagolwg hwn wedi dod i ben. Ail-lwythwch y dudalen weinyddol i "
+"ddechrau rhagolwg newydd."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "Rhagolwg wedi dod i ben"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "Ni ellir gosod archebion yn y rhagolwg."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "Nid yw mewngofnodi ar gael yn y rhagolwg."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "Ni ellir creu cyfrifon yn y rhagolwg."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "Mae ceisiadau i wefannau eraill wedi&#39;u rhwystro yn y rhagolwg."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "Yn prosesu…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "Aeth rhywbeth o&#39;i le. Rhowch gynnig arall arni."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "Actifadu&#39;r ategyn"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - Y pecyn talu cyflawn"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"Pob nodwedd PRO + pob ychwanegiad, un pris. Templedi dylunio, tudalennau "
+"basged a archebion wedi&#39;u optimeiddio, paru cyfrifon, a llawer mwy."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "Tudalen talu archeb wedi&#39;i optimeiddio"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "Botymau talu cyflym o ddulliau talu a gefnogir"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "Creu cyfrif wedi&#39;i ohirio"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Cwblhau cyfeiriadau&#39;n awtomatig gydag APIs Google Maps"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "Cyfeiriadau lluosog wedi&#39;u cadw gyda&#39;r llyfr cyfeiriadau"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "Cynorthwyydd TAW yr UE"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "Cuddio&#39;r adran hon"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "Dysgu mwy"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "Cael mynediad cynnar"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "Actifadu&#39;r ychwanegiad"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "Cael mwy allan o&#39;ch taith talu"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "Allwedd API Prawf"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "Gosod dan arweiniad"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "Dewisiadau"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "Gosodwch y cynllun a&#39;r dyluniad ar yr <a href=\"%s\">opsiynau talu</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"Galluogi talu fel gwestai a/neu adolygu <a href=\"%s\">gosodiadau cyfrifon "
+"cwsmeriaid</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"Galluogi <a href=\"%1$s\">tudalennau</a> <a href=\"%3$s\">talu "
+"archebion</a> , <a href=\"%2$s\">diolch</a> a throsglwyddiadau wedi&#39;u "
+"optimeiddio."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr ""
+"Galluogi <a href=\"%s\">cwblhau cyfeiriadau&#39;n awtomatig</a> o Google "
+"Maps."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr ""
+"Galluogi nifer o gyfeiriadau wedi&#39;u cadw gyda <a href=\"%s\">llyfr "
+"cyfeiriadau</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"Gwiriwch a oes unrhyw <a href=\"%s\">opsiynau integreiddio</a> ar gael ar "
+"gyfer y thema neu ategion eraill rydych chi wedi&#39;u gosod."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"Cael cymorth cyflymach a&#39;n helpu i wella cydnawsedd a mesur effaith. <a "
+"href=\"%s\">Galluogi olrhain defnydd</a> o osodiadau&#39;r offer."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "Tab gosodiadau ar goll."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "Dechrau arni"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>Gwych! Mae eich tudalen dalu bellach yn rhedeg ar Fluid "
+"Checkout.</strong> Dyma ychydig o gamau i ddechrau:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "Wedi&#39;i gwblhau"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "Rhagolwg o ddata&#39;r adroddiad"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "Anfon nawr"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "Canfod yn awtomatig"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "Affricaneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "Albaneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "Amhareg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "Arabeg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "Armeneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "Aserbaijaneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "Basgeg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "Belarwseg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "Bengaleg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "Bosneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "Bwlgareg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "Byrmaneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "Catalaneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "Tsieineaidd"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "Tsieinëeg (Symledig)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "Tsieineaidd (Hong Kong)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "Tsieineaidd (Traddodiadol)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "Croateg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "Tsieceg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "Daneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "Iseldireg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "Saesneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "Saesneg (Awstralia)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "Saesneg (Prydain Fawr)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "Estoneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "Farsi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "Ffinneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "Ffilipinaidd"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "Ffrangeg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "Ffrangeg (Canada)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "Galiseg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "Georgegaidd"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "Almaeneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "Groeg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "Gwjarataidd"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "Hebraeg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "Hindi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "Hwngareg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "Islandeg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "Indoneseg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "Eidaleg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "Japaneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "Kannada"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "Casacheg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "Khmer"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "Coreeg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "Cirgiseg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "Laoaidd"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "Latfieg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "Lithwaneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "Macedoneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "Malayeg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "Malayalam"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "Marathi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "Mongolaidd"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "Nepaleg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "Norwyeg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "Pwyleg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "Portiwgaleg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "Portiwgaleg (Brasil)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "Portiwgaleg (Portiwgal)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "Punjabi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "Rwmaneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "Rwsieg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "Serbaidd"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "Sinhaleeg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "Slofaceg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "Slofeneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "Sbaeneg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "Sbaeneg (America Ladin)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "Swahili"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "Swedeg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "Tamil"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "Telugu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "Thai"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "Twrceg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "Wcreineg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "Wrdw"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "Fietnameg"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "Swlw"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Cwblhau cyfeiriadau Google yn awtomatig"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Fersiwn API Google Places"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"Dewiswch pa fersiwn o API Google Places i&#39;w defnyddio. Rydym yn "
+"argymell symud i&#39;r API Places newydd cyn gynted â phosibl."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"Rydym yn argymell defnyddio &quot;Places API (Newydd)&quot; gan y bydd "
+"Google, o Fawrth 1, 2025 ymlaen, yn symud y fersiwn &quot;Places API "
+"(Henfyd)&quot; i statws Henfyd, sy&#39;n golygu na fyddwch yn gallu "
+"galluogi&#39;r gwasanaeth hwn ar gyfer allweddi API newydd mwyach ac na "
+"fydd y fersiwn honno o&#39;r API ar gael mwyach yn y pen draw. Gall "
+"cyfrifon presennol sydd eisoes yn defnyddio&#39;r Hen API barhau i weithio "
+"heb unrhyw darfu."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(Argymhellir)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Allwedd API Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"Gludwch eich allwedd API Google a defnyddiwch y botwm prawf i gadarnhau ei "
+"bod yn gweithio ar gyfer y wefan hon. Gwnewch yn siŵr bod yr allwedd yn "
+"ddilys ac yn cael ei chaniatáu ar gyfer eich parth, fel arall gallai&#39;r "
+"maes cyfeiriad gael ei rwystro gan atal cwsmeriaid rhag cwblhau eu "
+"harchebion."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "Galluogi cwblhau cyfeiriadau Google yn awtomatig"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr ""
+"Galluogi cwblhau cyfeiriadau&#39;n awtomatig gan ddefnyddio APIs Google "
+"Maps."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Iaith API Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"Bydd yr iaith hon yn cael ei defnyddio i arddangos awgrymiadau cyfeiriadau "
+"API Google Places a bydd cyfeiriadau hefyd yn cael eu cwblhau&#39;n "
+"awtomatig yn yr iaith hon."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "Mathau o ganlyniadau"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Gadewch yn wag i dderbyn unrhyw fath o ganlyniadau, sydd fel arfer yn rhoi "
+"canlyniadau cyfatebol gwell. <a href=\"%s\" target=\"_blank\">Gweler y "
+"ddogfennaeth am fwy o fanylion</a> .<br> Dewiswch hyd at 5 math o "
+"ganlyniadau chwilio cyfeiriad i&#39;w dychwelyd ar feysydd cwblhau "
+"cyfeiriadau&#39;n awtomatig.<br> Ewch i ddogfennaeth Google Maps i ddysgu "
+"mwy am y <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">mathau a gefnogir</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "Mathau o ganlyniadau (API Hen)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Pa fath o ganlyniadau chwilio cyfeiriad i&#39;w dychwelyd wrth ddefnyddio "
+"API Places (Legacy).<br> Ewch i ddogfennaeth yr API Legacy Google Places i "
+"ddysgu mwy am y <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">mathau a gefnogir</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "Meysydd cwmni"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "Galluogi cwblhau awtomatig ar gyfer enw&#39;r cwmni os yw ar gael"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Galluogi cwblhau&#39;n awtomatig y maes cwmni gyda gwybodaeth enw&#39;r "
+"cwmni pan gaiff ei ddychwelyd o APIs Google Maps."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "Chwilio busnes"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "Galluogi chwilio am fusnesau yn y maes cwmni"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"Galluogi awgrymu cyfeiriadau sy&#39;n gysylltiedig â busnes wrth deipio yn "
+"y maes cwmni, yna cwblhewch bob maes cyfeiriad yn awtomatig pan ddewisir "
+"busnes o&#39;r awgrymiadau."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "Mathau o ganlyniadau cwmni"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Dewiswch hyd at 5 math o ganlyniadau chwilio cyfeiriad i&#39;w dychwelyd ar "
+"feysydd cwmni awto-gwblhau.<br> Y gwerth a argymhellir yw "
+"<code>establishment</code> , sy&#39;n cynnwys y rhan fwyaf o fathau o "
+"fusnesau.<br> Gadewch yn wag i dderbyn unrhyw fath o ganlyniadau, gan "
+"gynnwys canlyniadau nad ydynt yn gysylltiedig â busnesau.<br> Ewch i "
+"ddogfennaeth Google Maps i ddysgu mwy am y <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">mathau a gefnogir</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Logo Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "Dangos testun a logo &quot;Wedi&#39;i bweru gan Google&quot;"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"Pan gaiff ei dicio, bydd y testun a&#39;r logo &quot;Powered by "
+"Google&quot; yn cael eu harddangos ar waelod y blwch awgrymiadau "
+"awto-gwblhau cyfeiriadau."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "Cyfeiriad API Brasil yn awtomatig wedi&#39;i gwblhau"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "API Brasil"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "Galluogi cwblhau cyfeiriadau API Brasil yn awtomatig ar gyfer meysydd CEP"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"Defnyddiwch API Brasil i adfer ac awto-lenwi cyfeiriadau gan "
+"ddefnyddio&#39;r maes CEP/Cod Post. Dim ond yn berthnasol i gyfeiriadau "
+"Brasil."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "Fersiwn API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "Dewiswch pa fersiwn o ddull CEP API Brasil i&#39;w ddefnyddio."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "Mudo llyfr cyfeiriadau"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "Cyfeiriadau WooCommerce"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"Copïwch gyfeiriadau cludo a bilio presennol o WooCommerce i lyfr "
+"cyfeiriadau cwsmeriaid."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "Galluogi&#39;r nodwedd llyfr cyfeiriadau"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"Caniatáu i gwsmeriaid gadw cyfeiriadau lluosog a diffinio&#39;r cyfeiriad "
+"diofyn i&#39;w ddefnyddio ar gyfer cludo a bilio."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "Labeli cyfeiriad"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "Caniatáu i gwsmeriaid ychwanegu label personol ar gyfer pob cyfeiriad"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"Mae labeli cyfeiriad yn ei gwneud hi&#39;n haws i gwsmeriaid wahaniaethu "
+"rhwng eu cyfeiriadau wedi&#39;u cadw (h.y.: &quot;Tŷ Mam&quot;). Mae&#39;r "
+"labeli cyfeiriad yn breifat i&#39;r cwsmeriaid, ac ni fyddant yn cael eu "
+"harddangos na&#39;u hargraffu ar dudalen manylion yr archeb nac ar "
+"anfonebau."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "Cynllun arddangos"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr ""
+"Dewiswch sut mae cyfeiriadau sydd wedi&#39;u cadw yn cael eu harddangos "
+"wrth y ddesg dalu ac ar y fasged."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"Yn berthnasol wrth y ddesg dalu ac ar y fasged. Mae cyfeiriadau sydd "
+"wedi&#39;u cadw ar dudalen y cyfrif bob amser yn defnyddio&#39;r cynllun "
+"cardiau."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "Cardiau cyfeiriad"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "rhestr gyfeiriadau"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "Maes ostwng"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "Chwilio cyfeiriad"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"Dangos hidlydd chwilio cyfeiriadau ar y blaen pan fydd gan y cwsmer o leiaf "
+"y nifer hwn o gyfeiriadau wedi&#39;u cadw ar gael."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "Ni ddefnyddir pan fydd cynllun yr arddangosfa wedi&#39;i osod i faes ostwng."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "Cyfeiriadau"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "Galluogi optimeiddio tudalen y fasged i weld mwy o opsiynau"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "Crynodeb archeb gludiog"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"Dewiswch y lleoliad lle i arddangos yr adran codau cwpon ar dudalen y "
+"fasged. Dim ond pan fydd basged AJAX wedi&#39;i galluogi, ac os yw "
+"defnyddio codau cwpon wedi&#39;u galluogi yn y gosodiadau WooCommerce y mae "
+"hyn yn berthnasol."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "Cynllun traws-werthu"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "Croes-werthiannau a ddangosir"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "Eitemau"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "Optimeiddio tudalen y fasged"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"Rhowch yr un cynllun clir, sy&#39;n canolbwyntio ar drawsnewidiadau, "
+"i&#39;ch trol â&#39;ch proses dalu."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr "Cydweddwch gynllun y fasged â&#39;r dudalen dalu am daith brynu gyson."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"Cadwch y fasged yn gyfredol yn y cefndir bob amser, dim ail-lwytho tudalen "
+"lawn pan fydd meintiau&#39;n newid."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"Rhowch godau cwpon, cludo, a chroes-werthiannau yn union lle maen nhw&#39;n "
+"trosi orau."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"Cadwch grynodeb yr archeb yn weladwy wrth sgrolio, ac ychwanegwch symbolau "
+"ymddiriedaeth lle mae angen sicrwydd ar siopwyr."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "Colofnau"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"Arddulliau cyffredinol ar gyfer y camau talu, crynodeb archeb ac adrannau "
+"eraill. Yn berthnasol i dudalennau talu eraill, basged, diolch (archeb "
+"wedi&#39;i derbyn), a gweld archeb."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"Wrth ddefnyddio&#39;r cynllun <em>&quot;1 golofn&quot;</em> gyda&#39;r "
+"templed dylunio <em>&quot;Rhannu&quot;</em> , dim ond os yw ardal teclyn "
+"bar ochr y dudalen yn weithredol y dangosir colofn dde (Bar Ochr Talu, Bar "
+"Ochr y Fasged, neu Far Ochr Gorchymyn a Dderbyniwyd). Fel arall, mae&#39;r "
+"dudalen yn aros fel un golofn gydag arddulliau Rhannu."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "Cefndir colofn hollt"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"Dewiswch liw cefndir ar gyfer y golofn eilaidd Dyluniad hollti. Gadewch yn "
+"wag i ddefnyddio lliw cefndir crynodeb yr archeb."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "Templedi tudalennau"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "Templed talu"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"Argymhellir ar gyfer llai o wrthdyniadau wrth y ddesg dalu. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">Darllenwch yr ymchwil am adael basged</a> ."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "Bar cynnydd gludiog"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "Arddull bar cynnydd"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "Cyfansymiau archebion"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "Lliw cefndir"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "Dolen gweithredu"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "Crynodeb archeb symudol"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "Cyflwr cychwynnol symudol"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "Galluogi golygu eitemau basged wrth y ddesg dalu"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"Caniatáu i gwsmeriaid newid meintiau cynnyrch neu ddileu eitemau yn "
+"uniongyrchol ar y dudalen dalu."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "Gwallau eitem basged"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"Dim ond yn berthnasol pan fydd cod cwpon yn cael ei arddangos fel adran ar "
+"wahân ar dudalennau&#39;r ddesg dalu neu&#39;r fasged, ac os yw defnyddio "
+"codau cwpon wedi&#39;u galluogi yn y gosodiadau WooCommerce."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "Safle codau cwpon"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "Botwm defnyddio cwpon"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "Dewiswch arddull y botwm &quot;gwneud cais am gwpon&quot;."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "Llinell gyfeiriad 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"Mae&#39;r gosodiad hwn yn cael ei rannu rhwng yr adrannau Talu a Chasglu "
+"Lleol. Yn yr adran Casglu Lleol, mae hefyd yn penderfynu a yw&#39;r dewiswr "
+"Llongau/Casglu yn ymddangos y tu mewn i&#39;r adran dull cludo (cyn y "
+"cyfeiriad) neu fel adran ar wahân (ar ôl)."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "Cyfrifon cwsmeriaid"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "Ymadawiad gwestai"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"Dewisiadau gwirio allan, mewngofnodi, a chreu cyfrif gan westeion o dudalen "
+"gosodiadau Cyfrifon WooCommerce. Fe&#39;u rheolir yma er hwylustod i chi, "
+"ac felly gallwch ddefnyddio gwahanol werthoedd fesul proffil gosodiadau."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "Caniatáu i gwsmeriaid dalu heb gyfrif"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Argymhellir</strong> fel nad gofynnir i gwsmeriaid greu cyfrif na "
+"mewngofnodi yn ystod y ddesg dalu, a all ostwng cyfraddau trosi."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"Pan fydd wedi&#39;i analluogi, rhaid i gwsmeriaid fewngofnodi neu greu "
+"cyfrif i gwblhau&#39;r pryniant."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "Mewngofnodi wrth y ddesg dalu"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "Galluogi mewngofnodi yn ystod y ddesg dalu"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr ""
+"Dangoswch ddolen i gwsmeriaid sy&#39;n dychwelyd fewngofnodi o&#39;r "
+"dudalen talu."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "Creu cyfrif"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "Caniatáu i gwsmeriaid greu cyfrif yn ystod y ddesg dalu"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "Gall cwsmeriaid greu cyfrif cyn gosod eu harcheb."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "Caniatáu i gwsmeriaid greu cyfrif o&#39;r dudalen Fy nghyfrif"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "Gall cwsmeriaid gofrestru cyfrif newydd o dudalen Fy nghyfrif."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "Enw defnyddiwr"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "Cynhyrchu o enw&#39;r cwsmer"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Argymhellir</strong> fel nad gofynnir i gwsmeriaid ddewis enw "
+"defnyddiwr wrth dalu, a all ostwng cyfraddau trosi."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"Cynhyrchir enw defnyddiwr o enw&#39;r cwsmer, neu o&#39;r cyfeiriad e-bost "
+"pan na ellir defnyddio enw."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "Cyfrinair"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "Anfon dolen sefydlu cyfrinair"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Argymhellir</strong> fel nad gofynnir i gwsmeriaid osod cyfrinair "
+"wrth dalu, a all ostwng cyfraddau trosi."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "Mae cwsmeriaid yn derbyn e-bost i greu eu cyfrinair yn ddiogel."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"Gadewch i gwsmeriaid cofrestredig gwblhau&#39;r broses dalu heb fewngofnodi "
+"a chysylltu&#39;r archeb â&#39;u cyfrif presennol pan fydd y manylion "
+"cyswllt yn cyfateb."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "Neges cyfrif presennol"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr ""
+"Gadewch i gwsmeriaid greu cyfrif ar ôl gosod eu harcheb, o&#39;r dudalen "
+"diolch."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"Mae opsiynau yn yr adran hon ar gael pan fydd gadael gwesteion a chyfatebu "
+"cyfrifon wedi&#39;u galluogi. Galluogwch y ddau nodwedd uchod i ffurfweddu "
+"creu cyfrif wedi&#39;i ohirio."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "Galluogi creu cyfrif wedi&#39;i ohirio"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"Galluogi creu cyfrif wedi&#39;i ohirio pan fydd y ddau ddull wedi&#39;u "
+"galluogi wrth dalu wrth gefn gan westeion a pharu cyfrifon."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "Safle&#39;r adran"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "Cyn yr adran manylion cwsmeriaid"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "Ar ôl yr adran manylion cwsmeriaid"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "Manteision creu cyfrif"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "Bydd gadael y maes yn wag yn dangos y testun diofyn."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "Botymau mewnol"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "Meysydd gofynnol"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "Galluogi meysydd neges rhodd wrth y ddesg dalu"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "Neges rhodd estynedig"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "Dangos maes neges anrheg wedi&#39;i ehangu bob amser"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "Neges rhodd ym manylion yr archeb"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"Nid oes unrhyw integreiddiadau ar gael ar hyn o bryd yn yr adran hon. Dim "
+"ond pan fydd yr ategyn neu&#39;r thema honno wedi&#39;i actifadu y bydd yr "
+"opsiynau sy&#39;n gysylltiedig â phob ategyn a thema yn ymddangos yma."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "Meysydd ffôn"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "Gwelededd maes"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "Safle maes"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "Cod gwlad ffôn a dilysu"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "Gwlad"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "Galluogi gwlad ar feysydd ffôn"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "Hidlo gwledydd ar gyfer cludo neu bilio"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"Cyfyngwch y dewiswr gwlad ar bob maes ffôn i&#39;r gwledydd a ganiateir ar "
+"gyfer cludo neu bilio yn eich siop."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "Dilysu"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "Galluogi dilysu syml yn seiliedig ar reolau gwlad"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"Yn gwirio bod y rhif ffôn yn ddilys ar gyfer y wlad a ddewiswyd, gan "
+"gynnwys cod y wlad a&#39;r hyd."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"Gwiriad mwy llym bod y rhif yn rhif ffôn symudol, llinell sefydlog, neu "
+"fath arall a dderbynnir yn ddilys ar gyfer y wlad a ddewiswyd. Gall wrthod "
+"rhai rhifau dilys."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "Mathau dilysu"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "Dalwyr lleoedd"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"Dim allweddi trwydded i&#39;w rheoli ar hyn o bryd. Bydd allweddi trwydded "
+"yn ymddangos yma pan fydd ategyn neu ychwanegiad trwyddedig Fluid Checkout "
+"yn weithredol."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "Math dosbarthu diofyn"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "Dewiswch pa fath o ddosbarthu fydd yn cael ei ddewis yn ddiofyn."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "Meysydd parth cludo"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Dewiswch pa feysydd fydd yn cael eu harddangos ar gyfer y meysydd hidlo "
+"parth cludo casglu lleol. Gadewch yn wag i ddangos yr holl opsiynau sydd ar "
+"gael."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Bydd y meysydd hyn yn cael eu harddangos fel hidlydd ar gyfer y dulliau "
+"cludo casglu lleol. Efallai y bydd rhai meysydd yn dal i ymddangos wrth y "
+"ddesg dalu pan nad ydynt wedi&#39;u dewis yma, os yw ategion cydnaws yn "
+"gofyn iddynt weithio&#39;n iawn."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "Cyfeiriad cludo&#39;r archeb"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "Optimeiddio tudalen talu archebion"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"Rhowch yr un cynllun clir, sy&#39;n canolbwyntio ar drawsnewidiadau, i "
+"archebion heb eu talu â&#39;r ddesg dalu."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"Optimeiddiwch gynllun y dudalen talu archebion ar gyfer archebion sy&#39;n "
+"aros am daliad."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"Cydweddwch y profiad talu archeb â&#39;ch proses dalu er mwyn sicrhau taith "
+"brynu gyson."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"Ychwanegwch symbolau a bathodynnau ymddiriedaeth lle mae angen sicrwydd ar "
+"siopwyr cyn talu."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "Diolch am optimeiddio tudalen"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"Gwnewch y dudalen ddiolch a manylion yr archeb yn gliriach i gwsmeriaid ar "
+"ôl iddynt brynu."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr ""
+"Optimeiddiwch y dudalen ddiolch a manylion archeb y cyfrif gyda chynllun "
+"cliriach."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"Dangoswch gynnydd statws archeb, camau gweithredu, lawrlwythiadau a "
+"nodiadau lle maen nhw&#39;n gwneud synnwyr."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "Addasu adrannau manylion archeb ar hysbysiadau e-bost."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"Ychwanegwch symbolau a bathodynnau ymddiriedaeth lle mae angen sicrwydd ar "
+"siopwyr ar ôl prynu."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "Hysbysiadau e-bost"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr "Galluogi optimeiddio tudalen diolch a manylion archeb i weld mwy o opsiynau"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "Defnyddiwch gynllun llydan ar dudalen diolch"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"Mae&#39;r opsiynau hyn yn effeithio ar y dudalen diolch, gweld manylion "
+"archeb ar dudalennau cyfrif ac ar hysbysiadau e-bost."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "Cadw gosodiadau"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "Dogfennau"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "Basged"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "Diolch yn fawr"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "Cwblhau cyfeiriad yn awtomatig"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "Bathodynnau ymddiriedaeth"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "Nid oes gennych ganiatâd i gadw&#39;r gosodiadau hyn."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "Cais arbed annilys."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "Mae eich gosodiadau wedi cael eu cadw."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "Yn cadw..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "Ni ellid cadw&#39;r gosodiadau. Rhowch gynnig arall arni."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "Diystyru hysbysiad"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "Agor y ddewislen gosodiadau"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "Cau&#39;r ddewislen gosodiadau"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "Rhagolwg"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "Ehangu&#39;r rhagolwg"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "Cwympo rhagolwg"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "Dangos pennawd a throedyn"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "Cuddio&#39;r pennawd a&#39;r troedyn"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "Rhagolwg tudalen"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "Rhagolwg o&#39;r porth gwylio"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "Tabled"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "Penbwrdd"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "Lled rhagolwg"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "Lleihau&#39;r lled"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "Lled rhagolwg mewn picseli"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "Cynyddu lled"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "Rhagolwg fel"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "Gwestai"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "Wedi mewngofnodi"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "Tudalen rhagolwg"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "Ehangu&#39;r rhagolwg i gael golwg agosach"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "Ar gael gyda %s."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "Trowch nhw ymlaen"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr ""
+"Mae optimeiddio ar gyfer y dudalen hon wedi&#39;i ddiffodd. %s i weld "
+"rhagolwg o&#39;r dudalen."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "rhagolwg %s"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "Sesiwn ynysig · does dim byd wedi&#39;i gadw"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "Olrhain defnydd"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Anfonwch adroddiadau amgylchedd safle nad yw&#39;n sensitif i helpu Fluid "
+"Checkout i wella cydnawsedd. Ni anfonir adroddiadau nes eu bod wedi&#39;u "
+"galluogi yn yr opsiynau isod."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "Anfon adroddiadau olrhain defnydd i Fluid Checkout"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"Mae&#39;r adroddiadau hyn yn ein helpu i wella cydnawsedd a chefnogaeth "
+"i&#39;ch gwefan ac fe&#39;u hanfonir yn wythnosol pan gânt eu galluogi."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"Ni chynhwysir unrhyw ddata cwsmer, defnyddiwr gweinyddol, nac unrhyw ddata "
+"sensitif arall yn yr adroddiadau."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "Gwybodaeth sylfaenol am yr amgylchedd"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"Data rhestr WordPress, PHP, WooCommerce, thema, a phlyginau. Wedi&#39;i "
+"gynnwys bob amser pan fydd adrodd wedi&#39;i alluogi. Yn ein helpu i ddeall "
+"yr amgylchedd y mae eich gwefan yn rhedeg ynddo."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "Gosodiadau ategyn"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"Yn anfon gosodiadau ategyn Fluid Checkout i helpu gyda cheisiadau cymorth "
+"ac yn ein helpu i ddeall sut rydych chi&#39;n defnyddio ein hategion."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "Yn dod yn fuan"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "Metrigau gwerthiant"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"Cyfrif archebion misol a chyfanswm gwerthiannau am flwyddyn cyn gosod Fluid "
+"Checkout hyd at heddiw. Yn ein helpu i ddeall a ydych chi&#39;n gwneud mwy "
+"o arian gyda&#39;n ategion wedi&#39;u gosod. Ni anfonir unrhyw ddata "
+"cwsmeriaid na defnyddwyr byth."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "Cyfleustodau"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"Defnyddiwch gydrannau rhestr ostwng <code>TomSelect</code> yn lle "
+"<code>select2</code>"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"Mae TomSelect yn gydran dewis ostwng symlach sy&#39;n llai tebygol o gael "
+"gwallau na Select2, tra&#39;n cynnig yr un swyddogaeth."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"Yn gosod maint y ffont y tu mewn i feysydd ffurflen i 16px ar dudalennau "
+"sydd wedi&#39;u optimeiddio gan yr ategyn hwn i osgoi chwyddo i mewn yn "
+"awtomatig wrth ryngweithio â meysydd ffurflen ar ddyfeisiau bach."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"Efallai y bydd Safari a phorwyr eraill yn chwyddo i mewn yn awtomatig ar "
+"ddyfeisiau symudol i wneud y testun yn haws i&#39;w ddarllen pan fydd maint "
+"y ffont yn llai na 16px."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "Galluogi olrhain prosesu sgriptiau ar gonsol y porwr."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "Asedau heb eu lleihau"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Sgriptiau Google Maps"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "Peidiwch â thynnu sgriptiau Google Maps dyblyg"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"Pan gaiff ei alluogi, NI fydd sgriptiau dyblyg Google Maps yn cael eu tynnu "
+"a all achosi gwallau a phroblemau perfformiad. Defnyddiwch yr opsiwn hwn "
+"wrth ddatrys problemau yn unig."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "Ardaloedd teclyn"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "Cam olaf ar ffôn symudol"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "Dangos teclynnau yn y cam olaf yn unig ar ffôn symudol"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"Dangos teclynnau bathodyn ymddiriedaeth y ddesg dalu dim ond wrth edrych ar "
+"y cam talu olaf ar ddyfeisiau symudol"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "Safonol"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "maes rhif TAW"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "Ychwanegwch faes rhif TAW at y ffurflen bilio."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "Label maes"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"Gosodwch label y maes rhif TAW (h.y. rhif TAW). Ar wefannau amlieithog, "
+"mae&#39;n well gadael y maes hwn yn wag a chyfieithu&#39;r llinyn "
+"gwreiddiol."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "Rhif TAW"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "TAW yr UE"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "Galluogwch y maes rhif TAW i weld mwy o opsiynau"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "Dilysu TAW"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "Dilysu maes rhif TAW ar gyfer TAW yr UE yn ystod y ddesg dalu"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"Yn gwirio a yw&#39;r Rhif TAW a ddarperir yn rhif TAW dilys sydd wedi&#39;i "
+"gofrestru ar Gronfa Ddata VIES Ewropeaidd (System Cyfnewid Gwybodaeth TAW)."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "Rhif TAW y siop"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"Rhif TAW y siop a ddefnyddir ar gyfer gofyn am ddilysiad TAW yr UE, ac a "
+"argraffwyd ar anfonebau.<br> <strong>Rydym yn argymell yn gryf ychwanegu "
+"rhif TAW eich Siop</strong> oherwydd fel arall efallai na fydd canlyniadau "
+"ymgynghoriad VIES yn ddilys at ddibenion cyfrifyddu.<br> Hy.: "
+"<code>ATU99999999</code> neu <code>EE999999999</code> ."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "Tâl gwrthdro"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "Cymhwyso mecanwaith codi tâl gwrthdro"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"Gosodwch y gyfradd dreth i sero ac arddangoswch &quot;Tâl gwrthdro&quot; ar "
+"anfonebau pan fydd rhif TAW y cwsmer yn ddilys. Efallai y bydd angen testun "
+"&quot;Tâl gwrthdro&quot; gwahanol yn dibynnu ar wlad y siop."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "Yr un wlad"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr "Cymhwyso mecanwaith tâl gwrthdro ar gyfer trafodion yng ngwlad y siop:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"Yn galluogi cymhwyso mecanwaith tâl gwrthdro ar gyfer trafodion rhwng "
+"cwmnïau yn yr un wlad â&#39;r siop."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "Eithriadau tâl gwrthdro"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr "Dewiswch wledydd ychwanegol i hepgor cymhwyso&#39;r mecanwaith tâl gwrthdro."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"Codir trethi ar archebion o&#39;r gwledydd hyn hyd yn oed pan ddarperir "
+"rhif TAW dilys."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "Label tâl gwrthdro ar anfonebau"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr ""
+"Gosodwch y label &quot;tâl gwrthdro&quot; ar y dudalen dalu a manylion yr "
+"archeb."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "Testun tâl gwrthdro ar anfonebau"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "Gosodwch y label testun &quot;tâl gwrthdro&quot; ar anfonebau."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "Treth i&#39;w thalu ar sail tâl gwrthdro"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "Enw&#39;r cwmni"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "Cwblhau enw&#39;r cwmni&#39;n awtomatig o rif TAW"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"Llenwch enw&#39;r cwmni bilio yn seiliedig ar y rhif TAW dilys a ddarparwyd "
+"gan y cwsmer."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "Golygu enw&#39;r cwmni"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "Caniatáu golygu enw cwmni sydd wedi&#39;i lenwi&#39;n awtomatig"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"Pan fydd wedi&#39;i alluogi, gall cwsmeriaid newid enw&#39;r cwmni sy&#39;n "
+"gysylltiedig â&#39;r rhif TAW a ddarperir."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "TAW yr UE ar gyfer nwyddau digidol"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"O 1 Ionawr 2015 ymlaen, gwnaed addasiadau i reoliadau TAW yr UE ynghylch "
+"nwyddau digidol, gan effeithio ar drafodion B2C yn unig. Rhaid "
+"cyfrifo&#39;r TAW ar nwyddau digidol yn seiliedig ar leoliad y cwsmer, ac "
+"mae angen casglu tystiolaeth o hyn (cyfeiriad IP a chyfeiriad bilio)."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "Dosbarthiadau treth ar gyfer nwyddau digidol"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "Dewiswch rai dosbarthiadau treth"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "Tystiolaeth lleoliad"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "Casglu tystiolaeth o leoliad y cwsmer"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"Yn cadw&#39;r cyfeiriad IP ac yn ei ddilysu yn erbyn cyfeiriad bilio&#39;r "
+"cwsmer. Rhaid i gwsmeriaid gadarnhau eu cyfeiriad bilio drwy dicio blwch "
+"ticio ar y dudalen dalu os nad yw&#39;r wlad o&#39;u cyfeiriad bilio "
+"a&#39;u cyfeiriad IP yn cyfateb."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"Rheolir yr opsiwn hwn yn Fluid Checkout. <a href=\"%s\">Newidiwch ef yng "
+"ngosodiadau cyfrifon Cwsmeriaid</a> ."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"Rheolir yr opsiwn hwn yn Fluid Checkout. Newidiwch ef o dan Fluid Checkout "
+"&gt; Cyfrifon cwsmeriaid."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"Rheolir yr opsiwn hwn yn Fluid Checkout. Mae&#39;r gyrchfan cludo bob amser "
+"wedi&#39;i gosod i &quot;Y cyfeiriad cludo cwsmer yn ddiofyn&quot; pan fydd "
+"Fluid Checkout wedi&#39;i actifadu. Gall cwsmeriaid barhau i ddarparu "
+"cyfeiriadau cludo a bilio gwahanol yn ystod y ddesg dalu.<br><br> Mae "
+"opsiwn ar gael yn y <a href=\"%s\">gosodiadau Fluid Checkout</a> i osod y "
+"cyfeiriad bilio diofyn i fod yr un fath â&#39;r cyfeiriad cludo."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"Rheolir yr opsiwn hwn yn Fluid Checkout. Mae&#39;r gyrchfan cludo bob amser "
+"wedi&#39;i gosod i &quot;Y cyfeiriad cludo cwsmer yn ddiofyn&quot; pan fydd "
+"Fluid Checkout wedi&#39;i actifadu. Gall cwsmeriaid barhau i ddarparu "
+"cyfeiriadau cludo a bilio gwahanol yn ystod y ddesg dalu.<br><br> Mae "
+"opsiwn ar gyfer gosod y cyfeiriad bilio diofyn i fod yr un fath â&#39;r "
+"cyfeiriad cludo ar gael yn WooCommerce &gt; Gosodiadau &gt; Fluid Checkout."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr ""
+"Mae&#39;r gosodiadau hyn wedi cael eu symud i WP Admin &gt; Fluid Checkout "
+"&gt; Gosodiadau."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"Mae&#39;r tab Gosodiadau WooCommerce hwn wedi&#39;i ddirymu a bydd yn cael "
+"ei ddileu yn Fluid Checkout 6.0."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "Ewch i&#39;r dudalen gosodiadau"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "Cuddio&#39;r tab hwn yn barhaol"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "Rhagolwg adroddiad safle"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"Dyma&#39;r data a fyddai&#39;n cael ei gynnwys yn yr adroddiad amgylchedd "
+"safle nesaf yn seiliedig ar eich gosodiadau cyfredol."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "Wrthi&#39;n llwytho rhagolwg adroddiad..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "Methwyd llwytho rhagolwg adroddiad y safle. Rhowch gynnig arall arni."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "Methwyd anfon yr adroddiad safle. Rhowch gynnig arall arni."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "Anfonwyd adroddiad safle yn llwyddiannus."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "Galluogi ac anfon nawr"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "Cau"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr ""
+"Mae cais am adroddiad safle eisoes ar y gweill. Rhowch gynnig arall arni "
+"mewn eiliad."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "Mae adrodd ar amgylchedd y safle wedi&#39;i analluogi."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "Nid oes data adroddiad safle ar gael i&#39;w anfon."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"Ni all y parth safle hwn anfon adroddiadau amgylcheddol (mae parthau lleol "
+"na datblygu wedi&#39;u heithrio)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr ""
+"Anfonwyd adroddiad safle yn ddiweddar. Rhowch gynnig arall arni yn nes "
+"ymlaen."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "Ni ellid anfon yr adroddiad safle. Rhowch gynnig arall arni yn nes ymlaen."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "Nid yw adrodd ar amgylchedd y safle ar gael."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "Nid oes data adroddiad safle ar gael ar gyfer y gosodiadau a ddewiswyd."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "Ni chaniateir i chi reoli adroddiadau safle."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "Nodwedd PRO"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "Ategynnau eraill"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "Cael yr ychwanegiad hwn yn unig — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "Gosod ychwanegiad"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "Uwchraddio i PRO — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"<a target=\"_blank\" href=\"%1$s\">Cael %2$s</a> i ddatgloi&#39;r opsiynau "
+"hyn."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "Ychwanegiad"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "Gweld dogfennaeth"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"Mae angen defnyddiwr WordPress sydd wedi mewngofnodi ar gyfer ceisiadau. "
+"Hepgorwch user_id i ddefnyddio data&#39;r defnyddiwr cyfredol, neu pasiwch "
+"user_id i dargedu cyfrif arall pan all y galwr olygu&#39;r defnyddiwr hwnnw "
+"(gallu edit_user). Mae ceisiadau heb eu dilysu yn dychwelyd "
+"fc_api_forbidden. Mae user_id annilys yn dychwelyd fc_api_user_not_found."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr ""
+"HTTP 200 gyda { &quot;data&quot;: { ... } } pan fydd y trinwr yn dychwelyd "
+"llwyth tâl."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"HTTP 200 gyda { &quot;success&quot;: true } pan nad oes llwyth tâl (er "
+"enghraifft DELETE)."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"Mae methiannau&#39;n dychwelyd gwall REST WordPress JSON o WP_Error (cod, "
+"neges, data.status). Mae codau gwifren yn defnyddio&#39;r rhagddodiad "
+"fc_api_*."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "Mynediad gwaharddedig."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "Ni chanfuwyd y defnyddiwr targed."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "Nid yw&#39;r nodwedd hon ar gael."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "Mae maes cyfeiriad gofynnol ar goll."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "Mae&#39;r cod post neu&#39;r cod ZIP yn annilys."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "Mae&#39;r rhif ffôn yn annilys."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "Mae&#39;r dalaith neu&#39;r sir yn annilys."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "Mae&#39;r wlad yn annilys neu nid oes ganddi feysydd cyfeiriad."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "Ni ellid prosesu&#39;r cais."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "Yn ôl i&#39;r cam blaenorol"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "Neidio i&#39;r gosodiadau"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "Dechreuwch o’r newydd a dychwelwch i’r cam gosod cyntaf dan arweiniad"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "Dechrau o’r newydd"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "Cwblhewch yr holl is-gamau cyn parhau."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "Ehangu"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "Cwymp"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "Hepgor"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "Marcio fel wedi&#39;i gwblhau"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "Marcio fel anghyflawn"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "Gweld delwedd maint llawn: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "Delwedd canllaw gosod maint llawn"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "Cau&#39;r ddelwedd"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "Gosodiad Arweiniedig ar gyfer Talu Hylif"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "Croeso"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "Archwiliwch eich til"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "Yn barod"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "Nid oes gennych ganiatâd i gael mynediad i&#39;r dudalen hon."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "Ewch i gam %1$d: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"Mae&#39;r gosodiad tywysedig hwn yn eich helpu i ymgyfarwyddo â Fluid "
+"Checkout. Mae&#39;r camau isod yn ddalfeydd am y tro."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "Ewch ymlaen i&#39;r cam nesaf pan fyddwch chi&#39;n barod."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "Agorwch eich til siop i weld Fluid Checkout ar waith."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "Gweld tudalen talu"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"Gallwch ddychwelyd i osodiadau Fluid Checkout i barhau i ffurfweddu eich "
+"siop."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "Adolygu gosodiadau&#39;r ddesg dalu a&#39;r fasged"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "Archwiliwch ychwanegiadau o&#39;r dangosfwrdd"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "Gorffen ac ewch i osodiadau"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Diweddarwch yr opsiwn gwelededd maes ffôn bilio o&#39;r gwerth etifeddol i "
+"gyd-fynd â chonfensiynau WooCommerce."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Diweddarwch yr opsiwn gwelededd maes ffôn cludo o&#39;r gwerth etifeddol i "
+"gyd-fynd â chonfensiynau WooCommerce."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"Copïwch osodiad lliw cefndir crynodeb yr archeb i&#39;r opsiwn lliw cefndir "
+"colofn eilaidd newydd ar gyfer y dyluniad Hollti."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"Mae&#39;r nodwedd dewis meysydd gwell bob amser wedi&#39;i hanalluogi wrth "
+"ddefnyddio&#39;r ategyn Biteship."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"Mae safle gosod yr archeb bob amser wedi&#39;i osod i &quot;Islaw crynodeb "
+"yr archeb&quot; wrth ddefnyddio&#39;r Farchnad Almaenig. Mae&#39;r ategyn "
+"hwnnw&#39;n gofyn am arddangos y botwm gosod archeb a&#39;r blychau gwirio "
+"cyfreithiol o dan grynodeb yr archeb."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"Mae safle&#39;r archeb bob amser wedi&#39;i osod i &quot;Islaw crynodeb yr "
+"archeb&quot; wrth ddefnyddio Almaeneg ar gyfer WooCommerce. Mae&#39;r "
+"ategyn hwnnw&#39;n gofyn am arddangos y botwm archeb a&#39;r blychau gwirio "
+"cyfreithiol o dan grynodeb yr archeb."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Golygu lleoliadau casglu"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Defnyddiwch label casglu lleol o osodiadau WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Pan gaiff ei alluogi, mae&#39;r label opsiwn casglu wrth y ddesg dalu yn "
+"cyfateb i&#39;r teitl o osodiadau lleoliad casglu WooCommerce. Pan gaiff ei "
+"analluogi, mae&#39;r label yn defnyddio&#39;r testun &quot;Casglu "
+"lleol&quot; y gellir ei gyfieithu o Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2804,3 +4775,115 @@ msgstr "Ie"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "Ioan"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "Ewig"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "Cwmni Enghraifft"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "123 Stryd Fawr"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "Unrhywdref"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "Gadewch y pecyn wrth y drws ffrynt os gwelwch yn dda."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "Beanie"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "Cap"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "Crys-T"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr ""
+"Rydym wedi derbyn eich archeb a byddwn yn anfon diweddariad atoch pan fydd "
+"yn cael ei hanfon."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "Canllaw defnyddiwr"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "API Lleoedd (Newydd)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "API Lleoedd (Henaethol)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "Fersiwn 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "Fersiwn 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ Talu&#39;n gyflymach y tro nesaf ✔ Rheoli eich dewisiadau talu ✔ Gweld "
+"statws a hanes archeb"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "Cudd"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "Dewisol"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "Angenrheidiol"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Llongau i&#39;r cyfeiriad"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Casglu lleol"

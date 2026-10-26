@@ -1,7 +1,3 @@
-$body-page-selector: null !default;
-$body-theme-selector: null !default;
-$order-review-selector: null !default;
-
 @use "../abstract" as *;
 @use "../abstract/variables-admin" as *;
 @use "../abstract/variables-tom-select" as *;
@@ -250,7 +246,7 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 }
 
 @media screen and ( max-width: $admin-breakpoint-mobile ) {
-	// Taller admin bar + full width (no left admin menu column on small screens).
+	// Full width on small screens (no left admin menu column); sticky top excludes scrolling admin bar.
 	// Match auto-fold / folded specificity so those rules do not keep a menu-width inset.
 	.fc-settings-layout.is-preview-expanded .fc-settings-preview,
 	.fc-settings-layout.has-preview .fc-settings-preview,
@@ -301,6 +297,7 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	flex: 0 0 auto;
 	flex-wrap: wrap;
 	align-items: center;
+	justify-content: flex-start;
 	gap: $fc-settings-preview-toolbar-gap;
 	min-width: 0;
 }
@@ -311,6 +308,8 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	flex: 0 0 auto;
 	align-items: center;
 	justify-content: center;
+	gap: 4px;
+	min-width: $fc-settings-preview-expand-size;
 	width: $fc-settings-preview-expand-size;
 	height: $fc-settings-preview-expand-size;
 	padding: 0;
@@ -320,6 +319,12 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	box-shadow: $fc-settings-input-box-shadow;
 	color: $fc-settings-text-color;
 	cursor: pointer;
+	box-sizing: border-box;
+}
+
+body.is-showing-settings-shortcuts .fc-settings-preview__expand {
+	width: auto;
+	padding: 0 8px;
 }
 
 .fc-settings-preview__expand:hover,
@@ -418,10 +423,12 @@ button.fc-settings-preview__width-button {
 .fc-settings-preview__width-value {
 	display: flex;
 	flex: 0 0 auto;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	gap: 0;
 	margin: 0;
-	padding: 0 8px;
+	padding: 0 6px;
 	border-inline-end: 1px solid $fc-settings-input-border-color;
 	color: $fc-settings-text-color;
 	font-size: 12px;
@@ -433,6 +440,13 @@ button.fc-settings-preview__width-button {
 	box-sizing: border-box;
 }
 
+.fc-settings-preview__width-value > span {
+	font-size: 10px;
+	font-weight: 400;
+	line-height: 1;
+	opacity: .8;
+}
+
 .fc-settings-preview__width-value:has( input:focus-visible ) {
 	outline: 2px solid $fc-settings-nav-focus-outline-color;
 	outline-offset: -2px;
@@ -440,17 +454,24 @@ button.fc-settings-preview__width-button {
 
 .fc-settings-preview__width-value input[type="text"],
 .fc-settings-preview__width-value input[type="text"]:focus {
-	width: 4ch;
+	width: calc( 4ch + 4px );
 	min-height: 0;
 	margin: 0;
-	padding: 0;
+	padding: 0 2px;
 	border: 0;
 	background: transparent;
 	box-shadow: none;
 	outline: 0;
 	color: inherit;
 	font: inherit;
-	text-align: right;
+	text-align: center;
+	box-sizing: content-box;
+}
+
+@media ( max-width: 499px ) {
+	.fc-settings-preview__width {
+		display: none;
+	}
 }
 
 .fc-settings-preview__frame-options {
@@ -458,36 +479,24 @@ button.fc-settings-preview__width-button {
 	flex: 0 0 auto;
 	align-items: center;
 	gap: $fc-settings-preview-toolbar-gap;
-	margin-inline-start: auto;
 }
 
-.fc-settings-preview__mode-field {
-	flex: 0 0 120px;
-	width: 120px;
-	min-width: 120px;
-	max-width: 120px;
+.fc-settings-sectioned-buttons.fc-settings-preview__mode {
+	flex: 0 0 auto;
+	width: auto;
 }
 
-select.fc-settings-preview__mode {
-	width: 120px;
-	height: $fc-settings-input-height;
+.fc-settings-preview__mode .fc-settings-sectioned-buttons__option {
+	flex: 0 0 auto;
+	width: auto;
+	min-width: 0;
 	min-height: $fc-settings-input-height;
-	margin: 0;
-	border-color: $fc-settings-input-border-color;
-	border-radius: $fc-settings-input-border-radius;
-	box-shadow: $fc-settings-input-box-shadow;
-	color: $fc-settings-input-color;
-	font-size: $fc-settings-input-font-size;
+	height: $fc-settings-input-height;
+	padding: 0 8px;
+	white-space: nowrap;
 }
 
-.fc-settings-preview__mode-field.is-auto-changed select.fc-settings-preview__mode {
-	border-color: $fc-settings-input-border-color-focus;
-	box-shadow: none;
-	animation: fc-settings-preview-mode-auto-changed-outline $fc-settings-preview-auto-changed-duration ease forwards;
-}
-
-.fc-settings-preview__mode-field.is-auto-changed .ts-control {
-	box-shadow: $ts-select-shadow-input-focus !important; // Match Tom Select focus ring on settings fields
+.fc-settings-preview__mode.is-auto-changed {
 	animation: fc-settings-preview-mode-auto-changed-outline $fc-settings-preview-auto-changed-duration ease forwards;
 }
 
@@ -502,34 +511,6 @@ select.fc-settings-preview__mode {
 		outline: $fc-settings-focus-outline-width solid transparent;
 		outline-offset: $fc-settings-focus-outline-offset;
 	}
-}
-
-select.fc-settings-preview__mode:focus,
-select.fc-settings-preview__mode:focus-visible {
-	border-color: $fc-settings-input-border-color-focus;
-	box-shadow: none;
-	@include fc-admin-settings-focus-outline();
-}
-
-.fc-settings-preview__mode-field .ts-control:focus-within {
-	outline: solid $fc-settings-focus-outline-width $fc-settings-focus-outline-color !important; // Match Tom Select focus on settings fields
-	outline-offset: $fc-settings-focus-outline-offset !important; // Match Tom Select focus on settings fields
-}
-
-.fc-settings-preview__frame-options .ts-wrapper {
-	flex: 0 0 120px;
-	width: 120px;
-	min-width: 120px;
-	max-width: 120px;
-}
-
-.fc-settings-preview__frame-options .ts-wrapper.single {
-	height: $fc-settings-input-height;
-	min-height: $fc-settings-input-height;
-}
-
-.fc-settings-preview__frame-options .ts-wrapper.single .ts-control {
-	min-height: $fc-settings-input-height;
 }
 
 .fc-settings-preview__status {

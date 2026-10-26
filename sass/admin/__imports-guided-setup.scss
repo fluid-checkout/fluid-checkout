@@ -1,0 +1,14 @@
+// Guided setup partials. Imported from `admin-guided-setup.scss` and `admin-guided-setup-rtl.scss`.
+// Shared button / toggle styles come from admin-settings-card and admin-settings-field.
+
+@use "admin-settings-focus";
+@use "admin-settings-card";
+@use "admin-settings-field";
+
+@use "guided-setup-layout";
+@use "guided-setup-header";
+@use "guided-setup-progress";
+@use "guided-setup-card";
+@use "guided-setup-step-image";
+@use "guided-setup-image-modal";
+@use "guided-setup-sub-steps";

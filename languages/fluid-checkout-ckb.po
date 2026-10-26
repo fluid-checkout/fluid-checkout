@@ -279,10 +279,6 @@ msgstr "Databasa Fluid Checkout bi serkeftî hate nûve kirin"
 msgid "The database changes where applied successfully."
 msgstr "Li cîhê ku bi serfirazî tête bikar anîn databas diguhere."
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "Ok"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "Berdan"
@@ -401,39 +397,9 @@ msgstr "Belgekirin bixwînin"
 msgid "Don't show this again"
 msgstr "Vê carek din nîşan nedin"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "Pêşniyarên taybetî"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"Hemî qenciya Fluid Checkout li ser rûpela selika xwe û rûpelên spasiyê "
-"dirêj bikin."
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Fluid Checkout PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"Şablonên sêwiranê, selikê xweşbînkirî û rûpelên wergirtî, berhevkirina "
-"hesabê, û hêj bêtir."
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"Amûrên çêtirîn ku <strong>hûn rêjeya guheztina danûstendina WooCommerce-ya "
-"we bêtir çêtir bikin</strong> û ezmûna kirînê li seranserê rêwîtiyê domdar "
-"bikin."
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -455,10 +421,6 @@ msgstr "Di rûpela danûstendinê de naveroka selikê biguherînin"
 msgid "Account matching / user matching"
 msgstr "Lihevhatina hesabê / berhevdana bikarhêner"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "Bişkojkên Express Checkout ji rêbazên dravdanê yên piştgirî"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "Sembolên pêbaweriyê li ser rûpelên selikê û spas"
@@ -466,10 +428,6 @@ msgstr "Sembolên pêbaweriyê li ser rûpelên selikê û spas"
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "Ji bo koda kuponê li ser rûpela danûstendinê bêtir pozîsyon"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "Qada koda kuponê ya yekbûyî li ser rûpela selikê"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -483,250 +441,25 @@ msgstr "Peyamên diyariyê û pelikên pakkirinê"
 msgid "Local pickup and in-store collection"
 msgstr "Hilbijartina herêmî û berhevoka nav-firoşgehê"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "Nûvekirina PRO - 99 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Fluid Checkout PRO - Bundle"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "Hemî taybetmendiyên PRO + Hemî pêvek ji bo bihayek taybetî."
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"Pêvek hemî pêvekên ku em niha pêşkêş dikin û pêvekên Fluid Checkout ku em "
-"di pêşerojê de dest pê dikin dihewîne."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "Nirxa 226 EUR (42% hilîne)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Navnîşana Google-ê Xwe temam kirin"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "Pirtûka Navnîşanê"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "Alîkarê YE-VAT"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "Hemî pêvekên pêşerojê *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* Heya ku we abonetek çalak hebe."
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "Bundle bistînin - Tenê 129 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"Hemî bihayên bi EUR têne xuyang kirin. Ger di malpera me de bi bihayan "
-"cudahî hebin, pêşniyarên ku li ser malperê têne xuyang kirin van "
-"diguhezînin û dê bêne sepandin."
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "Add-ons"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "Bi van pêvekan re ezmûna danûstendina xwe zêde bikin."
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "Min jixwe ew heye - Vê pêşniyarê veşêre"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "Saz kirin - Çalak bikin"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "Activated"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "Ji bo dagirtinê heya 40% kêmtir zeviyên dravdanê."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"Ji derengiya radestkirinê û xerîdarên nerazî dûr bigirin. Ji gava yekem de "
-"ku ew bi we re dikirin <strong>agahdariya navnîşa rast</strong> berhev "
-"bikin."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "Vê pêvekê bistînin - 29 EUR"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "Pirtûka navnîşan"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "Gelek navnîşanên tomarkirî yên ji bo barkirin û fatûreyê."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"Bihêlin xerîdar <strong>gelek navnîşanên barkirin û fatûreyê li ser hesabê "
-"xwe hilînin</strong> û hilbijêrin ku kîjan di rûpelên danûstendinê û selikê "
-"de bikar bînin."
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "Vê pêvekê bistînin - 59 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "Ji bo firotgeha we pejirandina YE-VAT-a hêsankirî."
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"<strong>Di rûpela danûstendinê de hejmarên VAT-ya Yekîtiya Ewropî berhev "
-"bikin û rast bikin</strong> , lêçûnên bacê li ser bingeha dravê berevajî "
-"radike û dema ku hewce be cîhê xerîdar piştrast dike."
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "Vê pêvekê bistînin - 39 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"Hemî pêvek cuda têne firotin û pêdivî ye ku pêveka <strong>Fluid Checkout "
-"Lite</strong> were saz kirin û çalak kirin, ji bilî dema ku tê destnîşan "
-"kirin."
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Wêneyek hilbijêre"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Têkeve "
-"hesabê xwe</a> da ku mifteya lîsansa xwe bistînin, an <a href=\"%s\" "
-"target=\"_blank\">mifteyek destûrek nû bikirin</a> ."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "Heta %s derbasdar e."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "Di %s de qediya."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Têkeve "
-"hesabê xwe</a> da ku mifteya lîsansa xwe nûve bike û berdewamiya wergirtina "
-"nûvekirin û piştgirîyê bike."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "Mifteya lîsansê hat betalkirin."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">Mifteyek lîsansa nû bikirin</a> û "
-"nûvekirin û piştgirîyê bistînin."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "Şaşî: "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "Setup &amp; Belgekirin"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "Ecêb! Rûpelê dravdana we naha li ser Fluid Checkout dixebite."
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "Li vir çend çavkanî hene ku hûn dest pê bikin:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"Rêbernameya sazkirinê Bixwîne <a href=\"%s\" target=\"_blank\">Getting with "
-"Fluid Checkout</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr ""
-"Pîvan û sêwirana li ser <a href=\"%s\">vebijarkên danûstendinê</a> saz "
-"bikin."
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"Kontrol bikin ka ji bo pêvekên din ên ku we saz kirine <a "
-"href=\"%s\">vebijarkên entegrasyonê</a> hene."
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"Ji bo bêtir agahdarî li ser taybetmendiyên Fluid Checkout serdana <a "
-"href=\"%s\" target=\"_blank\">belgeyên me</a> bikin."
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"Ger hewcedariya we bi alîkariyê hebe, <a href=\"%s\" "
-"target=\"_blank\">bilêtek piştgiriyê li ser kanala piştevaniya meya fermî "
-"vekin</a> ."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -739,14 +472,6 @@ msgstr "Optimîzasyonên selikê"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "Optimîzasyonên rûpela selikê çalak bikin"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "Rûpelê selikê bi nexşeyek mîna rûpela danûstendinê nîşan bidin."
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "Ser û pê"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -779,16 +504,6 @@ msgstr "Kurteya fermanê dema ku digere li ser rûpela selikê xuya bibe"
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "Kodên kuponê"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"Cihê ku hûn beşa kodên kuponê li ser rûpela selikê nîşan bidin hilbijêrin. "
-"Tenê gava ku selika AJAX û kodên kuponê yên yekbûyî yên di rûpela "
-"danûstendinê de çalak bin tê sepandin."
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -882,10 +597,6 @@ msgstr "Plansaziya mijarê ya xaçê difroşe"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "Hejmara hêmanên xaçefiroş ên ku li ser rûpela selikê têne xuyang kirin"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "Sembolên pêbawer û nîşanan"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "Herêmên widgetê li rûpela selikê zêde bikin"
@@ -902,10 +613,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "Lêkolîn"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "Layout &amp; design"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "layout Checkout"
@@ -921,22 +628,6 @@ msgstr "Moda tarî"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "Moda tarî çalak bike"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "Şablonên sernav û pêlavan"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"Em pêşniyar dikin ku sernav û pêlava belaş a baldarîyê bikar bînin da ku di "
-"rûpela danûstendinê de ji balkêşan dûr nekevin. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" "
-"target=\"_blank\">Lêkolîna li ser terka selikê bixwînin</a> ."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -989,10 +680,6 @@ msgid ""
 msgstr ""
 "Ji bo pêpelûka rûpela danûstendinê rengek paşîn hilbijêrin. Tenê dema ku "
 "sernav û pêpelûka belaş a baldarî bikar tînin tê sepandin."
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "hêmanên Checkout"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1078,20 +765,6 @@ msgstr "Girêdana rûpela dikanê"
 msgid "Cart items"
 msgstr "Tiştên selikê"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr ""
-"Vebijarkên ji bo guherandina tiştên selikê yên li ser rûpela danûstendinê "
-"çalak bike"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"Destûrê bidin xerîdar ku mîqdarên hilberê biguhezînin an jî tiştan "
-"rasterast li ser rûpela danûstendinê derxînin."
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "Di rûpela danûstendinê de xeletiyên tiştên selikê veşêrin"
@@ -1144,37 +817,9 @@ msgstr ""
 "Van deverên widgetê têne bikar anîn ku li ser rûpela danûstendinê sembolên "
 "pêbaweriyê û nîşaneyên pêbaweriyê zêde bikin."
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"Dema ku li ser cîhazên mobîl gava ku hûn nexşeya danûstendinê ya pir-gavekî "
-"bikar tînin, widgetên kêleka danûstendinê nîşan bidin"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "Beşa koda kuponê ya yekbûyî çalak bike"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr ""
-"Tenê heke karanîna kodên kuponê di mîhengên WooCommerce-ê de werin çalak "
-"kirin tê sepandin."
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "Sernavê beşa kodên kuponê nîşan bidin"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"Tenê dema ku koda kuponê li ser rûpelên danûstendinê an selikê wekî beşek "
-"cihê tê xuyang kirin, tête bikar anîn."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1195,16 +840,6 @@ msgstr "Wekî binegavê berî awayên dravdanê"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "Wekî binegavê piştî rêbazên dravdanê"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"Şêweya bişkoka &quot;sepana kuponê&quot; hilbijêrin. Tenê dema ku beşa koda "
-"kuponê &quot;Berî gavên dravdanê&quot; li ser rûpela danûstendinê, an "
-"&quot;Berî beşa tiştên selikê&quot; li ser rûpela selikê were xuyang kirin."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1253,22 +888,6 @@ msgstr ""
 "Tenê gava ku pir xerîdar bi rastî hewceyê qada &quot;Xeta Navnîşan 2&quot; "
 "hewce ne, an dema ku girtina navnîşana barkirinê ya rast girîng e (ango "
 "heke xwarin û hilberên din ên xerabûyî radest bikin) tê pêşniyar kirin."
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "Bişkokên girêdana &quot;lê zêde bike&quot; bi tîpên piçûk nîşan bidin"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"Etîketên qada bijarte bişkoka lînkê &quot;lê zêde bike&quot; bi "
-"<code>lowercase</code> bikin (ango &quot;Hejmara têlefonê lê zêde "
-"bike&quot; li şûna &quot;Hejmara têlefonê lê zêde bike&quot;). Ev vebijark "
-"di heman demê de bandorê li bişkokên girêdanê yên ji bo zeviyên koda kuponê "
-"jî dike."
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1363,24 +982,6 @@ msgstr "Berî navnîşana barkirinê"
 msgid "After shipping address"
 msgstr "Piştî navnîşana barkirinê"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "Hilbijartina otomatîkî ya rêbaza barkirinê ya yekem asteng bikin"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Dema ku were çalak kirin, gava ku berê ji bo her pakêtek barkirinê rêbazek "
-"din a barkirinê nehatibe hilbijartin, yekem rêbaza barkirinê ya berdest dê "
-"bixweber neyê hilbijartin.<br> Ger vebijarka paqijkirina rêbaza barkirinê "
-"ya hilbijartî ji bo taybetmendiya Hilbijartina Herêmî were çalak kirin ev "
-"vebijark dê bixweber were çalak kirin."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Pişka herêmî"
@@ -1400,23 +1001,6 @@ msgid ""
 msgstr ""
 "Dema ku rêbazek barkirinê ya herêmî tê hilbijartin, navnîşana barkirinê bi "
 "cîhê xala hilgirtinê diguhezîne."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Vebijêrk nîşan bide ku rêbazên barkirinê di binê qonaxa hilkişînê de paqij "
-"bike"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Bişkojek lînkê li ser binepêngava cîhê hilgirtinê nîşan bidin da ku rêbazên "
-"barkirinê yên bijartî paqij bikin. Ev dikare were bikar anîn da ku destûr "
-"bide ku beşa navnîşana barkirinê dîsa were xuyang kirin heke berê rêbazek "
-"hilgirtina herêmî hate hilbijartin."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1495,32 +1079,6 @@ msgstr "Qada telefona fatûreyê li forma danûstendinê zêde bikin."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Hilbijêre ku di kîjan gavê de qada têlefonê fatûreyê nîşan bide."
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "Li gorî qaîdeyên welat verastkirina jimareya têlefonê çalak bike"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"Dema ku neçalak be, erêkirina qada têlefonê dê kontrol neke ka kodên welat "
-"an herêmê ji bo welat derbasdar in."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "Tenê welatên destûr ji bo barkirin an fatûre nîşan bidin"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"Dema ku were çalak kirin, tenê welatên ku ji bo barkirinê têne destûr kirin "
-"dê di qada têlefonê ya barkirinê de peyda bibin, û tenê welatên ku ji bo "
-"fatûreyê têne destûr kirin dê ji bo qada têlefonê ya fatûreyê berdest bin."
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "Koda welat li kêleka alê nîşan bide"
@@ -1555,12 +1113,6 @@ msgstr "Dîtina qada nîşeyên fermanê yên zêde diyar bikin."
 msgid "Gift options"
 msgstr "Vebijarkên diyariyê"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr ""
-"Peyama diyariyê û vebijarkên diyariyê yên din li ser rûpela danûstendinê "
-"nîşan bidin"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1568,10 +1120,6 @@ msgid ""
 msgstr ""
 "Destûrê bidin xerîdar ku peyamek diyariyê û vebijarkên din ên têkildarî "
 "diyariyê li fermanê zêde bikin."
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "Zeviyên peyama diyariyê her gav berfirehkirî nîşan bidin"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1627,27 +1175,9 @@ msgstr "Dashboard"
 msgid "Integrations"
 msgstr "Integrations"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"Li ser vê beşê niha entegrasyon tune. Vebijarkên bi her pêvekê ve girêdayî "
-"dê tenê li vir xuya bibin heke ew pêvek were çalak kirin."
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "keys License de"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"Vê gavê li ser vê beşê vebijarkên bişkojkên lîsansê tune. Vebijarkên ku bi "
-"her pêvek an pêvek ve girêdayî ne dê li vir xuya bibin dema ku ew pêvek "
-"were çalak kirin."
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1745,14 +1275,6 @@ msgstr ""
 "Van deverên widgetan têne bikar anîn ku li ser rûpela spasiyê sembolên "
 "pêbaweriyê û nîşaneyên pêbaweriyê zêde bikin."
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"Van vebijarkan bandorê li rûpela spasiyê dikin, hûrguliyên fermanê li ser "
-"rûpelên hesabê û li ser agahdariya e-nameyê bibînin."
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "Order çalakiyên"
@@ -1845,20 +1367,6 @@ msgstr "Malên nenaskirî bar bikin"
 msgid "Enhanced select fields"
 msgstr "Zeviyên hilbijartî yên pêşkeftî"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr "Hilbijêrên <code>select2</code> bi <code>TomSelect</code> veguherînin"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect hêmanek bijartina dakêşanê ya hêsan e ku ji Select2 kêmtir dibe "
-"sedema xeletiyan, di heman demê de heman taybetmendiyên ku bi rastî li ser "
-"rûpelên danûstendinê yên WooCommerce têne bikar anîn pêşkêşî dike."
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "Li ser zeviyên formê zoom-in otomatîk rast bikin"
@@ -1866,35 +1374,6 @@ msgstr "Li ser zeviyên formê zoom-in otomatîk rast bikin"
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "<code>font-size</code> di hundurê qadên formê de 16 px destnîşan bikin"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"Dema ku mezinahiya tîpên di hundurê qadên formê de ji 16 px piçûktir be, "
-"dibe ku Safari û gerokên din bixweber li ser cîhazên mobîl zoom bikin da ku "
-"xwendina nivîsê hêsantir bikin. Dema ku ev vebijark were çalak kirin, ew ê "
-"mezinahiya tîpan ji bo hundurê qadên formê li ser rûpelên ku ji hêla Fluid "
-"Checkout ve hatî xweşbîn kirin 16 px destnîşan bike da ku ji mezinkirina wê "
-"dûr nekeve."
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"Dema ku Fluid Checkout were aktîfkirin, cîhê barkirinê her gav wekî "
-"&quot;Navnîşana barkirina xerîdar ya xwerû&quot; tête danîn. Xerîdar hîn jî "
-"dikarin di dema danûstendinê de navnîşanên barkirin û fatûreyê yên cihêreng "
-"peyda bikin, vebijarkek ji bo danîna navnîşana fatûreyê ya xwerû ku heman "
-"navnîşana barkirinê be li WooCommerce&gt; Settings&gt; Fluid Checkout heye."
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1921,14 +1400,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(ceribandinî)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "Tesdîqkirin"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "Hejmara Telefonê verast bikin"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2465,10 +1936,6 @@ msgstr "Piştî barika pêşketinê"
 msgid "Before coupon codes section"
 msgstr "Berî beşa kodên kuponê"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "Qadên hejmarên têlefona navneteweyî çalak bike"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "Hejmarên telefonê li gorî rêzikên her welatî format bikin."
@@ -2476,18 +1943,6 @@ msgstr "Hejmarên telefonê li gorî rêzikên her welatî format bikin."
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "Verastkirina rast a hejmara têlefonê bikar bînin"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"Li gorî qaîdeyên koda welatê bijartî, hewl bidin ku piştrast bikin ku "
-"jimara telefonê jimara mobîl an xeta erdî ya derbasdar e. Ev vebijark "
-"taybetmendiya pejirandina rast a <code>intl-tel-input</code> bikar tîne, ku "
-"dibe ku ji bo hin hejmarên telefonê encamên erênî yên xelet bide."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2530,26 +1985,6 @@ msgstr "2 stûn"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 stûn"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"Şêwazên giştî ji bo gavên dravdanê, kurteya fermanê û beşên din.<br> Dibe "
-"ku ji bo rûpelên din ên wekî Cart, Siparîşa Wergirtî û Dîtina Siparîşê jî "
-"derbasdar be."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"Şablona sêwiranê <em>&quot;Split&quot;</em> dema ku nexşeya <em>&quot;1 "
-"stûn&quot;</em> tê bikar anîn peyda nabe û heke were hilbijartin dê vegere "
-"<em>&quot;Minimalist&quot;</em> ."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2649,6 +2084,2533 @@ msgstr ""
 "piştrastkirina ku navnîşana şandinê dikare li navnîşana fatûreyê were kopî "
 "kirin dema ku ew vebijark were hilbijartin, pêdivî ye, wekî din dibe ku "
 "xerîdar nikaribe forma dravdanê temam bike."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "Profîlên mîhengan"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "Profîla mîhengan"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "Destûra te tune ku vê çalakiyê pêk bînî."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "Destûra te tune ku pêvekan çalak bikî."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "Plugin wenda ye."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "Plugin hate çalakkirin."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "Guhertinên jêrîn dê werin sepandin:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Ji Fluid Checkout 5.0 vir ve, mîheng bi awayên cuda têne tomarkirin. "
+"Vebijarkên kevn hîn jî di databasê de têne hilanîn da ku heke pêwîst be, "
+"daketin bo guhertoyên berê werin destûr kirin."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"Dikana we nêzîkî 2 hefteyan e li ser mîhengên nû dixebite, ji ber vê yekê "
+"hûn dikarin vebijarkên kevn ên ku di databasa de hatine hilanîn paqij "
+"bikin. Ji kerema xwe not bikin ku piştî paqijkirinê, heke hûn hewce ne ku "
+"dakevin guhertoyên berê yên pêvekê, ew ê nirxên xwerû ji bo hemî mîhengan "
+"bikar bîne."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "Paqijkirina mîhengên Fluid Checkout"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "Vebijarkên mayî jê bibe"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "Alîkariya me bikin ku em Fluid Checkout baştir bikin"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"Raporên jîngeha malperê yên anonîm bi Fluid Checkout re parve bikin da ku "
+"piştgiriyek zûtir bistînin û ji me re bibin alîkar ku em lihevhatinê baştir "
+"bikin û bandorê bipîvin. Tu daneyên xerîdar, bikarhêner an hesas nayên nav "
+"kirin. Hûn dikarin her dem ji mîhengên Amûran hilbijêrin ka çi were parve "
+"kirin."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "Raporên jîngeha malperê çalak bike"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "Mîhengan binirxîne"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"Ev pêşdîtin qediyaye. Ji bo destpêkirina pêşdîtinek nû rûpela rêveberiyê ji "
+"nû ve bar bike."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "Pêşdîtin qediya"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "Siparîş di pêşdîtinê de nayên danîn."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "Têketin di pêşdîtinê de ne berdest e."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "Di pêşdîtinê de hesab nayên afirandin."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "Daxwazên ji bo malperên din di pêşdîtinê de têne astengkirin."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "Xebitandinî…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "Tiştek xelet çû. Ji kerema xwe dîsa biceribînin."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "Pêveka çalak bike"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - Pakêta temam a dravdanê"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"Hemû taybetmendiyên PRO + hemû pêvek, yek biha. Şablonên sêwiranê, rûpelên "
+"sepet û siparîşên wergirtî yên çêtirkirî, hevahengkirina hesaban, û gelek "
+"tiştên din."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "Rûpela dayîna fermanê ya çêtirînkirî"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "Bişkokên dravdana bilez ji rêbazên dravdanê yên piştgirîkirî"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "Derengketina çêkirina hesabê"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Bi API-yên Nexşeyên Google-ê ve oto-temamkirina navnîşanê"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "Gelek navnîşanên tomarkirî bi pirtûka navnîşan re"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "Alîkarê EU-VAT"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "Vê beşê veşêre"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "Bêtir hîn bibin"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "Gihîştina zû bistînin"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "Pêveka çalak bike"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "Ji rêwîtiya xwe ya dravdanê bêtir sûd werbigirin"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "Mifteya API-yê ya ceribandinê"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "Sazkirina rêberkirî"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "Vebijêrk"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "Di <a href=\"%s\">vebijarkên dravdanê</a> de nexşe û sêwiranê saz bikin."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"Derbaskirina mêvanan çalak bike û/an <a href=\"%s\">mîhengên hesabên "
+"xerîdaran</a> binirxîne."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"Rûpelên <a href=\"%1$s\">sepet</a> , <a href=\"%2$s\">spasdarî</a> û <a "
+"href=\"%3$s\">dayîna fermanê</a> yên çêtirkirî çalak bike."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr ""
+"Ji Nexşeyên Google-ê <a href=\"%s\">otomatîkîkirina navnîşanê</a> çalak "
+"bike."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr ""
+"Bi <a href=\"%s\">pirtûka navnîşanan</a> ve gelek navnîşanên tomarkirî "
+"çalak bike."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"Kontrol bike ka ji bo mijarê an pêvekên din ên ku te saz kirine <a "
+"href=\"%s\">vebijarkên entegrasyonê</a> hene."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"Piştgiriyek zûtir bistînin û ji me re bibin alîkar ku em lihevhatinê baştir "
+"bikin û bandorê bipîvin. <a href=\"%s\">Şopandina karanînê ji mîhengên "
+"amûran çalak bikin</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "Tabloya mîhengan wenda ye."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "Destpêkirin"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>Mezin! Rûpela we ya dravdanê niha li ser Fluid Checkout "
+"dixebite.</strong> Li vir çend gav hene ku hûn dest pê bikin:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "Qediya"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "Pêşdîtina daneyên raporê"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "Niha bişîne"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "Otomatîk tespîtkirin"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "Afrîkansî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "Albanî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "Amharîkî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "Erebî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "Ermenî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "Azerbaycanî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "Baskî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "Belarûsî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "Bengalî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "Bosnayî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "Bûlgarî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "Bîrmanî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "Katalanî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "Çînî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "Çînî (Hêsankirî)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "Çînî (Hong Kong)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "Çînî (Kevneşopî)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "Xirwatî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "Çekî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "Danîmarkî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "Holandî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "Îngilîzî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "Îngilîzî (Awistralyayî)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "Îngilîzî (Brîtanyaya Mezin)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "Estonî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "Farisî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "Fînlandî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "Filîpînî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "Fransî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "Fransî (Kanadayî)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "Galîsyayî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "Gurcî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "Almanî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "Yewnanî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "Gujaratî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "Îbranî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "Hindî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "Macarî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "Îzlandî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "Îndonezî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "Îtalî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "Japonî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "Kanadayî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "Qazakî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "Khmer"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "Koreyî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "Qirgizî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "Laoyî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "Letonî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "Lîtvanyayî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "Makedonî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "Malayî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "Malayalamî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "Maratî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "Moxolî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "Nepalî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "Norwêcî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "Polandî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "Portekizî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "Portekîzî (Brezîlya)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "Portekîzî (Portekîz)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "Pencabî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "Romanyayî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "Rûsî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "Sirbî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "Sînhalî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "Slovakî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "Slovenî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "Îspanyolî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "Spanî (Amerîkaya Latîn)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "Swahîlîyî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "Swêdî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "Tamîlî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "Teluguyî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "Thayîkî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "Tirkî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "Ûkraynî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "Ûrdûyî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "Vîetnamî"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "Zulû"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Otomatîkkirina navnîşana Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Versiyona API-ya Cihên Google-ê"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"Guhertoya API-ya Cihên Google-ê hilbijêrin ku hûn bikar bînin. Em pêşniyar "
+"dikin ku hûn zûtirîn dem derbasî API-ya Cihên nû bibin."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"Em pêşniyar dikin ku hûn &quot;Places API (Nû)&quot; bikar bînin. Ji 1ê "
+"Adara 2025an pê ve, Google dê guhertoya &quot;Places API (Legacy)&quot; "
+"biguhezîne rewşa Legacy, ev tê vê wateyê ku hûn êdî nikaribin vê xizmetê ji "
+"bo mifteyên API-yên nû çalak bikin û ew guhertoya API-yê di dawiyê de êdî "
+"peyda nabe. Hesabên heyî yên ku berê API-ya Legacy bikar tînin dikarin bêyî "
+"astengiyan berdewam bikin."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(Pêşniyarkirî)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Kilîda API-ya Google-ê"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"Kilîta API-ya xwe ya Google-ê bipêçe û bişkoja ceribandinê bikar bîne da ku "
+"piştrast bikî ku ew ji bo vê malperê dixebite. Piştrast bike ku kilît ji bo "
+"domaina te derbasdar û destûrdayî ye, wekî din dibe ku qada navnîşanê were "
+"asteng kirin û rê li ber xerîdaran bigire ku fermanên xwe temam bikin."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "Otomatîkkirina navnîşana Google çalak bike"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr ""
+"Bi karanîna API-yên Nexşeyên Google-ê, temamkirina otomatîkî ya navnîşanê "
+"çalak bike."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Zimanê API-ya Google-ê"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"Ev ziman dê ji bo nîşandana pêşniyarên navnîşanên Google Places API were "
+"bikar anîn û navnîşan jî dê bi vî zimanî bixweber werin temamkirin."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "Cureyên encaman"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Ji bo qebûlkirina her cure encaman, ku bi gelemperî encamên hevaheng ên "
+"çêtir dide, vala bihêlin. <a href=\"%s\" target=\"_blank\">Ji bo bêtir "
+"agahdarî li belgeyan binêre</a> .<br> Heta 5 cureyên encamên lêgerîna "
+"navnîşanê hilbijêrin da ku li ser qadên oto-temamkirina navnîşanê werin "
+"vegerandin.<br> Ji bo bêtir agahdarî li ser <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">celebên piştgirîkirî,</a> serdana belgeyên "
+"Nexşeyên Google bikin."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "Cureyên encaman (API-ya Kevneşopî)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Dema ku Places API (Legacy) tê bikar anîn, divê kîjan celeb encamên "
+"lêgerîna navnîşanê werin vegerandin.<br> Ji bo bêtir agahdarî li ser <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">celebên piştgirîkirî</a> , "
+"serdana belgeyên API-ya Legacy Google Places bikin."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "Zeviyên şîrketê"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "Heke hebe, ji bo navê şîrketê temamkirina otomatîk çalak bike"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Dema ku ji API-yên Nexşeyên Google-ê tê vegerandin, temamkirina otomatîkî "
+"ya qada şîrketê bi agahdariya navê şîrketê çalak bike."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "Lêgerîna karsaziyê"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "Lêgerîna karsaziyan di qada şîrketê de çalak bike"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"Dema nivîsandina qada şîrketê, pêşniyara navnîşanên girêdayî karsaziyekê "
+"çalak bike, dûv re dema ku karsaziyek ji pêşniyaran tê hilbijartin, hemî "
+"qadên navnîşanê bixweber temam bike."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "Cureyên encamên şîrketê"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Heta 5 cureyên encamên lêgerîna navnîşanê hilbijêrin da ku li ser qadên "
+"şîrketa oto-temamkirinê vegerin.<br> Nirxa pêşniyarkirî "
+"<code>establishment</code> e, ku piraniya celebên karsaziyan dihewîne.<br> "
+"Ji bo qebûlkirina her cure encaman, tevî encamên ku ne bi karsaziyan ve "
+"girêdayî ne, vala bihêlin.<br> Ji bo bêtir agahdarî li ser <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">celebên piştgirîkirî,</a> serdana belgeyên "
+"Nexşeyên Google bikin."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Logoya Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "Nivîs û logoya &quot;Powered by Google&quot; nîşan bide"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"Dema ku were kontrolkirin, nivîs û logoya &quot;Powered by Google&quot; dê "
+"li binê qutiya pêşniyarên oto-temamkirina navnîşanê werin nîşandan."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "Otomatîkkirina navnîşana API-ya Brezîlyayê"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "APIya Brezîlyayê"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "Ji bo qadên CEP-ê, temamkirina otomatîk a navnîşana API-ya Brasil çalak bike"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"Ji bo wergirtin û dagirtina otomatîkî ya navnîşanan bi karanîna qada "
+"CEP/Postcode, Brasil API bikar bînin. Tenê ji bo navnîşanên Brezîlyayê "
+"têkildar e."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "Guhertoya API-yê"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "Guhertoya rêbaza Brasil API CEP hilbijêre ku dixwazî bikar bînî."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "Veguhestina pirtûka navnîşanan"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "Navnîşanên WooCommerce"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"Navnîşanên şandin û fatûreyê yên heyî ji WooCommerce kopî bikin nav pirtûka "
+"navnîşanên xerîdaran."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "Taybetiya pirtûka navnîşanan çalak bike"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"Destûrê bide xerîdaran ku gelek navnîşanan tomar bikin û navnîşana xwerû ya "
+"ku ji bo şandin û fatûreyê were bikar anîn destnîşan bikin."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "Etîketên navnîşanê"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "Destûrê bide xerîdaran ku ji bo her navnîşanê etîketek xwerû lê zêde bikin"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"Etîketên navnîşanê ji bo xerîdaran hêsantir dikin ku navnîşanên xwe yên "
+"tomarkirî ji hev cuda bikin (wek mînak: &quot;Mala Dayikê&quot;). Etîketên "
+"navnîşanê tenê ji bo xerîdaran taybet in, û li ser rûpela hûrguliyên "
+"fermanê an fatûreyan nayên nîşandan an çapkirin."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "Şêweya nîşandanê"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr ""
+"Hilbijêre ka navnîşanên tomarkirî çawa di qonaxa dawî ya kirînê û li ser "
+"selikê de werin nîşandan."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"Di qonaxa qedandinê û li ser selikê de derbas dibe. Navnîşanên tomarkirî "
+"yên li ser rûpela hesabê her gav şêwaza kartan bikar tînin."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "Kartên navnîşanê"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "Lîsteya navnîşanan"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "Qada daketî"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "Lêgerîna navnîşanê"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"Dema ku xerîdar bi kêmanî ev hejmara navnîşanên tomarkirî hebe, fîltera "
+"lêgerîna navnîşanê li ser pêşiyê nîşan bide."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "Dema ku sêwirana nîşandanê li ser qada daketî were danîn, nayê bikar anîn."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "Navnîşan"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "Ji bo dîtina vebijarkên bêtir, çêtirkirina rûpela selikê çalak bike"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "Kurteya fermana zeliqok"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"Cihê ku beşa kodên kuponê li ser rûpela selikê tê de were nîşandan "
+"hilbijêre. Tenê dema ku selika AJAX çalak be derbasdar e, û heke karanîna "
+"kodên kuponê di mîhengên WooCommerce de çalak be."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "Nexşeya firotina xaçerêyî"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "Firotinên xaçerêyî yên hatine nîşandan"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "Tişt"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "Optimîzasyona rûpela sepetê"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"Sepeta xwe heman sêwirana zelal û li ser veguherînê-navendî wekî dravdana "
+"xwe bidin."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr ""
+"Ji bo rêwîtiyek kirînê ya domdar, sêwirana selikê bi rûpela dravdanê re li "
+"hev bikin."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"Sepetê her tim di paşxaneyê de nûvekirî bihêle, dema ku hejmar diguherin "
+"rûpel bi tevahî nayê barkirin."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"Kodên kuponê, şandin û firotina xaçerê tam li cihê ku ew çêtirîn "
+"veguherînin bicîh bikin."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"Kurteya fermanê dema gerandinê xuya bike, û li cihên ku kirrûbir hewceyî "
+"piştrastbûnê ne, sembolên baweriyê lê zêde bike."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "Stûn"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"Şêwazên giştî ji bo gavên dravdanê, kurteya fermanê û beşên din. Ji bo "
+"rûpelên din ên dravdanê, sepetê, spas (ferman hat wergirtin), û dîtina "
+"fermanê derbas dibe."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"Dema ku hûn nexşeya <em>&quot;1 stûn&quot;</em> bi şablona sêwirana "
+"<em>&quot;Parvekirin&quot;</em> re bikar tînin, stûnek rast tenê tê xuyang "
+"kirin ger qada widgetê ya panela kêlekê ya rûpelê çalak be (Bendê Kêşanê, "
+"Panela Kêşanê, an Panela Kêşana Siparîşê). Wekî din, rûpel bi şêwazên "
+"Parvekirinê wekî stûnek yekane dimîne."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "Paşxaneya stûnê ya parçekirî"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"Rengê paşxaneyê ji bo stûna duyemîn a sêwirana dabeşkirî hilbijêre. Ji bo "
+"bikaranîna rengê paşxaneyê yê kurteya rêzê vala bihêle."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "Şablonên rûpelê"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "Şablona dahatê"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"Ji bo kêmtir bala mirovan di dema kirînê de tê pêşniyarkirin. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">Lêkolîna li ser terikandina selikê bixwînin</a> ."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "Barika pêşketinê ya zeliqok"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "Şêwaza barika pêşveçûnê"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "Hemûya fermanan"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "Rengê paşxaneyê"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "Girêdana çalakiyê"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "Kurteya fermana mobîl"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "Rewşa destpêkê ya mobîl"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "Guherandina tiştên sepetê di dema kirînê de çalak bike"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"Destûrê bidin xerîdaran ku mîqdarên hilberan biguherînin an tiştan "
+"rasterast li rûpela dravdanê derxînin."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "Xeletiyên babetên sepetê"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"Tenê dema ku koda kuponê wekî beşek cuda li ser rûpelên kasayê an selikê tê "
+"xuyang kirin derbas dibe, û heke karanîna kodên kuponê di mîhengên "
+"WooCommerce de çalak be."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "Cihê kodên kuponê"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "Bişkoka kuponê bicîh bîne"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "Şêwaza bişkoka &quot;kuponê bi kar bîne&quot; hilbijêre."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "Rêza navnîşanê 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"Ev mîheng di navbera beşên Dravdanê û Wergirtina Herêmî de tê parvekirin. "
+"Li ser beşa Wergirtina Herêmî, ew her weha biryar dide ka hilbijêra "
+"Şandin/Wergirtinê di hundurê beşa rêbaza şandinê de (berî navnîşanê) an "
+"wekî beşek cuda (piştî) tê xuyang kirin."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "Hesabên xerîdaran"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "Derketina ji mêvanan"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"Vebijarkên kirêkirina mêvan, têketin û çêkirina hesabê ji rûpela mîhengên "
+"Hesabên WooCommerce. Ew ji bo rehetiya we li vir têne birêvebirin, û ji ber "
+"vê yekê hûn dikarin nirxên cûda ji bo her profîla mîhengan bikar bînin."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "Destûrê bide xerîdaran ku bêyî hesabê drav bidin"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"Ji ber vê yekê <strong>tê pêşniyarkirin</strong> ku ji xerîdaran neyê "
+"xwestin ku di dema kirînê de hesabek çêbikin an têkevinê, ku ev dikare "
+"rêjeyên veguherînê kêm bike."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"Dema ku neçalak be, xerîdar divê têkevinê an hesabê xwe çêbikin da ku "
+"kirînê temam bikin."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "Têkeve di kasayê de"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "Di dema kirînê de têketinê çalak bike"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr ""
+"Ji bo xerîdarên vegeriyayî girêdanek nîşan bide da ku ji rûpela dravdanê "
+"têkevinê."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "Çêkirina hesabê"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "Destûrê bidin xerîdaran ku di dema kirînê de hesabek çêbikin"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "Xerîdar dikarin berî ku siparîşa xwe bidin hesabê xwe çêbikin."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "Destûrê bide xerîdaran ku ji rûpela Hesabê Min hesab çêbikin"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "Xerîdar dikarin ji rûpela Hesabê Min hesabê nû tomar bikin."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "Navê bikarhêner"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "Ji navê xerîdar çêbikin"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"Ji bo ku ji xerîdaran neyê xwestin ku di dema kirînê de navekî bikarhêner "
+"hilbijêrin, <strong>tê pêşniyar kirin</strong> , ku ev dikare rêjeyên "
+"veguherînê kêm bike."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"Navê bikarhêner ji navê xerîdar, an jî dema ku navek neyê bikar anîn, ji "
+"navnîşana e-nameyê tê çêkirin."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "Şîfre"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "Girêdana sazkirina şîfreyê bişîne"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Tête pêşniyar kirin</strong> da ku ji xerîdaran neyê xwestin ku di "
+"dema kirînê de şîfreyek saz bikin, ku ev dikare rêjeyên veguherînê kêm bike."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "Xerîdar ji bo afirandina şîfreya xwe bi ewlehî e-nameyek distînin."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"Bila xerîdarên qeydkirî bêyî têketinê dravdanê temam bikin û dema ku "
+"agahdariya têkiliyê li hev bike, fermanê bi hesabê xwe yê heyî ve girêbidin."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "Peyama hesabê heyî"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr ""
+"Bila xerîdar piştî ku fermana xwe didin, ji rûpela spasdariyê hesabê xwe "
+"çêbikin."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"Vebijarkên di vê beşê de dema ku kirîna mêvan û hevahengkirina hesabê çalak "
+"in hene. Her du taybetmendiyên jorîn çalak bikin da ku afirandina hesabê ya "
+"derengmayî mîheng bikin."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "Çêkirina derengmayî ya hesabê çalak bike"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"Dema ku hem derketina mêvan û hem jî hevahengkirina hesaban çalak in, "
+"derengxistina afirandina hesabê çalak bike."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "Cihê beşê"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "Berî beşa hûrguliyên xerîdar"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "Piştî beşa hûrguliyên xerîdar"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "Feydeyên çêkirina hesabê"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "Ger qadê vala bihêlin dê nivîsa xwerû were xuyang kirin."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "Bişkokên rêzkirî"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "Qadên pêwîst"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "Qadên peyama diyariyê di dema kirînê de çalak bike"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "Peyama diyariyê ya berfireh"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "Qada peyama diyariyê ya herdemî nîşan bide berfireh bûye"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "Peyama diyariyê di hûrguliyên fermanê de"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"Niha li ser vê beşê entegrasyon tune ne. Vebijarkên têkildarî her pêvek û "
+"mijarê tenê dema ku ew pêvek an mijar were çalak kirin dê li vir xuya bibin."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "Zeviyên telefonê"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "Dîtina zeviyê"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "Cihê zeviyê"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "Koda welatê telefonê û pejirandin"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "Welat"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "Welat li ser qadên telefonê çalak bike"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "Welatan ji bo şandin an fatûreyê fîltre bikin"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"Hilbijêra welat li ser her qada telefonê bi welatên ku ji bo şandin an "
+"fatûrekirinê li firotgeha we destûr in ve sînordar bike."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "Tesdîqkirin"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "Tesdîqkirina hêsan li gorî qaîdeyên welat çalak bike"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"Kontrol dike ka jimara telefonê ji bo welatê bijartî derbasdar e, tevî koda "
+"welat û dirêjahiya wê."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"Kontrol bike ka hejmar ji bo welatê bijartî cureyekî mobîl, xeta sabît, an "
+"cureyekî din ê pejirandî ye an na. Dibe ku hin hejmarên derbasdar red bike."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "Cureyên pejirandinê"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "Cihgir"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"Niha tu mifteyên lîsansê ji bo birêvebirinê tune ne. Dema ku pêvekek an "
+"pêvekek Fluid Checkout-ê ya lîsanskirî çalak be, mifteyên lîsansê dê li vir "
+"xuya bibin."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "Cureyê radestkirinê yê xwerû"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "Hilbijêre ka kîjan celeb radestkirin dê bi xwerû were hilbijartin."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "Zeviyên herêma barkirinê"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Hilbijêre ka kîjan qad dê ji bo qadên fîltera herêma şandina hilgirtinê ya "
+"herêmî werin nîşandan. Ji bo nîşandana hemî vebijarkên berdest vala bihêlin."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Ev qad dê wekî fîlterek ji bo rêbazên şandina herêmî werin nîşandan. Dibe "
+"ku hin qad hîn jî di qonaxa kirînê de xuya bibin dema ku li vir neyên "
+"hilbijartin, heke pêvekên lihevhatî hewce bikin ku ew bi rêkûpêk bixebitin."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "Navnîşana şandina siparîşê"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "Optimîzasyona rûpela dravdana fermanê"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"Ji bo siparîşên nehatine dayîn jî heman sêwirana zelal û li ser "
+"veguherînê-navendî wekî ya qonaxa dawî bidin."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"Ji bo fermanên ku li benda dayinê ne, sêwirana rûpela dayîna fermanan çêtir "
+"bikin."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"Ji bo rêwîtiyek kirînê ya domdar, ezmûna dayîna fermanê bi kaseya xwe re "
+"bidin ber hev."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"Sembolên baweriyê û nîşanan li cihê ku kirrûbir berî dravdanê hewceyê "
+"piştrastbûnê ne zêde bikin."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "Spas dikim baştirkirina rûpelê"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"Rûpela spasdariyê û hûrguliyên siparîşê piştî kirînê ji bo xerîdaran "
+"zelaltir bikin."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr ""
+"Rûpela spasdariyê û hûrguliyên fermana hesabê bi sêwiraneke zelaltir baştir "
+"bikin."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"Pêşveçûna rewşa fermanê, çalakî, dakêşan û notan li cihê ku watedar in "
+"nîşan bide."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "Beşên hûrguliyên fermanê li ser agahdariyên e-nameyê xweş bikin."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"Sembolên baweriyê û nîşanan li cihê ku kirrûbir piştî kirînê hewceyê "
+"piştrastbûnê ne zêde bikin."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "Agahdariyên e-nameyê"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"Ji bo dîtina vebijarkên bêtir, çêtirkirina rûpela spasdariyê û hûrguliyên "
+"fermanê çalak bike"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "Li ser rûpela spasdariyê şêwaza fireh bikar bînin"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"Ev vebijêrk bandorê li ser rûpela spasdariyê dikin, hûrguliyên fermanê li "
+"ser rûpelên hesabê û agahdariyên e-nameyê dibînin."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "Mîhengan tomar bike"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "Belge"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "Ereboka destan"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "Sipas ji were"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "Otomatîkkirina navnîşanê"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "Nîşanên baweriyê"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "Destûra te tune ku van mîhengan tomar bikî."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "Daxwaza tomarkirinê nederbasdar e."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "Mîhengên te hatine tomarkirin."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "Tê tomarkirin..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "Mîheng nehatin tomarkirin. Ji kerema xwe dîsa biceribînin."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "Agahdariyê red bike"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "Menûya mîhengan veke"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "Menûya mîhengan bigire"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "Pêşnerîn"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "Pêşdîtinê berfireh bike"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "Pêşdîtinê bigire"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "Sernivîs û jêrnivîsê nîşan bide"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "Sernivîs û jêrnivîsê veşêre"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "Pêşdîtina rûpelê"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "Pêşdîtina dîmenderê"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "Heb"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "Sermase"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "Firehiya pêşdîtinê"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "Kêmkirina firehiyê"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "Firehiya pêşdîtinê bi pîkselan"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "Firehiyê zêde bike"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "Pêşdîtin wekî"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "Mêvan"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "Têketî"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "Rûpela pêşdîtinê"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "Ji bo nihêrînek nêzîktir pêşdîtinê berfireh bike"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "Bi %s peyda dibe."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "Wan vekin"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr "Baştirkirin ji bo vê rûpelê hatine girtin. %s ji bo pêşdîtina rûpelê."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "Pêşdîtina %s"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "Danişîna îzolekirî · tiştek nehatiye tomarkirin"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "Şopandina Bikaranînê"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Raporên jîngeha malperê yên ne-hesas bişînin da ku alîkariya Fluid Checkout "
+"bikin ku lihevhatinê baştir bike. Rapor nayên şandin heya ku di vebijarkên "
+"li jêr de neyên çalak kirin."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "Raporên şopandina karanînê ji Fluid Checkout re bişînin"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"Ev rapor alîkariya me dikin ku em lihevhatin û piştgiriya malpera we baştir "
+"bikin û dema ku çalak bibin heftane têne şandin."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"Ti daneyên xerîdar, bikarhênerê rêveber, an jî ti daneyên din ên hesas di "
+"raporê de cih nagirin."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "Agahiyên bingehîn ên jîngehê"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"Agahiyên lîsteya WordPress, PHP, WooCommerce, mijar û pêvekan. Dema ku "
+"rapor çalak be, her tim tê de hene. Alîkariya me dike ku em hawîrdora ku "
+"malpera we tê de dixebite fam bikin."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "Mîhengên pêvekê"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"Mîhengên pêveka Fluid Checkout dişîne da ku ji bo daxwazên piştgiriyê bibe "
+"alîkar û ji me re dibe alîkar ku em fêm bikin ka hûn çawa pêvekên me bikar "
+"tînin."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "Hema têm"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "Metrîkên firotanê"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"Jimara fermanên mehane û firotina giştî ya salek berî sazkirina Fluid "
+"Checkout heta îro. Alîkariya me dike ku em fêm bikin ka hûn bi pêvekên me "
+"yên sazkirî bêtir pere qezenc dikin an na. Tu daneyên xerîdar an bikarhêner "
+"nayên şandin."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "Xizmetguzarî"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"Li şûna <code>select2</code> pêkhateyên daketî yên <code>TomSelect</code> "
+"bikar bînin"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect pêkhateyeke hilbijartina daketî ya hêsantir e ku ji Select2 "
+"kêmtir meyla xeletiyan heye, di heman demê de heman fonksiyonê pêşkêş dike."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"Mezinahiya tîpên di nav qadên forman de li ser rûpelên ku ji hêla vê pêvekê "
+"ve hatine çêtirkirin wekî 16px destnîşan dike da ku dema ku li ser cîhazên "
+"piçûk bi qadên forman re têkilî daynin, ji nêzîkbûna otomatîk dûr bikeve."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"Safari û gerokên din dikarin li ser cîhazên mobîl bixweber zoom bikin da ku "
+"xwendina nivîsê hêsantir bibe dema ku mezinahiya tîpan ji 16px piçûktir be."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "Şopandina pêvajoya skrîptê li ser konsola gerokê çalak bike."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "Mal û milkên nemînîzekirî"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Skrîptên Nexşeyên Google-ê"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "Skrîptên Nexşeyên Google-ê yên dubare jê neke"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"Dema ku çalak be, skrîptên Nexşeyên Google-ê yên dubare NAYÊN rakirin, ku "
+"ev dikare bibe sedema xeletiyan û pirsgirêkên performansê. Tenê vê "
+"vebijarkê dema çareserkirina pirsgirêkan bikar bînin."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "Herêmên Widgetan"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "Pêngava dawî li ser mobîl"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "Widgetan tenê di gava dawî de li ser mobîl nîşan bide"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"Widgetên nîşana baweriyê ya dravdanê tenê dema ku gava dawîn a dravdanê li "
+"ser cîhazên mobîl tê dîtin nîşan bide"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "Rêzan"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "Qada hejmara VATê"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "Qada jimara VAT-ê li forma fatûreyê zêde bikin."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "Etîketa zeviyê"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"Etîketa qada hejmara VATê (ango hejmara VATê) destnîşan bike. Li ser "
+"malperên pirzimanî, çêtir e ku ev qadê vala bimîne û rêza orîjînal were "
+"wergerandin."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "Hejmara VATê"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "YE-VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "Ji bo dîtina vebijarkên zêdetir, qada hejmara VAT-ê çalak bike"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "Pejirandina VATê"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "Di dema kirînê de qada hejmara VAT-ê ji bo EU-VAT-ê piştrast bike"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"Kontrol dike ka Hejmara VAT-ê ya hatî dayîn hejmareke VAT-ê ya derbasdar e "
+"ku li ser Databasa VIES-a Ewropî (Pergala Guhertina Agahiyên VAT-ê) hatî "
+"tomar kirin."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "Hejmara VAT ya dikanê"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"Hejmara VAT ya dikanê ku ji bo daxwaza pejirandina EU-VAT tê bikar anîn û "
+"li ser fatûreyan tê çap kirin.<br> <strong>Em bi tundî pêşniyar dikin ku "
+"hejmara VAT ya Dikana xwe lê zêde bikin,</strong> ji ber ku wekî din "
+"encamên şêwirmendiya VIES dibe ku ji bo mebestên hesabdariyê derbasdar "
+"nebin.<br> Yanî: <code>ATU99999999</code> an <code>EE999999999</code> ."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "Barkirina berevajî"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "Mekanîzma barkirina berevajî bicîh bîne"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"Rêjeya bacê li ser sifirê deyne û dema ku jimareya VAT ya xerîdar derbasdar "
+"be, &quot;Berdê berevajî&quot; li ser fatûreyan nîşan bide. Li gorî welatê "
+"firotgehê, dibe ku nivîsek &quot;Berdê berevajî&quot; ya cuda hewce be."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "Heman welat"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr ""
+"Mekanîzmaya barkirina berevajî ji bo danûstandinên li welatê firotgehê "
+"bicîh bîne:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"Dihêle ku mekanîzmaya barkirina berevajî ji bo danûstandinên di navbera "
+"pargîdaniyên li heman welatê firotgehê de were sepandin."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "Îstîsnayên barkirina berevajî"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr ""
+"Ji bo ku hûn sepandina mekanîzmaya barkirina berevajî ji bîr bikin, welatên "
+"din hilbijêrin."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"Bac dê ji siparîşên ji van welatan were stendin, her çend hejmareke VAT-ê "
+"ya derbasdar jî were dayîn."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "Etîketa barkirina berevajî li ser fatûreyan"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr ""
+"Etîketa &quot;barkirina berevajî&quot; li ser rûpela dravdanê û hûrguliyên "
+"siparîşê bicîh bikin."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "Nivîsa barkirina berevajî li ser fatûreyan"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "Etîketa nivîsa &quot;barkirina berevajî&quot; li ser fatûreyan bicîh bike."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "Baca ku li ser bingeha barkirina berevajî were dayîn"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "Navê şîrketê"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "Navê şîrketê ji jimareya VATê bixweber temam bike"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"Navê şîrketa fatûreyê li gorî hejmara VAT-ê ya derbasdar a ku ji hêla "
+"xerîdar ve hatî peyda kirin dagirin."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "Guherandina navê şîrketê"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "Destûrê bide guherandina navê şîrketê yê bixweber dagirtî"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"Dema ku çalak be, xerîdar dikarin navê pargîdaniya ku bi hejmara VAT-ê ya "
+"peyda kirî ve girêdayî ye biguherînin."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "VAT-ya YE ji bo kelûpelên dîjîtal"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"Ji 1ê Çileya 2015an pê ve, guhertin di rêziknameyên VATê yên YEyê yên "
+"derbarê kelûpelên dîjîtal de hatine kirin, ku bi taybetî bandorê li "
+"danûstandinên B2C dikin. VATê li ser kelûpelên dîjîtal divê li gorî cihê "
+"xerîdar were hesibandin, û delîlên vê yekê divê werin berhevkirin "
+"(navnîşana IP û navnîşana fatûreyê)."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "Çînên bacê ji bo kelûpelên dîjîtal"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "Hin çînên bacê hilbijêrin"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "Delîlên cihê"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "Delîlên cîhê xerîdar berhev bikin"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"Navnîşana IP-ê tomar dike û wê li gorî navnîşana fatûreyê ya xerîdar "
+"piştrast dike. Ger welatê ji navnîşana fatûreyê û IP-ya wan li hev nayên, "
+"xerîdar divê navnîşana fatûreya xwe bi nîşankirina qutiyek li ser rûpela "
+"dravdanê piştrast bike."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"Ev vebijêrk di Fluid Checkout de tê birêvebirin. <a href=\"%s\">Wê di "
+"mîhengên hesabên xerîdar de biguherîne</a> ."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"Ev vebijêrk di Fluid Checkout de tê birêvebirin. Wê di bin Fluid Checkout "
+"&gt; Hesabên xerîdar de biguherînin."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"Ev vebijêrk di Fluid Checkout de tê birêvebirin. Dema ku Fluid Checkout tê "
+"çalak kirin, cihê şandinê her gav wekî &quot;Navnîşana şandinê ya xerîdar "
+"wekî xwerû&quot; tê danîn. Xerîdar hîn jî dikarin di dema kirînê de "
+"navnîşanên şandin û fatûreyê yên cûda bidin.<br><br> Vebijêrkek ji bo "
+"destnîşankirina navnîşana fatûreyê ya xwerû wekî navnîşana şandinê di <a "
+"href=\"%s\">mîhengên Fluid Checkout</a> de heye."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"Ev vebijêrk di Fluid Checkout de tê birêvebirin. Dema ku Fluid Checkout tê "
+"çalak kirin, cihê şandinê her gav wekî &quot;Navnîşana şandinê ya xerîdar "
+"wekî xwerû&quot; tê danîn. Xerîdar hîn jî dikarin di dema kirînê de "
+"navnîşanên şandin û fatûreyê yên cûda bidin.<br><br> Vebijêrkek ji bo "
+"destnîşankirina navnîşana fatûreyê ya xwerû wekî navnîşana şandinê li "
+"WooCommerce &gt; Mîheng &gt; Fluid Checkout heye."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr ""
+"Ev mîheng ji bo WP Admin &gt; Fluid Checkout &gt; Settings hatine "
+"veguhastin."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"Ev tabloya Mîhengên WooCommerce kevnar e û dê di Fluid Checkout 6.0 de were "
+"rakirin."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "Biçe rûpela mîhengan"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "Vê tabloyê bi awayekî mayînde veşêre"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "Pêşdîtina rapora malperê"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"Ev ew dane ne ku dê li gorî mîhengên we yên niha di rapora jîngeha malperê "
+"ya bê de cih bigirin."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "Pêşdîtina raporê tê barkirin..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "Nikare pêşdîtina rapora malperê bar bike. Dîsa biceribîne."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "Nikaribû rapora malperê bişîne. Dîsa biceribîne."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "Rapora malperê bi serkeftî hate şandin."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "Niha çalak bike û bişîne"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "Nêzîkî"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr ""
+"Daxwazek ji bo rapora malperê jixwe di pêvajoyê de ye. Piştî demekê dîsa "
+"biceribînin."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "Raporkirina jîngeha malperê neçalak e."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "Tu daneyên rapora malperê ji bo şandinê tune ne."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"Ev domaina malperê nikare raporên jîngehê bişîne (domainên herêmî an jî yên "
+"pêşveçûnê ne tê de ne)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "Raportek malperê vê dawiyê hat şandin. Paşê dîsa biceribînin."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "Rapora malperê nehat şandin. Paşê dîsa biceribînin."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "Raporkirina jîngeha malperê ne berdest e."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "Ji bo mîhengên bijartî ti daneyên rapora malperê tune ne."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "Destûr nayê dayîn ku hûn raporên malperê birêve bibin."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "Taybetmendiya PRO"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "Pêvekên din"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "Tenê vê pêvekê bistîne — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "Pêveka saz bike"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "Nûve bike bo PRO — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"Ji bo vekirina van vebijarkan <a target=\"_blank\" href=\"%1$s\">%2$s "
+"bistînin</a> ."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "Zêdekirin"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "Belgekirinê bibîne"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"Daxwaz bikarhênerekî WordPress-ê yê têketî hewce dike. Ji bo bikaranîna "
+"daneyên bikarhênerê heyî, user_id-ê ji bîr bikin, an jî dema ku bangker "
+"dikare wî bikarhênerî biguherîne, user_id-ê bidin hedefgirtina hesabê din "
+"(qabiliyeta edit_user). Daxwazên bêdestûr fc_api_forbidden vedigerînin. "
+"Nasnameyeke bikarhêner a nederbasdar fc_api_user_not_found vedigerîne."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr ""
+"HTTP 200 bi { &quot;dane&quot;: { ... } } dema ku destgir bargiraniyek "
+"vedigerîne."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"HTTP 200 bi { &quot;serkeftin&quot;: rast } dema ku barkêş tune be (mînak "
+"DELETE)."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"Têkçûn çewtiya WordPress REST JSON ji WP_Error (code, message, data.status) "
+"vedigerînin. Kodên têl pêşgira fc_api_* bi kar tînin."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "Gihîştina qedexekirî."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "Bikarhênerê hedef nehat dîtin."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "Ev taybetmendî peyda nabe."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "Qadeke navnîşanê ya pêwîst tune ye."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "Koda postayê an jî zîp ne derbasdar e."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "Hejmara telefonê ne derbasdar e."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "Dewlet an wîlayet ne derbasdar e."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "Welat ne derbasdar e an jî qadên navnîşanê tê de tune ne."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "Daxwaz nehat pêvajokirin."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "Vegere gava berê"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "Biçe ser mîhengan"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "Ji nû ve dest pê bike û vegere gava sazkirinê ya rêberkirî ya yekem"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "Ji nû ve dest pê bike"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "Ji kerema xwe berî berdewamkirinê hemû gavên jêrîn temam bikin."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "Firehkirin"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "Jiberhevketin"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "Hilperkîn"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "Wekî temam nîşan bike"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "Wekî netemam nîşan bike"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "Wêneyê bi mezinahiya tevahî bibîne: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "Wêneya rêbernameya sazkirinê ya bi mezinahiya tevahî"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "Wêneyê bigire"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "Sazkirina Rêberkirî ya Kontrolkirina Şilavê"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "Bi xêr hatî"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "Derbaskirina xwe ya kirînê bikole"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "Amade ye"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "Destûra te tune ku tu bigihîjî vê rûpelê."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "Biçe gava %1$d: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"Ev sazkirina rêberkirî alîkariya we dike ku hûn bi Fluid Checkout-ê re nas "
+"bibin. Gavên li jêr niha cîhên parastinê ne."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "Dema ku hûn amade ne, bi gava din berdewam bikin."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "Ji bo dîtina Fluid Checkout di çalakiyê de, kaseya firotgeha xwe veke."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "Rûpela dravdanê bibîne"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"Hûn dikarin vegerin mîhengên Fluid Checkout da ku hûn berdewam bikin bi "
+"mîhengkirina firotgeha xwe."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "Mîhengên kirîn û selikê binirxînin"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "Lêzêdekirinên ji dashboardê bigerin"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "Biqedîne û here mîhengan"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Vebijêrka xuyabûna qada telefona fatûreyê ji nirxa mîrasî nûve bike da ku "
+"li gorî rêzikên WooCommerce be."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Vebijêrka xuyabûna qada telefona şandinê ji nirxa mîrasî nûve bike da ku li "
+"gorî rêziknameyên WooCommerce be."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"Mîhenga rengê paşxaneya kurteya fermanê li vebijarka rengê paşxaneya stûna "
+"duyemîn a sêwirana dabeşkirî ya nû kopî bike."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"Taybetiya qadên hilbijartinê yên pêşkeftî her gav dema ku pêveka Biteship "
+"tê bikar anîn neçalak e."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"Dema ku German Market tê bikar anîn, cihê danîna fermanê her tim wekî "
+"&quot;Li jêr kurteya fermanê&quot; tê danîn. Ew pêvek hewce dike ku bişkoka "
+"danîna fermanê û qutiyên kontrolê yên qanûnî li jêr kurteya fermanê werin "
+"nîşandan."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"Dema ku Germanized for WooCommerce tê bikar anîn, cihê danîna fermanê her "
+"tim wekî &quot;Li jêr kurteya fermanê&quot; tê danîn. Ew pêvek hewce dike "
+"ku bişkoka danîna fermanê û qutiyên kontrolê yên qanûnî li jêr kurteya "
+"fermanê werin nîşandan."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Cihên wergirtinê biguherîne"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Etîketa wergirtina herêmî ji mîhengên WooCommerce bikar bînin"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Dema ku çalak be, etîketa vebijarka wergirtinê li ser dravdanê bi sernavê "
+"ji mîhengên cîhê wergirtinê ya WooCommerce re li hev dike. Dema ku neçalak "
+"be, etîket nivîsa &quot;Wergirtina Herêmî&quot; ya wergerbar ji Fluid "
+"Checkout bikar tîne."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2800,3 +4762,115 @@ msgstr "Erê"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "Yûhenna"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "Keçik"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "Şîrketa Mînak"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "123 Kolana Sereke"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "Anytown"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "Ji kerema xwe pakêtê li ber derî bihêlin."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "Beanie"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "Devik"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "T-Shirt"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr ""
+"Me siparîşa we wergirt û dema ku were şandin em ê nûvekirinek ji we re "
+"bişînin."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "Rehbera bikaranînê"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "API-ya Cihên (Nû)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "API-ya Cihên (Mîrasî)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "Versiyon 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "Versiyona 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ Cara din zûtir pere bidin ✔ Tercîhên xwe yên dravdanê birêve bibin ✔ Rewş "
+"û dîroka fermanê bibînin"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "Veşartî"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "Bixwe"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "Pêwîst"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Şandin bo navnîşanê"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Wergirtina herêmî"

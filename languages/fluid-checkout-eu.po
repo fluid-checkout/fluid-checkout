@@ -279,10 +279,6 @@ msgstr "Fluid Checkout datu-basea behar bezala eguneratu da"
 msgid "The database changes where applied successfully."
 msgstr "Datu-basea ondo aplikatzen denean aldatzen da."
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "Ados"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "Baztertu"
@@ -401,39 +397,9 @@ msgstr "Irakurri dokumentazioa"
 msgid "Don't show this again"
 msgstr "Ez erakutsi hau berriro"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "Eskaintza bereziak"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"Hedatu Fluid Checkout-en ontasun guztia zure saskiaren orrialdera eta "
-"eskerrik asko orrietara."
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Fluid Checkout PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"Diseinatzeko txantiloiak, saskia optimizatu eta jasotako eskaerak orriak, "
-"kontu bat etortzea eta askoz gehiago."
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"Tresna onenak <strong>zure WooCommerce ordainketen bihurketa-tasa gehiago "
-"hobetzeko</strong> eta erosketa-esperientzia koherentea izan dadin bidaia "
-"osoan."
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -455,10 +421,6 @@ msgstr "Editatu saskiaren edukia ordainketa orrian"
 msgid "Account matching / user matching"
 msgstr "Kontua bat etortzea / erabiltzailea bat etortzea"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "Onartutako ordainketa-metodoetako Express Checkout botoiak"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "Konfiantza-sinboloak saskian eta eskerrik asko orrialdeetan"
@@ -466,10 +428,6 @@ msgstr "Konfiantza-sinboloak saskian eta eskerrik asko orrialdeetan"
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "Kupoi kodearen posizio gehiago ordainketa orrian"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "Kupoi-kode integratua saskiaren orrian"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -483,247 +441,25 @@ msgstr "Opari mezuak eta ontziratze-agiriak"
 msgid "Local pickup and in-store collection"
 msgstr "Bertako bilketa eta denda barruko bilketa"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "Berritu PRO-ra — 99 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Fluid Checkout PRO - Sorta"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "PRO ezaugarri guztiak + Gehigarri guztiak prezio berezi baten truke."
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"Sorteak gaur egun eskaintzen ditugun gehigarri guztiak eta etorkizunean "
-"abiarazten ditugun Fluid Checkout gehigarriak biltzen ditu."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "226 euroko balioa (Gorde % 42)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Google Helbidea osatze automatikoa"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "Helbide Liburua"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "EB-BEZ laguntzailea"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "Etorkizuneko gehigarri guztiak *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* Harpidetza aktiboa duzun bitartean."
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "Lortu sorta - 129 euro bakarrik"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"Prezio guztiak eurotan agertzen dira. Gure webguneko prezioekin "
-"desberdintasunik balego, webgunean agertzen diren eskaintzak hauek "
-"gainditzen ditu eta aplikatuko dira."
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "Gehigarriak"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "Hobetu ordainketa-esperientzia gehigarri hauekin."
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "Dagoeneko daukat - Ezkutatu eskaintza hau"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "Instalatua — Aktibatu"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "Aktibatuta"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "Gehienez % 40 gutxiago ordaintzeko eremuak betetzeko."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"Saihestu entrega-atzerapenak eta pozik ez dauden bezeroak. Bildu "
-"<strong>helbide-informazio zuzena</strong> zurekin erosten duten lehen "
-"alditik."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "Eskuratu gehigarri hau - 29 EUR"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "Helbide liburua"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "Bidalketa eta fakturaziorako gordetako hainbat helbide."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"Utzi bezeroei <strong>bidalketa- eta fakturazio-helbide anitz "
-"gorde</strong> beren kontuan eta aukeratu zein erabili ordaintzeko eta "
-"saskiaren orrietan."
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "Eskuratu gehigarri hau - 59 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "EB-BEZaren baliozkotze sinplifikatua zure dendarako."
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"Bildu eta <strong>balioztatu EBko BEZ-zenbakiak ordainketa-orrian</strong> "
-", zerga-gastuak kendu alderantzizko kargaren arabera eta bezeroaren "
-"kokapena berresten du behar denean."
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "Eskuratu gehigarri hau - 39 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"Gehigarri guztiak bereiz saltzen dira eta <strong>Fluid Checkout "
-"Lite</strong> plugina instalatu eta aktibatu behar da, adierazitakoan izan "
-"ezik."
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Hautatu irudi bat"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Hasi saioa "
-"zure kontuan</a> zure lizentzia-gakoa lortzeko, edo <a href=\"%s\" "
-"target=\"_blank\">lizentzia-gako berri bat erosteko</a> ."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "%s arte baliozkoa."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "%s egunean iraungi zen."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Hasi saioa "
-"zure kontuan</a> zure lizentzia-gakoa berritzeko eta eguneraketak eta "
-"laguntza jasotzen jarraitzeko."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "Lizentzia-giltza bertan behera utzi da."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">Erosi lizentzia-gako berri bat</a> eta "
-"jarraitu eguneratzeak eta laguntza jasotzen."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "Errorea: "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "Konfigurazioa eta dokumentazioa"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "Bikaina! Zure ordainketa orria Fluid Checkout-en martxan dago."
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "Hona hemen baliabide batzuk hasteko:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"Irakurri Instalazio-gida <a href=\"%s\" target=\"_blank\">Getting stated "
-"Fluid Checkout-ekin</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "Konfiguratu diseinua eta diseinua <a href=\"%s\">ordainketa-aukeretan</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"Egiaztatu instalatu dituzun beste pluginetarako <a "
-"href=\"%s\">integrazio-aukerarik</a> dagoen."
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"Bisitatu <a href=\"%s\" target=\"_blank\">gure dokumentazioa</a> Fluid "
-"Checkout eginbideei buruzko informazio gehiago lortzeko."
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"Inoiz laguntza behar baduzu, <a href=\"%s\" target=\"_blank\">ireki "
-"laguntza-txartel bat</a> gure laguntza-kanal ofizialean."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -736,14 +472,6 @@ msgstr "Saskiaren optimizazioak"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "Gaitu saskiaren orriaren optimizazioak"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "Erakutsi saskiaren orria ordainketa-orriaren antzeko diseinu batekin."
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "Goiburua eta oina"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -776,16 +504,6 @@ msgstr "Egin eskaeraren laburpena ikusgai saskiaren orrian korritzen duzun bitar
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "Kupoi kodeak"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"Hautatu saskiaren orrian kupoi-kodeen atala bistaratzeko posizioa. AJAX "
-"saskia eta ordainketa-orrian kupoi-kode integratuak gaituta daudenean "
-"soilik aplikagarria da."
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -881,10 +599,6 @@ msgstr "Gaiaren salmenta gurutzatuen diseinua"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "Saskiaren orrian bistaratu beharreko salmenta gurutzatutako elementu kopurua"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "Konfiantza-sinboloak eta txapak"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "Gehitu widget-eremuak saskiaren orrira"
@@ -901,10 +615,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "Ordainketa"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "Diseinua eta diseinua"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "Ordainketa diseinua"
@@ -920,22 +630,6 @@ msgstr "Modu iluna"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "Gaitu modu iluna"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "Goiburuko eta oinetako txantiloiak"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"Distrakziorik gabeko goiburua eta orri-oina erabiltzea gomendatzen dugu "
-"ordainketa-orrian distrakziorik ez izateko. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" "
-"target=\"_blank\">Irakurri gurdiak uzteari buruzko ikerketa</a> ."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -988,10 +682,6 @@ msgid ""
 msgstr ""
 "Aukeratu atzeko planoko kolorea ordainketa-orriaren oinerako. Distrakziorik "
 "gabeko goiburua eta oina erabiltzean soilik aplikatzen da."
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "Ordainketa elementuak"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1079,18 +769,6 @@ msgstr "Esteka denda orrira"
 msgid "Cart items"
 msgstr "Saskia elementuak"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "Gaitu saskiko elementuak editatzeko aukerak ordainketa-orrian"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"Eman bezeroei produktuen kantitateak aldatzeko edo zuzenean elementuak "
-"kentzeko ordainketa orrian."
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "Ezkutatu saskiko elementuen erroreak ordainketa-orrian"
@@ -1143,38 +821,9 @@ msgstr ""
 "Widget-eremu hauek ordainketa-orrian konfiantza-ikurrak eta konfiantzazko "
 "bereizgarriak gehitzeko erabiltzen dira."
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"Bistaratu ordainketa alboko barraren widget-ak gailu mugikorretan azken "
-"ordainketa-urratsa ikusten duzunean urrats anitzeko ordainketa-diseinua "
-"erabiltzen denean"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "Gaitu kupoi-kode integratua atala"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr ""
-"WooCommerce ezarpenetan kupoi kodeak erabiltzea gaituta badago soilik "
-"aplikagarria."
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "Erakutsi kupoi-kodeen atalaren izenburua"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"Kupoi-kodea ordainketa-orrietan edo gurdi-orrietan aparteko atal gisa "
-"bistaratzen denean soilik aplikagarria da."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1193,17 +842,6 @@ msgstr "Ordainketa metodoen aurreko azpiurrats gisa"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "Ordainketa-metodoen ondorengo azpi-urrats gisa"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"Hautatu &quot;aplikatu kupoia&quot; botoiaren estiloa. Bakarrik "
-"aplikagarria da kupoi-kodearen atala ordainketa-orrian &quot;Orroa egiteko "
-"urratsen aurretik&quot; edo saskiaren orrian &quot;Saskiaren elementuen "
-"atala baino lehen&quot; bistaratzen denean."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1255,21 +893,6 @@ msgstr ""
 "benetan behar dutenean edo bidalketa-helbide egokia lortzea funtsezkoa "
 "denean (adibidez, janaria eta beste produktu galkorrak entregatzen "
 "badituzu)."
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "Erakutsi &quot;Gehitu&quot; esteka-botoiak minuskulaz"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"Egin aukerako eremuko &quot;Gehitu&quot; esteka-botoiaren etiketak "
-"<code>lowercase</code> gisa (adibidez, &quot;Gehitu telefono-zenbakia&quot; "
-"&quot;Gehitu telefono-zenbakia&quot;ren ordez). Aukera honek kupoi-kodeen "
-"eremuen esteka-botoiei ere eragiten die."
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1364,24 +987,6 @@ msgstr "Bidalketa helbidea baino lehen"
 msgid "After shipping address"
 msgstr "Bidalketa helbidearen ondoren"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "Eragotzi lehen bidalketa-metodoaren hautaketa automatikoa"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Gaituta dagoenean, eskuragarri dagoen lehen bidalketa-metodoa ez da "
-"automatikoki hautatuko bidalketa-pakete bakoitzeko beste "
-"bidalketa-metodorik hautatu ez denean.<br> Aukera hau automatikoki gaituko "
-"da hautatutako bidalketa-metodoa garbitzeko aukera gaituta badago Tokiko "
-"bilketa eginbiderako."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Tokiko bilketa"
@@ -1401,23 +1006,6 @@ msgid ""
 msgstr ""
 "Bidalketa helbidea bilketa puntuaren kokapenarekin ordezkatzen du tokiko "
 "bilketa bidalketa metodo bat hautatzen denean."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Erakutsi bidalketa-metodoak garbitzeko aukera jasotzeko kokapenaren "
-"azpi-urratsean"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Erakutsi esteka-botoia bilketa-kokapeneko azpi-urratsean aukeratutako "
-"bidalketa-metodoak garbitzeko. Hau erabil daiteke bidalketa helbidearen "
-"atala berriro erakusteko aldez aurretik tokiko bilketa-metodo bat hautatu "
-"bazen."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1496,33 +1084,6 @@ msgstr "Gehitu fakturazio telefonoaren eremua ordainketa egiteko formularioan."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Aukeratu zein urrats bistaratzeko fakturazio telefonoaren eremua."
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "Gaitu telefono-zenbakiaren baliozkotzea herrialdeko arauetan oinarrituta"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"Desgaituta dagoenean, telefonoaren eremuaren baliozkotzeak ez du "
-"egiaztatuko herrialde edo eremu-kodeak herrialderako balio duten ala ez."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "Erakutsi baimendutako herrialdeak soilik bidaltzeko edo fakturatzeko"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"Gaituta dagoenean, bidalketak egiteko baimendutako herrialdeak soilik "
-"egongo dira eskuragarri bidalketa-telefonoaren eremuan, eta fakturaziorako "
-"baimendutako herrialdeak bakarrik egongo dira erabilgarri "
-"fakturazio-telefonoaren eremuan."
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "Erakutsi herrialde-kodea banderaren ondoan"
@@ -1557,10 +1118,6 @@ msgstr "Definitu eskaera-ohar osagarrien eremuaren ikusgarritasuna."
 msgid "Gift options"
 msgstr "Opari aukerak"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "Erakutsi opari-mezua eta beste opari-aukera batzuk ordainketa-orrian"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1568,10 +1125,6 @@ msgid ""
 msgstr ""
 "Eman bezeroei opari-mezu bat eta opariekin lotutako beste aukera batzuk "
 "gehitzeko eskaerari."
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "Bistaratu opari-mezuen eremuak beti zabalduta"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1627,27 +1180,9 @@ msgstr "Aginte-panela"
 msgid "Integrations"
 msgstr "Integrazioak"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"Momentuz ez dago integraziorik atal honetan. Plugin bakoitzari lotutako "
-"aukerak hemen agertuko dira plugin hori aktibatuta badago."
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "Lizentzia-gakoak"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"Momentuz ez dago lizentzia-gakoen aukerarik atal honetan. Plugin edo "
-"gehigarri bakoitzari lotutako aukerak hemen agertuko dira plugin hori "
-"aktibatuta dagoenean."
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1752,14 +1287,6 @@ msgstr ""
 "Widget-eremu hauek esker on orrialdean konfiantza-ikurrak eta "
 "konfiantza-txapak gehitzeko erabiltzen dira."
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"Aukera hauek eskerrak emateko orriari eragiten diote, ikusi eskaeraren "
-"xehetasunak kontuko orrialdeetan eta posta elektronikoko jakinarazpenetan."
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "Agindu ekintzak"
@@ -1852,22 +1379,6 @@ msgstr "Kargatu gutxitu gabeko aktiboak"
 msgid "Enhanced select fields"
 msgstr "Aukeratutako eremu hobetuak"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr ""
-"Ordeztu <code>select2</code> goitibeherako osagaiak <code>TomSelect</code> "
-"ekin"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect goitibeherako hautapen osagai sinpleagoa da, Select2-k baino "
-"akatsak izateko joera gutxiago duena, WooCommerce ordaintzeko orrietan "
-"benetan erabiltzen diren funtzio berdinak eskaintzen dituen bitartean."
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "Konpondu inprimaki-eremuetan zoom automatikoa"
@@ -1875,35 +1386,6 @@ msgstr "Konpondu inprimaki-eremuetan zoom automatikoa"
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "Ezarri <code>font-size</code> inprimaki-eremuen barruan 16 px-en"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"Inprimaki-eremuen barruko letra-tamaina 16 px baino txikiagoa denean, "
-"Safari eta beste arakatzaileek automatikoki handitu dezakete gailu "
-"mugikorretan testua errazago irakurtzeko. Aukera hau gaituta dagoenean, "
-"inprimaki-eremuen barruko letra-tamaina 16 px-koa ezarriko du Fluid "
-"Checkout-ek optimizatutako orrialdeetan, handitu ez dadin."
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"Bidalketa-helmuga &quot;Bezeroaren bidalketa-helbide lehenetsia&quot; gisa "
-"ezartzen da beti, Fluid Checkout aktibatuta dagoenean. Bezeroek bidalketa- "
-"eta fakturazio-helbide desberdinak eman ditzakete ordainketa egitean, "
-"fakturazio-helbide lehenetsia bidalketa-helbidearen berdina izan dadin "
-"ezartzeko aukera bat eskuragarri dago WooCommerce &gt; Ezarpenak &gt; Fluid "
-"Checkout atalean."
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1930,14 +1412,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(esperimentala)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "Berretsi"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "Egiaztatu telefono zenbakia"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2467,10 +1941,6 @@ msgstr "Aurrerapen-barraren ondoren"
 msgid "Before coupon codes section"
 msgstr "Kupoi kodeen aurreko atala"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "Gaitu nazioarteko telefono zenbakien eremuak"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "Formatu telefono zenbakiak herrialde bakoitzaren arauen arabera."
@@ -2478,18 +1948,6 @@ msgstr "Formatu telefono zenbakiak herrialde bakoitzaren arauen arabera."
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "Erabili telefono zenbakiaren balidazio zehatza"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"Saiatu telefono zenbakia hautatutako herrialde kodearen arauen arabera "
-"mugikor edo finko zenbaki baliozkoa dela ziurtatzen. Aukera honek "
-"<code>intl-tel-input</code> balioztatze zehatzaren funtzioa erabiltzen du, "
-"eta horrek telefono zenbaki batzuentzat positibo faltsuak eman ditzake."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2536,26 +1994,6 @@ msgstr "2 zutabe"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "Zutabe 1"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"Ordainketa-urratsen, eskaeraren laburpenaren eta beste atal batzuen estilo "
-"orokorrak.<br> Baliteke beste orrialde batzuei ere aplikatzea, hala nola "
-"Saskia, Jasotako Eskaera eta Ikusi Eskaera orrialdeei."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"<em>&quot;Zatitu&quot;</em> diseinu txantiloia ez dago erabilgarri "
-"<em>&quot;1 zutabe&quot;</em> diseinua erabiltzean eta "
-"<em>&quot;Minimalista&quot;</em> aukerara itzuliko da hautatzen bada."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2653,6 +2091,2543 @@ msgstr ""
 "bidalketa-helbidea fakturazio-helbidean kopiatu ahal izateko aukera hori "
 "markatuta dagoenean, bestela bezeroak ezin izango du ordainketa-formularioa "
 "bete."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "Ezarpenen profilak"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "Ezarpenen profila"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "Ez duzu ekintza hau egiteko baimenik."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "Ez duzu pluginak aktibatzeko baimenik."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "Plugin falta."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "Plugin-a aktibatuta."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "Aldaketa hauek aplikatuko dira:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Fluid Checkout 5.0 bertsiotik aurrera, ezarpenak modu ezberdinean gordetzen "
+"dira. Aukera zaharrak datu-basean gordetzen dira oraindik, behar izanez "
+"gero aurreko bertsioetara jaitsi ahal izateko."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"Zure denda 2 aste inguru daramatza ezarpen berriekin martxan, beraz, "
+"datu-basean gordetako aukera zaharrak garbitu ahal izan dituzu. Kontuan "
+"izan, garbitu ondoren, pluginaren aurreko bertsioetara jaitsi behar baduzu, "
+"ezarpen guztietarako balio lehenetsiak erabiliko dituela."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "Fluid Checkout ezarpenen garbiketa"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "Ezabatu soberan dauden aukerak"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "Lagundu iezaguzu Fluid Checkout hobetzen"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"Partekatu gune-ingurunearen txosten anonimoak Fluid Checkout-ekin laguntza "
+"azkarragoa lortzeko eta bateragarritasuna hobetzen eta eragina neurtzen "
+"laguntzeko. Ez da bezero, erabiltzaile edo datu sentikorrik sartzen. Zer "
+"partekatzen den aukera dezakezu edozein unetan Tresnen ezarpenetatik."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "Gaitu gunearen ingurune txostenak"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "Berrikusi ezarpenak"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"Aurreikuspen hau iraungi da. Kargatu berriro administrazio-orria "
+"aurreikuspen berri bat hasteko."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "Aurrebista iraungi da"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "Ezin dira eskaerak aurrebistan egin."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "Saioa hastea ez dago eskuragarri aurrebistan."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "Ezin dira kontuak sortu aurrebistan."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "Beste guneetarako eskaerak blokeatuta daude aurrebistan."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "Prozesatzen…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "Zerbait gaizki joan da. Saiatu berriro."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "Aktibatu plugina"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - Ordainketa pakete osoa"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"PRO funtzio guztiak + gehigarri guztiak, prezio bakarra. Diseinu "
+"txantiloiak, erosketa-saskiaren eta eskaera jasotako orrialde optimizatuak, "
+"kontuen parekatzea eta askoz gehiago."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "Eskaera ordainketa orri optimizatua"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "Ordainketa-metodo onartuen ordainketa azkarraren botoiak"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "Kontuaren sorrera atzeratua"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Helbidearen osaketa automatikoa Google Maps APIekin"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "Helbide-liburuan hainbat helbide gordeta"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "EBko BEZ laguntzailea"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "Ezkutatu atal hau"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "Informazio gehiago"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "Lortu sarbide goiztiarra"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "Aktibatu gehigarria"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "Atera etekin handiagoa zure ordainketa-prozesuari"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "Probatu API gakoa"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "Konfigurazio gidatua"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "Aukerak"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "Konfiguratu ordainketa- <a href=\"%s\">aukeren</a> diseinua eta diseinua."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"Gaitu gonbidatuen ordainketa eta/edo berrikusi <a href=\"%s\">bezeroen "
+"kontuen ezarpenak</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"Gaitu <a href=\"%1$s\">erosketa-saski</a> optimizatua, <a "
+"href=\"%2$s\">eskerrak emateko</a> orria eta <a href=\"%3$s\">eskaera "
+"ordaintzeko</a> orria."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr "Gaitu <a href=\"%s\">helbideen osatze automatikoa</a> Google Maps-etik."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr ""
+"Gaitu gordetako helbide bat baino gehiago <a "
+"href=\"%s\">helbide-liburuarekin</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"Egiaztatu instalatuta dituzun gai edo beste plugin batzuen <a "
+"href=\"%s\">integrazio aukerarik</a> dagoen."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"Lortu laguntza azkarragoa eta lagundu iezaguzu bateragarritasuna hobetzen "
+"eta eragina neurtzen. <a href=\"%s\">Gaitu erabileraren jarraipena</a> "
+"tresnen ezarpenetatik."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "Ezarpenen fitxa falta da."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "Hasteko"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>Bikain! Zure ordainketa-orria Fluid Checkout-en exekutatzen ari da "
+"orain.</strong> Hona hemen hasteko urrats batzuk:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "Osatuta"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "Txostenaren datuak aurreikustea"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "Bidali orain"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "Detektatu automatikoki"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "Albaniarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "Amharera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "Arabiera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "Armeniarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "Azerbaijanera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "Euskera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "Bielorrusiarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "Bengalera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "Bosniarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "Bulgariera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "Birmaniarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "Katalana"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "Txinera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "Txinera (sinplifikatua)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "Txinera (Hong Kong)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "Txinera (Tradizionala)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "Kroaziera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "Txekiarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "Daniera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "Nederlandera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "Ingelesa"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "Ingelesa (Australia)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "Ingelesa (Britainia Handia)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "Estoniarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "Farsi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "Finlandiera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "Filipinarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "Frantsesa"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "Frantsesa (Kanadarra)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "Galiziarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "Georgiarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "Alemana"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "Greziera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "Gujaratiarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "Hebreera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "Hindia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "Hungariarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "Islandiarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "Indonesiera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "Italiera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "Japoniera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "Kannada"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "Kazakhstan"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "Khmerra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "Koreera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "Kirgiz"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "Lao"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "Letoniera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "Lituaniarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "Mazedoniarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "Malaysiarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "Malayalam"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "Marathi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "Mongoliera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "Nepalera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "Norvegiera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "Poloniera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "Portugesa"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "Portugesa (Brasil)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "Portugesa (Portugal)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "Punjabi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "Errumaniera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "Errusiera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "serbierarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "Sinhala"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "Eslovakiera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "Esloveniera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "Gaztelania"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "Gaztelania (Latinoamerika)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "Swahilia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "Suediera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "Tamil"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "Telugu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "Thailandiarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "Turkiarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "Ukrainiera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "Urduera"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "Vietnamdarra"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "Zuluera"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Google helbidearen autokonpletea"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Google Places API bertsioa"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"Aukeratu Google Places APIaren zein bertsio erabili nahi duzun. Ahalik eta "
+"azkarren Places API berrira aldatzea gomendatzen dizugu."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"&quot;Places API (Berria)&quot; erabiltzea gomendatzen dugu 2025eko "
+"martxoaren 1etik aurrera. Google-k &quot;Places API (Legacy)&quot; bertsioa "
+"Legacy egoerara eramango du, hau da, ezingo duzu zerbitzu hau API gako "
+"berrietarako gaitu eta API bertsio hori ez da gehiago erabilgarri egongo. "
+"Legacy APIa erabiltzen duten kontuek etenik gabe funtzionatzen jarrai "
+"dezakete."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(Gomendatua)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Google API gakoa"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"Itsatsi zure Google API gakoa eta erabili proba botoia webgune honetarako "
+"funtzionatzen duela baieztatzeko. Ziurtatu gakoa baliozkoa dela eta zure "
+"domeinurako baimenduta dagoela, bestela helbide eremua blokeatu egin "
+"daiteke bezeroek beren eskaerak osatzea eragotziz."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "Gaitu Google helbideen autoosatze-lana"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr "Gaitu helbideen osatze automatikoa Google Maps APIak erabiliz."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Google API hizkuntza"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"Hizkuntza hau erabiliko da Google Places API helbideen iradokizunak "
+"bistaratzeko eta helbideak ere automatikoki osatuko dira hizkuntza honetan."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "Emaitza motak"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Utzi hutsik edozein motatako emaitza onartzeko, normalean emaitza hobeak "
+"ematen baititu. <a href=\"%s\" target=\"_blank\">Ikusi dokumentazioa "
+"xehetasun gehiago lortzeko</a> .<br> Hautatu gehienez 5 "
+"helbide-bilaketa-emaitza mota helbidea automatikoki osatzeko eremuetan "
+"itzultzeko.<br> Bisitatu Google Maps-en dokumentazioa <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">onartzen diren motak</a> ezagutzeko."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "Emaitza motak (Legacy API)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Zein helbide-bilaketa-emaitza mota itzuli behar diren Places APIa (Legacy) "
+"erabiltzean.<br> Bisitatu Legacy Google Places APIaren dokumentazioa <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">onartutako motak</a> ezagutzeko."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "Enpresaren eremuak"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "Gaitu enpresaren izenaren autoosatze funtzioa eskuragarri badago"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Gaitu enpresaren eremuaren osatze automatikoa enpresaren izenaren "
+"informazioarekin Google Maps APIetatik itzultzen denean."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "Negozioen bilaketa"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "Gaitu enpresak bilatzeko aukera enpresaren eremuan"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"Gaitu enpresa batekin lotutako helbideen iradokizuna enpresaren eremuan "
+"idazterakoan, eta bete automatikoki helbide-eremu guztiak iradokizunetatik "
+"enpresa bat hautatzen denean."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "Enpresaren emaitza motak"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Hautatu gehienez 5 helbide-bilaketa-emaitza mota enpresaren eremuak "
+"automatikoki betetzean itzultzeko.<br> Gomendatutako balioa "
+"<code>establishment</code> da, negozio mota gehienak barne hartzen "
+"dituena.<br> Utzi hutsik edozein motatako emaitza onartzeko, negozioekin "
+"zerikusirik ez duten emaitzak barne.<br> Bisitatu Google Maps-en "
+"dokumentazioa <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">onartzen diren motak</a> ezagutzeko."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Google-ren logotipoa"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "Erakutsi &quot;Google-k bultzatuta&quot; testua eta logotipoa"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"Markatuta dagoenean, &quot;Powered by Google&quot; testua eta logotipoa "
+"helbidea automatikoki osatzeko iradokizunen koadroaren behealdean agertuko "
+"dira."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "Brasilgo API helbidearen autoosagarria"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "Brasilgo APIa"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "Gaitu Brasilgo API helbideen autoosatze CEP eremuetarako"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"Erabili Brasil APIa helbideak berreskuratu eta automatikoki betetzeko "
+"CEP/Posta kodea eremua erabiliz. Brasilgo helbideetarako bakarrik da "
+"garrantzitsua."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "API bertsioa"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "Aukeratu Brasil API CEP metodoaren zein bertsio erabili nahi duzun."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "Helbide-liburuaren migrazioa"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "WooCommerce helbideak"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"Kopiatu WooCommerce-ko bidalketa eta fakturazio helbideak bezeroen "
+"helbide-liburuan."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "Gaitu helbide-liburuaren funtzioa"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"Bezeroei hainbat helbide gordetzeko aukera eman eta bidalketa eta "
+"fakturaziorako erabiliko den helbide lehenetsia definitzeko."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "Helbide-etiketak"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "Utzi bezeroei helbide bakoitzerako etiketa pertsonalizatu bat gehitzen"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"Helbide-etiketek bezeroei errazago bereizten laguntzen diete gordetako "
+"helbideak (adibidez: &quot;Amaren Etxea&quot;). Helbide-etiketak "
+"bezeroentzat pribatuak dira, eta ez dira eskaeraren xehetasunen orrialdean "
+"edo fakturetan bistaratuko edo inprimatuko."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "Pantailaren diseinua"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr ""
+"Aukeratu gordetako helbideak nola bistaratzen diren ordainketa-prozesuan "
+"eta erosketa-saskian."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"Ordainketa-prozesuan eta erosketa-saskian aplikatzen da. Kontuaren "
+"orrialdean gordetako helbideek beti erabiltzen dute txartelen diseinua."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "Helbide-txartelak"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "Helbide zerrenda"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "Goitibeherako eremua"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "Helbide bilaketa"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"Erakutsi helbide-bilaketa iragazkia frontend-ean bezeroak gordetako helbide "
+"kopuru hori gutxienez duenean."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr ""
+"Ez da erabiltzen pantailaren diseinua goitibeherako eremu gisa ezarrita "
+"dagoenean."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "Helbideak"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "Gaitu saskiaren orrialdeen optimizazioak aukera gehiago ikusteko"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "Eskaera itsaskorraren laburpena"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"Hautatu saskiaren orrialdean kupoi-kodeen atala bistaratzeko posizioa. AJAX "
+"saskia gaituta dagoenean eta WooCommerce ezarpenetan kupoi-kodeen erabilera "
+"gaituta badago soilik aplikagarria."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "Salmenta gurutzatuaren diseinua"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "Salmenta gurutzatuak bistaratu dira"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "Elementuak"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "Saskiaren orrialdearen optimizazioa"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"Eman iezaiozu zure erosketa-saskiari ordainketa-prozesuaren diseinu argi "
+"eta bihurketetan oinarritutako bera."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr ""
+"Erosketa-prozesu koherentea izan dadin, erosketa-saskiaren diseinua "
+"ordainketa-orriarekin bat etorri."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"Mantendu saskia beti eguneratuta atzeko planoan, ez da orrialde osoa "
+"berriro kargatuko kantitateak aldatzen direnean."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"Jarri kupoi kodeak, bidalketa gastuak eta salmenta gurutzatuak gehien "
+"bihurtzen duten lekuan."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"Mantendu eskaeraren laburpena ikusgai behera egiten duzun bitartean, eta "
+"gehitu konfiantza ikurrak erosleek lasaitasuna behar duten lekuetan."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "Zutabeak"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"Ordainketa-urratsen, eskaeraren laburpenaren eta beste atal batzuen estilo "
+"orokorrak. Beste ordainketa-orrialdeetan, saskian, eskerrak emateko "
+"orrietan (eskaera jasota) eta eskaera ikusteko orrietan aplikatzen da."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"<em>&quot;Zatitu&quot;</em> diseinu txantiloiarekin <em>&quot;1 "
+"zutabe&quot;</em> diseinua erabiltzean, eskuineko zutabea bakarrik "
+"erakusten da orriaren alboko barrako widgetaren eremua aktibo badago "
+"(Ordainketa alboko barra, Saskiaren alboko barra edo Jasotako eskaeraren "
+"alboko barra). Bestela, orria zutabe bakarrean geratzen da, zatitutako "
+"estiloekin."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "Zutabe zatituaren atzeko planoa"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"Aukeratu bigarren mailako diseinu zatituaren zutabearen atzeko planoaren "
+"kolorea. Utzi hutsik eskaeraren laburpenaren atzeko planoaren kolorea "
+"erabiltzeko."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "Orrialde txantiloiak"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "Ordainketa-txantiloia"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"Ordainketa-unean distrakzio gutxiago izateko gomendagarria. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">Irakurri saskia uzteari buruzko ikerketa</a> ."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "Aurrerapen-barra itsaskorra"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "Aurrerapen-barraren estiloa"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "Eskaeren guztirakoak"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "Atzeko planoaren kolorea"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "Ekintza-esteka"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "Mugikorreko eskaeraren laburpena"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "Mugikorreko hasierako egoera"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "Gaitu saskiko elementuak editatzea ordainketa-prozesuan"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"Utzi bezeroei produktuen kantitateak aldatzen edo elementuak zuzenean "
+"ordainketa-orrialdean kentzen."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "Saskiko elementuen erroreak"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"Kupoi-kodea ordainketa-orrietan edo erosketa-saskiko orrialdeetan atal "
+"bereizi gisa bistaratzen denean bakarrik aplikagarria, eta kupoi-kodeen "
+"erabilera WooCommerce-ren ezarpenetan gaituta badago."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "Kupoi kodeen posizioa"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "Aplikatu kupoi botoia"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "Hautatu &quot;kupoia aplikatu&quot; botoiaren estiloa."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "Helbidearen 2. lerroa"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"Ezarpen hau Ordainketa eta Tokiko bilketa atalen artean partekatzen da. "
+"Tokiko bilketa atalean, Bidalketa/Jasotze hautatzailea bidalketa metodoaren "
+"atalean (helbidearen aurretik) edo atal bereizi gisa (ondoren) agertzen den "
+"ere erabakitzen du."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "Bezeroen kontuak"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "Gonbidatuen check-out-a"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"Gonbidatuen ordainketa, saioa hasteko eta kontua sortzeko aukerak "
+"WooCommerce kontuen ezarpenen orrialdetik. Hemen kudeatzen dira zure "
+"erosotasunerako, eta beraz, balio desberdinak erabil ditzakezu "
+"ezarpen-profil bakoitzeko."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "Bezeroei konturik gabe ordainketa egiteko aukera eman"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Gomendagarria da</strong> bezeroei ez eskatzeko kontu bat sortzeko "
+"edo saioa hasteko ordainketa-prozesuan, horrek bihurketa-tasak jaitsi "
+"baititzake."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"Desgaituta dagoenean, bezeroek saioa hasi edo kontu bat sortu behar dute "
+"erosketa osatzeko."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "Saioa hasi ordainketa-prozesuan"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "Gaitu saioa hasteko aukera ordainketa-prozesuan"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr ""
+"Erakutsi bezero errepikakorrei ordainketa-orrialdetik saioa hasteko esteka "
+"bat."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "Kontuaren sorrera"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "Utzi bezeroei kontu bat sortzen ordainketa-prozesuan"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "Bezeroek kontu bat sor dezakete eskaera egin aurretik."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "Bezeroei Nire kontua orrialdetik kontu bat sortzeko aukera eman"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "Bezeroek kontu berri bat erregistratu dezakete Nire kontua orrialdetik."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "Erabiltzaile-izena"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "Bezeroaren izenetik sortu"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Gomendagarria da</strong> bezeroei ez eskatzeko erabiltzaile-izen "
+"bat aukeratzeko ordainketa-prozesuan, horrek bihurketa-tasak jaitsi "
+"baititzake."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"Erabiltzaile-izena bezeroaren izenetik edo, izenik erabili ezin denean, "
+"helbide elektronikotik sortzen da."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "Pasahitza"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "Bidali pasahitza konfiguratzeko esteka"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Gomendagarria da</strong> bezeroei ez eskatzeko pasahitzik "
+"ordainketa-prozesuan, horrek bihurketa-tasak jaitsi baititzake."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr ""
+"Bezeroek mezu elektroniko bat jasotzen dute pasahitza modu seguruan "
+"sortzeko."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"Utzi erregistratutako bezeroei saioa hasi gabe ordainketa burutzen eta "
+"eskaera beren kontuarekin lotzen harremanetarako datuak bat datozenean."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "Kontuaren mezua"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr ""
+"Utzi bezeroei kontu bat sortzen eskaera egin ondoren, eskerrak emateko "
+"orrialdetik."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"Atal honetako aukerak eskuragarri daude gonbidatuen ordainketa eta kontuen "
+"parekatzea gaituta daudenean. Gaitu goiko bi funtzioak kontua sortzea "
+"atzeratuta konfiguratzeko."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "Gaitu kontua atzeratzeko sorrera"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"Gaitu kontua atzeratzeko sorrera gonbidatuen ordainketa eta kontuaren "
+"parekatzea gaituta daudenean."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "Atalaren posizioa"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "Bezeroaren xehetasunen aurreko atala"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "Bezeroaren xehetasunen atalaren ondoren"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "Kontua sortzeko abantailak"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "Eremua hutsik uzten baduzu, testu lehenetsia bistaratuko da."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "Lerroko botoiak"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "Beharrezko eremuak"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "Gaitu opari-mezuen eremuak ordainketa-prozesuan"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "Opari-mezu zabaldua"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "Opari mezuaren eremua beti zabalduta"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "Opariaren mezua eskaeraren xehetasunetan"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"Momentuz ez dago integraziorik eskuragarri atal honetan. Plugin eta gai "
+"bakoitzari lotutako aukerak hemen agertuko dira plugin edo gai hori "
+"aktibatuta dagoenean bakarrik."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "Telefono eremuak"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "Zelaiko ikusgarritasuna"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "Zelaiko posizioa"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "Telefonoaren herrialde kodea eta baliozkotzea"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "Herrialdea"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "Gaitu herrialdea telefono eremuetan"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "Iragazi herrialdeak bidalketa edo fakturaziorako"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"Mugatu telefono-eremu bakoitzeko herrialde-hautatzailea zure dendan "
+"bidalketa edo fakturaziorako baimendutako herrialdeetara."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "Balidazioa"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "Gaitu balidazio sinplea herrialdeko arauetan oinarrituta"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"Hautatutako herrialderako telefono zenbakia baliozkoa dela egiaztatzen du, "
+"herrialde kodea eta luzera barne."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"Hautatutako herrialderako baliozko mugikor, finko edo beste mota bateko "
+"telefonoa dela egiaztatuko da zorrotzago. Baliozko zenbaki batzuk baztertu "
+"daitezke."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "Balidazio motak"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "Leku-markatzaileak"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"Momentuz ez dago kudeatzeko lizentzia-giltzarik. Lizentzia-giltzak hemen "
+"agertuko dira Fluid Checkout plugin edo gehigarri lizentziadun bat aktibo "
+"dagoenean."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "Bidalketa mota lehenetsia"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "Aukeratu zein entrega mota hautatuko den lehenespenez."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "Bidalketa-eremuaren eremuak"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Aukeratu zein eremu bistaratuko diren tokiko bilketa-bidalketa eremuaren "
+"iragazki-eremuetarako. Utzi hutsik eskuragarri dauden aukera guztiak "
+"erakusteko."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Eremu hauek tokiko bilketa-bidalketa metodoetarako iragazki gisa "
+"bistaratuko dira. Baliteke eremu batzuk ordainketa-prozesuan agertzea hemen "
+"hautatuta ez badaude ere, plugin bateragarriek behar bezala funtzionatzea "
+"eskatzen badute."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "Eskaera bidaltzeko helbidea"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "Eskaera ordainketa orriaren optimizazioa"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"Eman ordaindu gabeko eskaerei ordainketa-prozesuan bezala diseinu argi eta "
+"bihurketa-zentratu bera."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"Optimizatu ordainketa-orrialdearen diseinua ordainketa zain dauden "
+"eskaeretarako."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"Erosketa-prozesu koherentea izan dadin, lotu eskaeraren "
+"ordainketa-esperientzia zure ordainketa-prozesuarekin."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"Gehitu konfiantza-ikurrak eta txapa erosleek ordaindu aurretik lasaitasuna "
+"behar duten lekuetan."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "Eskerrik asko orriaren optimizazioa"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"Egin eskerrak emateko orria eta eskaeraren xehetasunak argiagoak "
+"bezeroentzat erosi ondoren."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr ""
+"Optimizatu eskerrak emateko orria eta kontuaren eskaeraren xehetasunak "
+"diseinu argiago batekin."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"Erakutsi eskaeraren egoeraren aurrerapena, ekintzak, deskargak eta oharrak "
+"zentzua duten lekuan."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr ""
+"Pertsonalizatu eskaeraren xehetasunen atalak posta elektroniko bidezko "
+"jakinarazpenetan."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"Gehitu konfiantza-ikurrak eta txapa erosleek erosketaren ondoren "
+"lasaitasuna behar duten lekuetan."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "Posta elektroniko bidezko jakinarazpenak"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"Aukera gehiago ikusteko, gaitu eskerrak emateko orriaren eta eskaeraren "
+"xehetasunen optimizazioak"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "Erabili diseinu zabala eskerrak emateko orrialdean"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"Aukera hauek eskerrak emateko orrialdean, kontu-orrietako eskaeraren "
+"xehetasunetan eta posta elektroniko bidezko jakinarazpenetan eragina dute."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "Gorde ezarpenak"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "Dokumentuak"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "Saskia"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "Eskerrik asko"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "Helbidearen osatze automatikoa"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "Konfiantza txapa"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "Ez duzu baimenik ezarpen hauek gordetzeko."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "Gordetzeko eskaera baliogabea."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "Zure ezarpenak gorde dira."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "Gordetzen..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "Ezin izan dira ezarpenak gorde. Saiatu berriro."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "Baztertu oharra"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "Ireki ezarpenen menua"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "Itxi ezarpenen menua"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "Aurreikuspena"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "Zabaldu aurrebista"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "Tolestu aurrebista"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "Erakutsi goiburua eta oina"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "Ezkutatu goiburua eta orri-oina"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "Orriaren aurrebista"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "Aurreikusi ikuspegi-leihoa"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "Tableta"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "Mahaigaina"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "Aurrebistaren zabalera"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "Txikitu zabalera"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "Aurrebistaren zabalera pixeletan"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "Handitu zabalera"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "Aurreikusi honela"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "Gonbidatua"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "Saioa hasita"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "Aurreikuspen orria"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "Zabaldu aurrebista ikuspegi hurbilago bat lortzeko"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "%s-rekin eskuragarri."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "Piztu itzazu."
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr "Orrialde honen optimizazioak desaktibatuta daude. %s orria aurreikusteko."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "%s aurrebista"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "Saio isolatua · ez da ezer gorde"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "Erabileraren jarraipena"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Bidali guneko inguruneari buruzko txosten ez-sentikorrak Fluid Checkout-ek "
+"bateragarritasuna hobetzen laguntzeko. Txostenak ez dira bidaltzen beheko "
+"aukeretan gaituta egon arte."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "Bidali erabileraren jarraipen-txostenak Fluid Checkout-era"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"Txosten hauek zure gunearen bateragarritasuna eta laguntza hobetzen "
+"laguntzen digute eta gaituta daudenean astero bidaltzen dira."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"Ez da bezero, administratzaile, erabiltzaile edo bestelako datu sentikorrik "
+"sartzen txostenetan."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "Ingurumenari buruzko oinarrizko informazioa"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"WordPress, PHP, WooCommerce, gai eta pluginen zerrenden datuak. Txostenak "
+"gaituta daudenean beti sartzen dira. Zure webgunea exekutatzen ari den "
+"ingurunea ulertzen laguntzen digu."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "Pluginaren ezarpenak"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"Fluid Checkout pluginaren ezarpenak bidaltzen ditu laguntza-eskaerekin "
+"laguntzeko eta gure pluginak nola erabiltzen ari zaren ulertzen laguntzen "
+"digu."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "Laster"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "Salmenta-neurriak"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"Fluid Checkout instalatu baino urtebete lehenagoko hileko eskaeren kopurua "
+"eta gaur arteko salmenta guztiak. Gure pluginak instalatuta diru gehiago "
+"irabazten ari zaren ulertzen laguntzen digu. Ez da inoiz bezero edo "
+"erabiltzaileen daturik bidaltzen."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "Zerbitzuak"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"Erabili <code>TomSelect</code> goitibeherako osagaiak <code>select2</code> "
+"ren ordez"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect goitibeherako hautaketa osagai sinpleagoa da, Select2 baino "
+"errore gutxiago izateko joera duena, funtzionalitate bera eskaintzen duen "
+"arren."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"Plugin honek optimizatutako orrialdeetan, formulario-eremuen barruko "
+"letra-tamaina 16px-tan ezartzen du, gailu txikietan formulario-eremuekin "
+"elkarreraginean automatikoki zooma ez egiteko."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"Safari eta beste arakatzaile batzuek automatikoki handitu dezakete gailu "
+"mugikorretan testua errazago irakurtzeko, 16px baino txikiagoa denean "
+"letra-tamaina."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "Gaitu script-en prozesamenduaren jarraipena arakatzailearen kontsolan."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "Aktibo txikitu gabeak"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Google Maps-eko gidoiak"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "Ez kendu Google Maps-eko script bikoiztuak"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"Gaituta dagoenean, Google Maps-eko script bikoiztuak EZ dira kenduko, eta "
+"horrek akatsak eta errendimendu arazoak sor ditzake. Aukera hau arazoak "
+"konpontzen ari zarenean bakarrik erabili."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "Widget eremuak"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "Azken urratsa mugikorrean"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "Widgetak mugikorreko azken urratsean bakarrik erakutsi"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"Erakutsi ordainketa-fidagarritasun txapa widgetak gailu mugikorretan azken "
+"ordainketa-urratsa ikusten denean bakarrik"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "Estandarra"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "BEZ zenbakiaren eremua"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "Gehitu BEZ zenbakiaren eremu bat fakturazio-formularioan."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "Eremuaren etiketa"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"Ezarri BEZ zenbakiaren eremuaren etiketa (hau da, BEZ zenbakia). Hizkuntza "
+"anitzeko webguneetan, hobe da eremu hau hutsik uztea eta jatorrizko katea "
+"itzultzea."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "BEZ zenbakia"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "EBko BEZa"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "Gaitu BEZ zenbakiaren eremua aukera gehiago ikusteko"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "BEZaren balidazioa"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "Balioztatu BEZ zenbakiaren eremua EBko BEZerako ordainketa-prozesuan"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"Emandako BEZ zenbakia Europako VIES datu-basean (BEZ Informazioa Trukatzeko "
+"Sistema) erregistratutako BEZ zenbaki baliozkoa den egiaztatzen du."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "Dendako BEZ zenbakia"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"EBko BEZaren balidazioa eskatzeko erabiltzen den dendaren BEZ zenbakia, eta "
+"fakturetan inprimatuta agertzen dena.<br> <strong>Zure dendako BEZ zenbakia "
+"gehitzea gomendatzen dizugu</strong> , bestela VIES kontsultaren emaitzak "
+"kontabilitate helburuetarako baliozkoak ez izatea gerta baitaiteke.<br> "
+"Alegia.: <code>ATU99999999</code> edo <code>EE999999999</code> ."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "Alderantzizko karga"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "Alderantzizko karga mekanismoa aplikatu"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"Ezarri zerga-tasa zeroan eta erakutsi &quot;Alderantzizko karga&quot; "
+"fakturetan bezeroaren BEZ zenbakia baliozkoa denean. &quot;Alderantzizko "
+"karga&quot; testu desberdina beharrezkoa izan daiteke dendaren "
+"herrialdearen arabera."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "Herrialde bera."
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr ""
+"Aplikatu alderantzizko kargaren mekanismoa dendaren herrialdeko "
+"transakzioetarako:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"Dendaren herrialde bereko enpresen arteko transakzioetarako alderantzizko "
+"kargaren mekanismoa aplikatzea ahalbidetzen du."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "Alderantzizko kargaren salbuespenak"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr ""
+"Hautatu alderantzizko karga-mekanismoa aplikatzea saihesteko beste "
+"herrialde batzuk."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"Herrialde hauetatik egindako eskaerei zergak kobratuko zaizkie, nahiz eta "
+"BEZ zenbaki balioduna eman."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "Fakturetan alderantzizko kargaren etiketa"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr ""
+"Ezarri &quot;alderantzizko karga&quot; etiketa ordainketa-orrian eta "
+"eskaeraren xehetasunetan."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "Fakturetan alderantzizko kargaren testua"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "Ezarri &quot;alderantzizko karga&quot; testuaren etiketa fakturetan."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "Alderantzizko kargaren arabera ordaindu beharreko zerga"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "Enpresaren izena"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "Osatu automatikoki enpresaren izena BEZ zenbakitik"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"Bete fakturazio-enpresaren izena bezeroak emandako BEZ zenbaki baliodunean "
+"oinarrituta."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "Enpresaren izena editatzea"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "Baimendu automatikoki betetako enpresaren izena editatzea"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"Gaituta dagoenean, bezeroek emandako BEZ zenbakiarekin lotutako enpresaren "
+"izena alda dezakete."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "EBko BEZa ondasun digitalen kasuan"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"2015eko urtarrilaren 1etik aurrera, ondasun digitalei buruzko EBko BEZ "
+"araudian aldaketak egin dira, B2C transakzioei soilik eraginez. Ondasun "
+"digitalen BEZa bezeroaren kokapenaren arabera kalkulatu behar da, eta "
+"horren frogak bildu behar dira (IP helbidea eta fakturazio helbidea)."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "Ondasun digitalen zerga-klaseak"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "Hautatu zerga-klase batzuk"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "Kokapenaren frogak"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "Bezeroaren kokapenaren frogak bildu"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"IP helbidea gordetzen du eta bezeroaren fakturazio-helbidearekin alderatzen "
+"du. Bezeroek fakturazio-helbidea berretsi behar dute ordainketa-orrialdean "
+"kontrol-lauki bat markatuz, fakturazio-helbideko herrialdea eta IP helbidea "
+"bat ez badatoz."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"Aukera hau Fluid Checkout-en kudeatzen da. <a href=\"%s\">Aldatu Bezeroen "
+"kontuen ezarpenetan</a> ."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"Aukera hau Fluid Checkout-en kudeatzen da. Aldatu Fluid Checkout &gt; "
+"Bezeroen kontuak atalean."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"Aukera hau Fluid Checkout-en kudeatzen da. Fluid Checkout aktibatuta "
+"dagoenean, bidalketa-helmuga beti &quot;Bezeroaren bidalketa-helbide "
+"lehenetsia&quot; gisa ezartzen da. Bezeroek bidalketa- eta "
+"fakturazio-helbide desberdinak eman ditzakete ordainketa-prozesuan.<br><br> "
+"<a href=\"%s\">Fluid Checkout ezarpenetan</a> dago eskuragarri "
+"fakturazio-helbide lehenetsia bidalketa-helbide berdina izateko aukera."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"Aukera hau Fluid Checkout-en kudeatzen da. Fluid Checkout aktibatuta "
+"dagoenean, bidalketa-helmuga beti &quot;Bezeroaren bidalketa-helbide "
+"lehenetsia&quot; gisa ezartzen da. Bezeroek bidalketa- eta "
+"fakturazio-helbide desberdinak eman ditzakete ordainketa-prozesuan.<br><br> "
+"Fakturazio-helbide lehenetsia bidalketa-helbide berdina izan dadin "
+"ezartzeko aukera WooCommerce &gt; Ezarpenak &gt; Fluid Checkout atalean "
+"dago eskuragarri."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr ""
+"Ezarpen hauek WP Admin &gt; Fluid Checkout &gt; Ezarpenak atalera mugitu "
+"dira."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"WooCommerce ezarpenen fitxa hau zaharkituta dago eta Fluid Checkout 6.0 "
+"bertsioan kenduko da."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "Joan ezarpenen orrialdera"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "Ezkutatu fitxa hau betiko"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "Gunearen txostenaren aurrebista"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"Hauek dira zure uneko ezarpenen arabera hurrengo gunearen "
+"ingurune-txostenean sartuko liratekeen datuak."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "Txostenaren aurrebista kargatzen..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "Ezin izan da gunearen txostenaren aurrebista kargatu. Saiatu berriro."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "Ezin izan da gunearen txostena bidali. Saiatu berriro."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "Gunearen txostena behar bezala bidali da."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "Gaitu eta bidali orain"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "Itxi"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr ""
+"Gunearen txosten eskaera bat martxan dago dagoeneko. Saiatu berriro une "
+"batean."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "Gunearen ingurunearen txostenak desgaituta daude."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "Ez dago gunearen txostenaren daturik bidaltzeko eskuragarri."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"Gune honetako domeinuak ezin ditu ingurumen-txostenak bidali (tokiko edo "
+"garapen-domeinuak baztertuta daude)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "Gunearen txosten bat bidali da duela gutxi. Saiatu berriro geroago."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "Ezin izan da gunearen txostena bidali. Saiatu berriro geroago."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "Gunearen ingurunearen txostenak ez daude eskuragarri."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "Ez dago hautatutako ezarpenetarako gunearen txostenaren daturik eskuragarri."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "Ez duzu baimenik guneko txostenak kudeatzeko."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "PRO funtzioa"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "Beste plugin batzuk"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "Eskuratu gehigarri hau bakarrik — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "Instalatu gehigarria"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "Eguneratu PROra — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"<a target=\"_blank\" href=\"%1$s\">Lortu %2$s</a> aukera hauek "
+"desblokeatzeko."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "Gehigarria"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "Ikusi dokumentazioa"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"Eskaerek WordPress erabiltzaile saioa hasita behar dute. Uneko "
+"erabiltzailearen datuak erabiltzeko, ez erabili user_id, edo beste kontu "
+"bat helburu gisa erabili deitzaileak erabiltzaile hori edita dezakeenean "
+"(edit_user gaitasuna). Autentifikatu gabeko eskaerek fc_api_forbidden "
+"itzultzen dute. Baliogabeko user_id batek fc_api_user_not_found itzultzen "
+"du."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr ""
+"HTTP 200 { &quot;data&quot;: { ... } }-rekin kudeatzaileak karga bat "
+"itzultzen duenean."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"HTTP 200 { &quot;success&quot;: true } balioarekin, kargarik ez dagoenean "
+"(adibidez, DELETE)."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"Hutsegiteek WordPress REST errore JSON itzultzen dute WP_Error-etik (kodea, "
+"mezua, data.status). Wire kodeek fc_api_* aurrizkia erabiltzen dute."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "Sarbidea debekatuta."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "Helburuko erabiltzailea ez da aurkitu."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "Ezaugarri hau ez dago erabilgarri."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "Beharrezko helbide-eremu bat falta da."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "Posta kodea edo ZIP kodea baliogabea da."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "Telefono zenbakia baliogabea da."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "Estatua edo konderria baliogabea da."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "Herrialdea baliogabea da edo ez du helbide-eremurik."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "Eskaera ezin izan da prozesatu."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "Aurreko urratsera itzuli"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "Joan ezarpenetara"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "Hasi berriro eta itzuli lehenengo konfigurazio gidatuko urratsera"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "Berriro hasi"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "Jarraitu aurretik, jarraitu azpi-urrats guztiak."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "Zabaldu"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "Tolestu"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "Saltatu"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "Markatu osatutzat"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "Markatu osatugabe gisa"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "Ikusi irudi osoa: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "Tamaina osoko konfigurazio-gidaren irudia"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "Itxi irudia"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "Fluidoen egiaztapenaren konfigurazio gidatua"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "Ongi etorri"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "Arakatu zure ordainketa-prozesua"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "Dena prest"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "Ez duzu orrialde honetara sartzeko baimenik."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "Joan %1$d urratsera: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"Konfigurazio gidatu honek Fluid Checkout-ekin ohitzen lagunduko dizu. "
+"Jarraian datozen urratsak oraingoz leku-markatzaileak dira."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "Jarraitu hurrengo urratsera prest zaudenean."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "Ireki zure dendako kutxa Fluid Checkout martxan ikusteko."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "Ikusi ordainketa-orria"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"Fluid Checkout ezarpenetara itzul zaitezke zure denda konfiguratzen "
+"jarraitzeko."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "Berrikusi ordainketa eta saskiaren ezarpenak"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "Arakatu gehigarriak kontrol-paneletik"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "Amaitu eta joan ezarpenetara"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Eguneratu fakturazio-telefonoaren eremuaren ikusgarritasun-aukera balio "
+"zaharretik WooCommerce-ren konbentzioekin bat etortzeko."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Eguneratu bidalketa-telefonoaren eremuaren ikusgarritasun-aukera balio "
+"zaharretik WooCommerce-ren konbentzioekin bat etortzeko."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"Kopiatu eskaeraren laburpenaren atzeko planoaren kolorearen ezarpena "
+"bigarren mailako zutabearen atzeko planoaren kolore aukera berrira."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"Biteship plugina erabiltzean, hobetutako hautaketa-eremuen funtzioa beti "
+"desgaituta dago."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"Eskaera egiteko posizioa beti &quot;Eskaera laburpenaren azpian&quot; gisa "
+"ezartzen da German Market erabiltzean. Plugin horrek eskaera egiteko botoia "
+"eta legezko kontrol-laukiak eskaera laburpenaren azpian bistaratzea "
+"eskatzen du."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"WooCommerce-rako Germanized erabiltzean, eskaera egiteko posizioa beti "
+"&quot;Eskaera laburpenaren azpian&quot; gisa ezartzen da. Plugin horrek "
+"eskaera egiteko botoia eta legezko kontrol-laukiak eskaera laburpenaren "
+"azpian bistaratzea eskatzen du."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Editatu bilketa-lekuak"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Erabili WooCommerce ezarpenetatik tokiko bilketa etiketa"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Gaituta dagoenean, ordainketa-prozesuko bilketa-aukeraren etiketa "
+"WooCommerce-ko bilketa-kokapenaren ezarpenetako izenburuarekin bat dator. "
+"Desgaituta dagoenean, etiketak Fluid Checkout-eko itzulgarria den "
+"&quot;Tokiko bilketa&quot; testua erabiltzen du."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2804,3 +4779,113 @@ msgstr "Bai"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "Joan"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "Eme"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "Adibide Enpresa"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "Kale Nagusia 123"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "Edozein herri"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "Mesedez, utzi paketea ate aurrean."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "Txanoa"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "Txapel"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "Kamiseta"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr "Zure eskaera jaso dugu eta bidaltzen denean eguneratze bat bidaliko dizugu."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "Erabiltzailearen gida"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "Lekuen APIa (Berria)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "Lekuen APIa (Legatua)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "1. bertsioa"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "2. bertsioa"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ Hurrengoan azkarrago ordaindu ✔ Kudeatu zure ordainketa-lehentasunak ✔ "
+"Ikusi eskaeraren egoera eta historia"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "Ezkutatuta"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "Aukerakoa"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "Beharrezkoa"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Helbidera bidalketa"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Tokiko bilketa"

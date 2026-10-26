@@ -278,10 +278,6 @@ msgstr "Fluid Checkout ڈیٹا بیس کامیابی کے ساتھ اپ ڈیٹ 
 msgid "The database changes where applied successfully."
 msgstr "ڈیٹا بیس میں تبدیلیاں ہوتی ہیں جہاں کامیابی سے لاگو ہوتا ہے۔"
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "ٹھیک ہے"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "برطرف کرنا"
@@ -400,39 +396,9 @@ msgstr "دستاویزات پڑھیں"
 msgid "Don't show this again"
 msgstr "اسے دوبارہ مت دکھائیں۔"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "خصوصی پیشکش"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"Fluid Checkout کی تمام خوبیوں کو اپنے کارٹ پیج تک پھیلائیں اور پیجز کا "
-"شکریہ۔"
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "فلوئڈ چیک آؤٹ پی آر او"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"ڈیزائن ٹیمپلیٹس، آپٹمائزڈ کارٹ اور آرڈر موصول ہونے والے صفحات، اکاؤنٹ کی "
-"مماثلت، اور بہت کچھ۔"
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"<strong>آپ کے WooCommerce چیک آؤٹ تبادلوں کی شرح کو مزید بہتر "
-"بنانے</strong> اور خریداری کے تجربے کو پورے سفر میں یکساں بنانے کے لیے "
-"بہترین ٹولز۔"
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -454,10 +420,6 @@ msgstr "چیک آؤٹ پیج پر کارٹ کے مواد میں ترمیم کر�
 msgid "Account matching / user matching"
 msgstr "اکاؤنٹ ملاپ / صارف کی مماثلت"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "تعاون یافتہ ادائیگی کے طریقوں سے ایکسپریس چیک آؤٹ بٹن"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "ٹوکری پر اعتماد کی علامتیں اور شکریہ کے صفحات"
@@ -465,10 +427,6 @@ msgstr "ٹوکری پر اعتماد کی علامتیں اور شکریہ کے 
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "چیک آؤٹ پیج پر کوپن کوڈ کے لیے مزید پوزیشنز"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "ٹوکری کے صفحے پر مربوط کوپن کوڈ فیلڈ"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -482,247 +440,25 @@ msgstr "گفٹ میسجز اور پیکنگ سلپس"
 msgid "Local pickup and in-store collection"
 msgstr "مقامی پک اپ اور ان اسٹور کلیکشن"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "PRO میں اپ گریڈ کریں — 99 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "فلوئڈ چیک آؤٹ پی آر او - بنڈل"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "تمام PRO خصوصیات + تمام ایڈ آنز ایک خاص قیمت پر۔"
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"بنڈل میں وہ تمام ایڈ آنز شامل ہیں جو ہم فی الحال پیش کرتے ہیں اور فلوئڈ چیک "
-"آؤٹ ایڈ آنز جو ہم مستقبل میں لانچ کرتے ہیں۔"
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "226 EUR قدر (42% کی بچت)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "گوگل ایڈریس خودکار تکمیل"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "ایڈریس بک"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "EU-VAT اسسٹنٹ"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "مستقبل کے تمام ایڈ آنز *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* جب تک آپ کے پاس ایک فعال رکنیت ہے۔"
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "بنڈل حاصل کریں - صرف 129 یورو"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"تمام قیمتیں EUR میں دکھائی گئی ہیں۔ اگر ہماری ویب سائٹ پر قیمتوں میں کوئی "
-"اختلاف ہے، تو ویب سائٹ پر دکھائی گئی پیشکشیں ان کی جگہ لے لیتی ہیں اور ان "
-"کا اطلاق کیا جائے گا۔"
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "ایڈ آنز"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "ان ایڈ آنز کے ساتھ اپنے چیک آؤٹ کے تجربے کو بہتر بنائیں۔"
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "میرے پاس پہلے سے ہی ہے - اس پیشکش کو چھپائیں۔"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "انسٹال - چالو کریں۔"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "چالو"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "بھرنے کے لیے %40 تک کم چیک آؤٹ فیلڈز۔"
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"ترسیل میں تاخیر اور غیر مطمئن صارفین سے بچیں۔ پہلی بار جب وہ آپ کے ساتھ "
-"خریدتے ہیں تو <strong>درست ایڈریس کی معلومات</strong> جمع کریں۔"
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "یہ ایڈ آن حاصل کریں — 29 EUR"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "ایڈریس بک"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "شپنگ اور بلنگ کے لیے متعدد محفوظ کردہ پتے۔"
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"صارفین کو ان کے اکاؤنٹ پر <strong>متعدد شپنگ اور بلنگ پتے محفوظ "
-"کرنے</strong> دیں اور چیک آؤٹ اور کارٹ کے صفحات پر استعمال کرنے کے لیے "
-"منتخب کریں۔"
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "یہ ایڈ آن حاصل کریں — 59 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "آپ کے اسٹور کے لیے آسان EU-VAT کی توثیق۔"
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"<strong>چیک آؤٹ صفحہ پر EU VAT نمبرز جمع اور ان کی توثیق کریں</strong> ، "
-"ریورس چارج کی بنیاد پر ٹیکس چارجز کو ہٹاتا ہے اور ضرورت پڑنے پر کسٹمر کے "
-"مقام کی تصدیق کرتا ہے۔"
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "یہ ایڈ آن حاصل کریں — 39 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"تمام ایڈ آنز الگ سے فروخت کیے جاتے ہیں اور ان کے لیے <strong>Fluid Checkout "
-"Lite</strong> پلگ ان کو انسٹال اور فعال کرنے کی ضرورت ہوتی ہے، سوائے اس کے "
-"جب نوٹ کیا جائے۔"
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "ایک تصویر منتخب کریں۔"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"اپنی لائسنس کلید حاصل کرنے کے لیے <a "
-"href=\"https://fluidcheckout.com/account/\" target=\"_blank\">اپنے اکاؤنٹ "
-"میں لاگ ان کریں</a> ، یا <a href=\"%s\" target=\"_blank\">ایک نئی لائسنس "
-"کلید خریدیں</a> ۔"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "%s تک درست ہے۔"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "%s کو ختم ہو گیا۔"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"اپنی لائسنس کلید کی تجدید کے لیے <a "
-"href=\"https://fluidcheckout.com/account/\" target=\"_blank\">اپنے اکاؤنٹ "
-"میں لاگ ان کریں</a> اور اپ ڈیٹس اور سپورٹ حاصل کرنا جاری رکھیں۔"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "لائسنس کلید منسوخ کر دی گئی۔"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">ایک نئی لائسنس کلید خریدیں</a> اور اپ ڈیٹس "
-"اور تعاون حاصل کرنا جاری رکھیں۔"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "خرابی: "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "سیٹ اپ اور دستاویزات"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "بہت اچھا! آپ کا چیک آؤٹ صفحہ اب Fluid Checkout پر چل رہا ہے۔"
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "شروع کرنے کے لیے آپ کے لیے یہاں چند وسائل ہیں:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"انسٹالیشن گائیڈ پڑھیں <a href=\"%s\" target=\"_blank\">Fluid Checkout کے "
-"ساتھ بیان کرنا</a> ۔"
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "<a href=\"%s\">چیک آؤٹ کے اختیارات</a> پر ترتیب اور ڈیزائن ترتیب دیں۔"
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"چیک کریں کہ آیا آپ کے انسٹال کردہ دیگر پلگ انز کے لیے <a href=\"%s\">انضمام "
-"کے کوئی اختیارات</a> دستیاب ہیں۔"
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"Fluid Checkout کی خصوصیات کے بارے میں مزید معلومات کے لیے <a href=\"%s\" "
-"target=\"_blank\">ہماری دستاویزات</a> دیکھیں۔"
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"اگر آپ کو کبھی مدد کی ضرورت ہو تو ہمارے آفیشل سپورٹ چینل پر <a href=\"%s\" "
-"target=\"_blank\">سپورٹ ٹکٹ کھولیں</a> ۔"
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -735,14 +471,6 @@ msgstr "کارٹ کی اصلاح"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "کارٹ پیج کی اصلاح کو فعال کریں۔"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "کارٹ کا صفحہ چیک آؤٹ صفحہ کی طرح کی ترتیب کے ساتھ ڈسپلے کریں۔"
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "ہیڈر اور فوٹر"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -775,16 +503,6 @@ msgstr "اسکرولنگ کے دوران آرڈر کا خلاصہ کارٹ کے 
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "کوپن کوڈز"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"کارٹ کے صفحہ پر کوپن کوڈز کے سیکشن کو ظاہر کرنے کی جگہ کا انتخاب کریں۔ صرف "
-"اس وقت لاگو ہوتا ہے جب AJAX کارٹ اور چیک آؤٹ صفحہ میں مربوط کوپن کوڈز فعال "
-"ہوں۔"
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -878,10 +596,6 @@ msgstr "تھیم کی کراس سیلز لے آؤٹ"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "کارٹ کے صفحہ پر ظاہر کرنے کے لیے کراس سیل آئٹمز کی تعداد"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "اعتماد کی علامتیں اور بیجز"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "کارٹ کے صفحے پر ویجیٹ کے علاقے شامل کریں۔"
@@ -898,10 +612,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "چیک آؤٹ"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "لے آؤٹ اور ڈیزائن"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "چیک آؤٹ لے آؤٹ"
@@ -917,22 +627,6 @@ msgstr "ڈارک موڈ"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "ڈارک موڈ کو فعال کریں۔"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "ہیڈر اور فوٹر ٹیمپلیٹس"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"ہم چیک آؤٹ پیج پر خلفشار سے بچنے کے لیے ڈسٹریکشن فری ہیڈر اور فوٹر استعمال "
-"کرنے کی تجویز کرتے ہیں۔ <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">کارٹ "
-"ترک کرنے کے بارے میں تحقیق پڑھیں</a> ۔"
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -985,10 +679,6 @@ msgid ""
 msgstr ""
 "چیک آؤٹ پیج فوٹر کے لیے پس منظر کا رنگ منتخب کریں۔ صرف اس وقت لاگو ہوتا ہے "
 "جب خلفشار سے پاک ہیڈر اور فوٹر استعمال کریں۔"
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "چیک آؤٹ عناصر"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1072,18 +762,6 @@ msgstr "شاپ پیج سے لنک کریں۔"
 msgid "Cart items"
 msgstr "کارٹ آئٹمز"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "چیک آؤٹ صفحہ پر کارٹ آئٹمز میں ترمیم کرنے کے اختیارات کو فعال کریں۔"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"کسٹمرز کو پروڈکٹ کی مقدار تبدیل کرنے یا چیک آؤٹ پیج پر براہ راست آئٹمز کو "
-"ہٹانے کی اجازت دیں۔"
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "چیک آؤٹ صفحہ پر کارٹ آئٹمز کی غلطیوں کو چھپائیں۔"
@@ -1136,37 +814,9 @@ msgstr ""
 "یہ ویجیٹ ایریاز چیک آؤٹ پیج پر اعتماد کی علامتیں اور ٹرسٹ بیجز شامل کرنے کے "
 "لیے استعمال کیے جاتے ہیں۔"
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"چیک آؤٹ سائڈبار ویجٹ صرف اس وقت دکھائیں جب موبائل آلات پر چیک آؤٹ کا آخری "
-"مرحلہ ملٹی اسٹیپ چیک آؤٹ لے آؤٹ کا استعمال کرتے وقت دیکھیں"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "مربوط کوپن کوڈ سیکشن کو فعال کریں۔"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr ""
-"صرف اس صورت میں لاگو ہوتا ہے جب کوپن کوڈز کا استعمال WooCommerce کی ترتیبات "
-"میں فعال ہو۔"
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "کوپن کوڈز سیکشن کا عنوان دکھائیں۔"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"صرف اس وقت لاگو ہوتا ہے جب کوپن کوڈ چیک آؤٹ یا کارٹ کے صفحات پر علیحدہ حصے "
-"کے طور پر ظاہر ہوتا ہے۔"
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1185,16 +835,6 @@ msgstr "ادائیگی کے طریقوں سے پہلے ایک ذیلی قدم ک
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "ادائیگی کے طریقوں کے بعد ذیلی قدم کے طور پر"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"&quot;کوپن لگائیں&quot; بٹن کا انداز منتخب کریں۔ صرف اس وقت لاگو ہوتا ہے جب "
-"کوپن کوڈ کا سیکشن چیک آؤٹ صفحہ پر &quot;چیک آؤٹ کے مراحل سے پہلے&quot; یا "
-"کارٹ کے صفحہ پر &quot;کارٹ آئٹمز سیکشن سے پہلے&quot; ظاہر ہوتا ہے۔"
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1243,21 +883,6 @@ msgstr ""
 "صرف اس وقت تجویز کیا جاتا ہے جب زیادہ تر صارفین کو درحقیقت &quot;ایڈریس "
 "لائن 2&quot; فیلڈ کی ضرورت ہو، یا جب صحیح شپنگ ایڈریس حاصل کرنا ضروری ہو "
 "(یعنی اگر خوراک اور دیگر خراب ہونے والی مصنوعات کی فراہمی ہو)۔"
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "&quot;شامل کریں&quot; لنک بٹن کو چھوٹے حروف میں دکھائیں۔"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"اختیاری فیلڈ کے لیبل کو &quot;شامل کریں&quot; لنک بٹن کو "
-"<code>lowercase</code> کے طور پر بنائیں (یعنی &quot;فون نمبر شامل "
-"کریں&quot; کے بجائے &quot;فون نمبر شامل کریں&quot;)۔ یہ آپشن کوپن کوڈ فیلڈز "
-"کے لیے لنک بٹن کو بھی متاثر کرتا ہے۔"
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1346,23 +971,6 @@ msgstr "شپنگ ایڈریس سے پہلے"
 msgid "After shipping address"
 msgstr "شپنگ ایڈریس کے بعد"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "پہلے شپنگ طریقہ کے خودکار انتخاب کو روکیں۔"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"فعال ہونے پر، پہلے شپنگ کا دستیاب طریقہ خود بخود منتخب نہیں کیا جائے گا جب "
-"ہر شپنگ پیکج کے لیے پہلے کوئی دوسرا شپنگ طریقہ منتخب نہیں کیا گیا تھا۔<br> "
-"یہ اختیار خود بخود فعال ہو جائے گا اگر منتخب کردہ شپنگ طریقہ کو صاف کرنے کا "
-"اختیار مقامی پک اپ فیچر کے لیے فعال ہے۔"
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "مقامی پک اپ"
@@ -1380,20 +988,6 @@ msgid ""
 msgstr ""
 "مقامی پک اپ شپنگ کا طریقہ منتخب ہونے پر شپنگ ایڈریس کو پک اپ پوائنٹ کے مقام "
 "سے بدل دیتا ہے۔"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "پک اپ لوکیشن سب سٹیپ میں شپنگ کے طریقے صاف کرنے کا آپشن دکھائیں۔"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"منتخب کردہ شپنگ طریقوں کو صاف کرنے کے لیے پک اپ لوکیشن سب سٹیپ پر ایک لنک "
-"بٹن دکھائیں۔ اس کا استعمال شپنگ ایڈریس سیکشن کو دوبارہ دکھانے کی اجازت دینے "
-"کے لیے کیا جا سکتا ہے اگر مقامی پک اپ طریقہ پہلے منتخب کیا گیا ہو۔"
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1472,32 +1066,6 @@ msgstr "چیک آؤٹ فارم میں بلنگ فون فیلڈ شامل کریں
 msgid "Choose in which step to display the billing phone field."
 msgstr "بلنگ فون فیلڈ کو کس مرحلے میں ظاہر کرنا ہے اس کا انتخاب کریں۔"
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "ملکی قوانین کی بنیاد پر فون نمبر کی توثیق کو فعال کریں۔"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"غیر فعال ہونے پر، فون فیلڈ کی توثیق یہ نہیں جانچے گی کہ آیا ملک یا ایریا "
-"کوڈز ملک کے لیے درست ہیں۔"
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "شپنگ یا بلنگ کے لیے صرف اجازت یافتہ ممالک دکھائیں۔"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"فعال ہونے پر، شپنگ فون فیلڈ میں صرف شپنگ کے لیے اجازت یافتہ ممالک دستیاب "
-"ہوں گے، اور بلنگ کے لیے اجازت یافتہ ممالک ہی بلنگ فون فیلڈ کے لیے دستیاب "
-"ہوں گے۔"
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "جھنڈے کے ساتھ ملک کا کوڈ دکھائیں۔"
@@ -1530,10 +1098,6 @@ msgstr "اضافی آرڈر نوٹس فیلڈ کی مرئیت کی وضاحت ک
 msgid "Gift options"
 msgstr "تحفے کے اختیارات"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "چیک آؤٹ پیج پر گفٹ میسج اور گفٹ کے دیگر اختیارات ڈسپلے کریں۔"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1541,10 +1105,6 @@ msgid ""
 msgstr ""
 "صارفین کو آرڈر میں گفٹ میسج اور گفٹ سے متعلق دیگر اختیارات شامل کرنے کی "
 "اجازت دیں۔"
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "گفٹ میسج فیلڈز کو ہمیشہ پھیلا ہوا دکھائیں۔"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1600,27 +1160,9 @@ msgstr "ڈیش بورڈ"
 msgid "Integrations"
 msgstr "انضمام"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"اس سیکشن پر فی الحال کوئی انضمام دستیاب نہیں ہے۔ ہر پلگ ان سے متعلق "
-"اختیارات یہاں صرف اس صورت میں ظاہر ہوں گے جب وہ پلگ ان فعال ہو۔"
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "لائسنس کی چابیاں"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"اس سیکشن پر اس وقت لائسنس کیز کے کوئی اختیارات دستیاب نہیں ہیں۔ ہر پلگ ان "
-"یا ایڈ آن سے متعلق اختیارات یہاں ظاہر ہوں گے جب اس پلگ ان کو چالو کیا جائے "
-"گا۔"
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1722,14 +1264,6 @@ msgstr ""
 "یہ ویجیٹ ایریاز شکریہ کے صفحہ پر اعتماد کی علامتیں اور ٹرسٹ بیجز شامل کرنے "
 "کے لیے استعمال کیے جاتے ہیں۔"
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"یہ اختیارات شکریہ کے صفحہ کو متاثر کرتے ہیں، اکاؤنٹ کے صفحات پر اور ای میل "
-"اطلاعات پر آرڈر کی تفصیلات دیکھیں۔"
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "اعمال کا حکم دیں۔"
@@ -1822,22 +1356,6 @@ msgstr "غیر منقولہ اثاثے لوڈ کریں۔"
 msgid "Enhanced select fields"
 msgstr "بہتر کردہ منتخب فیلڈز"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr ""
-"<code>select2</code> ڈراپ ڈاؤن اجزاء کو <code>TomSelect</code> سے تبدیل "
-"کریں۔"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect ایک آسان ڈراپ ڈاؤن سلیکشن جزو ہے جو Select2 کے مقابلے میں غلطیوں "
-"کا کم خطرہ ہے، جبکہ وہی خصوصیات پیش کرتا ہے جو دراصل WooCommerce چیک آؤٹ "
-"پیجز پر استعمال ہوتی ہیں۔"
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "فارم فیلڈز پر خودکار زوم ان کو درست کریں۔"
@@ -1845,34 +1363,6 @@ msgstr "فارم فیلڈز پر خودکار زوم ان کو درست کریں
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "فارم فیلڈز کے اندر <code>font-size</code> 16px پر سیٹ کریں۔"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"جب فارم فیلڈز کے اندر فونٹ کا سائز 16px سے چھوٹا ہوتا ہے، تو Safari اور "
-"دیگر براؤزرز خود بخود موبائل آلات پر زوم ان کر سکتے ہیں تاکہ متن کو پڑھنے "
-"میں آسانی ہو۔ جب یہ آپشن فعال ہو جاتا ہے، تو یہ فارم فیلڈز کے اندر کے لیے "
-"فونٹ سائز کو Fluid Checkout کے ذریعے آپٹمائز کردہ صفحات پر 16px پر سیٹ کر "
-"دے گا تاکہ اسے زوم ہونے سے بچایا جا سکے۔"
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"جب Fluid Checkout فعال ہو جاتا ہے تو شپنگ کی منزل ہمیشہ &quot;کسٹمر کے شپنگ "
-"ایڈریس پر ڈیفالٹ&quot; پر سیٹ ہوتی ہے۔ گاہک چیک آؤٹ کے دوران اب بھی مختلف "
-"شپنگ اور بلنگ ایڈریس فراہم کر سکتے ہیں، پہلے سے طے شدہ بلنگ ایڈریس کو ویسا "
-"ہی رکھنے کا ایک آپشن جو شپنگ ایڈریس WooCommerce &gt; Settings &gt; Fluid "
-"Checkout پر دستیاب ہے۔"
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1899,14 +1389,6 @@ msgstr "(پی آر او)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(تجرباتی)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "تصدیق کریں۔"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "فون نمبر کی تصدیق کریں۔"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2430,10 +1912,6 @@ msgstr "ترقی بار کے بعد"
 msgid "Before coupon codes section"
 msgstr "کوپن کوڈز سیکشن سے پہلے"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "بین الاقوامی فون نمبر کی فیلڈز کو فعال کریں۔"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "فون نمبرز کو ہر ملک کے قوانین کے مطابق فارمیٹ کریں۔"
@@ -2441,18 +1919,6 @@ msgstr "فون نمبرز کو ہر ملک کے قوانین کے مطابق ف�
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "درست فون نمبر کی توثیق کا استعمال کریں۔"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"اس بات کو یقینی بنانے کی کوشش کریں کہ منتخب کردہ ملک کے کوڈ کے قواعد کی "
-"بنیاد پر فون نمبر ایک درست موبائل یا لینڈ لائن نمبر ہے۔ یہ اختیار "
-"<code>intl-tel-input</code> درست توثیق کی خصوصیت کا استعمال کرتا ہے، جو کچھ "
-"فون نمبرز کے لیے غلط مثبتات دے سکتا ہے۔"
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2493,26 +1959,6 @@ msgstr "2 کالم"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 کالم"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"چیک آؤٹ کے مراحل، آرڈر کا خلاصہ اور دیگر سیکشنز کے لیے عمومی انداز۔<br> "
-"دوسرے صفحات پر بھی لاگو ہو سکتا ہے جیسے کہ کارٹ، آرڈر موصول ہوا اور آرڈر کے "
-"صفحات دیکھیں۔"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"<em>&quot;1 کالم&quot;</em> لے آؤٹ کا استعمال کرتے وقت ڈیزائن ٹیمپلیٹ "
-"<em>&quot;اسپلٹ&quot;</em> دستیاب نہیں ہوتا ہے اور اگر منتخب کیا جاتا ہے تو "
-"واپس <em>&quot;Minimalist&quot;</em> پر آجائے گا۔"
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2610,6 +2056,2484 @@ msgstr ""
 "&quot;ضرورت&quot; کے طور پر سیٹ کیا جاتا ہے۔ یہ یقینی بنانے کے لیے ضروری ہے "
 "کہ جب اس اختیار کو چیک کیا جائے تو شپنگ ایڈریس کو بلنگ ایڈریس پر کاپی کیا "
 "جا سکتا ہے، بصورت دیگر صارف چیک آؤٹ فارم مکمل کرنے کے قابل نہیں ہو سکتا ہے۔"
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "پروفائلز کی ترتیبات"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "ترتیبات کا پروفائل"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "آپ کو یہ کارروائی کرنے کی اجازت نہیں ہے۔"
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "آپ کو پلگ ان کو چالو کرنے کی اجازت نہیں ہے۔"
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "غائب پلگ ان۔"
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "پلگ ان کو چالو کر دیا گیا۔"
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "درج ذیل تبدیلیاں لاگو ہوں گی:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Fluid Checkout 5.0 کے بعد سے، ترتیبات مختلف طریقے سے محفوظ کی جاتی ہیں۔ "
+"وراثت کے اختیارات اب بھی ڈیٹا بیس میں محفوظ ہیں تاکہ ضرورت پڑنے پر پچھلے "
+"ورژن میں کمی کی اجازت دی جا سکے۔"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"آپ کا اسٹور نئی ترتیبات پر تقریباً 2 ہفتوں سے چل رہا ہے تاکہ آپ ڈیٹابیس میں "
+"ذخیرہ شدہ میراثی اختیارات کو صاف کر سکیں۔ براہ کرم نوٹ کریں کہ صفائی کے "
+"بعد، اگر آپ کو پلگ ان کے پچھلے ورژنز پر ڈاؤن گریڈ کرنے کی ضرورت ہے تو یہ "
+"تمام ترتیبات کے لیے پہلے سے طے شدہ اقدار کا استعمال کرے گا۔"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "فلوئڈ چیک آؤٹ کی ترتیبات کی صفائی"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "بچ جانے والے اختیارات کو حذف کریں۔"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "Fluid Checkout کو بہتر بنانے میں ہماری مدد کریں۔"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"تیز تر سپورٹ حاصل کرنے اور مطابقت کو بہتر بنانے اور اثر کی پیمائش کرنے میں "
+"ہماری مدد کرنے کے لیے Fluid Checkout کے ساتھ گمنام سائٹ کے ماحول کی رپورٹس "
+"کا اشتراک کریں۔ کوئی صارف، صارف، یا حساس ڈیٹا شامل نہیں ہے۔ آپ ٹولز کی "
+"ترتیبات سے کسی بھی وقت اشتراک کردہ چیز کا انتخاب کر سکتے ہیں۔"
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "سائٹ کے ماحول کی رپورٹس کو فعال کریں۔"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "ترتیبات کا جائزہ لیں۔"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"اس پیش نظارہ کی میعاد ختم ہو گئی ہے۔ ایک نیا پیش نظارہ شروع کرنے کے لیے "
+"منتظم صفحہ کو دوبارہ لوڈ کریں۔"
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "پیش منظر کی میعاد ختم ہو گئی۔"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "پیش نظارہ میں آرڈر نہیں دیے جا سکتے۔"
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "پیش نظارہ میں لاگ ان کرنا دستیاب نہیں ہے۔"
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "پیش نظارہ میں اکاؤنٹس نہیں بنائے جا سکتے ہیں۔"
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "دیگر سائٹس کی درخواستیں پیش نظارہ میں مسدود ہیں۔"
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "کارروائی ہو رہی ہے…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "کچھ غلط ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔"
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "پلگ ان کو چالو کریں۔"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - مکمل چیک آؤٹ پیکج"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"تمام PRO خصوصیات + تمام ایڈ آنز، ایک قیمت۔ ڈیزائن ٹیمپلیٹس، آپٹمائزڈ کارٹ "
+"اور آرڈر موصول ہونے والے صفحات، اکاؤنٹ کی مماثلت، اور بہت کچھ۔"
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "آپٹمائزڈ آرڈر کی ادائیگی کا صفحہ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "تعاون یافتہ ادائیگی کے طریقوں سے ایکسپریس چیک آؤٹ بٹن"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "اکاؤنٹ بنانے میں تاخیر"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Google Maps APIs کے ساتھ خودکار تکمیل کا پتہ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "ایڈریس بک کے ساتھ متعدد محفوظ کردہ پتے"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "EU-VAT اسسٹنٹ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "اس حصے کو چھپائیں۔"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "مزید جانیں"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "جلد رسائی حاصل کریں۔"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "ایڈ آن کو چالو کریں۔"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "اپنے چیک آؤٹ سفر سے مزید فائدہ حاصل کریں۔"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "ٹیسٹ API کلید"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "گائیڈڈ سیٹ اپ"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "اختیارات"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "<a href=\"%s\">چیک آؤٹ کے اختیارات</a> پر ترتیب اور ڈیزائن ترتیب دیں۔"
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"مہمان چیک آؤٹ کو فعال کریں اور/یا <a href=\"%s\">کسٹمر اکاؤنٹس کی ترتیبات "
+"کا</a> جائزہ لیں۔"
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"آپٹمائزڈ <a href=\"%1$s\">کارٹ</a> کو فعال کریں، <a href=\"%2$s\">شکریہ</a> "
+"اور <a href=\"%3$s\">پے پیجز آرڈر کریں</a> ۔"
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr "Google Maps سے <a href=\"%s\">پتہ خود بخود مکمل کو</a> فعال کریں۔"
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr "<a href=\"%s\">ایڈریس بک</a> کے ساتھ متعدد محفوظ کردہ پتوں کو فعال کریں۔"
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"چیک کریں کہ آیا آپ کے نصب کردہ تھیم یا دیگر پلگ انز کے لیے <a "
+"href=\"%s\">انضمام کے کوئی اختیارات</a> دستیاب ہیں۔"
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"تیز تر سپورٹ حاصل کریں اور مطابقت کو بہتر بنانے اور اثر کی پیمائش کرنے میں "
+"ہماری مدد کریں۔ ٹولز کی ترتیبات سے <a href=\"%s\">استعمال سے باخبر رہنے کو "
+"فعال کریں</a> ۔"
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "لاپتہ ترتیبات کا ٹیب۔"
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "شروع کرنا"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>بہت اچھا! آپ کا چیک آؤٹ صفحہ اب Fluid Checkout پر چل رہا "
+"ہے۔</strong> شروع کرنے کے لیے چند اقدامات یہ ہیں:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "مکمل"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "رپورٹ کے ڈیٹا کا پیش نظارہ کریں۔"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "ابھی بھیجیں۔"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "خودکار پتہ لگانا"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "افریقی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "البانوی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "امہاری"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "عربی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "آرمینیائی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "آذربائیجانی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "باسکی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "بیلاروسی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "بنگالی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "بوسنیائی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "بلغاریائی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "برمی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "کاتالان"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "چینی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "چینی (آسان)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "چینی (ہانگ کانگ)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "چینی (روایتی)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "کروشین"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "چیک"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "ڈینش"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "ڈچ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "انگریزی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "انگریزی (آسٹریلین)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "انگریزی (برطانیہ)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "اسٹونین"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "فارسی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "فنش"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "فلپائنی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "فرانسیسی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "فرانسیسی (کینیڈین)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "گالیشین"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "جارجیائی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "جرمن"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "یونانی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "گجراتی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "عبرانی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "ہندی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "ہنگری"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "آئس لینڈی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "انڈونیشین"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "اطالوی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "جاپانی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "کنڑ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "قازق"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "خمیر"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "کورین"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "کرغیز"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "لاؤ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "لیٹوین"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "لتھوانیائی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "مقدونیائی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "مالائی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "ملیالم"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "مراٹھی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "منگول"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "نیپالی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "ناروے"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "پولش"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "پرتگالی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "پرتگالی (برازیل)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "پرتگالی (پرتگال)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "پنجابی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "رومانیہ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "روسی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "سربیائی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "سنہالی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "سلوواک"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "سلووینیائی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "ہسپانوی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "ہسپانوی (لاطینی امریکہ)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "سواحلی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "سویڈش"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "تامل"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "تیلگو"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "تھائی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "ترکی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "یوکرینی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "اردو"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "ویتنامی"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "زولو"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "گوگل ایڈریس خود بخود مکمل"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Google Places API ورژن"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"منتخب کریں کہ Google Places API کا کون سا ورژن استعمال کرنا ہے۔ ہم جلد از "
+"جلد نئے Places API پر جانے کی تجویز کرتے ہیں۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"ہم 1 مارچ 2025 سے &quot;Places API (نیا)&quot; استعمال کرنے کی تجویز کرتے "
+"ہیں، Google &quot;Places API (Legacy)&quot; ورژن کو Legacy اسٹیٹس میں منتقل "
+"کر دے گا، یعنی آپ اس سروس کو نئی API کلیدوں کے لیے مزید فعال نہیں کر سکیں "
+"گے اور یہ کہ API کا وہ ورژن آخر کار مزید دستیاب نہیں ہوگا۔ Legacy API کا "
+"استعمال کرنے والے موجودہ اکاؤنٹس بغیر کسی رکاوٹ کے کام کرنا جاری رکھ سکتے "
+"ہیں۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(تجویز کردہ)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "گوگل API کلید"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"اپنی Google API کلید چسپاں کریں اور ٹیسٹ بٹن کا استعمال اس بات کی تصدیق کے "
+"لیے کریں کہ یہ اس ویب سائٹ کے لیے کام کرتا ہے۔ یقینی بنائیں کہ کلید درست ہے "
+"اور آپ کے ڈومین کے لیے اس کی اجازت ہے، بصورت دیگر ایڈریس فیلڈ بلاک ہو سکتی "
+"ہے اور صارفین کو ان کے آرڈرز مکمل کرنے سے روک سکتے ہیں۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "گوگل ایڈریس خودکار تکمیل کو فعال کریں۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr "Google Maps APIs کا استعمال کرتے ہوئے پتہ کی خودکار تکمیل کو فعال کریں۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "گوگل API زبان"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"یہ زبان Google Places API ایڈریس کی تجاویز کو ظاہر کرنے کے لیے استعمال کی "
+"جائے گی اور پتے بھی اس زبان میں خود بخود مکمل ہو جائیں گے۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "نتائج کی اقسام"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"کسی بھی قسم کے نتائج کو قبول کرنے کے لیے خالی چھوڑ دیں، جو عام طور پر بہتر "
+"مماثل نتائج دیتا ہے۔ <a href=\"%s\" target=\"_blank\">مزید تفصیلات کے لیے "
+"دستاویزات دیکھیں</a> ۔<br> ایڈریس کے خود کار طریقے سے مکمل ہونے والے فیلڈز "
+"پر واپس آنے کے لیے ایڈریس تلاش کے نتائج کی 5 اقسام تک کا انتخاب کریں۔<br> "
+"<a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">معاون اقسام</a> کے بارے میں مزید جاننے کے لیے "
+"Google Maps کی دستاویزات دیکھیں۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "نتائج کی اقسام (Legacy API)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Places API (Legacy) کا استعمال کرتے وقت پتہ کی تلاش کے نتائج کی کس قسم کو "
+"واپس کرنا ہے۔<br> <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">معاون اقسام</a> کے بارے میں مزید "
+"جاننے کے لیے Legacy Google Places API کی دستاویزات دیکھیں۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "کمپنی کے میدان"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "اگر دستیاب ہو تو کمپنی کے نام کے لیے خودکار تکمیل کو فعال کریں۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Google Maps APIs سے واپس آنے پر کمپنی کے نام کی معلومات کے ساتھ کمپنی فیلڈ "
+"کی خودکار تکمیل کو فعال کریں۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "کاروباری تلاش"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "کمپنی کے میدان میں کاروبار کی تلاش کو فعال کریں۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"کمپنی کے فیلڈ میں ٹائپ کرتے وقت کسی کاروبار سے وابستہ پتوں کی تجویز کو فعال "
+"کریں، پھر جب تجاویز میں سے کاروبار کا انتخاب کیا جائے تو تمام پتوں کی فیلڈز "
+"کو خودکار طور پر مکمل کریں۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "کمپنی کے نتائج کی اقسام"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"خود کار طریقے سے مکمل ہونے والی کمپنی فیلڈز پر واپس آنے کے لیے ایڈریس تلاش "
+"کے نتائج کی 5 اقسام تک کا انتخاب کریں۔<br> تجویز کردہ قدر "
+"<code>establishment</code> ہے، جس میں زیادہ تر قسم کے کاروبار شامل ہیں۔<br> "
+"کسی بھی قسم کے نتائج کو قبول کرنے کے لیے خالی چھوڑ دیں، بشمول ایسے نتائج جو "
+"کاروبار سے متعلق نہیں ہیں۔<br> <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">معاون اقسام</a> کے بارے میں مزید جاننے کے لیے "
+"Google Maps کی دستاویزات دیکھیں۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "گوگل لوگو"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "متن اور لوگو دکھائیں &quot;Powered by Google&quot;"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"نشان زد ہونے پر، متن اور لوگو &quot;Powered by Google&quot; ایڈریس کے خود "
+"کار طریقے سے مکمل ہونے والے تجاویز کے خانے کے نیچے ظاہر ہوگا۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "Brasil API پتہ خود بخود مکمل"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "برازیل API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "CEP فیلڈز کے لیے Brasil API ایڈریس خودکار تکمیل کو فعال کریں۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"CEP/پوسٹ کوڈ فیلڈ کا استعمال کرتے ہوئے پتوں کو بازیافت کرنے اور آٹوفل کرنے "
+"کے لیے Brasil API کا استعمال کریں۔ صرف برازیلی پتوں کے لیے متعلقہ۔"
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "API ورژن"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "منتخب کریں کہ برازیل API CEP طریقہ کا کون سا ورژن استعمال کرنا ہے۔"
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "ایڈریس بک ہجرت"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "WooCommerce پتے"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"WooCommerce سے موجودہ شپنگ اور بلنگ ایڈریسز کو کسٹمرز کی ایڈریس بک میں کاپی "
+"کریں۔"
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "ایڈریس بک فیچر کو فعال کریں۔"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"صارفین کو متعدد پتے محفوظ کرنے کی اجازت دیں اور شپنگ اور بلنگ کے لیے "
+"استعمال کیے جانے والے پہلے سے طے شدہ پتے کی وضاحت کریں۔"
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "ایڈریس لیبلز"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "صارفین کو ہر پتے کے لیے حسب ضرورت لیبل شامل کرنے کی اجازت دیں۔"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"ایڈریس لیبل صارفین کے لیے اپنے محفوظ کردہ پتوں (یعنی: &quot;ماں کا "
+"گھر&quot;) کے درمیان فرق کرنا آسان بناتے ہیں۔ ایڈریس لیبل صارفین کے لیے نجی "
+"ہیں، اور آرڈر کی تفصیلات کے صفحہ یا رسیدوں پر ظاہر یا پرنٹ نہیں کیے جائیں "
+"گے۔"
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "ڈسپلے لے آؤٹ"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr "منتخب کریں کہ چیک آؤٹ پر اور کارٹ پر محفوظ کردہ پتے کیسے دکھائے جاتے ہیں۔"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"چیک آؤٹ پر اور کارٹ پر لاگو ہوتا ہے۔ اکاؤنٹ کے صفحے پر محفوظ کردہ پتے ہمیشہ "
+"کارڈ لے آؤٹ کا استعمال کرتے ہیں۔"
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "ایڈریس کارڈز"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "ایڈریس لسٹ"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "ڈراپ ڈاؤن فیلڈ"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "پتہ کی تلاش"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"فرنٹ اینڈ پر ایڈریس سرچ فلٹر دکھائیں جب گاہک کے پاس کم از کم اس تعداد میں "
+"محفوظ کردہ پتے دستیاب ہوں۔"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "ڈسپلے لے آؤٹ کو ڈراپ ڈاؤن فیلڈ پر سیٹ کرنے پر استعمال نہیں کیا جاتا ہے۔"
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "پتے"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "مزید اختیارات دیکھنے کے لیے کارٹ پیج کی اصلاح کو فعال کریں۔"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "چسپاں آرڈر کا خلاصہ"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"کارٹ کے صفحہ پر کوپن کوڈز کے سیکشن کو ظاہر کرنے کی جگہ کا انتخاب کریں۔ صرف "
+"اس وقت لاگو ہوتا ہے جب AJAX کارٹ فعال ہو، اور اگر WooCommerce کی ترتیبات "
+"میں کوپن کوڈز کا استعمال فعال ہو۔"
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "کراس سیل کی ترتیب"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "کراس سیلز دکھائے گئے۔"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "اشیاء"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "کارٹ پیج کی اصلاح"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"اپنی کارٹ کو وہی واضح، تبادلوں پر مرکوز لے آؤٹ دیں جیسا کہ آپ چیک آؤٹ کرتے "
+"ہیں۔"
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr "خریداری کے مستقل سفر کے لیے کارٹ لے آؤٹ کو چیک آؤٹ صفحہ سے ملا دیں۔"
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"کارٹ کو ہمیشہ پس منظر میں اپ ڈیٹ رکھیں، مقدار تبدیل ہونے پر کوئی پورا صفحہ "
+"دوبارہ لوڈ نہیں ہوتا ہے۔"
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"کوپن کوڈز، شپنگ، اور کراس سیلز کو بالکل وہی جگہ رکھیں جہاں وہ بہترین طور پر "
+"تبدیل ہوتے ہیں۔"
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"سکرولنگ کے دوران آرڈر کا خلاصہ مرئی رکھیں، اور جہاں خریداروں کو یقین دہانی "
+"کی ضرورت ہو وہاں اعتماد کی علامتیں شامل کریں۔"
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "کالم"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"چیک آؤٹ کے مراحل، آرڈر کا خلاصہ اور دیگر سیکشنز کے لیے عمومی انداز۔ دوسرے "
+"چیک آؤٹ، کارٹ، شکریہ (آرڈر موصول) پر لاگو ہوتا ہے، اور آرڈر کے صفحات دیکھیں۔"
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"<em>&quot;اسپلٹ&quot;</em> ڈیزائن ٹیمپلیٹ کے ساتھ <em>&quot;1 "
+"کالم&quot;</em> لے آؤٹ کا استعمال کرتے وقت، ایک دائیں کالم صرف اس صورت میں "
+"دکھایا جاتا ہے جب صفحہ سائڈبار ویجیٹ ایریا فعال ہو (چیک آؤٹ سائڈبار، کارٹ "
+"سائڈبار، یا آرڈر موصول شدہ سائڈبار)۔ بصورت دیگر صفحہ اسپلٹ اسٹائل کے ساتھ "
+"ایک کالم کے طور پر رہتا ہے۔"
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "کالم کا پس منظر تقسیم کریں۔"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"اسپلٹ ڈیزائن کے ثانوی کالم کے لیے پس منظر کا رنگ منتخب کریں۔ آرڈر کا خلاصہ "
+"پس منظر کا رنگ استعمال کرنے کے لیے خالی چھوڑ دیں۔"
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "صفحہ ٹیمپلیٹس"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "چیک آؤٹ ٹیمپلیٹ"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"چیک آؤٹ پر کم خلفشار کے لیے تجویز کردہ۔ <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">کارٹ "
+"ترک کرنے کے بارے میں تحقیق پڑھیں</a> ۔"
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "چپچپا ترقی بار"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "پروگریس بار اسٹائل"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "آرڈر کا ٹوٹل"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "پس منظر کا رنگ"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "ایکشن لنک"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "موبائل آرڈر کا خلاصہ"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "موبائل کی ابتدائی حالت"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "چیک آؤٹ پر کارٹ آئٹمز میں ترمیم کو فعال کریں۔"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"صارفین کو پروڈکٹ کی مقدار تبدیل کرنے یا چیک آؤٹ صفحہ پر براہ راست آئٹمز کو "
+"ہٹانے کی اجازت دیں۔"
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "کارٹ آئٹم کی خرابیاں"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"صرف اس وقت لاگو ہوتا ہے جب کوپن کوڈ چیک آؤٹ یا کارٹ کے صفحات پر علیحدہ حصے "
+"کے طور پر ظاہر ہوتا ہے، اور اگر WooCommerce کی ترتیبات میں کوپن کوڈز کا "
+"استعمال فعال کیا جاتا ہے۔"
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "کوپن کوڈز کی پوزیشن"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "کوپن بٹن لگائیں۔"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "&quot;کوپن لگائیں&quot; بٹن کا انداز منتخب کریں۔"
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "ایڈریس لائن 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"یہ ترتیب چیک آؤٹ اور لوکل پک اپ سیکشنز کے درمیان شیئر کی گئی ہے۔ لوکل پک اپ "
+"سیکشن پر، یہ یہ بھی فیصلہ کرتا ہے کہ آیا شپ/پک اپ سلیکٹر شپنگ میتھڈ سیکشن "
+"(پتہ سے پہلے) کے اندر دکھاتا ہے یا علیحدہ سیکشن (بعد میں)۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "کسٹمر اکاؤنٹس"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "مہمان چیک آؤٹ"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"WooCommerce اکاؤنٹس کی ترتیبات کے صفحہ سے مہمان چیک آؤٹ، لاگ ان، اور اکاؤنٹ "
+"بنانے کے اختیارات۔ ان کا انتظام یہاں آپ کی سہولت کے لیے کیا جاتا ہے، اور اس "
+"لیے آپ فی ترتیبات پروفائل کے لیے مختلف اقدار استعمال کر سکتے ہیں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "صارفین کو بغیر اکاؤنٹ کے چیک آؤٹ کرنے کی اجازت دیں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>تجویز کردہ</strong> اس لیے صارفین کو چیک آؤٹ کے دوران اکاؤنٹ بنانے "
+"یا لاگ ان کرنے کے لیے نہیں کہا جاتا، جس سے تبادلوں کی شرح کم ہو سکتی ہے۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"غیر فعال ہونے پر، صارفین کو خریداری مکمل کرنے کے لیے لاگ ان کرنا چاہیے یا "
+"اکاؤنٹ بنانا چاہیے۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "چیک آؤٹ پر لاگ ان کریں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "چیک آؤٹ کے دوران لاگ ان کو فعال کریں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr "واپس آنے والے صارفین کو چیک آؤٹ پیج سے لاگ ان کرنے کے لیے ایک لنک دکھائیں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "اکاؤنٹ بنانا"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "چیک آؤٹ کے دوران صارفین کو ایک اکاؤنٹ بنانے کی اجازت دیں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "گاہک اپنا آرڈر دینے سے پہلے ایک اکاؤنٹ بنا سکتے ہیں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "صارفین کو میرا اکاؤنٹ صفحہ سے اکاؤنٹ بنانے کی اجازت دیں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "صارفین میرا اکاؤنٹ صفحہ سے نیا اکاؤنٹ رجسٹر کر سکتے ہیں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "صارف نام"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "گاہک کے نام سے تخلیق کریں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>تجویز کردہ</strong> اس لیے صارفین سے چیک آؤٹ کے دوران صارف نام کا "
+"انتخاب کرنے کے لیے نہیں کہا جاتا، جو تبادلوں کی شرح کو کم کر سکتا ہے۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"صارف کا نام صارف کے نام سے یا ای میل ایڈریس سے تیار ہوتا ہے جب کوئی نام "
+"استعمال نہیں کیا جا سکتا۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "پاس ورڈ"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "پاس ورڈ سیٹ اپ لنک بھیجیں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>تجویز کردہ</strong> اس لیے صارفین سے چیک آؤٹ کے دوران پاس ورڈ سیٹ "
+"کرنے کے لیے نہ کہا جائے، جس سے تبادلوں کی شرح کم ہو سکتی ہے۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "صارفین کو اپنا پاس ورڈ محفوظ طریقے سے بنانے کے لیے ایک ای میل موصول ہوتا ہے۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"رجسٹرڈ صارفین کو لاگ ان کیے بغیر چیک آؤٹ مکمل کرنے دیں اور رابطہ کی تفصیلات "
+"کے میچ ہونے پر آرڈر کو ان کے موجودہ اکاؤنٹ سے جوڑ دیں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "موجودہ اکاؤنٹ کا پیغام"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr "شکریہ کے صفحہ سے صارفین کو اپنا آرڈر دینے کے بعد ایک اکاؤنٹ بنانے دیں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"اس سیکشن میں اختیارات اس وقت دستیاب ہوتے ہیں جب گیسٹ چیک آؤٹ اور اکاؤنٹ "
+"میچنگ فعال ہو۔ تاخیر سے اکاؤنٹ بنانے کے لیے اوپر کی دونوں خصوصیات کو فعال "
+"کریں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "تاخیر سے اکاؤنٹ بنانے کو فعال کریں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"جب مہمان چیک آؤٹ اور اکاؤنٹ کی مماثلت دونوں فعال ہوں تو تاخیر سے اکاؤنٹ "
+"بنانے کو فعال کریں۔"
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "سیکشن پوزیشن"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "کسٹمر تفصیلات سیکشن سے پہلے"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "کسٹمر تفصیلات کے سیکشن کے بعد"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "اکاؤنٹ بنانے کے فوائد"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "فیلڈ کو خالی چھوڑنے سے پہلے سے طے شدہ متن ظاہر ہوگا۔"
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "ان لائن بٹن"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "مطلوبہ فیلڈز"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "چیک آؤٹ پر گفٹ میسج فیلڈز کو فعال کریں۔"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "توسیع شدہ تحفہ پیغام"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "ڈسپلے گفٹ میسج فیلڈ کو ہمیشہ پھیلایا جاتا ہے۔"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "آرڈر کی تفصیلات میں گفٹ پیغام"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"اس سیکشن پر فی الحال کوئی انضمام دستیاب نہیں ہے۔ ہر پلگ ان اور تھیم سے "
+"متعلق اختیارات یہاں صرف اس وقت ظاہر ہوں گے جب وہ پلگ ان یا تھیم ایکٹیویٹ ہو۔"
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "فون فیلڈز"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "فیلڈ کی مرئیت"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "فیلڈ پوزیشن"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "فون کنٹری کوڈ اور توثیق"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "ملک"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "فون فیلڈز پر ملک کو فعال کریں۔"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "شپنگ یا بلنگ کے لیے ممالک کو فلٹر کریں۔"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"ہر فون فیلڈ پر کنٹری سلیکٹر کو اپنے اسٹور پر شپنگ یا بلنگ کی اجازت والے "
+"ممالک تک محدود کریں۔"
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "توثیق"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "ملکی قوانین کی بنیاد پر سادہ توثیق کو فعال کریں۔"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"چیک کرتا ہے کہ فون نمبر منتخب ملک کے لیے درست ہے، بشمول ملک کا کوڈ اور "
+"لمبائی۔"
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"سختی سے چیک کریں کہ نمبر ایک درست موبائل، فکسڈ لائن، یا منتخب ملک کے لیے "
+"دوسری قبول شدہ قسم ہے۔ کچھ درست نمبروں کو مسترد کر سکتے ہیں۔"
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "توثیق کی اقسام"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "پلیس ہولڈرز"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"اس وقت نظم کرنے کے لیے لائسنس کی کوئی کلید نہیں ہے۔ جب لائسنس یافتہ فلوئیڈ "
+"چیک آؤٹ پلگ ان یا ایڈ آن فعال ہو گا تو لائسنس کیز یہاں ظاہر ہوں گی۔"
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "ڈیفالٹ ڈیلیوری کی قسم"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "منتخب کریں کہ ڈیلیوری کی کون سی قسم بطور ڈیفالٹ منتخب کی جائے گی۔"
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "شپنگ زون فیلڈز"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"منتخب کریں کہ مقامی پک اپ شپنگ زون فلٹر فیلڈز کے لیے کون سے فیلڈز دکھائے "
+"جائیں گے۔ تمام دستیاب اختیارات دکھانے کے لیے خالی چھوڑ دیں۔"
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"یہ فیلڈز مقامی پک اپ شپنگ کے طریقوں کے فلٹر کے طور پر دکھائے جائیں گے۔ یہاں "
+"منتخب نہ کیے جانے پر بھی کچھ فیلڈز چیک آؤٹ پر ظاہر ہو سکتے ہیں، اگر ہم آہنگ "
+"پلگ ان کے لیے مناسب طریقے سے کام کرنے کی ضرورت ہو۔"
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "آرڈر شپنگ ایڈریس"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "پے پیج کی اصلاح کا آرڈر دیں۔"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr "بلا معاوضہ آرڈرز کو چیک آؤٹ کی طرح واضح، تبادلوں پر مرکوز لے آؤٹ دیں۔"
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr "زیر التواء ادائیگی کے آرڈرز کے لیے آرڈر پے پیج کے لے آؤٹ کو بہتر بنائیں۔"
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"خریداری کے مستقل سفر کے لیے آرڈر کی ادائیگی کے تجربے کو اپنے چیک آؤٹ سے ملا "
+"دیں۔"
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"اعتماد کی علامتیں اور بیجز شامل کریں جہاں خریداروں کو ادائیگی کرنے سے پہلے "
+"یقین دہانی کی ضرورت ہو۔"
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "صفحہ کی اصلاح کا شکریہ"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr "گاہک خریدنے کے بعد شکریہ کا صفحہ اور آرڈر کی تفصیلات کو واضح کریں۔"
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr "ایک واضح ترتیب کے ساتھ شکریہ صفحہ اور اکاؤنٹ آرڈر کی تفصیلات کو بہتر بنائیں۔"
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"آرڈر کی صورتحال کی پیشرفت، اعمال، ڈاؤن لوڈ، اور نوٹس دکھائیں جہاں وہ معنی "
+"رکھتے ہیں۔"
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "ای میل اطلاعات پر آرڈر کی تفصیلات کے سیکشن کو حسب ضرورت بنائیں۔"
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"اعتماد کی علامتیں اور بیجز شامل کریں جہاں خریداروں کو خریداری کے بعد یقین "
+"دہانی کی ضرورت ہو۔"
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "ای میل اطلاعات"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"شکریہ صفحہ کو فعال کریں اور مزید اختیارات دیکھنے کے لیے تفصیلات کی اصلاح کا "
+"آرڈر دیں۔"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "شکریہ صفحہ پر وسیع ترتیب کا استعمال کریں۔"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"یہ اختیارات شکریہ کے صفحہ کو متاثر کرتے ہیں، اکاؤنٹ کے صفحات پر اور ای میل "
+"اطلاعات پر آرڈر کی تفصیلات دیکھیں۔"
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "ترتیبات کو محفوظ کریں۔"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "دستاویزات"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "ٹوکری"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "شکریہ"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "پتہ خود بخود مکمل"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "ٹرسٹ بیجز"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "آپ کو ان ترتیبات کو محفوظ کرنے کی اجازت نہیں ہے۔"
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "محفوظ کرنے کی غلط درخواست۔"
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "آپ کی ترتیبات کو محفوظ کر لیا گیا ہے۔"
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "محفوظ کر رہا ہے..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "ترتیبات کو محفوظ نہیں کیا جا سکا۔ براہ کرم دوبارہ کوشش کریں۔"
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "نوٹس کو مسترد کریں۔"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "ترتیبات کا مینو کھولیں۔"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "ترتیبات کا مینو بند کریں۔"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "پیش نظارہ"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "پیش نظارہ کو پھیلائیں۔"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "پیش منظر کو سکیڑیں۔"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "ہیڈر اور فوٹر دکھائیں۔"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "ہیڈر اور فوٹر چھپائیں۔"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "صفحہ کا پیش نظارہ"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "پیش نظارہ ویو پورٹ"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "گولی"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "ڈیسک ٹاپ"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "پیش نظارہ چوڑائی"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "چوڑائی کو کم کریں۔"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "پکسلز میں چوڑائی کا جائزہ لیں۔"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "چوڑائی میں اضافہ کریں۔"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "بطور پیش نظارہ"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "مہمان"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "لاگ ان ہوا۔"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "پیش نظارہ صفحہ"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "قریب سے دیکھنے کے لیے پیش منظر کو پھیلائیں۔"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "%s کے ساتھ دستیاب ہے۔"
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "انہیں آن کریں۔"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr "اس صفحہ کے لیے اصلاحات بند ہیں۔ صفحہ کا پیش نظارہ کرنے کے لیے %s۔"
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "%s پیش نظارہ"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "الگ تھلگ سیشن · کچھ بھی محفوظ نہیں ہے۔"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "استعمال سے باخبر رہنا"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Fluid Checkout کی مطابقت کو بہتر بنانے میں مدد کے لیے غیر حساس سائٹ کے "
+"ماحول کی رپورٹیں بھیجیں۔ نیچے دیے گئے اختیارات میں فعال ہونے تک رپورٹس نہیں "
+"بھیجی جاتی ہیں۔"
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "Fluid Checkout پر استعمال سے باخبر رہنے کی رپورٹیں بھیجیں۔"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"یہ رپورٹیں آپ کی سائٹ کے لیے مطابقت اور تعاون کو بہتر بنانے میں ہماری مدد "
+"کرتی ہیں اور فعال ہونے پر ہفتہ وار بھیجی جاتی ہیں۔"
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr "رپورٹس میں کوئی صارف، منتظم صارف، یا کوئی اور حساس ڈیٹا شامل نہیں ہے۔"
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "بنیادی ماحول کی معلومات"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"ورڈپریس، پی ایچ پی، وو کامرس، تھیم، اور پلگ ان لسٹ ڈیٹا۔ رپورٹنگ فعال ہونے "
+"پر ہمیشہ شامل کیا جاتا ہے۔ اس ماحول کو سمجھنے میں ہماری مدد کرتا ہے جس میں "
+"آپ کی سائٹ چل رہی ہے۔"
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "پلگ ان کی ترتیبات"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"سپورٹ کی درخواستوں میں مدد کے لیے Fluid Checkout پلگ ان کی ترتیبات بھیجتا "
+"ہے اور یہ سمجھنے میں ہماری مدد کرتا ہے کہ آپ ہمارے پلگ انز کو کس طرح "
+"استعمال کر رہے ہیں۔"
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "جلد آرہا ہے۔"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "سیلز میٹرکس"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"آج تک Fluid Checkout انسٹال کرنے سے پہلے ایک سال کے لیے ماہانہ آرڈر کی گنتی "
+"اور کل فروخت۔ یہ سمجھنے میں ہماری مدد کرتا ہے کہ آیا آپ ہمارے پلگ ان انسٹال "
+"کر کے زیادہ پیسہ کما رہے ہیں۔ کوئی صارف یا صارف کا ڈیٹا کبھی نہیں بھیجا "
+"جاتا ہے۔"
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "افادیت"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"<code>select2</code> کے بجائے <code>TomSelect</code> ڈراپ ڈاؤن اجزاء "
+"استعمال کریں۔"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect ایک آسان ڈراپ ڈاؤن سلیکشن جزو ہے جو اسی فعالیت کی پیشکش کرتے ہوئے "
+"Select2 کے مقابلے میں غلطیوں کا کم خطرہ ہے۔"
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"چھوٹے آلات پر فارم فیلڈز کے ساتھ تعامل کرتے وقت خود بخود زوم ان ہونے سے "
+"بچنے کے لیے اس پلگ ان کے ذریعے آپٹمائز کیے گئے صفحات پر فارم فیلڈز کے اندر "
+"فونٹ کا سائز 16px پر سیٹ کرتا ہے۔"
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"سفاری اور دیگر براؤزرز موبائل آلات پر خودکار طور پر زوم ان کر سکتے ہیں تاکہ "
+"فونٹ کا سائز 16px سے چھوٹا ہونے پر متن کو پڑھنے میں آسانی ہو۔"
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "براؤزر کنسول پر اسکرپٹ پروسیسنگ ٹریکنگ کو فعال کریں۔"
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "غیر منقطع اثاثے۔"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "گوگل میپس اسکرپٹس"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "ڈپلیکیٹ گوگل میپس اسکرپٹ کو نہ ہٹائیں"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"فعال ہونے پر، ڈپلیکیٹ Google Maps اسکرپٹس کو نہیں ہٹایا جائے گا جو خرابیوں "
+"اور کارکردگی کے مسائل کا سبب بن سکتا ہے۔ اس آپشن کو صرف خرابیوں کا سراغ "
+"لگاتے وقت استعمال کریں۔"
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "ویجیٹ کے علاقے"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "موبائل پر آخری مرحلہ"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "موبائل پر صرف آخری مرحلے پر ویجٹ ڈسپلے کریں۔"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"چیک آؤٹ ٹرسٹ بیج ویجٹس صرف اس وقت ڈسپلے کریں جب موبائل آلات پر چیک آؤٹ کا "
+"آخری مرحلہ دیکھیں"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "معیاری"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "VAT نمبر کی فیلڈ"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "بلنگ فارم میں VAT نمبر کی فیلڈ شامل کریں۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "فیلڈ لیبل"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"VAT نمبر فیلڈ (یعنی VAT نمبر) کا لیبل سیٹ کریں۔ کثیر زبانی ویب سائٹس پر، "
+"بہتر ہے کہ اس فیلڈ کو خالی چھوڑ دیں اور اصل سٹرنگ کا ترجمہ کریں۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "VAT نمبر"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "EU-VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "مزید اختیارات دیکھنے کے لیے VAT نمبر کی فیلڈ کو فعال کریں۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "VAT کی توثیق"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "چیک آؤٹ کے دوران EU-VAT کے لیے VAT نمبر کی فیلڈ کی توثیق کریں۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"چیک کرتا ہے کہ آیا فراہم کردہ VAT نمبر ایک درست VAT نمبر ہے جو یورپی VIES "
+"ڈیٹا بیس (VAT انفارمیشن ایکسچینج سسٹم) پر رجسٹرڈ ہے۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "VAT نمبر خریدیں۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"دکان کا VAT نمبر EU-VAT کی توثیق کی درخواست کے لیے استعمال کیا جاتا ہے، اور "
+"رسیدوں پر پرنٹ کیا جاتا ہے۔<br> <strong>ہم اپنی دکان کا VAT نمبر شامل کرنے "
+"کی سختی سے سفارش کرتے ہیں</strong> کیونکہ بصورت دیگر VIES مشاورت کے نتائج "
+"اکاؤنٹنگ کے مقاصد کے لیے درست نہیں ہو سکتے۔<br> یعنی: "
+"<code>ATU99999999</code> یا <code>EE999999999</code> ۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "ریورس چارج"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "ریورس چارج میکانزم کو لاگو کریں"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"ٹیکس کی شرح کو صفر پر سیٹ کریں اور جب صارف کا VAT نمبر درست ہو تو انوائسز "
+"پر &quot;ریورس چارج&quot; دکھائیں۔ اسٹور کے ملک کے لحاظ سے ایک مختلف "
+"&quot;ریورس چارج&quot; متن کی ضرورت ہو سکتی ہے۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "ایک ہی ملک"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr "دکان کے ملک میں لین دین کے لیے ریورس چارج میکانزم کا اطلاق کریں:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"دکان والے ملک میں کمپنیوں کے درمیان لین دین کے لیے ریورس چارج میکانزم کو "
+"لاگو کرنے کے قابل بناتا ہے۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "ریورس چارج مستثنیات"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr "ریورس چارج میکانزم کو لاگو کرنا چھوڑنے کے لیے اضافی ممالک کا انتخاب کریں۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"ایک درست VAT نمبر فراہم کیے جانے پر بھی ان ممالک کے آرڈرز پر ٹیکس وصول کیا "
+"جائے گا۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "انوائس پر چارج کا لیبل ریورس کریں۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr "چیک آؤٹ پیج اور آرڈر کی تفصیلات پر &quot;ریورس چارج&quot; کا لیبل سیٹ کریں۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "انوائس پر ریورس چارج ٹیکسٹ"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "رسیدوں پر &quot;ریورس چارج&quot; ٹیکسٹ کا لیبل سیٹ کریں۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "ریورس چارج کی بنیاد پر ٹیکس ادا کیا جائے گا۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "کمپنی کا نام"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "VAT نمبر سے خودکار کمپنی کا نام"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"کسٹمر کی طرف سے فراہم کردہ درست VAT نمبر کی بنیاد پر بلنگ کمپنی کا نام پُر "
+"کریں۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "کمپنی کے نام میں ترمیم"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "آٹو فلڈ کمپنی کے نام میں ترمیم کی اجازت دیں۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"فعال ہونے پر، صارفین فراہم کردہ VAT نمبر سے وابستہ کمپنی کا نام تبدیل کر "
+"سکتے ہیں۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "ڈیجیٹل سامان کے لیے EU-VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"یکم جنوری، 2015 سے، ڈیجیٹل اشیا سے متعلق EU VAT کے ضوابط میں ترمیم کی گئی "
+"ہے، جو خصوصی طور پر B2C ٹرانزیکشنز کو متاثر کرتی ہے۔ ڈیجیٹل اشیا پر VAT کا "
+"حساب گاہک کے مقام کی بنیاد پر کیا جانا چاہیے، اور اس کے ثبوت (IP ایڈریس اور "
+"بلنگ ایڈریس) کو جمع کرنے کی ضرورت ہے۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "ڈیجیٹل اشیا کے لیے ٹیکس کلاسز"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "ٹیکس کی کچھ کلاسیں منتخب کریں۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "مقام کا ثبوت"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "گاہک کے مقام کے ثبوت جمع کریں۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"آئی پی ایڈریس کو محفوظ کرتا ہے اور اسے کسٹمر کے بلنگ ایڈریس کے خلاف توثیق "
+"کرتا ہے۔ اگر صارف کے بلنگ ایڈریس اور آئی پی سے ملک مماثل نہیں ہے تو گاہک کو "
+"چیک آؤٹ صفحہ پر ایک چیک باکس کو نشان زد کرکے اپنے بلنگ ایڈریس کی تصدیق کرنی "
+"ہوگی۔"
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"یہ اختیار Fluid Checkout میں منظم کیا جاتا ہے۔ <a href=\"%s\">اسے کسٹمر "
+"اکاؤنٹس کی ترتیبات میں تبدیل کریں</a> ۔"
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"یہ اختیار Fluid Checkout میں منظم کیا جاتا ہے۔ اسے Fluid Checkout &gt; "
+"Customer Accounts کے تحت تبدیل کریں۔"
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"یہ اختیار Fluid Checkout میں منظم کیا جاتا ہے۔ جب Fluid Checkout فعال ہو "
+"جاتا ہے تو شپنگ کی منزل ہمیشہ &quot;کسٹمر کے شپنگ ایڈریس پر ڈیفالٹ&quot; پر "
+"سیٹ ہوتی ہے۔ صارفین اب بھی چیک آؤٹ کے دوران مختلف شپنگ اور بلنگ پتے فراہم "
+"کر سکتے ہیں۔<br><br> پہلے سے طے شدہ بلنگ ایڈریس کو شپنگ ایڈریس کی طرح سیٹ "
+"کرنے کا اختیار <a href=\"%s\">Fluid Checkout کی ترتیبات</a> میں دستیاب ہے۔"
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"یہ اختیار Fluid Checkout میں منظم کیا جاتا ہے۔ جب Fluid Checkout فعال ہو "
+"جاتا ہے تو شپنگ کی منزل ہمیشہ &quot;کسٹمر کے شپنگ ایڈریس پر ڈیفالٹ&quot; پر "
+"سیٹ ہوتی ہے۔ صارفین اب بھی چیک آؤٹ کے دوران مختلف شپنگ اور بلنگ پتے فراہم "
+"کر سکتے ہیں۔<br><br> پہلے سے طے شدہ بلنگ ایڈریس کو شپنگ ایڈریس کی طرح سیٹ "
+"کرنے کا ایک آپشن WooCommerce &gt; Settings &gt; Fluid Checkout پر دستیاب ہے۔"
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr ""
+"ان ترتیبات کو WP Admin &gt; Fluid Checkout &gt; Settings میں منتقل کر دیا "
+"گیا ہے۔"
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"یہ WooCommerce سیٹنگز ٹیب فرسودہ ہے اور اسے Fluid Checkout 6.0 میں ہٹا دیا "
+"جائے گا۔"
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "ترتیبات کے صفحے پر جائیں۔"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "اس ٹیب کو مستقل طور پر چھپائیں۔"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "سائٹ کی رپورٹ کا پیش نظارہ"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"یہ وہ ڈیٹا ہے جو آپ کی موجودہ ترتیبات کی بنیاد پر اگلی سائٹ کے ماحول کی "
+"رپورٹ میں شامل کیا جائے گا۔"
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "رپورٹ کا پیش منظر لوڈ ہو رہا ہے..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "سائٹ کی رپورٹ کا پیش منظر لوڈ نہیں کیا جا سکا۔ دوبارہ کوشش کریں۔"
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "سائٹ کی رپورٹ نہیں بھیجی جا سکی۔ دوبارہ کوشش کریں۔"
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "سائٹ کی رپورٹ کامیابی سے بھیج دی گئی۔"
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "فعال کریں اور ابھی بھیجیں۔"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "بند"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr "سائٹ کی رپورٹ کی درخواست پہلے ہی جاری ہے۔ ایک لمحے میں دوبارہ کوشش کریں۔"
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "سائٹ کے ماحول کی رپورٹنگ غیر فعال ہے۔"
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "بھیجنے کے لیے سائٹ کی رپورٹ کا کوئی ڈیٹا دستیاب نہیں ہے۔"
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"یہ سائٹ ڈومین ماحولیاتی رپورٹس نہیں بھیج سکتا (مقامی یا ترقیاتی ڈومینز کو "
+"خارج کر دیا گیا ہے)۔"
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "حال ہی میں سائٹ کی رپورٹ بھیجی گئی تھی۔ بعد میں دوبارہ کوشش کریں۔"
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "سائٹ کی رپورٹ نہیں بھیجی جا سکی۔ بعد میں دوبارہ کوشش کریں۔"
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "سائٹ کے ماحول کی رپورٹنگ دستیاب نہیں ہے۔"
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "منتخب کردہ ترتیبات کے لیے سائٹ کی رپورٹ کا کوئی ڈیٹا دستیاب نہیں ہے۔"
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "آپ کو سائٹ کی رپورٹس کا نظم کرنے کی اجازت نہیں ہے۔"
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "پی آر او کی خصوصیت"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "دوسرے پلگ انز"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "صرف یہ ایڈ آن حاصل کریں — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "ایڈ آن انسٹال کریں۔"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "PRO میں اپ گریڈ کریں — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"ان اختیارات کو غیر مقفل کرنے کے لیے <a target=\"_blank\" href=\"%1$s\">%2$s "
+"حاصل کریں</a> ۔"
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "ایڈ آن"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "دستاویزات دیکھیں"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"درخواستوں کے لیے لاگ ان ورڈپریس صارف کی ضرورت ہوتی ہے۔ موجودہ صارف کا ڈیٹا "
+"استعمال کرنے کے لیے user_id کو چھوڑ دیں، یا دوسرے اکاؤنٹ کو ہدف بنانے کے "
+"لیے user_id کو پاس کریں جب کال کرنے والا اس صارف میں ترمیم کر سکتا ہے "
+"(edit_user کی صلاحیت)۔ غیر مستند درخواستیں fc_api_forbidden واپس آتی ہیں۔ "
+"ایک غلط user_id واپس کرتا ہے fc_api_user_not_found۔"
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr ""
+"HTTP 200 کے ساتھ { &quot;data&quot;: { ... } } جب ہینڈلر پے لوڈ واپس کرتا "
+"ہے۔"
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"HTTP 200 کے ساتھ { &quot;success&quot;: true } جب کوئی پے لوڈ نہ ہو (مثال "
+"کے طور پر DELETE)۔"
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"ناکامیاں WP_Error (کوڈ، پیغام، ڈیٹا اسٹیٹس) سے ورڈپریس REST غلطی JSON کو "
+"واپس کرتی ہیں۔ وائر کوڈز fc_api_* سابقہ استعمال کرتے ہیں۔"
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "ممنوع رسائی۔"
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "ٹارگٹ صارف نہیں ملا۔"
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "یہ فیچر دستیاب نہیں ہے۔"
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "ایک مطلوبہ ایڈریس فیلڈ غائب ہے۔"
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "پوسٹ کوڈ یا زپ غلط ہے۔"
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "فون نمبر غلط ہے۔"
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "ریاست یا کاؤنٹی غلط ہے۔"
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "ملک غلط ہے یا اس کے پاس کوئی ایڈریس فیلڈ نہیں ہے۔"
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "درخواست پر کارروائی نہیں ہو سکی۔"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "پچھلے مرحلے پر واپس جائیں۔"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "ترتیبات پر جائیں۔"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "دوبارہ شروع کریں اور پہلے ہدایت یافتہ سیٹ اپ مرحلے پر واپس جائیں۔"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "دوبارہ شروع کریں۔"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "براہ کرم جاری رکھنے سے پہلے تمام ذیلی مراحل کو مکمل کریں۔"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "پھیلائیں۔"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "سمٹنا"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "چھوڑیں۔"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "مکمل کے بطور نشان زد کریں۔"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "نامکمل کے بطور نشان زد کریں۔"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "پورے سائز کی تصویر دیکھیں: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "پورے سائز کے سیٹ اپ گائیڈ کی تصویر"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "تصویر بند کریں۔"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "فلوئڈ چیک آؤٹ گائیڈڈ سیٹ اپ"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "خوش آمدید"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "اپنا چیک آؤٹ دریافت کریں۔"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "سب سیٹ"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "آپ کو اس صفحہ تک رسائی کی اجازت نہیں ہے۔"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "مرحلہ %1$d: %2$s پر جائیں۔"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"یہ گائیڈڈ سیٹ اپ آپ کو Fluid Checkout سے واقف ہونے میں مدد کرتا ہے۔ ذیل کے "
+"مراحل ابھی کے لیے پلیس ہولڈرز ہیں۔"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "جب آپ تیار ہوں تو اگلے مرحلے پر جاری رکھیں۔"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "Fluid Checkout کو ایکشن میں دیکھنے کے لیے اپنا اسٹور چیک آؤٹ کھولیں۔"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "چیک آؤٹ صفحہ دیکھیں"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"آپ اپنے اسٹور کی تشکیل جاری رکھنے کے لیے Fluid Checkout کی ترتیبات پر واپس "
+"جا سکتے ہیں۔"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "چیک آؤٹ اور کارٹ کی ترتیبات کا جائزہ لیں۔"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "ڈیش بورڈ سے ایڈ آنز دریافت کریں۔"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "ختم کریں اور ترتیبات پر جائیں۔"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"WooCommerce کنونشنز سے مماثل ہونے کے لیے لیگیسی ویلیو سے بلنگ فون فیلڈ کی "
+"مرئیت کے آپشن کو اپ ڈیٹ کریں۔"
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"WooCommerce کنونشنز سے مماثل ہونے کے لیے لیگیسی ویلیو سے شپنگ فون فیلڈ کی "
+"مرئیت کے آپشن کو اپ ڈیٹ کریں۔"
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"آرڈر سمری پس منظر کے رنگ کی ترتیب کو نئے اسپلٹ ڈیزائن کے ثانوی کالم کے پس "
+"منظر کے رنگ کے اختیار میں کاپی کریں۔"
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"Biteship پلگ ان کا استعمال کرتے وقت بہتر منتخب فیلڈز کی خصوصیت ہمیشہ غیر "
+"فعال ہوتی ہے۔"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"جرمن مارکیٹ کا استعمال کرتے وقت جگہ کے آرڈر کی پوزیشن ہمیشہ &quot;آرڈر کے "
+"خلاصے کے نیچے&quot; پر سیٹ ہوتی ہے۔ اس پلگ ان کو آرڈر کے خلاصے کے نیچے "
+"ڈسپلے کرنے کے لیے پلیس آرڈر بٹن اور قانونی چیک باکسز کی ضرورت ہوتی ہے۔"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"WooCommerce کے لیے جرمنائزڈ استعمال کرتے وقت پلیس آرڈر کی پوزیشن ہمیشہ "
+"&quot;آرڈر سمری کے نیچے&quot; پر سیٹ ہوتی ہے۔ اس پلگ ان کو آرڈر کے خلاصے کے "
+"نیچے ڈسپلے کرنے کے لیے پلیس آرڈر بٹن اور قانونی چیک باکسز کی ضرورت ہوتی ہے۔"
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "پک اپ کے مقامات میں ترمیم کریں۔"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce کی ترتیبات سے مقامی پک اپ لیبل استعمال کریں۔"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"فعال ہونے پر، چیک آؤٹ پر پک اپ آپشن کا لیبل WooCommerce پک اپ مقام کی "
+"ترتیبات کے عنوان سے مماثل ہے۔ غیر فعال ہونے پر، لیبل Fluid Checkout سے "
+"ترجمہ کے قابل &quot;لوکل پک اپ&quot; متن کا استعمال کرتا ہے۔"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2761,3 +4685,115 @@ msgstr "جی ہاں"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "جان"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "ڈو"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "مثال کمپنی"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "123 مین اسٹریٹ"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "کوئی بھی شہر"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "براہ کرم پیکیج کو سامنے والے دروازے پر چھوڑ دیں۔"
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "بینی"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "ٹوپی"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "ٹی شرٹ"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr ""
+"ہمیں آپ کا آرڈر موصول ہو گیا ہے اور اس کے بھیجے جانے پر آپ کو اپ ڈیٹ بھیجیں "
+"گے۔"
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "صارف گائیڈ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "مقامات API (نیا)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "Places API (وراثت)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "ورژن 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "ورژن 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ اگلی بار تیزی سے چیک آؤٹ کریں ✔ اپنی ادائیگی کی ترجیحات کا نظم کریں ✔ "
+"آرڈر کی حیثیت اور تاریخ دیکھیں"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "پوشیدہ"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "اختیاری"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "درکار ہے۔"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "ایڈریس پر شپنگ"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "مقامی پک اپ"

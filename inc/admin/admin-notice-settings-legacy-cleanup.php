@@ -12,9 +12,9 @@ class FluidCheckout_AdminNotices_SettingsLegacyCleanup extends FluidCheckout {
 	private static $plugin_prefix = 'fc';
 
 	/**
-	 * Days to wait after migration before showing the cleanup notice.
+	 * Time to wait after migration before showing the cleanup notice (`strtotime`-relative, e.g. `2 months`).
 	 */
-	const NOTICE_DELAY_DAYS = 14;
+	const NOTICE_DELAY = '2 months';
 
 
 
@@ -37,6 +37,45 @@ class FluidCheckout_AdminNotices_SettingsLegacyCleanup extends FluidCheckout {
 
 
 	/**
+	 * Whether legacy individual settings options are still waiting to be cleaned up.
+	 */
+	public static function is_cleanup_pending() {
+		// Bail if settings class is not available
+		if ( ! class_exists( 'FluidCheckout_Settings' ) ) { return false; }
+
+		return 'yes' === FluidCheckout_Settings::instance()->get_raw_option( FluidCheckout_Settings::CLEANUP_NOTICE_OPTION, 'no' );
+	}
+
+
+
+	/**
+	 * Whether the Tools page should offer the legacy settings cleanup control.
+	 */
+	public static function should_show_tools_cleanup_field() {
+		// Bail if this is a new install or cleanup is already done
+		if ( ! FluidCheckout_Admin::is_legacy_install() || ! self::is_cleanup_pending() ) { return false; }
+
+		return true;
+	}
+
+
+
+	/**
+	 * URL to run legacy settings cleanup from the Tools settings tab.
+	 */
+	public static function get_cleanup_url() {
+		return wp_nonce_url(
+			add_query_arg(
+				array( 'fc_settings_legacy_cleanup' => '1' ),
+				admin_url( 'admin.php?page=fluid-checkout&tab=tools' )
+			),
+			'fc_settings_legacy_cleanup'
+		);
+	}
+
+
+
+	/**
 	 * Add notice.
 	 *
 	 * @param  array  $notices  Admin notices from the plugin.
@@ -48,12 +87,10 @@ class FluidCheckout_AdminNotices_SettingsLegacyCleanup extends FluidCheckout {
 		// Bail if settings class is not available
 		if ( ! class_exists( 'FluidCheckout_Settings' ) ) { return $notices; }
 
-		$settings = FluidCheckout_Settings::instance();
+		// Bail if this is a new install or cleanup is already done
+		if ( ! FluidCheckout_Admin::is_legacy_install() || ! self::is_cleanup_pending() ) { return $notices; }
 
-		// Bail if cleanup is not pending
-		if ( 'yes' !== $settings->get_raw_option( FluidCheckout_Settings::CLEANUP_NOTICE_OPTION, 'no' ) ) {
-			return $notices;
-		}
+		$settings = FluidCheckout_Settings::instance();
 
 		$migration_time = absint( $settings->get_raw_option( FluidCheckout_Settings::MIGRATION_TIME_OPTION, 0 ) );
 
@@ -64,25 +101,22 @@ class FluidCheckout_AdminNotices_SettingsLegacyCleanup extends FluidCheckout {
 		}
 
 		// Bail if the delay after migration has not passed yet
-		if ( time() < ( $migration_time + ( DAY_IN_SECONDS * self::NOTICE_DELAY_DAYS ) ) ) {
+		if ( time() < strtotime( '+' . self::NOTICE_DELAY, $migration_time ) ) {
 			return $notices;
 		}
 
-		$cleanup_url = wp_nonce_url(
-			add_query_arg( array( 'fc_settings_legacy_cleanup' => '1' ), admin_url( 'admin.php?page=fluid-checkout&tab=tools' ) ),
-			'fc_settings_legacy_cleanup'
-		);
+		$cleanup_url = self::get_cleanup_url();
 		$dismiss_url = wp_nonce_url(
 			add_query_arg( array( 'fc_settings_legacy_cleanup' => 'dismiss' ), admin_url( 'admin.php?page=fluid-checkout&tab=tools' ) ),
 			'fc_settings_legacy_cleanup'
 		);
 
-		$description  = '<p>' . esc_html( __( 'Since Fluid Checkout 5.0, settings are saved differently. Legacy options are still stored in the database to allow downgrades to previous versions if needed.', 'fluid-checkout' ) ) . '</p>';
-		$description .= '<p>' . esc_html( __( 'Your store has been running for about 2 weeks on the new settings so you could clean up legacy options stored in the database. Please note that after cleanup, if you need to downgrade to previous versions of the plugin it will use default values for all settings.', 'fluid-checkout' ) ) . '</p>';
+		$description  = '<p>' . esc_html( __( 'Since Fluid Checkout 5.0, settings are saved differently. Your settings have been migrated but legacy options are still stored in the database.', 'fluid-checkout' ) ) . '</p>';
+		$description .= '<p>' . esc_html( __( 'Your store has been running for at least 2 months on the new settings so these legacy options can now be cleaned from the database. Please note that after cleanup, if you need to downgrade to previous versions of the plugin it will use default values for all settings.', 'fluid-checkout' ) ) . '</p>';
 
 		$notices[] = array(
 			'name'            => self::$plugin_prefix . '_settings_legacy_cleanup',
-			'title'           => __( 'Fluid Checkout settings cleanup', 'fluid-checkout' ),
+			'title'           => __( 'Fluid Checkout legacy settings cleanup', 'fluid-checkout' ),
 			'description'     => $description,
 			'paragraph_wrap'  => false,
 			'dismissible'     => false,

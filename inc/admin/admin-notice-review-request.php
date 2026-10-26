@@ -7,6 +7,13 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_AdminNotices_ReviewRequest extends FluidCheckout {
 
 	/**
+	 * Time after installation before showing the review notice (`strtotime`-relative, e.g. `1 month`).
+	 */
+	const NOTICE_DELAY = '1 month';
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -32,15 +39,15 @@ class FluidCheckout_AdminNotices_ReviewRequest extends FluidCheckout {
 		// Bail if user does not have enough permissions
 		if ( ! current_user_can( 'install_plugins' ) ) { return $notices; }
 
-		// Define variables
-		$past_date = strtotime( '-7 days' );
+		// Bail if PRO is active (PRO shows its own review notice)
+		if ( FluidCheckout::instance()->is_pro_activated() ) { return $notices; }
 
 		// Get install date
 		// Need to get option directly as the Lite plugin might not be activated at this point
-		$install_date = get_option( 'fc_plugin_activation_time' );
+		$install_date = (int) get_option( 'fc_plugin_activation_time', 0 );
 
-		// Bail if 7 days have not passed since installation
-		if ( $past_date < $install_date ) { return $notices; }
+		// Bail if the notice delay has not passed since installation
+		if ( time() < strtotime( '+' . self::NOTICE_DELAY, $install_date ) ) { return $notices; }
 
 		$notices[] = array(
 			'name'           => 'review_request_timed',
@@ -48,7 +55,7 @@ class FluidCheckout_AdminNotices_ReviewRequest extends FluidCheckout {
 			'description'    => __( 'You have been using the plugin for a while now. How do you like it so far? <br>Please give us a quick rating, we appreciate every bit of feedback and it encourages us to keep improving the plugin :)', 'fluid-checkout' ),
 			'actions'        => array(
 				sprintf( '<a href="%s" class="button button-primary" target="_blank">%s</a>', 'https://wordpress.org/support/plugin/fluid-checkout/reviews/', __( 'Rate the plugin', 'fluid-checkout' ) ),
-				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', 'https://wordpress.org/support/plugin/fluid-checkout/', __( 'I need help!', 'fluid-checkout' ) ),
+				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', 'https://fluidcheckout.com/support/', __( 'I need help!', 'fluid-checkout' ) ),
 			),
 		);
 

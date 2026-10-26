@@ -277,10 +277,6 @@ msgstr "מסד הנתונים של Fluid Checkout עודכן בהצלחה"
 msgid "The database changes where applied successfully."
 msgstr "מסד הנתונים משתנה כאשר הוחל בהצלחה."
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "בְּסֵדֶר"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "לְפַטֵר"
@@ -395,36 +391,9 @@ msgstr "קרא תיעוד"
 msgid "Don't show this again"
 msgstr "אל תראה את זה שוב"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "מבצעים מיוחדים"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr "הרחב את כל הטוב של Fluid Checkout לדף העגלה שלך ודפי תודה."
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Fluid Checkout PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"תבניות עיצוב, אופטימיזציה של עגלה ועמודים שהתקבלו בהזמנה, התאמת חשבון ועוד "
-"הרבה יותר."
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"הכלים הטובים ביותר כדי <strong>לשפר עוד יותר את שיעור ההמרה של התשלום "
-"ב-WooCommerce</strong> ולהפוך את חווית הרכישה לעקבית לאורך כל המסע."
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -446,10 +415,6 @@ msgstr "ערוך את תוכן העגלה בעמוד התשלום"
 msgid "Account matching / user matching"
 msgstr "התאמת חשבון / התאמת משתמש"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "כפתורי תשלום מהירים מאמצעי תשלום נתמכים"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "אמון בסמלים על העגלה ודפי תודה"
@@ -457,10 +422,6 @@ msgstr "אמון בסמלים על העגלה ודפי תודה"
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "עמדות נוספות לקוד הקופון בעמוד התשלום"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "שדה קוד קופון משולב בדף העגלה"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -474,241 +435,25 @@ msgstr "הודעות מתנה ותלושי אריזה"
 msgid "Local pickup and in-store collection"
 msgstr "איסוף מקומי ואיסוף בחנות"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "שדרוג ל-PRO - 99 אירו"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Fluid Checkout PRO - חבילה"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "כל תכונות PRO + כל התוספות במחיר מיוחד."
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"החבילה כוללת את כל התוספות שאנו מציעים כעת ותוספות Fluid Checkout שאנו "
-"משיקים בעתיד."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "ערך 226 אירו (חסוך 42%)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "השלמה אוטומטית של כתובת גוגל"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "ספר כתובות"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "עוזר EU-VAT"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "כל התוספות העתידיות *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* כל עוד יש לך מנוי פעיל."
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "קבל את החבילה - רק 129 יורו"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"כל המחירים מוצגים באירו. אם יש הבדלים בין המחירים באתר שלנו, ההצעות המוצגות "
-"באתר מחליפות את אלה ויושמו."
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "תוספות"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "שפר את חוויית התשלום שלך עם התוספות האלה."
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "כבר יש לי את זה - הסתר את ההצעה הזו"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "מותקן — הפעל"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "מוּפעָל"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "עד 40% פחות שדות תשלום למילוי."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"הימנע מעיכובים באספקה ולקוחות לא מרוצים. אסוף את <strong>פרטי הכתובת "
-"הנכונים</strong> מהפעם הראשונה שהם קונים איתך."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "קבל את התוסף הזה - 29 אירו"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "ספר כתובות"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "מספר כתובות שמורות למשלוח וחיוב."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"אפשר ללקוחות <strong>לשמור מספר כתובות למשלוח וחיוב</strong> בחשבון שלהם "
-"ולבחור באילו מהם להשתמש בדפי התשלום והעגלה."
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "קבל את התוסף הזה - 59 אירו"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "אימות מע&quot;מ פשוט של האיחוד האירופי עבור החנות שלך."
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"איסוף <strong>ואמת מספרי מע&quot;מ של האיחוד האירופי בדף התשלום</strong> , "
-"מסיר חיובי מס על בסיס תשלום הפוך ומאשר את מיקום הלקוח בעת הצורך."
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "קבל את התוסף הזה - 39 אירו"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"כל התוספות נמכרות בנפרד ומחייבות התקנה והפעלה של הפלאגין <strong>Fluid "
-"Checkout Lite</strong> , למעט כאשר צוין."
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "בחר תמונה"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">היכנס "
-"לחשבון שלך</a> כדי לקבל את מפתח הרישיון שלך, או <a href=\"%s\" "
-"target=\"_blank\">רכוש מפתח רישיון חדש</a> ."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "תקף עד %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "פג תוקף ב-%s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">היכנס "
-"לחשבון שלך</a> כדי לחדש את מפתח הרישיון שלך ולהמשיך לקבל עדכונים ותמיכה."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "מפתח הרישיון בוטל."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">רכוש מפתח רישיון חדש</a> והמשך לקבל "
-"עדכונים ותמיכה."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "שְׁגִיאָה: "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "התקנה ותיעוד"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "גָדוֹל! דף התשלום שלך פועל כעת ב- Fluid Checkout."
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "הנה כמה משאבים לתחילת העבודה:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"קרא את מדריך ההתקנה <a href=\"%s\" target=\"_blank\">קבלת הצהרה עם Fluid "
-"Checkout</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "הגדרת פריסה ועיצוב על <a href=\"%s\">אפשרויות התשלום</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"בדוק אם קיימות <a href=\"%s\">אפשרויות אינטגרציה</a> זמינות עבור תוספים "
-"אחרים שהתקנת."
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"בקר <a href=\"%s\" target=\"_blank\">בתיעוד שלנו</a> למידע נוסף על תכונות "
-"Fluid Checkout."
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"אם אי פעם תזדקק לעזרה, <a href=\"%s\" target=\"_blank\">פתח כרטיס תמיכה</a> "
-"בערוץ התמיכה הרשמי שלנו."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -721,14 +466,6 @@ msgstr "אופטימיזציות של עגלה"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "אפשר אופטימיזציות של דפי עגלה"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "הצג את דף העגלה עם פריסה דומה לדף התשלום."
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "כותרת עליונה וכותרת תחתונה"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -761,15 +498,6 @@ msgstr "הפוך את סיכום ההזמנה לגלוי בדף העגלה בז�
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "קודי קופון"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"בחר מיקום שבו להציג את קטע קודי הקופון בדף העגלה. ישים רק כאשר עגלת AJAX "
-"וקודי הקופונים המשולבים בדף התשלום מופעלים."
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -861,10 +589,6 @@ msgstr "פריסת מכירות צולבות של ערכת הנושא"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "מספר פריטי מכירות צולבות להצגה בדף העגלה"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "סמלי אמון ותגים"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "הוסף אזורי ווידג&#39;ט לדף העגלה"
@@ -878,10 +602,6 @@ msgstr "אזורי ווידג&#39;ט אלה משמשים להוספת סמלי �
 #: inc/admin/admin-settings-checkout.php:50
 msgid "Checkout"
 msgstr "קופה"
-
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "פריסה ועיצוב"
 
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
@@ -898,21 +618,6 @@ msgstr "מצב כהה"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "הפעל מצב כהה"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "תבניות כותרות עליונות ותחתונות"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"אנו ממליצים להשתמש בכותרת העליונה והתחתונה ללא הסחות דעת כדי למנוע הסחות "
-"דעת בדף התשלום. <a href=\"https://baymard.com/blog/cart-abandonment\" "
-"target=\"_blank\">קרא את המחקר על נטישת עגלה</a> ."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -963,10 +668,6 @@ msgid ""
 msgstr ""
 "בחר צבע רקע לכותרת התחתונה של דף התשלום. חל רק בעת שימוש בכותרת העליונה "
 "והתחתונה ללא הסחות דעת."
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "רכיבי קופה"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1045,16 +746,6 @@ msgstr "קישור לדף החנות"
 msgid "Cart items"
 msgstr "פריטי עגלה"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "אפשר אפשרויות לעריכת פריטי עגלה בדף התשלום"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr "אפשר ללקוחות לשנות כמויות מוצרים או להסיר פריטים ישירות בעמוד התשלום."
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "הסתר שגיאות של פריטי עגלה בדף התשלום"
@@ -1102,33 +793,9 @@ msgid ""
 "checkout page."
 msgstr "אזורי ווידג&#39;ט אלה משמשים להוספת סמלי אמון ותגי אמון בדף התשלום."
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"הצג ווידג&#39;טים של סרגל הצד של התשלום רק בעת הצגת שלב התשלום האחרון "
-"במכשירים ניידים בעת שימוש בפריסת תשלום מרובה שלבים"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "אפשר סעיף קוד קופון משולב"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr "ישים רק אם השימוש בקודי קופון מופעל בהגדרות WooCommerce."
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "הצג את כותרת הקטע של קודי הקופון"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr "רלוונטי רק כאשר קוד הקופון מוצג כחלק נפרד בדפי התשלום או העגלה."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1147,16 +814,6 @@ msgstr "כצעד משנה לפני אמצעי תשלום"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "כצעד משנה לאחר אמצעי תשלום"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"בחר סגנון של כפתור &quot;החל קופון&quot;. חל רק כאשר קטע קוד הקופון מוצג "
-"&quot;לפני שלבי התשלום&quot; בדף התשלום, או &quot;לפני קטע פריטי "
-"העגלה&quot; בדף העגלה."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1204,20 +861,6 @@ msgstr ""
 "מומלץ רק כאשר רוב הלקוחות באמת זקוקים לשדה &quot;שורת כתובת 2&quot;, או "
 "כאשר קבלת הכתובת הנכונה למשלוח היא חיונית (כלומר, אם אספקת מזון ומוצרים "
 "מתכלים אחרים)."
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "הצג את לחצני הקישור &quot;הוסף&quot; באותיות קטנות"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"הפוך את התוויות של לחצן הקישור &quot;הוסף&quot; בשדה האופציונלי לאותיות "
-"<code>lowercase</code> (כלומר &quot;הוסף מספר טלפון&quot; במקום &quot;הוסף "
-"מספר טלפון&quot;). אפשרות זו משפיעה גם על כפתורי הקישור עבור שדות קוד קופון."
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1306,22 +949,6 @@ msgstr "לפני כתובת המשלוח"
 msgid "After shipping address"
 msgstr "לאחר כתובת למשלוח"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "מנע בחירה אוטומטית של שיטת המשלוח הראשונה"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"כאשר מופעל, שיטת המשלוח הראשונה הזמינה לא תיבחר אוטומטית כאשר לא נבחרה שיטת "
-"משלוח אחרת עבור כל חבילת משלוח.<br> אפשרות זו תופעל באופן אוטומטי אם "
-"האפשרות לניקוי שיטת המשלוח שנבחרה מופעלת עבור תכונת האיסוף המקומי."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "איסוף מקומי"
@@ -1337,20 +964,6 @@ msgid ""
 "Replaces the shipping address with the pickup point location when a local "
 "pickup shipping method is selected."
 msgstr "מחליף את כתובת המשלוח במיקום נקודת האיסוף כאשר נבחר שיטת משלוח לאיסוף מקומי."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "הצג אפשרות לנקות שיטות משלוח בתת-שלב מיקום האיסוף"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"הצג לחצן קישור בשלב המשנה של מיקום האיסוף כדי לנקות את שיטות המשלוח שנבחרו. "
-"זה יכול לשמש כדי לאפשר להציג שוב את קטע כתובת המשלוח אם נבחרה בעבר שיטת "
-"איסוף מקומית."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1424,31 +1037,6 @@ msgstr "הוסף שדה טלפון לחיוב לטופס התשלום."
 msgid "Choose in which step to display the billing phone field."
 msgstr "בחר באיזה שלב להציג את שדה הטלפון לחיוב."
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "אפשר אימות מספרי טלפון בהתבסס על חוקי המדינה"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"כאשר הוא מושבת, אימות שדה הטלפון לא יבדוק אם קידומת המדינה או אזור החיוג "
-"תקפים עבור המדינה."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "הצג רק מדינות מותרות למשלוח או חיוב"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"כאשר מופעל, רק המדינות המותרות למשלוח יהיו זמינות בשדה טלפון המשלוח, ורק "
-"מדינות המותרות לחיוב יהיו זמינות עבור שדה הטלפון לחיוב."
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "הצג את קוד המדינה ליד הדגל"
@@ -1481,19 +1069,11 @@ msgstr "הגדר את הנראות של שדה הערות הזמנה נוספו�
 msgid "Gift options"
 msgstr "אפשרויות מתנה"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "הצג הודעת מתנה ואפשרויות מתנות אחרות בעמוד התשלום"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
 "order."
 msgstr "אפשר ללקוחות להוסיף הודעת מתנה ואפשרויות אחרות הקשורות למתנה להזמנה."
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "הצג את שדות הודעת המתנה מורחבים תמיד"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1546,26 +1126,9 @@ msgstr "לוּחַ מַחווָנִים"
 msgid "Integrations"
 msgstr "אינטגרציות"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"אין אינטגרציות זמינות כרגע בחלק זה. האפשרויות הקשורות לכל תוסף יופיעו כאן "
-"רק אם תוסף זה מופעל."
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "מפתחות רישיון"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"אין אפשרויות מפתחות רישיון זמינות כרגע בחלק זה. האפשרויות הקשורות לכל תוסף "
-"או תוסף יופיעו כאן כאשר תוסף זה יופעל."
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1656,14 +1219,6 @@ msgid ""
 "These widget areas are used to add trust symbols and trust badges on the "
 "thank you page."
 msgstr "אזורי ווידג&#39;טים אלה משמשים להוספת סמלי אמון ותגי אמון בדף התודה."
-
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"אפשרויות אלו משפיעות על דף התודה , הצגת פרטי הזמנה בדפי החשבון ובהתראות "
-"באימייל."
 
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
@@ -1757,19 +1312,6 @@ msgstr "טען נכסים לא ממוינים"
 msgid "Enhanced select fields"
 msgstr "שדות בחירה משופרים"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr "החלף את רכיבי התפריט הנפתח <code>select2</code> ב- <code>TomSelect</code>"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect הוא רכיב בחירה נפתח פשוט יותר אשר נוטה פחות לשגיאות מאשר Select2, "
-"תוך שהוא מציע את אותן תכונות המשמשות בפועל בדפי התשלום של WooCommerce."
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "תקן הגדלה אוטומטית של שדות טופס"
@@ -1777,32 +1319,6 @@ msgstr "תקן הגדלה אוטומטית של שדות טופס"
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "הגדר <code>font-size</code> בתוך שדות הטופס ל-16 פיקסלים"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"כאשר גודל הגופן בתוך שדות הטופס קטן מ-16 פיקסלים, Safari ודפדפנים אחרים "
-"עשויים להתקרב אוטומטית במכשירים ניידים כדי להקל על הקריאה של הטקסט. כאשר "
-"אפשרות זו מופעלת, היא תגדיר את גודל הגופן בתוך שדות הטופס ל-16 פיקסלים "
-"בדפים שעברו אופטימיזציה על ידי Fluid Checkout כדי למנוע התקרבות."
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"יעד המשלוח מוגדר תמיד ל&quot;ברירת מחדל לכתובת משלוח של הלקוח&quot; כאשר "
-"Fluid Checkout מופעלת. לקוחות עדיין יכולים לספק כתובות משלוח וחיוב שונות "
-"במהלך התשלום, אפשרות להגדרת כתובת ברירת המחדל לחיוב להיות זהה לכתובת המשלוח "
-"זמינה ב- WooCommerce &gt; הגדרות &gt; Fluid Checkout."
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1827,14 +1343,6 @@ msgstr "(מִקצוֹעָן)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(נִסיוֹנִי)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "לְאַשֵׁר"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "אמת את מספר הטלפון"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2337,10 +1845,6 @@ msgstr "לאחר סרגל ההתקדמות"
 msgid "Before coupon codes section"
 msgstr "לפני מדור קודי קופון"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "הפעל שדות מספר טלפון בינלאומיים"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "עצבו מספרי טלפון בהתאם לכללים של כל מדינה."
@@ -2348,18 +1852,6 @@ msgstr "עצבו מספרי טלפון בהתאם לכללים של כל מדי�
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "השתמש באימות מספר טלפון מדויק"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"נסה לוודא שמספר הטלפון הוא מספר טלפון נייד או קווי תקף, בהתבסס על הכללים של "
-"קידומת המדינה שנבחרה. אפשרות זו משתמשת בתכונת האימות המדויקת "
-"<code>intl-tel-input</code> , שעשויה לתת תוצאות חיוביות שגויות עבור מספרי "
-"טלפון מסוימים."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2402,25 +1894,6 @@ msgstr "2 עמודות"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "עמודה אחת"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"סגנונות כלליים לשלבי התשלום, סיכום ההזמנה וקטעים אחרים.<br> ייתכן שתקף גם "
-"לדפים אחרים כגון דפי עגלת קניות, הזמנה שהתקבלה והצגת הזמנה."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"תבנית העיצוב <em>&quot;פיצול&quot;</em> אינה זמינה בעת שימוש בפריסה של "
-"<em>&quot;עמודה אחת&quot;</em> ותחזור ל&quot;מינימליסטית <em>&quot;</em> אם "
-"תבחר."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2510,6 +1983,2416 @@ msgstr ""
 "לפני מקטע כתובת המשלוח, ושדה טלפון המשלוח מוגדר כ&quot;חובה&quot;. זה נחוץ "
 "כדי להבטיח שניתן יהיה להעתיק את כתובת המשלוח לכתובת החיוב כאשר אפשרות זו "
 "מסומנת, אחרת ייתכן שהלקוח לא יוכל להשלים את טופס התשלום."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "פרופילי הגדרות"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "פרופיל הגדרות"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "אין לך הרשאה לבצע פעולה זו."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "אין לך הרשאה להפעיל תוספים."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "תוסף חסר."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "התוסף הופעל."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "השינויים הבאים יחולו:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"מאז Fluid Checkout 5.0, ההגדרות נשמרות בצורה שונה. אפשרויות מדור קודם עדיין "
+"נשמרות במסד הנתונים כדי לאפשר שדרוג לאחור לגרסאות קודמות במידת הצורך."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"החנות שלך פועלת כבר כשבועיים עם ההגדרות החדשות, כך שתוכל לנקות אפשרויות "
+"מדור קודם המאוחסנות במסד הנתונים. שימו לב שלאחר הניקוי, אם תצטרכו לשדרג "
+"לאחור לגרסאות קודמות של התוסף, הוא ישתמש בערכי ברירת מחדל עבור כל ההגדרות."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "ניקוי הגדרות של Fluid Checkout"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "מחיקת אפשרויות שנותרו"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "עזרו לנו לשפר את Fluid Checkout"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"שתף דוחות אנונימיים של סביבת אתר עם Fluid Checkout כדי לקבל תמיכה מהירה "
+"יותר ולעזור לנו לשפר את התאימות ולמדוד את ההשפעה. לא נכללים נתונים של "
+"לקוחות, משתמשים או נתונים רגישים. ניתן לבחור מה משותף בכל עת מהגדרות הכלים."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "הפעלת דוחות סביבת אתר"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "סקירת הגדרות"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"פג תוקף התצוגה המקדימה הזו. טען מחדש את דף הניהול כדי להתחיל תצוגה מקדימה "
+"חדשה."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "פג תוקף התצוגה המקדימה"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "לא ניתן לבצע הזמנות בתצוגה המקדימה."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "כניסה אינה זמינה בתצוגה המקדימה."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "לא ניתן ליצור חשבונות בתצוגה המקדימה."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "בקשות לאתרים אחרים חסומות בתצוגה המקדימה."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "עיבוד..."
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "משהו השתבש. אנא נסה שוב."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "הפעלת התוסף"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - חבילת התשלום המלאה"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"כל תכונות ה-PRO + כל התוספות, מחיר אחד. תבניות עיצוב, דפי עגלה ודפי הזמנות "
+"שהתקבלו אופטימליים, התאמת חשבונות ועוד."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "דף תשלום הזמנה אופטימלי"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "כפתורי תשלום מהיר מאמצעי תשלום נתמכים"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "יצירת חשבון מושהית"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "השלמה אוטומטית של כתובות עם ממשקי API של מפות גוגל"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "מספר כתובות שנשמרו עם פנקס הכתובות"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "עוזר מע&quot;מ באיחוד האירופי"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "הסתר את הקטע הזה"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "למידע נוסף"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "קבל גישה מוקדמת"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "הפעל את התוסף"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "הפיקו יותר ממסע התשלום שלכם"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "מפתח API לבדיקה"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "התקנה מודרכת"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "אפשרויות"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "הגדר פריסה ועיצוב <a href=\"%s\">באפשרויות התשלום</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr "הפעלת תשלום כאורח ו/או סקירת <a href=\"%s\">הגדרות חשבונות לקוחות</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"הפעל <a href=\"%1$s\">דפי עגלה</a> , <a href=\"%2$s\">תודה</a> ותשלום <a "
+"href=\"%3$s\">להזמנה</a> ממוטבים."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr "הפעל <a href=\"%s\">השלמה אוטומטית</a> של כתובות ממפות גוגל."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr "הפעל כתובות שמורות מרובות באמצעות <a href=\"%s\">פנקס כתובות</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"בדוק אם יש <a href=\"%s\">אפשרויות אינטגרציה</a> זמינות עבור התבנית או עבור "
+"תוספים אחרים שהתקנת."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"קבל תמיכה מהירה יותר ועזור לנו לשפר תאימות ולמדוד השפעה. <a "
+"href=\"%s\">הפעל מעקב אחר שימוש</a> מהגדרות הכלים."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "חסרה לשונית הגדרות."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "תחילת העבודה"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>מעולה! דף התשלום שלך פועל כעת ב-Fluid Checkout.</strong> הנה כמה "
+"צעדים כדי להתחיל:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "הושלם"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "תצוגה מקדימה של נתוני הדוח"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "שלח עכשיו"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "זיהוי אוטומטי"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "אפריקאנס"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "אלבני"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "אמהרית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "עֲרָבִית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "אַרְמֶנִי"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "אזרבייג&#39;נית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "באסקית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "בלארוסית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "בנגלית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "בוסנית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "בולגרית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "בורמזי"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "קטלאנית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "סִינִית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "סינית (פשוטה)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "סינית (הונג קונג)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "סינית (מסורתית)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "קרואטית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "צ&#39;כית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "דַנִי"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "הוֹלַנדִי"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "אַנגְלִית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "אנגלית (אוסטרלית)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "אנגלית (בריטניה הגדולה)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "אסטונית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "פרסית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "פִינִית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "פיליפינית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "צָרְפָתִית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "צרפתית (קנדית)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "גליציאנית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "גרוזיני"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "גֶרמָנִיָת"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "יוונית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "גוג&#39;ראטי"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "עִברִית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "הינדי"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "הוּנגָרִי"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "איסלנדית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "אינדונזית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "אִיטַלְקִית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "יַפָּנִית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "קאנדה"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "קזחית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "חמר"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "קוריאנית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "קירגיזית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "לאו"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "לטבית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "ליטאי"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "מקדונית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "מלאית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "מלאיאלאם"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "מרטהי"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "מוֹנגוֹלִי"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "נפאלית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "נורווגית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "פּוֹלָנִית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "פורטוגזית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "פורטוגזית (ברזיל)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "פורטוגזית (פורטוגל)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "פנג&#39;אבי"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "רומנית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "רוּסִי"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "סרבית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "סינהלית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "סלובקית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "סלובנית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "סְפָרַדִית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "ספרדית (אמריקה הלטינית)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "סוואהילית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "שוודית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "טמילית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "טלוגו"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "תאילנדי"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "טוּרקִית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "אוקראינית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "אורדו"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "וייטנאמית"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "זולו"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "השלמה אוטומטית של כתובות גוגל"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "גרסת ה-API של גוגל מקומות"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"בחר באיזו גרסה של ממשק ה-API של מקומות גוגל להשתמש. אנו ממליצים לעבור לממשק "
+"ה-API החדש של מקומות בהקדם האפשרי."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"אנו ממליצים להשתמש ב-&quot;Places API (חדש)&quot; מכיוון שהחל מ-1 במרץ "
+"2025, גוגל תעביר את גרסת &quot;Places API (Legacy)&quot; לסטטוס Legacy, "
+"כלומר לא תוכלו עוד להפעיל שירות זה עבור מפתחות API חדשים וגרסה זו של ה-API "
+"לא תהיה זמינה יותר בסופו של דבר. חשבונות קיימים שכבר משתמשים ב-Legacy API "
+"עשויים להמשיך לפעול ללא הפרעות."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(מוּמלָץ)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "מפתח ה-API של גוגל"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"הדבק את מפתח ה-API של גוגל שלך והשתמש בלחצן הבדיקה כדי לאשר שהוא פועל עבור "
+"אתר זה. ודא שהמפתח תקף ומותר עבור הדומיין שלך, אחרת שדה הכתובת עלול להיחסם "
+"ולמנוע מלקוחות להשלים את הזמנותיהם."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "הפעל השלמה אוטומטית של כתובות בגוגל"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr "הפעל השלמה אוטומטית של כתובות באמצעות ממשקי ה-API של מפות גוגל."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "שפת ה-API של גוגל"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"שפה זו תשמש להצגת הצעות לכתובות של ממשק ה-API של מקומות גוגל, וגם כתובות "
+"יושלמו אוטומטית בשפה זו."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "סוגי תוצאות"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"השאר ריק כדי לקבל כל סוג של תוצאות, שבדרך כלל מניבות תוצאות תואמות טובות "
+"יותר. <a href=\"%s\" target=\"_blank\">עיין בתיעוד לקבלת פרטים נוספים</a> "
+".<br> בחר עד 5 סוגים של תוצאות חיפוש כתובות כדי להחזיר בשדות השלמה אוטומטית "
+"של כתובות.<br> בקר בתיעוד של מפות גוגל כדי ללמוד עוד על <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">הסוגים הנתמכים</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "סוגי תוצאות (API מדור קודם)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"איזה סוג של תוצאות חיפוש כתובות להחזיר בעת שימוש ב-Places API (Legacy).<br> "
+"בקר בתיעוד של ממשק ה-API של מקומות גוגל (Legacy Google Places API) כדי "
+"ללמוד עוד על <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">הסוגים הנתמכים</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "שדות החברה"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "הפעל השלמה אוטומטית עבור שם החברה אם זמין"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"הפעל השלמה אוטומטית של שדה החברה עם פרטי שם החברה כאשר הוא מוחזר מממשקי "
+"ה-API של מפות גוגל."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "חיפוש עסקי"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "אפשר חיפוש עסקים בתחום החברה"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"הפעל הצעה לכתובות המשויכות לעסק בעת הקלדה בשדה החברה, ולאחר מכן השלם "
+"אוטומטית את כל שדות הכתובות כאשר עסק נבחר מההצעות."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "סוגי תוצאות החברה"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"בחר עד 5 סוגי תוצאות חיפוש כתובות שיוחזרו בשדות חברה להשלמה אוטומטית.<br> "
+"הערך המומלץ הוא <code>establishment</code> , הכולל את רוב סוגי העסקים.<br> "
+"השאר ריק כדי לקבל כל סוג של תוצאות, כולל תוצאות שאינן קשורות לעסקים.<br> "
+"בקר בתיעוד של מפות גוגל כדי ללמוד עוד על <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">הסוגים הנתמכים</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "לוגו גוגל"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "הצג טקסט ולוגו &quot;מופעל על ידי גוגל&quot;"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"כאשר האפשרות מסומנת, הטקסט והלוגו &quot;מופעל על ידי גוגל&quot; יוצגו "
+"בתחתית תיבת ההצעות להשלמת כתובות אוטומטית."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "השלמה אוטומטית של כתובת API של ברזיל"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "API של ברזיל"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "הפעל השלמה אוטומטית של כתובות API של Brasil עבור שדות CEP"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"השתמש ב-Brasil API כדי לאחזר ולמלא אוטומטית כתובות באמצעות שדה CEP/מיקוד. "
+"רלוונטי רק לכתובות ברזילאיות."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "גרסת API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "בחר באיזו גרסה של שיטת CEP של API ברזיל להשתמש."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "העברת פנקס כתובות"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "כתובות WooCommerce"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"העתק כתובות משלוח וכתובות חיוב קיימות מ-WooCommerce לפנקס הכתובות של "
+"הלקוחות."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "הפעל את תכונת פנקס הכתובות"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"לאפשר ללקוחות לשמור מספר כתובות ולהגדיר את כתובת ברירת המחדל שתשמש למשלוח "
+"ולחיוב."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "תוויות כתובת"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "לאפשר ללקוחות להוסיף תווית מותאמת אישית לכל כתובת"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"תוויות כתובת מקלות על הלקוחות להבחין בין הכתובות השמורות שלהם (לדוגמה: "
+"&quot;בית אמא&quot;). תוויות הכתובת הן פרטיות עבור הלקוחות, ולא יוצגו או "
+"יודפסו בדף פרטי ההזמנה או בחשבוניות."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "פריסת תצוגה"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr "בחר כיצד יוצגו כתובות שנשמרו בקופה ובעגלת הקניות."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"חל בקופה ובעגלת הקניות. כתובות שנשמרו בדף החשבון תמיד משתמשות בפריסה של "
+"כרטיסים."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "כרטיסי כתובת"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "רשימת כתובות"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "שדה נפתח"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "חיפוש כתובת"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"הצג מסנן חיפוש כתובות בממשק המשתמש כאשר ללקוח יש לפחות מספר זה של כתובות "
+"שמורות זמינות."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "לא בשימוש כאשר פריסת התצוגה מוגדרת לשדה נפתח."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "כתובות"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "הפעל אופטימיזציות של דפי עגלת קניות כדי לראות אפשרויות נוספות"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "סיכום הזמנה דביקה"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"בחר את המיקום שבו יוצג מדור קודי הקופון בדף עגלת הקניות. רלוונטי רק כאשר "
+"עגלת AJAX מופעלת, ואם השימוש בקודי קופון מופעל בהגדרות WooCommerce."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "פריסת מכירה צולבת"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "מכירות צולבות מוצגות"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "פריטים"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "אופטימיזציה של דף עגלת קניות"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr "תן לעגלת הקניות שלך את אותה פריסה ברורה וממוקדת המרות כמו בקופה."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr "התאם את פריסת עגלת הקניות לדף התשלום לקבלת מסע קנייה עקבי."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"שמור על עגלת הקניות מעודכנת ברקע, אין טעינה מחדש של עמוד שלם כאשר הכמויות "
+"משתנות."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"מקמו קודי קופון, משלוחים ומכירות צולבות בדיוק במקומות שבהם הם מניבים הכי "
+"הרבה המרות."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"שמרו על סיכום ההזמנה גלוי בזמן הגלילה, והוסיפו סמלי אמון במקומות בהם קונים "
+"זקוקים לביטחון."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "עמודות"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"סגנונות כלליים לשלבי התשלום, סיכום ההזמנה וסעיפים אחרים. חל על דפי התשלום "
+"האחרים, עגלת הקניות, תודה (הזמנה שהתקבלה) ותצוגת הזמנה."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"בעת שימוש בפריסה של <em>&quot;עמודה אחת&quot;</em> עם תבנית העיצוב "
+"<em>&quot;פיצול&quot;</em> , עמודה ימנית מוצגת רק אם אזור הווידג&#39;ט של "
+"סרגל הצד של הדף פעיל (סרגל צד של תשלום, סרגל צד של עגלת קניות או סרגל צד של "
+"הזמנות שהתקבלה). אחרת, הדף נשאר כעמודה אחת עם סגנונות פיצול."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "רקע עמודה מפוצלת"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"בחר צבע רקע עבור העמודה המשנית של עיצוב מפוצל. השאר ריק כדי להשתמש בצבע "
+"הרקע של סיכום ההזמנה."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "תבניות דפים"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "תבנית תשלום"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"מומלץ להפחתת הסחות דעת בקופה. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">קרא את "
+"המחקר על נטישת עגלת קניות</a> ."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "סרגל התקדמות דביק"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "סגנון סרגל התקדמות"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "סך כל ההזמנות"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "צבע רקע"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "קישור פעולה"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "סיכום הזמנות בנייד"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "מצב התחלתי של נייד"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "הפעל עריכת פריטי עגלה בקופה"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr "לאפשר ללקוחות לשנות כמויות מוצרים או להסיר פריטים ישירות בדף התשלום."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "שגיאות בפריטים בעגלה"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"רלוונטי רק כאשר קוד הקופון מוצג כקטע נפרד בדפי התשלום או עגלת הקניות, ואם "
+"השימוש בקודי קופון מופעל בהגדרות WooCommerce."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "מיקום קודי קופון"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "כפתור החלת קופון"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "בחר סגנון של כפתור &quot;החל קופון&quot;."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "שורת כתובת 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"הגדרה זו משותפת למקטעי &quot;קופה&quot; ו&quot;איסוף מקומי&quot;. במקטע "
+"&quot;איסוף מקומי&quot;, היא גם קובעת האם בורר המשלוח/איסוף יופיע בתוך מקטע "
+"שיטת המשלוח (לפני הכתובת) או כמקטע נפרד (אחרי)."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "חשבונות לקוחות"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "צ&#39;ק-אאוט של האורחים"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"אפשרויות תשלום, כניסה ויצירת חשבון כאורח מדף ההגדרות של חשבונות "
+"WooCommerce. הן מנוהלות כאן לנוחיותך, ולכן תוכל להשתמש בערכים שונים לכל "
+"פרופיל הגדרות."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "לאפשר ללקוחות לבצע תשלום ללא חשבון"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>מומלץ</strong> כך שלקוחות לא יתבקשו ליצור חשבון או להתחבר במהלך "
+"התשלום, מה שיכול להוריד את שיעורי ההמרה."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr "כאשר האפשרות מושבתת, על הלקוחות להתחבר או ליצור חשבון כדי להשלים את הרכישה."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "התחברות בקופה"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "הפעלת כניסה במהלך התשלום"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr "הצג קישור ללקוחות חוזרים להתחברות מדף התשלום."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "יצירת חשבון"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "לאפשר ללקוחות ליצור חשבון במהלך התשלום"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "לקוחות יכולים ליצור חשבון לפני ביצוע ההזמנה."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "לאפשר ללקוחות ליצור חשבון מדף &quot;החשבון שלי&quot;"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "לקוחות יכולים לפתוח חשבון חדש מדף &quot;החשבון שלי&quot;."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "שם משתמש"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "יצירה משם הלקוח"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>מומלץ</strong> כדי שלא יתבקשו לקוחות לבחור שם משתמש במהלך התשלום, "
+"דבר שיכול להוריד את שיעורי ההמרה."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr "שם משתמש נוצר משם הלקוח, או מכתובת הדוא&quot;ל כאשר לא ניתן להשתמש בשם."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "סִיסמָה"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "שלח קישור להגדרת סיסמה"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>מומלץ</strong> כדי שלא יתבקשו לקוחות להגדיר סיסמה במהלך התשלום, דבר "
+"שיכול להוריד את שיעורי ההמרה."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "לקוחות מקבלים אימייל ליצירת סיסמה בצורה מאובטחת."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"לאפשר ללקוחות רשומים להשלים את התשלום מבלי להתחבר ולקשר את ההזמנה לחשבון "
+"הקיים שלהם כאשר פרטי הקשר תואמים."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "הודעת חשבון קיים"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr "אפשרו ללקוחות ליצור חשבון לאחר ביצוע ההזמנה שלהם, מדף התודה."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"האפשרויות בסעיף זה זמינות כאשר ביצוע הזמנה כאורח והתאמת חשבונות מופעלים. "
+"הפעל את שתי התכונות שלמעלה כדי להגדיר יצירת חשבון מושהית."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "הפעל יצירת חשבון מושהית"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr "הפעל יצירת חשבון בהשהיה כאשר גם תשלום כאורח וגם התאמת חשבון מופעלים."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "מיקום המקטע"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "לפני סעיף פרטי הלקוח"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "אחרי מדור פרטי הלקוח"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "יתרונות יצירת חשבון"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "השארת השדה ריק תציג את טקסט ברירת המחדל."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "כפתורים מוטבעים"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "שדות חובה"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "הפעל שדות הודעה למתנה בקופה"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "הודעת מתנה מורחבת"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "שדה הודעת המתנה תמיד מורחב"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "הודעת מתנה בפרטי ההזמנה"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"אין אינטגרציות זמינות כרגע במקטע זה. האפשרויות הקשורות לכל תוסף ותבנית "
+"יופיעו כאן רק כאשר התוסף או התבנית מופעלים."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "שדות טלפון"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "נראות השדה"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "מיקום בשטח"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "קידומת בינלאומית של הטלפון ואימות"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "מְדִינָה"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "הפעל מדינה בשדות טלפון"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "סנן מדינות למשלוח או לחיוב"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"הגבל את בורר המדינות בכל שדה טלפון למדינות המותרות למשלוח או לחיוב בחנות "
+"שלך."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "מַתַן תוֹקֵף"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "הפעלת אימות פשוט המבוסס על כללי מדינה"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr "בודק שמספר הטלפון תקף עבור המדינה שנבחרה, כולל קידומת המדינה והאורך."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"בדיקה קפדנית יותר שהמספר הוא מספר נייד, קווי או סוג אחר המקובל במדינה "
+"שנבחרה. ייתכן שידחה מספרים תקינים מסוימים."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "סוגי אימות"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "מצייני מיקום"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"אין מפתחות רישיון לניהול כרגע. מפתחות רישיון יופיעו כאן כאשר תוסף או תוסף "
+"מורשה של Fluid Checkout פעילים."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "סוג משלוח ברירת מחדל"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "בחר איזה סוג משלוח ייבחר כברירת מחדל."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "שדות אזור משלוח"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"בחר אילו שדות יוצגו עבור שדות הסינון של אזור המשלוח של איסוף מקומי. השאר "
+"ריק כדי להציג את כל האפשרויות הזמינות."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"שדות אלה יוצגו כמסנן עבור שיטות משלוח לאיסוף מקומי. ייתכן שחלק מהשדות עדיין "
+"יופיעו בקופה אם לא נבחרו כאן, אם תוספים תואמים דורשים מהם לפעול כראוי."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "כתובת למשלוח ההזמנה"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "אופטימיזציה של דף תשלום הזמנות"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr "תנו להזמנות שלא שולמו את אותה פריסה ברורה וממוקדת המרות כמו בקופה."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr "בצע אופטימיזציה של הפריסה של דף התשלום עבור הזמנות הממתינות לתשלום."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr "התאם את חוויית התשלום בהזמנה לקופה שלך לקבלת מסע קנייה עקבי."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr "הוסיפו סמלי אמון ותגים היכן שקונים זקוקים לביטחון לפני התשלום."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "תודה על אופטימיזציית העמוד"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr "הפכו את דף התודה ופרטי ההזמנה לברורים יותר עבור הלקוחות לאחר הרכישה."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr "בצע אופטימיזציה של דף התודה ופרטי הזמנת החשבון עם פריסה ברורה יותר."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr "הצג את התקדמות סטטוס ההזמנה, פעולות, הורדות והערות היכן שהם הגיוניים."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "התאם אישית את מדורי פרטי ההזמנה בהודעות הדוא&quot;ל."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr "הוסיפו סמלי אמון ותגים היכן שקונים זקוקים לביטחון לאחר הרכישה."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "התראות דוא&quot;ל"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr "הפעל אופטימיזציות של דף התודה ופרטי ההזמנה כדי לראות אפשרויות נוספות"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "השתמש בפריסה רחבה בדף התודה"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"אפשרויות אלו משפיעות על דף התודה, על צפייה בפרטי ההזמנה בדפי החשבון ועל "
+"התראות הדוא&quot;ל."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "שמירת הגדרות"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "מסמכים"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "עֲגָלָה"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "תודה רבה"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "השלמה אוטומטית של כתובת"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "תגי אמון"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "אין לך הרשאה לשמור הגדרות אלה."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "בקשת שמירה לא חוקית."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "ההגדרות שלך נשמרו."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "חִסָכוֹן..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "לא ניתן היה לשמור את ההגדרות. אנא נסה שוב."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "דחיית הודעה"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "פתח את תפריט ההגדרות"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "סגור את תפריט ההגדרות"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "תצוגה מקדימה"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "הרחב את התצוגה המקדימה"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "כווץ את התצוגה המקדימה"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "הצג כותרת עליונה ותחתונה"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "הסתר כותרת עליונה ותחתונה"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "תצוגה מקדימה של הדף"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "תצוגה מקדימה של חלון התצוגה"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "לוּחַ"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "שולחן עבודה"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "רוחב התצוגה המקדימה"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "הקטנת רוחב"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "רוחב התצוגה המקדימה בפיקסלים"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "הגדלת רוחב"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "תצוגה מקדימה כ"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "אוֹרֵחַ"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "מחובר/ת"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "דף תצוגה מקדימה"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "הרחב את התצוגה המקדימה למבט מקרוב"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "זמין עם %s."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "הפעילו אותם"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr "אופטימיזציות עבור דף זה כבויות. %s כדי להציג את הדף בתצוגה מקדימה."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "תצוגה מקדימה של %s"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "סשן מבודד · שום דבר לא נשמר"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "מעקב שימוש"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"שלח דוחות על סביבת אתר שאינה רגישה כדי לעזור ל-Fluid Checkout לשפר את "
+"התאימות. דוחות לא נשלחים עד להפעלתם באפשרויות שלהלן."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "שלח דוחות מעקב שימוש ל-Fluid Checkout"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"דוחות אלה עוזרים לנו לשפר את התאימות והתמיכה באתר שלך ונשלחים מדי שבוע כאשר "
+"הם מופעלים."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"הדוחות לא כוללים נתונים של לקוחות, משתמשים של מנהלי מערכת או כל מידע רגיש "
+"אחר."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "מידע בסיסי על הסביבה"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"נתוני רשימת תבניות וורדפרס, PHP, WooCommerce. תמיד כלולים כאשר הדיווח "
+"מופעל. עוזרים לנו להבין את הסביבה שבה האתר שלך פועל."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "הגדרות תוסף"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"שולח הגדרות תוסף Fluid Checkout כדי לסייע בבקשות תמיכה ועוזר לנו להבין כיצד "
+"אתה משתמש בתוספים שלנו."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "בקרוב"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "מדדי מכירות"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"ספירת הזמנות חודשית וסך המכירות במשך שנה לפני התקנת Fluid Checkout ועד "
+"היום. עוזר לנו להבין אם אתם מרוויחים יותר כסף עם התוספים שלנו המותקנים. לא "
+"נשלחים נתוני לקוחות או משתמשים לעולם."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "שירותים"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"השתמש ברכיבי התפריט הנפתח <code>TomSelect</code> במקום ב- "
+"<code>select2</code>"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect הוא רכיב בחירה נפתח פשוט יותר, פחות נוטה לשגיאות מאשר Select2, "
+"תוך שהוא מציע את אותה פונקציונליות."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"מגדיר את גודל הגופן בתוך שדות טופס ל-16 פיקסלים בדפים שעברו אופטימיזציה על "
+"ידי תוסף זה כדי למנוע התקרבות אוטומטית בעת אינטראקציה עם שדות טופס במכשירים "
+"קטנים."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"ייתכן שספארי ודפדפנים אחרים יתקרבו אוטומטית במכשירים ניידים כדי להקל על "
+"קריאת הטקסט כאשר גודל הגופן קטן מ-16 פיקסלים."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "הפעל מעקב אחר עיבוד סקריפטים בקונסולת הדפדפן."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "נכסים לא ממוזערים"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "סקריפטים של מפות גוגל"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "אל תסיר סקריפטים כפולים של מפות גוגל"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"כאשר האפשרות מופעלת, סקריפטים כפולים של מפות גוגל לא יוסרו, דבר שעלול לגרום "
+"לשגיאות ובעיות ביצועים. השתמש באפשרות זו רק בעת פתרון בעיות."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "אזורי ווידג&#39;ט"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "שלב אחרון בנייד"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "הצגת ווידג&#39;טים רק בשלב האחרון בנייד"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"הצג ווידג&#39;טים של תג אמון בקופה רק בעת צפייה בשלב התשלום האחרון במכשירים "
+"ניידים"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "תֶקֶן"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "שדה מספר מע&quot;מ"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "הוסף שדה מספר מע&quot;מ לטופס החיוב."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "תווית שדה"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"הגדר את התווית של שדה מספר המע&quot;מ (לדוגמה, מספר מע&quot;מ). באתרים "
+"מרובי שפות, עדיף להשאיר שדה זה ריק ולתרגם את המחרוזת המקורית."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "מספר מע&quot;מ"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "מע&quot;מ באיחוד האירופי"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "הפעל את שדה מספר המע&quot;מ כדי לראות אפשרויות נוספות"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "אימות מע&quot;מ"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "אימות שדה מספר מע&quot;מ עבור מע&quot;מ באיחוד האירופי במהלך התשלום"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"בודק אם מספר המע&quot;מ שסופק הוא מספר מע&quot;מ תקף הרשום במסד הנתונים "
+"האירופי VIES (מערכת חילופי מידע על מע&quot;מ)."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "מספר מע&quot;מ בחנות"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"מספר המע&quot;מ של החנות המשמש לבקשת אימות מע&quot;מ של האיחוד האירופי, "
+"ומודפס על חשבוניות.<br> <strong>אנו ממליצים בחום להוסיף את מספר המע&quot;מ "
+"של החנות שלך</strong> , אחרת תוצאות הייעוץ של VIES עלולות לא להיות תקפות "
+"למטרות חשבונאיות.<br> כלומר: <code>ATU99999999</code> או "
+"<code>EE999999999</code> ."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "חיוב הפוך"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "החלת מנגנון חיוב הפוך"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"הגדר את שיעור המס לאפס והצג &quot;חיוב הפוך&quot; בחשבוניות כאשר מספר "
+"המע&quot;מ של הלקוח תקף. ייתכן שיידרש טקסט &quot;חיוב הפוך&quot; שונה בהתאם "
+"למדינת החנות."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "אותה מדינה"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr "החל מנגנון חיוב הפוך עבור עסקאות במדינת החנות:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr "מאפשר החלת מנגנון חיוב הפוך עבור עסקאות בין חברות באותה מדינה כמו החנות."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "חריגים לחיוב הפוך"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr "בחר מדינות נוספות כדי לדלג על החלת מנגנון החיוב ההפוך."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr "מיסים יחויבו על הזמנות ממדינות אלה גם כאשר סופק מספר מע&quot;מ תקף."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "תווית חיוב הפוך על חשבוניות"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr "הגדר את התווית &quot;חיוב הפוך&quot; בדף התשלום ובפרטי ההזמנה."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "טקסט חיוב הפוך בחשבוניות"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "הגדר את התווית של טקסט &quot;חיוב הפוך&quot; בחשבוניות."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "מס שיש לשלם על בסיס חיוב הפוך"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "שם החברה"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "השלמה אוטומטית של שם החברה ממספר מע&quot;מ"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr "מלא את שם חברת החיוב בהתבסס על מספר מע&quot;מ תקף שסופק על ידי הלקוח."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "עריכת שם החברה"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "אפשר עריכה של שם חברה שמולא אוטומטית"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"כאשר אפשרות זו מופעלת, לקוחות יכולים לשנות את שם החברה המשויך למספר "
+"המע&quot;מ שסופק."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "מע&quot;מ של האיחוד האירופי עבור מוצרים דיגיטליים"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"החל מ-1 בינואר 2015, בוצעו שינויים בתקנות המע&quot;מ של האיחוד האירופי "
+"בנוגע למוצרים דיגיטליים, המשפיעים אך ורק על עסקאות B2C. יש לחשב את "
+"המע&quot;מ על מוצרים דיגיטליים על סמך מיקום הלקוח, ויש לאסוף ראיות לכך "
+"(כתובת IP וכתובת לחיוב)."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "שיעורי מס עבור מוצרים דיגיטליים"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "בחר כמה מחלקות מס"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "ראיות מיקום"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "איסוף ראיות למיקום הלקוח"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"שומר את כתובת ה-IP ומאמת אותה מול כתובת החיוב של הלקוח. על הלקוח לאשר את "
+"כתובת החיוב שלו על ידי סימון תיבת סימון בדף התשלום אם המדינה מכתובת החיוב "
+"וכתובת ה-IP שלו אינן תואמות."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"אפשרות זו מנוהלת ב-Fluid Checkout. <a href=\"%s\">ניתן לשנות אותה בהגדרות "
+"חשבונות הלקוח</a> ."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"אפשרות זו מנוהלת ב-Fluid Checkout. ניתן לשנות אותה תחת Fluid Checkout &gt; "
+"חשבונות לקוחות."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"אפשרות זו מנוהלת ב-Fluid Checkout. יעד המשלוח תמיד מוגדר כ&quot;ברירת מחדל "
+"לכתובת המשלוח של הלקוח&quot; כאשר Fluid Checkout מופעל. לקוחות עדיין יכולים "
+"לספק כתובות משלוח וכתובות חיוב שונות במהלך התשלום.<br><br> אפשרות להגדרת "
+"כתובת ברירת המחדל לחיוב כך שתהיה זהה לכתובת המשלוח זמינה <a "
+"href=\"%s\">בהגדרות Fluid Checkout</a> ."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"אפשרות זו מנוהלת ב-Fluid Checkout. יעד המשלוח תמיד מוגדר כ&quot;ברירת מחדל "
+"לכתובת המשלוח של הלקוח&quot; כאשר Fluid Checkout מופעל. לקוחות עדיין יכולים "
+"לספק כתובות משלוח וכתובות חיוב שונות במהלך התשלום.<br><br> אפשרות להגדרת "
+"כתובת ברירת המחדל לחיוב כך שתהיה זהה לכתובת המשלוח זמינה ב-WooCommerce &gt; "
+"הגדרות &gt; Fluid Checkout."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr "הגדרות אלו הועברו אל WP Admin &gt; Fluid Checkout &gt; הגדרות."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr "לשונית הגדרות WooCommerce זו הוצאה משימוש ותוסר ב-Fluid Checkout 6.0."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "עבור לדף ההגדרות"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "הסתר את הכרטיסייה הזו לצמיתות"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "תצוגה מקדימה של דוח האתר"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr "אלו הנתונים שייכללו בדוח סביבת האתר הבא בהתבסס על ההגדרות הנוכחיות שלך."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "טוען תצוגה מקדימה של הדוח..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "לא ניתן היה לטעון את התצוגה המקדימה של דוח האתר. נסה שוב."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "לא ניתן היה לשלוח את דוח האתר. נסה שוב."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "דוח האתר נשלח בהצלחה."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "הפעל ושלח עכשיו"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "לִסְגוֹר"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr "בקשת דוח אתר כבר נמצאת בתהליך. נסה שוב בעוד רגע."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "דיווח סביבת האתר מושבת."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "אין נתוני דוח אתר זמינים לשליחה."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"דומיין אתר זה אינו יכול לשלוח דוחות סביבה (דומיינים מקומיים או דומיינים "
+"לפיתוח אינם כלולים)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "דוח אתר נשלח לאחרונה. נסה שוב מאוחר יותר."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "לא ניתן היה לשלוח את דוח האתר. נסה שוב מאוחר יותר."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "דיווח על סביבת האתר אינו זמין."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "אין נתוני דוח אתר זמינים עבור ההגדרות שנבחרו."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "אינך רשאי לנהל דוחות אתר."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "תכונת PRO"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "תוספים אחרים"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "קבל רק את התוסף הזה — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "התקנת תוסף"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "שדרגו ל-PRO — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr "<a target=\"_blank\" href=\"%1$s\">קבל %2$s</a> כדי לפתוח את האפשרויות האלה."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "תוסף"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "הצג תיעוד"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"בקשות דורשות משתמש וורדפרס מחובר. יש להשמיט את הפונקציה user_id כדי להשתמש "
+"בנתוני המשתמש הנוכחי, או להעביר את הפונקציה user_id לחשבון אחר כאשר המתקשר "
+"יכול לערוך משתמש זה (יכולת edit_user). בקשות לא מאומתות מחזירות את הפונקציה "
+"fc_api_forbidden. user_id לא חוקי מחזיר את הפונקציה fc_api_user_not_found."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr "HTTP 200 עם { &quot;data&quot;: { ... } } כאשר המטפל מחזיר מטען."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr "HTTP 200 עם { &quot;success&quot;: true } כאשר אין מטען (לדוגמה DELETE)."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"כשלים מחזירים שגיאת REST של וורדפרס בקובץ JSON מ-WP_Error (code, message, "
+"data.status). קודי Wire משתמשים בקידומת fc_api_*."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "גישה אסורה."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "משתמש היעד לא נמצא."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "תכונה זו אינה זמינה."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "חסר שדה כתובת חובה."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "מיקוד או קוד ZIP אינם חוקיים"
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "מספר הטלפון אינו תקין."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "מדינה או מחוז אינם חוקיים."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "המדינה אינה חוקית או שאין בה שדות כתובת."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "לא ניתן היה לעבד את הבקשה."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "חזרה לשלב הקודם"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "דלג להגדרות"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "התחל מחדש וחזר לשלב ההתקנה המודרך הראשון"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "התחל מחדש"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "אנא השלם את כל תתי השלבים לפני שתמשיך."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "לְהַרְחִיב"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "הִתמוֹטְטוּת"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "לְדַלֵג"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "סמן כשלם"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "סמן כלא גמור"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "הצג תמונה בגודל מלא: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "תמונה של מדריך ההתקנה בגודל מלא"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "סגור תמונה"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "הגדרה מודרכת של Fluid Checkout"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "קַבָּלַת פָּנִים"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "סקירת התשלום שלך"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "מוּכָן"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "אין לך הרשאה לגשת לדף זה."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "עבור לשלב %1$d: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"מדריך זה להגדרה עוזר לך להכיר את Fluid Checkout. השלבים הבאים הם כרגע "
+"מצייני מיקום."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "המשך לשלב הבא כשתהיה מוכן."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "פתחו את קופה החנות שלכם כדי לראות את Fluid Checkout בפעולה."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "צפה בדף התשלום"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr "באפשרותך לחזור להגדרות Fluid Checkout כדי להמשיך בהגדרת החנות שלך."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "סקירת הגדרות התשלום והעגלה"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "גלה תוספים מלוח המחוונים"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "סיים ועבור להגדרות"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"עדכן את אפשרות הנראות של שדה טלפון החיוב מהערך הקודם כך שתתאים למוסכמות של "
+"WooCommerce."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"עדכן את אפשרות הנראות של שדה טלפון המשלוח מהערך הקודם כך שיתאים למוסכמות של "
+"WooCommerce."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"העתיקו את הגדרת צבע הרקע של סיכום ההזמנה לאפשרות צבע הרקע החדשה של עמודה "
+"משנית של עיצוב מפוצל."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr "תכונת בחירת השדות המשופרת תמיד מושבתת בעת שימוש בתוסף Biteship."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"מיקום ביצוע ההזמנה תמיד מוגדר ל&quot;מתחת לסיכום ההזמנה&quot; בעת שימוש "
+"בשוק הגרמני. תוסף זה דורש שכפתור ביצוע ההזמנה ותיבות הסימון החוקיות יופיעו "
+"מתחת לסיכום ההזמנה."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"מיקום ביצוע ההזמנה תמיד מוגדר ל&quot;מתחת לסיכום ההזמנה&quot; בעת שימוש "
+"בגרמניזציה עבור WooCommerce. תוסף זה דורש שכפתור ביצוע ההזמנה ותיבות הסימון "
+"החוקיות יופיעו מתחת לסיכום ההזמנה."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "עריכת מיקומי איסוף"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "השתמש בתווית איסוף מקומית מהגדרות WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"כאשר אפשרות האיסוף מופעלת, תווית אפשרות האיסוף בקופה תואמת לכותרת מהגדרות "
+"מיקום האיסוף של WooCommerce. כאשר היא מושבתת, התווית משתמשת בטקסט הניתן "
+"לתרגום &quot;איסוף מקומי&quot; מ-Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2661,3 +4544,113 @@ msgstr "כֵּן"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "ג&#39;ון"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "צְבִיָה"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "חברה לדוגמה"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "רחוב ראשי 123"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "עיר כלשהי"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "אנא השאירו את החבילה בפתח הבית."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "כִּפָּה"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "כּוֹבַע"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "חוּלצַת טִי"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr "קיבלנו את הזמנתך ונעדכן אותך כאשר היא תישלח."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "מדריך למשתמש"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "ממשק API של מקומות (חדש)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "ממשק API של מקומות (דור קודם)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "גרסה 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "גרסה 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ קופה מהירה יותר בפעם הבאה ✔ ניהול העדפות התשלום שלך ✔ צפייה במצב "
+"והיסטוריית הזמנה"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "מוּסתָר"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "אופציונלי"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "דָרוּשׁ"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "משלוח לכתובת"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "איסוף מקומי"

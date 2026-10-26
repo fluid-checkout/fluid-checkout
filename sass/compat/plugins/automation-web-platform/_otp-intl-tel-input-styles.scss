@@ -1,12 +1,8 @@
-$body-page-selector: null !default;
-$body-theme-selector: null !default;
-$order-review-selector: null !default;
-
 @use "abstract" as *;
 
 // ------------------------------------
 // INTL-TEL-INPUT STYLES
-// 
+//
 // This file is required on the Lite plugin
 // to fix style issues with the intl-tel-input
 // component added by this plugin, whether the
@@ -14,8 +10,37 @@ $order-review-selector: null !default;
 // Fluid Checkout PRO is enabled or not.
 // ------------------------------------
 
+.woocommerce form .form-row .iti {
+	position: relative;
+	display: block;
+	width: 100%;
+	overflow: visible;
+}
+
 .iti__country-container {
 	height: $form-field-height;
 	z-index: z( 'float-element' );
 }
 
+// Wawp sets width/min-width/max-width to 100% on the dropdown.
+// The dropdown is a child of `.iti__country-container` (flag button only),
+// so 100% collapses it to ~40px and country names cannot be selected.
+div.woocommerce form .form-row .iti .iti__dropdown-content {
+	width: auto !important; // Needed to override Wawp intl-tel-input inline styles
+	min-width: remsize( 28rem ) !important; // Needed to override Wawp intl-tel-input inline styles
+	max-width: min( 100vw - remsize( 2rem ), remsize( 36rem ) ) !important; // Needed to override Wawp intl-tel-input inline styles
+	left: 0 !important; // Needed to override Wawp intl-tel-input inline styles
+	right: auto !important; // Needed to override Wawp intl-tel-input inline styles
+	box-sizing: border-box !important; // Needed to override Wawp intl-tel-input inline styles
+}
+
+div.woocommerce form .form-row .iti .iti__country-list {
+	width: 100%;
+	max-height: remsize( 22rem );
+	overflow-y: auto;
+}
+
+div.woocommerce form .form-row .iti .iti__search-input {
+	width: 100% !important; // Needed to override theme and Wawp styles
+	box-sizing: border-box !important; // Needed to override theme and Wawp styles
+}

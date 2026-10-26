@@ -1,7 +1,3 @@
-$body-page-selector: null !default;
-$body-theme-selector: null !default;
-$order-review-selector: null !default;
-
 @use "../abstract" as *;
 @use "../abstract/variables-admin" as *;
 
@@ -373,5 +369,62 @@ $order-review-selector: null !default;
 .fc-addons__item-actions--marketing .fc-addons__item-license-select + .button,
 .fc-addons__item-actions--marketing .fc-addons__item-action-notice {
 	margin-top: 0;
+}
+
+
+
+
+// ------------------------------------
+// DASHBOARD PRO PROMO — INLINE FOOTER ACTIONS
+// ------------------------------------
+
+.fc-addons__item-actions--promo-inline {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	width: auto;
+	max-width: 100%;
+	margin-top: 0;
+}
+
+.fc-addons__item-actions--promo-inline .button,
+.fc-addons__item-actions--promo-inline .fc-settings-button,
+.fc-addons__item-actions--promo-inline .fc-addons__item-license-select {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 auto;
+	box-sizing: border-box;
+	width: auto !important; // Needed to override full-width add-on action buttons
+	max-width: none !important; // Needed to override full-width add-on action buttons
+	margin-top: 0 !important; // Needed to override stacked add-on action spacing
+	text-align: center;
+	white-space: nowrap;
+}
+
+.fc-addons__item-actions--promo-inline .button.button--activated {
+	width: auto !important; // Needed to override full-width Activated button
+	max-width: none !important; // Needed to override full-width Activated button
+}
+
+.fc-addons__item-actions--promo-inline .fc-addons__item-license-select,
+.fc-addons__item-actions--promo-inline .fc-addons__item-action-notice {
+	flex: 1 0 100%;
+	width: 100%;
+}
+
+.fc-addons__item-actions--promo-inline .button + .fc-addons__item-action-notice,
+.fc-addons__item-actions--promo-inline .button + .button,
+.fc-addons__item-actions--promo-inline .fc-settings-button + .button,
+.fc-addons__item-actions--promo-inline .button + .fc-settings-button,
+.fc-addons__item-actions--promo-inline .fc-settings-button + .fc-settings-button,
+.fc-addons__item-actions--promo-inline .fc-addons__item-license-select + .button,
+.fc-addons__item-actions--promo-inline .fc-addons__item-action-notice {
+	margin-top: 0 !important; // Needed to override stacked add-on action spacing
+}
+
+.fc-settings-card--promo .fc-settings-card__footer {
+	align-items: center;
 }
 

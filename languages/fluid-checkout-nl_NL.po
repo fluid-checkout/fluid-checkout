@@ -39,45 +39,6 @@ msgstr "(PRO)"
 msgid "(Required)"
 msgstr "(Verplicht)"
 
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* Zolang je een actief abonnement hebt."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87
-#: inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "waarde 226 EUR (Bespaar 42%)"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-#, php-format
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">Koop een nieuwe licentiesleutel</a> en "
-"blijf updates en ondersteuning ontvangen."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-#, php-format
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in op "
-"je account</a> om je licentiesleutel te krijgen, of <a href=\"%s\" "
-"target=\"_blank\">koop een nieuwe licentiesleutel</a>."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in bij "
-"je account</a> om je licentiesleutel te verlengen en updates en "
-"ondersteuning te blijven ontvangen."
-
 #: inc/admin/admin.php:159
 #, php-format
 msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
@@ -194,18 +155,9 @@ msgstr "Widgetgebieden toevoegen aan de betaalpagina voor bestellingen"
 msgid "Add widget areas to the thank you page"
 msgstr "Widgetgebieden toevoegen aan de bedankpagina"
 
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "Toevoegingen"
-
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Aanvullende opmerkingen"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90
-#: inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "Adresboek"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
@@ -267,40 +219,6 @@ msgstr "Na het totaal van de bestelling"
 msgid "After the shipping section"
 msgstr "Na het verzendgedeelte"
 
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"Alle add-ons worden apart verkocht en vereisen de installatie en activering "
-"van de <strong>Fluid Checkout Lite</strong>-plugin, tenzij anders vermeld."
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-#| msgid "All future add-ons*"
-msgid "All future add-ons *"
-msgstr "Alle toekomstige uitbreidingen *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104
-#: inc/admin/admin-setting-type-fc-addons.php:234
-#| msgid ""
-#| "All prices shown in EUR and already include taxes. If there are any "
-#| "divergencies with the prices on our website, the offers shown on the "
-#| "website superseed these and will be applied."
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"Alle prijzen worden weergegeven in EUR. Als er afwijkingen zijn met de "
-"prijzen op onze website, dan gaan de aanbiedingen op de website voor en "
-"worden deze toegepast."
-
-#: inc/admin/admin-setting-type-fc-addons.php:81
-#: inc/admin/admin-setting-type-fc-addons.php:128
-#| msgid "All PRO features + All add-ons for a discounted price."
-msgid "All PRO features + All add-ons for a special price."
-msgstr "Alle PRO functies + Alle add-ons voor een speciale prijs."
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -308,14 +226,6 @@ msgid ""
 msgstr ""
 "Laat klanten een cadeaubericht en andere cadeaugerelateerde opties "
 "toevoegen aan de bestelling."
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"Geef klanten de mogelijkheid om producthoeveelheden te wijzigen of items "
-"direct op de afrekenpagina te verwijderen."
 
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:42
 msgid "Already have an account?"
@@ -364,16 +274,6 @@ msgid ""
 msgstr ""
 "Koppel de bestellingen van de gastklant aan hun bestaande account als er al "
 "een account bestaat met de contactgegevens van de klant."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"Voorkom leveringsvertragingen en ontevreden klanten. Verzamel de "
-"<strong>correcte adresgegevens</strong> vanaf de eerste keer dat ze bij je "
-"kopen."
 
 #: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87
 msgid "Before Shipping Address"
@@ -509,15 +409,6 @@ msgstr ""
 "Wijzigt de lay-out van de betaalpagina voor bestaande bestellingen die nog "
 "door de klant moeten worden betaald."
 
-#: inc/admin/admin-setting-type-fc-setup.php:50
-#, php-format
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"Controleer of er <a href=\"%s\">integratieopties</a> beschikbaar zijn voor "
-"andere plugins die je hebt geïnstalleerd."
-
 #: inc/admin/admin-settings-checkout.php:477
 msgid "Checkbox for \"Same as shipping/billing address\" checked by default"
 msgstr "Selectievakje voor \"Zelfde als verzend-/factuuradres\" standaard aangevinkt"
@@ -529,10 +420,6 @@ msgstr "Afrekenen"
 #: inc/checkout-widget-areas.php:144
 msgid "Checkout Below Place Order"
 msgstr "Afrekenen onder Bestelling plaatsen"
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "Afrekenelementen"
 
 #: inc/admin/admin-settings-checkout.php:422
 #: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:102
@@ -663,23 +550,9 @@ msgstr "Klik om naar het besteloverzicht te gaan"
 msgid "Close and continue with checkout"
 msgstr "Sluit en ga verder met afrekenen"
 
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"Verzamelt en <strong>valideert EU btw-nummers op de afrekenpagina</strong>, "
-"verwijdert belastingheffingen op basis van verlegging en bevestigt waar "
-"nodig de locatie van de klant."
-
 #: inc/admin/admin-settings-checkout.php:564
 msgid "Company name field for shipping address"
 msgstr "Bedrijfsnaam veld voor verzendadres"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "Bevestig"
 
 #: inc/admin/admin-settings-checkout.php:599
 #: inc/admin/admin-settings-checkout.php:626
@@ -760,15 +633,6 @@ msgstr "Definieer de zichtbaarheid van het veld aanvullende bestelnotities."
 msgid "Design template"
 msgstr "Ontwerpsjabloon"
 
-#: inc/admin/admin-setting-type-fc-addons.php:51
-#: inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"Ontwerpsjablonen, geoptimaliseerde winkelwagen- en orderontvangstpagina's, "
-"accountmatching en nog veel meer."
-
 #: inc/checkout-validation.php:197
 #. %s: html for the email address typo correction suggestion link
 #, php-format
@@ -787,22 +651,9 @@ msgstr "Ontsla"
 msgid "Display as a cart section"
 msgstr "Weergeven als winkelwagengedeelte"
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"Zijbalk widgets voor afrekenen alleen weergeven bij het bekijken van de "
-"laatste stap op mobiele apparaten bij gebruik van de lay-out voor afrekenen "
-"in meerdere stappen"
-
 #: inc/admin/admin-settings-checkout.php:227
 msgid "Display express checkout buttons in one line for larger screens"
 msgstr "Knoppen voor snelkassa in één regel weergeven voor grotere schermen"
-
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "Cadeaubericht en andere cadeauopties weergeven op de afrekenpagina"
 
 #: inc/admin/admin-settings-checkout.php:765
 msgid "Display message when an account exists with the email address provided"
@@ -820,16 +671,6 @@ msgstr ""
 #: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:94
 msgid "Display order progress from the theme"
 msgstr "Bestelvoortgang van het thema weergeven"
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "De koppelingsknoppen \"Toevoegen\" weergeven in kleine letters"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr ""
-"Geef de winkelwagenpagina weer met een opmaak die lijkt op die van de "
-"afrekenpagina."
 
 #: inc/admin/admin-settings-checkout.php:196
 msgid "Display the checkout progress bar when using multi-step checkout layout"
@@ -853,10 +694,6 @@ msgid ""
 msgstr ""
 "Het cadeaubericht weergeven als onderdeel van de tabel met bestelgegevens "
 "in plaats van een aparte sectie"
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "Geef de velden voor het geschenkbericht altijd uitgebreid weer"
 
 #: inc/admin/admin-settings-order-received.php:116
 msgid "Display the order details with wide layout on the thank you page"
@@ -971,19 +808,9 @@ msgstr "Aangepast e-mailverzendveld inschakelen"
 msgid "Enable dark mode"
 msgstr "Donkere modus inschakelen"
 
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "Geïntegreerde kortingscodesectie inschakelen"
-
 #: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "E-mailcontrole inschakelen: (uitgeschakelde functie)"
-
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr ""
-"Opties inschakelen om items in de winkelwagen te bewerken op de "
-"afrekenpagina"
 
 #: inc/admin/admin-settings-order-received.php:89
 msgid "Enable order details customizations on email notifications"
@@ -992,10 +819,6 @@ msgstr "Bestelgegevens aanpassen aan e-mailmeldingen inschakelen"
 #: inc/admin/admin-settings-order-pay.php:79
 msgid "Enable order pay page optimizations"
 msgstr "Optimalisatie van betaalpagina's voor bestellingen inschakelen"
-
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "Validatie van telefoonnummers inschakelen op basis van landregels"
 
 #: inc/admin/admin-settings-order-received.php:77
 msgid "Enable thank you page and order details optimizations"
@@ -1013,10 +836,6 @@ msgstr "De sectie Snelkassa inschakelen"
 msgid "Enable wide layout on \"My account\" page."
 msgstr "Brede lay-out inschakelen op de pagina \"Mijn account\"."
 
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "Verbeter je kassa-ervaring met deze add-ons."
-
 #: inc/admin/admin-settings-tools.php:112
 msgid "Enhanced select fields"
 msgstr "Verbeterde selectievelden"
@@ -1025,37 +844,15 @@ msgstr "Verbeterde selectievelden"
 msgid "Enter your code here"
 msgstr "Vul hier je code in"
 
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "Fout:"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91
 #: inc/admin/admin-setting-type-fc-addons.php:209
 #: inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "EU-VAT Assistant"
 
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. %s: License key expiration date.
-#, php-format
-msgid "Expired on %s."
-msgstr "Verlopen op %s."
-
 #: inc/admin/admin-settings-checkout.php:215
 msgid "Express checkout"
 msgstr "Snel afrekenen"
-
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "Express Checkout-knoppen van ondersteunde betaalmethoden"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"Breid al het goede van Fluid Checkout uit naar je winkelwagenpagina en "
-"bedankpagina's."
 
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
@@ -1091,14 +888,6 @@ msgstr "Fluid Checkout is niet compatibel met de Divi Builder afrekenlay-out"
 msgid "Fluid Checkout PRO"
 msgstr "Fluid Checkout PRO"
 
-#: inc/admin/admin-setting-type-fc-addons.php:78
-#: inc/admin/admin-setting-type-fc-addons.php:80
-#: inc/admin/admin-setting-type-fc-addons.php:125
-#: inc/admin/admin-setting-type-fc-addons.php:127
-#| msgid "Fluid Checkout PRO - Bundle"
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Fluid Checkout PRO - Bundel"
-
 #: inc/admin/admin-settings-checkout.php:170
 msgid "Footer background color"
 msgstr "Voettekst achtergrondkleur"
@@ -1114,24 +903,6 @@ msgid ""
 msgstr ""
 "Duitse PRO meerstappen afrekenfunctie moet worden uitgeschakeld bij het "
 "gebruik van Fluid Checkout"
-
-#: inc/admin/admin-setting-type-fc-addons.php:97
-#: inc/admin/admin-setting-type-fc-addons.php:136
-#| msgid "Get the bundle &mdash; Only 129 EUR"
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "Ontvang de bundel &mdash; Slechts 129 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "Koop deze add-on &mdash; 29 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "Koop deze add-on &mdash; 39 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "Koop deze add-on &mdash; 59 EUR"
 
 #: inc/admin/admin-settings-order-received.php:207
 msgid "Gift message"
@@ -1157,41 +928,17 @@ msgstr "Ga naar Plugin zoeken"
 msgid "Go to the home page"
 msgstr "Terug naar de homepage"
 
-#: inc/admin/admin-setting-type-fc-addons.php:89
-#: inc/admin/admin-setting-type-fc-addons.php:165
-#: inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Google adres autoaanvullen"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "Geweldig! Je afrekenpagina draait nu op Fluid Checkout."
-
 #: inc/compat/themes/compat-theme-Impreza.php:99
 msgid "Header"
 msgstr "Kop"
-
-#: inc/admin/admin-settings-cart.php:96
-#: inc/admin/admin-settings-checkout.php:117
-#| msgid "Header and Footer"
-msgid "Header and footer"
-msgstr "Koptekst en voettekst"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
 msgstr "Koptekst- en voettekstsjabloon"
 
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "Koptekst- en voettekstsjablonen"
-
 #: inc/admin/admin-settings-checkout.php:148
 msgid "Header background color"
 msgstr "Header-achtergrondkleur"
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "Hier zijn een paar bronnen om mee te beginnen:"
 
 #: inc/admin/admin-settings-cart.php:146 inc/admin/admin-settings-cart.php:169
 #: inc/admin/admin-settings-cart.php:184
@@ -1261,15 +1008,6 @@ msgstr ""
 "zichtbaarheidsstatus is, worden er geen wijzigingen toegepast zodat andere "
 "plugins de wijzigingen kunnen toepassen die ze nodig hebben."
 
-#: inc/admin/admin-setting-type-fc-setup.php:52
-#, php-format
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"Als je ooit hulp nodig hebt, <a href=\"%s\" target=\"_blank\">open een "
-"ondersteuningsticket</a> op ons officiële ondersteuningskanaal."
-
 #: inc/admin/admin-settings-checkout.php:237
 msgid ""
 "Ignore additional checkout required fields when paying with a compatible "
@@ -1297,17 +1035,6 @@ msgstr "Binnen het besteloverzicht"
 #: inc/admin/admin-settings-checkout.php:393
 msgid "Inside the order summary"
 msgstr "In het besteloverzicht"
-
-#: inc/admin/admin-setting-type-fc-addons.php:157
-#: inc/admin/admin-setting-type-fc-addons.php:178
-#: inc/admin/admin-setting-type-fc-addons.php:200
-#: inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "Geïnstalleerd &mdash; Activeren"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "Geïntegreerd couponcodeveld op de winkelwagenpagina"
 
 #: inc/admin/admin-settings-integrations.php:51
 msgid "Integrations"
@@ -1338,26 +1065,9 @@ msgstr ""
 "Het wordt aanbevolen om deze optie ingeschakeld te laten voor een betere "
 "gebruikerservaring."
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "Lay-out &amp; ontwerp"
-
 #: inc/admin/admin-settings-cart.php:198
 msgid "Layout of cross-sell items on the cart page."
 msgstr "Lay-out van cross-sell items op de winkelwagenpagina."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"Laat klanten <strong>meerdere verzend- en factuuradressen</strong> opslaan "
-"in hun account en kiezen welke ze willen gebruiken bij het afrekenen en op "
-"de winkelwagenpagina's."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "Licentiesleutel geannuleerd."
 
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
@@ -1403,17 +1113,6 @@ msgstr ""
 "Zorg ervoor dat de voortgangsbalk van het afrekenen zichtbaar blijft "
 "tijdens het scrollen"
 
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"Maak de labels van de optionele veld \"Toevoegen\" linkknop als <code> "
-"kleine letters</code> (bijv. \"Voeg telefoonnummer toe\" in plaats van "
-"\"Voeg telefoonnummer toe\"). Deze optie heeft ook invloed op de "
-"linkknoppen voor couponcodevelden."
-
 #: inc/admin/admin-settings-cart.php:132
 msgid "Make the order summary stay visible on the cart page while scrolling"
 msgstr ""
@@ -1451,32 +1150,9 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Het aanmeldingsvakje naar de contactstap verplaatsen"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "Meerdere opgeslagen adressen voor verzending en facturering."
-
 #: inc/compat/themes/compat-theme-go.php:59
 msgid "My account layout"
 msgstr "De lay-out van mijn account"
-
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"Er zijn op dit moment geen integraties beschikbaar in deze sectie. De "
-"opties die aan elke plugin zijn gekoppeld, worden hier alleen weergegeven "
-"als die plugin is geactiveerd."
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"Op dit moment zijn er geen opties voor licentiesleutels beschikbaar in deze "
-"sectie. De opties voor elke plugin of add-on verschijnen hier wanneer die "
-"plugin is geactiveerd."
 
 #: inc/checkout-steps.php:3918
 #: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
@@ -1487,39 +1163,15 @@ msgstr "Nog niet geselecteerd."
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "Aantal cross-sell items om weer te geven op de winkelwagenpagina"
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "Ok"
-
 #: inc/admin/admin-settings-order-received.php:184
 msgid "On the sidebar"
 msgstr "Op de zijbalk"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr ""
-"Alleen van toepassing als het gebruik van kortingscodes is ingeschakeld in "
-"de WooCommerce-instellingen."
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"Alleen van toepassing als de couponcode als een aparte sectie op de kassa- "
-"of winkelwagenpagina's wordt weergegeven."
 
 #: inc/compat/themes/compat-theme-Impreza.php:101
 msgid "Only applicable when using the Impreza theme header at the checkout page."
 msgstr ""
 "Alleen van toepassing als je de koptekst van het Impreza-thema gebruikt op "
 "de afrekenpagina."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "Toon alleen toegestane landen voor verzending of facturering"
 
 #: inc/checkout-shipping-phone-field.php:105
 msgid "Only used for shipping-related questions."
@@ -1703,10 +1355,6 @@ msgstr "Bestelling plaatsen"
 msgid "Please verify your phone number."
 msgstr "Controleer je telefoonnummer."
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "Automatische selectie van de eerste verzendmethode voorkomen"
-
 #: inc/checkout-steps.php:1688
 #. Next checkout step title
 #, php-format
@@ -1746,15 +1394,6 @@ msgstr "Documentatie lezen"
 msgid "Read the documentation."
 msgstr "Lees de documentatie."
 
-#: inc/admin/admin-setting-type-fc-setup.php:48
-#, php-format
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"Lees de installatiegids <a href=\"%s\" target=\"_blank\">Gesteld worden met "
-"Fluid Checkout</a>."
-
 #: inc/admin/admin-settings-checkout.php:441
 msgid ""
 "Recommended only when most customers actually need the \"Address line 2\" "
@@ -1777,12 +1416,6 @@ msgid ""
 msgstr ""
 "Verwijdert de sectie met verzendadressen wanneer een lokale afhaalmethode "
 "is geselecteerd."
-
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr ""
-"Vervang <code>select2</code> dropdown-componenten door "
-"<code>TomSelect</code>"
 
 #: inc/admin/admin-settings-checkout.php:766
 msgid ""
@@ -1839,17 +1472,6 @@ msgstr ""
 "Selecteer de positie waar het gedeelte met het factuuradres moet worden "
 "weergegeven op de afrekenpagina."
 
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"Selecteer de positie waar het gedeelte met couponcodes op de "
-"winkelwagenpagina moet worden weergegeven. Alleen van toepassing als "
-"AJAX-winkelwagentje en de geïntegreerde couponcodes op de afrekenpagina "
-"zijn ingeschakeld."
-
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
 "Select position where to display the coupon codes section on the checkout "
@@ -1871,17 +1493,6 @@ msgid ""
 msgstr ""
 "Selecteer de positie waar de verzendkosten en calculator moeten worden "
 "weergegeven op de winkelwagenpagina."
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"Selecteer de stijl van de knop \"Coupon toepassen\". Alleen van toepassing "
-"als het gedeelte met de couponcode wordt weergegeven \"Vóór de "
-"afrekenstappen\" op de afrekenpagina, of \"Vóór de winkelwagenitems\" op de "
-"winkelwagenpagina."
 
 #: inc/compat/plugins/compat-plugin-wc-brt-fermopoint-shipping-methods.php:96
 msgid "Selecting a collection point is required when shipping with FermoPoint."
@@ -1909,15 +1520,6 @@ msgstr "Stel <code>font-size</code> binnen formuliervelden in op 16px"
 msgid "Settings"
 msgstr "Instellingen"
 
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "Installatie en documentatie"
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-#, php-format
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "Lay-out en ontwerp instellen voor de <a href=\"%s\">kassaopties</a>."
-
 #: inc/admin/admin-settings-cart.php:164
 msgid "Shipping"
 msgstr "Verzenden"
@@ -1940,16 +1542,6 @@ msgstr "Verzendmethoden"
 msgid "Shipping phone"
 msgstr "Telefoonnummer voor verzending"
 
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Toon een linkknop op de afhaallocatie substap om de gekozen verzendmethoden "
-"te wissen. Dit kan worden gebruikt om het gedeelte met het afleveradres "
-"weer te geven als eerder een lokale afhaalmethode was geselecteerd."
-
 #: inc/admin/admin-settings-checkout.php:678
 msgid "Show an example of a valid phone number inside phone fields"
 msgstr "Toon een voorbeeld van een geldig telefoonnummer in telefoonvelden"
@@ -1962,17 +1554,9 @@ msgstr "Toon de landcode naast de vlag"
 msgid "Show if not defined"
 msgstr "Tonen indien niet gedefinieerd"
 
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "Toon optie om verzendmethoden te wissen in de afhaallocatie substap"
-
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
 msgid "Sign up checkbox position"
 msgstr "Positie selectievakje aanmelden"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "Vereenvoudigde EU-BTW validatie voor je winkel."
 
 #: inc/checkout-steps.php:794
 msgid "Single step"
@@ -2015,10 +1599,6 @@ msgstr ""
 msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr "Spatiëring voor sitekoptekst bij de afrekenpagina (in pixels)"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "Speciale aanbiedingen"
-
 #: inc/design-templates.php:117
 msgid "Split"
 msgstr "Gesplitst"
@@ -2049,29 +1629,9 @@ msgstr "Bedankpagina & lay-out bestelgegevens"
 msgid "Thanks for choosing Fluid Checkout!"
 msgstr "Bedankt voor het kiezen van Fluid Checkout!"
 
-#: inc/admin/admin-setting-type-fc-addons.php:55
-#: inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"De beste tools om de conversie van je WooCommerce-kassa verder te "
-"<strong>verbeteren</strong> en de koopervaring tijdens het hele traject "
-"consistent te maken."
-
 #: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:75
 msgid "The Bluehost Plugin"
 msgstr "De Bluehost Plugin"
-
-#: inc/admin/admin-setting-type-fc-addons.php:85
-#: inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"De bundel bevat alle add-ons die we momenteel aanbieden en Fluid Checkout "
-"add-ons die we in de toekomst lanceren."
 
 #: inc/admin/admin-settings-checkout.php:478
 #| msgid ""
@@ -2126,21 +1686,6 @@ msgstr ""
 "link naar productpagina toegevoegd door het thema zijn standaard "
 "uitgeschakeld."
 
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"De verzendbestemming wordt altijd ingesteld op \"Standaard naar klant "
-"verzendadres\" wanneer Fluid Checkout is geactiveerd. Klanten kunnen "
-"tijdens het afrekenen nog steeds verschillende verzend- en factuuradressen "
-"opgeven, een optie om het standaard factuuradres in te stellen op hetzelfde "
-"als het verzendadres beschikbaar is bij WooCommerce > Instellingen > Fluid "
-"Checkout."
-
 #: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:87
 msgid "Theme Atomion"
 msgstr "Thema Atomion"
@@ -2193,14 +1738,6 @@ msgstr "Thema's cross-sells lay-out"
 #: inc/admin/admin-settings-checkout.php:131
 msgid "Theme's header and footer"
 msgstr "De kop- en voettekst van het thema"
-
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"Deze opties zijn van invloed op de bedankpagina , bestelgegevens bekijken "
-"op accountpagina's en op e-mailmeldingen."
 
 #: inc/admin/admin-settings-order-received.php:110
 msgid ""
@@ -2265,16 +1802,6 @@ msgstr ""
 "(bedankpagina) en de bestelgegevens op accountpagina's, e-mails en "
 "pakbonnen."
 
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect is een eenvoudiger dropdown selectiecomponent die minder gevoelig "
-"is voor fouten dan Select2, terwijl het dezelfde functies biedt die "
-"daadwerkelijk worden gebruikt op WooCommerce afrekenpagina's."
-
 #: inc/admin/admin-settings-tools.php:51
 msgid "Tools"
 msgstr "Tools"
@@ -2283,20 +1810,9 @@ msgstr "Tools"
 msgid "Troubleshooting"
 msgstr "Problemen oplossen"
 
-#: inc/admin/admin-settings-cart.php:219
-#: inc/admin/admin-settings-order-pay.php:91
-#: inc/admin/admin-settings-order-received.php:125
-#: inc/admin/admin-settings-checkout.php:328
-msgid "Trust symbols &amp; badges"
-msgstr "Vertrouwenssymbolen & -badges"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "Vertrouwenssymbolen op de winkelwagen- en bedankpagina's"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "Tot 40% minder afrekenvelden om in te vullen."
 
 #: inc/admin/admin-notice-db-migrations.php:55
 msgid "Update database"
@@ -2307,10 +1823,6 @@ msgstr "Database bijwerken"
 msgid "Upgrade to PRO"
 msgstr "Upgraden naar PRO"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "Upgrade naar PRO &mdash; 99 EUR"
-
 #: inc/admin/admin-settings-tools.php:93
 msgid ""
 "Using debug mode affects the website performance. Only use this option "
@@ -2319,64 +1831,9 @@ msgstr ""
 "Het gebruik van de debug-modus heeft invloed op de prestaties van de "
 "website. Gebruik deze optie alleen tijdens het oplossen van problemen."
 
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. %s: License key expiration date.
-#, php-format
-msgid "Valid until %s."
-msgstr "Geldig tot %s."
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "Telefoonnummer verifiëren"
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-#, php-format
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"Bezoek <a href=\"%s\" target=\"_blank\">onze documentatie</a> voor meer "
-"informatie over de functies van Fluid Checkout."
-
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
 msgstr "Bezoek onze website voor meer informatie over onze plugins en add-ons."
-
-#: inc/admin/admin-settings-checkout.php:125
-#| msgid ""
-#| "We recommend using the Fluid Checkout header and footer to avoid "
-#| "distractions at the checkout page. <a href=\"https://baymard."
-#| "com/blog/cart-abandonment\" target=\"_blank\">Read the research about "
-#| "cart abandonment</a>."
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"We raden aan de afleidingsvrije kop- en voettekst te gebruiken om afleiding "
-"op de afrekenpagina te voorkomen. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Lees "
-"het onderzoek over winkelwagenverlating</a>."
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"Als deze optie is uitgeschakeld, zal de validatie van het telefoonveld niet "
-"controleren of het land of de netnummers geldig zijn voor het land."
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"Als deze optie is ingeschakeld, zijn alleen de landen die zijn toegestaan "
-"voor verzending beschikbaar in het veld voor de telefoon voor verzending, "
-"en zijn alleen de landen die zijn toegestaan voor facturering beschikbaar "
-"in het veld voor de telefoon voor facturering."
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:175
 msgid ""
@@ -2387,20 +1844,6 @@ msgstr ""
 "contactstap, onafhankelijk van de weergavelocatie die is gedefinieerd in de "
 "instellingen van de Sendinblue-plugin."
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Als deze optie is ingeschakeld, wordt niet automatisch de eerste "
-"beschikbare verzendmethode geselecteerd als niet eerder een andere "
-"verzendmethode is geselecteerd voor elk verzendpakket. <br>Deze optie wordt "
-"automatisch ingeschakeld als de optie voor het wissen van de geselecteerde "
-"verzendmethode is ingeschakeld voor de functie Lokaal afhalen."
-
 #: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
 msgid ""
 "When enabled, the shipping email field from the Bluehost plugin will be "
@@ -2408,20 +1851,6 @@ msgid ""
 msgstr ""
 "Als deze optie is ingeschakeld, wordt het veld voor de verzend-e-mail van "
 "de Bluehost-plugin toegevoegd aan het afrekenformulier."
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"Als de lettergrootte in formuliervelden kleiner is dan 16px, kunnen Safari "
-"en andere browsers automatisch inzoomen op mobiele apparaten om de tekst "
-"beter leesbaar te maken. Als deze optie is ingeschakeld, wordt de "
-"lettergrootte binnen de formuliervelden op 16px gezet op pagina's die zijn "
-"geoptimaliseerd door Fluid Checkout om inzoomen te voorkomen."
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
 msgid ""
@@ -2633,10 +2062,6 @@ msgstr "Na de voortgangsbalk"
 msgid "Before coupon codes section"
 msgstr "Voor coupon codes sectie"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "Velden voor internationale telefoonnummers inschakelen"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "Formatteer telefoonnummers volgens de regels voor elk land."
@@ -2644,18 +2069,6 @@ msgstr "Formatteer telefoonnummers volgens de regels voor elk land."
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "Gebruik nauwkeurige telefoonnummervalidatie"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"Probeer te controleren of het telefoonnummer een geldig mobiel of vast "
-"nummer is op basis van de regels voor de geselecteerde landcode. Deze optie "
-"gebruikt de <code>intl-tel-input</code> precieze validatiefunctie, die voor "
-"sommige telefoonnummers fout-positieve resultaten kan geven."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2702,26 +2115,6 @@ msgstr "2 kolommen"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 kolom"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"Algemene stijlen voor de afrekenstappen, besteloverzicht en andere secties. "
-"<br>Mogelijk ook van toepassing op andere pagina's, zoals de pagina's "
-"Winkelwagen, Ontvangen bestelling en Bestelling bekijken."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"De ontwerpsjabloon <em>\"Split\"</em> is niet beschikbaar bij gebruik van "
-"<em>\"1 kolom\"</em> lay-out en valt terug op <em>\"Minimalist\"</em> als "
-"deze wordt gekozen."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2818,6 +2211,2577 @@ msgstr ""
 "ingesteld. Dit is nodig om ervoor te zorgen dat het afleveradres naar het "
 "factuuradres kan worden gekopieerd wanneer die optie is aangevinkt; anders "
 "kan de klant het afrekenformulier mogelijk niet voltooien."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "Instellingsprofielen"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "Instellingsprofiel"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "Je hebt geen toestemming om deze handeling uit te voeren."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "Je hebt geen toestemming om plug-ins te activeren."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "Plugin ontbreekt."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "Plugin geactiveerd."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "De volgende wijzigingen worden doorgevoerd:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Vanaf Fluid Checkout 5.0 worden instellingen op een andere manier "
+"opgeslagen. De oude instellingen worden nog steeds in de database bewaard, "
+"zodat er indien nodig naar eerdere versies kan worden teruggezet."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"Je winkel draait nu al ongeveer twee weken met de nieuwe instellingen, "
+"zodat je de oude opties die in de database waren opgeslagen kon opschonen. "
+"Houd er rekening mee dat als je na het opschonen terug moet naar eerdere "
+"versies van de plug-in, deze voor alle instellingen de standaardwaarden zal "
+"gebruiken."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "Opschonen van de instellingen voor ‘Fluid Checkout’"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "Overgebleven opties verwijderen"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "Help ons Fluid Checkout te verbeteren"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"Deel anonieme rapporten over je siteomgeving via Fluid Checkout om sneller "
+"ondersteuning te krijgen en ons te helpen de compatibiliteit te verbeteren "
+"en de impact te meten. Er worden geen klant-, gebruikers- of gevoelige "
+"gegevens meegedeeld. Je kunt op elk moment in de instellingen onder ‘Tools’ "
+"kiezen welke gegevens worden gedeeld."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "Rapporten over de siteomgeving inschakelen"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "Instellingen bekijken"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"Deze preview is verlopen. Vernieuw de beheerpagina om een nieuwe preview te "
+"starten."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "Voorbeeld is verlopen"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "In het voorbeeld kunnen geen bestellingen worden geplaatst."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "Inloggen is niet beschikbaar in de preview."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "In de preview kunnen geen accounts worden aangemaakt."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "Verzoeken naar andere websites worden in het voorbeeld geblokkeerd."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "Bezig met verwerken…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "Er is een fout opgetreden. Probeer het nog eens."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "Plugin activeren"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - Het complete kassapakket"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"Alle PRO-functies + alle uitbreidingen, voor één prijs. Ontwerpsjablonen, "
+"geoptimaliseerde pagina’s voor het winkelwagentje en de orderbevestiging, "
+"accountkoppeling en nog veel meer."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "Geoptimaliseerde betaalpagina voor bestellingen"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "Knoppen voor snel afrekenen van ondersteunde betaalmethoden"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "Vertraging bij het aanmaken van een account"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Automatisch aanvullen van adressen met Google Maps-API’s"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "Meerdere opgeslagen adressen in het adresboek"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "EU-btw-assistent"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "Deze sectie verbergen"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "Meer informatie"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "Krijg vroegtijdige toegang"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "Add-on activeren"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "Haal meer uit je afrekenproces"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "API-sleutel testen"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "Begeleide installatie"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "Opties"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "Stel de lay-out en het ontwerp in bij de <a href=\"%s\">afrekenopties</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"Schakel afrekenen als gast in en/of bekijk <a href=\"%s\">de instellingen "
+"voor klantenaccounts</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"Schakel de geoptimaliseerde pagina’s <a href=\"%1$s\">winkelwagen</a>, <a "
+"href=\"%2$s\">bedankt</a> en <a href=\"%3$s\">betaling</a> in."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr ""
+"Schakel <a href=\"%s\">het automatisch aanvullen van adressen</a> via "
+"Google Maps in."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr ""
+"Schakel het opslaan van meerdere adressen in via <a "
+"href=\"%s\">adresboek</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"Controleer of er <a href=\"%s\">integratiemogelijkheden</a> beschikbaar "
+"zijn voor het thema of andere plug-ins die je hebt geïnstalleerd."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"Krijg sneller ondersteuning en help ons de compatibiliteit te verbeteren en "
+"de impact te meten. <a href=\"%s\">Schakel het bijhouden van het gebruik "
+"in</a> via de instellingen van de tools."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "Het tabblad ‘Instellingen’ ontbreekt."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "Aan de slag"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>Geweldig! Je afrekenpagina draait nu op Fluid Checkout.</strong> "
+"Hier zijn een paar stappen om aan de slag te gaan:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "Voltooid"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "Voorbeeld van rapportgegevens"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "Nu verzenden"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "Automatisch detecteren"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "Albanees"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "Amhaars"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "Arabisch"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "Armeens"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "Azerbeidzjaans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "Baskisch"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "Wit-Russisch"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "Bengaals"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "Bosnisch"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "Bulgaars"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "Birmaans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "Catalaans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "Chinees"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "Chinees (vereenvoudigd)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "Chinees (Hongkong)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "Chinees (traditioneel)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "Kroatisch"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "Tsjechisch"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "Deens"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "Nederlands"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "Engels"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "Engels (Australisch)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "Engels (Groot-Brittannië)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "Ests"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "Farsi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "Fins"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "Filipijns"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "Frans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "Frans (Canadees)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "Galicisch"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "Georgisch"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "Duits"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "Grieks"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "Gujarati"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "Hebreeuws"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "Hindi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "Hongaars"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "IJslands"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "Indonesisch"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "Italiaans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "Japans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "Kannada"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "Kazachs"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "Khmer"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "Koreaans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "Kirgizisch"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "Laotiaans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "Lets"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "Litouws"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "Macedonisch"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "Maleis"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "Malayalam"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "Marathi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "Mongools"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "Nepalees"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "Noors"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "Pools"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "Portugees"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "Portugees (Brazilië)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "Portugees (Portugal)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "Punjabi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "Roemeens"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "Russisch"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "Servisch"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "Sinhala"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "Slowaaks"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "Sloveens"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "Spaans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "Spaans (Latijns-Amerika)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "Swahili"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "Zweeds"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "Tamil"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "Telugu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "Thais"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "Turks"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "Oekraïens"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "Urdu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "Vietnamees"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "Zoeloe"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Automatische aanvulling van adressen door Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Versie van de Google Places API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"Kies welke versie van de Google Places API u wilt gebruiken. We raden u aan "
+"zo snel mogelijk over te stappen op de nieuwe Places API."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"Wij raden u aan om de \"Places API (New)\" te gebruiken, aangezien Google "
+"met ingang van 1 maart 2025 de versie \"Places API (Legacy)\" de status "
+"'Legacy' zal toekennen. Dit betekent dat u deze dienst niet langer kunt "
+"inschakelen voor nieuwe API-sleutels en dat die versie van de API op "
+"termijn niet meer beschikbaar zal zijn. Bestaande accounts die al "
+"gebruikmaken van de Legacy API kunnen zonder onderbrekingen blijven "
+"functioneren."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(Aanbevolen)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Google API-sleutel"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"Plak je Google API-sleutel en gebruik de testknop om te controleren of deze "
+"voor deze website werkt. Zorg ervoor dat de sleutel geldig is en toegestaan "
+"is voor je domein, anders kan het adresveld worden geblokkeerd, waardoor "
+"klanten hun bestellingen niet kunnen afronden."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "Google-adresaanvulling inschakelen"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr ""
+"Schakel het automatisch aanvullen van adressen in met behulp van de Google "
+"Maps-API’s."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Google API-taal"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"Deze taal wordt gebruikt om de adresvoorstellen van de Google Places API "
+"weer te geven; adressen worden ook in deze taal automatisch aangevuld."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "Soorten resultaten"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Laat dit veld leeg om alle soorten resultaten toe te staan; dit levert "
+"doorgaans betere zoekresultaten op. <a href=\"%s\" "
+"target=\"_blank\">Raadpleeg de documentatie voor meer informatie</a>. "
+"<br>Selecteer maximaal 5 soorten adreszoekresultaten die moeten worden "
+"weergegeven in de velden voor het automatisch aanvullen van adressen. "
+"<br>Ga naar de Google Maps-documentatie voor meer informatie over de <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">ondersteunde typen</a>."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "Resultatentypen (oude API)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Welk type adreszoekresultaten moet worden weergegeven bij gebruik van de "
+"Places API (Legacy)? <br>Raadpleeg de documentatie van de Legacy Google "
+"Places API voor meer informatie over de <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">ondersteunde typen</a>."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "Bedrijfsvelden"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "Schakel automatische aanvulling voor de bedrijfsnaam in, indien beschikbaar"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Schakel automatische aanvulling van het veld ‘bedrijf’ in met de "
+"bedrijfsnaam die wordt geretourneerd door de Google Maps-API’s."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "Bedrijvensoekfunctie"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "Zoeken naar bedrijven in het bedrijfsveld inschakelen"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"Schakel de suggestiefunctie in voor adressen die aan een bedrijf zijn "
+"gekoppeld wanneer er in het veld ‘Bedrijf’ wordt getypt, en vul vervolgens "
+"alle adresvelden automatisch aan wanneer een bedrijf uit de suggesties "
+"wordt geselecteerd."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "Soorten bedrijfsresultaten"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Selecteer maximaal 5 soorten zoekresultaten voor adressen die moeten worden "
+"weergegeven bij het automatisch aanvullen van bedrijfsvelden. <br>De "
+"aanbevolen waarde is <code>vestiging</code>, waarmee de meeste soorten "
+"bedrijven worden gedekt. <br>Laat dit veld leeg om alle soorten resultaten "
+"toe te staan, inclusief resultaten die geen verband houden met bedrijven. "
+"<br>Raadpleeg de documentatie van Google Maps voor meer informatie over de "
+"<a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">ondersteunde typen</a>."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Google-logo"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "Toon de tekst en het logo \"Powered by Google\""
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"Als dit vakje is aangevinkt, worden de tekst en het logo \"Powered by "
+"Google\" onderaan het vak met suggesties voor het automatisch aanvullen van "
+"adressen weergegeven."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "Automatische aanvulling van adressen via de Brasil API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "Brazilië API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr ""
+"Automatische aanvulling van adressen via de Brasil API inschakelen voor "
+"CEP-velden"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"Gebruik de Brasil API om adressen op te halen en automatisch in te vullen "
+"via het veld CEP/postcode. Dit geldt alleen voor Braziliaanse adressen."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "API-versie"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "Kies welke versie van de CEP-methode van de Brasil API u wilt gebruiken."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "Overzetten van het adresboek"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "WooCommerce-adressen"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"Kopieer bestaande verzend- en factuuradressen uit WooCommerce naar het "
+"adresboek van de klanten."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "Schakel de adresboekfunctie in"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"Geef klanten de mogelijkheid om meerdere adressen op te slaan en het "
+"standaardadres in te stellen dat voor verzending en facturering moet worden "
+"gebruikt."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "Adresetiketten"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "Geef klanten de mogelijkheid om voor elk adres een eigen label toe te voegen"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"Met adreslabels kunnen klanten gemakkelijker onderscheid maken tussen hun "
+"opgeslagen adressen (bijv.: „Bij mama“). De adreslabels zijn privé en "
+"worden niet weergegeven of afgedrukt op de pagina met bestelgegevens of op "
+"facturen."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "Weergave-indeling"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr ""
+"Kies hoe opgeslagen adressen worden weergegeven bij het afrekenen en in het "
+"winkelmandje."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"Wordt toegepast bij het afrekenen en in het winkelmandje. Opgeslagen "
+"adressen op de accountpagina worden altijd in de kaartindeling weergegeven."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "Adreskaartjes"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "Adreslijst"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "Keuzelijstveld"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "Adres zoeken"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"Toon het filter voor het zoeken naar adressen op de frontend wanneer de "
+"klant ten minste dit aantal opgeslagen adressen beschikbaar heeft."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr ""
+"Wordt niet gebruikt wanneer de weergave-indeling is ingesteld op een "
+"dropdown-veld."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "Adressen"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr ""
+"Schakel de optimalisaties voor de winkelwagenpagina in om meer opties te "
+"zien"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "Overzicht van vastgezette bestellingen"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"Kies de positie waar het gedeelte met kortingscodes op de winkelwagenpagina "
+"moet worden weergegeven. Dit is alleen van toepassing als de "
+"AJAX-winkelwagen is ingeschakeld en als het gebruik van kortingscodes is "
+"ingeschakeld in de WooCommerce-instellingen."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "Opzet van cross-selling"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "Weergegeven aanvullende producten"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "Artikelen"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "Optimalisatie van de winkelwagenpagina"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"Geef je winkelwagen dezelfde overzichtelijke, op conversie gerichte "
+"indeling als je afrekenpagina."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr ""
+"Zorg ervoor dat de indeling van het winkelwagentje overeenkomt met die van "
+"de afrekenpagina, zodat het aankoopproces consistent verloopt."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"Zorg ervoor dat het winkelmandje op de achtergrond altijd wordt bijgewerkt; "
+"de pagina hoeft niet volledig opnieuw te worden geladen wanneer de "
+"hoeveelheden veranderen."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"Plaats kortingscodes, verzendinformatie en aanvullende producten precies "
+"daar waar ze de meeste conversies opleveren."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"Zorg ervoor dat het besteloverzicht zichtbaar blijft tijdens het scrollen, "
+"en voeg vertrouwenssymbolen toe op plaatsen waar klanten gerustgesteld "
+"moeten worden."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "Kolommen"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"Algemene stijlen voor de stappen van het afrekenproces, het besteloverzicht "
+"en andere onderdelen. Geldt voor andere pagina’s, zoals de afrekenpagina, "
+"de winkelwagen, de bedankpagina (bestelling ontvangen) en de pagina "
+"‘Bestelling bekijken’."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"Bij gebruik van de <em>\"1 kolom\"</em>-indeling met de "
+"<em>\"Split\"</em>-ontwerpsjabloon wordt er alleen een rechterkolom "
+"weergegeven als het widgetgebied in de zijbalk van de pagina actief is "
+"(zijbalk bij afrekenen, zijbalk bij winkelwagen of zijbalk bij ontvangen "
+"bestelling). Anders blijft de pagina een enkele kolom met Split-stijlen."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "Achtergrond van gesplitste kolom"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"Kies een achtergrondkleur voor de secundaire kolom van het Split-ontwerp. "
+"Laat dit veld leeg om de achtergrondkleur van het besteloverzicht te "
+"gebruiken."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "Paginabijlagen"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "Afrekenpagina-sjabloon"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"Aanbevolen om afleiding bij het afrekenen te verminderen. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Lees "
+"het onderzoek over het achterlaten van winkelwagentjes</a>."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "Vastgezette voortgangsbalk"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "Stijl van de voortgangsbalk"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "Besteltotalen"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "Achtergrondkleur"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "Actielink"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "Overzicht mobiele bestellingen"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "Begintoestand van de mobiele telefoon"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "Het bewerken van artikelen in het winkelmandje bij het afrekenen inschakelen"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"Geef klanten de mogelijkheid om de hoeveelheden van producten aan te passen "
+"of artikelen rechtstreeks op de afrekenpagina te verwijderen."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "Fouten bij winkelwagenartikelen"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"Dit geldt alleen als de kortingscode als apart gedeelte wordt weergegeven "
+"op de afreken- of winkelwagenpagina’s, en als het gebruik van kortingscodes "
+"is ingeschakeld in de WooCommerce-instellingen."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "Plaats van kortingscodes"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "Knop ‘Coupon toepassen’"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "Kies de stijl van de knop ‘coupon toepassen’."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "Adresregel 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"Deze instelling geldt zowel voor het gedeelte ‘Afrekenen’ als voor het "
+"gedeelte ‘Lokaal afhalen’. In het gedeelte ‘Lokaal afhalen’ bepaalt deze "
+"instelling ook of de keuzeknop ‘Verzenden/Afhalen’ wordt weergegeven binnen "
+"het gedeelte met verzendmethoden (vóór het adres) of als een apart gedeelte "
+"(erna)."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "Klantenrekeningen"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "Afrekenen als gast"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"Opties voor afrekenen als gast, inloggen en het aanmaken van een account "
+"via de instellingenpagina ‘WooCommerce-accounts’. Deze worden hier beheerd "
+"voor uw gemak, zodat u per instellingenprofiel verschillende waarden kunt "
+"gebruiken."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "Klanten de mogelijkheid bieden om af te rekenen zonder account"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Aanbevolen</strong> zodat klanten tijdens het afrekenen niet worden "
+"gevraagd een account aan te maken of in te loggen, wat de "
+"conversiepercentages kan verlagen."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"Als deze functie is uitgeschakeld, moeten klanten inloggen of een account "
+"aanmaken om de aankoop af te ronden."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "Inloggen bij het afrekenen"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "Inloggen tijdens het afrekenen inschakelen"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr ""
+"Toon op de afrekenpagina een link waarmee terugkerende klanten kunnen "
+"inloggen."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "Een account aanmaken"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr ""
+"Geef klanten de mogelijkheid om tijdens het afrekenen een account aan te "
+"maken"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "Klanten kunnen een account aanmaken voordat ze hun bestelling plaatsen."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr ""
+"Geef klanten de mogelijkheid om via de pagina ‘Mijn account’ een account "
+"aan te maken"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "Klanten kunnen via de pagina ‘Mijn account’ een nieuw account aanmaken."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "Genereren op basis van de naam van de klant"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Aanbevolen</strong> zodat klanten tijdens het afrekenen niet worden "
+"gevraagd een gebruikersnaam te kiezen, wat de conversiepercentages kan "
+"verlagen."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"Er wordt een gebruikersnaam gegenereerd op basis van de naam van de klant, "
+"of op basis van het e-mailadres wanneer de naam niet kan worden gebruikt."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "Link voor het instellen van het wachtwoord verzenden"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Aanbevolen</strong> zodat klanten tijdens het afrekenen niet worden "
+"gevraagd een wachtwoord in te stellen, wat de conversiepercentages kan "
+"verlagen."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr ""
+"Klanten ontvangen een e-mail om op een veilige manier hun wachtwoord in te "
+"stellen."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"Laat geregistreerde klanten het afrekenen voltooien zonder in te loggen en "
+"koppel de bestelling aan hun bestaande account wanneer de contactgegevens "
+"overeenkomen."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "Melding over een bestaand account"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr ""
+"Laat klanten na het plaatsen van hun bestelling een account aanmaken via de "
+"bedankpagina."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"De opties in dit gedeelte zijn beschikbaar wanneer het afrekenen als gast "
+"en het koppelen van accounts zijn ingeschakeld. Schakel beide bovenstaande "
+"functies in om het uitgestelde aanmaken van een account te configureren."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "Het uitstellen van het aanmaken van een account inschakelen"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"Schakel het uitstellen van het aanmaken van een account in wanneer zowel "
+"afrekenen als gast als het koppelen van accounts zijn ingeschakeld."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "Positie van de sectie"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "Vóór het gedeelte met klantgegevens"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "Na het gedeelte met klantgegevens"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "Voordelen van het aanmaken van een account"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "Als u het veld leeg laat, wordt de standaardtekst weergegeven."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "Inline-knoppen"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "Verplichte velden"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "Velden voor cadeauberichten inschakelen bij het afrekenen"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "Uitgebreide cadeaubericht"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "Het veld voor het cadeaubericht altijd uitgevouwen weergeven"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "Cadeaubericht in de bestelgegevens"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"Op dit moment zijn er in dit gedeelte geen integraties beschikbaar. De "
+"opties voor elke plug-in en elk thema worden hier pas weergegeven wanneer "
+"die plug-in of dat thema is geactiveerd."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "Telefoonvelden"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "Zichtbaarheid in het veld"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "Veldpositie"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "Landcode voor telefoonnummers en validatie"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "Land"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "Velden voor land op de telefoon inschakelen"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "Landen filteren voor verzending of facturering"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"Beperk de landenkeuze bij elk telefoonnummerveld tot de landen die in je "
+"winkel zijn toegestaan voor verzending of facturering."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "Validatie"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "Eenvoudige validatie op basis van landregels inschakelen"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"Controleert of het telefoonnummer geldig is voor het geselecteerde land, "
+"inclusief landcode en het aantal cijfers."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"Er wordt strenger gecontroleerd of het nummer een geldig mobiel nummer, "
+"vast nummer of een ander voor het geselecteerde land toegestaan type is. "
+"Hierdoor kunnen sommige geldige nummers worden afgewezen."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "Validatietypen"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "Plaatshouders"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"Er zijn momenteel geen licentiesleutels om te beheren. Licentiesleutels "
+"verschijnen hier zodra een gelicentieerde Fluid Checkout-plug-in of -add-on "
+"actief is."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "Standaard bezorgwijze"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "Kies welke bezorgwijze standaard wordt geselecteerd."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "Velden voor verzendzones"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Kies welke velden moeten worden weergegeven voor de filtervelden van de "
+"verzendzone ‘lokaal afhalen’. Laat het veld leeg om alle beschikbare opties "
+"weer te geven."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Deze velden worden weergegeven als filter voor de verzendmethoden voor "
+"lokale afhaling. Sommige velden kunnen bij het afrekenen nog steeds worden "
+"weergegeven, ook al zijn ze hier niet geselecteerd, als compatibele "
+"plug-ins deze nodig hebben om correct te werken."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "Verzendadres voor de bestelling"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "Optimalisatie van de betaalpagina voor bestellingen"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"Geef onbetaalde bestellingen dezelfde overzichtelijke, op conversie "
+"gerichte lay-out als het afrekenproces."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"Optimaliseer de lay-out van de betaalpagina voor bestellingen waarvoor nog "
+"geen betaling is ontvangen."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"Zorg ervoor dat de betaalervaring aansluit bij je afrekenproces, zodat de "
+"aankoopervaring consistent verloopt."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"Voeg vertrouwenssymbolen en -badges toe op plaatsen waar klanten "
+"gerustgesteld moeten worden voordat ze betalen."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "Optimalisatie van de bedankpagina"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"Zorg ervoor dat de bedankpagina en de bestelgegevens duidelijker worden "
+"weergegeven voor klanten nadat ze een aankoop hebben gedaan."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr ""
+"Optimaliseer de bedankpagina en de bestelgegevens in het account door een "
+"overzichtelijkere indeling te gebruiken."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"Geef de voortgang van de bestelstatus, acties, downloads en opmerkingen "
+"weer op de plaatsen waar dat zinvol is."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "Pas de secties met bestelgegevens in e-mailmeldingen aan."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"Voeg vertrouwenssymbolen en -badges toe op plaatsen waar klanten na hun "
+"aankoop gerustgesteld moeten worden."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "E-mailmeldingen"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"Schakel de optimalisaties voor de bedankpagina en de bestelgegevens in om "
+"meer opties te zien"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "Gebruik een brede lay-out op de bedankpagina"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"Deze instellingen zijn van invloed op de bedankpagina, de weergave van "
+"bestelgegevens op accountpagina’s en in e-mailmeldingen."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "Instellingen opslaan"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "Documenten"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "Winkelwagen"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "Bedankt"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "Automatisch aanvullen van adressen"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "Vertrouwensbadges"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "Je hebt geen toestemming om deze instellingen op te slaan."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "Ongeldig opslagverzoek."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "Je instellingen zijn opgeslagen."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "Bezig met opslaan..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "De instellingen konden niet worden opgeslagen. Probeer het nog eens."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "Melding negeren"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "Open het instellingenmenu"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "Sluit het instellingenmenu"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "Voorbeeld"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "Voorbeeld vergroten"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "Voorbeeld verbergen"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "Kop- en voettekst weergeven"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "Kop- en voettekst verbergen"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "Paginavoorbeeld"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "Voorbeeldvenster"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "Tablet"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "Bureaublad"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "Breedte van het voorbeeld"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "Breedte verkleinen"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "Voorbeeldbreedte in pixels"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "Breedte vergroten"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "Voorbeeld weergeven als"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "Gast"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "Ingelogd"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "Voorbeeldpagina"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "Klik op ‘Voorbeeld vergroten’ om het beter te bekijken"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "Verkrijgbaar bij %s."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "Zet ze aan"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr ""
+"De optimalisaties voor deze pagina zijn uitgeschakeld. %s om een voorbeeld "
+"van de pagina te bekijken."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "%s voorbeeld"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "Afzonderlijke sessie · er wordt niets opgeslagen"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "Gebruiksregistratie"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Stuur rapporten over de siteomgeving (zonder gevoelige gegevens) om Fluid "
+"Checkout te helpen de compatibiliteit te verbeteren. De rapporten worden "
+"pas verzonden als deze optie hieronder is ingeschakeld."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "Stuur rapporten over het gebruik naar Fluid Checkout"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"Deze rapporten helpen ons de compatibiliteit en ondersteuning voor uw site "
+"te verbeteren en worden wekelijks verzonden als deze functie is "
+"ingeschakeld."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"De rapporten bevatten geen gegevens van klanten, beheerders of andere "
+"gevoelige gegevens."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "Algemene informatie over de omgeving"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"Gegevens over WordPress, PHP, WooCommerce, thema’s en plug-ins. Deze worden "
+"altijd meegenomen wanneer rapportage is ingeschakeld. Dit helpt ons inzicht "
+"te krijgen in de omgeving waarin uw site draait."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "Instellingen van de plug-in"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"Verzendt de instellingen van de Fluid Checkout-plug-in om ons te helpen bij "
+"ondersteuningsverzoeken en om ons inzicht te geven in hoe u onze plug-ins "
+"gebruikt."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "Binnenkort beschikbaar"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "Verkoopcijfers"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"Het aantal bestellingen per maand en de totale omzet vanaf het jaar vóór de "
+"installatie van Fluid Checkout tot en met vandaag. Dit helpt ons te "
+"begrijpen of u meer winst maakt met onze plug-ins geïnstalleerd. Er worden "
+"nooit klant- of gebruikersgegevens verzonden."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "Nutsvoorzieningen"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"Gebruik de dropdown-componenten <code>TomSelect</code> in plaats van "
+"<code>select2</code>"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect is een eenvoudiger dropdown-selectiecomponent die minder "
+"foutgevoelig is dan Select2, maar wel dezelfde functionaliteit biedt."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"Stelt de lettergrootte in formuliervelden in op 16px op pagina’s die door "
+"deze plug-in zijn geoptimaliseerd, om te voorkomen dat er automatisch wordt "
+"ingezoomd bij het invullen van formuliervelden op kleine apparaten."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"Safari en andere browsers kunnen op mobiele apparaten automatisch inzoomen "
+"om de tekst beter leesbaar te maken wanneer de lettergrootte kleiner is dan "
+"16px."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "Schakel het bijhouden van scriptverwerking in de browserconsole in."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "Niet-geminifieerde bestanden"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Google Maps-scripts"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "Verwijder geen dubbele Google Maps-scripts"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"Als deze optie is ingeschakeld, worden dubbele Google Maps-scripts NIET "
+"verwijderd, wat tot fouten en prestatieproblemen kan leiden. Gebruik deze "
+"optie alleen bij het oplossen van problemen."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "Widgetgebieden"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "Laatste stap op de mobiele telefoon"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "Widgets alleen weergeven bij de laatste stap op mobiele apparaten"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"Toon widgets met het ‘Checkout Trust’-logo alleen wanneer de laatste stap "
+"van het afrekenproces op mobiele apparaten wordt bekeken"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "Standaard"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "Veld voor btw-nummer"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "Voeg een veld voor het btw-nummer toe aan het factuurformulier."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "Veldlabel"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"Stel de tekst van het veld voor het btw-nummer in (bijv. btw-nummer). Op "
+"meertalige websites is het beter om dit veld leeg te laten en de "
+"oorspronkelijke tekst te vertalen."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "BTW-nummer"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "EU-btw"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "Schakel het veld voor het btw-nummer in om meer opties te zien"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "BTW-controle"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr ""
+"Het veld voor het btw-nummer controleren op geldigheid voor EU-btw tijdens "
+"het afrekenen"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"Controleert of het opgegeven btw-nummer een geldig btw-nummer is dat is "
+"geregistreerd in de Europese VIES-database (VAT Information Exchange "
+"System)."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "BTW-nummer van de winkel"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"Het btw-nummer van de winkel dat wordt gebruikt voor het aanvragen van "
+"EU-btw-validatie en dat op facturen wordt afgedrukt. <br><strong>We raden u "
+"ten zeerste aan om het btw-nummer van uw winkel toe te voegen</strong>, "
+"aangezien de resultaten van de VIES-raadpleging anders mogelijk niet geldig "
+"zijn voor boekhoudkundige doeleinden. <br>Bijvoorbeeld: "
+"<code>ATU99999999</code> of <code>EE999999999</code>."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "Verlegging van de belastingplicht"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "De verleggingsregeling toepassen"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"Stel het belastingtarief in op nul en vermeld \"Verlegging\" op facturen "
+"wanneer het btw-nummer van de klant geldig is. Afhankelijk van het land "
+"waar de winkel is gevestigd, kan een andere tekst voor \"Verlegging\" "
+"vereist zijn."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "Hetzelfde land"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr ""
+"Pas de verleggingsregeling toe voor transacties in het land waar de winkel "
+"is gevestigd:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"Maakt het mogelijk om de verlegging van de btw toe te passen op transacties "
+"tussen bedrijven in hetzelfde land als de winkel."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "Uitzonderingen op de verleggingsregeling"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr "Selecteer andere landen om de verlegging van de belasting te omzeilen."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"Op bestellingen uit deze landen worden belastingen in rekening gebracht, "
+"zelfs als er een geldig btw-nummer wordt opgegeven."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "Vermelding van de verlegging op facturen"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr ""
+"Stel het label „reverse charge“ in op de afrekenpagina en in de "
+"bestelgegevens."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "Tekst over verlegging van de belastingplicht op facturen"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "Stel het label van de tekst „verleggingsregeling“ op facturen in."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "Belasting die op basis van de verlegging moet worden betaald"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "Bedrijfsnaam"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "Bedrijfsnaam automatisch aanvullen op basis van btw-nummer"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"Vul de naam van het facturerende bedrijf in op basis van het geldige "
+"btw-nummer dat door de klant is opgegeven."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "Bewerking van de bedrijfsnaam"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "Het bewerken van de automatisch ingevulde bedrijfsnaam toestaan"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"Als deze functie is ingeschakeld, kunnen klanten de bedrijfsnaam wijzigen "
+"die aan het opgegeven btw-nummer is gekoppeld."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "EU-btw op digitale goederen"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"Met ingang van 1 januari 2015 zijn er wijzigingen doorgevoerd in de "
+"EU-btw-regelgeving met betrekking tot digitale goederen, die uitsluitend "
+"van invloed zijn op B2C-transacties. De btw op digitale goederen moet "
+"worden berekend op basis van de locatie van de klant, en hiervan moet "
+"bewijs worden verzameld (IP-adres en factuuradres)."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "Belastingcategorieën voor digitale goederen"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "Selecteer enkele belastingklassen"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "Bewijsstukken met betrekking tot de locatie"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "Bewijsmateriaal over de locatie van de klant verzamelen"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"Slaat het IP-adres op en controleert of dit overeenkomt met het "
+"factuuradres van de klant. Klanten moeten hun factuuradres bevestigen door "
+"een selectievakje aan te vinken op de afrekenpagina als het land van hun "
+"factuuradres en hun IP-adres niet overeenkomen."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"Deze optie wordt beheerd in Fluid Checkout. <a href=\"%s\">Pas deze aan in "
+"de instellingen voor klantaccounts</a>."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"Deze optie wordt beheerd in Fluid Checkout. Je kunt deze aanpassen onder "
+"Fluid Checkout > Klantaccounts."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"Deze optie wordt beheerd in Fluid Checkout. Wanneer Fluid Checkout is "
+"geactiveerd, wordt de verzendbestemming altijd ingesteld op \"Standaard het "
+"verzendadres van de klant\". Klanten kunnen tijdens het afrekenen nog "
+"steeds andere verzend- en factuuradressen opgeven.<br><br>In de <a "
+"href=\"%s\">Fluid Checkout-instellingen</a> is een optie beschikbaar om het "
+"standaardfactuuradres gelijk te stellen aan het verzendadres."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"Deze optie wordt beheerd in Fluid Checkout. De verzendbestemming wordt "
+"altijd ingesteld op „Standaard naar verzendadres van de klant“ wanneer "
+"Fluid Checkout is geactiveerd. Klanten kunnen tijdens het afrekenen nog "
+"steeds andere verzend- en factuuradressen opgeven.<br><br>Een optie om het "
+"standaardfactuuradres gelijk te stellen aan het verzendadres is beschikbaar "
+"onder WooCommerce > Instellingen > Fluid Checkout."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr ""
+"Deze instellingen zijn verplaatst naar WP Admin > Fluid Checkout > "
+"Instellingen."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"Dit tabblad ‘WooCommerce-instellingen’ is verouderd en zal in Fluid "
+"Checkout 6.0 worden verwijderd."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "Ga naar de instellingenpagina"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "Dit tabblad permanent verbergen"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "Voorbeeld van het locatierapport"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"Dit zijn de gegevens die, op basis van uw huidige instellingen, in het "
+"volgende rapport over de siteomgeving zouden worden opgenomen."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "Voorbeeld van het rapport wordt geladen..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr ""
+"Het voorbeeld van het siterapport kon niet worden geladen. Probeer het nog "
+"eens."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "Het siterapport kon niet worden verzonden. Probeer het nog eens."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "Het locatierapport is succesvol verzonden."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "Inschakelen en nu verzenden"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "Sluiten"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr ""
+"Er is al een aanvraag voor een locatierapport in behandeling. Probeer het "
+"straks nog eens."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "De rapportage over de omgeving van de locatie is uitgeschakeld."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "Er zijn geen gegevens uit het locatierapport beschikbaar om te verzenden."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"Dit domein kan geen omgevingsrapporten verzenden (lokale of "
+"ontwikkelingsdomeinen zijn hiervan uitgesloten)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "Er is onlangs een locatierapport verzonden. Probeer het later nog eens."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "Het locatierapport kon niet worden verzonden. Probeer het later nog eens."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "Er is geen rapportage over de omgeving van de locatie beschikbaar."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr ""
+"Er zijn geen gegevens uit het locatierapport beschikbaar voor de "
+"geselecteerde instellingen."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "U hebt geen toestemming om siterapporten te beheren."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "PRO-functie"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "Andere plug-ins"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "Koop alleen deze uitbreiding — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "Add-on installeren"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "Upgrade naar PRO — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"<a target=\"_blank\" href=\"%1$s\">Koop %2$s</a> om deze opties te "
+"ontgrendelen."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "Add-on"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "Documentatie bekijken"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"Voor verzoeken moet de WordPress-gebruiker zijn ingelogd. Laat user_id weg "
+"om de gegevens van de huidige gebruiker te gebruiken, of geef user_id op om "
+"een ander account te selecteren wanneer de aanroeper die gebruiker kan "
+"bewerken (recht `edit_user`). Niet-geverifieerde verzoeken leveren de "
+"foutcode `fc_api_forbidden` op. Een ongeldige user_id retourneert "
+"fc_api_user_not_found."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr ""
+"HTTP 200 met { \"data\": { ... } } wanneer de handler een payload "
+"retourneert."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"HTTP 200 met { \"success\": true } wanneer er geen payload is (bijvoorbeeld "
+"bij DELETE)."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"Bij fouten wordt een WordPress REST-fout-JSON teruggestuurd vanuit WP_Error "
+"(code, message, data.status). Wire-codes gebruiken het voorvoegsel fc_api_*."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "Toegang verboden."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "De beoogde gebruiker is niet gevonden."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "Deze functie is niet beschikbaar."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "Er ontbreekt een verplicht adresveld."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "De postcode of ZIP-code is ongeldig."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "Het telefoonnummer is ongeldig."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "De staat of het district is ongeldig."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "Het land is ongeldig of er zijn geen adresvelden."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "Het verzoek kon niet worden verwerkt."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "Terug naar de vorige stap"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "Ga naar instellingen"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "Begin opnieuw en ga terug naar de eerste stap van de begeleide installatie"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "Opnieuw beginnen"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "Voer eerst alle deelstappen uit voordat u verdergaat."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "Uitvouwen"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "Samenvouwen"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "Overslaan"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "Als voltooid markeren"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "Markeren als onvolledig"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "Afbeelding op volledige grootte bekijken: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "Afbeelding van de installatiehandleiding op volledige grootte"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "Afbeelding sluiten"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "Stapsgewijze installatie van Fluid Checkout"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "Welkom"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "Bekijk je bestelling"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "Alles is gereed"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "U hebt geen toestemming om deze pagina te bekijken."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "Ga naar stap %1$d: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"Deze begeleide installatie helpt je om vertrouwd te raken met Fluid "
+"Checkout. De onderstaande stappen zijn voorlopig nog tijdelijke "
+"plaatshouders."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "Ga door naar de volgende stap als je er klaar voor bent."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "Ga naar de kassa van je winkel om Fluid Checkout in actie te zien."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "Naar de afrekenpagina gaan"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"Je kunt teruggaan naar de instellingen van Fluid Checkout om verder te gaan "
+"met het configureren van je winkel."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "Instellingen voor het afrekenen en het winkelmandje controleren"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "Ontdek uitbreidingen via het dashboard"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "Voltooien en naar instellingen gaan"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Pas de zichtbaarheidsoptie voor het veld ‘factuur telefoonnummer’ aan, "
+"zodat deze niet langer de oude waarde heeft, maar voldoet aan de "
+"WooCommerce-conventies."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Pas de zichtbaarheidsoptie voor het veld ‘telefoonnummer voor verzending’ "
+"aan, zodat deze niet langer de oude waarde heeft, maar voldoet aan de "
+"WooCommerce-conventies."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"Kopieer de instelling voor de achtergrondkleur van het besteloverzicht naar "
+"de optie voor de achtergrondkleur van de secundaire kolom in het nieuwe "
+"Split-ontwerp."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"De functie voor geavanceerde selectievelden is altijd uitgeschakeld wanneer "
+"de Biteship-plug-in wordt gebruikt."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"Bij gebruik van German Market wordt de positie van de knop ‘Order plaatsen’ "
+"altijd ingesteld op ‘Onder het orderoverzicht’. Deze plug-in vereist dat de "
+"knop ‘Order plaatsen’ en de wettelijk verplichte selectievakjes onder het "
+"orderoverzicht worden weergegeven."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"Bij gebruik van Germanized voor WooCommerce wordt de positie van de "
+"bestelknop altijd ingesteld op „Onder het besteloverzicht“. Deze plug-in "
+"vereist dat de bestelknop en de wettelijk verplichte selectievakjes onder "
+"het besteloverzicht worden weergegeven."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Ophaallocaties bewerken"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Gebruik het label voor lokale afhaling uit de WooCommerce-instellingen"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Als deze optie is ingeschakeld, komt de tekst van het label voor afhalen "
+"bij het afrekenen overeen met de titel uit de instellingen voor "
+"afhaallocaties in WooCommerce. Als deze optie is uitgeschakeld, wordt voor "
+"het label de vertaalbare tekst „Lokaal afhalen“ uit Fluid Checkout gebruikt."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2973,3 +4937,116 @@ msgstr "Ja"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "John"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "Doe"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "Voorbeeldbedrijf"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "123 Hoofdstraat"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "Een willekeurig stadje"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "Leg het pakket alstublieft bij de voordeur neer."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "Muts"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "Pet"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "T-shirt"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr ""
+"We hebben je bestelling ontvangen en sturen je een bericht zodra deze wordt "
+"verzonden."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "Gebruikershandleiding"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "Places API (nieuw)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "Places API (verouderde versie)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "Versie 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "Versie 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ De volgende keer sneller afrekenen\n"
+"✔ Je betalingsvoorkeuren beheren\n"
+"✔ De status en geschiedenis van je bestellingen bekijken"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "Verborgen"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "Optioneel"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "Verplicht"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Verzendadres"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Afhalen ter plaatse"

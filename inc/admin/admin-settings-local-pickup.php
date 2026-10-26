@@ -89,16 +89,51 @@ class FluidCheckout_Settings_LocalPickup {
 				),
 
 				array(
+					'title'                 => '',
+					'id'                    => 'fc_local_pickup_edit_pickup_locations',
+					'type'                  => 'fc_button',
+					'button_text'           => __( 'Edit pickup locations', 'fluid-checkout' ),
+					'url'                   => admin_url( 'admin.php?page=wc-settings&tab=shipping&section=pickup_location' ),
+					'button_style'          => 'secondary',
+					'open_in_new_tab'       => true,
+					'show_external_icon'    => true,
+					'is_option'             => false,
+					'custom_attributes'     => array(
+						'data-conditional-id'    => 'fc_enable_checkout_local_pickup',
+						'data-conditional-value' => 'yes',
+					),
+					'autoload'              => false,
+					'disabled'              => true,
+					'requires'              => 'pro',
+				),
+
+				array(
 					'title'                 => __( 'Default delivery type', 'fluid-checkout' ),
 					'desc'                  => '',
 					'desc_tip'              => __( 'Choose which delivery type will be selected by default.', 'fluid-checkout' ),
 					'id'                    => 'fc_local_pickup_default_delivery_type',
 					'type'                  => 'fc_select',
 					'options'               => array(
-						'ship'   => __( 'Ship', 'fluid-checkout' ),
-						'pickup' => __( 'Pickup', 'fluid-checkout' ),
+						'ship'   => _x( 'Shipping to address', 'Delivery type', 'fluid-checkout' ),
+						'pickup' => _x( 'Local pickup', 'Delivery type', 'fluid-checkout' ),
 					),
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_default_delivery_type' ),
+					'custom_attributes'     => array(
+						'data-conditional-id'    => 'fc_enable_checkout_local_pickup',
+						'data-conditional-value' => 'yes',
+					),
+					'autoload'              => false,
+					'disabled'              => true,
+					'requires'              => 'pro',
+				),
+
+				array(
+					'title'                 => '',
+					'desc'                  => __( 'Use local pickup label from WooCommerce settings', 'fluid-checkout' ),
+					'desc_tip'              => __( 'When enabled, the pickup option label on checkout matches the title from WooCommerce pickup location settings. When disabled, the label uses the translatable "Local pickup" text from Fluid Checkout.', 'fluid-checkout' ),
+					'id'                    => 'fc_local_pickup_use_woocommerce_pickup_label',
+					'type'                  => 'checkbox',
+					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_use_woocommerce_pickup_label' ),
 					'custom_attributes'     => array(
 						'data-conditional-id'    => 'fc_enable_checkout_local_pickup',
 						'data-conditional-value' => 'yes',

@@ -10,36 +10,52 @@
 			"build/**"
 		],
 		"exclude": [
+			".cursor/",
+			".cursor/**",
 			"bin/",
 			"bin/**",
 			".cursorignore",
 			".gitignore",
+			"/.github/",
+			"/.github/**",
+			"fluid-checkout-standards",
+			"fluid-checkout-standards/**",
 			"env.local.config.example.sh",
 			"env.local.sh",
-			"gulp-settings.local.example.json",
 			"replacements.json",
 			"replacements.config.json",
 			"README-DEV.md",
 			"package.json",
+			"gulpfile.js",
 			"gulp-settings.json",
-			"gulpfile.js"
+			"gulp-settings.local.example.json",
+			"/fluid-checkout-docs/",
+			"/fluid-checkout-docs/**",
+			"/data/",
+			"/data/**",
+			"/wp-hooks-generator/",
+			"/wp-hooks-generator/**",
+			"logs/",
+			"logs/**",
+			"vendor-dev/",
+			"vendor-dev/**",
+			"js-src/",
+			"js-src/**",
+			"sass/",
+			"sass/**",
+			"sass/tests/",
+			"sass/tests/**",
+			"css/**/*consumer*",
+			"css/**/*.test.css",
+			"js/**/*consumer*",
+			"js/**/*.test.js",
+			"tests",
+			"tests/**"
 		],
 		"excludeFrom": ".gitignore",
 		"pruneEmptyDirs": true
 	},
 	"watch": [
-		[
-			"./sass/**/*.scss",
-			[
-				"build-css"
-			]
-		],
-		[
-			"./js-src/**/*.js",
-			[
-				"build-js"
-			]
-		],
 		[
 			"./blocks/**/*.*",
 			[
@@ -66,15 +82,12 @@
 	},
 	"jsSources": {
 		"libraries": [
-			"./node_modules/animate-helper/dist/animate-helper.js",
-			"./node_modules/collapsible-block/dist/collapsible-block.js",
-			"./node_modules/flyout-block/dist/flyout-block.js",
+			"./js-src/lib/animate-helper.js",
+			"./js-src/lib/collapsible-block.js",
+			"./js-src/lib/flyout-block.js",
 			"./node_modules/mailcheck/src/mailcheck.js",
-			"./node_modules/sticky-states/dist/sticky-states.js",
+			"./js-src/lib/sticky-states.js",
 			"./node_modules/wicg-inert/dist/inert.js"
-		],
-		"polyfills": [
-			"./node_modules/require-polyfills/dist/polyfill-*.js"
 		],
 		"standalone": [
 			"./js-src/*.js"
@@ -92,6 +105,8 @@
 	"translationSources": [
 		"./**/*.php",
 		"!./vendor/**",
+		"!./vendor-dev/**",
+		"!./bundled/**",
 		"!./languages/**"
 	],
 	"translationDest": "./languages",

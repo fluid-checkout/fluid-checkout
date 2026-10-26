@@ -277,10 +277,6 @@ msgstr "Базата на податоци на Fluid Checkout е успешно
 msgid "The database changes where applied successfully."
 msgstr "Базата на податоци се менува таму каде што се применува успешно."
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "Во ред"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "Отфрли"
@@ -401,39 +397,9 @@ msgstr "Прочитајте ја документацијата"
 msgid "Don't show this again"
 msgstr "Не покажувај го ова повторно"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "Специјални понуди"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"Проширете ја целата добрина на Fluid Checkout на страницата за количка и "
-"страниците за благодарност."
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Fluid Checkout PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"Дизајн шаблони, оптимизирана количка и нарачани примени страници, "
-"појавување на сметки и многу повеќе."
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"Најдобрите алатки за понатамошно <strong>подобрување на стапката на "
-"конверзија на наплатата на WooCommerce</strong> и да го направат искуството "
-"за купување конзистентно на целото патување."
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -455,10 +421,6 @@ msgstr "Уредете ја содржината на количката на с
 msgid "Account matching / user matching"
 msgstr "Усогласување на сметка / совпаѓање на корисници"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "Копчиња за брза наплата од поддржаните начини на плаќање"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "Симболи на доверба на страниците на количката и благодарност"
@@ -466,10 +428,6 @@ msgstr "Симболи на доверба на страниците на кол
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "Повеќе позиции за кодот на купонот на страницата за наплата"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "Интегрирано поле за код за купон на страницата за кошничка"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -483,246 +441,25 @@ msgstr "Пораки за подароци и ливчиња за пакувањ
 msgid "Local pickup and in-store collection"
 msgstr "Локален пикап и собирање во продавница"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "Надградба на УЈП — 99 ЕУР"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Fluid Checkout PRO – Пакет"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "Сите PRO карактеристики + Сите додатоци за специјална цена."
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"Пакетот ги вклучува сите додатоци што моментално ги нудиме и додатоците за "
-"Fluid Checkout што ќе ги лансираме во иднина."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "Вредност од 226 ЕУР (Заштедете 42%)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Автоматско комплетирање на адресата на Google"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "Адресар"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "ЕУ-ДДВ помошник"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "Сите идни додатоци *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* Се додека имате активна претплата."
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "Добијте го пакетот – само 129 евра"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"Сите цени се прикажани во ЕУР. Доколку има некакви разлики со цените на "
-"нашата веб-локација, понудите прикажани на веб-локацијата ги заменуваат "
-"овие и ќе се применат."
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "Додатоци"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "Подобрете го вашето искуство за наплата со овие додатоци."
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "Веќе го имам - Сокриј ја оваа понуда"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "Инсталирано - Активирајте"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "Активиран"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "До 40% помалку полиња за наплата за пополнување."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"Избегнувајте доцнење на испораката и незадоволни клиенти. Соберете ги "
-"<strong>точните информации за адресата</strong> од првиот пат кога ќе купат "
-"кај вас."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "Добијте го овој додаток - 29 ЕУР"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "Адресар"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "Повеќе зачувани адреси за испорака и наплата."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"Дозволете им на клиентите <strong>да зачуваат повеќе адреси за испорака и "
-"наплата</strong> на нивната сметка и да изберат кои да ги користат на "
-"страниците за наплата и количка."
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "Добијте го овој додаток - 59 ЕУР"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "Поедноставена ЕУ-ДДВ валидација за вашата продавница."
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"Соберете и <strong>потврдете ги ДДВ-броевите на ЕУ на страницата за "
-"наплата</strong> , ги отстранувате даночните давачки врз основа на обратна "
-"наплата и ја потврдувате локацијата на клиентот кога е потребно."
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "Добијте го овој додаток - 39 ЕУР"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"Сите додатоци се продаваат одделно и бараат да се инсталира и активира "
-"приклучокот <strong>Fluid Checkout Lite</strong> , освен кога е забележано."
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Изберете слика"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Најавете "
-"се на вашата сметка</a> за да го добиете клучот за лиценца или <a "
-"href=\"%s\" target=\"_blank\">да купите нов клуч за лиценца</a> ."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "Важи до %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "Истече на %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Најавете "
-"се на вашата сметка</a> за да го обновите клучот за лиценца и да продолжите "
-"да добивате ажурирања и поддршка."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "Клучот за лиценца е откажан."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">Купете нов клуч за лиценца</a> и "
-"продолжете да добивате ажурирања и поддршка."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "Грешка: "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "Поставување и документација"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "Одлично! Вашата страница за наплата сега работи на Fluid Checkout."
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "Еве неколку ресурси за да започнете:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"Прочитајте го упатството за инсталација <a href=\"%s\" "
-"target=\"_blank\">Како да дознаете со Fluid Checkout</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "Поставете распоред и дизајн на <a href=\"%s\">опциите за наплата</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"Проверете дали има достапни <a href=\"%s\">опции за интеграција</a> за "
-"други приклучоци што сте ги инсталирале."
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"Посетете ја <a href=\"%s\" target=\"_blank\">нашата документација</a> за "
-"повеќе информации за функциите на Fluid Checkout."
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"Ако некогаш ви треба помош, <a href=\"%s\" target=\"_blank\">отворете билет "
-"за поддршка</a> на нашиот официјален канал за поддршка."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -735,16 +472,6 @@ msgstr "Оптимизации на количка"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "Овозможи оптимизација на страницата за количка"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr ""
-"Прикажете ја страницата со количка со распоред сличен на страницата за "
-"наплата."
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "Заглавие и подножје"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -780,16 +507,6 @@ msgstr ""
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "Кодови на купони"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"Изберете позиција каде да се прикаже делот за кодови за купони на "
-"страницата за количка. Применливо само кога се овозможени AJAX количката и "
-"интегрираните купонски кодови на страницата за наплата."
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -885,10 +602,6 @@ msgstr "Распоред на темата за вкрстено продава�
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "Број на ставки за вкрстено продавање за прикажување на страницата за количка"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "Симболи и значки на доверба"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "Додајте области на графичка контрола на страницата со количка"
@@ -905,10 +618,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "Исплата"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "Распоред и дизајн"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "Распоред на наплата"
@@ -924,23 +633,6 @@ msgstr "Темен режим"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "Овозможи темни режим"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "Шаблони за заглавие и подножје"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"Препорачуваме да ги користите заглавието и подножјето без одвраќање за да "
-"избегнете одвлекување на вниманието на страницата за наплата. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" "
-"target=\"_blank\">Прочитајте го истражувањето за напуштање на количката</a> "
-"."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -993,10 +685,6 @@ msgid ""
 msgstr ""
 "Изберете боја на позадина за подножјето на страницата за наплата. Се "
 "применува само кога се користат заглавието и подножјето без одвраќање."
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "Елементи за наплата"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1082,18 +770,6 @@ msgstr "Врска до страницата за продавница"
 msgid "Cart items"
 msgstr "Ставки за количка"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "Овозможете опции за уредување ставки во количката на страницата за наплата"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"Дозволете им на клиентите да ги менуваат количините на производите или да "
-"отстрануваат ставки директно на страницата за наплата."
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "Сокријте ги грешките со ставките во количката на страницата за наплата"
@@ -1146,38 +822,9 @@ msgstr ""
 "Овие области на виџети се користат за додавање симболи за доверба и значки "
 "за доверба на страницата за наплата."
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"Прикажувајте виџети од страничната лента за наплата само кога го гледате "
-"последниот чекор за наплата на мобилни уреди кога користите распоред за "
-"наплата во повеќе чекори"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "Овозможете интегриран дел за купонски код"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr ""
-"Применливо само ако употребата на купонски кодови е овозможена во "
-"поставките на WooCommerce."
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "Прикажете го насловот на делот за кодови за купони"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"Применливо само кога кодот за купон се прикажува како посебен дел на "
-"страниците за наплата или количка."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1198,16 +845,6 @@ msgstr "Како потчекор пред начините на плаќање"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "Како потчекор по начините на плаќање"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"Изберете стил на копчето „примени купон“. Применливо само кога делот за код "
-"за купон е прикажан „Пред чекорите за наплата“ на страницата за наплата или "
-"„Пред делот со ставки во количката“ на страницата за количка."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1256,21 +893,6 @@ msgstr ""
 "Се препорачува само кога на повеќето клиенти навистина им е потребно полето "
 "„Адреса линија 2“ или кога е клучно да се добие вистинската адреса за "
 "испорака (т.е. ако се доставува храна и други расипливи производи)."
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "Прикажете ги копчињата за врска „Додај“ со мали букви"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"Направете ги етикетите од изборното поле „Додај“ копче за врска со "
-"<code>lowercase</code> (т.е. „Додај телефонски број“ наместо „Додај "
-"телефонски број“). Оваа опција влијае и на копчињата за врски за полињата "
-"за код за купони."
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1365,24 +987,6 @@ msgstr "Пред испорака адреса"
 msgid "After shipping address"
 msgstr "Адреса по испорака"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "Спречете го автоматскиот избор на првиот начин на испорака"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Кога е овозможено, првиот достапен начин на испорака нема да биде "
-"автоматски избран кога претходно не бил избран друг начин на испорака за "
-"секој пакет за испорака.<br> Оваа опција автоматски ќе биде овозможена ако "
-"опцијата за бришење на избраниот начин на испорака е овозможена за "
-"функцијата Локално подигање."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Локален пикап"
@@ -1402,23 +1006,6 @@ msgid ""
 msgstr ""
 "Ја заменува адресата за испорака со локацијата на точката за подигање кога "
 "е избран локален начин на испорака за подигање."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Прикажи ја опцијата за бришење на методите за испорака во потчекорот "
-"локација за подигање"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Прикажи копче за врска на потчекорот за локација за подигање за да ги "
-"избришете избраните методи за испорака. Ова може да се користи за да се "
-"овозможи повторно прикажување на делот за адреса за испорака ако претходно "
-"бил избран метод за локално подигање."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1497,32 +1084,6 @@ msgstr "Додајте поле за телефон за наплата во ф�
 msgid "Choose in which step to display the billing phone field."
 msgstr "Изберете во кој чекор да се прикаже полето за телефон за наплата."
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "Овозможете валидација на телефонски број врз основа на правилата на земјата"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"Кога е оневозможено, валидацијата на полето за телефон нема да провери дали "
-"шифрите на земјата или областа се валидни за земјата."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "Прикажи само дозволени земји за испорака или наплата"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"Кога е овозможено, само земјите дозволени за испорака ќе бидат достапни во "
-"полето телефон за испорака, а само земјите дозволени за наплата ќе бидат "
-"достапни за полето телефон за наплата."
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "Прикажи го кодот на државата покрај знамето"
@@ -1555,12 +1116,6 @@ msgstr "Дефинирајте ја видливоста на полето за 
 msgid "Gift options"
 msgstr "Опции за подароци"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr ""
-"Прикажете порака за подарок и други опции за подарок на страницата за "
-"наплата"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1568,10 +1123,6 @@ msgid ""
 msgstr ""
 "Дозволете им на клиентите да додадат порака за подарок и други опции "
 "поврзани со подарок во нарачката."
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "Прикажете ги полињата за порака за подарок секогаш проширени"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1628,27 +1179,9 @@ msgstr "Контролна табла"
 msgid "Integrations"
 msgstr "Интеграции"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"Нема достапни интеграции во моментов на овој дел. Опциите поврзани со секој "
-"додаток ќе се појават овде само ако тој приклучок е активиран."
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "Клучеви за лиценца"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"Нема достапни опции за клучеви за лиценца во моментот на овој дел. Опциите "
-"поврзани со секој додаток или додаток ќе се појават овде кога ќе се "
-"активира тој приклучок."
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1757,14 +1290,6 @@ msgstr ""
 "Овие области на виџети се користат за додавање симболи за доверба и значки "
 "за доверба на страницата за благодарност."
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"Овие опции влијаат на страницата за благодарност, прегледувајте ги деталите "
-"за нарачката на страниците на сметката и на известувањата по е-пошта."
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "Нарачајте дејства"
@@ -1857,22 +1382,6 @@ msgstr "Вчитај неминифицирани средства"
 msgid "Enhanced select fields"
 msgstr "Подобрени полиња за избор"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr ""
-"Заменете ги паѓачките компоненти <code>select2</code> со "
-"<code>TomSelect</code>"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect е поедноставна компонента за избор на паѓачкото мени, која е "
-"помалку склона кон грешки од Select2, додека ги нуди истите карактеристики "
-"што всушност се користат на страниците за наплата на WooCommerce."
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "Поправете автоматско зумирање на полињата со формулари"
@@ -1880,36 +1389,6 @@ msgstr "Поправете автоматско зумирање на полињ
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "Поставете ја <code>font-size</code> во полињата на формата на 16 пиксели"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"Кога големината на фонтот во полињата на формуларот е помала од 16 пиксели, "
-"Safari и другите прелистувачи може автоматски да зумираат на мобилните "
-"уреди за да го олеснат читањето на текстот. Кога оваа опција е овозможена, "
-"ќе ја постави големината на фонтот за внатре во полињата на формуларот на "
-"16 пиксели на страниците оптимизирани од Fluid Checkout за да се избегне "
-"зумирање."
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"Дестинацијата за испорака е секогаш поставена на „Стандардна адреса за "
-"испорака на клиент“ кога е активирана флуидното плаќање. Клиентите сè уште "
-"можат да обезбедат различни адреси за испорака и наплата за време на "
-"наплатата, опцијата за поставување на стандардната адреса за наплата да "
-"биде иста со адресата за испорака е достапна во WooCommerce &gt; Settings "
-"&gt; Fluid Checkout."
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1936,14 +1415,6 @@ msgstr "(УЈП)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(експериментално)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "Потврди"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "Потврдете го телефонскиот број"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2483,10 +1954,6 @@ msgstr "По лентата за напредок"
 msgid "Before coupon codes section"
 msgstr "Пред делот за кодови за купони"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "Овозможи полиња за меѓународен телефонски број"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "Форматирајте ги телефонските броеви според правилата за секоја земја."
@@ -2494,19 +1961,6 @@ msgstr "Форматирајте ги телефонските броеви сп
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "Користете прецизна валидација на телефонскиот број"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"Обидете се да се осигурате дека телефонскиот број е важечки мобилен или "
-"фиксен број врз основа на правилата за избраниот код на државата. Оваа "
-"опција ја користи функцијата за прецизна валидација "
-"<code>intl-tel-input</code> , која може да даде лажни позитиви за некои "
-"телефонски броеви."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2553,26 +2007,6 @@ msgstr "2 колони"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 колона"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"Општи стилови за чекорите за наплата, резиме на нарачката и други "
-"делови.<br> Може да се однесува и на други страници како што се страниците "
-"„Кошничка“, „Примена нарачка“ и „Преглед на нарачка“."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"Шаблонот за дизајн <em>„Раздели“</em> не е достапен кога се користи "
-"распоредот <em>„1 колона“</em> и ќе се врати на <em>„Минималистички“</em> "
-"ако е избран."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2672,6 +2106,2537 @@ msgstr ""
 "потребно за да се осигури дека адресата за испорака може да се копира на "
 "адресата за наплата кога е означена таа опција, во спротивно клиентот "
 "можеби нема да може да го пополни формуларот за наплата."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "Профили за поставки"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "Профил за поставки"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "Немате дозвола да ја извршите оваа акција."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "Немате дозвола за активирање на приклучоци."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "Недостасува приклучок."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "Приклучокот е активиран."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "Ќе бидат применети следните промени:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Од Fluid Checkout 5.0, поставките се зачувуваат поинаку. Застарените опции "
+"сè уште се чуваат во базата на податоци за да се овозможи понижување на "
+"претходни верзии доколку е потребно."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"Вашата продавница работи околу 2 недели со новите поставки, па можете да ги "
+"исчистите застарените опции складирани во базата на податоци. Забележете "
+"дека по чистењето, ако треба да се вратите на претходни верзии на "
+"приклучокот, тој ќе користи стандардни вредности за сите поставки."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "Чистење на поставките на Fluid Checkout"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "Избриши ги преостанатите опции"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "Помогнете ни да го подобриме Fluid Checkout"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"Споделувајте анонимни извештаи за околината на страницата со Fluid Checkout "
+"за да добиете побрза поддршка и да ни помогнете да ја подобриме "
+"компатибилноста и да го измериме влијанието. Не се вклучени никакви "
+"податоци за клиенти, корисници или чувствителни податоци. Можете да "
+"изберете што да се споделува во секое време од поставките за Алатки."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "Овозможи извештаи за околината на страницата"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "Преглед на поставките"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"Овој преглед е истечен. Вчитајте ја повторно администраторската страница за "
+"да започнете нов преглед."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "Прегледот е истечен"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "Нарачките не можат да се направат во прегледот."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "Најавувањето не е достапно во прегледот."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "Не може да се креираат сметки во прегледот."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "Барањата до други страници се блокирани во прегледот."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "Се обработува…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "Нешто тргна наопаку. Обидете се повторно."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "Активирај приклучок"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - Комплетен пакет за наплата"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"Сите PRO функции + сите додатоци, една цена. Шаблони за дизајн, "
+"оптимизирани страници за кошничка и примени нарачки, споредување на сметки "
+"и многу повеќе."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "Оптимизирана страница за плаќање на нарачки"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "Копчиња за брзо плаќање од поддржаните методи на плаќање"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "Одложено креирање на сметка"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Автоматско дополнување на адреса со API-ја на Google Maps"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "Повеќе зачувани адреси со адресарот"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "Асистент за ДДВ од ЕУ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "Сокриј го овој дел"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "Дознајте повеќе"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "Добијте ран пристап"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "Активирајте го додатокот"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "Извлечете максимум од вашето патување со плаќање"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "Тест API клуч"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "Водено поставување"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "Опции"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "Поставете распоред и дизајн на <a href=\"%s\">опциите за наплата</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"Овозможете наплата како гостин и/или прегледајте <a href=\"%s\">ги "
+"поставките за сметките на клиентите</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"Овозможете оптимизирани страници <a href=\"%1$s\">за кошничка</a> , <a "
+"href=\"%2$s\">благодарност</a> и <a href=\"%3$s\">плаќање на нарачки</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr ""
+"Овозможете <a href=\"%s\">автоматско дополнување на адресата</a> од Google "
+"Maps."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr "Овозможи повеќе зачувани адреси со <a href=\"%s\">адресарот</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"Проверете дали има достапни <a href=\"%s\">опции за интеграција</a> за "
+"темата или другите додатоци што сте ги инсталирале."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"Добијте побрза поддршка и помогнете ни да ја подобриме компатибилноста и да "
+"го мериме влијанието. <a href=\"%s\">Овозможете следење на користењето</a> "
+"од поставките на алатките."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "Недостасува табулаторот за поставки."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "Започнување"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>Одлично! Вашата страница за наплата сега работи на Fluid "
+"Checkout.</strong> Еве неколку чекори за да започнете:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "Завршено"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "Преглед на податоци од извештајот"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "Испрати сега"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "Автоматско откривање"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "Африканс"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "Албански"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "амхарски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "арапски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "ерменски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "азербејџански"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "баскиски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "белоруски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "бенгалски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "босански"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "бугарски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "бурмански"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "каталонски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "кинески"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "кинески (поедноставен)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "кинески (Хонг Конг)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "Кинески (традиционален)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "хрватски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "Чешки"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "дански"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "холандски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "англиски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "Англиски (австралиски)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "англиски (Велика Британија)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "естонски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "фарси"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "фински"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "Филипински"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "француски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "француски (канадски)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "галициски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "грузиски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "германски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "грчки"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "гуџарати"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "хебрејски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "хинди"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "унгарски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "исландски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "индонезиски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "италијански"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "јапонски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "Каннада"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "казахстански"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "кмерски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "корејски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "киргистански"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "Лао"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "латвиски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "литвански"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "македонски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "малајски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "малајаламски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "марати"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "монголски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "непалски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "норвешки"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "полски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "португалски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "португалски (Бразил)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "португалски (Португалија)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "панџапски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "романски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "руски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "српски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "синхалски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "словачки"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "словенечки"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "шпански"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "Шпански (Латинска Америка)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "свахили"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "шведски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "тамилски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "телугу"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "тајландски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "турски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "украински"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "урду"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "виетнамски"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "Зулу"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Автоматско дополнување на адреса на Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Верзија на API на Google Places"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"Изберете која верзија на API-то на Google Places да ја користите. "
+"Препорачуваме што поскоро да преминете на новиот API на Places."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"Препорачуваме да користите „Places API (Ново)“. Од 1 март 2025 година, "
+"Google ќе ја премести верзијата „Places API (Legacy)“ во статус Legacy, што "
+"значи дека повеќе нема да можете да ја овозможите оваа услуга за нови API "
+"клучеви и дека таа верзија на API на крајот повеќе нема да биде достапна. "
+"Постоечките сметки што веќе го користат Legacy API може да продолжат да "
+"работат без прекини."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(Препорачано)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Клуч на Google API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"Залепете го вашиот Google API клуч и користете го копчето за тестирање за "
+"да потврдите дека работи за оваа веб-страница. Проверете дали клучот е "
+"валиден и дозволен за вашиот домен, во спротивно полето за адреса може да "
+"се блокира, спречувајќи ги клиентите да ги завршат своите нарачки."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "Овозможи автоматско дополнување на адресата на Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr ""
+"Овозможете автоматско дополнување на адресата користејќи ги API-јата на "
+"Google Maps."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Јазик на Google API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"Овој јазик ќе се користи за прикажување на предлозите за адреси на API-то "
+"на Google Places, а адресите исто така ќе бидат автоматски дополнети на "
+"овој јазик."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "Видови резултати"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Оставете празно за да прифатите било каков тип на резултати, што обично "
+"дава подобри резултати што се совпаѓаат. <a href=\"%s\" "
+"target=\"_blank\">Видете ја документацијата за повеќе детали</a> .<br> "
+"Изберете до 5 типа резултати од пребарувањето адреси за да ги вратите во "
+"полињата за автоматско дополнување на адреси.<br> Посетете ја "
+"документацијата на Google Maps за да дознаете повеќе за <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">поддржаните типови</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "Типови на резултати (Legacy API)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Кој тип резултати од пребарувањето адреси да се вратат кога се користи API "
+"за места (Legacy).<br> Посетете ја документацијата на Legacy Google Places "
+"API за да дознаете повеќе за <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">поддржаните типови</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "Полиња на компанијата"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "Овозможете автоматско дополнување за името на компанијата доколку е достапно"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Овозможете автоматско дополнување на полето за компанија со информации за "
+"името на компанијата кога ќе се врати од API-јата на Google Maps."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "Пребарување на бизнис"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "Овозможи пребарување на бизниси во полето на компанијата"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"Овозможете предлагање адреси поврзани со бизнис при пишување во полето за "
+"компанија, а потоа автоматски пополнете ги сите полиња за адреси кога ќе се "
+"избере бизнис од предлозите."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "Видови резултати од компанијата"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Изберете до 5 типа резултати од пребарувањето адреси за да ги вратите "
+"полињата за автоматско дополнување на компанијата.<br> Препорачаната "
+"вредност е <code>establishment</code> , што ги вклучува повеќето видови "
+"бизниси.<br> Оставете празно за да прифатите било каков вид резултати, "
+"вклучувајќи ги и резултатите што не се поврзани со бизниси.<br> Посетете ја "
+"документацијата на Google Maps за да дознаете повеќе за <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">поддржаните типови</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Лого на Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "Прикажи текст и лого „Овозможено од Google“"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"Кога е штиклирано, текстот и логото „Powered by Google“ ќе бидат прикажани "
+"на дното од полето за предлози за автоматско дополнување на адреса."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "Автоматско дополнување на бразилска API адреса"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "Бразил API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "Овозможете автоматско дополнување на Brasil API адресата за CEP полиња"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"Користете го Brasil API за пребарување и автоматско пополнување на адресите "
+"користејќи го полето CEP/Поштенски код. Важечко само за бразилски адреси."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "Верзија на API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "Изберете која верзија на методот Brasil API CEP да ја користите."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "Миграција на адресар"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "WooCommerce адреси"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"Копирајте ги постоечките адреси за испорака и фактурирање од WooCommerce во "
+"адресарот на клиентите."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "Овозможете ја функцијата за адресар"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"Дозволете им на клиентите да зачуваат повеќе адреси и да ја дефинираат "
+"стандардната адреса што ќе се користи за испорака и фактурирање."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "Етикети за адреси"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "Дозволете им на клиентите да додадат прилагодена етикета за секоја адреса"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"Етикетите со адреси им олеснуваат на клиентите да ги разликуваат своите "
+"зачувани адреси (на пр.: „Мајка ми куќа“). Етикетите со адреси се приватни "
+"за клиентите и нема да бидат прикажани или печатени на страницата со детали "
+"за нарачката или на фактурите."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "Распоред на екранот"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr ""
+"Изберете како ќе се прикажуваат зачуваните адреси при плаќање и во "
+"кошничката."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"Важи при наплата и во кошничката. Зачуваните адреси на страницата на "
+"сметката секогаш го користат распоредот на картичките."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "Картички за адреса"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "Список со адреси"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "Паѓачко поле"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "Пребарување на адреса"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"Прикажи филтер за пребарување адреси на предната страна кога клиентот има "
+"барем овој број на достапни зачувани адреси."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "Не се користи кога распоредот на екранот е поставен на паѓачко поле."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "Адреси"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "Овозможете оптимизација на страницата за кошничка за да видите повеќе опции"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "Резиме на леплива нарачка"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"Изберете позиција каде што ќе се прикаже делот со кодови за купони на "
+"страницата со кошничка. Важи само кога е овозможена AJAX кошничката и ако "
+"употребата на кодови за купони е овозможена во поставките на WooCommerce."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "Распоред на вкрстена продажба"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "Прикажани вкрстени продажби"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "Предмети"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "Оптимизација на страницата за кошничка"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"Дајте ѝ на вашата кошничка ист јасен распоред фокусиран на конверзија како "
+"и при наплатата."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr ""
+"Усогласете го распоредот на кошничката со страницата за наплата за "
+"конзистентно патување на купување."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"Одржувајте ја кошничката секогаш ажурирана во позадина, без повторно "
+"вчитување на цела страница кога ќе се променат количините."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"Поставете кодови за купони, испорака и вкрстена продажба точно таму каде "
+"што тие остваруваат најголема конверзија."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"Одржувајте го резимето на нарачката видлив додека скролувате и додадете "
+"симболи за доверба таму каде што на купувачите им е потребна сигурност."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "Колони"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"Општи стилови за чекорите за наплата, резимето на нарачката и другите "
+"делови. Важи за други страници за наплата, кошничка, благодарност (примена "
+"нарачка) и преглед на нарачката."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"Кога го користите распоредот <em>„1 колона“</em> со шаблонот за дизајн "
+"<em>„Подели“</em> , десната колона се прикажува само ако областа на виџетот "
+"на страничната лента на страницата е активна (странична лента за наплата, "
+"странична лента за кошничка или странична лента за примена нарачка). Во "
+"спротивно, страницата останува како една колона со стилови на Поделба."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "Поделете ја позадината на колоната"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"Изберете боја на позадина за секундарната колона „Поделен дизајн“. Оставете "
+"празно за да ја користите бојата на позадината на резимето на нарачката."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "Шаблони за страници"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "Шаблон за наплата"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"Препорачано за помалку одвлекување на вниманието при плаќање. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">Прочитајте го истражувањето за напуштање на "
+"кошничката</a> ."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "Леплива лента за напредок"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "Стил на лента за напредок"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "Вкупно нарачки"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "Боја на позадина"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "Линк за акција"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "Резиме на мобилната нарачка"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "Почетна состојба на мобилен"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "Овозможете уредување на ставки во кошничката при плаќање"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"Дозволете им на клиентите да ги менуваат количините на производи или да "
+"отстрануваат артикли директно на страницата за наплата."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "Грешки во ставките во кошничката"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"Важи само кога кодот за купон е прикажан како посебен дел на страниците за "
+"наплата или кошничка и ако употребата на кодови за купони е овозможена во "
+"поставките на WooCommerce."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "Позиција на кодови за купони"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "Копче за примена на купон"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "Изберете стил на копчето „примени купон“."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "Ред за адреса 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"Оваа поставка е споделена помеѓу деловите „Наплата“ и „Локално "
+"подигнување“. Во делот „Локално подигнување“, исто така се одлучува дали "
+"селекторот за Испорака/Подигнување ќе се прикаже во делот за метод на "
+"испорака (пред адресата) или како посебен дел (после)."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "Сметки на клиенти"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "Одјавување од гости"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"Опциите за наплата, најавување и креирање сметка како гостин се достапни од "
+"страницата со поставки на WooCommerce Accounts. Тие се управуваат тука за "
+"ваша погодност, па затоа можете да користите различни вредности по профил "
+"со поставки."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "Дозволете им на клиентите да платат без сметка"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Препорачано</strong> за да не се бара од клиентите да креираат "
+"сметка или да се најават за време на плаќањето, што може да ги намали "
+"стапките на конверзија."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"Кога е оневозможено, клиентите мора да се најават или да креираат сметка за "
+"да го завршат купувањето."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "Најавете се при плаќање"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "Овозможете најавување за време на плаќањето"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr "Прикажи линк за враќање на клиентите за најавување од страницата за наплата."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "Креирање на сметка"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "Дозволете им на клиентите да креираат сметка за време на плаќањето"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "Купувачите можат да креираат сметка пред да ја направат својата нарачка."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "Дозволете им на клиентите да креираат сметка од страницата „Моја сметка“"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "Клиентите можат да регистрираат нова сметка од страницата „Моја сметка“."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "Корисничко име"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "Генерирај од името на клиентот"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Препорачано</strong> за да не се бара од клиентите да изберат "
+"корисничко име при плаќањето, што може да ги намали стапките на конверзија."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"Корисничкото име се генерира од името на клиентот или од е-поштата кога "
+"името не може да се користи."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "Лозинка"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "Испрати линк за поставување лозинка"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Препорачано</strong> за да не се бара од клиентите да постават "
+"лозинка при плаќањето, што може да ги намали стапките на конверзија."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "Клиентите добиваат е-пошта за безбедно креирање на лозинката."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"Дозволете им на регистрираните клиенти да ја завршат наплатата без да се "
+"најавуваат и поврзете ја нарачката со нивната постоечка сметка кога "
+"деталите за контакт се совпаѓаат."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "Порака за постоечка сметка"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr ""
+"Дозволете им на клиентите да креираат сметка откако ќе ја направат "
+"нарачката, од страницата за благодарност."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"Опциите во овој дел се достапни кога се овозможени наплатата на гости и "
+"споредувањето на сметките. Овозможете ги обете функции погоре за да го "
+"конфигурирате одложеното креирање на сметка."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "Овозможи одложено креирање сметка"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"Овозможете одложено креирање сметка кога се овозможени и плаќањето од "
+"гостин и совпаѓањето на сметките."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "Позиција на делот"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "Пред делот за детали за клиентот"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "По делот за детали за клиентот"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "Предности за креирање сметка"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "Ако го оставите полето празно, ќе се прикаже стандардниот текст."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "Вметнати копчиња"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "Задолжителни полиња"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "Овозможете ги полињата за пораки за подароци при плаќање"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "Проширена порака за подарок"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "Полето за прикажување на пораката за подарок е секогаш проширено"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "Подарочна порака во деталите за нарачката"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"Во моментов нема достапни интеграции во овој дел. Опциите поврзани со секој "
+"приклучок и тема ќе се појават тука само кога тој приклучок или тема ќе "
+"биде активиран."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "Телефонски полиња"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "Видливост на терен"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "Позиција на терен"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "Телефонски код на земјата и валидација"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "Земја"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "Овозможи земја на телефонските полиња"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "Филтрирајте ги земјите за испорака или фактурирање"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"Ограничете го селекторот за земја во секое поле за телефон на земјите "
+"дозволени за испорака или фактурирање во вашата продавница."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "Валидација"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "Овозможете едноставна валидација врз основа на правилата на земјата"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"Проверува дали телефонскиот број е важечки за избраната земја, вклучувајќи "
+"го кодот на земјата и должината."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"Построго проверете дали бројот е важечки мобилен, фиксен или друг прифатен "
+"тип за избраната земја. Може да одбие некои важечки броеви."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "Видови на валидација"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "Заменски резерви"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"Во моментов нема лиценцирани клучеви за управување. Лиценцираните клучеви "
+"ќе се појават тука кога е активен лиценциран приклучок или додаток на Fluid "
+"Checkout."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "Стандарден тип на испорака"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "Изберете кој тип на испорака ќе биде избран по дифолт."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "Полиња за зона на испорака"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Изберете кои полиња ќе бидат прикажани за полињата за филтрирање на "
+"локалната зона за подигнување на испорака. Оставете празно за да се "
+"прикажат сите достапни опции."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Овие полиња ќе бидат прикажани како филтер за локалните методи на испорака "
+"со подигнување. Некои полиња може сè уште да се појават при плаќање кога не "
+"се избрани овде, доколку компатибилните приклучоци бараат тие да работат "
+"правилно."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "Адреса за испорака на нарачката"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "Оптимизација на страницата за плаќање на нарачки"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"Дајте им на неплатените нарачки ист јасен распоред фокусиран на конверзија "
+"како и при наплатата."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"Оптимизирајте го распоредот на страницата за плаќање на нарачките за "
+"нарачки што чекаат плаќање."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"Усогласете го искуството со плаќање на нарачката со вашето плаќање за "
+"конзистентно патување со купување."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"Додајте симболи за доверба и значки каде што купувачите имаат потреба од "
+"сигурност пред да платат."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "Оптимизација на страница „Благодарам“"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"Направете ја страницата за благодарност и деталите за нарачката појасни за "
+"клиентите откако ќе купат."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr ""
+"Оптимизирајте ја страницата за благодарност и деталите за нарачката на "
+"сметката со појасен распоред."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"Прикажете го напредокот на статусот на нарачката, дејствата, преземањата и "
+"белешките таму каде што имаат смисла."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "Прилагодете ги деловите со детали за нарачката во известувањата по е-пошта."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"Додајте симболи и значки за доверба таму каде што купувачите имаат потреба "
+"од сигурност по купувањето."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "Известувања по е-пошта"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"Овозможете ја страницата за благодарност и оптимизацијата на деталите за "
+"нарачката за да видите повеќе опции"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "Користете широк распоред на страницата за благодарност"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"Овие опции влијаат на страницата за благодарност, преглед на деталите за "
+"нарачката на страниците на сметката и на известувањата по е-пошта."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "Зачувај поставки"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "Документи"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "Кошничка"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "Ви благодарам"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "Автоматско дополнување на адреса"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "Значки за доверба"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "Немате дозвола да ги зачувате овие поставки."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "Неважечко барање за зачувување."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "Вашите поставки се зачувани."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "Се зачувува..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "Поставките не можеа да се зачуваат. Обидете се повторно."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "Отфрли известување"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "Отвори го менито за поставки"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "Затвори го менито со поставки"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "Преглед"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "Прошири го прегледот"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "Собери го прегледот"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "Прикажи заглавие и подножје"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "Сокриј заглавие и подножје"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "Преглед на страницата"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "Преглед на прозорецот"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "Таблет"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "Десктоп"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "Ширина на прегледот"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "Намали ширина"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "Ширина на прегледот во пиксели"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "Зголеми ширина"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "Преглед како"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "Гостин"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "Најавени"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "Преглед на страница"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "Прошири го прегледот за подетален преглед"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "Достапно со %s."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "Вклучете ги"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr "Оптимизациите за оваа страница се исклучени. %s за преглед на страницата."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "Преглед на %s"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "Изолирана сесија · ништо не е зачувано"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "Следење на користењето"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Испраќајте извештаи за нечувствителна околина на страницата за да му "
+"помогнете на Fluid Checkout да ја подобри компатибилноста. Извештаите не се "
+"испраќаат сè додека не се овозможени во опциите подолу."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "Испраќајте извештаи за следење на користењето до Fluid Checkout"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"Овие извештаи ни помагаат да ја подобриме компатибилноста и поддршката за "
+"вашата страница и се испраќаат неделно кога се овозможени."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"Во извештаите не се вклучени никакви клиенти, администраторски корисници "
+"или други чувствителни податоци."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "Основни информации за околината"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"Податоци за WordPress, PHP, WooCommerce, теми и списоци со додатоци. "
+"Секогаш вклучени кога е овозможено известување. Ни помага да ја разбереме "
+"околината во која работи вашата страница."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "Поставки на приклучокот"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"Ги испраќа поставките на приклучокот Fluid Checkout за да ни помогне со "
+"барањата за поддршка и ни помага да разбереме како ги користите нашите "
+"приклучоци."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "Наскоро"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "Метрики за продажба"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"Месечен број на нарачки и вкупна продажба за една година пред инсталирањето "
+"на Fluid Checkout до денес. Ни помага да разбереме дали заработувате повеќе "
+"пари со инсталираните наши додатоци. Никогаш не се испраќаат податоци за "
+"клиенти или корисници."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "Комунални услуги"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"Користете ги компонентите од паѓачкото мени <code>TomSelect</code> наместо "
+"<code>select2</code>"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect е поедноставна компонента за избор во паѓачко мени која е помалку "
+"склона кон грешки од Select2, а нуди иста функционалност."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"Ја поставува големината на фонтот во полињата на формуларот на 16px на "
+"страници оптимизирани од овој приклучок за да се избегне автоматско "
+"зумирање при интеракција со полињата на формуларот на мали уреди."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"Safari и другите прелистувачи може автоматски да зумираат на мобилните "
+"уреди за да го олеснат читањето на текстот кога големината на фонтот е "
+"помала од 16 пиксели."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "Овозможи следење на обработката на скрипти на конзолата на прелистувачот."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "Неминифицирани средства"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Скрипти на Google Maps"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "Не отстранувајте дупликати скрипти на Google Maps"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"Кога е овозможено, дупликатните скрипти на Google Maps НЕМА да се "
+"отстранат, што може да предизвика грешки и проблеми со перформансите. "
+"Користете ја оваа опција само при решавање проблеми."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "Области на виџети"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "Последен чекор на мобилен телефон"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "Прикажувај виџети само на последниот чекор на мобилен телефон"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"Прикажувај виџети за значка за доверба при наплата само кога се прикажува "
+"последниот чекор при наплата на мобилни уреди"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "Стандарден"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "Поле за ДДВ број"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "Додајте поле за ДДВ број во формуларот за фактурирање."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "Ознака на полето"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"Поставете ја етикетата на полето за ДДВ број (т.е. ДДВ број). На "
+"повеќејазични веб-страници, подобро е да го оставите ова поле празно и да "
+"го преведете оригиналниот стринг."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "ДДВ број"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "ДДВ на ЕУ"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "Овозможете го полето за ДДВ број за да видите повеќе опции"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "Потврда на ДДВ"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "Потврдете го полето за ДДВ број за ЕУ-ДДВ за време на плаќањето"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"Проверува дали дадениот ДДВ број е важечки ДДВ број регистриран во "
+"Европската база на податоци VIES (Систем за размена на информации за ДДВ)."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "ДДВ број на продавница"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"ДДВ бројот на продавницата што се користи за барање валидација на ДДВ од ЕУ "
+"и е отпечатен на фактурите.<br> <strong>Препорачуваме да го додадете вашиот "
+"ДДВ број во продавницата,</strong> бидејќи во спротивно резултатите од "
+"консултациите на VIES може да не бидат валидни за сметководствени цели.<br> "
+"Односно: <code>ATU99999999</code> или <code>EE999999999</code> ."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "Обратно полнење"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "Применете механизам за обратно полнење"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"Поставете ја даночната стапка на нула и прикажете „Обратна наплата“ на "
+"фактурите кога ДДВ бројот на купувачот е валиден. Можеби ќе биде потребен "
+"различен текст „Обратна наплата“ во зависност од земјата на продавницата."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "Иста земја"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr ""
+"Применете механизам за обратна наплата за трансакции во земјата на "
+"продавницата:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"Овозможува примена на механизам за обратна наплата за трансакции помеѓу "
+"компании во истата земја како и продавницата."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "Исклучоци за обратна наплата"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr ""
+"Изберете дополнителни земји за да го прескокнете применувањето на "
+"механизмот за обратна наплата."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"Даноци ќе бидат наплатени за нарачки од овие земји дури и кога е наведен "
+"важечки ДДВ број."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "Етикета за обратна наплата на фактурите"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr ""
+"Поставете ја етикетата „обратна наплата“ на страницата за наплата и "
+"деталите за нарачката."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "Текст за обратна наплата на фактури"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "Поставете ја етикетата со текст „обратна наплата“ на фактурите."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "Данок што треба да се плати по обратна наплата"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "Име на компанијата"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "Автоматско пополнување на името на компанијата од ДДВ бројот"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"Внесете го името на компанијата за наплата врз основа на важечкиот ДДВ број "
+"што го дал клиентот."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "Уредување на името на компанијата"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "Дозволи уредување на автоматски пополнетото име на компанијата"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"Кога е овозможено, клиентите можат да го променат името на компанијата "
+"поврзано со дадениот ДДВ број."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "ДДВ на ЕУ за дигитални стоки"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"Од 1 јануари 2015 година, направени се измени во регулативите на ЕУ за ДДВ "
+"во врска со дигиталните стоки, кои влијаат исклучиво на трансакциите од "
+"бизнис до клиент. ДДВ-то за дигиталните стоки мора да се пресмета врз "
+"основа на локацијата на клиентот, а за тоа треба да се соберат и докази (IP "
+"адреса и адреса за фактурирање)."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "Даночни класи за дигитални стоки"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "Изберете некои даночни класи"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "Доказ за локација"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "Соберете докази за локацијата на клиентот"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"Ја зачувува IP адресата и ја потврдува со адресата за наплата на клиентот. "
+"Клиентот мора да ја потврди својата адреса за наплата со штиклирање на "
+"полето на страницата за наплата ако земјата од нивната адреса за наплата и "
+"IP адресата не се совпаѓаат."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"Оваа опција се управува во Fluid Checkout. <a href=\"%s\">Променете ја во "
+"поставките за сметки на клиенти</a> ."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"Оваа опција се управува во Fluid Checkout. Променете ја во Fluid Checkout "
+"&gt; Сметки на клиенти."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"Оваа опција се управува во Fluid Checkout. Дестинацијата за испорака е "
+"секогаш поставена на „Стандардно на адреса за испорака на клиентот“ кога е "
+"активирана Fluid Checkout. Клиентите сè уште можат да наведат различни "
+"адреси за испорака и фактурирање за време на плаќањето.<br><br> Опција за "
+"поставување на стандардната адреса за наплата да биде иста како и адресата "
+"за испорака е достапна во <a href=\"%s\">поставките на Fluid Checkout</a> ."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"Оваа опција се управува во Fluid Checkout. Дестинацијата за испорака е "
+"секогаш поставена на „Стандардно на адреса за испорака на клиентот“ кога е "
+"активирана Fluid Checkout. Клиентите сè уште можат да наведат различни "
+"адреси за испорака и фактурирање за време на плаќањето.<br><br> Опција за "
+"поставување на стандардната адреса за наплата да биде иста како и адресата "
+"за испорака е достапна во WooCommerce &gt; Поставки &gt; Течна наплата."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr "Овие поставки се преместени во WP Admin &gt; Fluid Checkout &gt; Settings."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"Ова јазиче за поставки на WooCommerce е застарено и ќе биде отстрането во "
+"Fluid Checkout 6.0."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "Оди на страницата со поставки"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "Сокриј го ова јазиче трајно"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "Преглед на извештајот за локацијата"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"Ова се податоците што ќе бидат вклучени во следниот извештај за околината "
+"на страницата врз основа на вашите тековни поставки."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "Вчитување на прегледот на извештајот..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr ""
+"Не може да се вчита прегледот на извештајот за страницата. Обидете се "
+"повторно."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "Не може да се испрати извештајот за страницата. Обидете се повторно."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "Извештајот за локацијата е успешно испратен."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "Овозможи и испрати сега"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "Затвори"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr ""
+"Барањето за пријавување на локацијата е веќе во тек. Обидете се повторно за "
+"момент."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "Известувањето за околината на страницата е оневозможено."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "Нема достапни податоци за извештајот на локацијата за испраќање."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"Овој домен на страницата не може да испраќа извештаи за животната средина "
+"(локалните или развојните домени се исклучени)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "Неодамна беше испратен извештај за локацијата. Обидете се повторно подоцна."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr ""
+"Извештајот за локацијата не можеше да се испрати. Обидете се повторно "
+"подоцна."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "Известувањето за околината на локацијата не е достапно."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "Нема достапни податоци од извештајот за локацијата за избраните поставки."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "Не ви е дозволено да управувате со извештаи за страницата."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "ПРО функција"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "Други додатоци"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "Земи го само овој додаток — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "Инсталирај додаток"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "Надгради на PRO — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"<a target=\"_blank\" href=\"%1$s\">Земи %2$s</a> за да ги отклучиш овие "
+"опции."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "Додаток"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "Погледнете ја документацијата"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"Барањата бараат најавен корисник на WordPress. Испуштете го user_id за да "
+"ги користите податоците на тековниот корисник или предајте го user_id за да "
+"насочите друга сметка кога повикувачот може да го уредува тој корисник "
+"(можност за уредување на корисникот). Неавтентицираните барања враќаат "
+"fc_api_forbidden. Неважечки user_id враќа fc_api_user_not_found."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr ""
+"HTTP 200 со { &quot;податоци&quot;: { ... } } кога обработувачот враќа "
+"товареност."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"HTTP 200 со { &quot;успех&quot;: true } кога нема исплатлив товар (на "
+"пример DELETE)."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"Неуспесите враќаат WordPress REST грешка JSON од WP_Error (код, порака, "
+"податоци.статус). Кодовите за жици го користат префиксот fc_api_*."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "Забранет пристап."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "Целниот корисник не е пронајден."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "Оваа функција не е достапна."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "Недостасува задолжително поле за адреса."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "Поштенскиот код е неважечки."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "Телефонскиот број е неважечки."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "Државата или округот се неважечки."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "Земјата е неважечка или нема полиња за адреса."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "Барањето не можеше да се обработи."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "Назад кон претходниот чекор"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "Прескокни до поставките"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "Започнете одново и вратете се на првиот чекор за водено поставување"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "Започни одново"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "Ве молиме завршете ги сите подчекори пред да продолжите."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "Прошири"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "Собери"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "Прескокни"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "Означи како завршено"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "Означи како нецелосно"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "Прикажи слика во полна големина: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "Слика од водичот за поставување во полна големина"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "Затвори ја сликата"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "Водено поставување за проверка на флуиди"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "Добредојдовте"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "Истражете ја вашата наплата"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "Сè е подготвено"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "Немате дозвола за пристап до оваа страница."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "Оди на чекор %1$d: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"Ова водено поставување ви помага да се запознаете со Fluid Checkout. "
+"Чекорите подолу засега се резервирани места."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "Продолжете на следниот чекор кога ќе бидете подготвени."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr ""
+"Отворете ја касата во вашата продавница за да ја видите Fluid Checkout во "
+"акција."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "Погледнете ја страницата за наплата"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"Можете да се вратите на поставките за Fluid Checkout за да продолжите со "
+"конфигурирање на вашата продавница."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "Прегледајте ги поставките за плаќање и кошничка"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "Истражете ги додатоците од контролната табла"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "Заврши и оди во поставки"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Ажурирајте ја опцијата за видливост на полето за телефон за наплата од "
+"застарената вредност за да одговара на конвенциите на WooCommerce."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Ажурирајте ја опцијата за видливост на полето за телефон за испорака од "
+"вредноста „наследено“ за да одговара на конвенциите на WooCommerce."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"Копирајте ја поставката за боја на позадината на резимето на нарачката во "
+"новата опција за боја на позадината на секундарната колона на дизајнот "
+"„Поделете го дизајнот“."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"Функцијата за подобрени полиња за избор е секогаш оневозможена кога се "
+"користи приклучокот Biteship."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"Позицијата за нарачка е секогаш поставена на „Под резимето на нарачката“ "
+"кога се користи German Market. Овој приклучок бара копчето за нарачка и "
+"полињата за избор „легално“ да бидат прикажани под резимето на нарачката."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"Позицијата за нарачка е секогаш поставена на „Под резимето на нарачката“ "
+"кога се користи Germanized for WooCommerce. Овој приклучок бара копчето за "
+"нарачка и полињата за избор „легално“ да бидат прикажани под резимето на "
+"нарачката."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Уредете ги локациите за подигнување"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Користете локална етикета за подигнување од поставките на WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Кога е овозможено, етикетата за опцијата за подигнување при наплатата се "
+"совпаѓа со насловот од поставките за локација за подигнување на "
+"WooCommerce. Кога е оневозможено, етикетата го користи преводливиот текст "
+"„Локално подигнување“ од Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2823,3 +4788,113 @@ msgstr "Да"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "Џон"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "Срна"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "Пример компанија"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "Главна улица бр. 123"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "Анитаун"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "Ве молиме оставете го пакетот на влезната врата."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "Капа"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "Капа"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "Маица"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr "Ја примивме вашата нарачка и ќе ве известиме кога ќе биде испратена."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "Упатство за корисникот"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "API за места (ново)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "API за места (застарено)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "Верзија 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "Верзија 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ Побрзо плаќање следниот пат ✔ Управувајте со вашите преференции за "
+"плаќање ✔ Погледнете го статусот и историјата на нарачката"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "Скриено"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "Опционално"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "Задолжително"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Испорака до адреса"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Локално подигнување"

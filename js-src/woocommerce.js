@@ -49,7 +49,7 @@ jQuery( function ( $ ) {
 			.on( 'keydown', store_notice_keydown_handler );
 	}
 
-	// CHANGE: Remove "Make form field descriptions toggle on focus."
+	// CHANGE: Remove "Make form field descriptions toggle on focus." including slideUp handlers
 
 	$( '.woocommerce-input-wrapper' ).on( 'click', function( event ) {
 		// CHANGE: Exclude the 'show password' button from the event propagation block.
@@ -104,13 +104,14 @@ jQuery( function ( $ ) {
 			if ( 0 < $( this ).find( '.show-password-input' ).length ) { return; }
 
 			const describedBy = $( this ).find( 'input' ).attr( 'id' );
-			$( this ).append(
-				'<button type="button" class="show-password-input" aria-label="' +
-					woocommerce_params.i18n_password_show +
-					'" aria-describedBy="' +
-					describedBy +
-					'"></button>'
-			);
+			// CHANGE: Build show-password button with jQuery to set aria-describedby like upstream
+			const $button = $( '<button>', {
+				type: 'button',
+				class: 'show-password-input',
+				'aria-label': woocommerce_params.i18n_password_show,
+			} );
+			$button.attr( 'aria-describedby', describedBy );
+			$( this ).append( $button );
 		} );
 		// CHANGE: END - Only wrap password inputs if they aren't already wrapped.
 
@@ -149,7 +150,8 @@ jQuery( function ( $ ) {
 				.prop( 'type', 'password' );
 		}
 
-		$( this ).siblings( 'input' ).focus();
+		// CHANGE: Use trigger( 'focus' ) to match upstream WooCommerce focus handling
+		$( this ).siblings( 'input' ).trigger( 'focus' );
 	}
 	// CHANGE: Handle captured show password click handler button click.
 	$( document.body ).on( 'click', '.show-password-input', handleShowPasswordClick );

@@ -280,10 +280,6 @@ msgstr "سۇيۇقلۇق تەكشۈرۈش سانلىق مەلۇمات ئامبى
 msgid "The database changes where applied successfully."
 msgstr "ساندان مۇۋەپپەقىيەتلىك قوللىنىلغان يەردە ئۆزگىرىدۇ."
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "ماقۇل"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "خىزمەتتىن ھەيدەش"
@@ -402,39 +398,9 @@ msgstr "ھۆججەتلەرنى ئوقۇڭ"
 msgid "Don't show this again"
 msgstr "بۇنى قايتا كۆرسەتمەڭ"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "ئالاھىدە تەكلىپلەر"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"سۇيۇقلۇق تەكشۈرۈشنىڭ بارلىق ياخشىلىقلىرىنى ھارۋا بېتىڭىزگە كېڭەيتىڭ ، "
-"بەتلەرگە رەھمەت."
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "سۇيۇقلۇق تەكشۈرۈش PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"لايىھىلەش ئەندىزىسى ، ئەلالاشتۇرۇلغان ھارۋا ۋە زاكاز قوبۇل قىلىنغان بەتلەر "
-"، ھېسابات ماسلاشتۇرۇش ۋە باشقىلار."
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"<strong>WooCommerce چىقىمداننىڭ ئايلىنىش نىسبىتىنى تېخىمۇ يۇقىرى "
-"كۆتۈرۈش</strong> ۋە سېتىۋېلىش تەجرىبىسىنى پۈتكۈل سەپەرگە ماسلاشتۇرۇشتىكى "
-"ئەڭ ياخشى قوراللار."
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -456,10 +422,6 @@ msgstr "چىقىمدان بېتىدە ھارۋا مەزمۇنىنى تەھرىر
 msgid "Account matching / user matching"
 msgstr "ھېسابات ماسلاشتۇرۇش / ئىشلەتكۈچى ماسلاشتۇرۇش"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "قوللايدىغان ھەق تۆلەش ئۇسۇللىرىدىن تېز تەكشۈرۈش كۇنۇپكىسى"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "ھارۋىدىكى بەلگىلەرگە ئىشەنچ قىلىڭ ، بەتلەرگە رەھمەت"
@@ -467,10 +429,6 @@ msgstr "ھارۋىدىكى بەلگىلەرگە ئىشەنچ قىلىڭ ، بە�
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "چىقىمدان بېتىدىكى تالون كودىغا تېخىمۇ كۆپ ئورۇنلار"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "ھارۋا بېتىدىكى توپلاشتۇرۇلغان كود مەيدانى"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -484,247 +442,25 @@ msgstr "سوۋغات ئۇچۇرلىرى ۋە ئورالما تالونلىرى"
 msgid "Local pickup and in-store collection"
 msgstr "يەرلىك پىكاپ ۋە دۇكاندىكى يىغىپ ساقلاش"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "PRO غا يېڭىلاش - 99 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "سۇيۇقلۇق تەكشۈرۈش PRO - باغلانما"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "بارلىق PRO ئىقتىدارلىرى + ئالاھىدە باھادىكى بارلىق قوشۇمچە دېتاللار."
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"بۇ يۈرۈشلۈك مۇلازىمەت بىز ھازىر تەمىنلىگەن بارلىق قوشۇمچە زاپچاسلار ۋە "
-"كەلگۈسىدە يولغا قويماقچى بولغان Fluid Checkout قوشۇمچە دېتاللىرىنى ئۆز "
-"ئىچىگە ئالىدۇ."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "226 EUR قىممىتى (% 42 تېجەڭ)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Google ئادرېسى ئاپتوماتىك"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "ئادرېس دەپتىرى"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "EU-VAT ياردەمچىسى"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "كەلگۈسىدىكى بارلىق قوشۇمچە دېتاللار *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* ئاكتىپ مۇشتەرى بولسىلا."
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "باغلامغا ئېرىشىش - پەقەت 129 ياۋرو"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"بارلىق باھا EUR دا كۆرسىتىلدى. ئەگەر تور بېكىتىمىزدە باھا بىلەن ئوخشىماسلىق "
-"بولسا ، تور بېكەتتە كۆرسىتىلگەن تەكلىپلەر بۇلارنى بېسىپ ئۆتۈپ ، قوللىنىلىدۇ."
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "قوشۇش"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "بۇ قوشۇمچە دېتاللار ئارقىلىق چىقىم قىلىش تەجرىبىڭىزنى كۈچەيتىڭ."
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "مەندە بار - بۇ تەكلىپنى يوشۇر"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "قاچىلانغان - ئاكتىپلاش"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "ئاكتىپلاندى"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "تولدۇرۇش ئۈچۈن% 40 كە يەتمەيدۇ."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"مالنى كېچىكتۈرۈش ۋە رازى بولمىغان خېرىدارلاردىن ساقلىنىڭ. ئۇلار سىز بىلەن "
-"تۇنجى قېتىم سېتىۋالغاندىن باشلاپ <strong>توغرا ئادرېس ئۇچۇرلىرىنى</strong> "
-"توپلاڭ."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "بۇ قوشۇمچە ھۆججەتكە ئېرىشىڭ - 29 EUR"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "ئادرېس دەپتىرى"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "توشۇش ۋە ھېسابات قىلىش ئۈچۈن كۆپ ساقلانغان ئادرېسلار."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"خېرىدارلار ھېساباتىغا <strong>كۆپ توشۇش ۋە ھېسابات ئادرېسىنى تېجەپ</strong> "
-"، چىقىمدان ۋە ھارۋا بېتىدە قايسىسىنى ئىشلىتىشنى تاللاڭ."
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "بۇ قوشۇمچە ھۆججەتكە ئېرىشىڭ - 59 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "دۇكىنىڭىز ئۈچۈن ئاددىيلاشتۇرۇلغان EU-VAT دەلىللەش."
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"<strong>چىقىمدان بېتىدە ياۋروپا ئىتتىپاقىنىڭ قوشۇلما قىممەت بېجى نومۇرىنى "
-"يىغىش ۋە دەلىللەش</strong> ، تەتۈر ھەق ئېلىش ئاساسىدا باج ئېلىشنى بىكار "
-"قىلىش ۋە ئېھتىياجلىق بولغاندا خېرىدارلارنىڭ ئورنىنى جەزملەشتۈرۈش."
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "بۇ قوشۇمچە دېتالغا ئېرىشىڭ - 39 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"بارلىق قوشۇمچە زاپچاسلار ئايرىم سېتىلىدۇ ، ئەسكەرتىلگەندىن باشقا <strong>، "
-"Fluid Checkout Lite</strong> قىستۇرمىسىنى ئورنىتىش ۋە قوزغىتىشنى تەلەپ "
-"قىلىدۇ."
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "رەسىمنى تاللاڭ"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"ئىجازەتنامە ئاچقۇچىغا ئېرىشىش ئۈچۈن <a "
-"href=\"https://fluidcheckout.com/account/\" target=\"_blank\">ھېساباتىڭىزغا "
-"كىرىڭ</a> ياكى <a href=\"%s\" target=\"_blank\">يېڭى ئىجازەت ئاچقۇچى "
-"سېتىۋېلىڭ</a> ."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "% S غىچە كۈچكە ئىگە."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "ۋاقتى% s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" "
-"target=\"_blank\">ھېساباتىڭىزغا كىرىپ</a> ئىجازەتنامە ئاچقۇچىڭىزنى يېڭىلاپ "
-"، داۋاملىق يېڭىلاش ۋە قوللاشنى تاپشۇرۇۋالىسىز."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "ئىجازەت ئاچقۇچى بىكار قىلىندى."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">يېڭى ئىجازەت ئاچقۇچى سېتىۋېلىپ</a> ، "
-"داۋاملىق يېڭىلاش ۋە قوللاشقا ئېرىشىڭ."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "خاتالىق: "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "تەڭشەش ۋە ھۆججەتلەر"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "قالتىس! چىقىمدان بېتىڭىز ھازىر سۇيۇقلۇق تەكشۈرۈشتە ئىجرا بولۇۋاتىدۇ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "بۇ يەردە باشلاش ئۈچۈن بىر قانچە مەنبە بار:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"قاچىلاش قوللانمىسىنى ئوقۇڭ <a href=\"%s\" target=\"_blank\">سۇيۇقلۇق "
-"تەكشۈرۈش ئارقىلىق بايان قىلىش</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "<a href=\"%s\">چىقىم تاللانمىلىرىغا</a> ئورۇنلاشتۇرۇش ۋە لايىھىلەش."
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"سىز قاچىلىغان باشقا قىستۇرمىلارغا <a href=\"%s\">بىرلەشتۈرۈش "
-"تاللانمىلىرىنىڭ</a> بار-يوقلۇقىنى تەكشۈرۈڭ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"سۇيۇقلۇق تەكشۈرۈش ئىقتىدارلىرى ھەققىدە تېخىمۇ كۆپ ئۇچۇرغا ئېرىشىش ئۈچۈن <a "
-"href=\"%s\" target=\"_blank\">ھۆججەتلىرىمىزنى</a> زىيارەت قىلىڭ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"ئەگەر ياردەمگە ئېھتىياجلىق بولسىڭىز ، رەسمىي قوللاش قانىلىمىزدا <a "
-"href=\"%s\" target=\"_blank\">ياردەم بېلىتى ئېچىڭ</a> ."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -737,14 +473,6 @@ msgstr "ھارۋىنى ئەلالاشتۇرۇش"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "ھارۋا بېتىنى ئەلالاشتۇرۇشنى قوزغىتىڭ"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "ھارۋا بېتىنى چىقىم قىلىش بېتىگە ئوخشايدىغان ئورۇنلاشتۇرۇش بىلەن كۆرسىتىڭ."
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "Header and footer"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -777,16 +505,6 @@ msgstr "زاكاز خۇلاسىسىنى سۈرگەندە ھارۋا بېتىدە
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "Coupon كودى"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"ھارۋا بېتىدىكى تالون كود بۆلىكىنى كۆرسىتىدىغان ئورۇننى تاللاڭ. پەقەت AJAX "
-"ھارۋىسى ۋە چىقىمدان بېتىدىكى توپلاشتۇرۇلغان كودلار قوزغىتىلغاندىلا "
-"قوللىنىلىدۇ."
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -878,10 +596,6 @@ msgstr "باشتېمىنىڭ ئۆز-ئارا سېتىش ئورۇنلاشتۇرۇ
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "ھارۋا بېتىدە كۆرسىتىلىدىغان ئۆز-ئارا سېتىلىدىغان بۇيۇملارنىڭ سانى"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "ئىشەنچ بەلگىسى ۋە بەلگە"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "ھارۋا بېتىگە كىچىك قوراللارنى قوشۇڭ"
@@ -898,10 +612,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "چىقىمدان"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "ئورۇنلاشتۇرۇش ۋە لايىھىلەش"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "چىقىمدان ئورۇنلاشتۇرۇشى"
@@ -917,22 +627,6 @@ msgstr "قاراڭغۇ ھالەت"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "قاراڭغۇ ھالەتنى قوزغىتىڭ"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "بەت ۋە ئاستى قېلىپ"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"چىقىمدان بېتىدە دىققىتى چېچىلىشتىن ساقلىنىش ئۈچۈن ، چېچىلىش ھەقسىز ماۋزۇ ۋە "
-"بەت ئاستى ئىشلىتىشنى تەۋسىيە قىلىمىز. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" "
-"target=\"_blank\">ھارۋىدىن ۋاز كېچىش توغرىسىدىكى تەتقىقاتنى ئوقۇڭ</a> ."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -985,10 +679,6 @@ msgid ""
 msgstr ""
 "چىقىمدان بېتىنىڭ تەگلىك رەڭگىنى تاللاڭ. دىققىتى چېچىلىدىغان ھەقسىز ماۋزۇ ۋە "
 "بەت ئاستىنى ئىشلەتكەندە ئاندىن قوللىنىلىدۇ."
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "تەكشۈرۈش ئېلېمېنتلىرى"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1074,18 +764,6 @@ msgstr "دۇكان بېتىگە ئۇلىنىش"
 msgid "Cart items"
 msgstr "ھارۋا بۇيۇملىرى"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "چىقىمدان بېتىدىكى ھارۋا تۈرلىرىنى تەھرىرلەش تاللانمىلىرىنى قوزغىتىڭ"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"خېرىدارلارنىڭ مەھسۇلات مىقدارىنى ئۆزگەرتىشىگە ياكى چىقىمدان بېتىدىكى "
-"نەرسىلەرنى بىۋاسىتە چىقىرىۋېتىشىگە يول قويۇڭ."
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "چىقىمدان بېتىدە ھارۋا تۈرلىرىنىڭ خاتالىقىنى يوشۇرۇڭ"
@@ -1138,36 +816,9 @@ msgstr ""
 "بۇ كىچىك قوراللار رايونى تەكشۈرۈش بېتىگە ئىشەنچ بەلگىسى ۋە ئىشەنچ بەلگىسى "
 "قوشۇشقا ئىشلىتىلىدۇ."
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"كۆپ باسقۇچلۇق چىقىم ئورۇنلاشتۇرۇشىنى ئىشلەتكەندە كۆچمە ئۈسكۈنىلەرنىڭ "
-"ئاخىرقى تەكشۈرۈش باسقۇچىنى كۆرگەندىلا چىقىمدان يانبالداق كىچىك قوراللىرىنى "
-"كۆرسىتىڭ"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "توپلاشتۇرۇلغان كود بۆلىكىنى قوزغىتىڭ"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr "پەقەت WooCommerce تەڭشىكىدە تالون كودى ئىشلىتىلگەندىلا قوللىنىلىدۇ."
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "تالون كودى بۆلەك نامىنى كۆرسىتىڭ"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"تالون كودى چىقىمدان ياكى ھارۋا بېتىدە ئايرىم بۆلەك سۈپىتىدە كۆرسىتىلگەندىلا "
-"قوللىنىلىدۇ."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1186,16 +837,6 @@ msgstr "پۇل تۆلەش ئۇسۇللىرىدىن بۇرۇن"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "پۇل تۆلەش ئۇسۇللىرىدىن كېيىن قوشۇمچە ئورۇن سۈپىتىدە"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"«تالوننى ئىشلىتىش» كۇنۇپكىسىنىڭ ئۇسلۇبىنى تاللاڭ. تالون كودى بۆلىكى "
-"چىقىمدان بېتىدىكى «چىقىم قىلىش باسقۇچىدىن ئىلگىرى» ياكى ھارۋا بېتىدىكى "
-"«ھارۋا تۈرلىرى بۆلىكى» دىن بۇرۇنلا قوللىنىلىدۇ."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1243,20 +884,6 @@ msgstr ""
 "كۆپىنچە خېرىدارلار «ئادرېس لىنىيىسى 2» مەيدانىغا ئېھتىياجلىق بولغاندا ياكى "
 "توغرا توشۇش ئادرېسىغا ئېرىشكەندە ئاندىن تەۋسىيە قىلىنىدۇ (يەنى يېمەكلىك ۋە "
 "باشقا چىرىمەيدىغان مەھسۇلاتلارنى يەتكۈزۈپ بەرگەندە)."
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "كىچىك ھەرپتىكى «قوشۇش» ئۇلىنىش كۇنۇپكىسىنى كۆرسىتىڭ"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"ئىختىيارىي بەلگە «قوشۇش» ئۇلىنىش كۇنۇپكىسىنى <code>lowercase</code> قىلىپ "
-"(يەنى «تېلېفون نومۇرى قوشۇش» نىڭ ئورنىغا «تېلېفون نومۇرى قوشۇش») قىلىڭ. بۇ "
-"تاللاش تالون كود بۆلىكىنىڭ ئۇلىنىش كۇنۇپكىلىرىغىمۇ تەسىر كۆرسىتىدۇ."
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1347,23 +974,6 @@ msgstr "مال ئەۋەتىش ئادرېسىدىن بۇرۇن"
 msgid "After shipping address"
 msgstr "توشۇش ئادرېسىدىن كېيىن"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "تۇنجى توشۇش ئۇسۇلىنى ئاپتوماتىك تاللاشنىڭ ئالدىنى ئېلىش"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"قوزغىتىلغاندا ، ھەر بىر توشۇش بولىقى ئۈچۈن باشقا توشۇش ئۇسۇلى تاللانمىغاندا "
-"، تۇنجى توشۇش ئۇسۇلى ئاپتوماتىك تاللانمايدۇ.<br> ئەگەر يەرلىك توشۇش "
-"ئىقتىدارى ئۈچۈن تاللانغان توشۇش ئۇسۇلىنى تازىلاش تاللانمىسى قوزغىتىلسا ، بۇ "
-"تاللاش ئاپتوماتىك قوزغىتىلىدۇ."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "يەرلىك پىكاپ"
@@ -1381,20 +991,6 @@ msgid ""
 msgstr ""
 "يەرلىك پىكاپ توشۇش ئۇسۇلى تاللانغاندا توشۇش ئادرېسىنى پىكاپ ئورنى بىلەن "
 "ئالماشتۇرىدۇ."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "پىكاپ ئورنىنىڭ تارماق قىسمىدا توشۇش ئۇسۇلىنى تازىلاشنى تاللاڭ"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"تاللانغان توشۇش ئۇسۇلىنى تازىلاش ئۈچۈن پىكاپ ئورنىنىڭ ئاستى قىسمىغا ئۇلىنىش "
-"كۇنۇپكىسىنى كۆرسىتىڭ. ئەگەر ئىلگىرى يەرلىك پىكاپ ئۇسۇلى تاللانغان بولسا ، "
-"توشۇش ئادرېسى بۆلىكىنى يەنە بىر قېتىم كۆرسىتىشكە ئىشلىتىلىدۇ."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1473,32 +1069,6 @@ msgstr "چىقىم قىلىش جەدۋىلىگە ھېسابات تېلېفون �
 msgid "Choose in which step to display the billing phone field."
 msgstr "ھەق تۆلەش تېلېفون مەيدانىنى قايسى باسقۇچتا كۆرسىتىشنى تاللاڭ."
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "دۆلەت قائىدىسىگە ئاساسەن تېلېفون نومۇرىنى دەلىللەشنى قوزغىتىڭ"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"چەكلەنگەندە ، تېلېفون مەيدانىنىڭ دەلىللىنىشى دۆلەت ياكى رايون كودىنىڭ دۆلەت "
-"ئۈچۈن كۈچكە ئىگە ياكى ئەمەسلىكىنى تەكشۈرمەيدۇ."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "پەقەت توشۇش ياكى ھېسابات قىلىشقا رۇخسەت قىلىنغان دۆلەتلەرنىلا كۆرسىتىدۇ"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"قوزغىتىلغاندا ، توشۇش تېلېفونى ساھەسىدە پەقەت توشۇشقا رۇخسەت قىلىنغان "
-"دۆلەتلەرلا بار ، پەقەت پۇل تۆلەشكە رۇخسەت قىلىنغان دۆلەتلەرلا پۇل تۆلەش "
-"تېلېفونىغا ئېرىشەلەيدۇ."
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "بايراقنىڭ يېنىدىكى دۆلەت كودىنى كۆرسەت"
@@ -1531,10 +1101,6 @@ msgstr "قوشۇمچە زاكاز خاتىرىسىنىڭ كۆرۈنۈشىنى ئ
 msgid "Gift options"
 msgstr "سوۋغات تاللانمىلىرى"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "چىقىمدان بېتىدە سوۋغات ئۇچۇرى ۋە باشقا سوۋغات تاللانمىلىرىنى كۆرسىتىڭ"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1542,10 +1108,6 @@ msgid ""
 msgstr ""
 "خېرىدارلارنىڭ سوۋغات ئۇچۇرى ۋە باشقا سوۋغاتقا مۇناسىۋەتلىك تاللاشلارنى "
 "زاكازغا قوشۇشىغا يول قويۇڭ."
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "سوۋغات ئۇچۇرلىرىنى كۆرسىتىش ھەمىشە كېڭەيتىلگەن"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1602,27 +1164,9 @@ msgstr "باش تاختا"
 msgid "Integrations"
 msgstr "بىرىكتۈرۈش"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"بۇ بۆلەكتە ھازىرچە بىر گەۋدىلەشتۈرۈش يوق. ھەر بىر قىستۇرمىغا مۇناسىۋەتلىك "
-"تاللاشلار بۇ قىستۇرما قوزغىتىلغاندىلا كۆرۈنىدۇ."
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "ئىجازەت كۇنۇپكىسى"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"بۇ بۆلەكتە ھازىرچە ئىجازەت ئاچقۇچ تاللانمىلىرى يوق. بۇ قىستۇرما "
-"قوزغىتىلغاندا ھەر بىر قىستۇرما ياكى قوشۇمچە دېتالغا مۇناسىۋەتلىك تاللاشلار "
-"بۇ يەردە كۆرۈنىدۇ."
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1725,14 +1269,6 @@ msgstr ""
 "بۇ كىچىك قوراللار رەھمەت بېتىگە ئىشەنچ بەلگىسى ۋە ئىشەنچ بەلگىسى قوشۇش "
 "ئۈچۈن ئىشلىتىلىدۇ."
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"بۇ تاللاشلار رەھمەت بېتىگە ، ھېسابات بېتى ۋە ئېلېكترونلۇق خەت ئۇقتۇرۇشىدىكى "
-"زاكاز تەپسىلاتلىرىنى كۆرۈشكە تەسىر كۆرسىتىدۇ."
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "ھەرىكەتلەرنى بۇيرۇتۇش"
@@ -1825,22 +1361,6 @@ msgstr "ئېنىقلانمىغان مۈلۈكلەرنى يۈكلەڭ"
 msgid "Enhanced select fields"
 msgstr "كۈچەيتىلگەن تاللاش رايونى"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr ""
-"<code>select2</code> چۈشۈش زاپچاسلىرىنى <code>TomSelect</code> غا "
-"ئالماشتۇرۇڭ"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect بولسا WooCommerce چىقىم قىلىش بېتىدە ئىشلىتىلىدىغان ئوخشاش "
-"ئىقتىدارلارنى تەمىنلەش بىلەن بىر ۋاقىتتا ، Select2 گە قارىغاندا خاتالىق كۆپ "
-"يۈز بېرىدىغان ئاددىي چۈشۈرۈش تاللانمىسى."
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "جەدۋەلنى ئاپتوماتىك چوڭايتىش"
@@ -1848,34 +1368,6 @@ msgstr "جەدۋەلنى ئاپتوماتىك چوڭايتىش"
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "شەكىل چوڭلۇقى ئىچىدىكى <code>font-size</code> 16px قىلىپ تەڭشەڭ"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"جەدۋەل مەيدانى ئىچىدىكى خەت چوڭلۇقى 16px دىن كىچىك بولغاندا ، Safari ۋە "
-"باشقا توركۆرگۈچلەر كۆچمە ئۈسكۈنىلەردە ئاپتوماتىك چوڭايتىپ ، تېكىستنى "
-"ئوقۇشقا قولايلىق يارىتىشى مۇمكىن. بۇ تاللانما قوزغىتىلغاندا ، ئۇ Fluid "
-"Checkout تەرىپىدىن ئەلالاشتۇرۇلغان بەتلەردە جەدۋەل مەيدانىنىڭ خەت نۇسخىسىنى "
-"16px قىلىپ بەلگىلەيدۇ."
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"توشۇش مەنزىلى سۇيۇقلۇق تەكشۈرۈش ئاكتىپلانغاندا ھەمىشە «خېرىدارلارنىڭ مال "
-"ئەۋەتىش ئادرېسى» غا تەڭشەلگەن. خېرىدارلار چىقىمداندا يەنىلا ئوخشىمىغان "
-"توشۇش ۋە ھېسابات ئادرېسى بىلەن تەمىنلەيدۇ ، سۈكۈتتىكى ھېسابات ئادرېسىنى مال "
-"ئەۋەتىش ئادرېسى بىلەن ئوخشاش تاللاش ئۇسۇلى WooCommerce&gt; تەڭشەك&gt; "
-"سۇيۇقلۇق چىقىمداندا بار."
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1902,14 +1394,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(تەجرىبە)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "جەزملەشتۈرۈڭ"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "تېلېفون نومۇرىنى تەكشۈرۈپ بېقىڭ"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2439,10 +1923,6 @@ msgstr "ئىلگىرىلەش بالدىقىدىن كېيىن"
 msgid "Before coupon codes section"
 msgstr "تالون كود بۆلىكىدىن بۇرۇن"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "خەلقئارالىق تېلېفون نومۇرى ساھەلىرىنى قوزغىتىڭ"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "ھەر بىر دۆلەتنىڭ قائىدىسىگە ئاساسەن تېلېفون نومۇرىنى فورماتلاڭ."
@@ -2450,18 +1930,6 @@ msgstr "ھەر بىر دۆلەتنىڭ قائىدىسىگە ئاساسەن تې�
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "ئېنىق تېلېفون نومۇرىنى دەلىللەشنى ئىشلىتىڭ"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"تېلېفون نومۇرىنىڭ تاللانغان دۆلەت كودى قائىدىسىگە ئاساسەن ئىناۋەتلىك كۆچمە "
-"ياكى مۇقىم تېلېفون نومۇرى بولۇشىغا كاپالەتلىك قىلىڭ. بۇ تاللانما "
-"<code>intl-tel-input</code> ئېنىق دەلىللەش ئىقتىدارىنى ئىشلىتىدۇ ، بۇ "
-"بەلكىم بەزى تېلېفون نومۇرلىرىغا يالغان ئاكتىپلىق بېرىشى مۇمكىن."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2504,25 +1972,6 @@ msgstr "2 ئىستون"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 ئىستون"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"تەكشۈرۈش باسقۇچلىرى، زاكاز خۇلاسىسى ۋە باشقا بۆلەكلەرنىڭ ئادەتتىكى "
-"ئۇسلۇبلىرى.<br> سېۋەت، تاپشۇرۇۋېلىنغان زاكاز ۋە زاكازنى كۆرۈش بەتلىرى "
-"قاتارلىق باشقا بەتلەرگىمۇ ماس كېلىشى مۇمكىن."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"<em>«بىر ئىستون»</em> لايىھەسىنى ئىشلەتكەندە <em>«بۆلۈش»</em> لايىھە قېلىپى "
-"ئىشلەتكىلى بولمايدۇ، ئەگەر تاللانسا <em>«مىنىمالىزم»</em> غا قايتىدۇ."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2623,6 +2072,2545 @@ msgstr ""
 "تاللانغاندا، يەتكۈزۈش ئادرېسىنى ھەق ئېلىش ئادرېسىغا كۆچۈرگىلى "
 "بولىدىغانلىقىغا كاپالەتلىك قىلىش ئۈچۈن كېرەك، بولمىسا خېرىدار ھەق ئېلىش "
 "جەدۋىلىنى تولدۇرالماسلىقى مۇمكىن."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "تەڭشەك پروفىللىرى"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "تەڭشەكلەر پروفىلى"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "بۇ ھەرىكەتنى ئىجرا قىلىشقا سىزنىڭ ھوقۇقىڭىز يوق."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "سىزدە قىستۇرمىلارنى ئاكتىپلاشتۇرۇشقا رۇخسەت يوق."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "قىستۇرما يوق."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "قىستۇرما ئاكتىپلاشتۇرۇلدى."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "تۆۋەندىكى ئۆزگىرىشلەر قوللىنىلىدۇ:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Fluid Checkout 5.0 نەشرىدىن باشلاپ، تەڭشەكلەر ئوخشىمايدىغان شەكىلدە "
+"ساقلىنىدۇ. زۆرۈر تېپىلغاندا ئالدىنقى نەشرىگە چۈشۈرۈش ئۈچۈن كونا تاللانمىلار "
+"يەنىلا سانلىق مەلۇمات ئامبىرىدا ساقلىنىدۇ."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"دۇكىنىڭىز يېڭى تەڭشەكلەردە تەخمىنەن 2 ھەپتە ئىشلەۋاتىدۇ، شۇڭا سىز سانلىق "
+"مەلۇمات ئامبىرىدا ساقلانغان كونا تاللاشلارنى تازىلايالايسىز. تازىلاشتىن "
+"كېيىن، ئەگەر قىستۇرمىنىڭ ئالدىنقى نەشرىگە ئۆزگەرتىشىڭىز كېرەك بولسا، ئۇ "
+"بارلىق تەڭشەكلەر ئۈچۈن ئۆزلۈكىدىن بېكىتىلگەن قىممەتلەرنى ئىشلىتىدىغانلىقىنى "
+"ئۇنۇتماڭ."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "سۇيۇقلۇق تەكشۈرۈش تەڭشەكلىرىنى تازىلاش"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "قالغان تاللاشلارنى ئۆچۈرۈڭ"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "سۇيۇقلۇق تەكشۈرۈشنى ياخشىلاشقا ياردەم قىلىڭ"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"Fluid Checkout بىلەن نامسىز تور بېكەت مۇھىتى دوكلاتلىرىنى ئورتاقلىشىپ، "
+"تېخىمۇ تېز ياردەمگە ئېرىشىڭ، ماسلىشىشچانلىقىمىزنى ياخشىلاڭ ۋە تەسىرىنى "
+"ئۆلچەشكە ياردەم قىلىڭ. خېرىدار، ئىشلەتكۈچى ياكى مەخپىي سانلىق مەلۇماتلار "
+"قوشۇلمىغان. قوراللار تەڭشەكلىرىدىن خالىغان ۋاقىتتا نېمىلەرنىڭ "
+"ئورتاقلىشىدىغانلىقىنى تاللىيالايسىز."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "تور بېكەت مۇھىتى دوكلاتلىرىنى قوزغىتىش"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "تەڭشەكلەرنى تەكشۈرۈش"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"بۇ ئالدىن كۆرۈش ۋاقتى ئۆتكەن. يېڭى ئالدىن كۆرۈشنى باشلاش ئۈچۈن باشقۇرۇش "
+"بېتىنى قايتا يۈكلەڭ."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "ئالدىن كۆرۈش مۇددىتى ئۆتكەن"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "ئالدىن كۆرۈشتە بۇيرۇتما بېرىشكە بولمايدۇ."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "ئالدىن كۆرۈشتە كىرىش مۇمكىن ئەمەس."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "ئالدىن كۆرۈشتە ھېسابات قۇرغىلى بولمايدۇ."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "باشقا تور بەتلەرگە قىلىنغان تەلەپلەر ئالدىن كۆرۈشتە چەكلەنگەن."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "ئىشلەۋاتىدۇ…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "بىرەر ئىش خاتا بولدى. قايتا سىناپ بېقىڭ."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "قىستۇرمىنى ئاكتىپلاشتۇرۇڭ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - تولۇق تەكشۈرۈش پاكىتى"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"بارلىق PRO ئىقتىدارلىرى + بارلىق قوشۇمچە ئىقتىدارلار، بىرلا باھا. لايىھەلەش "
+"قېلىپلىرى، ئەلالاشتۇرۇلغان سېۋەت ۋە زاكاز قوبۇل قىلىنغان بەتلەر، ھېسابات "
+"ماسلاشتۇرۇش ۋە باشقا نۇرغۇن نەرسىلەر."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "زاكاز تۆلەش بېتى ئەلالاشتۇرۇلدى"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "قوللايدىغان پۇل تۆلەش ئۇسۇللىرىدىن تېز پۇل تۆلەش كۇنۇپكىلىرى"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "ھېسابات قۇرۇش كېچىكىپ قالدى"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Google خەرىتە API لىرى ئارقىلىق ئادرېسنى ئاپتوماتىك تولدۇرۇش"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "ئادرېس دەپتىرى بىلەن ساقلانغان كۆپ ئادرېسلار"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "ياۋروپا ئىتتىپاقى-قوشۇلما باج ياردەمچىسى"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "بۇ بۆلەكنى يوشۇرۇش"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "كۆپرەك ئۆگىنىڭ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "بالدۇرراق ئېرىشىش پۇرسىتىگە ئېرىشىڭ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "قوشۇمچە دېتالنى ئاكتىپلاشتۇرۇش"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "كاسسا سېتىۋېلىش سەپىرىڭىزدىن تېخىمۇ كۆپ پايدىلىنىڭ"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "API ئاچقۇچىنى سىناق قىلىش"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "يېتەكچىلىك قىلىنغان تەڭشەش"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "تاللاشلار"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "<a href=\"%s\">كاسسا تاللاشلىرىدا</a> لايىھە ۋە لايىھەنى تەڭشەڭ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"مېھمانلارنىڭ ھېساباتىنى ئېچىش ۋە/ياكى <a href=\"%s\">خېرىدار ھېساباتى "
+"تەڭشەكلىرىنى</a> تەكشۈرۈش."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"ئەلالاشتۇرۇلغان <a href=\"%1$s\">سېۋەت</a> ، <a href=\"%2$s\">رەھمەت</a> ۋە "
+"<a href=\"%3$s\">زاكاز تۆلەش</a> بەتلىرىنى قوزغىتىڭ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr ""
+"Google خەرىتىسىدىن <a href=\"%s\">ئادرېسنى ئاپتوماتىك تولدۇرۇشنى</a> "
+"قوزغىتىڭ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr ""
+"<a href=\"%s\">ئادرېس دەپتىرى</a> ئارقىلىق كۆپ ساقلانغان ئادرېسلارنى "
+"قوزغىتىش."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"تېما ياكى سىز ئورناتقان باشقا قىستۇرمىلار ئۈچۈن <a href=\"%s\">بىرلەشتۈرۈش "
+"تاللانمىلىرى</a> بار-يوقلۇقىنى تەكشۈرۈڭ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"تېزراق ياردەمگە ئېرىشىڭ ۋە ماسلىشىشچانلىقىمىزنى ياخشىلاش ۋە تەسىرنى "
+"ئۆلچەشىمىزگە ياردەم قىلىڭ. قورال تەڭشەكلىرىدىن <a href=\"%s\">ئىشلىتىشنى "
+"نازارەت قىلىشنى قوزغىتىڭ</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "تەڭشەكلەر بەتكۈچى يوق."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "باشلاش"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>ناھايىتى ياخشى! سىزنىڭ پۇل تۆلەش بېتىڭىز ھازىر Fluid Checkout دا "
+"ئىجرا بولۇۋاتىدۇ.</strong> باشلاش ئۈچۈن بىر قانچە قەدەم:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "تاماملاندى"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "دوكلات سانلىق مەلۇماتلىرىنى ئالدىن كۆرۈش"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "ھازىر ئەۋەتىڭ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "ئاپتوماتىك بايقاش"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "ئافرىقا تىلى"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "ئالبانىيە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "ئامھار تىلى"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "ئەرەبچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "ئەرمەنچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "ئەزەربەيجانچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "باسك"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "بېلورۇسچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "بېنگال تىلى"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "بوسنىيە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "بۇلغارىيە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "بىرماچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "كاتالانچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "خىتايچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "خەنزۇچە (ئاددىيلاشتۇرۇلغان)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "خەنزۇچە (شياڭگاڭ)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "خەنزۇچە (ئەنئەنىۋى)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "خروۋاتىيە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "چېخ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "دانىيەچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "گوللاندىيەچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "ئىنگلىزچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "ئىنگلىزچە (ئاۋسترالىيەچە)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "ئىنگلىزچە (بۈيۈك بىرىتانىيە)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "ئېستونىيە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "پارس تىلى"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "فىنلاندىيەچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "فىلىپپىنچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "فىرانسۇزچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "فىرانسۇزچە (كانادا)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "گالىسچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "گرۇزىيەچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "گېرمانچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "گرېكچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "گۇجارات تىلى"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "ئىبرانىيچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "ھىندى تىلى"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "ۋېنگىرىيە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "ئىسلاندىيە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "ئىندونېزىيەچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "ئىتالىيەچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "ياپونچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "كاننادا"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "قازاقچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "كھمېرچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "كورېيەچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "قىرغىز"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "لائوس"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "لاتۋىيەچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "لىتۋانىيە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "ماكېدونىيە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "مالايچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "مالايلامچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "ماراتىي تىلى"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "موڭغۇلچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "نېپالچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "نورۋېگىيەچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "پولشاچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "پورتۇگال تىلى"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "پورتۇگال تىلى (بىرازىلىيە)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "پورتۇگالچە (پورتۇگالىيە)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "پەنجاپچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "رۇمىنىيە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "رۇسچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "سېربىيە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "سىنھالچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "سلوۋاكىيە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "سلوۋېنىيە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "ئىسپانچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "ئىسپانچە (لاتىن ئامېرىكىسى)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "سۋاھىلى تىلى"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "شۋېتسىيە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "تامىلچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "تېلۇگۇ تىلى"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "تايلاندچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "تۈركچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "ئۇكرائىناچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "ئۇردۇچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "ۋېيتنامچە"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "زۇلۇ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Google ئادرېسىنى ئاپتوماتىك تولدۇرۇش"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Google Places API نۇسخىسى"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"Google Places API نىڭ قايسى نەشرىنى ئىشلىتىشنى تاللاڭ. بىز يېڭى Places API "
+"غا تېزراق ئۆتۈشنى تەۋسىيە قىلىمىز."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"بىز 2025-يىلى 3-ئاينىڭ 1-كۈنىدىن باشلاپ «Places API (يېڭى)» نى ئىشلىتىشنى "
+"تەۋسىيە قىلىمىز، Google «Places API (كونا)» نۇسخىسىنى كونا ھالەتكە "
+"يۆتكىيدۇ، يەنى سىز بۇ مۇلازىمەتنى يېڭى API ئاچقۇچلىرى ئۈچۈن قوزغىتالمايسىز "
+"ۋە API نىڭ بۇ نۇسخىسى ئاخىرى ئىشلەتكىلى بولمايدۇ. كونا API ئىشلىتىۋاتقان "
+"مەۋجۇت ھېساباتلار ئۈزۈلمەي ئىشلىشى مۇمكىن."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(تەۋسىيە قىلىنىدۇ)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Google API ئاچقۇچى"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"Google API ئاچقۇچىڭىزنى چاپلاپ، سىناق كۇنۇپكىسىنى ئىشلىتىپ بۇ تور بېكەتتە "
+"ئىشلەيدىغانلىقىنى جەزملەشتۈرۈڭ. ئاچقۇچنىڭ كۈچكە ئىگە ئىكەنلىكىگە ۋە تور "
+"نامىڭىز ئۈچۈن رۇخسەت قىلىنغانلىقىغا كاپالەتلىك قىلىڭ، بولمىسا ئادرېس "
+"بوشلۇقى توسۇلۇپ، خېرىدارلارنىڭ زاكازلىرىنى تاماملىشىغا توسقۇنلۇق قىلىشى "
+"مۇمكىن."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "Google ئادرېسىنى ئاپتوماتىك تولدۇرۇشنى قوزغىتىش"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr "Google خەرىتە API لىرىنى ئىشلىتىپ ئادرېسنى ئاپتوماتىك تولدۇرۇشنى قوزغىتىڭ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Google API تىلى"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"بۇ تىل Google Places API ئادرېس تەكلىپلىرىنى كۆرسىتىشكە ئىشلىتىلىدۇ، "
+"ئادرېسلارمۇ بۇ تىلدا ئاپتوماتىك تولدۇرۇلىدۇ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "نەتىجە تىپلىرى"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"ھەر قانداق تۈردىكى نەتىجىلەرنى قوبۇل قىلىش ئۈچۈن بوش قالدۇرۇڭ، بۇ ئادەتتە "
+"تېخىمۇ ياخشى ماس كېلىدىغان نەتىجىلەرنى بېرىدۇ. <a href=\"%s\" "
+"target=\"_blank\">تېخىمۇ كۆپ تەپسىلاتلار ئۈچۈن ھۆججەتلەرگە قاراڭ</a> .<br> "
+"ئادرېسنى ئاپتوماتىك تولدۇرۇش مەيدانلىرىدا كۆرسىتىش ئۈچۈن 5 خىل ئادرېس "
+"ئىزدەش نەتىجىسىنى تاللاڭ.<br> <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">قوللايدىغان تۈرلەر</a> ھەققىدە تېخىمۇ كۆپ مەلۇمات "
+"ئېلىش ئۈچۈن Google خەرىتىسىنىڭ ھۆججەتلىرىگە كىرىڭ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "نەتىجە تىپلىرى (ئەسلىدىكى API)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Places API (Legacy) نى ئىشلەتكەندە قايسى تۈردىكى ئادرېس ئىزدەش نەتىجىلىرىنى "
+"كۆرسىتىش كېرەك.<br> <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">قوللايدىغان تىپلار</a> ھەققىدە "
+"تېخىمۇ كۆپ مەلۇماتقا ئېرىشىش ئۈچۈن Legacy Google Places API نىڭ "
+"ھۆججەتلىرىگە كىرىڭ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "شىركەت ساھەلىرى"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "ئەگەر بار بولسا، شىركەت نامى ئۈچۈن ئاپتوماتىك تولدۇرۇشنى قوزغىتىڭ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Google خەرىتە API لىرىدىن قايتۇرۇلغاندا، شىركەت نامى ئۇچۇرى بىلەن شىركەت "
+"بۆلىكىنى ئاپتوماتىك تولدۇرۇشنى قوزغىتىڭ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "سودا ئىزدەش"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "شىركەت ساھەسىدە كارخانىلارنى ئىزدەشنى قوزغىتىش"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"شىركەت بۆلىكىگە كىرگۈزگەندە، كارخانا بىلەن مۇناسىۋەتلىك ئادرېسلارنى تەۋسىيە "
+"قىلىشنى قوزغىتىڭ، ئاندىن تەكلىپلەردىن كارخانا تاللانغاندا، بارلىق ئادرېس "
+"بۆلەكلىرىنى ئاپتوماتىك تولدۇرۇڭ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "شىركەت نەتىجە تىپلىرى"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"ئاپتوماتىك تولدۇرۇلىدىغان شىركەت مەيدانلىرىدا كۆرسىتىش ئۈچۈن 5 خىل ئادرېس "
+"ئىزدەش نەتىجىسىنى تاللاڭ.<br> تەۋسىيە قىلىنىدىغان قىممەت كۆپىنچە سودا "
+"تۈرلىرىنى ئۆز ئىچىگە ئالغان <code>establishment</code> .<br> كارخانىلارغا "
+"مۇناسىۋەتسىز نەتىجىلەرنى ئۆز ئىچىگە ئالغان ھەر قانداق تۈردىكى نەتىجىلەرنى "
+"قوبۇل قىلىش ئۈچۈن بوش قالدۇرۇڭ.<br> <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">قوللايدىغان تۈرلەر</a> ھەققىدە تېخىمۇ كۆپ مەلۇمات "
+"ئېلىش ئۈچۈن Google خەرىتىسىنىڭ ھۆججەتلىرىگە كىرىڭ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Google لوگوسى"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "«Google تەرىپىدىن قوللانغان» تېكىست ۋە لوگونى كۆرسىتىش"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"تاللانغاندا، ئادرېس ئاپتوماتىك تولدۇرۇش تەكلىپ قۇتىسىنىڭ ئاستى تەرىپىدە "
+"«Google تەرىپىدىن قوللىنىدۇ» دېگەن تېكىست ۋە بەلگە كۆرسىتىلىدۇ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "بىرازىلىيە API ئادرېسىنى ئاپتوماتىك تولدۇرۇش"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "بىرازىلىيە API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "CEP مەيدانلىرى ئۈچۈن Brasil API ئادرېسىنى ئاپتوماتىك تولدۇرۇشنى قوزغىتىش"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"CEP/پوچتا نومۇرى بۆلىكى ئارقىلىق ئادرېسلارنى ئېلىش ۋە ئاپتوماتىك تولدۇرۇش "
+"ئۈچۈن Brasil API نى ئىشلىتىڭ. پەقەت بىرازىلىيە ئادرېسلىرى ئۈچۈنلا "
+"مۇناسىۋەتلىك."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "API نۇسخىسى"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "Brasil API CEP ئۇسۇلىنىڭ قايسى نەشرىنى ئىشلىتىشنى تاللاڭ."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "ئادرېس كىتابچىسىنى يۆتكەش"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "WooCommerce ئادرېسلىرى"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"WooCommerce دىكى مەۋجۇت يەتكۈزۈش ۋە ھەق تۆلەش ئادرېسلىرىنى خېرىدارلارنىڭ "
+"ئادرېس دەپتىرىگە كۆچۈرۈڭ."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "ئادرېس دەپتىرى ئىقتىدارىنى قوزغىتىش"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"خېرىدارلارنىڭ كۆپ ئادرېسنى ساقلىۋېلىشىغا ۋە يەتكۈزۈش ۋە ھەق تۆلەش ئۈچۈن "
+"ئىشلىتىلىدىغان ئۆزلۈكىدىن ئىشلىتىلىدىغان ئادرېسنى بېكىتىشىگە يول قويۇڭ."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "ئادرېس بەلگىلىرى"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "خېرىدارلارنىڭ ھەر بىر ئادرېس ئۈچۈن خاس بەلگە قوشۇشىغا يول قويۇڭ"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"ئادرېس بەلگىلىرى خېرىدارلارنىڭ ساقلانغان ئادرېسلىرىنى (مەسىلەن: «ئانامنىڭ "
+"ئۆيى») پەرقلەندۈرۈشىنى ئاسانلاشتۇرىدۇ. ئادرېس بەلگىلىرى خېرىدارلارغا خاس "
+"بولۇپ، زاكاز تەپسىلاتلىرى بېتىدە ياكى فاكتۇرالاردا كۆرسىتىلمەيدۇ ياكى "
+"بېسىلمايدۇ."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "كۆرسىتىش لايىھەسى"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr ""
+"ساقلانغان ئادرېسلارنىڭ سېتىۋېلىش جەريانىدا ۋە سېۋەتتە قانداق "
+"كۆرسىتىلىدىغانلىقىنى تاللاڭ."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr "ھېسابات بېتىدە ساقلانغان ئادرېسلار ھەمىشە كارتا لايىھەسىنى ئىشلىتىدۇ."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "ئادرېس كارتىلىرى"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "ئادرېس تىزىملىكى"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "ئېچىلىدىغان تىزىملىك"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "ئادرېس ئىزدەش"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"خېرىدارنىڭ كەم دېگەندە مۇشۇ ساندا ساقلانغان ئادرېسى بولغاندا، ئالدى تەرەپتە "
+"ئادرېس ئىزدەش فىلتىرىنى كۆرسىتىڭ."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "كۆرسىتىش لايىھەسى ئېچىلىدىغان بوشلۇققا تەڭشەلگەندە ئىشلىتىلمەيدۇ."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "ئادرېسلار"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "تېخىمۇ كۆپ تاللاشلارنى كۆرۈش ئۈچۈن سېۋەت بېتىنى ئەلالاشتۇرۇشنى قوزغىتىڭ"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "يېپىشقاق بۇيرۇقنىڭ خۇلاسىسى"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"سېۋەت بېتىدە چېگىرمە كودلىرى بۆلىكىنى كۆرسىتىدىغان ئورۇننى تاللاڭ. پەقەت "
+"AJAX سېۋىتى قوزغىتىلغاندا ۋە WooCommerce تەڭشەكلىرىدە چېگىرمە كودلىرىنى "
+"ئىشلىتىش قوزغىتىلغاندا ئىشلىتىشكە بولىدۇ."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "ئۆزئارا سېتىشنىڭ لايىھەسى"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "كرېست سېتىش كۆرسىتىلدى"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "بۇيۇملار"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "سېۋەت بېتىنى ئەلالاشتۇرۇش"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"سېۋىتىڭىزگە مال سېتىۋېلىشتىكىگە ئوخشاش ئېنىق، ئايلاندۇرۇشقا مەركەزلەشكەن "
+"لايىھە بېرىڭ."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr ""
+"مال سېتىۋېلىش جەريانىنىڭ مۇقىم بولۇشى ئۈچۈن، سېۋەت لايىھەسىنى تۆلەش بېتى "
+"بىلەن ماسلاشتۇرۇڭ."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"سېۋەتنى ھەمىشە ئارقا كۆرۈنۈشتە يېڭىلاپ تۇرۇڭ، مىقدار ئۆزگەرگەندە تولۇق بەت "
+"قايتا يۈكلەنمەيدۇ."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"كۇپون كودلىرى، يەتكۈزۈش ۋە ئۆزئارا سېتىشنى ئەڭ ياخشى ئايلاندۇرۇش ئورنىغا "
+"قويۇڭ."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"سىيرىتىپ كۆرگەندە زاكاز خۇلاسىسى كۆرۈنۈپ تۇرسۇن، ھەمدە خېرىدارلارنىڭ "
+"ئىشەنچكە ئېھتىياجلىق جايلىرىغا ئىشەنچ سىمۋوللىرىنى قوشۇڭ."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "ئىستونلار"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"مال سېتىۋېلىش قەدەملىرى، مال سېتىۋېلىش خۇلاسىسى ۋە باشقا بۆلەكلەرنىڭ "
+"ئادەتتىكى ئۇسلۇبلىرى. باشقا مال سېتىۋېلىش، سېۋەت، رەھمەت (مال سېتىۋېلىش "
+"تاپشۇرۇۋېلىندى) ۋە مال سېتىۋېلىش بەتلىرىنى كۆرۈشكە ماس كېلىدۇ."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"<em>«بۆلۈش»</em> لايىھە قېلىپى بىلەن <em>«1 ئىستون»</em> لايىھەسىنى "
+"ئىشلەتكەندە، پەقەت بەت يان بالداق كىچىك رامكىسى رايونى ئاكتىپ بولغاندا "
+"(تەلەپ قىلىش يان بالداق، سېۋەت يان بالداق ياكى تاپشۇرۇۋېلىنغان زاكاز يان "
+"بالداق) ئوڭ تەرەپتىكى ئىستون كۆرسىتىلىدۇ. بولمىسا، بەت بۆلۈنگەن ئۇسلۇبلار "
+"بىلەن يەككە ئىستون سۈپىتىدە قالىدۇ."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "ئىستون ئارقا كۆرۈنۈشىنى بۆلۈش"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"«بۆلۈش» لايىھە ئىككىنچى دەرىجىلىك ئىستونىنىڭ ئارقا رەڭگىنى تاللاڭ. تەرتىپ "
+"خۇلاسىسى ئارقا رەڭگىنى ئىشلىتىش ئۈچۈن بوش قالدۇرۇڭ."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "بەت قېلىپلىرى"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "پۇل تۆلەش قېلىپى"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"مال سېتىۋېلىش جەريانىدا دىققەتنى چېچىشنى ئازايتىش ئۈچۈن تەۋسىيە قىلىنىدۇ. "
+"<a href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">ئامبارنى تاشلىۋېتىش توغرىسىدىكى تەتقىقاتنى ئوقۇڭ</a> ."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "يېپىشقاق ئىلگىرىلەش بالدىقى"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "ئىلگىرىلەش بالدىقى ئۇسلۇبى"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "زاكاز ئومۇمىي سوممىسى"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "ئارقا رەڭ"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "ھەرىكەت ئۇلىنىشى"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "يانفون زاكازلىرىنىڭ قىسقىچە مەزمۇنى"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "يانفوننىڭ دەسلەپكى ھالىتى"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "بېلەت سېتىۋېلىش جەريانىدا سېۋەت بۇيۇملىرىنى تەھرىرلەشنى قوزغىتىش"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"خېرىدارلارنىڭ مال سېتىۋېلىش بېتىدىنلا مەھسۇلات مىقدارىنى ئۆزگەرتىشىگە ياكى "
+"ماللارنى چىقىرىۋېتىشىگە يول قويۇڭ."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "سېۋەت بۇيۇملىرىدىكى خاتالىقلار"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"پەقەت چېگىرمە كودى سېتىۋېلىش ياكى سېۋەت بەتلىرىدە ئايرىم بۆلەك سۈپىتىدە "
+"كۆرسىتىلگەندە ۋە WooCommerce تەڭشەكلىرىدە چېگىرمە كودلىرىنى ئىشلىتىش "
+"ئىقتىدارى قوزغىتىلغاندا قوللىنىلىدۇ."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "چېگىرمە كودلىرىنىڭ ئورنى"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "كۇپون قوللىنىش كۇنۇپكىسى"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "«كۇپون قوللىنىش» كۇنۇپكىسىنىڭ ئۇسلۇبىنى تاللاڭ."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "ئادرېس قۇرى 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"بۇ تەڭشەك «تاپشۇرۇش» ۋە «يەرلىك ئېلىپ كېتىش» بۆلەكلىرى ئارىسىدا "
+"ئورتاقلىشىدۇ. يەرلىك ئېلىپ كېتىش بۆلىكىدە، ئۇ يەنە «يوللاش/ئېلىپ كېتىش» "
+"تاللىغۇچنىڭ توشۇش ئۇسۇلى بۆلىكىدە (ئادرېستىن بۇرۇن) ياكى ئايرىم بۆلەك "
+"سۈپىتىدە (كېيىن) كۆرسىتىلىشىنى بەلگىلەيدۇ."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "خېرىدار ھېساباتلىرى"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "مېھمانلارنىڭ ھېساباتى"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"مېھمانلارنىڭ ھېسابات ئېچىش، كىرىش ۋە ھېسابات قۇرۇش تاللانمىلىرىنى "
+"WooCommerce ھېسابات تەڭشەكلىرى بېتىدىن كۆرۈڭ. بۇلار سىزنىڭ قولايلىق "
+"بولۇشىڭىز ئۈچۈن بۇ يەردە باشقۇرۇلىدۇ، شۇڭا سىز ھەر بىر تەڭشەك ئارخىپى ئۈچۈن "
+"ئوخشىمىغان قىممەتلەرنى ئىشلىتەلەيسىز."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "خېرىدارلارنىڭ ھېسابات ئاچماي تۇرۇپلا مال سېتىۋېلىشىغا يول قويۇڭ"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"خېرىدارلاردىن ھېسابات ئېچىش ياكى ھېساباتقا كىرىش تەلەپ قىلىنماسلىقى "
+"<strong>تەۋسىيە قىلىنىدۇ</strong> ، چۈنكى بۇ ئايلاندۇرۇش نىسبىتىنى "
+"تۆۋەنلىتىدۇ."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"چەكلەنگەندە، خېرىدارلار سېتىۋېلىشنى تاماملاش ئۈچۈن كىرىشى ياكى ھېسابات "
+"قۇرۇشى كېرەك."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "كاسسادا كىرىڭ"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "ھېسابات ئېچىش جەريانىدا كىرىشنى قوزغىتىش"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr "قايتا كەلگەن خېرىدارلارنىڭ ھېسابات بېتىدىن كىرىشى ئۈچۈن ئۇلىنىش كۆرسىتىڭ."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "ھېسابات قۇرۇش"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "خېرىدارلارنىڭ مال سېتىۋېلىش جەريانىدا ھېسابات ئېچىشىغا يول قويۇڭ"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "خېرىدارلار زاكاز قىلىشتىن بۇرۇن ھېسابات ئاچالايدۇ."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "خېرىدارلارنىڭ مېنىڭ ھېساباتىم بېتىدىن ھېسابات ئېچىشىغا يول قويۇڭ"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "خېرىدارلار «مېنىڭ ھېساباتىم» بېتىدىن يېڭى ھېسابات قۇرالايدۇ."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "ئىشلەتكۈچى ئىسمى"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "خېرىدارنىڭ ئىسمىدىن ھاسىل قىلىڭ"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"خېرىدارلاردىن سېتىۋېلىش جەريانىدا ئىشلەتكۈچى ئىسمىنى تاللاشنى تەلەپ "
+"قىلماسلىق <strong>تەۋسىيە قىلىنىدۇ</strong> ، چۈنكى بۇ ئايلاندۇرۇش "
+"نىسبىتىنى تۆۋەنلىتىدۇ."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"ئىشلەتكۈچى ئىسمى خېرىدارنىڭ ئىسمىدىن، ياكى ئىسىمنى ئىشلەتكىلى بولمىغاندا "
+"ئېلخەت ئادرېسىدىن ھاسىل قىلىنىدۇ."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "پارول"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "پارول تەڭشەش ئۇلىنىشى ئەۋەتىڭ"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"خېرىدارلاردىن مال سېتىۋېلىش جەريانىدا پارول ئورنىتىشنى تەلەپ قىلماسلىقى "
+"<strong>تەۋسىيە قىلىنىدۇ</strong> ، چۈنكى بۇ ئايلاندۇرۇش نىسبىتىنى "
+"تۆۋەنلىتىدۇ."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "خېرىدارلار مەخپىي نومۇرنى بىخەتەر قۇرۇش ئۈچۈن ئېلخەت تاپشۇرۇۋالىدۇ."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"تىزىملاتقان خېرىدارلارنىڭ ھېساباتقا كىرمەي تۇرۇپلا سېتىۋېلىشنى تاماملىشىغا "
+"يول قويۇڭ ۋە ئالاقە ئۇچۇرلىرى ماس كەلگەندە زاكازنى مەۋجۇت ھېساباتى بىلەن "
+"باغلاڭ."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "مەۋجۇت ھېسابات ئۇچۇرى"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr ""
+"خېرىدارلارنىڭ زاكاز قىلغاندىن كېيىن، رەھمەت بېتىدىن ھېسابات ئېچىشىغا يول "
+"قويۇڭ."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"بۇ بۆلۈمدىكى تاللاشلار مېھمانلارنىڭ ھېسابات ئېچىشى ۋە ھېسابات ماسلاشتۇرۇش "
+"ئىقتىدارى قوزغىتىلغاندا ئىشلىتىشكە بولىدۇ. كېچىكىپ ھېسابات قۇرۇشنى تەڭشەش "
+"ئۈچۈن يۇقىرىدىكى ئىككى ئىقتىدارنى قوزغىتىڭ."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "كېچىكىپ ھېسابات قۇرۇشنى قوزغىتىش"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"مېھمانلارنىڭ ھېساباتنى سېتىۋېلىشى ۋە ھېساباتنى ماسلاشتۇرۇش ئىقتىدارى "
+"قوزغىتىلغاندا، كېچىكىپ ھېسابات قۇرۇشنى قوزغىتىڭ."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "بۆلۈم ئورنى"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "خېرىدار تەپسىلاتلىرى بۆلىكىدىن بۇرۇن"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "خېرىدارلارنىڭ تەپسىلاتلىرى بۆلۈمىدىن كېيىنكى"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "ھېسابات قۇرۇش پايدىلىرى"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "بوشلۇقنى بوش قالدۇرسىڭىز، سۈكۈتتىكى تېكىست كۆرسىتىلىدۇ."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "قۇر ئىچىدىكى كۇنۇپكىلار"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "تەلەپ قىلىنىدىغان بوشلۇقلار"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "سوۋغات ئۇچۇرى بوشلۇقىنى تەكشۈرۈش جەريانىدا قوزغىتىش"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "كېڭەيتىلگەن سوۋغات ئۇچۇرى"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "سوۋغات ئۇچۇرىنى كۆرسىتىش بوشلۇقى ھەمىشە كېڭەيتىلىدۇ"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "سوۋغات ئۇچۇرىنىڭ زاكاز تەپسىلاتلىرى"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"بۇ بۆلەكتە ھازىرچە بىرلەشتۈرۈش مۇمكىن ئەمەس. ھەر بىر قىستۇرما ۋە تېما بىلەن "
+"مۇناسىۋەتلىك تاللاشلار پەقەت شۇ قىستۇرما ياكى تېما ئاكتىپلانغاندىلا بۇ "
+"يەردە كۆرۈنىدۇ."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "تېلېفون مەيدانلىرى"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "مەيدان كۆرۈنۈشچانلىقى"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "مەيدان ئورنى"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "تېلېفون دۆلەت كودى ۋە جەزملەشتۈرۈش"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "دۆلەت"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "تېلېفون مەيدانلىرىدا دۆلەتنى قوزغىتىش"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "توشۇش ياكى ھەق تۆلەش ئۈچۈن دۆلەتلەرنى سۈزۈڭ"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"ھەر بىر تېلېفون بۆلىكىدىكى دۆلەت تاللىغۇچنى دۇكىنىڭىزدا يەتكۈزۈش ياكى ھەق "
+"ئېلىش ئۈچۈن رۇخسەت قىلىنغان دۆلەتلەر بىلەن چەكلەڭ."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "جەزملەشتۈرۈش"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "دۆلەت قائىدىلىرىگە ئاساسەن ئاددىي دەلىللەشنى قوزغىتىڭ"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"تېلېفون نومۇرىنىڭ تاللانغان دۆلەت ئۈچۈن كۈچكە ئىگە ئىكەنلىكىنى، دۆلەت كودى "
+"ۋە ئۇزۇنلۇقىنى تەكشۈرىدۇ."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"تاللانغان دۆلەت ئۈچۈن بۇ نومۇرنىڭ كۈچكە ئىگە يانفون، مۇقىم لىنىيە ياكى "
+"باشقا قوبۇل قىلىنىدىغان تىپ ئىكەنلىكىنى قاتتىق تەكشۈرۈڭ. بەزى كۈچكە ئىگە "
+"نومۇرلار رەت قىلىنىشى مۇمكىن."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "جەزملەشتۈرۈش تۈرلىرى"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "ئورۇن بەلگىلىگۈچىلەر"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"ھازىر باشقۇرۇشقا بولىدىغان ئىجازەتنامە ئاچقۇچلىرى يوق. ئىجازەتنامە ئالغان "
+"Fluid Checkout قىستۇرمىسى ياكى قوشۇمچە دېتالى ئاكتىپ بولغاندا، ئىجازەتنامە "
+"ئاچقۇچلىرى بۇ يەردە كۆرۈنىدۇ."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "ئۆلچەملىك يەتكۈزۈش تىپى"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "سۈكۈتتىكى ھالەتتە قايسى يەتكۈزۈش تىپى تاللىنىدىغانلىقىنى تاللاڭ."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "توشۇش رايونى مەيدانلىرى"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"يەرلىك ئېلىپ كېتىش توشۇش رايونى سۈزگۈچ مەيدانلىرى ئۈچۈن قايسى مەيدانلارنىڭ "
+"كۆرسىتىلىدىغانلىقىنى تاللاڭ. بارلىق مۇمكىن بولغان تاللاشلارنى كۆرسىتىش "
+"ئۈچۈن بوش قالدۇرۇڭ."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"بۇ بوشلۇقلار يەرلىك مالنى ئېلىپ كېتىش ئۇسۇللىرىنىڭ سۈزگۈچ سۈپىتىدە "
+"كۆرسىتىلىدۇ. ئەگەر ماس كېلىدىغان قىستۇرمىلارنىڭ نورمال ئىشلىشى ئۈچۈن بەزى "
+"بوشلۇقلار بۇ يەردە تاللانمىغان بولسىمۇ، سېتىۋېلىش جەريانىدا يەنىلا كۆرۈنۈشى "
+"مۇمكىن."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "زاكازنىڭ يەتكۈزۈش ئادرېسى"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "زاكاز تۆلەش بېتىنى ئەلالاشتۇرۇش"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"تۆلەنمىگەن زاكازلارغا، زاكاز قىلىش بىلەن ئوخشاش ئېنىق، ئۆزگەرتىشكە "
+"مەركەزلەشكەن لايىھە بېرىڭ."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"پۇل تۆلەشنى كۈتۈۋاتقان زاكازلار ئۈچۈن زاكاز تۆلەش بېتىنىڭ لايىھەسىنى "
+"ئەلالاشتۇرۇڭ."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"مال سېتىۋېلىش جەريانىڭىزنىڭ مۇقىم بولۇشى ئۈچۈن، زاكاز تۆلەش تەجرىبىڭىزنى "
+"كاسسىڭىز بىلەن ماسلاشتۇرۇڭ."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"مال سېتىۋالغۇچىلارنىڭ پۇل تۆلەشتىن بۇرۇن ئىشەنچكە ئېرىشىشىگە ئېھتىياجلىق "
+"بولغان جايلارغا ئىشەنچ سىمۋوللىرى ۋە بەلگىلىرىنى قوشۇڭ."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "بەت ئەلالاشتۇرۇشىڭىزغا رەھمەت"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"خېرىدارلار سېتىۋالغاندىن كېيىن، رەھمەت بېتى ۋە زاكاز تەپسىلاتلىرىنى ئۇلارغا "
+"تېخىمۇ ئېنىق قىلىپ بېرىڭ."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr ""
+"رەھمەت بېتى ۋە ھېسابات زاكاز تەپسىلاتلىرىنى تېخىمۇ ئېنىق لايىھە بىلەن "
+"ئەلالاشتۇرۇڭ."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"زاكاز ھالىتىنىڭ ئىلگىرىلىشى، ھەرىكەتلەر، چۈشۈرۈشلەر ۋە خاتىرىلەرنىڭ مەنىلىك "
+"جايلىرىنى كۆرسىتىڭ."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "ئېلخەت ئۇقتۇرۇشلىرىدىكى زاكاز تەپسىلاتلىرى بۆلەكلىرىنى خاسلاشتۇرۇڭ."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"سېتىۋالغۇچىلار سېتىۋالغاندىن كېيىن ئىشەنچكە ئېھتىياجلىق بولغان جايلارغا "
+"ئىشەنچ سىمۋوللىرى ۋە بەلگىلىرىنى قوشۇڭ."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "ئېلخەت ئۇقتۇرۇشلىرى"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"تېخىمۇ كۆپ تاللاشلارنى كۆرۈش ئۈچۈن رەھمەت بېتى ۋە زاكاز تەپسىلاتلىرىنى "
+"ئەلالاشتۇرۇشنى قوزغىتىڭ"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "رەھمەت بېتىدە كەڭ كۆلەمدە لايىھە ئىشلىتىڭ"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"بۇ تاللاشلار رەھمەت بېتىگە تەسىر كۆرسىتىدۇ، ھېسابات بەتلىرى ۋە ئېلخەت "
+"ئۇقتۇرۇشلىرىدىكى زاكاز تەپسىلاتلىرىنى كۆرەلەيدۇ."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "تەڭشەكلەرنى ساقلاش"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "ھۆججەتلەر"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "ھارۋا"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "رەھمەت"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "ئادرېسنى ئاپتوماتىك تولدۇرۇش"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "ئىشەنچ بەلگىلىرى"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "بۇ تەڭشەكلەرنى ساقلاشقا ھوقۇقىڭىز يوق."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "ساقلاش تەلىپى ئىناۋەتسىز."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "تەڭشەكلىرىڭىز ساقلاندى."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "ساقلىنىۋاتىدۇ..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "تەڭشەكلەرنى ساقلىغىلى بولمىدى. قايتا سىناپ بېقىڭ."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "ئۇقتۇرۇشنى رەت قىلىش"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "تەڭشەكلەر تىزىملىكىنى ئېچىڭ"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "تەڭشەكلەر تىزىملىكىنى تاقاڭ"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "ئالدىن كۆرۈش"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "ئالدىن كۆرۈشنى كېڭەيتىش"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "ئالدىن كۆرۈشنى يىقىتىڭ"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "باش ۋە ئاستى قىسىمنى كۆرسىتىش"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "باش ۋە ئاستى قىسىملارنى يوشۇرۇش"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "بەتنى ئالدىن كۆرۈش"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "كۆرۈش ئېغىزىنى ئالدىن كۆرۈش"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "تاختا كومپيۇتېر"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "ئۈستەل يۈزى"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "ئالدىن كۆرۈش كەڭلىكى"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "كەڭلىكنى كىچىكلىتىش"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "پىكسېلدا ئالدىن كۆرۈش كەڭلىكى"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "كەڭلىكنى ئاشۇرۇش"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "ئالدىن كۆرۈش شەكلى"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "مېھمان"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "كىرىش"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "ئالدىن كۆرۈش بېتى"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "تەپسىلىي كۆرۈش ئۈچۈن ئالدىن كۆرۈشنى كېڭەيتىڭ"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "%s بىلەن بىللە ئىشلىتىشكە بولىدۇ."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "ئۇلارنى قوزغىتىڭ"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr ""
+"بۇ بەت ئۈچۈن ئەلالاشتۇرۇش ئېتىۋېتىلگەن. بەتنى ئالدىن كۆرۈش ئۈچۈن %s نى "
+"بېسىڭ."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "%s ئالدىن كۆرۈش"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "ئايرىم سۆھبەت · ھېچ نەرسە ساقلانمىدى"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "ئىشلىتىشنى ئىز قوغلاش"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Fluid Checkout نىڭ ماسلىشىشچانلىقىنى ياخشىلاشقا ياردەم بېرىش ئۈچۈن سەزگۈر "
+"بولمىغان تور بېكەت مۇھىتى دوكلاتلىرىنى ئەۋەتىڭ. دوكلاتلار تۆۋەندىكى "
+"تاللاشلاردا قوزغىتىلمىغۇچە ئەۋەتىلمەيدۇ."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "ئىشلىتىشنى نازارەت قىلىش دوكلاتلىرىنى Fluid Checkout قا ئەۋەتىڭ"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"بۇ دوكلاتلار تور بېتىڭىزنىڭ ماسلىشىشچانلىقى ۋە قوللىشىنى ياخشىلاشقا ياردەم "
+"بېرىدۇ ھەمدە قوزغىتىلغاندا ھەر ھەپتە ئەۋەتىلىدۇ."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"دوكلاتلارغا خېرىدار، باشقۇرغۇچى ئىشلەتكۈچى ياكى باشقا ھېچقانداق مەخپىي "
+"سانلىق مەلۇمات كىرگۈزۈلمىگەن."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "ئاساسىي مۇھىت ئۇچۇرلىرى"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"WordPress، PHP، WooCommerce، تېما ۋە قىستۇرما تىزىملىكى سانلىق مەلۇماتلىرى. "
+"دوكلات قىلىش ئىقتىدارى قوزغىتىلغاندا ھەمىشە قوشۇلىدۇ. تور بېتىڭىزنىڭ قانداق "
+"مۇھىتتا ئىجرا بولۇۋاتقانلىقىنى چۈشىنىشىمىزگە ياردەم بېرىدۇ."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "قىستۇرما تەڭشەكلىرى"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"قوللاش تەلەپلىرىگە ياردەم بېرىش ئۈچۈن Fluid Checkout قىستۇرما تەڭشەكلىرىنى "
+"ئەۋەتىدۇ ۋە سىزنىڭ قىستۇرمىلىرىمىزنى قانداق ئىشلىتىۋاتقانلىقىڭىزنى "
+"چۈشىنىشىمىزگە ياردەم بېرىدۇ."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "تېزلا كېلىدۇ"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "سېتىش كۆرسەتكۈچلىرى"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"Fluid Checkout نى قاچىلاشتىن بۇرۇنقى بىر يىل ئىچىدىكى ئايلىق زاكاز سانى ۋە "
+"ئومۇمىي سېتىش مىقدارى. قىستۇرمىلىرىمىزنى قاچىلاپ تېخىمۇ كۆپ پۇل "
+"تاپىۋاتقانلىقىڭىزنى چۈشىنىشىمىزگە ياردەم بېرىدۇ. خېرىدار ياكى ئىشلەتكۈچى "
+"سانلىق مەلۇماتلىرى ھەرگىز ئەۋەتىلمەيدۇ."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "ئامبارلار"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"<code>select2</code> ئورنىغا <code>TomSelect</code> ئېچىلىدىغان "
+"تەركىبلىرىنى ئىشلىتىڭ"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect ئاددىيراق ئېچىلىدىغان تاللاش تەركىبى بولۇپ، Select2 گە قارىغاندا "
+"خاتالىققا ئاسان ئۇچرايدۇ، شۇنىڭ بىلەن بىر ۋاقىتتا ئوخشاش ئىقتىدارلارنى "
+"تەمىنلەيدۇ."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"كىچىك ئۈسكۈنىلەردىكى فورما مەيدانلىرى بىلەن ئۆز-ئارا تەسىر كۆرسەتكەندە "
+"ئاپتوماتىك چوڭايتىشنىڭ ئالدىنى ئېلىش ئۈچۈن، بۇ قىستۇرما ئارقىلىق "
+"ئەلالاشتۇرۇلغان بەتلەردە فورما مەيدانلىرى ئىچىدىكى خەت چوڭلۇقىنى 16 "
+"پىكسېلغا تەڭشەيدۇ."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"Safari ۋە باشقا تور كۆرگۈچلەر خەت نۇسخىسىنىڭ چوڭلۇقى 16 پىكسېلدىن كىچىك "
+"بولغاندا، تېكىستنى ئوقۇشنى ئاسانلاشتۇرۇش ئۈچۈن يانفون ئۈسكۈنىلىرىدە "
+"ئاپتوماتىك چوڭايتىلىشى مۇمكىن."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr ""
+"تور كۆرگۈچ كونترول تاختىسىدا سىكرىپت بىر تەرەپ قىلىش ئىز قوغلاش ئىقتىدارىنى "
+"قوزغىتىش."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "كىچىكلىتىلمىگەن مۈلۈكلەر"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Google خەرىتىسىنىڭ سىكرىپتلىرى"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "Google خەرىتىسىنىڭ تەكرارلانغان سىكرىپتلىرىنى ئۆچۈرمەڭ"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"قوزغىتىلغاندا، Google خەرىتىسىنىڭ كۆچۈرۈلمە سىكرىپتلىرى ئۆچۈرۈلمەيدۇ، بۇ "
+"خاتالىق ۋە ئىقتىدار مەسىلىسىنى كەلتۈرۈپ چىقىرىدۇ. پەقەت مەسىلىنى ھەل "
+"قىلىۋاتقاندا بۇ تاللانمىنى ئىشلىتىڭ."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "ۋىجېت رايونلىرى"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "يانفوندىكى ئەڭ ئاخىرقى قەدەم"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "يانفوندا پەقەت ئەڭ ئاخىرقى قەدەمدىلا ۋىجېتلارنى كۆرسىتىش"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"پەقەت يانفونلاردا ئەڭ ئاخىرقى سېتىۋېلىش قەدىمىنى كۆرگەندىلا، پۇل تۆلەش "
+"ئىشەنچ بەلگىسى ۋىجېتلىرىنى كۆرسىتىش"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "ئۆلچەملىك"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "قوشۇلما قىممەت بېجى نومۇرى بۆلىكى"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "ھېسابات جەدۋىلىگە قوشۇلما قىممەت بېجى نومۇرى بۆلىكىنى قوشۇڭ."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "مەيدان بەلگىسى"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"قوشۇلما قىممەت بېجى نومۇرى (يەنى قوشۇلما قىممەت بېجى نومۇرى) بۆلىكىنىڭ "
+"بەلگىسىنى تەڭشەڭ. كۆپ تىللىق تور بەتلەردە، بۇ بۆلەكنى بوش قالدۇرۇپ، ئەسلى "
+"قۇرنى تەرجىمە قىلىش ياخشىراق."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "قوشۇلما قىممەت بېجى نومۇرى"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "ياۋروپا ئىتتىپاقى-قوشۇلغان قىممەت بېجى"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr ""
+"تېخىمۇ كۆپ تاللاشلارنى كۆرۈش ئۈچۈن قوشۇلما قىممەت بېجى نومۇرى بۆلىكىنى "
+"قوزغىتىڭ"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "قوشۇلما قىممەت بېجىنى تەكشۈرۈش"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr ""
+"مال سېتىۋېلىش جەريانىدا ياۋروپا ئىتتىپاقىدىكى قوشۇلما قىممەت بېجى نومۇرىنى "
+"جەزملەشتۈرۈڭ"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"بېرىلگەن قوشۇلما قىممەت بېجى نومۇرىنىڭ ياۋروپا VIES سانلىق مەلۇمات ئامبىرى "
+"(قوشما قىممەت بېجى ئۇچۇر ئالماشتۇرۇش سىستېمىسى) دا تىزىملاتقان كۈچكە ئىگە "
+"قوشۇلما قىممەت بېجى نومۇرى ئىكەنلىكىنى تەكشۈرىدۇ."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "دۇكاننىڭ قوشۇلما قىممەت بېجى نومۇرى"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"دۇكاننىڭ قوشۇلما قىممەت بېجى نومۇرى ياۋروپا ئىتتىپاقى قوشۇلما قىممەت بېجىنى "
+"تەكشۈرۈشنى تەلەپ قىلىشتا ئىشلىتىلگەن ۋە فاكتۇرالارغا بېسىلغان.<br> "
+"<strong>دۇكاننىڭ قوشۇلما قىممەت بېجى نومۇرىڭىزنى قوشۇشىڭىزنى قاتتىق تەۋسىيە "
+"قىلىمىز</strong> ، بولمىسا VIES مەسلىھەت نەتىجىسى بۇغالتىرلىق مەقسىتىدە "
+"كۈچكە ئىگە بولماسلىقى مۇمكىن.<br> يەنى: <code>ATU99999999</code> ياكى "
+"<code>EE999999999</code> ."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "تەتۈر توك قاچىلاش"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "تەتۈر قۇۋۋەتلەش مېخانىزمىنى قوللىنىڭ"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"خېرىدارنىڭ قوشۇلما قىممەت بېجى نومۇرى كۈچكە ئىگە بولغاندا، باج نىسبىتىنى "
+"نۆلگە تەڭشەڭ ۋە فاكتۇرالاردا «تەتۈر ھەق ئېلىش» نى كۆرسىتىڭ. دۇكاننىڭ "
+"دۆلىتىگە ئاساسەن باشقا «تەتۈر ھەق ئېلىش» تېكىستى تەلەپ قىلىنىشى مۇمكىن."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "ئوخشاش دۆلەت"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr "دۇكان دۆلىتىدىكى سودىلار ئۈچۈن تەتۈر ھەق ئېلىش مېخانىزمىنى قوللىنىڭ:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"دۇكان بىلەن ئوخشاش دۆلەتتىكى شىركەتلەر ئوتتۇرىسىدىكى سودىلاردا تەتۈر ھەق "
+"ئېلىش مېخانىزمىنى قوللىنىشقا يول قويىدۇ."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "تەتۈر ھەق ئېلىش ئىستىسنالىرى"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr ""
+"تەتۈر ھەق ئېلىش مېخانىزمىنى قوللىنىشنى ئاتلاپ ئۆتۈش ئۈچۈن قوشۇمچە "
+"دۆلەتلەرنى تاللاڭ."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"بۇ دۆلەتلەردىن كەلگەن زاكازلاردىن كۈچكە ئىگە قوشۇلما قىممەت بېجى نومۇرى "
+"بېرىلگەن تەقدىردىمۇ، باج ئېلىنىدۇ."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "فاكتۇرالاردىكى تەتۈر چىقىم بەلگىسى"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr "زاكاز قىلىش بېتى ۋە زاكاز تەپسىلاتلىرىغا «تەتۈر ھەق ئېلىش» بەلگىسىنى قويۇڭ."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "فاكتۇرالاردىكى تەتۈر ھەق ئېلىش تېكىستى"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "فاكتۇرالارغا «تەتۈر پۇل تۆلەش» تېكىستىنىڭ بەلگىسىنى قويۇڭ."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "تەتۈر ھېسابلاش ئاساسىدا تۆلىنىدىغان باج"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "شىركەت نامى"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "قوشۇلما قىممەت بېجى نومۇرىدىن شىركەت نامىنى ئاپتوماتىك تولدۇرۇش"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"خېرىدار تەمىنلىگەن كۈچكە ئىگە قوشۇلما قىممەت بېجى نومۇرىغا ئاساسەن ھېسابات "
+"شىركىتىنىڭ ئىسمىنى تولدۇرۇڭ."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "شىركەت نامىنى تەھرىرلەش"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "ئاپتوماتىك تولدۇرۇلغان شىركەت نامىنى تەھرىرلەشكە رۇخسەت قىلىش"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"قوزغىتىلغاندا، خېرىدارلار بېرىلگەن قوشۇلما قىممەت بېجى نومۇرى بىلەن "
+"مۇناسىۋەتلىك شىركەت نامىنى ئۆزگەرتەلەيدۇ."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "رەقەملىك تاۋارلارغا ياۋروپا ئىتتىپاقى قوشۇلغان قىممەت بېجى (VAT)"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"2015-يىلى 1-يانۋاردىن باشلاپ، ياۋروپا ئىتتىپاقىنىڭ رەقەملىك تاۋارلارغا "
+"مۇناسىۋەتلىك قوشۇلما قىممەت بېجى نىزاملىرىغا ئۆزگەرتىش كىرگۈزۈلدى، بۇ پەقەت "
+"B2C سودىسىغىلا تەسىر كۆرسىتىدۇ. رەقەملىك تاۋارلارغا قوشۇلما قىممەت بېجى "
+"خېرىدارنىڭ ئورنىغا ئاساسەن ھېسابلىنىدۇ، ھەمدە بۇنىڭ دەلىللىرىنى (IP ئادرېسى "
+"ۋە ھېسابات ئادرېسى) توپلاش كېرەك."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "رەقەملىك تاۋارلارنىڭ باج سىنىپلىرى"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "بىر قىسىم باج تۈرلىرىنى تاللاڭ"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "ئورۇن دەلىلى"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "خېرىدارنىڭ ئورنىنىڭ ئىسپاتىنى توپلاڭ"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"IP ئادرېسىنى ساقلايدۇ ۋە ئۇنى خېرىدارنىڭ ھېسابات ئادرېسى بىلەن سېلىشتۇرۇپ "
+"دەلىللەيدۇ. ئەگەر خېرىدارلارنىڭ ھېسابات ئادرېسىدىكى دۆلەت بىلەن IP ئادرېسى "
+"ماس كەلمىسە، خېرىدارلار ھېسابات ئادرېسىنى تەكشۈرۈش بېتىدىكى بىر تاللاش "
+"رامكىسىنى بەلگىلەش ئارقىلىق جەزملەشتۈرۈشى كېرەك."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"بۇ تاللاش Fluid Checkout دا باشقۇرۇلىدۇ. <a href=\"%s\">ئۇنى خېرىدار "
+"ھېساباتى تەڭشەكلىرىدىن ئۆزگەرتىڭ</a> ."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"بۇ تاللاش Fluid Checkout دا باشقۇرۇلىدۇ. ئۇنى Fluid Checkout &gt; خېرىدار "
+"ھېساباتلىرى ئاستىدا ئۆزگەرتىڭ."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"بۇ تاللاش Fluid Checkout دا باشقۇرۇلىدۇ. Fluid Checkout ئاكتىپلانغاندا، "
+"توشۇش مەنزىلگاھى ھەمىشە «خېرىدارنىڭ يەتكۈزۈش ئادرېسىنىڭ سۈكۈتتىكىسى» قىلىپ "
+"تەڭشىلىنىدۇ. خېرىدارلار يەنىلا توشۇش ۋە تۆلەم جەريانىدا ئوخشىمىغان يەتكۈزۈش "
+"ئادرېسلىرىنى تەمىنلىيەلەيدۇ.<br><br> <a href=\"%s\">Fluid Checkout "
+"تەڭشەكلىرىدە</a> ئۆزلۈكىدىن ھەق ئېلىش ئادرېسىنى يەتكۈزۈش ئادرېسى بىلەن "
+"ئوخشاش قىلىپ تەڭشەش تاللانمىسى بار."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"بۇ تاللاش Fluid Checkout دا باشقۇرۇلىدۇ. Fluid Checkout ئاكتىپلانغاندا، "
+"توشۇش مەنزىلگاھى ھەمىشە «خېرىدارنىڭ يەتكۈزۈش ئادرېسىنىڭ سۈكۈتتىكىسى» قىلىپ "
+"تەڭشىلىنىدۇ. خېرىدارلار يەنىلا توشۇش ۋە تۆلەم جەريانىدا ئوخشىمىغان يەتكۈزۈش "
+"ئادرېسلىرىنى تەمىنلىيەلەيدۇ.<br><br> WooCommerce &gt; تەڭشەكلەر &gt; Fluid "
+"Checkout دىن ئۆزلۈكىدىن ھەق ئېلىش ئادرېسىنى يەتكۈزۈش ئادرېسى بىلەن ئوخشاش "
+"قىلىپ تەڭشەش تاللانمىسى بار."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr "بۇ تەڭشەكلەر WP باشقۇرۇش &gt; سۇيۇقلۇق تەكشۈرۈش &gt; تەڭشەكلەرگە يۆتكەلدى."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"بۇ WooCommerce تەڭشەكلىرى بەتكۈچى ئىشلىتىشتىن توختىتىلدى ۋە Fluid Checkout "
+"6.0 دا ئۆچۈرۈۋېتىلىدۇ."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "تەڭشەكلەر بېتىگە كىرىڭ"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "بۇ بەتكۈچنى مەڭگۈلۈك يوشۇرۇش"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "تور بېكەت دوكلاتىنى ئالدىن كۆرۈش"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"بۇ سىزنىڭ نۆۋەتتىكى تەڭشەكلىرىڭىزگە ئاساسەن كېيىنكى تور بېكەت مۇھىتى "
+"دوكلاتىغا كىرگۈزۈلىدىغان سانلىق مەلۇماتلار."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "دوكلاتنىڭ ئالدىن كۆرۈشى يۈكلەنمەكتە..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "تور بېكەت دوكلاتىنىڭ ئالدىن كۆرۈشىنى يۈكلىيەلمىدى. قايتا سىناپ بېقىڭ."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "تور بېكەت دوكلاتىنى ئەۋەتكىلى بولمىدى. قايتا سىناپ بېقىڭ."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "تور بېكەت دوكلاتى مۇۋەپپەقىيەتلىك ئەۋەتىلدى."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "قوزغىتىپ ھازىر ئەۋەتىڭ"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "تاقاش"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr ""
+"تور بېكەت دوكلاتى تەلىپى ئاللىقاچان ئىجرا قىلىنىۋاتىدۇ. بىر ئازدىن كېيىن "
+"قايتا سىناپ بېقىڭ."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "تور بېكەت مۇھىتى دوكلاتىنى يوللاش چەكلەنگەن."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "يوللىغىلى بولىدىغان تور بېكەت دوكلاتى سانلىق مەلۇماتلىرى يوق."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"بۇ تور بېكەت دومىنى مۇھىت دوكلاتىنى ئەۋەتەلمەيدۇ (يەرلىك ياكى تەرەققىيات "
+"دومىنى بۇنىڭ سىرتىدا)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "يېقىندا تور بېكەت دوكلاتى ئەۋەتىلدى. كېيىن قايتا سىناپ بېقىڭ."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "تور بېكەت دوكلاتى ئەۋەتىلمىدى. كېيىن قايتا سىناپ بېقىڭ."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "تور بېكەت مۇھىتى دوكلاتى يوق."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "تاللانغان تەڭشەكلەر ئۈچۈن تور بېكەت دوكلاتى سانلىق مەلۇماتلىرى يوق."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "تور بېكەت دوكلاتلىرىنى باشقۇرۇشقا رۇخسەت قىلىنمايدۇ."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "PRO ئىقتىدارى"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "باشقا قىستۇرمىلار"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "پەقەت مۇشۇ قوشۇمچە دېتالنى ئېلىڭ — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "قوشۇمچە دېتالنى ئورنىتىش"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "PRO غا يېڭىلاڭ — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"بۇ تاللاشلارنى ئېچىش ئۈچۈن <a target=\"_blank\" href=\"%1$s\">%2$s "
+"ئېلىڭ</a> ."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "قوشۇمچە"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "ھۆججەتلەرنى كۆرۈش"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"تەلەپلەر WordPress غا كىرگەن ئىشلەتكۈچىنى تەلەپ قىلىدۇ. نۆۋەتتىكى "
+"ئىشلەتكۈچىنىڭ سانلىق مەلۇماتلىرىنى ئىشلىتىش ئۈچۈن user_id نى قويۇۋېتىڭ، "
+"ياكى چاقىرغۇچى بۇ ئىشلەتكۈچىنى تەھرىرلىيەلەيدىغان ۋاقىتتا (edit_user "
+"ئىقتىدارى) باشقا ھېساباتنى نىشان قىلىش ئۈچۈن user_id نى يوللاڭ. "
+"ئىسپاتلانمىغان تەلەپلەر fc_api_forbidden نى قايتۇرىدۇ. ئىناۋەتسىز user_id "
+"fc_api_user_not_found نى قايتۇرىدۇ."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr ""
+"HTTP 200 بىلەن { &quot;data&quot;: { ... } } بىر تەرەپ قىلغۇچ پايدىلىق "
+"يۈكنى قايتۇرغاندا."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"يۈك يوق بولغاندا (مەسىلەن، DELETE) HTTP 200 نى { &quot;success&quot;: true "
+"} بىلەن ئىشلىتىدۇ."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"مەغلۇبىيەتلەر WP_Error (كود، ئۇچۇر، سانلىق مەلۇمات.ھالىتى) دىن WordPress "
+"REST خاتالىقى JSON نى قايتۇرىدۇ. سىم كودلىرى fc_api_* ئالدى قوشۇمچىسىنى "
+"ئىشلىتىدۇ."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "كىرىش چەكلەنگەن."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "نىشان ئىشلەتكۈچى تېپىلمىدى."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "بۇ ئىقتىدار ئىشلەتكىلى بولمايدۇ."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "تەلەپ قىلىنىدىغان ئادرېس بوشلۇقى يوق."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "پوچتا نومۇرى ياكى پوچتا نومۇرى خاتا."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "تېلېفون نومۇرى ئىناۋەتسىز."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "ئۆلكە ياكى ناھىيە ئىناۋەتسىز."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "دۆلەت ئىناۋەتسىز ياكى ئادرېس قىسمى يوق."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "بۇ تەلەپنى بىر تەرەپ قىلغىلى بولمىدى."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "ئالدىنقى باسقۇچقا قايتىش"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "تەڭشەكلەرگە ئاتلاڭ"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "قايتا باشلاڭ ۋە تۇنجى يېتەكچىلىك قىلىنىدىغان تەڭشەش باسقۇچىغا قايتىڭ"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "قايتا باشلاڭ"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "داۋاملاشتۇرۇشتىن بۇرۇن بارلىق تارماق قەدەملەرنى تاماملاڭ."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "كېڭەيتىش"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "يىغىش"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "ئاتلاپ ئۆتۈش"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "تاماملانغان دەپ بەلگىلەش"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "تاماملانمىغان دەپ بەلگىلەش"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "تولۇق چوڭلۇقتىكى رەسىمنى كۆرۈش: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "تولۇق چوڭلۇقتىكى ئورنىتىش قوللانمىسى رەسىمى"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "رەسىمنى تاقاش"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "سۇيۇقلۇق تەكشۈرۈش يېتەكچىلىكىدىكى تەڭشەش"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "خۇش كەپسىز"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "پۇل تۆلەش ۋاقتىڭىزنى تەكشۈرۈڭ"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "ھەممىسى تەييار"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "بۇ بەتكە كىرىش ھوقۇقىڭىز يوق."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "%1$d قەدەمگە بېرىڭ: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"بۇ يېتەكچىلىك قىلىنىدىغان سىستېما سىزگە Fluid Checkout بىلەن تونۇشۇشقا "
+"ياردەم بېرىدۇ. تۆۋەندىكى قەدەملەر ھازىرچە ئورۇن بەلگىلىگۈچىلەر."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "تەييار بولغاندا كېيىنكى قەدەمگە ئۆتۈڭ."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr ""
+"Fluid Checkout نىڭ ئەمەلىي ئەھۋالىنى كۆرۈش ئۈچۈن دۇكانىڭىزنىڭ كاسسا "
+"بۆلۈمىنى ئېچىڭ."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "پۇل تۆلەش بېتىنى كۆرۈڭ"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"دۇكىنىڭىزنى تەڭشەشنى داۋاملاشتۇرۇش ئۈچۈن Fluid Checkout تەڭشەكلىرىگە قايتىپ "
+"كەلسىڭىز بولىدۇ."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "سېتىۋېلىش ۋە سېۋەت تەڭشەكلىرىنى تەكشۈرۈش"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "باشقۇرۇش تاختىسىدىن قوشۇمچە ئىقتىدارلارنى كۆرۈڭ"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "تاماملاڭ ۋە تەڭشەكلەرگە كىرىڭ"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"WooCommerce قائىدىلىرىگە ماس كېلىدىغان قىلىپ، ھەق ئېلىش تېلېفونى مەيدانىنىڭ "
+"كۆرۈنۈشلۈك تاللانمىسىنى كونا قىممەتتىن يېڭىلاڭ."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"يەتكۈزۈش تېلېفونى مەيدانىنىڭ كۆرۈنۈشلۈك تاللانمىسىنى كونا قىممەتتىن "
+"WooCommerce قائىدىلىرىگە ماسلاشتۇرۇش ئۈچۈن يېڭىلاڭ."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"تەرتىپ خۇلاسىسى ئارقا رەڭ تەڭشىكىنى يېڭى بۆلۈش لايىھەسى ئىككىنچى دەرىجىلىك "
+"ئىستون ئارقا رەڭ تاللانمىسىغا كۆچۈرۈڭ."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"Biteship قىستۇرمىسىنى ئىشلەتكەندە، كۈچەيتىلگەن تاللاش مەيدانلىرى ئىقتىدارى "
+"ھەمىشە چەكلىنىدۇ."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"گېرمانىيە بازىرىنى ئىشلەتكەندە، زاكاز قىلىش ئورنى ھەمىشە «زاكاز قىلىش "
+"خۇلاسىسى ئاستىدا» قىلىپ تەڭشىلىنىدۇ. بۇ قىستۇرما زاكاز قىلىش خۇلاسىسى "
+"ئاستىدا زاكاز قىلىش كۇنۇپكىسى ۋە قانۇنىي بەلگە قويۇش قۇتىلىرىنىڭ "
+"كۆرسىتىلىشىنى تەلەپ قىلىدۇ."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"WooCommerce ئۈچۈن Germanized ئىشلەتكەندە، زاكاز قىلىش ئورنى ھەمىشە «زاكاز "
+"قىلىش خۇلاسىسى ئاستىدا» قىلىپ تەڭشىلىنىدۇ. بۇ قىستۇرما زاكاز قىلىش خۇلاسىسى "
+"ئاستىدا زاكاز قىلىش كۇنۇپكىسى ۋە قانۇنىي بەلگە قۇتىلىرىنىڭ كۆرسىتىلىشىنى "
+"تەلەپ قىلىدۇ."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "ئېلىپ كېتىش ئورۇنلىرىنى تەھرىرلەش"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce تەڭشەكلىرىدىن يەرلىك ئېلىپ كېتىش بەلگىسىنى ئىشلىتىڭ"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"قوزغىتىلغاندا، سېتىۋېلىش ئورنىدىكى مال ئېلىش تاللانمىسى بەلگىسى WooCommerce "
+"مال ئېلىش ئورنى تەڭشىكىدىكى ماۋزۇغا ماس كېلىدۇ. ئېتىۋېتىلگەندە، بەلگە Fluid "
+"Checkout دىكى تەرجىمە قىلغىلى بولىدىغان «يەرلىك مال ئېلىش» تېكىستىنى "
+"ئىشلىتىدۇ."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2774,3 +4762,115 @@ msgstr "ھەئە"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "جون"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "دوۋ"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "مىسال شىركەت"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "123-نومۇرلۇق ئاساسلىق كوچا"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "ھەر قانداق شەھەر"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "بولاقنى ئالدى ئىشىكنىڭ ئالدىغا قويۇپ قويۇڭ."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "بېنى"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "قالپاق"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "مايكا"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr ""
+"بىز سىزنىڭ زاكازىڭىزنى تاپشۇرۇۋالدۇق، مال يەتكۈزۈلگەندە سىزگە يېڭى ئۇچۇر "
+"ئەۋەتىمىز."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "ئىشلەتكۈچى قوللانمىسى"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "ئورۇنلار API (يېڭى)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "ئورۇنلار API (ئەسلىدىكى)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "1-نەشرى"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "2-نەشرى"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ كېيىنكى قېتىم تېزراق پۇل تۆلەڭ ✔ پۇل تۆلەش تەڭشەكلىرىڭىزنى باشقۇرۇڭ ✔ "
+"زاكاز ھالىتى ۋە تارىخىنى كۆرۈڭ"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "يوشۇرۇنغان"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "ئىختىيارىي"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "تەلەپ قىلىنىدۇ"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "ئادرېسقا يەتكۈزۈش"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "يەرلىكتىن ئېلىپ كېتىش"

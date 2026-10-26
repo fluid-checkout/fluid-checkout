@@ -39,45 +39,6 @@ msgstr "(PRO)"
 msgid "(Required)"
 msgstr "(Υποχρεωτικό)"
 
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* Για όσο διάστημα έχετε ενεργή συνδρομή."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87
-#: inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "αξία 226 EUR (Εξοικονομήστε 42%)"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-#, php-format
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">Αγοράστε ένα νέο κλειδί άδειας χρήσης</a> "
-"και συνεχίστε να λαμβάνετε ενημερώσεις και υποστήριξη."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-#, php-format
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Είσοδος "
-"στο λογαριασμό σας</a> για να λάβετε το κλειδί άδειας χρήσης ή <a "
-"href=\"%s\" target=\"_blank\">αγοράστε ένα νέο κλειδί άδειας χρήσης</a>."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Συνδεθείτε "
-"στο λογαριασμό σας</a> για να ανανεώσετε το κλειδί άδειας χρήσης και να "
-"συνεχίσετε να λαμβάνετε ενημερώσεις και υποστήριξη."
-
 #: inc/admin/admin.php:159
 #, php-format
 msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
@@ -197,18 +158,9 @@ msgstr "Προσθέστε περιοχές widget στη σελίδα πληρ�
 msgid "Add widget areas to the thank you page"
 msgstr "Προσθέστε περιοχές widget στη σελίδα ευχαριστιών"
 
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "Πρόσθετα"
-
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Πρόσθετες σημειώσεις"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90
-#: inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "Βιβλίο διευθύνσεων"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
@@ -270,41 +222,6 @@ msgstr "Μετά τα σύνολα της παραγγελίας"
 msgid "After the shipping section"
 msgstr "Μετά το τμήμα αποστολής"
 
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"Όλα τα πρόσθετα πωλούνται ξεχωριστά και απαιτούν την εγκατάσταση και "
-"ενεργοποίηση του πρόσθετου <strong>Fluid Checkout Lite</strong>, εκτός από "
-"τις περιπτώσεις που αναφέρονται."
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-#| msgid "All future add-ons*"
-msgid "All future add-ons *"
-msgstr "Όλα τα μελλοντικά πρόσθετα *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104
-#: inc/admin/admin-setting-type-fc-addons.php:234
-#| msgid ""
-#| "All prices shown in EUR and already include taxes. If there are any "
-#| "divergencies with the prices on our website, the offers shown on the "
-#| "website superseed these and will be applied."
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"Όλες οι τιμές εμφανίζονται σε EUR. Εάν υπάρχουν αποκλίσεις με τις τιμές "
-"στην ιστοσελίδα μας, οι προσφορές που εμφανίζονται στην ιστοσελίδα "
-"υπερισχύουν αυτών και θα εφαρμοστούν."
-
-#: inc/admin/admin-setting-type-fc-addons.php:81
-#: inc/admin/admin-setting-type-fc-addons.php:128
-#| msgid "All PRO features + All add-ons for a discounted price."
-msgid "All PRO features + All add-ons for a special price."
-msgstr "Όλα τα χαρακτηριστικά PRO + όλα τα πρόσθετα σε ειδική τιμή."
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -312,14 +229,6 @@ msgid ""
 msgstr ""
 "Επιτρέψτε στους πελάτες να προσθέσουν ένα μήνυμα δώρου και άλλες επιλογές "
 "που σχετίζονται με το δώρο στην παραγγελία."
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"Επιτρέψτε στους πελάτες να αλλάζουν τις ποσότητες των προϊόντων ή να "
-"αφαιρούν αντικείμενα απευθείας στη σελίδα πληρωμής."
 
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:42
 msgid "Already have an account?"
@@ -368,16 +277,6 @@ msgid ""
 msgstr ""
 "Συνδέστε τις παραγγελίες του επισκέπτη πελάτη με τον υπάρχοντα λογαριασμό "
 "του, όταν υπάρχει ήδη λογαριασμός με τα στοιχεία επικοινωνίας του πελάτη."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"Αποφύγετε καθυστερήσεις παράδοσης και δυσαρεστημένους πελάτες. Συλλέξτε τις "
-"<strong>σωστές πληροφορίες διεύθυνσης</strong> από την πρώτη φορά που "
-"αγοράζουν από εσάς."
 
 #: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87
 msgid "Before Shipping Address"
@@ -515,15 +414,6 @@ msgstr ""
 "Αλλάζει τη διάταξη της σελίδας πληρωμής παραγγελιών για τις υπάρχουσες "
 "παραγγελίες που εκκρεμεί η πληρωμή από τον πελάτη."
 
-#: inc/admin/admin-setting-type-fc-setup.php:50
-#, php-format
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"Ελέγξτε αν υπάρχουν διαθέσιμες <a href=\"%s\">επιλογές ενσωμάτωσης</a> για "
-"άλλα πρόσθετα που έχετε εγκαταστήσει."
-
 #: inc/admin/admin-settings-checkout.php:477
 msgid "Checkbox for \"Same as shipping/billing address\" checked by default"
 msgstr ""
@@ -537,10 +427,6 @@ msgstr "Ταμείο"
 #: inc/checkout-widget-areas.php:144
 msgid "Checkout Below Place Order"
 msgstr "Ταμείο Παρακάτω Τοποθετήστε την παραγγελία"
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "Στοιχεία ταμείου"
 
 #: inc/admin/admin-settings-checkout.php:422
 #: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:102
@@ -674,23 +560,9 @@ msgstr "Κάντε κλικ για να μεταβείτε στη σύνοψη �
 msgid "Close and continue with checkout"
 msgstr "Κλείστε και συνεχίστε με το checkout"
 
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"Συλλέγει και <strong>επικυρώνει τους αριθμούς ΦΠΑ της ΕΕ στη σελίδα "
-"πληρωμής</strong>, αφαιρεί τις φορολογικές επιβαρύνσεις με βάση την "
-"αντίστροφη επιβάρυνση και επιβεβαιώνει τη θέση του πελάτη όταν χρειάζεται."
-
 #: inc/admin/admin-settings-checkout.php:564
 msgid "Company name field for shipping address"
 msgstr "Πεδίο ονόματος εταιρείας για τη διεύθυνση αποστολής"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "Επιβεβαίωση"
 
 #: inc/admin/admin-settings-checkout.php:599
 #: inc/admin/admin-settings-checkout.php:626
@@ -771,15 +643,6 @@ msgstr "Καθορίστε την ορατότητα του πεδίου πρό�
 msgid "Design template"
 msgstr "Πρότυπο σχεδιασμού"
 
-#: inc/admin/admin-setting-type-fc-addons.php:51
-#: inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"Πρότυπα σχεδιασμού, βελτιστοποιημένο καλάθι και σελίδες λήψης παραγγελιών, "
-"αντιστοίχιση λογαριασμών και πολλά άλλα."
-
 #: inc/checkout-validation.php:197
 #. %s: html for the email address typo correction suggestion link
 #, php-format
@@ -798,22 +661,9 @@ msgstr "Απορρίψτε το"
 msgid "Display as a cart section"
 msgstr "Εμφάνιση ως τμήμα καλαθιού"
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"Εμφάνιση widgets πλευρικής μπάρας πληρωμής μόνο κατά την προβολή του "
-"τελευταίου βήματος πληρωμής σε κινητές συσκευές όταν χρησιμοποιείται "
-"διάταξη πληρωμής πολλαπλών βημάτων"
-
 #: inc/admin/admin-settings-checkout.php:227
 msgid "Display express checkout buttons in one line for larger screens"
 msgstr "Εμφάνιση των κουμπιών ταμείου express σε μία γραμμή για μεγαλύτερες οθόνες"
-
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "Εμφάνιση μηνύματος δώρου και άλλων επιλογών δώρου στη σελίδα πληρωμής"
 
 #: inc/admin/admin-settings-checkout.php:765
 msgid "Display message when an account exists with the email address provided"
@@ -833,14 +683,6 @@ msgstr ""
 #: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:94
 msgid "Display order progress from the theme"
 msgstr "Εμφάνιση προόδου παραγγελίας από το θέμα"
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "Εμφάνιση των κουμπιών συνδέσμου \"Προσθήκη\" με πεζά γράμματα"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "Εμφάνιση της σελίδας καλαθιού με διάταξη παρόμοια με τη σελίδα πληρωμής."
 
 #: inc/admin/admin-settings-checkout.php:196
 msgid "Display the checkout progress bar when using multi-step checkout layout"
@@ -864,10 +706,6 @@ msgid ""
 msgstr ""
 "Εμφάνιση του μηνύματος δώρου ως μέρος του πίνακα λεπτομερειών της "
 "παραγγελίας αντί για ξεχωριστή ενότητα"
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "Εμφάνιση των πεδίων του μηνύματος δώρου πάντα σε εκτεταμένη μορφή"
 
 #: inc/admin/admin-settings-order-received.php:116
 msgid "Display the order details with wide layout on the thank you page"
@@ -985,19 +823,9 @@ msgstr "Ενεργοποίηση προσαρμοσμένου πεδίου email
 msgid "Enable dark mode"
 msgstr "Ενεργοποίηση σκοτεινής λειτουργίας"
 
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "Ενεργοποιήστε την ενότητα με τον ενσωματωμένο κωδικό κουπονιού"
-
 #: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Ενεργοποίηση ελέγχου αλληλογραφίας: (απενεργοποιημένη λειτουργία)"
-
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr ""
-"Ενεργοποίηση επιλογών για την επεξεργασία των στοιχείων του καλαθιού στη "
-"σελίδα πληρωμής"
 
 #: inc/admin/admin-settings-order-received.php:89
 msgid "Enable order details customizations on email notifications"
@@ -1006,10 +834,6 @@ msgstr "Ενεργοποίηση προσαρμογών λεπτομερειών
 #: inc/admin/admin-settings-order-pay.php:79
 msgid "Enable order pay page optimizations"
 msgstr "Ενεργοποίηση βελτιστοποιήσεων σελίδας πληρωμής παραγγελίας"
-
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "Ενεργοποίηση επικύρωσης αριθμού τηλεφώνου βάσει κανόνων χώρας"
 
 #: inc/admin/admin-settings-order-received.php:77
 msgid "Enable thank you page and order details optimizations"
@@ -1029,10 +853,6 @@ msgstr "Ενεργοποιήστε την ενότητα express checkout"
 msgid "Enable wide layout on \"My account\" page."
 msgstr "Ενεργοποίηση ευρείας διάταξης στη σελίδα \"Ο λογαριασμός μου\"."
 
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "Βελτιώστε την εμπειρία πληρωμής με αυτά τα πρόσθετα."
-
 #: inc/admin/admin-settings-tools.php:112
 msgid "Enhanced select fields"
 msgstr "Βελτιωμένα πεδία επιλογής"
@@ -1041,37 +861,15 @@ msgstr "Βελτιωμένα πεδία επιλογής"
 msgid "Enter your code here"
 msgstr "Εισάγετε τον κωδικό σας εδώ"
 
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "Σφάλμα:"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91
 #: inc/admin/admin-setting-type-fc-addons.php:209
 #: inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "EU-VAT Assistant"
 
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. %s: License key expiration date.
-#, php-format
-msgid "Expired on %s."
-msgstr "Έληξε στις %s."
-
 #: inc/admin/admin-settings-checkout.php:215
 msgid "Express checkout"
 msgstr "Express checkout"
-
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "Κουμπιά Express Checkout από τις υποστηριζόμενες μεθόδους πληρωμής"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"Επεκτείνετε όλη την καλοσύνη του Fluid Checkout στη σελίδα καλαθιού και "
-"στις σελίδες ευχαριστιών."
 
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
@@ -1107,14 +905,6 @@ msgstr "Το Fluid Checkout δεν είναι συμβατό με τη διάτ�
 msgid "Fluid Checkout PRO"
 msgstr "Fluid Checkout PRO"
 
-#: inc/admin/admin-setting-type-fc-addons.php:78
-#: inc/admin/admin-setting-type-fc-addons.php:80
-#: inc/admin/admin-setting-type-fc-addons.php:125
-#: inc/admin/admin-setting-type-fc-addons.php:127
-#| msgid "Fluid Checkout PRO - Bundle"
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Fluid Checkout PRO - πακέτο"
-
 #: inc/admin/admin-settings-checkout.php:170
 msgid "Footer background color"
 msgstr "Χρώμα φόντου υποσέλιδου"
@@ -1132,24 +922,6 @@ msgid ""
 msgstr ""
 "Η λειτουργία πληρωμής πολλαπλών βημάτων του γερμανικού PRO πρέπει να "
 "απενεργοποιηθεί όταν χρησιμοποιείτε το Fluid Checkout"
-
-#: inc/admin/admin-setting-type-fc-addons.php:97
-#: inc/admin/admin-setting-type-fc-addons.php:136
-#| msgid "Get the bundle &mdash; Only 129 EUR"
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "Αποκτήστε το πακέτο &mdash; Μόνο 129 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "Αποκτήστε αυτό το πρόσθετο &mdash; 29 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "Αποκτήστε αυτό το πρόσθετο &mdash; 39 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "Αποκτήστε αυτό το πρόσθετο &mdash; 59 EUR"
 
 #: inc/admin/admin-settings-order-received.php:207
 msgid "Gift message"
@@ -1175,41 +947,17 @@ msgstr "Πηγαίνετε στην Αναζήτηση Plugin"
 msgid "Go to the home page"
 msgstr "Μεταβείτε στην αρχική σελίδα"
 
-#: inc/admin/admin-setting-type-fc-addons.php:89
-#: inc/admin/admin-setting-type-fc-addons.php:165
-#: inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Αυτόματη συμπλήρωση διευθύνσεων Google"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "Υπέροχα! Η σελίδα πληρωμής σας τρέχει τώρα στο Fluid Checkout."
-
 #: inc/compat/themes/compat-theme-Impreza.php:99
 msgid "Header"
 msgstr "Κεφαλίδα"
-
-#: inc/admin/admin-settings-cart.php:96
-#: inc/admin/admin-settings-checkout.php:117
-#| msgid "Header and Footer"
-msgid "Header and footer"
-msgstr "Κεφαλίδα και υποσέλιδο"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
 msgstr "Πρότυπο κεφαλίδας και υποσέλιδου"
 
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "Πρότυπα κεφαλίδας και υποσέλιδου"
-
 #: inc/admin/admin-settings-checkout.php:148
 msgid "Header background color"
 msgstr "Χρώμα φόντου κεφαλίδας"
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "Ακολουθούν μερικοί πόροι για να ξεκινήσετε:"
 
 #: inc/admin/admin-settings-cart.php:146 inc/admin/admin-settings-cart.php:169
 #: inc/admin/admin-settings-cart.php:184
@@ -1282,15 +1030,6 @@ msgstr ""
 "κατάσταση ορατότητας, δεν θα εφαρμοστούν αλλαγές, ώστε να επιτραπεί σε άλλα "
 "πρόσθετα να εφαρμόσουν τις αλλαγές που χρειάζονται."
 
-#: inc/admin/admin-setting-type-fc-setup.php:52
-#, php-format
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"Αν ποτέ χρειαστείτε βοήθεια, <a href=\"%s\" target=\"_blank\">ανοίξτε ένα "
-"εισιτήριο υποστήριξης</a> στο επίσημο κανάλι υποστήριξης."
-
 #: inc/admin/admin-settings-checkout.php:237
 msgid ""
 "Ignore additional checkout required fields when paying with a compatible "
@@ -1318,17 +1057,6 @@ msgstr "Μέσα στην επισκόπηση της παραγγελίας"
 #: inc/admin/admin-settings-checkout.php:393
 msgid "Inside the order summary"
 msgstr "Μέσα στη σύνοψη της παραγγελίας"
-
-#: inc/admin/admin-setting-type-fc-addons.php:157
-#: inc/admin/admin-setting-type-fc-addons.php:178
-#: inc/admin/admin-setting-type-fc-addons.php:200
-#: inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "Εγκατεστημένο &mdash; Ενεργοποίηση"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "Ενσωματωμένο πεδίο κωδικού κουπονιού στη σελίδα του καλαθιού"
 
 #: inc/admin/admin-settings-integrations.php:51
 msgid "Integrations"
@@ -1359,26 +1087,9 @@ msgstr ""
 "Συνιστάται να διατηρείτε αυτή την επιλογή ενεργοποιημένη για καλύτερη "
 "εμπειρία χρήσης."
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "Διάταξη & σχεδιασμός"
-
 #: inc/admin/admin-settings-cart.php:198
 msgid "Layout of cross-sell items on the cart page."
 msgstr "Διάταξη των στοιχείων διασταυρούμενων πωλήσεων στη σελίδα καλαθιού."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"Αφήστε τους πελάτες να <strong>αποθηκεύουν πολλαπλές διευθύνσεις αποστολής "
-"και χρέωσης</strong> στο λογαριασμό τους και να επιλέγουν ποιες θα "
-"χρησιμοποιούν στις σελίδες του ταμείου και του καλαθιού."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "Το κλειδί άδειας χρήσης ακυρώθηκε."
 
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
@@ -1422,17 +1133,6 @@ msgstr "Mailchimp για το WooCommerce"
 msgid "Make the checkout progress bar stay visible while scrolling"
 msgstr "Κάντε τη γραμμή προόδου του ταμείου να παραμένει ορατή κατά την κύλιση"
 
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"Κάντε τις ετικέτες του προαιρετικού πεδίου \"Προσθήκη\" του κουμπιού "
-"συνδέσμου ως <κωδικός> με πεζά γράμματα</κωδικός> (π.χ. \"Προσθήκη αριθμού "
-"τηλεφώνου\" αντί για \"Προσθήκη αριθμού τηλεφώνου\"). Αυτή η επιλογή "
-"επηρεάζει επίσης τα κουμπιά συνδέσμου για τα πεδία κωδικών κουπονιών."
-
 #: inc/admin/admin-settings-cart.php:132
 msgid "Make the order summary stay visible on the cart page while scrolling"
 msgstr ""
@@ -1469,32 +1169,9 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Μετακινήστε το πλαίσιο ελέγχου εγγραφής στο βήμα επαφής"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "Πολλαπλές αποθηκευμένες διευθύνσεις για αποστολή και τιμολόγηση."
-
 #: inc/compat/themes/compat-theme-go.php:59
 msgid "My account layout"
 msgstr "Η διάταξη του λογαριασμού μου"
-
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"Δεν υπάρχουν διαθέσιμες ενσωματώσεις προς το παρόν σε αυτό το τμήμα. Οι "
-"επιλογές που σχετίζονται με κάθε πρόσθετο θα εμφανίζονται εδώ μόνο αν το "
-"συγκεκριμένο πρόσθετο είναι ενεργοποιημένο."
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"Δεν υπάρχουν διαθέσιμες επιλογές κλειδιών άδειας χρήσης προς το παρόν σε "
-"αυτό το τμήμα. Οι επιλογές που σχετίζονται με κάθε πρόσθετο ή προσθήκη θα "
-"εμφανιστούν εδώ όταν ενεργοποιηθεί το συγκεκριμένο πρόσθετο."
 
 #: inc/checkout-steps.php:3918
 #: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
@@ -1505,39 +1182,15 @@ msgstr "Δεν έχει επιλεγεί ακόμη."
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "Αριθμός στοιχείων cross-sell που θα εμφανίζονται στη σελίδα του καλαθιού"
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "Εντάξει"
-
 #: inc/admin/admin-settings-order-received.php:184
 msgid "On the sidebar"
 msgstr "Στην πλαϊνή μπάρα"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr ""
-"Ισχύει μόνο εάν η χρήση κωδικών κουπονιών είναι ενεργοποιημένη στις "
-"ρυθμίσεις του WooCommerce."
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"Ισχύει μόνο όταν ο κωδικός κουπονιού εμφανίζεται ως ξεχωριστή ενότητα στις "
-"σελίδες του ταμείου ή του καλαθιού."
 
 #: inc/compat/themes/compat-theme-Impreza.php:101
 msgid "Only applicable when using the Impreza theme header at the checkout page."
 msgstr ""
 "Ισχύει μόνο όταν χρησιμοποιείτε την επικεφαλίδα του θέματος Impreza στη "
 "σελίδα πληρωμής."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "Εμφανίζει μόνο τις επιτρεπόμενες χώρες για αποστολή ή τιμολόγηση"
 
 #: inc/checkout-shipping-phone-field.php:105
 msgid "Only used for shipping-related questions."
@@ -1723,10 +1376,6 @@ msgstr "Τοποθετήστε την παραγγελία"
 msgid "Please verify your phone number."
 msgstr "Παρακαλούμε επαληθεύστε τον αριθμό τηλεφώνου σας."
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "Αποτροπή της αυτόματης επιλογής της πρώτης μεθόδου αποστολής"
-
 #: inc/checkout-steps.php:1688
 #. Next checkout step title
 #, php-format
@@ -1766,15 +1415,6 @@ msgstr "Διαβάστε τεκμηρίωση"
 msgid "Read the documentation."
 msgstr "Διαβάστε την τεκμηρίωση."
 
-#: inc/admin/admin-setting-type-fc-setup.php:48
-#, php-format
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"Διαβάστε τον οδηγό εγκατάστασης <a href=\"%s\" target=\"_blank\">Δηλώσεις "
-"σχετικά με το Fluid Checkout</a>."
-
 #: inc/admin/admin-settings-checkout.php:441
 msgid ""
 "Recommended only when most customers actually need the \"Address line 2\" "
@@ -1796,12 +1436,6 @@ msgid ""
 msgstr ""
 "Αφαιρεί το τμήμα διεύθυνσης αποστολής όταν έχει επιλεγεί μέθοδος αποστολής "
 "με τοπική παραλαβή."
-
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr ""
-"Αντικαταστήστε τα αναπτυσσόμενα στοιχεία <code>select2</code> με "
-"<code>TomSelect</code>"
 
 #: inc/admin/admin-settings-checkout.php:766
 msgid ""
@@ -1857,16 +1491,6 @@ msgstr ""
 "Επιλέξτε τη θέση στην οποία θα εμφανίζεται το τμήμα της διεύθυνσης χρέωσης "
 "στη σελίδα πληρωμής."
 
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"Επιλέξτε τη θέση στην οποία θα εμφανίζεται η ενότητα με τους κωδικούς "
-"κουπονιών στη σελίδα του καλαθιού. Ισχύει μόνο όταν είναι ενεργοποιημένο το "
-"καλάθι AJAX και οι ενσωματωμένοι κωδικοί κουπονιών στη σελίδα πληρωμής."
-
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
 "Select position where to display the coupon codes section on the checkout "
@@ -1887,17 +1511,6 @@ msgid ""
 "cart page."
 msgstr ""
 "Επιλέξτε τη θέση όπου θα εμφανίζονται τα έξοδα αποστολής και η αριθμομηχανή "
-"στη σελίδα του καλαθιού."
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"Επιλέξτε το στυλ του κουμπιού \"εφαρμογή κουπονιού\". Ισχύει μόνο όταν η "
-"ενότητα του κωδικού κουπονιού εμφανίζεται \"Πριν από τα βήματα πληρωμής\" "
-"στη σελίδα πληρωμής ή \"Πριν από την ενότητα των στοιχείων του καλαθιού\" "
 "στη σελίδα του καλαθιού."
 
 #: inc/compat/plugins/compat-plugin-wc-brt-fermopoint-shipping-methods.php:96
@@ -1928,17 +1541,6 @@ msgstr "Ορίστε το <code>font-size</code> μέσα στα πεδία τη
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "Εγκατάσταση & τεκμηρίωση"
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-#, php-format
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr ""
-"Ρύθμιση της διάταξης και του σχεδιασμού στις επιλογές <a "
-"href=\"%s\">επιλογές πληρωμής</a>."
-
 #: inc/admin/admin-settings-cart.php:164
 msgid "Shipping"
 msgstr "Αποστολή"
@@ -1961,17 +1563,6 @@ msgstr "Μέθοδοι αποστολής"
 msgid "Shipping phone"
 msgstr "Τηλέφωνο αποστολής"
 
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Εμφάνιση ενός κουμπιού συνδέσμου στο υποβήμα της θέσης παραλαβής για την "
-"εκκαθάριση των επιλεγμένων μεθόδων αποστολής. Αυτό μπορεί να χρησιμοποιηθεί "
-"για να επιτρέψει την εμφάνιση του τμήματος διεύθυνσης αποστολής ξανά, εάν "
-"προηγουμένως είχε επιλεγεί μια τοπική μέθοδος παραλαβής."
-
 #: inc/admin/admin-settings-checkout.php:678
 msgid "Show an example of a valid phone number inside phone fields"
 msgstr ""
@@ -1986,19 +1577,9 @@ msgstr "Εμφάνιση του κωδικού της χώρας δίπλα στ
 msgid "Show if not defined"
 msgstr "Εμφάνιση αν δεν έχει οριστεί"
 
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Εμφάνιση επιλογής για την κατάργηση των μεθόδων αποστολής στο υποβήμα της "
-"τοποθεσίας παραλαβής"
-
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
 msgid "Sign up checkbox position"
 msgstr "Θέση checkbox εγγραφής"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "Απλοποιημένη επικύρωση ΦΠΑ ΕΕ για το κατάστημά σας."
 
 #: inc/checkout-steps.php:794
 msgid "Single step"
@@ -2041,10 +1622,6 @@ msgstr ""
 msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr "Απόσταση για την επικεφαλίδα του ιστότοπου στη σελίδα πληρωμής (σε pixels)"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "Ειδικές προσφορές"
-
 #: inc/design-templates.php:117
 msgid "Split"
 msgstr "Split"
@@ -2075,29 +1652,9 @@ msgstr "Σελίδα ευχαριστιών & διάταξη λεπτομερε�
 msgid "Thanks for choosing Fluid Checkout!"
 msgstr "Ευχαριστούμε που επιλέξατε το Fluid Checkout!"
 
-#: inc/admin/admin-setting-type-fc-addons.php:55
-#: inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"Τα καλύτερα εργαλεία για την περαιτέρω <strong>βελτίωση του ποσοστού "
-"μετατροπής στο ταμείο του WooCommerce</strong> και για να καταστήσετε την "
-"εμπειρία αγοράς συνεπή σε όλο το ταξίδι."
-
 #: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:75
 msgid "The Bluehost Plugin"
 msgstr "Το plugin της Bluehost"
-
-#: inc/admin/admin-setting-type-fc-addons.php:85
-#: inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"Το πακέτο περιλαμβάνει όλα τα πρόσθετα που προσφέρουμε σήμερα και τα "
-"πρόσθετα Fluid Checkout που θα κυκλοφορήσουμε στο μέλλον."
 
 #: inc/admin/admin-settings-checkout.php:478
 #| msgid ""
@@ -2152,21 +1709,6 @@ msgstr ""
 "και σύνδεσμος στη σελίδα προϊόντος που προστίθενται από το θέμα είναι "
 "απενεργοποιημένες από προεπιλογή."
 
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"Ο προορισμός αποστολής ορίζεται πάντα σε \"Προεπιλογή της διεύθυνσης "
-"αποστολής του πελάτη\" όταν είναι ενεργοποιημένο το Fluid Checkout. Οι "
-"πελάτες μπορούν ακόμα να παρέχουν διαφορετικές διευθύνσεις αποστολής και "
-"χρέωσης κατά τη διάρκεια της πληρωμής, μια επιλογή για τον καθορισμό της "
-"προεπιλεγμένης διεύθυνσης χρέωσης να είναι η ίδια με τη διεύθυνση αποστολής "
-"είναι διαθέσιμη στο WooCommerce > Ρυθμίσεις > Fluid Checkout."
-
 #: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:87
 msgid "Theme Atomion"
 msgstr "Θέμα Atomion"
@@ -2219,15 +1761,6 @@ msgstr "Διάταξη διασταυρούμενων πωλήσεων του θ
 #: inc/admin/admin-settings-checkout.php:131
 msgid "Theme's header and footer"
 msgstr "Κεφαλίδα και υποσέλιδο του θέματος"
-
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"Αυτές οι επιλογές επηρεάζουν τη σελίδα ευχαριστιών , την προβολή "
-"λεπτομερειών παραγγελίας στις σελίδες λογαριασμού και στις ειδοποιήσεις "
-"μέσω email."
 
 #: inc/admin/admin-settings-order-received.php:110
 msgid ""
@@ -2292,17 +1825,6 @@ msgstr ""
 "ευχαριστιών) και τα στοιχεία της παραγγελίας στις σελίδες λογαριασμού, τα "
 "μηνύματα ηλεκτρονικού ταχυδρομείου και τα δελτία συσκευασίας."
 
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"Το TomSelect είναι ένα απλούστερο στοιχείο επιλογής dropdown, το οποίο "
-"είναι λιγότερο επιρρεπές σε σφάλματα από το Select2, ενώ προσφέρει τα ίδια "
-"χαρακτηριστικά που χρησιμοποιούνται πραγματικά στις σελίδες πληρωμής του "
-"WooCommerce."
-
 #: inc/admin/admin-settings-tools.php:51
 msgid "Tools"
 msgstr "Εργαλεία"
@@ -2311,20 +1833,9 @@ msgstr "Εργαλεία"
 msgid "Troubleshooting"
 msgstr "Αντιμετώπιση προβλημάτων"
 
-#: inc/admin/admin-settings-cart.php:219
-#: inc/admin/admin-settings-order-pay.php:91
-#: inc/admin/admin-settings-order-received.php:125
-#: inc/admin/admin-settings-checkout.php:328
-msgid "Trust symbols &amp; badges"
-msgstr "Σύμβολα και σήματα εμπιστοσύνης"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "Σύμβολα εμπιστοσύνης στις σελίδες του καλαθιού και των ευχαριστιών"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "Έως και 40% λιγότερα πεδία πληρωμής για συμπλήρωση."
 
 #: inc/admin/admin-notice-db-migrations.php:55
 msgid "Update database"
@@ -2335,10 +1846,6 @@ msgstr "Ενημέρωση βάσης δεδομένων"
 msgid "Upgrade to PRO"
 msgstr "Αναβάθμιση σε PRO"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "Αναβάθμιση σε PRO &mdash; 99 EUR"
-
 #: inc/admin/admin-settings-tools.php:93
 msgid ""
 "Using debug mode affects the website performance. Only use this option "
@@ -2348,67 +1855,11 @@ msgstr ""
 "ιστότοπου. Χρησιμοποιήστε αυτή την επιλογή μόνο κατά την αντιμετώπιση "
 "προβλημάτων."
 
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. %s: License key expiration date.
-#, php-format
-msgid "Valid until %s."
-msgstr "Ισχύει μέχρι %s."
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "Επαλήθευση αριθμού τηλεφώνου"
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-#, php-format
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"Επισκεφθείτε την ιστοσελίδα <a href=\"%s\" target=\"_blank\">η τεκμηρίωσή "
-"μας</a> για περισσότερες πληροφορίες σχετικά με τις λειτουργίες του Fluid "
-"Checkout."
-
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
 msgstr ""
 "Επισκεφθείτε τον ιστότοπό μας για περισσότερες πληροφορίες σχετικά με τα "
 "πρόσθετα και τα πρόσθετα μας."
-
-#: inc/admin/admin-settings-checkout.php:125
-#| msgid ""
-#| "We recommend using the Fluid Checkout header and footer to avoid "
-#| "distractions at the checkout page. <a href=\"https://baymard."
-#| "com/blog/cart-abandonment\" target=\"_blank\">Read the research about "
-#| "cart abandonment</a>."
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"Συνιστούμε να χρησιμοποιείτε την κεφαλίδα και το υποσέλιδο χωρίς "
-"περισπασμούς για να αποφύγετε τους περισπασμούς στη σελίδα πληρωμής. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" "
-"target=\"_blank\">Διαβάστε την έρευνα σχετικά με την εγκατάλειψη του "
-"καλαθιού</a>."
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"Όταν είναι απενεργοποιημένη, η επικύρωση του πεδίου τηλεφώνου δεν θα "
-"ελέγχει αν οι κωδικοί χώρας ή περιοχής είναι έγκυροι για τη χώρα."
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"Όταν είναι ενεργοποιημένο, μόνο οι χώρες που επιτρέπονται για αποστολή θα "
-"είναι διαθέσιμες στο πεδίο τηλεφώνου αποστολής και μόνο οι χώρες που "
-"επιτρέπονται για χρέωση θα είναι διαθέσιμες στο πεδίο τηλεφώνου χρέωσης."
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:175
 msgid ""
@@ -2419,20 +1870,6 @@ msgstr ""
 "επαφής ανεξάρτητα από τη θέση εμφάνισης που ορίζεται στις ρυθμίσεις του "
 "πρόσθετου Sendinblue."
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Όταν είναι ενεργοποιημένη, η πρώτη διαθέσιμη μέθοδος αποστολής δεν θα "
-"επιλέγεται αυτόματα όταν δεν έχει επιλεγεί προηγουμένως άλλη μέθοδος "
-"αποστολής για κάθε πακέτο αποστολής. <br>Αυτή η επιλογή θα ενεργοποιηθεί "
-"αυτόματα εάν η επιλογή για την εκκαθάριση της επιλεγμένης μεθόδου αποστολής "
-"είναι ενεργοποιημένη για τη λειτουργία Τοπική παραλαβή."
-
 #: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
 msgid ""
 "When enabled, the shipping email field from the Bluehost plugin will be "
@@ -2440,21 +1877,6 @@ msgid ""
 msgstr ""
 "Όταν είναι ενεργοποιημένο, το πεδίο email αποστολής από το πρόσθετο "
 "Bluehost θα προστεθεί στη φόρμα πληρωμής."
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"Όταν το μέγεθος της γραμματοσειράς μέσα στα πεδία της φόρμας είναι "
-"μικρότερο από 16px, το Safari και άλλα προγράμματα περιήγησης ενδέχεται να "
-"μεγεθύνουν αυτόματα στις κινητές συσκευές για να κάνουν το κείμενο πιο "
-"ευανάγνωστο. Όταν αυτή η επιλογή είναι ενεργοποιημένη, θα ορίσει το μέγεθος "
-"γραμματοσειράς για το εσωτερικό των πεδίων φόρμας στα 16px στις σελίδες που "
-"βελτιστοποιούνται από το Fluid Checkout για να αποφευχθεί το ζουμάρισμα."
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
 msgid ""
@@ -2669,10 +2091,6 @@ msgstr "Μετά τη γραμμή προόδου"
 msgid "Before coupon codes section"
 msgstr "Πριν από το τμήμα κωδικών κουπονιών"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "Ενεργοποίηση πεδίων διεθνών τηλεφωνικών αριθμών"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "Μορφοποιήστε τους τηλεφωνικούς αριθμούς σύμφωνα με τους κανόνες κάθε χώρας."
@@ -2680,19 +2098,6 @@ msgstr "Μορφοποιήστε τους τηλεφωνικούς αριθμο�
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "Χρησιμοποιήστε ακριβή επικύρωση αριθμού τηλεφώνου"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"Προσπαθήστε να βεβαιωθείτε ότι ο αριθμός τηλεφώνου είναι έγκυρος αριθμός "
-"κινητής ή σταθερής τηλεφωνίας με βάση τους κανόνες για τον επιλεγμένο "
-"κωδικό χώρας. Αυτή η επιλογή χρησιμοποιεί τη λειτουργία ακριβούς επικύρωσης "
-"<code>intl-tel-input</code>, η οποία ενδέχεται να δώσει ψευδώς θετικά "
-"αποτελέσματα για ορισμένους τηλεφωνικούς αριθμούς."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2739,26 +2144,6 @@ msgstr "2 στήλες"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 στήλη"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"Γενικά στυλ για τα βήματα πληρωμής, τη σύνοψη της παραγγελίας και άλλα "
-"τμήματα. <br>Μπορεί επίσης να ισχύει και για άλλες σελίδες, όπως οι σελίδες "
-"Καλάθι, Παραγγελία παραλήφθηκε και Προβολή παραγγελίας."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"Το πρότυπο σχεδιασμού <em>\"Split\"</em> δεν είναι διαθέσιμο όταν "
-"χρησιμοποιείται η διάταξη <em>\"1 στήλη\"</em> και θα επανέλθει στο "
-"<em>\"Minimalist\"</em> αν επιλεγεί."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2856,6 +2241,2636 @@ msgstr ""
 "αποστολής μπορεί να αντιγραφεί στη διεύθυνση χρέωσης όταν είναι επιλεγμένη "
 "η σχετική επιλογή, διαφορετικά ο πελάτης ενδέχεται να μην μπορεί να "
 "ολοκληρώσει τη φόρμα ολοκλήρωσης της παραγγελίας."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "Προφίλ ρυθμίσεων"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "Προφίλ ρυθμίσεων"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "Δεν έχετε δικαίωμα να εκτελέσετε αυτήν την ενέργεια."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "Δεν έχετε δικαίωμα να ενεργοποιήσετε προσθήκες."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "Λείπει το πρόσθετο."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "Το πρόσθετο ενεργοποιήθηκε."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "Θα εφαρμοστούν οι ακόλουθες αλλαγές:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Από την έκδοση Fluid Checkout 5.0 και μετά, οι ρυθμίσεις αποθηκεύονται με "
+"διαφορετικό τρόπο. Οι παλαιότερες επιλογές εξακολουθούν να αποθηκεύονται "
+"στη βάση δεδομένων, ώστε να είναι δυνατή η επαναφορά σε προηγούμενες "
+"εκδόσεις, αν χρειαστεί."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"Το κατάστημά σας λειτουργεί εδώ και περίπου 2 εβδομάδες με τις νέες "
+"ρυθμίσεις, ώστε να μπορέσετε να καθαρίσετε τις παλαιότερες επιλογές που "
+"είναι αποθηκευμένες στη βάση δεδομένων. Λάβετε υπόψη ότι μετά τον "
+"καθαρισμό, αν χρειαστεί να επιστρέψετε σε προηγούμενες εκδόσεις του "
+"πρόσθετου, αυτό θα χρησιμοποιήσει τις προεπιλεγμένες τιμές για όλες τις "
+"ρυθμίσεις."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "Εκκαθάριση των ρυθμίσεων του Fluid Checkout"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "Διαγραφή των εναπομενουσών επιλογών"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "Βοηθήστε μας να βελτιώσουμε το Fluid Checkout"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"Μοιραστείτε ανώνυμες αναφορές σχετικά με το περιβάλλον του ιστότοπου μέσω "
+"του Fluid Checkout, ώστε να λάβετε ταχύτερη υποστήριξη και να μας βοηθήσετε "
+"να βελτιώσουμε τη συμβατότητα και να μετρήσουμε τον αντίκτυπο. Δεν "
+"περιλαμβάνονται δεδομένα πελατών, χρηστών ή ευαίσθητα δεδομένα. Μπορείτε να "
+"επιλέξετε ανά πάσα στιγμή τι θα μοιραστείτε από τις ρυθμίσεις της ενότητας "
+"«Εργαλεία»."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "Ενεργοποίηση αναφορών περιβάλλοντος ιστότοπου"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "Ελέγξτε τις ρυθμίσεις"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"Η προεπισκόπηση αυτή έχει λήξει. Ανανεώστε τη σελίδα διαχείρισης για να "
+"ξεκινήσετε μια νέα προεπισκόπηση."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "Η προεπισκόπηση έχει λήξει"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "Δεν είναι δυνατή η υποβολή παραγγελιών στην προεπισκόπηση."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "Η σύνδεση δεν είναι διαθέσιμη στην έκδοση προεπισκόπησης."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "Δεν είναι δυνατή η δημιουργία λογαριασμών στην προεπισκόπηση."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "Τα αιτήματα προς άλλους ιστότοπους αποκλείονται στην προεπισκόπηση."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "Επεξεργασία…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "Παρουσιάστηκε κάποιο σφάλμα. Παρακαλώ, δοκιμάστε ξανά."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "Ενεργοποίηση προσθέτου"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr ""
+"Fluid Checkout PRO - Το ολοκληρωμένο πακέτο για τη διαδικασία ολοκλήρωσης "
+"αγοράς"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"Όλες οι λειτουργίες της έκδοσης PRO + όλα τα πρόσθετα, σε μία τιμή. Πρότυπα "
+"σχεδιασμού, βελτιστοποιημένες σελίδες καλαθιού αγορών και επιβεβαίωσης "
+"παραγγελίας, αντιστοίχιση λογαριασμών και πολλά άλλα."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "Βελτιστοποιημένη σελίδα πληρωμής παραγγελίας"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "Κουμπιά γρήγορης ολοκλήρωσης αγοράς από υποστηριζόμενους τρόπους πληρωμής"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "Καθυστέρηση στη δημιουργία λογαριασμού"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Αυτόματη συμπλήρωση διευθύνσεων με τα API του Google Maps"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "Πολλές αποθηκευμένες διευθύνσεις στο βιβλίο διευθύνσεων"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "Βοηθός για τον ΦΠΑ της ΕΕ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "Απόκρυψη αυτής της ενότητας"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "Μάθετε περισσότερα"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "Αποκτήστε πρόωρη πρόσβαση"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "Ενεργοποίηση πρόσθετου"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "Αξιοποιήστε στο έπακρο τη διαδικασία ολοκλήρωσης της παραγγελίας σας"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "Δοκιμή κλειδιού API"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "Οδηγίες εγκατάστασης"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "Επιλογές"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr ""
+"Ρυθμίστε τη διάταξη και το σχεδιασμό στις <a href=\"%s\">επιλογές "
+"ολοκλήρωσης αγοράς</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"Ενεργοποιήστε την ολοκλήρωση αγοράς ως επισκέπτης και/ή ελέγξτε <a "
+"href=\"%s\">τις ρυθμίσεις λογαριασμών πελατών</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"Ενεργοποιήστε τις βελτιστοποιημένες σελίδες <a href=\"%1$s\">καλάθι</a>, <a "
+"href=\"%2$s\">ευχαριστώ</a> και <a href=\"%3$s\">πληρωμή παραγγελίας</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr ""
+"Ενεργοποιήστε την <a href=\"%s\">αυτόματη συμπλήρωση διευθύνσεων</a> από το "
+"Google Maps."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr ""
+"Ενεργοποιήστε τη δυνατότητα αποθήκευσης πολλαπλών διευθύνσεων με το <a "
+"href=\"%s\">βιβλίο διευθύνσεων</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"Ελέγξτε αν υπάρχουν <a href=\"%s\">επιλογές ενσωμάτωσης</a> διαθέσιμες για "
+"το θέμα ή για άλλα πρόσθετα που έχετε εγκαταστήσει."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"Λάβετε ταχύτερη υποστήριξη και βοηθήστε μας να βελτιώσουμε τη συμβατότητα "
+"και να μετρήσουμε τον αντίκτυπο. <a href=\"%s\">Ενεργοποιήστε την "
+"παρακολούθηση χρήσης</a> από τις ρυθμίσεις των εργαλείων."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "Λείπει η καρτέλα «Ρυθμίσεις»."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "Πρώτα βήματα"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>Τέλεια! Η σελίδα ολοκλήρωσης αγοράς σας λειτουργεί πλέον με το "
+"Fluid Checkout.</strong> Ακολουθούν μερικά βήματα για να ξεκινήσετε:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "Ολοκληρώθηκε"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "Προεπισκόπηση δεδομένων αναφοράς"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "Αποστολή τώρα"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "Αυτόματη ανίχνευση"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "Αφρικάανς"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "Αλβανικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "Αμαρικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "Αραβικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "Αρμενικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "Αζερμπαϊτζάν"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "Βασκική"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "Λευκορωσικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "Μπενγκάλι"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "Βοσνιακά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "Βουλγαρικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "Βιρμανικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "Καταλανικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "Κινέζικα"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "Κινέζικα (απλοποιημένα)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "Κινέζικα (Χονγκ Κονγκ)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "Κινέζικα (Παραδοσιακά)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "Κροατικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "Τσεχικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "Δανική"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "Ολλανδικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "Αγγλικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "Αγγλικά (Αυστραλιανά)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "Αγγλικά (Μεγάλη Βρετανία)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "Εσθονικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "Φαρσί"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "Φινλανδικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "Φιλιππινέζικα"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "Γαλλικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "Γαλλικά (Καναδά)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "Γαλικιανική"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "Γεωργιανή"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "Γερμανικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "Ελληνικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "Γκουτζαράτι"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "Εβραϊκά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "Χίντι"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "Ουγγρικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "Ισλανδική"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "Ινδονησιακά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "Ιταλικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "Ιαπωνικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "Κανάντα"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "Καζακικός"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "Χμερ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "Κορεατικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "Κιργιζία"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "Λάος"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "Λετονικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "Λιθουανικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "Μακεδονικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "Μαλαισιανά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "Μαλαγιαλάμ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "Μαράθι"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "Μογγολική"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "Νεπάλ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "Νορβηγικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "Πολωνικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "Πορτογαλικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "Πορτογαλικά (Βραζιλία)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "Πορτογαλικά (Πορτογαλία)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "Παντζάμπι"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "Ρουμανικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "Ρωσικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "Σερβικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "Σινχαλέζικη"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "Σλοβακικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "Σλοβενικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "Ισπανικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "Ισπανικά (Λατινική Αμερική)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "Σουαχίλι"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "Σουηδικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "Ταμίλ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "Τελούγκου"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "Ταϊλανδικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "Τουρκικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "Ουκρανικά"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "Ουρντού"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "Βιετναμέζικα"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "Ζουλού"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Αυτόματη συμπλήρωση διευθύνσεων από το Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Έκδοση του API του Google Places"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"Επιλέξτε ποια έκδοση του API του Google Places θέλετε να χρησιμοποιήσετε. "
+"Σας συνιστούμε να μεταβείτε στο νέο API του Places το συντομότερο δυνατό."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"Συνιστούμε να χρησιμοποιείτε το «Places API (New)», καθώς από την 1η "
+"Μαρτίου 2025 η Google θα θέσει την έκδοση «Places API (Legacy)» σε "
+"κατάσταση «Legacy», πράγμα που σημαίνει ότι δεν θα μπορείτε πλέον να "
+"ενεργοποιήσετε αυτήν την υπηρεσία για νέα κλειδιά API και ότι η "
+"συγκεκριμένη έκδοση του API τελικά δεν θα είναι πλέον διαθέσιμη. Οι "
+"υπάρχοντες λογαριασμοί που χρησιμοποιούν ήδη το Legacy API μπορούν να "
+"συνεχίσουν να λειτουργούν χωρίς διακοπές."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(Συνιστάται)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Κλειδί API της Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"Επικολλήστε το κλειδί API της Google και χρησιμοποιήστε το κουμπί «Δοκιμή» "
+"για να βεβαιωθείτε ότι λειτουργεί για αυτόν τον ιστότοπο. Βεβαιωθείτε ότι "
+"το κλειδί είναι έγκυρο και επιτρέπεται για τον τομέα σας, διαφορετικά το "
+"πεδίο διεύθυνσης ενδέχεται να αποκλειστεί, εμποδίζοντας τους πελάτες να "
+"ολοκληρώσουν τις παραγγελίες τους."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "Ενεργοποίηση της αυτόματης συμπλήρωσης διευθύνσεων της Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr ""
+"Ενεργοποιήστε την αυτόματη συμπλήρωση διευθύνσεων χρησιμοποιώντας τα API "
+"του Google Maps."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Γλώσσα API της Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"Αυτή η γλώσσα θα χρησιμοποιείται για την εμφάνιση των προτάσεων διευθύνσεων "
+"από το API του Google Places, ενώ οι διευθύνσεις θα συμπληρώνονται αυτόματα "
+"και σε αυτή τη γλώσσα."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "Τύποι αποτελεσμάτων"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Αφήστε το κενό για να γίνουν αποδεκτοί οποιοιδήποτε τύποι αποτελεσμάτων, "
+"κάτι που συνήθως οδηγεί σε καλύτερα αποτελέσματα αντιστοίχισης. <a "
+"href=\"%s\" target=\"_blank\">Δείτε την τεκμηρίωση για περισσότερες "
+"λεπτομέρειες</a>. <br>Επιλέξτε έως και 5 τύπους αποτελεσμάτων αναζήτησης "
+"διευθύνσεων που θα εμφανίζονται στα πεδία αυτόματης συμπλήρωσης "
+"διευθύνσεων. <br>Επισκεφθείτε την τεκμηρίωση του Google Maps για να μάθετε "
+"περισσότερα σχετικά με τους <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">υποστηριζόμενους τύπους</a>."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "Τύποι αποτελεσμάτων (Παλαιό API)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Ποιος τύπος αποτελεσμάτων αναζήτησης διευθύνσεων θα εμφανίζεται κατά τη "
+"χρήση του Places API (Legacy). <br>Επισκεφθείτε την τεκμηρίωση του παλαιού "
+"Google Places API για να μάθετε περισσότερα σχετικά με τους <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">υποστηριζόμενους τύπους</a>."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "Πεδία εταιρείας"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr ""
+"Ενεργοποίηση της αυτόματης συμπλήρωσης για το όνομα της εταιρείας, εφόσον "
+"είναι διαθέσιμη"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Ενεργοποίηση της αυτόματης συμπλήρωσης του πεδίου «εταιρεία» με τις "
+"πληροφορίες σχετικά με το όνομα της εταιρείας, όπως αυτές επιστρέφονται από "
+"τα API του Google Maps."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "Αναζήτηση επιχειρήσεων"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "Ενεργοποίηση αναζήτησης επιχειρήσεων στο πεδίο «Εταιρεία»"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"Ενεργοποιήστε την εμφάνιση προτάσεων διευθύνσεων που σχετίζονται με μια "
+"επιχείρηση κατά την πληκτρολόγηση στο πεδίο «Εταιρεία» και, στη συνέχεια, "
+"ενεργοποιήστε την αυτόματη συμπλήρωση όλων των πεδίων διευθύνσεων όταν "
+"επιλεγεί μια επιχείρηση από τις προτάσεις."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "Τύποι αποτελεσμάτων εταιρειών"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Επιλέξτε έως 5 τύπους αποτελεσμάτων αναζήτησης διευθύνσεων που θα "
+"εμφανίζονται στα πεδία αυτόματης συμπλήρωσης της εταιρείας. <br>Η "
+"συνιστώμενη τιμή είναι <code>επιχείρηση</code>, η οποία περιλαμβάνει τους "
+"περισσότερους τύπους επιχειρήσεων. <br>Αφήστε το πεδίο κενό για να γίνουν "
+"αποδεκτοί οποιοιδήποτε τύποι αποτελεσμάτων, συμπεριλαμβανομένων και εκείνων "
+"που δεν σχετίζονται με επιχειρήσεις. <br>Επισκεφθείτε την τεκμηρίωση του "
+"Google Maps για να μάθετε περισσότερα σχετικά με τους <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">υποστηριζόμενους τύπους</a>."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Λογότυπο της Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "Εμφάνιση κειμένου και λογότυπου «Powered by Google»"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"Όταν είναι επιλεγμένο, το κείμενο και το λογότυπο «Powered by Google» θα "
+"εμφανίζονται στο κάτω μέρος του πλαισίου προτάσεων αυτόματης συμπλήρωσης "
+"διευθύνσεων."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "Αυτόματη συμπλήρωση διευθύνσεων API της Βραζιλίας"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "API της Βραζιλίας"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr ""
+"Ενεργοποίηση της αυτόματης συμπλήρωσης διευθύνσεων μέσω του API της "
+"Βραζιλίας για τα πεδία CEP"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"Χρησιμοποιήστε το API της Βραζιλίας για να ανακτήσετε και να συμπληρώσετε "
+"αυτόματα διευθύνσεις χρησιμοποιώντας το πεδίο CEP/Ταχυδρομικός κώδικας. "
+"Ισχύει μόνο για διευθύνσεις στη Βραζιλία."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "Έκδοση API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr ""
+"Επιλέξτε ποια έκδοση της μεθόδου CEP του API της Βραζιλίας θέλετε να "
+"χρησιμοποιήσετε."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "Μεταφορά του βιβλίου διευθύνσεων"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "Διευθύνσεις WooCommerce"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"Αντιγράψτε τις υπάρχουσες διευθύνσεις αποστολής και χρέωσης από το "
+"WooCommerce στο βιβλίο διευθύνσεων των πελατών."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "Ενεργοποίηση της λειτουργίας του βιβλίου διευθύνσεων"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"Δώστε τη δυνατότητα στους πελάτες να αποθηκεύουν πολλές διευθύνσεις και να "
+"ορίζουν την προεπιλεγμένη διεύθυνση που θα χρησιμοποιείται για την αποστολή "
+"και τη χρέωση."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "Ετικέτες διευθύνσεων"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr ""
+"Δώστε τη δυνατότητα στους πελάτες να προσθέτουν μια προσαρμοσμένη ετικέτα "
+"για κάθε διεύθυνση"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"Οι ετικέτες διευθύνσεων διευκολύνουν τους πελάτες να διακρίνουν τις "
+"αποθηκευμένες διευθύνσεις τους (π.χ.: «Σπίτι της μαμάς»). Οι ετικέτες "
+"διευθύνσεων είναι προσωπικές για τους πελάτες και δεν θα εμφανίζονται ούτε "
+"θα εκτυπώνονται στη σελίδα λεπτομερειών της παραγγελίας ή στα τιμολόγια."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "Διάταξη οθόνης"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr ""
+"Επιλέξτε τον τρόπο εμφάνισης των αποθηκευμένων διευθύνσεων κατά την "
+"ολοκλήρωση της παραγγελίας και στο καλάθι."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"Ισχύει κατά την ολοκλήρωση της παραγγελίας και στο καλάθι. Οι αποθηκευμένες "
+"διευθύνσεις στη σελίδα του λογαριασμού εμφανίζονται πάντα με τη διάταξη των "
+"καρτών."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "Κάρτες διευθύνσεων"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "Λίστα διευθύνσεων"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "Πεδίο με αναπτυσσόμενο μενού"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "Αναζήτηση διεύθυνσης"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"Εμφάνιση του φίλτρου αναζήτησης διευθύνσεων στο περιβάλλον χρήστη όταν ο "
+"πελάτης διαθέτει τουλάχιστον αυτόν τον αριθμό αποθηκευμένων διευθύνσεων."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr ""
+"Δεν χρησιμοποιείται όταν η διάταξη της οθόνης έχει οριστεί ως αναπτυσσόμενο "
+"πεδίο."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "Διευθύνσεις"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr ""
+"Ενεργοποιήστε τις βελτιστοποιήσεις της σελίδας του καλαθιού για να δείτε "
+"περισσότερες επιλογές"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "Σύνοψη παραγγελίας με επισήμανση"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"Επιλέξτε τη θέση στην οποία θα εμφανίζεται η ενότητα με τους κωδικούς "
+"κουπονιών στη σελίδα του καλαθιού αγορών. Ισχύει μόνο όταν είναι "
+"ενεργοποιημένο το καλάθι AJAX και εφόσον η χρήση κωδικών κουπονιών έχει "
+"ενεργοποιηθεί στις ρυθμίσεις του WooCommerce."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "Διάταξη των διασταυρούμενων πωλήσεων"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "Εμφανίζονται προτάσεις για συμπληρωματικές πωλήσεις"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "Προϊόντα"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "Βελτιστοποίηση της σελίδας του καλαθιού αγορών"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"Δώστε στο καλάθι σας την ίδια σαφή διάταξη, εστιασμένη στις μετατροπές, "
+"όπως και στη διαδικασία ολοκλήρωσης της παραγγελίας."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr ""
+"Προσαρμόστε τη διάταξη του καλαθιού αγορών στη σελίδα ολοκλήρωσης της "
+"παραγγελίας, ώστε να εξασφαλιστεί μια συνεπής εμπειρία αγοράς."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"Το καλάθι να ενημερώνεται συνεχώς στο παρασκήνιο, χωρίς να γίνεται "
+"επαναφόρτωση ολόκληρης της σελίδας όταν αλλάζουν οι ποσότητες."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"Τοποθετήστε τους κωδικούς κουπονιών, τις πληροφορίες αποστολής και τις "
+"προτάσεις συμπληρωματικών προϊόντων ακριβώς εκεί όπου αποδίδουν καλύτερα."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"Διατηρήστε την περίληψη της παραγγελίας ορατή κατά την κύλιση της σελίδας "
+"και προσθέστε σύμβολα εμπιστοσύνης στα σημεία όπου οι αγοραστές χρειάζονται "
+"διαβεβαίωση."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "Στήλες"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"Γενικά στυλ για τα βήματα ολοκλήρωσης της παραγγελίας, τη σύνοψη της "
+"παραγγελίας και άλλες ενότητες. Ισχύει για άλλες σελίδες ολοκλήρωσης "
+"παραγγελίας, καλαθιού αγορών, ευχαριστίας (η παραγγελία ελήφθη) και "
+"προβολής παραγγελίας."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"Όταν χρησιμοποιείτε τη διάταξη <em>«1 στήλη»</em> με το πρότυπο σχεδίασης "
+"<em>«Split»</em>, η δεξιά στήλη εμφανίζεται μόνο εάν είναι ενεργή η περιοχή "
+"widget της πλευρικής στήλης της σελίδας (Πλευρική στήλη ολοκλήρωσης αγοράς, "
+"Πλευρική στήλη καλαθιού ή Πλευρική στήλη παραλαβής παραγγελίας). "
+"Διαφορετικά, η σελίδα παραμένει μονοστήλη με στυλ «Split»."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "Διαχωρισμός φόντου στήλης"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"Επιλέξτε ένα χρώμα φόντου για τη δευτερεύουσα στήλη του σχεδιασμού «Split». "
+"Αφήστε το πεδίο κενό για να χρησιμοποιηθεί το χρώμα φόντου της σύνοψης "
+"παραγγελίας."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "Πρότυπα σελίδων"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "Πρότυπο ολοκλήρωσης αγοράς"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"Συνιστάται για λιγότερες περισπασμούς κατά την ολοκλήρωση της αγοράς. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">Διαβάστε τη μελέτη σχετικά με την εγκατάλειψη του "
+"καλαθιού αγορών</a>."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "Κινούμενη γραμμή προόδου"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "Στυλ γραμμής προόδου"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "Σύνολα παραγγελιών"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "Χρώμα φόντου"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "Σύνδεσμος δράσης"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "Σύνοψη παραγγελίας μέσω κινητού"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "Αρχική κατάσταση του κινητού"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr ""
+"Ενεργοποίηση της δυνατότητας επεξεργασίας των προϊόντων του καλαθιού κατά "
+"την ολοκλήρωση της παραγγελίας"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"Δώστε τη δυνατότητα στους πελάτες να αλλάζουν τις ποσότητες των προϊόντων ή "
+"να αφαιρούν είδη απευθείας στη σελίδα ολοκλήρωσης της παραγγελίας."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "Σφάλματα στο καλάθι αγορών"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"Ισχύει μόνο όταν ο κωδικός κουπονιού εμφανίζεται ως ξεχωριστή ενότητα στις "
+"σελίδες ολοκλήρωσης αγοράς ή στο καλάθι, και εφόσον η χρήση κωδικών "
+"κουπονιών έχει ενεργοποιηθεί στις ρυθμίσεις του WooCommerce."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "Θέση κωδικών κουπονιών"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "Κουμπί «Εφαρμογή κουπονιού»"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "Επιλέξτε το στυλ του κουμπιού «Εφαρμογή κουπονιού»."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "Διεύθυνση, γραμμή 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"Αυτή η ρύθμιση ισχύει τόσο για την ενότητα «Ολοκλήρωση αγοράς» όσο και για "
+"την ενότητα «Παραλαβή από κατάστημα». Στην ενότητα «Παραλαβή από "
+"κατάστημα», καθορίζει επίσης αν το μενού επιλογής «Αποστολή/Παραλαβή» θα "
+"εμφανίζεται εντός της ενότητας των τρόπων αποστολής (πριν από τη διεύθυνση) "
+"ή ως ξεχωριστή ενότητα (μετά)."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "Λογαριασμοί πελατών"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "Ολοκλήρωση αγοράς ως επισκέπτης"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"Επιλογές ολοκλήρωσης αγοράς ως επισκέπτης, σύνδεσης και δημιουργίας "
+"λογαριασμού από τη σελίδα ρυθμίσεων «Λογαριασμοί» του WooCommerce. "
+"Διαχειρίζονται εδώ για τη δική σας ευκολία, ώστε να μπορείτε να "
+"χρησιμοποιείτε διαφορετικές τιμές για κάθε προφίλ ρυθμίσεων."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr ""
+"Να επιτρέπεται στους πελάτες να ολοκληρώνουν την παραγγελία τους χωρίς "
+"λογαριασμό"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Συνιστάται</strong> ώστε οι πελάτες να μην καλούνται να "
+"δημιουργήσουν λογαριασμό ή να συνδεθούν κατά τη διαδικασία ολοκλήρωσης της "
+"παραγγελίας, κάτι που μπορεί να μειώσει τα ποσοστά μετατροπής."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"Όταν η λειτουργία αυτή είναι απενεργοποιημένη, οι πελάτες πρέπει να "
+"συνδεθούν ή να δημιουργήσουν λογαριασμό για να ολοκληρώσουν την αγορά."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "Σύνδεση κατά την ολοκλήρωση της παραγγελίας"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "Ενεργοποίηση σύνδεσης κατά την ολοκλήρωση της παραγγελίας"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr ""
+"Εμφάνιση ενός συνδέσμου για τους υπάρχοντες πελάτες, ώστε να μπορούν να "
+"συνδεθούν από τη σελίδα ολοκλήρωσης αγοράς."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "Δημιουργία λογαριασμού"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr ""
+"Δώστε τη δυνατότητα στους πελάτες να δημιουργήσουν λογαριασμό κατά τη "
+"διαδικασία ολοκλήρωσης της παραγγελίας"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr ""
+"Οι πελάτες μπορούν να δημιουργήσουν λογαριασμό πριν υποβάλουν την "
+"παραγγελία τους."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr ""
+"Δώστε τη δυνατότητα στους πελάτες να δημιουργήσουν λογαριασμό από τη σελίδα "
+"«Ο λογαριασμός μου»"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr ""
+"Οι πελάτες μπορούν να δημιουργήσουν έναν νέο λογαριασμό από τη σελίδα «Ο "
+"λογαριασμός μου»."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "Δημιουργία με βάση το όνομα του πελάτη"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Συνιστάται</strong> ώστε οι πελάτες να μην καλούνται να επιλέξουν "
+"όνομα χρήστη κατά την ολοκλήρωση της παραγγελίας, κάτι που μπορεί να "
+"μειώσει τα ποσοστά μετατροπής."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"Το όνομα χρήστη δημιουργείται με βάση το όνομα του πελάτη ή, όταν δεν είναι "
+"δυνατή η χρήση του ονόματος, με βάση τη διεύθυνση ηλεκτρονικού ταχυδρομείου."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "Κωδικός πρόσβασης"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "Αποστολή συνδέσμου για τη ρύθμιση κωδικού πρόσβασης"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Συνιστάται</strong> ώστε να μην ζητείται από τους πελάτες να "
+"ορίσουν κωδικό πρόσβασης κατά την ολοκλήρωση της παραγγελίας, κάτι που "
+"μπορεί να μειώσει τα ποσοστά μετατροπής."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr ""
+"Οι πελάτες λαμβάνουν ένα email για να δημιουργήσουν τον κωδικό πρόσβασής "
+"τους με ασφάλεια."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"Να επιτρέπεται στους εγγεγραμμένους πελάτες να ολοκληρώνουν τη διαδικασία "
+"αγοράς χωρίς να συνδεθούν και να συσχετίζεται η παραγγελία με τον υπάρχοντα "
+"λογαριασμό τους, όταν τα στοιχεία επικοινωνίας τους ταιριάζουν."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "Μήνυμα σχετικά με τον υπάρχοντα λογαριασμό"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr ""
+"Δώστε τη δυνατότητα στους πελάτες να δημιουργήσουν λογαριασμό μετά την "
+"υποβολή της παραγγελίας τους, από τη σελίδα ευχαριστίας."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"Οι επιλογές σε αυτήν την ενότητα είναι διαθέσιμες όταν είναι "
+"ενεργοποιημένες οι λειτουργίες «Ολοκλήρωση αγοράς ως επισκέπτης» και "
+"«Αντιστοίχιση λογαριασμού». Ενεργοποιήστε και τις δύο παραπάνω λειτουργίες "
+"για να ρυθμίσετε την καθυστερημένη δημιουργία λογαριασμού."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "Ενεργοποίηση καθυστερημένης δημιουργίας λογαριασμού"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"Ενεργοποιήστε τη δυνατότητα καθυστερημένης δημιουργίας λογαριασμού όταν "
+"είναι ενεργοποιημένες τόσο η ολοκλήρωση αγοράς ως επισκέπτης όσο και η "
+"αντιστοίχιση λογαριασμών."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "Θέση τμήματος"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "Πριν από την ενότητα με τα στοιχεία του πελάτη"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "Μετά την ενότητα με τα στοιχεία του πελάτη"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "Πλεονεκτήματα της δημιουργίας λογαριασμού"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "Αν αφήσετε το πεδίο κενό, θα εμφανιστεί το προεπιλεγμένο κείμενο."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "Κουμπιά ενσωματωμένα στο κείμενο"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "Υποχρεωτικά πεδία"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "Ενεργοποίηση πεδίων μηνυμάτων δώρου κατά την ολοκλήρωση της παραγγελίας"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "Αναλυτικό μήνυμα δώρου"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "Το πεδίο «Μήνυμα δώρου» να εμφανίζεται πάντα ανοιχτό"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "Μήνυμα δώρου στις λεπτομέρειες της παραγγελίας"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"Προς το παρόν δεν υπάρχουν διαθέσιμες ενσωματώσεις σε αυτήν την ενότητα. Οι "
+"επιλογές που σχετίζονται με κάθε πρόσθετο και θέμα θα εμφανιστούν εδώ μόνο "
+"όταν ενεργοποιηθεί το συγκεκριμένο πρόσθετο ή θέμα."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "Πεδία τηλεφώνου"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "Ορατότητα πεδίου"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "Θέση στο γήπεδο"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "Κωδικός χώρας τηλεφώνου και επαλήθευση"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "Χώρα"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "Ενεργοποίηση πεδίων χώρας στο τηλέφωνο"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "Φιλτράρισμα χωρών για αποστολή ή χρέωση"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"Περιορίστε την επιλογή χώρας σε κάθε πεδίο τηλεφώνου στις χώρες που "
+"επιτρέπονται για αποστολή ή χρέωση στο κατάστημά σας."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "Επικύρωση"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "Ενεργοποίηση απλής επικύρωσης βάσει των κανόνων ανά χώρα"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"Ελέγχει αν ο αριθμός τηλεφώνου είναι έγκυρος για την επιλεγμένη χώρα, "
+"συμπεριλαμβανομένου του κωδικού χώρας και του αριθμού ψηφίων."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"Αυστηρότερος έλεγχος ώστε ο αριθμός να είναι έγκυρος αριθμός κινητού, "
+"σταθερού ή άλλου αποδεκτού τύπου για την επιλεγμένη χώρα. Ενδέχεται να "
+"απορριφθούν ορισμένοι έγκυροι αριθμοί."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "Τύποι επικύρωσης"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "Σύμβολα κράτησης θέσης"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"Προς το παρόν δεν υπάρχουν κωδικοί άδειας χρήσης προς διαχείριση. Οι "
+"κωδικοί άδειας χρήσης θα εμφανιστούν εδώ όταν είναι ενεργό κάποιο πρόσθετο "
+"ή επέκταση του Fluid Checkout με άδεια χρήσης."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "Προεπιλεγμένος τρόπος παράδοσης"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "Επιλέξτε τον τύπο παράδοσης που θα επιλέγεται από προεπιλογή."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "Πεδία ζώνης αποστολής"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Επιλέξτε ποια πεδία θα εμφανίζονται στα πεδία φίλτρου της ζώνης αποστολής "
+"για τοπική παραλαβή. Αφήστε τα κενά για να εμφανιστούν όλες οι διαθέσιμες "
+"επιλογές."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Αυτά τα πεδία θα εμφανίζονται ως φίλτρο για τους τρόπους αποστολής με "
+"τοπική παραλαβή. Ορισμένα πεδία ενδέχεται να εξακολουθούν να εμφανίζονται "
+"κατά την ολοκλήρωση της παραγγελίας, ακόμη και αν δεν έχουν επιλεγεί εδώ, "
+"εφόσον απαιτούνται από συμβατά πρόσθετα για τη σωστή λειτουργία τους."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "Διεύθυνση αποστολής της παραγγελίας"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "Βελτιστοποίηση της σελίδας πληρωμής παραγγελιών"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"Δώστε στις ανεξόφλητες παραγγελίες την ίδια σαφή, προσανατολισμένη στη "
+"μετατροπή διάταξη με αυτή της διαδικασίας ολοκλήρωσης αγοράς."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"Βελτιστοποίηση της διάταξης της σελίδας πληρωμής για τις παραγγελίες που "
+"εκκρεμούν προς πληρωμή."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"Προσαρμόστε την εμπειρία πληρωμής κατά την παραγγελία στη διαδικασία "
+"ολοκλήρωσης της αγοράς, ώστε να εξασφαλίσετε μια συνεπή εμπειρία αγοράς."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"Προσθέστε σύμβολα εμπιστοσύνης και σήματα πιστοποίησης στα σημεία όπου οι "
+"αγοραστές χρειάζονται διαβεβαίωση πριν από την πληρωμή."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "Βελτιστοποίηση της σελίδας ευχαριστίας"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"Κάντε τη σελίδα ευχαριστίας και τις λεπτομέρειες της παραγγελίας πιο σαφείς "
+"για τους πελάτες μετά την αγορά."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr ""
+"Βελτιστοποιήστε τη σελίδα ευχαριστίας και τις λεπτομέρειες της παραγγελίας "
+"του λογαριασμού με μια πιο σαφή διάταξη."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"Εμφάνιση της προόδου της κατάστασης της παραγγελίας, των ενεργειών, των "
+"λήψεων και των σημειώσεων όπου αυτό είναι σκόπιμο."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr ""
+"Προσαρμόστε τις ενότητες με τις λεπτομέρειες της παραγγελίας στις "
+"ειδοποιήσεις μέσω email."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"Προσθέστε σύμβολα εμπιστοσύνης και σήματα πιστοποίησης στα σημεία όπου οι "
+"αγοραστές χρειάζονται διαβεβαίωση μετά την αγορά."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "Ειδοποιήσεις μέσω email"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"Ενεργοποιήστε τις βελτιστοποιήσεις της σελίδας ευχαριστίας και των "
+"λεπτομερειών παραγγελίας για να δείτε περισσότερες επιλογές"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "Χρησιμοποιήστε ευρεία διάταξη στη σελίδα ευχαριστίας"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"Αυτές οι επιλογές επηρεάζουν τη σελίδα ευχαριστίας, την προβολή των "
+"λεπτομερειών της παραγγελίας στις σελίδες του λογαριασμού και στις "
+"ειδοποιήσεις μέσω email."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "Αποθήκευση ρυθμίσεων"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "Έγγραφα"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "Καλάθι"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "Ευχαριστώ"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "Αυτόματη συμπλήρωση διεύθυνσης"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "Σήματα εμπιστοσύνης"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "Δεν έχετε δικαίωμα να αποθηκεύσετε αυτές τις ρυθμίσεις."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "Μη έγκυρο αίτημα αποθήκευσης."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "Οι ρυθμίσεις σας έχουν αποθηκευτεί."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "Αποθήκευση..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "Δεν ήταν δυνατή η αποθήκευση των ρυθμίσεων. Παρακαλώ δοκιμάστε ξανά."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "Απόρριψη ειδοποίησης"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "Άνοιγμα του μενού ρυθμίσεων"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "Κλείσιμο του μενού ρυθμίσεων"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "Προεπισκόπηση"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "Επέκταση προεπισκόπησης"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "Σύμπτυξη προεπισκόπησης"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "Εμφάνιση κεφαλίδας και υποσέλιδου"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "Απόκρυψη κεφαλίδας και υποσέλιδου"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "Προεπισκόπηση σελίδας"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "Παράθυρο προεπισκόπησης"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "Ταμπλέτα"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "Επιφάνεια εργασίας"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "Πλάτος προεπισκόπησης"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "Μείωση πλάτους"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "Πλάτος προεπισκόπησης σε εικονοστοιχεία"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "Αύξηση πλάτους"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "Προεπισκόπηση ως"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "Επισκέπτης"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "Συνδεδεμένος"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "Σελίδα προεπισκόπησης"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "Αναπτύξτε την προεπισκόπηση για να δείτε καλύτερα"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "Διατίθεται με %s."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "Ενεργοποιήστε τα"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr ""
+"Οι βελτιστοποιήσεις για αυτή τη σελίδα είναι απενεργοποιημένες. %s για να "
+"δείτε την προεπισκόπηση της σελίδας."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "Προεπισκόπηση %s"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "Απομονωμένη συνεδρία · δεν αποθηκεύεται τίποτα"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "Παρακολούθηση χρήσης"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Αποστολή αναφορών για το περιβάλλον του ιστότοπου που δεν περιέχουν "
+"ευαίσθητα στοιχεία, προκειμένου να βοηθηθεί το Fluid Checkout στη βελτίωση "
+"της συμβατότητάς του. Οι αναφορές δεν αποστέλλονται έως ότου ενεργοποιηθεί "
+"η σχετική επιλογή στις παρακάτω ρυθμίσεις."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "Αποστολή αναφορών παρακολούθησης χρήσης στο Fluid Checkout"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"Αυτές οι αναφορές μας βοηθούν να βελτιώσουμε τη συμβατότητα και την "
+"υποστήριξη για τον ιστότοπό σας και αποστέλλονται εβδομαδιαία, όταν η "
+"λειτουργία αυτή είναι ενεργοποιημένη."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"Στις αναφορές δεν περιλαμβάνονται δεδομένα πελατών, διαχειριστών ή "
+"οποιαδήποτε άλλα ευαίσθητα δεδομένα."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "Βασικές πληροφορίες για το περιβάλλον"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"Δεδομένα σχετικά με το WordPress, το PHP, το WooCommerce, τα θέματα και τα "
+"πρόσθετα. Περιλαμβάνονται πάντα όταν είναι ενεργοποιημένη η δημιουργία "
+"αναφορών. Μας βοηθούν να κατανοήσουμε το περιβάλλον στο οποίο λειτουργεί ο "
+"ιστότοπός σας."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "Ρυθμίσεις προσθέτου"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"Αποστέλλει τις ρυθμίσεις του πρόσθετου Fluid Checkout, προκειμένου να "
+"διευκολύνει την επεξεργασία των αιτημάτων υποστήριξης και να μας βοηθήσει "
+"να κατανοήσουμε τον τρόπο με τον οποίο χρησιμοποιείτε τα πρόσθετά μας."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "Σύντομα διαθέσιμο"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "Δείκτες πωλήσεων"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"Ο αριθμός των μηνιαίων παραγγελιών και το σύνολο των πωλήσεων για το έτος "
+"που προηγήθηκε της εγκατάστασης του Fluid Checkout έως σήμερα. Αυτό μας "
+"βοηθά να καταλάβουμε αν αυξάνετε τα έσοδά σας με την εγκατάσταση των "
+"προσθηκών μας. Δεν αποστέλλονται ποτέ δεδομένα πελατών ή χρηστών."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "Δημόσιες υπηρεσίες"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"Χρησιμοποιήστε τα στοιχεία αναπτυσσόμενου μενού <code>TomSelect</code> αντί "
+"για το <code>select2</code>"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"Το TomSelect είναι ένα απλούστερο στοιχείο επιλογής με αναπτυσσόμενο μενού, "
+"το οποίο είναι λιγότερο επιρρεπές σε σφάλματα από το Select2, προσφέροντας "
+"παράλληλα την ίδια λειτουργικότητα."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"Ορίζει το μέγεθος της γραμματοσειράς στα πεδία φόρμας σε 16px στις σελίδες "
+"που έχουν βελτιστοποιηθεί από αυτό το πρόσθετο, ώστε να αποφεύγεται η "
+"αυτόματη μεγέθυνση κατά την αλληλεπίδραση με τα πεδία φόρμας σε μικρές "
+"συσκευές."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"Το Safari και άλλοι περιηγητές ενδέχεται να μεγεθύνουν αυτόματα την εικόνα "
+"σε κινητές συσκευές, ώστε το κείμενο να είναι πιο ευανάγνωστο όταν το "
+"μέγεθος της γραμματοσειράς είναι μικρότερο από 16px."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr ""
+"Ενεργοποιήστε την παρακολούθηση της επεξεργασίας των σεναρίων στην κονσόλα "
+"του προγράμματος περιήγησης."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "Μη συμπιεσμένα αρχεία"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Σενάρια του Google Maps"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "Μην αφαιρείτε τα διπλά σενάρια του Google Maps"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"Όταν είναι ενεργοποιημένη, τα διπλά σενάρια του Google Maps ΔΕΝ θα "
+"αφαιρούνται, κάτι που μπορεί να προκαλέσει σφάλματα και προβλήματα "
+"απόδοσης. Χρησιμοποιήστε αυτήν την επιλογή μόνο κατά την αντιμετώπιση "
+"προβλημάτων."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "Περιοχές widget"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "Τελευταίο βήμα στην κινητή συσκευή"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "Εμφάνιση των widget μόνο στο τελευταίο βήμα στις κινητές συσκευές"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"Να εμφανίζονται τα widget με το σήμα εμπιστοσύνης για την ολοκλήρωση της "
+"παραγγελίας μόνο κατά την προβολή του τελευταίου βήματος της παραγγελίας σε "
+"κινητές συσκευές"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "Τυπικό"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "Πεδίο αριθμού ΦΠΑ"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "Προσθέστε ένα πεδίο για τον αριθμό ΦΠΑ στη φόρμα τιμολόγησης."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "Ετικέτα πεδίου"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"Ορίστε την ετικέτα του πεδίου του αριθμού ΦΠΑ (π.χ. «Αριθμός ΦΠΑ»). Σε "
+"πολυγλωσσικούς ιστότοπους, είναι προτιμότερο να αφήσετε αυτό το πεδίο κενό "
+"και να μεταφράσετε την αρχική συμβολοσειρά."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "Αριθμός ΦΠΑ"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "ΦΠΑ της ΕΕ"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "Ενεργοποιήστε το πεδίο του αριθμού ΦΠΑ για να δείτε περισσότερες επιλογές"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "Επικύρωση ΦΠΑ"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr ""
+"Έλεγχος εγκυρότητας του πεδίου αριθμού ΦΠΑ για τον αριθμό ΦΠΑ της ΕΕ κατά "
+"την ολοκλήρωση της παραγγελίας"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"Ελέγχει αν ο αριθμός ΦΠΑ που έχει δοθεί είναι έγκυρος αριθμός ΦΠΑ "
+"καταχωρημένος στην ευρωπαϊκή βάση δεδομένων VIES (Σύστημα Ανταλλαγής "
+"Πληροφοριών για τον ΦΠΑ)."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "Αριθμός ΦΠΑ καταστήματος"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"Ο αριθμός ΦΠΑ του καταστήματος που χρησιμοποιείται για την αίτηση "
+"επικύρωσης του ΦΠΑ της ΕΕ και αναγράφεται στα τιμολόγια. "
+"<br><strong>Συνιστούμε ανεπιφύλακτα να προσθέσετε τον αριθμό ΦΠΑ του "
+"καταστήματός σας</strong>, καθώς διαφορετικά τα αποτελέσματα της αναζήτησης "
+"στο VIES ενδέχεται να μην είναι έγκυρα για λογιστικούς σκοπούς. <br>Π.χ.: "
+"<code>ATU99999999</code> ή <code>EE999999999</code>."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "Αντιστροφή της υποχρέωσης φορολόγησης"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "Εφαρμογή του μηχανισμού αντιστροφής της φορολογικής ευθύνης"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"Ορίστε τον φορολογικό συντελεστή στο μηδέν και εμφανίστε την ένδειξη "
+"«Αντιστροφή φορολογικής ευθύνης» στα τιμολόγια, όταν ο αριθμός ΦΠΑ του "
+"πελάτη είναι έγκυρος. Ενδέχεται να απαιτείται διαφορετικό κείμενο για την "
+"ένδειξη «Αντιστροφή φορολογικής ευθύνης», ανάλογα με τη χώρα του "
+"καταστήματος."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "Ίδια χώρα"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr ""
+"Εφαρμογή του μηχανισμού αντιστροφής της φορολογικής υποχρέωσης για τις "
+"συναλλαγές στη χώρα όπου βρίσκεται το κατάστημα:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"Επιτρέπει την εφαρμογή του μηχανισμού αντιστροφής της φορολογικής ευθύνης "
+"για συναλλαγές μεταξύ εταιρειών που βρίσκονται στην ίδια χώρα με το "
+"κατάστημα."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "Εξαιρέσεις από τον μηχανισμό αντιστροφής της υποχρέωσης φορολόγησης"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr ""
+"Επιλέξτε επιπλέον χώρες για να μην εφαρμόζεται ο μηχανισμός αντιστροφής της "
+"υποχρέωσης φορολόγησης."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"Στις παραγγελίες από αυτές τις χώρες θα επιβάλλονται φόροι, ακόμη και αν "
+"παρέχεται έγκυρος αριθμός ΦΠΑ."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "Ετικέτα «αντιστροφή φορολογικής ευθύνης» στα τιμολόγια"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr ""
+"Ορίστε την ένδειξη «αντιστροφή φορολογικής ευθύνης» στη σελίδα ολοκλήρωσης "
+"της παραγγελίας και στις λεπτομέρειες της παραγγελίας."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "Κείμενο σχετικά με την αναστροφή της υποχρέωσης καταβολής ΦΠΑ στα τιμολόγια"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr ""
+"Ορίστε την ετικέτα του κειμένου «αντιστροφή φορολογικής ευθύνης» στα "
+"τιμολόγια."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "Ο φόρος που πρέπει να καταβληθεί με βάση την αντίστροφη χρέωση"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "Όνομα εταιρείας"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "Αυτόματη συμπλήρωση ονόματος εταιρείας από τον αριθμό ΦΠΑ"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"Συμπληρώστε την επωνυμία της εταιρείας τιμολόγησης με βάση τον έγκυρο "
+"αριθμό ΦΠΑ που παρέχει ο πελάτης."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "Επεξεργασία ονόματος εταιρείας"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr ""
+"Να επιτρέπεται η επεξεργασία της αυτόματης συμπλήρωσης της επωνυμίας της "
+"εταιρείας"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"Όταν η λειτουργία αυτή είναι ενεργοποιημένη, οι πελάτες μπορούν να αλλάξουν "
+"την επωνυμία της εταιρείας που αντιστοιχεί στον αριθμό ΦΠΑ που έχουν "
+"δηλώσει."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "ΦΠΑ της ΕΕ για ψηφιακά αγαθά"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"Από την 1η Ιανουαρίου 2015, έχουν τεθεί σε ισχύ τροποποιήσεις στους "
+"κανονισμούς της ΕΕ για τον ΦΠΑ όσον αφορά τα ψηφιακά προϊόντα, οι οποίες "
+"αφορούν αποκλειστικά τις συναλλαγές B2C. Ο ΦΠΑ για τα ψηφιακά προϊόντα "
+"πρέπει να υπολογίζεται με βάση την τοποθεσία του πελάτη, και πρέπει να "
+"συλλέγονται τα σχετικά αποδεικτικά στοιχεία (διεύθυνση IP και διεύθυνση "
+"χρέωσης)."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "Φορολογικές κατηγορίες για ψηφιακά αγαθά"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "Επιλέξτε ορισμένες φορολογικές κατηγορίες"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "Στοιχεία τοποθεσίας"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "Συλλογή στοιχείων σχετικά με την τοποθεσία του πελάτη"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"Αποθηκεύει τη διεύθυνση IP και την επαληθεύει σε σχέση με τη διεύθυνση "
+"χρέωσης του πελάτη. Οι πελάτες πρέπει να επιβεβαιώσουν τη διεύθυνση χρέωσής "
+"τους, επιλέγοντας ένα πλαίσιο ελέγχου στη σελίδα ολοκλήρωσης της "
+"παραγγελίας, εάν η χώρα της διεύθυνσης χρέωσης και η IP δεν ταιριάζουν."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"Αυτή η επιλογή διαχειρίζεται στο Fluid Checkout. <a href=\"%s\">Μπορείτε να "
+"την αλλάξετε στις ρυθμίσεις των λογαριασμών πελατών</a>."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"Αυτή η επιλογή διαχειρίζεται στο Fluid Checkout. Μπορείτε να την αλλάξετε "
+"στην ενότητα «Fluid Checkout > Λογαριασμοί πελατών»."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"Αυτή η επιλογή διαχειρίζεται στο Fluid Checkout. Όταν το Fluid Checkout "
+"είναι ενεργοποιημένο, ο προορισμός αποστολής ορίζεται πάντα ως «Προεπιλογή "
+"στη διεύθυνση αποστολής του πελάτη». Οι πελάτες μπορούν, ωστόσο, να "
+"δηλώσουν διαφορετικές διευθύνσεις αποστολής και χρέωσης κατά τη διαδικασία "
+"ολοκλήρωσης της παραγγελίας.<br><br>Μια επιλογή για τον καθορισμό της "
+"προεπιλεγμένης διεύθυνσης χρέωσης ώστε να είναι ίδια με τη διεύθυνση "
+"αποστολής είναι διαθέσιμη στις <a href=\"%s\">ρυθμίσεις του Fluid "
+"Checkout</a>."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"Αυτή η επιλογή διαχειρίζεται στο Fluid Checkout. Όταν το Fluid Checkout "
+"είναι ενεργοποιημένο, ο προορισμός αποστολής ορίζεται πάντα ως «Προεπιλογή "
+"στη διεύθυνση αποστολής του πελάτη». Οι πελάτες μπορούν, ωστόσο, να "
+"καθορίσουν διαφορετικές διευθύνσεις αποστολής και χρέωσης κατά τη "
+"διαδικασία ολοκλήρωσης της παραγγελίας.<br><br>Μια επιλογή για τον "
+"καθορισμό της προεπιλεγμένης διεύθυνσης χρέωσης ώστε να είναι η ίδια με τη "
+"διεύθυνση αποστολής είναι διαθέσιμη στο WooCommerce > Ρυθμίσεις > Fluid "
+"Checkout."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr ""
+"Αυτές οι ρυθμίσεις έχουν μεταφερθεί στην ενότητα «WP Admin > Fluid Checkout "
+"> Ρυθμίσεις»."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"Αυτή η καρτέλα «Ρυθμίσεις WooCommerce» έχει καταργηθεί και θα αφαιρεθεί "
+"στην έκδοση 6.0 του Fluid Checkout."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "Μετάβαση στη σελίδα ρυθμίσεων"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "Μόνιμη απόκρυψη αυτής της καρτέλας"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "Προεπισκόπηση αναφοράς ιστότοπου"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"Αυτά είναι τα δεδομένα που θα περιλαμβάνονται στην επόμενη έκθεση για το "
+"περιβάλλον του ιστότοπου, με βάση τις τρέχουσες ρυθμίσεις σας."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "Φόρτωση προεπισκόπησης αναφοράς..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr ""
+"Δεν ήταν δυνατή η φόρτωση της προεπισκόπησης της αναφοράς του ιστότοπου. "
+"Δοκιμάστε ξανά."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "Δεν ήταν δυνατή η αποστολή της αναφοράς ιστότοπου. Προσπαθήστε ξανά."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "Η αναφορά για τον ιστότοπο αποστάλη με επιτυχία."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "Ενεργοποίηση και αποστολή τώρα"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr ""
+"Έχει ήδη υποβληθεί αίτημα για έκθεση επιτόπιου ελέγχου. Προσπαθήστε ξανά σε "
+"λίγο."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "Η υποβολή αναφορών σχετικά με το περιβάλλον του χώρου έχει απενεργοποιηθεί."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "Δεν υπάρχουν διαθέσιμα δεδομένα αναφοράς τοποθεσίας προς αποστολή."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"Ο τομέας αυτού του ιστότοπου δεν μπορεί να στέλνει αναφορές περιβάλλοντος "
+"(εξαιρούνται οι τοπικοί τομείς ή οι τομείς ανάπτυξης)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "Πρόσφατα αποστάληκε μια αναφορά για τον ιστότοπο. Δοκιμάστε ξανά αργότερα."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr ""
+"Δεν ήταν δυνατή η αποστολή της αναφοράς του ιστότοπου. Δοκιμάστε ξανά "
+"αργότερα."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "Δεν υπάρχουν διαθέσιμες αναφορές σχετικά με το περιβάλλον του χώρου."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr ""
+"Δεν υπάρχουν διαθέσιμα δεδομένα αναφοράς τοποθεσίας για τις επιλεγμένες "
+"ρυθμίσεις."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "Δεν έχετε δικαίωμα να διαχειρίζεστε τις αναφορές του ιστότοπου."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "Λειτουργία PRO"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "Άλλα πρόσθετα"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "Αγοράστε μόνο αυτό το πρόσθετο — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "Εγκατάσταση πρόσθετου"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "Αναβάθμιση σε PRO — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"<a target=\"_blank\" href=\"%1$s\">Αποκτήστε το %2$s</a> για να "
+"ξεκλειδώσετε αυτές τις επιλογές."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "Πρόσθετο"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "Προβολή τεκμηρίωσης"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"Για τις αιτήσεις απαιτείται συνδεδεμένος χρήστης του WordPress. Παραλείψτε "
+"το user_id για να χρησιμοποιήσετε τα δεδομένα του τρέχοντος χρήστη ή ορίστε "
+"το user_id για να στοχεύσετε έναν άλλο λογαριασμό, όταν ο καλών έχει το "
+"δικαίωμα να επεξεργαστεί αυτόν τον χρήστη (δικαίωμα edit_user). Οι αιτήσεις "
+"χωρίς πιστοποίηση επιστρέφουν το fc_api_forbidden. Ένα μη έγκυρο user_id "
+"επιστρέφει το fc_api_user_not_found."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr "HTTP 200 με { \"data\": { ... } } όταν ο χειριστής επιστρέφει ένα payload."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"HTTP 200 με { \"success\": true } όταν δεν υπάρχει ωφέλιμο φορτίο (για "
+"παράδειγμα, DELETE)."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"Σε περίπτωση σφάλματος, επιστρέφεται ένα JSON σφάλματος REST του WordPress "
+"από το WP_Error (code, message, data.status). Οι κωδικοί Wire χρησιμοποιούν "
+"το πρόθεμα fc_api_*."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "Απαγορεύεται η πρόσβαση."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "Ο χρήστης-στόχος δεν εντοπίστηκε."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "Αυτή η λειτουργία δεν είναι διαθέσιμη."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "Λείπει ένα υποχρεωτικό πεδίο διεύθυνσης."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "Ο ταχυδρομικός κώδικας ή το ZIP δεν είναι έγκυρος."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "Ο αριθμός τηλεφώνου δεν είναι έγκυρος."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "Η πολιτεία ή η κομητεία δεν είναι έγκυρη."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "Η χώρα δεν είναι έγκυρη ή δεν περιέχει πεδία διεύθυνσης."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "Δεν ήταν δυνατή η επεξεργασία του αιτήματος."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "Επιστροφή στο προηγούμενο βήμα"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "Μετάβαση στις ρυθμίσεις"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr ""
+"Ξεκινήστε από την αρχή και επιστρέψτε στο πρώτο βήμα της καθοδηγούμενης "
+"ρύθμισης"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "Ξεκίνα από την αρχή"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "Παρακαλούμε ολοκληρώστε όλα τα επιμέρους βήματα πριν συνεχίσετε."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "Επέκταση"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "Σύμπτυξη"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "Παράλειψη"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "Επισήμανση ως ολοκληρωμένο"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "Επισήμανση ως ημιτελές"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "Προβολή εικόνας σε πλήρες μέγεθος: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "Εικόνα οδηγού εγκατάστασης σε πλήρες μέγεθος"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "Κλείσιμο εικόνας"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "Οδηγίες εγκατάστασης του Fluid Checkout"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "Καλώς ήρθατε"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "Εξερευνήστε τη διαδικασία ολοκλήρωσης της παραγγελίας σας"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "Όλα έτοιμα"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "Δεν έχετε δικαίωμα πρόσβασης σε αυτή τη σελίδα."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "Μετάβαση στο βήμα %1$d: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"Αυτή η καθοδηγούμενη διαδικασία ρύθμισης σας βοηθά να εξοικειωθείτε με το "
+"Fluid Checkout. Τα παρακάτω βήματα είναι προσωρινά."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "Όταν είστε έτοιμοι, προχωρήστε στο επόμενο βήμα."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr ""
+"Ανοίξτε τη σελίδα ολοκλήρωσης αγοράς του καταστήματός σας για να δείτε το "
+"Fluid Checkout σε δράση."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "Προβολή της σελίδας ολοκλήρωσης αγοράς"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"Μπορείτε να επιστρέψετε στις ρυθμίσεις του Fluid Checkout για να συνεχίσετε "
+"τη διαμόρφωση του καταστήματός σας."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "Ελέγξτε τις ρυθμίσεις ολοκλήρωσης αγοράς και καλαθιού αγορών"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "Εξερευνήστε τα πρόσθετα από τον πίνακα ελέγχου"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "Ολοκλήρωση και μετάβαση στις ρυθμίσεις"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Αναπροσαρμόστε την επιλογή ορατότητας του πεδίου «Τηλέφωνο χρέωσης» από την "
+"παλαιά τιμή, ώστε να συμμορφώνεται με τις συμβάσεις του WooCommerce."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Ενημερώστε την επιλογή ορατότητας του πεδίου «Τηλέφωνο αποστολής» από την "
+"παλαιά τιμή, ώστε να συμμορφώνεται με τις συμβάσεις του WooCommerce."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"Αντιγράψτε τη ρύθμιση χρώματος φόντου της σύνοψης παραγγελίας στην επιλογή "
+"χρώματος φόντου της δευτερεύουσας στήλης του νέου σχεδίου «Split»."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"Η λειτουργία «Ενισχυμένα πεδία επιλογής» είναι πάντα απενεργοποιημένη όταν "
+"χρησιμοποιείται το πρόσθετο Biteship."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"Η θέση της εντολής αγοράς ορίζεται πάντα ως «Κάτω από τη σύνοψη της "
+"εντολής» όταν χρησιμοποιείται το German Market. Αυτό το πρόσθετο απαιτεί το "
+"κουμπί υποβολής εντολής και τα πλαίσια επιλογής νομικών όρων να "
+"εμφανίζονται κάτω από τη σύνοψη της εντολής."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"Η θέση του κουμπιού «Υποβολή παραγγελίας» ορίζεται πάντα ως «Κάτω από τη "
+"σύνοψη της παραγγελίας» όταν χρησιμοποιείται το Germanized για το "
+"WooCommerce. Αυτό το πρόσθετο απαιτεί το κουμπί «Υποβολή παραγγελίας» και "
+"τα πλαίσια επιλογής με τους νομικούς όρους να εμφανίζονται κάτω από τη "
+"σύνοψη της παραγγελίας."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Επεξεργασία σημείων παραλαβής"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr ""
+"Χρησιμοποιήστε την ετικέτα τοπικής παραλαβής από τις ρυθμίσεις του "
+"WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Όταν είναι ενεργοποιημένη, η ετικέτα της επιλογής παραλαβής κατά την "
+"ολοκλήρωση της παραγγελίας αντιστοιχεί στον τίτλο που έχει οριστεί στις "
+"ρυθμίσεις τοποθεσίας παραλαβής του WooCommerce. Όταν είναι "
+"απενεργοποιημένη, η ετικέτα χρησιμοποιεί το μεταφράσιμο κείμενο «Τοπική "
+"παραλαβή» από το Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -3011,3 +5026,114 @@ msgstr "Ναι"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "Τζον"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "Doe"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "Παραδειγματική Εταιρεία"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "123 Κεντρική Οδός"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "Οποιαδήποτε πόλη"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "Παρακαλώ αφήστε το δέμα στην εξώπορτα."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "Σκουφάκι"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "Καπάκι"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "Μπλουζάκι"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr "Λάβαμε την παραγγελία σας και θα σας ενημερώσουμε όταν αποσταλεί."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "Οδηγός χρήσης"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "API «Τοποθεσίες» (Νέο)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "API «Places» (παλαιά έκδοση)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "Έκδοση 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "Έκδοση 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ Ταχύτερη ολοκλήρωση της παραγγελίας την επόμενη φορά\n"
+"✔ Διαχείριση των προτιμήσεών σας όσον αφορά τις πληρωμές\n"
+"✔ Προβολή της κατάστασης και του ιστορικού των παραγγελιών σας"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "Κρυφό"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "Προαιρετικό"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "Απαιτείται"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Διεύθυνση αποστολής"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Παραλαβή από το κατάστημα"

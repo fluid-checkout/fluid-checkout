@@ -12,19 +12,14 @@ if ( class_exists( 'FluidCheckout_Settings_AddressBook', false ) ) {
 
 /**
  * FluidCheckout_Settings_AddressBook.
- * Settings are locked until the Address Book add-on unlocks the feature `address_book`.
+ * Settings are locked until Fluid Checkout PRO unlocks the feature `pro`.
  */
 class FluidCheckout_Settings_AddressBook {
 
 	/**
 	 * Feature slug used to lock and unlock the settings.
 	 */
-	const FEATURE = 'address_book';
-
-	/**
-	 * Product page URL for the Address Book add-on.
-	 */
-	const PRODUCT_URL = 'https://fluidcheckout.com/fc-address-book/';
+	const FEATURE = 'pro';
 
 
 
@@ -62,53 +57,6 @@ class FluidCheckout_Settings_AddressBook {
 
 
 	/**
-	 * Get the promotional settings card shown at the top of the Address Book tab when the add-on is not active.
-	 */
-	public static function get_promo_settings() {
-		// Bail if the add-on feature is already unlocked
-		if ( FluidCheckout_Admin_Settings_Access::instance()->is_unlocked( self::FEATURE ) ) { return array(); }
-
-		return array(
-			array(
-				'title'            => __( 'Address book', 'fluid-checkout' ),
-				'type'             => 'fc_promo',
-				'id'               => 'fc_pro_address_book_promo',
-				'is_card'          => true,
-				'promo'            => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-book-promo', self::PRODUCT_URL, self::FEATURE ),
-				'tagline'          => __( 'Let customers save multiple shipping and billing addresses and pick the right one at checkout.', 'fluid-checkout' ),
-				'features'         => array(
-					__( 'Save multiple shipping and billing addresses on the customer account.', 'fluid-checkout' ),
-					__( 'Choose which address to use at checkout and on the cart page.', 'fluid-checkout' ),
-					__( 'Optional private labels so customers can tell addresses apart (for example, "Mom\'s House").', 'fluid-checkout' ),
-					__( 'Migrate existing WooCommerce shipping and billing addresses into the address book.', 'fluid-checkout' ),
-				),
-				'learn_more_url'   => add_query_arg(
-					array(
-						'mtm_campaign' => 'addons',
-						'mtm_kwd'      => 'address-book-promo-learn-more',
-						'mtm_source'   => 'lite-plugin',
-					),
-					self::PRODUCT_URL
-				),
-				'learn_more_label' => __( 'Learn more', 'fluid-checkout' ),
-				'plugin_file'      => 'fc-address-book/fc-address-book.php',
-				'plugin_slug'      => 'fc-address-book',
-				'purchase_url'     => add_query_arg(
-					array(
-						'mtm_campaign' => 'addons',
-						'mtm_kwd'      => 'address-book-promo-purchase',
-						'mtm_source'   => 'lite-plugin',
-					),
-					self::PRODUCT_URL
-				),
-				'purchase_price'   => '59 EUR',
-			),
-		);
-	}
-
-
-
-	/**
 	 * Get the locked placeholder settings for Address Book migration on the Address Book tab.
 	 */
 	public static function get_locked_migration_settings() {
@@ -118,7 +66,7 @@ class FluidCheckout_Settings_AddressBook {
 				'type'     => 'title',
 				'desc'     => '',
 				'id'       => 'fc_pro_address_book_migration_options',
-				'promo'    => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-book-migration', self::PRODUCT_URL, self::FEATURE ),
+				'promo'    => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'address-book-migration' ),
 			),
 
 			array(
@@ -157,15 +105,13 @@ class FluidCheckout_Settings_AddressBook {
 		 */
 		$settings = apply_filters(
 			'fc_pro_address_book_settings',
-			array_merge(
-				self::get_promo_settings(),
-				array(
+			array(
 					array(
 						'title'             => __( 'Address book', 'fluid-checkout' ),
 						'type'              => 'title',
 						'desc'              => '',
 						'id'                => 'fc_pro_address_book_options',
-						'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-book', self::PRODUCT_URL, self::FEATURE ),
+						'promo'             => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'address-book' ),
 						'docs'              => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/fc-address-book/' ),
 					),
 
@@ -236,7 +182,6 @@ class FluidCheckout_Settings_AddressBook {
 						'id'                => 'fc_pro_address_book_options',
 					),
 				)
-			)
 		);
 
 		return $settings;

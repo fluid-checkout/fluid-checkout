@@ -12,8 +12,8 @@
  *
  * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 3.6.0
- * @fc-version 4.0.2
+ * @version 11.2.0
+ * @fc-version 5.0.0
  * @global WC_Checkout $checkout
  */
 
@@ -50,6 +50,7 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_shipping_collapsible_in
 
 	<?php if ( true === WC()->cart->needs_shipping_address() ) : ?>
 
+		<?php // CHANGE: Remove ship-to-different-address checkbox markup ?>
 		<?php // CHANGE: Output "ship to different address" option via hook ?>
 		<?php
 			/**
@@ -68,6 +69,7 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_shipping_collapsible_in
 
 			<?php // CHANGE: Add markup for collapsible-block component ?>
 			<div id="woocommerce-shipping-fields__field-wrapper" class="woocommerce-shipping-fields__field-wrapper <?php echo 'collapsed' === $collapsible_initial_state ? 'is-collapsed' : ''; ?>" data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo esc_attr( $collapsible_initial_state ); ?>">
+				<?php // CHANGE: Remove $fields = get_checkout_fields( 'shipping' ) (fields split into same-as-billing / shipping-only lists) ?>
 				<?php // CHANGE: Display shipping fields which might be copied from shipping to billing fields ?>
 				<?php
 				foreach ( $shipping_same_as_billing_fields as $key => $field ) {
@@ -101,9 +103,9 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_shipping_collapsible_in
 
 			<?php do_action( 'woocommerce_after_checkout_shipping_form', $checkout ); ?>
 
-		</div>
+		</div><?php // CHANGE: Close shipping_address wrapper ?>
 
-	<?php endif; ?>
+	<?php endif; // CHANGE: Close needs_shipping_address conditional ?>
 
 	<?php
 	// CHANGE: Added for compatibility with plugins that use this action hook
@@ -120,4 +122,5 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_shipping_collapsible_in
 	?>
 
 </div>
+<?php // CHANGE: Remove woocommerce-additional-fields / order_fields / Additional information / before_order_notes / after_order_notes section (moved to FC additional notes step) ?>
 

@@ -1,7 +1,3 @@
-$body-page-selector: null !default;
-$body-theme-selector: null !default;
-$order-review-selector: null !default;
-
 @use "../abstract" as *;
 @use "../abstract/variables-admin" as *;
 
@@ -126,7 +122,10 @@ $order-review-selector: null !default;
 	box-shadow: 0 2px 6px 0 $elevation-shadow-medium;
 }
 
-.fc-settings-promo-pill:focus {
+.fc-settings-promo-pill:focus,
+.fc-settings-promo-pill:focus-visible {
+	// Keep the pill shape: WP admin `a:focus` sets `border-radius: 2px`
+	border-radius: $fc-settings-promo-pill-border-radius;
 	color: $fc-settings-promo-pill-color-hover;
 	text-decoration: none;
 	transform: scale( 1.025 );
@@ -220,6 +219,7 @@ $order-review-selector: null !default;
 }
 
 .fc-settings-card--promo .fc-settings-promo__actions .button,
+.fc-settings-card--promo .fc-settings-promo__actions .fc-settings-button,
 .fc-settings-card--promo .fc-settings-promo__actions .fc-addons__item-license-select {
 	width: auto;
 	max-width: none;
@@ -234,6 +234,7 @@ $order-review-selector: null !default;
 
 .fc-settings-card--promo .fc-settings-promo__actions .button + .fc-addons__item-action-notice,
 .fc-settings-card--promo .fc-settings-promo__actions .button + .button,
+.fc-settings-card--promo .fc-settings-promo__actions .fc-settings-button + .button,
 .fc-settings-card--promo .fc-settings-promo__actions .fc-addons__item-license-select + .button,
 .fc-settings-card--promo .fc-settings-promo__actions .fc-addons__item-action-notice {
 	margin-top: 0;
@@ -278,11 +279,48 @@ $order-review-selector: null !default;
 	box-shadow: none;
 }
 
+.fc-settings-promo__intro {
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: nowrap;
+	gap: 20px;
+	margin-bottom: 16px;
+}
+
+.fc-settings-promo__logo {
+	flex-shrink: 0;
+	width: 70px;
+	height: auto;
+	border-radius: 5px;
+}
+
+.fc-settings-promo__intro-copy {
+	flex-shrink: 1;
+	min-width: 0;
+}
+
+.fc-settings-promo__product-name {
+	margin: 0 0 5px;
+	padding: 0;
+	font-size: 16px;
+	font-weight: 600;
+	color: $fc-settings-text-color;
+}
+
 .fc-settings-promo__tagline {
 	margin: 0 0 16px;
 	padding: 0;
 	font-weight: 500;
 	color: $fc-settings-text-color;
+}
+
+.fc-settings-promo__intro .fc-settings-promo__tagline {
+	margin-bottom: 0;
+}
+
+.fc-settings-promo__features-list {
+	margin-top: 16px;
+	margin-bottom: 0;
 }
 
 .fc-settings-promo__features {
@@ -339,9 +377,11 @@ $order-review-selector: null !default;
 
 
 
-// Match header primary / secondary button styles on settings page content.
+// Match header primary / secondary button styles on settings page and guided setup content.
 .fc-settings-wrap .button,
 .fc-settings-wrap .button-secondary,
+.fc-guided-setup .button,
+.fc-guided-setup .button-secondary,
 .fc-settings-button {
 	display: inline-block;
 	margin: 0;
@@ -374,6 +414,10 @@ $order-review-selector: null !default;
 .fc-settings-wrap .button:focus,
 .fc-settings-wrap .button-secondary:hover,
 .fc-settings-wrap .button-secondary:focus,
+.fc-guided-setup .button:hover,
+.fc-guided-setup .button:focus,
+.fc-guided-setup .button-secondary:hover,
+.fc-guided-setup .button-secondary:focus,
 .fc-settings-button:hover,
 .fc-settings-button:focus {
 	color: $fc-header-button-color;
@@ -385,17 +429,22 @@ $order-review-selector: null !default;
 
 .fc-settings-wrap .button:focus,
 .fc-settings-wrap .button-secondary:focus,
+.fc-guided-setup .button:focus,
+.fc-guided-setup .button-secondary:focus,
 .fc-settings-button:focus {
 	@include fc-admin-settings-focus-outline();
 }
 
 .fc-settings-wrap .button:active:not( :disabled ):not( .disabled ),
 .fc-settings-wrap .button-secondary:active:not( :disabled ):not( .disabled ),
+.fc-guided-setup .button:active:not( :disabled ):not( .disabled ),
+.fc-guided-setup .button-secondary:active:not( :disabled ):not( .disabled ),
 .fc-settings-button:active:not( :disabled ):not( .disabled ) {
 	border-width: 2px 1px 1px;
 }
 
 .fc-settings-wrap .button.button-primary,
+.fc-guided-setup .button.button-primary,
 .fc-settings-button--primary {
 	background: $fc-header-button-save-background;
 	border-color: $fc-header-button-save-border-color;
@@ -404,10 +453,55 @@ $order-review-selector: null !default;
 
 .fc-settings-wrap .button.button-primary:hover,
 .fc-settings-wrap .button.button-primary:focus,
+.fc-guided-setup .button.button-primary:hover,
+.fc-guided-setup .button.button-primary:focus,
 .fc-settings-button--primary:hover,
 .fc-settings-button--primary:focus {
 	background: $fc-header-button-save-background-hover;
 	border-color: $fc-header-button-save-border-color-hover;
 	color: $fc-header-button-save-color;
+}
+
+.fc-guided-setup .button.button-primary.fc-setup-disabled,
+.fc-guided-setup a.button.button-primary.fc-setup-disabled {
+	background: $fc-header-button-save-background-disabled;
+	border-color: $fc-header-button-save-border-color-disabled;
+	color: $white;
+	cursor: not-allowed;
+	opacity: 1;
+	pointer-events: none;
+}
+
+.fc-settings-wrap .button.button-link,
+.fc-guided-setup .button.button-link {
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	color: $admin-text-color-muted;
+	font-size: $fc-header-button-font-size;
+	font-weight: normal;
+	height: auto;
+	line-height: $fc-header-button-line-height;
+	min-height: 0;
+	padding: $fc-header-button-padding;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.fc-settings-wrap .button.button-link:hover,
+.fc-settings-wrap .button.button-link:focus,
+.fc-guided-setup .button.button-link:hover,
+.fc-guided-setup .button.button-link:focus {
+	background: transparent;
+	border: 0;
+	color: $fc-settings-nav-link-hover-color;
+	box-shadow: none;
+	text-decoration: underline;
+}
+
+.fc-settings-wrap .button.button-link:focus,
+.fc-guided-setup .button.button-link:focus {
+	@include fc-admin-settings-focus-outline();
 }
 

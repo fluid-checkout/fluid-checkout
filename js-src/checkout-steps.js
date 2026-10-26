@@ -134,6 +134,9 @@
 	 * @param   HTMLElement  element  Element to check and focus.
 	 */
 	var waitForElementInViewportThenFocus = function( element ) {
+		// Bail if the field was removed (e.g. after a fragment refresh)
+		if ( ! element || ! document.body.contains( element ) ) { return; }
+
 		// Get element bounding client rect
 		var rect = element.getBoundingClientRect();
 		var inView = (
@@ -144,6 +147,8 @@
 		// Check if element is in viewport
 		if ( inView ) {
 			setTimeout( function() {
+				// Bail if the field disappeared while waiting
+				if ( ! element || ! document.body.contains( element ) ) { return; }
 				element.focus();
 			}, _settings.invalidFocusDelay );
 		}

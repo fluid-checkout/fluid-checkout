@@ -209,11 +209,54 @@ class FluidCheckout_Settings_Tools {
 				),
 
 				array(
+					'title'             => __( 'Google Maps scripts', 'fluid-checkout' ),
+					'desc'              => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Do not remove duplicate Google Maps scripts', 'fluid-checkout' ),
+					'desc_tip'          => __( 'When enabled, duplicate Google Maps scripts will NOT be removed which can cause errors and performance issues. Only use this option while troubleshooting.', 'fluid-checkout' ),
+					'id'                => 'fc_gaa_google_maps_dont_remove_duplicate_scripts',
+					'type'              => 'checkbox',
+					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_gaa_google_maps_dont_remove_duplicate_scripts' ),
+					'autoload'          => false,
+					'disabled'          => true,
+					'requires'          => 'pro',
+				),
+
+				array(
 					'type' => 'sectionend',
 					'id'   => 'fc_checkout_advanced_debug_options',
 				),
 
 			);
+
+			// Legacy settings cleanup
+			if ( class_exists( 'FluidCheckout_AdminNotices_SettingsLegacyCleanup' ) && FluidCheckout_AdminNotices_SettingsLegacyCleanup::should_show_tools_cleanup_field() ) {
+				$settings = array_merge(
+					$settings,
+					array(
+						array(
+							'title' => __( 'Legacy settings', 'fluid-checkout' ),
+							'type'  => 'title',
+							'desc'  => __( 'Since Fluid Checkout 5.0, settings are stored in profiles. Legacy individual option rows may still exist in the database from older versions to allow downgrades to a pre-5.0 plugin version.', 'fluid-checkout' ),
+							'id'    => 'fc_legacy_settings_options',
+						),
+						array(
+							'title'              => __( 'Legacy settings cleanup', 'fluid-checkout' ),
+							'desc'               => __( 'Remove leftover individual option rows after you no longer need to downgrade to a pre-5.0 plugin version.', 'fluid-checkout' ),
+							'id'                 => 'fc_settings_legacy_cleanup_button',
+							'type'               => 'fc_button',
+							'button_text'        => __( 'Clean legacy settings', 'fluid-checkout' ),
+							'url'                => FluidCheckout_AdminNotices_SettingsLegacyCleanup::get_cleanup_url(),
+							'button_style'       => 'secondary',
+							'open_in_new_tab'    => false,
+							'show_external_icon' => false,
+							'is_option'          => false,
+						),
+						array(
+							'type' => 'sectionend',
+							'id'   => 'fc_legacy_settings_options',
+						),
+					)
+				);
+			}
 
 			/**
 			 * Filters the settings for one Fluid Checkout admin section.
