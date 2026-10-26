@@ -36,6 +36,9 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 	public function register_scripts_styles( $hook ) {
 		if ( ! $this->is_settings_screen( $hook ) ) { return; }
 
+		// Bail when usage tracking UI is hidden by PHP constant
+		if ( FC_Telemetry_Client::is_disabled_by_constant() ) { return; }
+
 		// Scripts
 		wp_register_script( 'fc-admin-telemetry', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-telemetry' ), array( 'fc-utils' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-telemetry', 'window.addEventListener("load",function(){if(window.fcSettingsAdmin&&fcSettingsAdmin.telemetry){FCAdminTelemetry.init(fcSettingsAdmin.telemetry);}});' );
@@ -52,13 +55,14 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 		// Bail if not on the settings screen
 		if ( ! $this->is_settings_screen() ) { return $settings; }
 
-		$disabled_by_constant = FC_Telemetry_Client::is_disabled_by_constant();
+		// Bail when usage tracking UI is hidden by PHP constant
+		if ( FC_Telemetry_Client::is_disabled_by_constant() ) { return $settings; }
 
 		$settings[ 'telemetry' ] = array(
 			'ajaxUrl'               => admin_url( 'admin-ajax.php' ),
 			'nonce'                 => wp_create_nonce( 'fc_telemetry_admin' ),
 			'isEnabledSaved'        => 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_telemetry_enabled', 'no' ),
-			'isDisabledByConstant'  => $disabled_by_constant,
+			'isDisabledByConstant'  => false,
 			'i18n'                  => array(
 				'modalTitle'         => __( 'Usage data preview', 'fluid-checkout' ),
 				'modalDescription'   => __( 'This is the exact usage data that would be sent with your current choices.', 'fluid-checkout' ),
@@ -67,7 +71,7 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 				'sendError'          => __( 'Could not send the usage data. Try again.', 'fluid-checkout' ),
 				'sendSuccess'        => __( 'Usage data sent.', 'fluid-checkout' ),
 				'sendNow'            => __( 'Send now', 'fluid-checkout' ),
-				'enableAndSendNow'   => __( 'Turn on and send now', 'fluid-checkout' ),
+				'enableAndSendNow'   => __( 'Turn ON and send now', 'fluid-checkout' ),
 				'close'              => __( 'Close', 'fluid-checkout' ),
 				'inProgress'         => __( 'Usage data is already being sent. Try again in a moment.', 'fluid-checkout' ),
 				'disabled'           => __( 'Usage tracking is turned off.', 'fluid-checkout' ),
@@ -90,7 +94,8 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 	public function output_modal_markup() {
 		if ( ! $this->is_settings_screen() ) { return; }
 
-		$disabled_by_constant = FC_Telemetry_Client::is_disabled_by_constant();
+		// Bail when usage tracking UI is hidden by PHP constant
+		if ( FC_Telemetry_Client::is_disabled_by_constant() ) { return; }
 		?>
 		<div id="fc-telemetry-modal" class="fc-telemetry-modal" aria-hidden="true">
 			<div class="fc-telemetry-modal__backdrop" data-fc-telemetry-close></div>
@@ -100,24 +105,13 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 					<button type="button" class="fc-telemetry-modal__close" data-fc-telemetry-close aria-label="<?php esc_attr_e( 'Close', 'fluid-checkout' ); ?>">&times;</button>
 				</div>
 				<div class="fc-telemetry-modal__body">
-					<p class="description">
-						<?php
-						if ( $disabled_by_constant ) {
-							echo esc_html( FC_Telemetry_Client::get_disabled_by_constant_message() );
-						}
-						else {
-							esc_html_e( 'This is the exact usage data that would be sent with your current choices.', 'fluid-checkout' );
-						}
-						?>
-					</p>
+					<p class="description"><?php esc_html_e( 'This is the exact usage data that would be sent with your current choices.', 'fluid-checkout' ); ?></p>
 					<pre class="fc-telemetry-modal__payload" aria-live="polite"></pre>
 					<p class="fc-telemetry-modal__feedback is-hidden"></p>
 				</div>
 				<div class="fc-telemetry-modal__footer">
 					<button type="button" class="button" data-fc-telemetry-close><?php esc_html_e( 'Close', 'fluid-checkout' ); ?></button>
-					<?php if ( ! $disabled_by_constant ) : ?>
-						<button type="button" class="button button-primary fc-telemetry-modal__send-button is-hidden"><?php esc_html_e( 'Send now', 'fluid-checkout' ); ?></button>
-					<?php endif; ?>
+					<button type="button" class="button button-primary fc-telemetry-modal__send-button is-hidden"><?php esc_html_e( 'Send now', 'fluid-checkout' ); ?></button>
 				</div>
 			</div>
 		</div>
@@ -188,7 +182,7 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 		$groups = $this->get_request_data_groups();
 
 		// Admin send-now always enables reporting when currently disabled, then sends.
-		// Covers "Turn on and send now" and an unsaved checked enable checkbox.
+		// Covers "Turn ON and send now" and an unsaved checked enable checkbox.
 		$enable_if_disabled = true;
 
 		// Bail if telemetry client class is not available or does not support sending site reports

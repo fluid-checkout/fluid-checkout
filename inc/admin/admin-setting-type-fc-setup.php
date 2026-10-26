@@ -89,12 +89,16 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 				/* translators: %s: Integrations settings URL. */
 				'label' => sprintf( __( 'Check if there are any <a href="%s">integration options</a> available for the theme or other plugins you have installed.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'integrations' ) ) ),
 			),
-			array(
+		);
+
+		// Hide usage tracking checklist step when turned off by PHP constant
+		if ( ! class_exists( 'FC_Telemetry_Client' ) || ! FC_Telemetry_Client::is_disabled_by_constant() ) {
+			$steps[] = array(
 				'id'    => 'tracking',
 				/* translators: %s: Tools settings URL. */
-				'label' => sprintf( __( 'Get faster support and help us improve compatibility and measure impact. Usage tracking is optional and off by default. <a href="%s">Review usage tracking</a> in the tools settings. You can preview the data and turn it off at any time.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'tools' ) ) ),
-			),
-		);
+				'label' => sprintf( __( 'Get faster support and help us improve compatibility and measure impact. Usage tracking is optional and OFF by default. <a href="%s">Review usage tracking</a> in the tools settings. You can preview the data and turn it off at any time.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'tools' ) ) ),
+			);
+		}
 
 		/**
 		 * Filters the getting-started checklist steps on the Dashboard.

@@ -59,7 +59,7 @@
 			sendError:                        'Could not send the usage data. Try again.',
 			sendSuccess:                      'Usage data sent.',
 			sendNow:                          'Send now',
-			enableAndSendNow:                 'Turn on and send now',
+			enableAndSendNow:                 'Turn ON and send now',
 			inProgress:                       'Usage data is already being sent. Try again in a moment.',
 			disabled:                         'Usage tracking is turned off.',
 			emptyPayload:                     'There is no usage data to send.',
@@ -338,9 +338,9 @@
 	var updateSendButton = function( enabled ) {
 		var label = enabled
 			? ( _settings.i18n.sendNow || 'Send now' )
-			: ( _settings.i18n.enableAndSendNow || 'Turn on and send now' );
+			: ( _settings.i18n.enableAndSendNow || 'Turn ON and send now' );
 
-		// Bail if usage tracking is turned off in wp-config.php
+		// Bail if usage tracking is turned off in PHP constant
 		if ( true === _settings.isDisabledByConstant ) {
 			if ( _sendButton ) {
 				_sendButton.classList.add( _settings.isHiddenClass );

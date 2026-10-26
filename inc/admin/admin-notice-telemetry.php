@@ -133,7 +133,7 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 		// Bail on Fluid Checkout settings screens (usage tracking is available under Tools / Getting started)
 		if ( $this->is_fc_settings_screen() ) { return $notices; }
 
-		$description  = '<p>' . esc_html( __( 'Usage tracking is optional and off by default. It helps us improve compatibility and support. You can preview the exact data before it is sent, and turn it off at any time.', 'fluid-checkout' ) ) . '</p>';
+		$description  = '<p>' . esc_html( __( 'Usage tracking is optional and OFF by default. It helps us improve compatibility and support. You can preview the exact data before it is sent, and turn it off at any time.', 'fluid-checkout' ) ) . '</p>';
 		$description .= '<p>' . esc_html( __( 'When you turn it on, Fluid Checkout receives your site domain and basic environment details: WordPress, PHP and WooCommerce versions, language, store country, currency and timezone, your active theme, and your installed plugins and their versions. You can also choose to include monthly order counts and sales totals. No customer or user data is ever sent.', 'fluid-checkout' ) ) . '</p>';
 
 		$notices[] = array(
@@ -141,7 +141,7 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 			'title'           => __( 'Usage tracking', 'fluid-checkout' ),
 			'description'     => $description,
 			'paragraph_wrap'  => false,
-			'dismiss_label'   => __( 'Keep it off', 'fluid-checkout' ),
+			'dismiss_label'   => __( 'Keep it OFF', 'fluid-checkout' ),
 			'actions'         => array(
 				sprintf(
 					'<a href="%s" class="button button-secondary">%s</a>',
@@ -151,7 +151,7 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 				sprintf(
 					'<a href="%s" class="button button-secondary">%s</a>',
 					esc_url( $this->get_enable_url() ),
-					esc_html__( 'Turn on usage tracking', 'fluid-checkout' )
+					esc_html__( 'Turn ON usage tracking', 'fluid-checkout' )
 				),
 			),
 		);

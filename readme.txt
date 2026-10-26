@@ -366,7 +366,7 @@ We value your privacy and your customers' privacy. We cannot guarantee that the 
 
 You choose which of these to share. Before anything is sent, you can preview the exact data in the plugin settings, and you can turn usage tracking off at any time.
 
-Agencies and developers can turn usage tracking off for a site by adding the FC_DISABLE_TELEMETRY constant, set to true, to that site's wp-config.php. It has to be added on each site, and there is no network-wide switch. While the constant is set, nothing is sent and the saved choice is kept.
+Agencies and developers can turn usage tracking off for a site by adding the FC_DISABLE_TELEMETRY constant, set to true, to that site's wp-config.php. It has to be added on each site. While the constant is set, nothing is sent, the usage tracking settings stay hidden in the admin, and the saved choice is kept.
 
 = Is Fluid Checkout compatible with WCAG 2.2 Level AA accessibility requirements? Will it make my webshop compliant? =
 

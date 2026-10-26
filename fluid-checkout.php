@@ -76,6 +76,7 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 				'last_sales_metrics_month_option' => 'fc_telemetry_last_sales_metrics_month',
 				'changed_interval'                => WEEK_IN_SECONDS,
 				'unchanged_interval'              => 4 * WEEK_IN_SECONDS,
+				'disable_constant'                => 'FC_DISABLE_TELEMETRY',
 			),
 		);
 

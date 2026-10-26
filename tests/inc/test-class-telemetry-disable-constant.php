@@ -13,8 +13,13 @@ class FluidCheckout_Telemetry_Disable_Constant_Test extends TestCase {
 	public function test_is_disabled_by_constant_is_false_when_unset() {
 		$this->skip_if_constant_already_defined();
 
+		$api_url = FluidCheckout::get_telemetry_api_url();
+		$config  = FC_Telemetry_Client::get_telemetry_config( $api_url );
+
 		$this->assertFalse( FC_Telemetry_Client::is_disabled_by_constant() );
 		$this->assertSame( 'FC_DISABLE_TELEMETRY', FC_Telemetry_Client::DISABLE_CONSTANT );
+		$this->assertSame( 'FC_DISABLE_TELEMETRY', $config['disable_constant'] );
+		$this->assertSame( 'FC_DISABLE_TELEMETRY', FC_Telemetry_Client::get_disable_constant_name( $api_url ) );
 		$this->assertStringContainsString( 'FC_DISABLE_TELEMETRY', FC_Telemetry_Client::get_disabled_by_constant_message() );
 	}
 
