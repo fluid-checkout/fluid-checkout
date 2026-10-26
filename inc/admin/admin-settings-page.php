@@ -840,17 +840,17 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		}
 
 		$settings[ 'settingsPage' ] = array(
-			'ajaxUrl'              => admin_url( 'admin-ajax.php' ),
-			'saveAction'           => 'fc_settings_save',
-			'movedMessageNonce'    => wp_create_nonce( 'fc_settings_set_moved_setting_message_dismissed' ),
+			'ajaxUrl'             => admin_url( 'admin-ajax.php' ),
+			'saveAction'          => 'fc_settings_save',
+			'movedMessageNonce'   => wp_create_nonce( 'fc_settings_set_moved_setting_message_dismissed' ),
 			// Copy for AJAX save and floating header notices on the settings page
-			'i18n'                 => array(
-				'saving'                => __( 'Saving...', 'fluid-checkout' ),
-				'save'                  => __( 'Save settings', 'fluid-checkout' ),
-				'saved'                 => __( 'Your settings have been saved.', 'fluid-checkout' ),
-				'saveError'             => __( 'Settings could not be saved. Please try again.', 'fluid-checkout' ),
-				'dismissNotice'         => __( 'Dismiss notice', 'fluid-checkout' ), // aria-label on the floating header notice dismiss button
-				'movedMessageError'     => __( 'The change could not be saved. Please try again.', 'fluid-checkout' ),
+			'i18n'                => array(
+				'saving'               => __( 'Saving...', 'fluid-checkout' ),
+				'save'                 => __( 'Save settings', 'fluid-checkout' ),
+				'saved'                => __( 'Your settings have been saved.', 'fluid-checkout' ),
+				'saveError'            => __( 'Settings could not be saved. Please try again.', 'fluid-checkout' ),
+				'dismissNotice'        => __( 'Dismiss notice', 'fluid-checkout' ), // aria-label on the floating header notice dismiss button
+				'movedMessageError'    => __( 'The change could not be saved. Please try again.', 'fluid-checkout' ),
 			),
 		);
 

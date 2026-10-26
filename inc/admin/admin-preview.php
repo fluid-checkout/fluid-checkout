@@ -1327,8 +1327,11 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Set the dummy coupon as applied in the session, before WooCommerce loads the cart from it, so coupon styles can be previewed.
 	 */
 	public function maybe_set_preview_applied_coupons() {
-		// Bail if coupons are disabled, or the session already has applied coupons
-		if ( ! wc_coupons_enabled() || null !== WC()->session->get( 'applied_coupons', null ) ) { return; }
+		// Bail if coupons are disabled
+		if ( ! wc_coupons_enabled() ) { return; }
+
+		// Bail if the session already has applied coupons
+		if ( null !== WC()->session->get( 'applied_coupons', null ) ) { return; }
 
 		// Set the dummy coupon as applied
 		WC()->session->set( 'applied_coupons', array( FluidCheckout_Admin_Preview_Dummy_Data::COUPON_CODE ) );

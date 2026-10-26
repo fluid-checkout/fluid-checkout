@@ -21,14 +21,14 @@
 	var _hasInitialized = false;
 	var _publicMethods = {};
 	var _settings = {
-		fieldSelector:                     '[data-fc-settings-css-value]',
-		swatchSelector:                    '[data-fc-settings-css-value-swatch]',
-		inputSelector:                     '[data-fc-settings-css-value-input]',
-		clearSelector:                     '[data-fc-settings-css-value-clear]',
-		errorSelector:                     '[data-fc-settings-css-value-error]',
-		propertyAttribute:                 'data-fc-settings-css-value-property',
-		isInvalidClass:                    'is-invalid',
-		swatchDefaultColor:                '#ffffff',
+		fieldSelector:            '[data-fc-settings-css-value]',
+		swatchSelector:           '[data-fc-settings-css-value-swatch]',
+		inputSelector:            '[data-fc-settings-css-value-input]',
+		clearSelector:            '[data-fc-settings-css-value-clear]',
+		errorSelector:            '[data-fc-settings-css-value-error]',
+		propertyAttribute:        'data-fc-settings-css-value-property',
+		isInvalidClass:           'is-invalid',
+		swatchDefaultColor:       '#ffffff',
 	};
 
 
