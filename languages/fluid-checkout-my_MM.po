@@ -2708,6 +2708,46 @@ msgstr ""
 "ကူးယူနိုင်ကြောင်း သေချာစေရန်အတွက် ၎င်းကို လိုအပ်ပါသည်၊ မဟုတ်ပါက ဖောက်သည်သည် "
 "ငွေရှင်းကောင်တာပုံစံကို ဖြည့်စွက်နိုင်မည်မဟုတ်ပါ။"
 
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level.php:3
+msgid "Top Level"
+msgstr "ထိပ်တန်းအဆင့်"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/template-top-level-post-types-child.php:3
+msgid "Top Level In A Child Theme"
+msgstr "ကလေးအကြောင်းအရာတစ်ခုတွင် ထိပ်တန်းအဆင့်"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/no-trailing-period-post-types.php:3
+msgid "No Trailing Period"
+msgstr "နောက်ဆက်တွဲကာလ မရှိပါ"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/tilde-post-types.php:3
+msgid "Tilde in Post Type."
+msgstr "Post Type မှာ Tilde ထည့်ပါ။"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-comma-post-types.php:3
+msgid "Trailing Comma,"
+msgstr "ကော်မာနောက်ကြောင်းပြန်ခြင်း၊"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-post-types.php:3
+msgid "Trailing Period."
+msgstr "နောက်ကြောင်းပြန်လှည့်ကာလ။"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-whitespace-post-types.php:3
+msgid "Trailing Period, White Space."
+msgstr "နောက်ကျကျန်နေသောကာလ၊ အဖြူရောင်နေရာ။"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-whitespace-period-post-types.php:3
+msgid "Trailing White Space, Period."
+msgstr "နောက်ကျကျန်နေသော အဖြူရောင်နေရာ၊ အကြိမ်။"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir.php:3
+msgid "Sub Dir"
+msgstr "လက်အောက်ခံ ဒါရိုက်တာ"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/subdir/template-sub-dir-post-types-child.php:3
+msgid "Sub Dir In A Child Theme"
+msgstr "Child Theme ထဲက Sub Dir"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
