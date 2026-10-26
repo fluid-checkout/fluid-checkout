@@ -87,7 +87,7 @@ class FluidCheckout_Settings_Tools {
 				array(
 					'title' => __( 'Usage tracking', 'fluid-checkout' ),
 					'type'  => 'title',
-					'desc'  => __( 'Optional, and off by default. It helps us improve compatibility and support. You can preview the exact data before it is sent, and turn it off at any time. No customer data is sent, such as names, emails, addresses, or order details.', 'fluid-checkout' ),
+					'desc'  => __( 'Optional, and off by default. It helps us improve compatibility and provide you with faster support. You can preview the exact data before it is sent, and turn it off at any time. No customer or user data is ever sent.', 'fluid-checkout' ),
 					'id'    => 'fc_checkout_telemetry_options',
 				),
 

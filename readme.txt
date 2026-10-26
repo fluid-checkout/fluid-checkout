@@ -23,8 +23,6 @@ Built with accessibility in mind and designed to support WCAG 2.2 Level AA on th
 
 Trusted by thousands of active WooCommerce sites.
 
-Usage tracking is optional and off by default. You can preview the data before it is sent and turn it off at any time.
-
 = Live demo =
 
 Try the checkout yourself before you install:
@@ -363,8 +361,8 @@ We value your privacy and your customers' privacy. We cannot guarantee that the 
 **Usage tracking:** Usage tracking is optional and only starts if you turn it on. It helps us improve compatibility and support. When enabled, it only sends non-sensitive site information:
 
 * Basic environment: WordPress, PHP and WooCommerce versions, language, store country, currency and timezone, your active theme, and your installed plugins and their versions.
-* Plugin settings: the Fluid Checkout settings you have selected.
-* Store totals: monthly order counts and sales totals, with no customer or order details.
+* Plugin settings (optional): the active Fluid Checkout settings you have selected.
+* Store totals (optional): monthly order counts and sales totals, with no customer or order details.
 
 You choose which of these to share. Before anything is sent, you can preview the exact data in the plugin settings, and you can turn usage tracking off at any time.
 
@@ -437,6 +435,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Fixed: "Same as billing address" behavior on the cart shipping calculator.
 * Fixed: JavaScript error in collapsible blocks when a child element fires `transitionend` (for example on the view-order account page).
 * Fixed: JavaScript error when focusing a shipping method after checkout update if that method is no longer available in the refreshed fragment.
+* Fixed: Settings page header missing after third-party admin notices are stripped on Fluid Checkout settings screens.
 * Deprecated: Filter `fc_next_step_button_label` now shows a deprecation notice, use `fc_proceed_to_next_step_button_label` instead.
 * Deprecated: Filter `fc_shipping_methods_disable_auto_select`, use `fc_prevent_shipping_method_autoselect` instead. Note that the new filter has inverted logic: return `true` to prevent auto-selecting a shipping method.
 * Deprecated: Filter `fc_skip_add_pickup_point_info_as_review_text_lines`. Returning true from this filter still skips pickup point details from the shipping method review text. Use `fc_add_pickup_point_info_as_review_text_lines` instead.

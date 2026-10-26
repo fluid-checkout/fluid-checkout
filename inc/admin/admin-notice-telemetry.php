@@ -134,7 +134,7 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 		if ( $this->is_fc_settings_screen() ) { return $notices; }
 
 		$description  = '<p>' . esc_html( __( 'Usage tracking is optional and off by default. It helps us improve compatibility and support. You can preview the exact data before it is sent, and turn it off at any time.', 'fluid-checkout' ) ) . '</p>';
-		$description .= '<p>' . esc_html( __( 'If you turn it on, Fluid Checkout receives your site domain and basic environment details: WordPress, PHP and WooCommerce versions, language, store country, currency and timezone, your active theme, and your installed plugins and their versions. You can also choose to include monthly order counts and sales totals. No customer data is sent, such as names, emails, addresses, or order details. A paid Fluid Checkout plugin can include a hashed license key, not the key itself.', 'fluid-checkout' ) ) . '</p>';
+		$description .= '<p>' . esc_html( __( 'When you turn it on, Fluid Checkout receives your site domain and basic environment details: WordPress, PHP and WooCommerce versions, language, store country, currency and timezone, your active theme, and your installed plugins and their versions. You can also choose to include monthly order counts and sales totals. No customer or user data is ever sent.', 'fluid-checkout' ) ) . '</p>';
 
 		$notices[] = array(
 			'name'            => self::NOTICE_NAME,

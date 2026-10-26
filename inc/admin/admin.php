@@ -80,9 +80,9 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * Strip third-party WordPress admin notices on FC admin screens.
 	 *
 	 * Guided setup: remove all `admin_notices` / `all_admin_notices` callbacks.
-	 * Settings: remove all, then re-register the Fluid Checkout notice renderer only.
+	 * Settings: remove all, then re-register the settings header and Fluid Checkout notices only.
 	 *
-	 * @param   bool  $re_register_fc_notices  Whether to re-attach FC notice display callbacks.
+	 * @param   bool  $re_register_fc_notices  Whether to re-attach FC header and notice display callbacks.
 	 */
 	public static function strip_non_fc_admin_notices_on_load( $re_register_fc_notices = false ) {
 		remove_all_actions( 'admin_notices' );
@@ -90,6 +90,11 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 		// Bail if FC notices should stay hidden (guided setup)
 		if ( ! $re_register_fc_notices ) { return; }
+
+		// Re-attach settings page header (hooked on `admin_notices` at priority 1)
+		if ( class_exists( 'FluidCheckout_Admin_Settings_Page' ) ) {
+			add_action( 'admin_notices', array( FluidCheckout_Admin_Settings_Page::instance(), 'output_admin_header' ), 1 );
+		}
 
 		// Re-attach Fluid Checkout notices (Lite renderer; PRO notices register on `fc_admin_notices`)
 		if ( class_exists( 'FluidCheckout_AdminNotices' ) ) {
