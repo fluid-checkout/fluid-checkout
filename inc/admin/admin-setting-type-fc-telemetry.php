@@ -31,6 +31,9 @@ class FluidCheckout_Admin_SettingType_Telemetry extends FluidCheckout {
 	 * @param array $value Admin settings args values.
 	 */
 	public function output_field( $value ) {
+		// Bail when usage tracking UI is hidden by PHP constant
+		if ( FC_Telemetry_Client::is_disabled_by_constant() ) { return; }
+
 		$renderer     = FluidCheckout_Admin_Settings_Renderer::instance();
 		$option_value = $value[ 'value' ];
 		$has_title    = '' !== $value[ 'title' ];
@@ -78,7 +81,7 @@ class FluidCheckout_Admin_SettingType_Telemetry extends FluidCheckout {
 				type="button"
 				class="button button-secondary fc-telemetry-preview-button"
 				aria-haspopup="dialog"
-			><?php esc_html_e( 'Preview report data', 'fluid-checkout' ); ?></button>
+			><?php echo esc_html( __( 'Preview data', 'fluid-checkout' ) ); ?></button>
 			<button
 				type="button"
 				class="button button-secondary fc-telemetry-send-now-button"

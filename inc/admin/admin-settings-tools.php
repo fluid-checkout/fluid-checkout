@@ -80,73 +80,84 @@ class FluidCheckout_Settings_Tools {
 				'data-conditional-id'    => 'fc_telemetry_enabled',
 				'data-conditional-value' => 'yes',
 			);
+			$telemetry_disabled_by_constant = FC_Telemetry_Client::is_disabled_by_constant();
 
-			$settings = array(
+			$settings = array();
 
-				array(
-					'title' => __( 'Usage tracking', 'fluid-checkout' ),
-					'type'  => 'title',
-					'desc'  => __( 'Send non-sensitive site environment reports to help Fluid Checkout improve compatibility. Reports are not sent until enabled in the options below.', 'fluid-checkout' ),
-					'id'    => 'fc_checkout_telemetry_options',
-				),
+			// Hide usage tracking settings when turned off by PHP constant
+			if ( ! $telemetry_disabled_by_constant ) {
+				$settings = array_merge(
+					$settings,
+					array(
+						array(
+							'title' => __( 'Usage tracking', 'fluid-checkout' ),
+							'type'  => 'title',
+							'desc'  => __( 'Optional, and OFF by default. It helps us improve compatibility and provide you with faster support. You can preview the exact data before it is sent, and turn it off at any time. No customer or user data is ever sent.', 'fluid-checkout' ),
+							'id'    => 'fc_checkout_telemetry_options',
+						),
 
-				array(
-					'title'           => __( 'Usage tracking', 'fluid-checkout' ),
-					'desc'            => __( 'Send usage tracking reports to Fluid Checkout', 'fluid-checkout' ),
-					'desc_tip'        => __( 'These reports help us improve compatibility and support for your site and are sent weekly when enabled.', 'fluid-checkout' ) . '<br>' .
-									 __( 'No customer, admin user, or any other sensitive data is included in the reports.', 'fluid-checkout' ),
-					'id'              => 'fc_telemetry_enabled',
-					'type'            => 'fc_telemetry_enable',
-					'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_telemetry_enabled' ),
-					'autoload'        => false,
-				),
-				array(
-					'title'             => '',
-					'desc'              => __( 'Basic environment info', 'fluid-checkout' ),
-					'desc_tip'          => __( 'WordPress, PHP, WooCommerce, theme, and plugin list data. Always included when reporting is enabled. Helps us understand the environment your site is running in.', 'fluid-checkout' ),
-					'id'                => 'fc_telemetry_data_groups_basic_environment',
-					'field_name'        => 'fc_telemetry_data_groups',
-					'checkbox_value'    => 'basic_environment',
-					'type'              => 'checkbox',
-					'value'             => $telemetry_data_groups,
-					'control_disabled'  => true,
-					'is_option'         => false,
-					'custom_attributes' => $telemetry_data_groups_conditional,
-					'autoload'          => false,
-				),
-				array(
-					'title'             => '',
-					'desc'              => __( 'Plugin settings', 'fluid-checkout' ),
-					'desc_tip'          => __( 'Sends Fluid Checkout plugin settings to help with support requests and helps us understand how you are using our plugins.', 'fluid-checkout' ),
-					'id'                => 'fc_telemetry_data_groups_plugin_settings',
-					'field_name'        => 'fc_telemetry_data_groups',
-					'checkbox_value'    => 'plugin_settings',
-					'type'              => 'checkbox',
-					'value'             => $telemetry_data_groups,
-					'badge'             => __( 'Coming soon', 'fluid-checkout' ),
-					'control_disabled'  => true,
-					'is_option'         => false,
-					'custom_attributes' => $telemetry_data_groups_conditional,
-					'autoload'          => false,
-				),
-				array(
-					'title'             => '',
-					'desc'              => __( 'Sales metrics', 'fluid-checkout' ),
-					'desc_tip'          => __( 'Monthly order count and total sales for one year prior to installing Fluid Checkout up to today. Helps us understand if you are making more money with our plugins installed. No customer or user data is ever sent.', 'fluid-checkout' ),
-					'id'                => 'fc_telemetry_data_groups',
-					'field_name'        => 'fc_telemetry_data_groups',
-					'checkbox_value'    => 'woocommerce_sales_metrics',
-					'type'              => 'checkbox',
-					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_telemetry_data_groups' ),
-					'custom_attributes' => $telemetry_data_groups_conditional,
-					'autoload'          => false,
-				),
+						array(
+							'title'           => __( 'Usage tracking', 'fluid-checkout' ),
+							'desc'            => __( 'Turn ON usage tracking', 'fluid-checkout' ),
+							'desc_tip'        => __( 'Nothing is sent right away unless you choose to send it. After that, usage data is sent about once a week, or about every 4 weeks if nothing has changed.', 'fluid-checkout' ),
+							'id'              => 'fc_telemetry_enabled',
+							'type'            => 'fc_telemetry_enable',
+							'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_telemetry_enabled' ),
+							'autoload'        => false,
+						),
+						array(
+							'title'             => '',
+							'desc'              => __( 'Basic environment', 'fluid-checkout' ),
+							'desc_tip'          => __( 'Included whenever usage tracking is on. WordPress, PHP and WooCommerce versions, language, store country, currency and timezone, your active theme, and your installed plugins and their versions, including whether each plugin is active. Also your site domain, whether this is a multisite, and when Fluid Checkout plugins were first activated. A paid Fluid Checkout plugin can include a hashed license key, not the key itself.', 'fluid-checkout' ),
+							'id'                => 'fc_telemetry_data_groups_basic_environment',
+							'field_name'        => 'fc_telemetry_data_groups',
+							'checkbox_value'    => 'basic_environment',
+							'type'              => 'checkbox',
+							'value'             => $telemetry_data_groups,
+							'control_disabled'  => true,
+							'is_option'         => false,
+							'custom_attributes' => $telemetry_data_groups_conditional,
+							'autoload'          => false,
+						),
+						array(
+							'title'             => '',
+							'desc'              => __( 'Plugin settings', 'fluid-checkout' ),
+							'desc_tip'          => __( 'The active Fluid Checkout settings you have selected.', 'fluid-checkout' ) . ' ' . __( 'These settings are not sent yet.', 'fluid-checkout' ),
+							'id'                => 'fc_telemetry_data_groups_plugin_settings',
+							'field_name'        => 'fc_telemetry_data_groups',
+							'checkbox_value'    => 'plugin_settings',
+							'type'              => 'checkbox',
+							'value'             => $telemetry_data_groups,
+							'badge'             => __( 'Coming soon', 'fluid-checkout' ),
+							'control_disabled'  => true,
+							'is_option'         => false,
+							'custom_attributes' => $telemetry_data_groups_conditional,
+							'autoload'          => false,
+						),
+						array(
+							'title'             => '',
+							'desc'              => __( 'Store totals', 'fluid-checkout' ),
+							'desc_tip'          => __( 'Monthly order counts and sales totals for processing and completed orders, for finished months only. The first send can include the 12 months before you installed Fluid Checkout and each finished month since then. No customer or order details are included.', 'fluid-checkout' ),
+							'id'                => 'fc_telemetry_data_groups',
+							'field_name'        => 'fc_telemetry_data_groups',
+							'checkbox_value'    => 'woocommerce_sales_metrics',
+							'type'              => 'checkbox',
+							'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_telemetry_data_groups' ),
+							'custom_attributes' => $telemetry_data_groups_conditional,
+							'autoload'          => false,
+						),
 
-				array(
-					'type' => 'sectionend',
-					'id'   => 'fc_checkout_telemetry_options',
-				),
+						array(
+							'type' => 'sectionend',
+							'id'   => 'fc_checkout_telemetry_options',
+						),
+					)
+				);
+			}
 
+			$settings = array_merge(
+				$settings,
+				array(
 				array(
 					'title' => __( 'Utilities', 'fluid-checkout' ),
 					'type'  => 'title',
@@ -224,7 +235,7 @@ class FluidCheckout_Settings_Tools {
 					'type' => 'sectionend',
 					'id'   => 'fc_checkout_advanced_debug_options',
 				),
-
+				)
 			);
 
 			// Legacy settings cleanup
@@ -381,6 +392,12 @@ class FluidCheckout_Settings_Tools {
 
 		$api_url = FluidCheckout::get_telemetry_api_url();
 		$config  = FC_Telemetry_Client::get_telemetry_config( $api_url );
+
+		// Clear the schedule on save without changing the saved choice
+		if ( FC_Telemetry_Client::is_disabled_by_constant() ) {
+			FC_Telemetry_Client::unschedule_telemetry_cron( $api_url );
+			return;
+		}
 
 		// Maybe schedule telemetry cron if enabled
 		if ( FC_Telemetry_Client::is_telemetry_enabled( $api_url ) ) {

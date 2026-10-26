@@ -49,22 +49,24 @@
 		sendContextInline:                    'inline',
 		enabledYesValue:                      'yes',
 		enabledNoValue:                       'no',
+		isDisabledByConstant:                 false,
 
 		ajaxUrl:                              '',
 		nonce:                                '',
 		i18n: {
-			loading:                          'Loading report preview...',
-			loadError:                        'Could not load the site report preview. Try again.',
-			sendError:                        'Could not send the site report. Try again.',
-			sendSuccess:                      'Site report sent successfully.',
+			loading:                          'Loading preview...',
+			loadError:                        'Could not load the preview. Try again.',
+			sendError:                        'Could not send the usage data. Try again.',
+			sendSuccess:                      'Usage data sent.',
 			sendNow:                          'Send now',
-			enableAndSendNow:                 'Enable and send now',
-			inProgress:                       'A site report request is already in progress. Try again in a moment.',
-			disabled:                         'Site environment reporting is disabled.',
-			emptyPayload:                     'No site report data is available to send.',
-			ineligibleDomain:                 'This site domain cannot send environment reports (local or development domains are excluded).',
-			rateLimited:                      'A site report was sent recently. Try again later.',
-			requestFailed:                    'The site report could not be sent. Try again later.',
+			enableAndSendNow:                 'Turn ON and send now',
+			inProgress:                       'Usage data is already being sent. Try again in a moment.',
+			disabled:                         'Usage tracking is turned off.',
+			emptyPayload:                     'There is no usage data to send.',
+			ineligibleDomain:                 'This site cannot send usage data. Local and development sites are excluded.',
+			rateLimited:                      'Usage data was sent recently. Try again later.',
+			requestFailed:                    'The usage data could not be sent. Try again later.',
+			disabledByConstant:               'Usage tracking is turned off by the FC_DISABLE_TELEMETRY constant in wp-config.php.',
 		},
 	};
 
@@ -152,7 +154,7 @@
 			return data.message;
 		}
 
-		return _settings.i18n.loadError || 'Could not load the site report preview. Try again.';
+		return _settings.i18n.loadError || 'Could not load the preview. Try again.';
 	};
 
 
@@ -176,12 +178,13 @@
 
 		errorCode = data.error_code || '';
 		messagesByCode = {
-			rate_limited:      _settings.i18n.rateLimited,
-			in_progress:       _settings.i18n.inProgress,
-			disabled:          _settings.i18n.disabled,
-			empty_payload:     _settings.i18n.emptyPayload,
-			ineligible_domain: _settings.i18n.ineligibleDomain,
-			request_failed:    _settings.i18n.requestFailed,
+			rate_limited:         _settings.i18n.rateLimited,
+			in_progress:          _settings.i18n.inProgress,
+			disabled:             _settings.i18n.disabled,
+			empty_payload:        _settings.i18n.emptyPayload,
+			ineligible_domain:    _settings.i18n.ineligibleDomain,
+			request_failed:       _settings.i18n.requestFailed,
+			disabled_by_constant: _settings.i18n.disabledByConstant,
 		};
 
 		// Maybe return a mapped error code message
@@ -191,7 +194,7 @@
 
 		// Maybe treat HTTP 429 as rate limited
 		if ( 429 === parseInt( data.response_code, 10 ) ) {
-			return _settings.i18n.rateLimited || 'A site report was sent recently. Try again later.';
+			return _settings.i18n.rateLimited || 'Usage data was sent recently. Try again later.';
 		}
 
 		// Maybe return the server message
@@ -199,7 +202,7 @@
 			return data.message;
 		}
 
-		return _settings.i18n.requestFailed || _settings.i18n.sendError || 'The site report could not be sent. Try again later.';
+		return _settings.i18n.requestFailed || _settings.i18n.sendError || 'The usage data could not be sent. Try again later.';
 	};
 
 
@@ -335,7 +338,15 @@
 	var updateSendButton = function( enabled ) {
 		var label = enabled
 			? ( _settings.i18n.sendNow || 'Send now' )
-			: ( _settings.i18n.enableAndSendNow || 'Enable and send now' );
+			: ( _settings.i18n.enableAndSendNow || 'Turn ON and send now' );
+
+		// Bail if usage tracking is turned off in PHP constant
+		if ( true === _settings.isDisabledByConstant ) {
+			if ( _sendButton ) {
+				_sendButton.classList.add( _settings.isHiddenClass );
+			}
+			return;
+		}
 
 		// Bail if send button is missing
 		if ( ! _sendButton ) { return; }
@@ -352,7 +363,7 @@
 	var setLoadingState = function() {
 		// Maybe show the loading message in the preview area
 		if ( _payload ) {
-			_payload.textContent = _settings.i18n.loading || 'Loading report preview...';
+			_payload.textContent = _settings.i18n.loading || 'Loading preview...';
 		}
 
 		// Maybe hide the modal send button while loading
@@ -542,7 +553,7 @@
 		applyEnabledState( true );
 		showFeedback(
 			feedbackTarget,
-			response.data.message || _settings.i18n.sendSuccess || 'Site report sent successfully.',
+			response.data.message || _settings.i18n.sendSuccess || 'Usage data sent.',
 			'success'
 		);
 	};
@@ -595,6 +606,9 @@
 		var feedbackTarget;
 
 		e.preventDefault();
+
+		// Bail if usage tracking is turned off in wp-config.php
+		if ( true === _settings.isDisabledByConstant ) { return; }
 
 		context = context || _settings.sendContextModal;
 		formState = getFormState();
