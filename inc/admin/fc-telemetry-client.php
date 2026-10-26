@@ -9,6 +9,11 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 	class FC_Telemetry_Client {
 
 		/**
+		 * PHP constant that turns off usage tracking.
+		 */
+		const DISABLE_CONSTANT = 'FC_DISABLE_TELEMETRY';
+
+		/**
 		 * Whether the HTTP Origin injection filter has been registered.
 		 *
 		 * @var bool
@@ -57,6 +62,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 					'last_sales_metrics_month_option' => 'fc_telemetry_last_sales_metrics_month',
 					'changed_interval'                => WEEK_IN_SECONDS,
 					'unchanged_interval'              => 4 * WEEK_IN_SECONDS,
+					'disable_constant'                => self::DISABLE_CONSTANT,
 				)
 			);
 		}
@@ -379,6 +385,98 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 
 
 		/**
+		 * Get the PHP constant name that turns off usage tracking for an API URL.
+		 *
+		 * Empty string means no constant can disable telemetry for that config.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param  string|null  $api_url  Telemetry API base URL.
+		 */
+		public static function get_disable_constant_name( $api_url = null ) {
+			$api_url = self::resolve_api_url( $api_url );
+			$config  = self::get_telemetry_config( $api_url );
+
+			if ( empty( $config['disable_constant'] ) ) {
+				return '';
+			}
+
+			return (string) $config['disable_constant'];
+		}
+
+
+
+		/**
+		 * Whether usage tracking is turned off in wp-config.php.
+		 *
+		 * Only boolean `true` for the configured `disable_constant` counts.
+		 * Other values leave usage tracking unchanged.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param  string|null  $api_url  Telemetry API base URL.
+		 */
+		public static function is_disabled_by_constant( $api_url = null ) {
+			$constant_name = self::get_disable_constant_name( $api_url );
+
+			// Bail if this config has no disable constant
+			if ( '' === $constant_name ) { return false; }
+
+			return defined( $constant_name ) && true === constant( $constant_name );
+		}
+
+
+
+		/**
+		 * Explanation shown when usage tracking is turned off in wp-config.php.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param  string|null  $api_url  Telemetry API base URL.
+		 */
+		public static function get_disabled_by_constant_message( $api_url = null ) {
+			$constant_name = self::get_disable_constant_name( $api_url );
+
+			if ( '' === $constant_name ) {
+				$constant_name = self::DISABLE_CONSTANT;
+			}
+
+			return sprintf(
+				/* translators: %s: wp-config.php constant name. */
+				__( 'Usage tracking is turned off by the %s constant in wp-config.php.', 'fluid-checkout' ),
+				$constant_name
+			);
+		}
+
+
+
+		/**
+		 * Clear the scheduled usage tracking event without changing stored settings.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param string|null $api_url Telemetry API base URL.
+		 */
+		public static function unschedule_telemetry_cron( $api_url = null ) {
+			$api_url = self::resolve_api_url( $api_url );
+			$config  = self::get_telemetry_config( $api_url );
+			/**
+			 * Filters the WP-Cron hook used for telemetry.
+			 *
+			 * @param string $cron_hook Cron hook name. Default `fc_telemetry_weekly`.
+			 * @param string $api_url   Remote API base URL.
+			 */
+			$cron_hook = apply_filters( 'fc_telemetry_cron_hook', $config['cron_hook'], $api_url );
+
+			// Bail if cron hook is not defined
+			if ( empty( $cron_hook ) ) { return; }
+
+			wp_clear_scheduled_hook( $cron_hook );
+		}
+
+
+
+		/**
 		 * Resolve an API URL, falling back to the first registered config when omitted.
 		 *
 		 * @param string|null $api_url Telemetry API base URL.
@@ -416,6 +514,12 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			// Bail if cron hook is not defined
 			if ( empty( $cron_hook ) ) { return; }
 
+			// Clear any existing event instead of creating one when usage tracking is turned off in wp-config.php
+			if ( self::is_disabled_by_constant( $api_url ) ) {
+				self::unschedule_telemetry_cron( $api_url );
+				return;
+			}
+
 			// Bail if already scheduled
 			if ( wp_next_scheduled( $cron_hook ) ) { return; }
 
@@ -435,6 +539,12 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 
 			$api_url = self::resolve_api_url( $api_url );
 
+			// Clear the schedule without changing the saved choice
+			if ( self::is_disabled_by_constant( $api_url ) ) {
+				self::unschedule_telemetry_cron( $api_url );
+				return;
+			}
+
 			// Bail if telemetry is disabled
 			if ( ! self::is_telemetry_enabled( $api_url ) ) { return; }
 
@@ -452,6 +562,14 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			// Bail if telemetry is not supported
 			if ( ! self::is_telemetry_supported() ) { return; }
 
+			$api_url = self::resolve_api_url( $api_url );
+
+			// Skip this run and drop the schedule without changing stored settings
+			if ( self::is_disabled_by_constant( $api_url ) ) {
+				self::unschedule_telemetry_cron( $api_url );
+				return;
+			}
+
 			self::maybe_send_telemetry( $api_url );
 		}
 
@@ -464,6 +582,9 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 		 */
 		public static function maybe_send_telemetry( $api_url = null ) {
 			$api_url = self::resolve_api_url( $api_url );
+
+			// Bail if usage tracking is turned off in wp-config.php
+			if ( self::is_disabled_by_constant( $api_url ) ) { return; }
 
 			// Bail if telemetry is disabled
 			if ( ! self::is_telemetry_enabled( $api_url ) ) { return; }
@@ -483,7 +604,17 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 		 */
 		public static function send_telemetry_now( $groups = null, $enable_if_disabled = false, $respect_send_rules = true, $api_url = null ) {
 			$api_url = self::resolve_api_url( $api_url );
-			$config  = self::get_telemetry_config( $api_url );
+
+			// Bail before enabling, scheduling, or sending when usage tracking is turned off in wp-config.php
+			if ( self::is_disabled_by_constant( $api_url ) ) {
+				return array(
+					'success'    => false,
+					'error_code' => 'disabled_by_constant',
+					'is_enabled' => self::is_telemetry_enabled( $api_url ),
+				);
+			}
+
+			$config = self::get_telemetry_config( $api_url );
 
 			if ( get_transient( $config['send_lock_transient'] ) ) {
 				return array(
@@ -1354,7 +1485,14 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 		 * @param string|null $api_url Telemetry API base URL.
 		 */
 		public static function send_telemetry( $payload, $api_url = null ) {
-			$api_url = untrailingslashit( self::get_remote_api_url( self::resolve_api_url( $api_url ) ) );
+			$api_url = self::resolve_api_url( $api_url );
+
+			// Bail before the HTTP request when usage tracking is turned off in wp-config.php
+			if ( self::is_disabled_by_constant( $api_url ) ) {
+				return new WP_Error( 'fc_telemetry_disabled_by_constant', 'Usage tracking is turned off by a constant.' );
+			}
+
+			$api_url = untrailingslashit( self::get_remote_api_url( $api_url ) );
 
 			// Bail if API URL is not defined
 			if ( empty( $api_url ) ) {
