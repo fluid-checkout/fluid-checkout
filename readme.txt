@@ -278,14 +278,14 @@ Yes. You can view all details, pricing and list of features of the Fluid Checkou
 
 = What is the difference between Fluid Checkout Lite and PRO? =
 
-Fluid Checkout Lite is free and optimizes your WooCommerce checkout page. Fluid Checkout PRO includes everything in Lite and brings the same experience to the cart, order pay and thank you pages. It adds features such as Google Address Autocomplete, the Address Book, account matching, edit cart at checkout and the EU-VAT Assistant, plus priority support.
+Fluid Checkout Lite is free and optimizes your WooCommerce checkout page. Fluid Checkout PRO includes everything in Lite and brings the same experience to the cart, order pay and thank you pages. It adds features such as Google Address Autocomplete, the Address Book, account matching, edit cart at checkout and the EU-VAT Assistant, plus priority support. When you activate Fluid Checkout PRO 5.0 or newer, it automatically deactivates Fluid Checkout Lite.
 
 Fluid Checkout PRO is a single plugin with everything for your checkout. Licenses for multiple sites are available and easily managed from your account on our website. [See all Fluid Checkout PRO features](https://fluidcheckout.com/).
 
 
 = Do I need to keep Fluid Checkout Lite installed when I upgrade to PRO? =
 
-No. Fluid Checkout PRO 5.0+ is a standalone plugin that includes all Lite features, so it does not need Fluid Checkout Lite installed.
+No. Fluid Checkout PRO 5.0+ is a standalone plugin that includes all Lite features, so it does not need Fluid Checkout Lite installed. When you activate PRO, it automatically deactivates Fluid Checkout Lite, so you don't have to do it yourself. You can delete Lite afterwards.
 
 In versions before 5.0 Lite is required for PRO to work. That is no longer the case.
 
@@ -370,7 +370,7 @@ We value your privacy and your customers' privacy. We cannot guarantee that the 
 
 You choose which of these to share. Before anything is sent, you can preview the exact data in the plugin settings, and you can turn usage tracking off at any time.
 
-Agencies and developers can turn usage tracking off for a site by defining the FC_DISABLE_TELEMETRY constant as true in wp-config.php, which keeps the saved choice and sends nothing while that constant is set.
+Agencies and developers can turn usage tracking off for a site by adding the FC_DISABLE_TELEMETRY constant, set to true, to that site's wp-config.php. It has to be added on each site, and there is no network-wide switch. While the constant is set, nothing is sent and the saved choice is kept.
 
 = Is Fluid Checkout compatible with WCAG 2.2 Level AA accessibility requirements? Will it make my webshop compliant? =
 
