@@ -443,6 +443,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Removed: Option `fc_local_pickup_display_clear_shipping_methods_button` not relevant for new Local Pickup feature.
 * Removed: Option to prevent automatic selection of the first shipping method. Use the filter `fc_prevent_shipping_method_autoselect` to prevent it with code.
 * Removed: Filter `fc_vat_reverse_charge_countries_skip_list_options`. The reverse charge exceptions setting lists only the store base country until PRO replaces its options.
+* Added: Address book integration section on the EU-VAT Assistant settings, with the VAT number per account limit locked until PRO is active and both Address Book and the VAT number field are enabled.
 
 = 4.2.7 - 2026-08-19 =
 
