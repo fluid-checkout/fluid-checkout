@@ -4835,8 +4835,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_shipping_step_substep_visibility() {
 		// Define default visibility, all shipping substeps visible
 		$visibility = array(
-			'shipping_address' => 'yes',
-			'shipping_method'  => 'yes',
+			'shipping_address'    => 'yes',
+			'shipping_method'     => 'yes',
 		);
 
 		// Maybe hide shipping substeps when the cart does not need shipping
@@ -4848,6 +4848,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$visibility[ 'shipping_address' ] = 'no';
 		}
 
+		/**
+		 * Filter the visibility of the shipping step substeps, as `yes` or `no` for each substep ID.
+		 */
 		return apply_filters( 'fc_shipping_step_substep_visibility', $visibility );
 	}
 
@@ -7584,9 +7587,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Skip shipping fields if shipping address is not needed
 			if ( 'shipping' === $group_key && ! WC()->cart->needs_shipping_address() ) { continue; }
 
-			// Skip shipping fields when the address section was not posted.
-			// After a virtual-only cart the fields can be missing from the form; clearing
-			// them here would wipe saved shipping values when a shippable item is re-added.
+			// Skip shipping fields when not posted, as overridden shipping form templates
+			// can leave them out for virtual-only carts and clearing would lose the saved values
 			if ( 'shipping' === $group_key && ! array_key_exists( 'shipping_country', $posted_data ) && ! array_key_exists( 'shipping_address_1', $posted_data ) ) { continue; }
 
 			foreach( $fields as $field_key => $field_args ) {
