@@ -97,101 +97,6 @@ class FluidCheckout_Settings_VATAssistant {
 	}
 
 	/**
-	 * Whether the VAT number per account limit can be edited.
-	 *
-	 * Editable only when the `pro` feature is unlocked, Address Book is enabled
-	 * (`fc_pro_enable_address_book` is `yes`), and the VAT number field is shown
-	 * (`fc_vat_number_field_visibility` is `optional` or `required`).
-	 *
-	 * @since 5.0.0
-	 *
-	 * @return  bool
-	 */
-	public static function is_vat_number_per_account_limit_editable() {
-		// Bail if PRO has not unlocked the feature
-		if ( ! FluidCheckout_Admin_Settings_Access::instance()->is_unlocked( self::FEATURE ) ) { return false; }
-
-		$settings = FluidCheckout_Settings::instance();
-
-		// Address Book feature toggle
-		if ( 'yes' !== $settings->get_option( 'fc_pro_enable_address_book' ) ) { return false; }
-
-		// VAT number field is the EU-VAT Assistant feature toggle
-		$visibility = $settings->get_option( 'fc_vat_number_field_visibility' );
-		if ( ! in_array( $visibility, array( 'optional', 'required' ), true ) ) { return false; }
-
-		// A disabled control is omitted from the save request. Do not treat that as a new value.
-		if ( self::is_settings_save_request() && ! array_key_exists( 'fc_vat_number_per_account_limit', self::get_settings_save_request_data() ) ) { return false; }
-
-		return true;
-	}
-
-	/**
-	 * Whether the current request is saving Fluid Checkout settings.
-	 *
-	 * @since 5.0.0
-	 *
-	 * @return  bool
-	 */
-	public static function is_settings_save_request() {
-		$data = self::get_settings_save_request_data();
-		$action = isset( $data[ 'fc_settings_action' ] ) ? $data[ 'fc_settings_action' ] : '';
-
-		return is_string( $action ) && 'save' === sanitize_key( $action );
-	}
-
-	/**
-	 * Get the posted settings data for a save request.
-	 *
-	 * @since 5.0.0
-	 *
-	 * @return  array
-	 */
-	public static function get_settings_save_request_data() {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- The settings page verifies the nonce before building settings to save.
-		if ( empty( $_POST ) || ! is_array( $_POST ) ) { return array(); }
-
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
-		return wp_unslash( $_POST );
-	}
-
-	/**
-	 * Get the VAT number per account limit field.
-	 *
-	 * `requires` is `pro` only when the field may be edited, so the settings
-	 * access registry can remove `disabled`. Otherwise the field stays locked
-	 * and a save does not write `fc_vat_number_per_account_limit`.
-	 *
-	 * @since 5.0.0
-	 *
-	 * @return  array  Settings field arguments.
-	 */
-	public static function get_vat_number_per_account_limit_field() {
-		$field = array(
-			'title'             => __( 'VAT number', 'fluid-checkout' ),
-			'desc'              => '',
-			'desc_tip'          => __( 'Define limit of VAT Numbers a customer can save to their account.', 'fluid-checkout' ),
-			'id'                => 'fc_vat_number_per_account_limit',
-			'type'              => 'select',
-			'options'           => array(
-				'one_per_account'       => __( 'One per account', 'fluid-checkout' ),
-				'one_per_address_entry' => __( 'One per address entry', 'fluid-checkout' ),
-			),
-			'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_per_account_limit' ),
-			'autoload'          => false,
-			'disabled'          => true,
-		);
-
-		// Let the PRO unlock remove `disabled` only when both features are enabled
-		if ( self::is_vat_number_per_account_limit_editable() ) {
-			$field[ 'requires' ] = self::FEATURE;
-		}
-
-		return $field;
-	}
-
-
-	/**
 	 * Add the VAT Assistant settings.
 	 *
 	 * @param   array   $settings         Array with all settings for the current section.
@@ -480,7 +385,20 @@ class FluidCheckout_Settings_VATAssistant {
 					'promo'             => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'vat-assistant-address-book-integration' ),
 				),
 
-				self::get_vat_number_per_account_limit_field(),
+				array(
+					'title'             => __( 'VAT number', 'fluid-checkout' ),
+					'desc'              => '',
+					'desc_tip'          => __( 'Define limit of VAT Numbers a customer can save to their account.', 'fluid-checkout' ),
+					'id'                => 'fc_vat_number_per_account_limit',
+					'type'              => 'select',
+					'options'           => array(
+						'one_per_account'       => __( 'One per account', 'fluid-checkout' ),
+						'one_per_address_entry' => __( 'One per address entry', 'fluid-checkout' ),
+					),
+					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_per_account_limit' ),
+					'autoload'          => false,
+					'disabled'          => true,
+				),
 
 				array(
 					'type'              => 'sectionend',
