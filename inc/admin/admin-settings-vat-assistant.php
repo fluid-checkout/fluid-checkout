@@ -72,19 +72,29 @@ class FluidCheckout_Settings_VATAssistant {
 	}
 
 	/**
-	 * Get the countries options for the reverse charge exceptions setting.
+	 * Get the placeholder country options for the reverse charge exceptions setting.
+	 *
+	 * Lite lists only the store base country. PRO replaces this field's `options`
+	 * through the `fc_vat_vat_assistant_settings` filter.
+	 *
+	 * @since 5.0.0
+	 *
+	 * @return  array  Country code => country name. Only the store base country.
 	 */
 	public static function get_reverse_charge_countries_skip_list_options() {
-		$countries = function_exists( 'WC' ) ? WC()->countries->countries : array();
+		// Bail if WooCommerce is not available
+		if ( ! function_exists( 'WC' ) ) { return array(); }
 
-		/**
-		 * Filters the country options for the VAT reverse charge exceptions setting.
-		 *
-		 * @since 5.0.0
-		 */
-		return apply_filters( 'fc_vat_reverse_charge_countries_skip_list_options', $countries );
+		$countries = WC()->countries->get_countries();
+		$base_country = WC()->countries->get_base_country();
+
+		// Bail if the store has no base country
+		if ( empty( $base_country ) ) { return array(); }
+
+		return array(
+			$base_country => array_key_exists( $base_country, $countries ) ? $countries[ $base_country ] : $base_country,
+		);
 	}
-
 
 	/**
 	 * Add the VAT Assistant settings.
@@ -365,6 +375,34 @@ class FluidCheckout_Settings_VATAssistant {
 				array(
 					'type'              => 'sectionend',
 					'id'                => 'fc_vat_eu_vat_digital_goods_options',
+				),
+
+				array(
+					'title'             => __( 'Address book integration', 'fluid-checkout' ),
+					'type'              => 'title',
+					'desc'              => '',
+					'id'                => 'fc_vat_address_book_integration',
+					'promo'             => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'vat-assistant-address-book-integration' ),
+				),
+
+				array(
+					'title'             => __( 'VAT number', 'fluid-checkout' ),
+					'desc'              => '',
+					'desc_tip'          => __( 'Define limit of VAT Numbers a customer can save to their account.', 'fluid-checkout' ),
+					'id'                => 'fc_vat_number_per_account_limit',
+					'type'              => 'select',
+					'options'           => array(
+						'one_per_account'       => __( 'One per account', 'fluid-checkout' ),
+						'one_per_address_entry' => __( 'One per address entry', 'fluid-checkout' ),
+					),
+					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_per_account_limit' ),
+					'autoload'          => false,
+					'disabled'          => true,
+				),
+
+				array(
+					'type'              => 'sectionend',
+					'id'                => 'fc_vat_address_book_integration',
 				),
 			)
 		);
