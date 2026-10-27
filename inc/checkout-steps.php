@@ -132,7 +132,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
 		add_action( 'fc_checkout_after_step_shipping_fields_inside', array( $this, 'output_substep_visible_state_hidden_field_shipping_address' ), 10 );
-		add_filter( 'fc_substep_shipping_address_attributes', array( $this, 'change_substep_attributes_shipping_address' ), 20 ); // After PRO local pickup at priority 10
+		add_filter( 'fc_substep_shipping_address_attributes', array( $this, 'change_substep_attributes_shipping_address' ), 20, 2 ); // After PRO local pickup at priority 10
 
 		// Shipping method
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -141,7 +141,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10, 3 );
 		add_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10, 2 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
-		add_filter( 'fc_substep_shipping_method_attributes', array( $this, 'change_substep_attributes_shipping_method' ), 20 ); // Match shipping address visibility filter priority
+		add_filter( 'fc_substep_shipping_method_attributes', array( $this, 'change_substep_attributes_shipping_method' ), 20, 2 ); // Match shipping address visibility filter priority
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 ); // Set priority to 7 to ensure it runs after the phone data is set (priority 5) in the PRO plugin
 
 		// Billing address
@@ -4856,9 +4856,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Change the shipping address substep attributes from the shipping visibility map.
 	 *
-	 * @param   array  $substep_attributes  HTML attributes for the substep element.
+	 * @param   array   $substep_attributes  HTML attributes for the substep element.
+	 * @param   string  $context             Context in which the substep is being output for.
 	 */
-	public function change_substep_attributes_shipping_address( $substep_attributes ) {
+	public function change_substep_attributes_shipping_address( $substep_attributes, $context = 'checkout' ) {
+		// Bail if not on checkout context
+		if ( 'checkout' !== $context ) { return $substep_attributes; }
+
 		// Get computed visibility for the shipping address substep
 		$visibility = $this->get_shipping_step_substep_visibility();
 
@@ -4875,9 +4879,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Change the shipping method substep attributes from the shipping visibility map.
 	 *
-	 * @param   array  $substep_attributes  HTML attributes for the substep element.
+	 * @param   array   $substep_attributes  HTML attributes for the substep element.
+	 * @param   string  $context             Context in which the substep is being output for.
 	 */
-	public function change_substep_attributes_shipping_method( $substep_attributes ) {
+	public function change_substep_attributes_shipping_method( $substep_attributes, $context = 'checkout' ) {
+		// Bail if not on checkout context
+		if ( 'checkout' !== $context ) { return $substep_attributes; }
+
 		// Get computed visibility for the shipping method substep
 		$visibility = $this->get_shipping_step_substep_visibility();
 
