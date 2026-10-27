@@ -97,23 +97,6 @@ class FluidCheckout_Settings_VATAssistant {
 	}
 
 	/**
-	 * Get the unlinked PRO badge for the Address Book integration section.
-	 *
-	 * @since 5.0.0
-	 *
-	 * @return  string  Badge HTML, or an empty string when PRO is active.
-	 */
-	public static function get_address_book_integration_promo_html() {
-		// Bail if PRO is already activated
-		if ( FluidCheckout::instance()->is_pro_activated() ) { return ''; }
-
-		return sprintf(
-			'<span class="fc-settings-promo-pill fc-settings-promo-pill--static">%s</span>',
-			esc_html__( 'PRO feature', 'fluid-checkout' )
-		);
-	}
-
-	/**
 	 * Whether the VAT number per account limit can be edited.
 	 *
 	 * Editable only when the `pro` feature is unlocked, Address Book is enabled
@@ -494,7 +477,7 @@ class FluidCheckout_Settings_VATAssistant {
 					'type'              => 'title',
 					'desc'              => '',
 					'id'                => 'fc_vat_address_book_integration',
-					'promo'             => self::get_address_book_integration_promo_html(),
+					'promo'             => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'vat-assistant-address-book-integration' ),
 				),
 
 				self::get_vat_number_per_account_limit_field(),
