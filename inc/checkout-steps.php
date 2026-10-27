@@ -6560,10 +6560,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if forced to not set shipping address
 		if ( true !== apply_filters( 'fc_copy_billing_to_shipping_address_when_shipping_not_needed', true ) ) { return $posted_data; }
 
-		// Bail during AJAX updates so a temporary virtual-only cart does not overwrite
-		// typed shipping values. Place order still copies via the process checkout filter.
-		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) { return $posted_data; }
-
 		// Copy the billing address field values to the shipping address
 		$posted_data = $this->copy_posted_data_billing_address_to_shipping( $posted_data );
 
