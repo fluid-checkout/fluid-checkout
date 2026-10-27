@@ -72,17 +72,28 @@ class FluidCheckout_Settings_VATAssistant {
 	}
 
 	/**
-	 * Get the countries options for the reverse charge exceptions setting.
+	 * Get the placeholder country options for the reverse charge exceptions setting.
+	 *
+	 * Lite lists only the store base country. PRO replaces this field's `options`
+	 * through the `fc_vat_vat_assistant_settings` filter.
+	 *
+	 * @since 5.0.0
+	 *
+	 * @return  array  Country code => country name. Only the store base country.
 	 */
 	public static function get_reverse_charge_countries_skip_list_options() {
-		$countries = function_exists( 'WC' ) ? WC()->countries->countries : array();
+		// Bail if WooCommerce is not available
+		if ( ! function_exists( 'WC' ) ) { return array(); }
 
-		/**
-		 * Filters the country options for the VAT reverse charge exceptions setting.
-		 *
-		 * @since 5.0.0
-		 */
-		return apply_filters( 'fc_vat_reverse_charge_countries_skip_list_options', $countries );
+		$countries = WC()->countries->get_countries();
+		$base_country = WC()->countries->get_base_country();
+
+		// Bail if the store has no base country
+		if ( empty( $base_country ) ) { return array(); }
+
+		return array(
+			$base_country => array_key_exists( $base_country, $countries ) ? $countries[ $base_country ] : $base_country,
+		);
 	}
 
 
