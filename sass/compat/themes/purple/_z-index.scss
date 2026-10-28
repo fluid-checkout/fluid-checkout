@@ -1,0 +1,15 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
+// ------------------------------------
+// Z-INDEX FIXES
+// ------------------------------------
+
+body#{ $body-theme-selector } .has-child .wp-block-navigation__submenu-container {
+	z-index: z( 'header-element' ); // Needed to fix the z-index of the submenu in the header
+}

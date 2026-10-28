@@ -1,0 +1,27 @@
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $body-theme-selector }#{ $body-page-selector } main .woocommerce {
+	max-width: unset;
+}
+
+// Purple cart template uses constrained layout without `.alignwide` (`contentSize:
+// 1060px`). Expand the page contents so `.fc-container` can center at FC max-width.
+// Do not override `.has-global-padding`: that re-applies padding on nested
+// `entry-content` and breaks core's nested global-padding reset.
+body#{ $body-theme-selector }#{ $body-page-selector } main.is-layout-constrained > .wp-block-post-content,
+body#{ $body-theme-selector }#{ $body-page-selector } main.is-layout-constrained > .entry-content {
+	max-width: none;
+	margin-#{$alignment-left}: 0 !important; // Needed to override core constrained-layout auto margins
+	margin-#{$alignment-right}: 0 !important; // Needed to override core constrained-layout auto margins
+	width: 100%;
+}

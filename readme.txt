@@ -407,6 +407,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 = Unreleased =
 
 * Bump tested up to WooCommerce 11.3
+* Added: Compatibility with theme Purple.
 * Added: New settings pages, with guided setup and live preview of checkout pages.
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
