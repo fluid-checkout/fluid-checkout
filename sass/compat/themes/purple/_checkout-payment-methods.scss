@@ -1,0 +1,17 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $body-theme-selector } .woocommerce-checkout-payment ul.wc_payment_methods .payment_box > p:first-child {
+	margin-top: 0;
+}
+
+// Only for payment methods page with Stripe UPE enabled
+body#{ $body-theme-selector } #add_payment_method fieldset#wc-stripe-upe-form {
+	border: none;
+}

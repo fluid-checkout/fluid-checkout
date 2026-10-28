@@ -1,0 +1,31 @@
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $body-theme-selector }#{ $body-page-selector } main .woocommerce {
+	max-width: unset;
+}
+
+// Reset block-theme constrained/alignwide auto margins that push a collapsed
+// content box to the right when distraction-free header and footer is disabled.
+// Keep width 100% so the inner `.fc-container` can apply FC max-width centering.
+body#{ $body-theme-selector }#{ $body-page-selector } main.is-layout-constrained > .wp-block-post-content.alignwide,
+body#{ $body-theme-selector }#{ $body-page-selector } main.is-layout-constrained > .entry-content.alignwide {
+	max-width: none;
+	margin-#{$alignment-left}: 0 !important; // Needed to override core constrained-layout auto margins
+	margin-#{$alignment-right}: 0 !important; // Needed to override core constrained-layout auto margins
+	width: 100%;
+}
+
+body#{ $body-theme-selector }#{ $body-page-selector } .has-global-padding {
+	padding-#{$alignment-left}: remsize( 1rem );
+	padding-#{$alignment-right}: remsize( 1rem );
+}

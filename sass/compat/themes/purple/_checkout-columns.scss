@@ -1,0 +1,12 @@
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+
+// ------------------------------------
+// CHECKOUT COLUMNS LAYOUT
+// ------------------------------------
+
+body#{ $body-theme-selector }#{ $body-page-selector } .woocommerce-notices-wrapper:empty {
+	display: none;
+}
