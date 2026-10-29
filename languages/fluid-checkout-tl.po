@@ -279,10 +279,6 @@ msgstr "Matagumpay na na-update ang database ng Fluid Checkout"
 msgid "The database changes where applied successfully."
 msgstr "Ang database ay nagbabago kung saan matagumpay na nailapat."
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "Ok"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "I-dismiss"
@@ -404,39 +400,9 @@ msgstr "Basahin ang dokumentasyon"
 msgid "Don't show this again"
 msgstr "Huwag mo na itong ipakitang muli"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "Mga espesyal na alok"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"Palawakin ang lahat ng kabutihan ng Fluid Checkout sa iyong pahina ng cart "
-"at mga pahina ng pasasalamat."
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Fluid Checkout PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"Mga template ng disenyo, na-optimize na cart at mga page na natanggap ng "
-"order, pagtutugma ng account, at marami pang iba."
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"Ang pinakamahusay na mga tool upang higit pang <strong>mapabuti ang iyong "
-"rate ng conversion ng pag-checkout sa WooCommerce</strong> at gawing "
-"pare-pareho ang karanasan sa pagbili sa buong paglalakbay."
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -458,12 +424,6 @@ msgstr "I-edit ang mga nilalaman ng cart sa pahina ng pag-checkout"
 msgid "Account matching / user matching"
 msgstr "Pagtutugma ng account / pagtutugma ng user"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr ""
-"Mga button ng Express Checkout mula sa mga sinusuportahang paraan ng "
-"pagbabayad"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "Mga simbolo ng tiwala sa cart at mga pahina ng pasasalamat"
@@ -471,10 +431,6 @@ msgstr "Mga simbolo ng tiwala sa cart at mga pahina ng pasasalamat"
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "Higit pang mga posisyon para sa coupon code sa pahina ng pag-checkout"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "Pinagsamang field ng coupon code sa page ng cart"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -488,251 +444,25 @@ msgstr "Mga mensahe ng regalo at packing slip"
 msgid "Local pickup and in-store collection"
 msgstr "Lokal na pickup at in-store na koleksyon"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "Mag-upgrade sa PRO — 99 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Fluid Checkout PRO – Bundle"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "Lahat ng PRO feature + Lahat ng add-on para sa espesyal na presyo."
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"Kasama sa bundle ang lahat ng add-on na kasalukuyan naming inaalok at Fluid "
-"Checkout add-on na ilulunsad namin sa hinaharap."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "226 EUR na halaga (Makatipid ng 42%)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Autocomplete ng Google Address"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "Address Book"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "Katulong ng EU-VAT"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "Lahat ng hinaharap na add-on *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* Hangga&#39;t mayroon kang aktibong subscription."
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "Kunin ang Bundle - 129 EUR lamang"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"Ang lahat ng mga presyo ay ipinapakita sa EUR. Kung mayroong anumang mga "
-"pagkakaiba sa mga presyo sa aming website, ang mga alok na ipinapakita sa "
-"website ay humalili sa mga ito at ilalapat."
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "Mga add-on"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "Pagandahin ang iyong karanasan sa pag-checkout gamit ang mga add-on na ito."
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "Mayroon na ako nito - Itago ang alok na ito"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "Naka-install — I-activate"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "Na-activate"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "Hanggang 40% mas kaunting mga field ng pag-checkout upang punan."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"Iwasan ang mga pagkaantala sa paghahatid at hindi nasisiyahang mga "
-"customer. Kolektahin ang <strong>tamang impormasyon ng address</strong> "
-"mula sa unang pagkakataon na bumili sila sa iyo."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "Kunin ang add-on na ito — 29 EUR"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "Address book"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "Maramihang naka-save na address para sa pagpapadala at pagsingil."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"Hayaang <strong>mag-save ang mga customer ng maramihang mga address sa "
-"pagpapadala at pagsingil</strong> sa kanilang account at piliin kung alin "
-"ang gagamitin sa pag-checkout at mga pahina ng cart."
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "Kunin ang add-on na ito — 59 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "Pinasimpleng EU-VAT validation para sa iyong tindahan."
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"Kolektahin at <strong>i-validate ang mga numero ng EU VAT sa page ng "
-"pag-checkout</strong> , inaalis ang mga singil sa buwis batay sa reverse "
-"charge at kinukumpirma ang lokasyon ng customer kapag kinakailangan."
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "Kunin ang add-on na ito — 39 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"Ang lahat ng mga add-on ay ibinebenta nang hiwalay at nangangailangan ng "
-"<strong>Fluid Checkout Lite</strong> na plugin na mai-install at "
-"ma-activate, maliban kung nabanggit."
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Pumili ng larawan"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Mag-log in "
-"sa iyong account</a> para makuha ang iyong license key, o <a href=\"%s\" "
-"target=\"_blank\">bumili ng bagong license key</a> ."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "Wasto hanggang %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "Nag-expire noong %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Mag-log in "
-"sa iyong account</a> para i-renew ang iyong license key at patuloy na "
-"makatanggap ng mga update at suporta."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "Kinansela ang susi ng lisensya."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">Bumili ng bagong license key</a> at "
-"patuloy na makatanggap ng mga update at suporta."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "Error: "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "Setup at Dokumentasyon"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr ""
-"Mahusay! Ang iyong pahina ng pag-checkout ay tumatakbo na ngayon sa Fluid "
-"Checkout."
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "Narito ang ilang mapagkukunan para makapagsimula ka:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"Basahin ang gabay sa pag-install <a href=\"%s\" target=\"_blank\">Pagsasabi "
-"gamit ang Fluid Checkout</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr ""
-"I-setup ang layout at disenyo sa mga <a href=\"%s\">opsyon sa "
-"pag-checkout</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"Suriin kung mayroong anumang <a href=\"%s\">mga opsyon sa pagsasama</a> na "
-"magagamit para sa iba pang mga plugin na iyong na-install."
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"Bisitahin <a href=\"%s\" target=\"_blank\">ang aming dokumentasyon</a> para "
-"sa higit pang impormasyon tungkol sa mga feature ng Fluid Checkout."
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"Kung kailangan mo ng tulong, <a href=\"%s\" target=\"_blank\">magbukas ng "
-"ticket ng suporta</a> sa aming opisyal na channel ng suporta."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -745,16 +475,6 @@ msgstr "Mga pag-optimize ng cart"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "Paganahin ang mga pag-optimize ng pahina ng cart"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr ""
-"Ipakita ang pahina ng cart na may layout na katulad ng pahina ng "
-"pag-checkout."
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "Header at footer"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -790,16 +510,6 @@ msgstr ""
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "Mga code ng kupon"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"Piliin ang posisyon kung saan ipapakita ang seksyon ng mga coupon code sa "
-"page ng cart. Naaangkop lamang kapag ang AJAX cart at ang pinagsamang mga "
-"code ng kupon sa pahina ng pag-checkout ay pinagana."
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -895,10 +605,6 @@ msgstr "Layout ng cross-sells ng tema"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "Bilang ng mga cross-sell na item na ipapakita sa page ng cart"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "Mga simbolo at badge ng trust"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "Magdagdag ng mga lugar ng widget sa pahina ng cart"
@@ -915,10 +621,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "Checkout"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "Layout at disenyo"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "Layout ng checkout"
@@ -934,23 +636,6 @@ msgstr "Dark mode"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "Paganahin ang dark mode"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "Mga template ng header at footer"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"Inirerekomenda namin ang paggamit ng walang distraction na header at footer "
-"upang maiwasan ang mga abala sa pahina ng pag-checkout. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" "
-"target=\"_blank\">Basahin ang pananaliksik tungkol sa pag-abandona ng "
-"cart</a> ."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -1003,10 +688,6 @@ msgid ""
 msgstr ""
 "Pumili ng kulay ng background para sa footer ng pahina ng pag-checkout. "
 "Nalalapat lamang kapag ginagamit ang walang distraction na header at footer."
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "Mga elemento ng checkout"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1099,20 +780,6 @@ msgstr "Link sa page ng shop"
 msgid "Cart items"
 msgstr "Mga item sa cart"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr ""
-"Paganahin ang mga opsyon upang i-edit ang mga item sa cart sa pahina ng "
-"pag-checkout"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"Payagan ang mga customer na baguhin ang dami ng produkto o direktang "
-"mag-alis ng mga item sa page ng pag-checkout."
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "Itago ang mga error sa cart item sa page ng pag-checkout"
@@ -1165,38 +832,9 @@ msgstr ""
 "Ginagamit ang mga widget area na ito upang magdagdag ng mga simbolo ng "
 "tiwala at mga badge ng tiwala sa pahina ng pag-checkout."
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"Ipakita lamang ang mga widget sa sidebar ng checkout kapag tinitingnan ang "
-"huling hakbang sa pag-checkout sa mga mobile device kapag gumagamit ng "
-"layout ng multi-step na pag-checkout"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "I-enable ang seksyon ng integrated coupon code"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr ""
-"Naaangkop lamang kung ang paggamit ng mga coupon code ay pinagana sa mga "
-"setting ng WooCommerce."
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "Ipakita ang pamagat ng seksyon ng mga code ng kupon"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"Naaangkop lamang kapag ang coupon code ay ipinapakita bilang isang hiwalay "
-"na seksyon sa checkout o mga pahina ng cart."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1217,17 +855,6 @@ msgstr "Bilang isang substep bago ang mga paraan ng pagbabayad"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "Bilang isang substep pagkatapos ng mga paraan ng pagbabayad"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"Pumili ng istilo ng &quot;apply coupon&quot; na button. Naaangkop lamang "
-"kapag ang seksyon ng coupon code ay ipinapakita na &quot;Bago ang mga "
-"hakbang sa pag-checkout&quot; sa pahina ng pag-checkout, o &quot;Bago ang "
-"seksyon ng mga item sa cart&quot; sa pahina ng cart."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1279,22 +906,6 @@ msgstr ""
 "nangangailangan ng field na &quot;Address line 2&quot;, o kapag ang pagkuha "
 "ng tamang address sa pagpapadala ay mahalaga (ibig sabihin, kung naghahatid "
 "ng pagkain at iba pang nabubulok na produkto)."
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "Ipakita ang mga pindutan ng link na &quot;Magdagdag&quot; sa maliit na titik"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"Gawing <code>lowercase</code> ang mga label ng opsyonal na field na "
-"&quot;Magdagdag&quot; na pindutan ng link (ibig sabihin. &quot;Magdagdag ng "
-"numero ng telepono&quot; sa halip na &quot;Magdagdag ng Numero ng "
-"Telepono&quot;). Nakakaapekto rin ang opsyong ito sa mga button ng link "
-"para sa mga field ng coupon code."
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1393,24 +1004,6 @@ msgstr "Bago ang address ng pagpapadala"
 msgid "After shipping address"
 msgstr "Pagkatapos ng address ng pagpapadala"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "Pigilan ang awtomatikong pagpili ng unang paraan ng pagpapadala"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Kapag pinagana, ang unang paraan ng pagpapadala na magagamit ay hindi "
-"awtomatikong pipiliin kapag walang ibang paraan ng pagpapadala ang dating "
-"napili para sa bawat pakete ng pagpapadala.<br> Awtomatikong ie-enable ang "
-"opsyong ito kung pinagana ang opsyon para sa pag-clear sa napiling paraan "
-"ng pagpapadala para sa feature na Local Pickup."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Lokal na pickup"
@@ -1430,23 +1023,6 @@ msgid ""
 msgstr ""
 "Pinapalitan ang address ng pagpapadala ng lokasyon ng pickup point kapag "
 "napili ang isang lokal na paraan ng pagpapadala ng pickup."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Ipakita ang opsyon upang i-clear ang mga paraan ng pagpapadala sa substep "
-"ng lokasyon ng pickup"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Magpakita ng button ng link sa substep ng lokasyon ng pickup para i-clear "
-"ang mga napiling paraan ng pagpapadala. Magagamit ito upang payagan ang "
-"pagpapakitang muli ng seksyon ng address ng pagpapadala kung dati nang "
-"napili ang isang lokal na paraan ng pagkuha."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1525,35 +1101,6 @@ msgstr "Magdagdag ng field ng telepono sa pagsingil sa form ng pag-checkout."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Piliin kung saang hakbang ipapakita ang field ng telepono sa pagsingil."
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr ""
-"Paganahin ang pagpapatunay ng numero ng telepono batay sa mga panuntunan ng "
-"bansa"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"Kapag hindi pinagana, hindi titingnan ng validation ng field ng telepono "
-"kung valid ang mga code ng bansa o area para sa bansa."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "Ipakita lamang ang mga pinapayagang bansa para sa pagpapadala o pagsingil"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"Kapag pinagana, tanging ang mga bansang pinapayagan para sa pagpapadala ang "
-"magiging available sa field ng telepono sa pagpapadala, at tanging ang mga "
-"bansang pinapayagan para sa pagsingil ang magiging available para sa field "
-"ng telepono sa pagsingil."
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "Ipakita ang code ng bansa sa tabi ng bandila"
@@ -1588,12 +1135,6 @@ msgstr "Tukuyin ang visibility ng field ng karagdagang mga tala ng order."
 msgid "Gift options"
 msgstr "Mga pagpipilian sa regalo"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr ""
-"Ipakita ang mensahe ng regalo at iba pang mga pagpipilian sa regalo sa "
-"pahina ng pag-checkout"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1601,10 +1142,6 @@ msgid ""
 msgstr ""
 "Payagan ang mga customer na magdagdag ng mensahe ng regalo at iba pang mga "
 "opsyon na nauugnay sa regalo sa order."
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "Ipakita ang mga field ng mensahe ng regalo na palaging pinalawak"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1661,28 +1198,9 @@ msgstr "Dashboard"
 msgid "Integrations"
 msgstr "Mga pagsasama"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"Walang available na pagsasama sa ngayon sa seksyong ito. Ang mga opsyon na "
-"nauugnay sa bawat plugin ay lilitaw lamang dito kung ang plugin na iyon ay "
-"na-activate."
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "Mga susi ng lisensya"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"Walang available na opsyon sa mga license key sa ngayon sa seksyong ito. "
-"Ang mga opsyon na nauugnay sa bawat plugin o add-on ay lalabas dito kapag "
-"na-activate ang plugin na iyon."
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1789,14 +1307,6 @@ msgstr ""
 "Ginagamit ang mga widget na lugar na ito upang magdagdag ng mga simbolo ng "
 "tiwala at mga badge ng tiwala sa pahina ng pasasalamat."
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"Ang mga pagpipiliang ito ay nakakaapekto sa pahina ng pasasalamat , tingnan "
-"ang mga detalye ng order sa mga pahina ng account at sa mga abiso sa email."
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "Mag-order ng mga aksyon"
@@ -1889,21 +1399,6 @@ msgstr "Mag-load ng mga hindi pinaliit na asset"
 msgid "Enhanced select fields"
 msgstr "Mga pinahusay na piling field"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr "Palitan <code>select2</code> dropdown na bahagi ng <code>TomSelect</code>"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"Ang TomSelect ay isang mas simpleng dropdown na bahagi ng pagpili na mas "
-"madaling kapitan ng mga error kaysa sa Select2, habang nag-aalok ng "
-"parehong mga tampok na aktwal na ginagamit sa mga pahina ng pag-checkout ng "
-"WooCommerce."
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "Ayusin ang awtomatikong pag-zoom-in sa mga field ng form"
@@ -1911,37 +1406,6 @@ msgstr "Ayusin ang awtomatikong pag-zoom-in sa mga field ng form"
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "Itakda <code>font-size</code> sa loob ng mga field ng form sa 16px"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"Kapag ang laki ng font sa loob ng mga field ng form ay mas maliit sa 16px, "
-"maaaring awtomatikong mag-zoom in ang Safari at iba pang mga browser sa mga "
-"mobile device upang gawing mas madaling basahin ang teksto. Kapag pinagana "
-"ang opsyong ito, itatakda nito ang laki ng font para sa loob ng mga field "
-"ng form sa 16px sa mga page na na-optimize ng Fluid Checkout upang maiwasan "
-"itong mag-zoom in."
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"Palaging nakatakda ang destinasyon sa pagpapadala sa &quot;Default sa "
-"address ng pagpapadala ng customer&quot; kapag na-activate ang Fluid "
-"Checkout. Ang mga customer ay maaari pa ring magbigay ng iba&#39;t ibang "
-"mga address sa pagpapadala at pagsingil sa panahon ng pag-checkout, isang "
-"opsyon para sa pagtatakda ng default na billing address upang maging "
-"kapareho ng address sa pagpapadala ay available sa WooCommerce &gt; Mga "
-"Setting &gt; Fluid Checkout."
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1968,14 +1432,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(pang-eksperimento)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "Kumpirmahin"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "I-verify ang Numero ng Telepono"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2516,10 +1972,6 @@ msgstr "Pagkatapos ng progress bar"
 msgid "Before coupon codes section"
 msgstr "Bago ang seksyon ng mga code ng kupon"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "Paganahin ang mga field ng internasyonal na numero ng telepono"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr ""
@@ -2529,18 +1981,6 @@ msgstr ""
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "Gumamit ng tumpak na pagpapatunay ng numero ng telepono"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"Subukang tiyakin na ang numero ng telepono ay wastong mobile o landline na "
-"numero batay sa mga panuntunan para sa napiling country code. Ginagamit ng "
-"opsyong ito ang <code>intl-tel-input</code> precise validation feature, na "
-"maaaring magbigay ng mga false positive para sa ilang numero ng telepono."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2583,26 +2023,6 @@ msgstr "2 kolum"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 kolum"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"Mga pangkalahatang istilo para sa mga hakbang sa pag-checkout, buod ng "
-"order, at iba pang mga seksyon.<br> Maaari ring ilapat sa iba pang mga "
-"pahina tulad ng mga pahina ng Cart, Order Received at View Order."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"Hindi magagamit ang template ng disenyo <em>na &quot;Split&quot;</em> kapag "
-"ginagamit ang layout na <em>&quot;1 column&quot;</em> at babalik ito sa "
-"<em>&quot;Minimalist&quot;</em> kung pipiliin."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2705,6 +2125,2577 @@ msgstr ""
 "upang matiyak na maaaring kopyahin ang shipping address sa billing address "
 "kapag na-check ang opsyong iyon, kung hindi, maaaring hindi makumpleto ng "
 "customer ang checkout form."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "Mga profile ng setting"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "Profile ng mga setting"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "Wala kang pahintulot na gawin ang aksyon na ito."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "Wala kang pahintulot na i-activate ang mga plugin."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "Nawawalang plugin."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "Na-activate ang plugin."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "Ang mga sumusunod na pagbabago ay ilalapat:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Simula sa Fluid Checkout 5.0, iba ang pagkaka-save ng mga setting. "
+"Nakaimbak pa rin ang mga legacy option sa database para payagan ang mga "
+"pag-downgrade sa mga nakaraang bersyon kung kinakailangan."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"Tumatakbo na ang iyong tindahan nang halos 2 linggo gamit ang mga bagong "
+"setting kaya maaari mong linisin ang mga lumang opsyon na nakaimbak sa "
+"database. Pakitandaan na pagkatapos ng paglilinis, kung kailangan mong "
+"mag-downgrade sa mga nakaraang bersyon ng plugin, gagamitin nito ang mga "
+"default na halaga para sa lahat ng setting."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "Paglilinis ng mga setting ng Fluid Checkout"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "Burahin ang mga natitirang opsyon"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "Tulungan kaming pagbutihin ang Fluid Checkout"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"Magbahagi ng mga anonymous na ulat sa kapaligiran ng site sa Fluid Checkout "
+"para makakuha ng mas mabilis na suporta at matulungan kaming mapabuti ang "
+"compatibility at masukat ang epekto. Walang kasamang customer, user, o "
+"sensitibong data. Maaari mong piliin kung ano ang ibabahagi anumang oras "
+"mula sa mga setting ng Tools."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "Paganahin ang mga ulat sa kapaligiran ng site"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "Suriin ang mga setting"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"Nag-expire na ang preview na ito. I-reload ang admin page para magsimula ng "
+"bagong preview."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "Nag-expire na ang preview"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "Hindi maaaring maglagay ng mga order sa preview."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "Hindi magagamit ang pag-log in sa preview."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "Hindi maaaring gumawa ng mga account sa preview."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "Hinaharangan sa preview ang mga kahilingan sa ibang mga site."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "Pinoproseso…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "May nangyaring mali. Pakisubukang muli."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "I-activate ang plugin"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - Ang kumpletong pakete ng checkout"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"Lahat ng PRO features + lahat ng add-on, iisang presyo. Mga template ng "
+"disenyo, na-optimize na cart at mga pahina ng natanggap na order, "
+"pagtutugma ng account, at marami pang iba."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "Na-optimize na pahina ng pagbabayad ng order"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr ""
+"Mga button para sa express checkout mula sa mga sinusuportahang paraan ng "
+"pagbabayad"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "Naantalang paggawa ng account"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Awtomatikong pagkumpleto ng address gamit ang mga Google Maps API"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "Maramihang naka-save na address gamit ang address book"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "Katulong ng EU-VAT"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "Itago ang seksyong ito"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "Matuto nang higit pa"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "Kumuha ng maagang access"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "I-activate ang add-on"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "Mas masulit ang iyong paglalakbay sa pag-checkout"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "Susi ng API para sa pagsubok"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "May gabay na pag-setup"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "Mga Pagpipilian"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr ""
+"I-set up ang layout at disenyo sa <a href=\"%s\">mga opsyon sa checkout</a> "
+"."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"Paganahin ang guest checkout at/o suriin <a href=\"%s\">ang mga setting ng "
+"account ng customer</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"Paganahin ang mga pahina ng na-optimize <a href=\"%1$s\">na cart</a> , <a "
+"href=\"%2$s\">salamat,</a> at <a href=\"%3$s\">pagbabayad para sa order</a> "
+"."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr ""
+"Paganahin ang <a href=\"%s\">awtomatikong pagkumpleto ng address</a> mula "
+"sa Google Maps."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr ""
+"Paganahin ang maraming naka-save na address gamit ang <a "
+"href=\"%s\">address book</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"Suriin kung mayroong anumang <a href=\"%s\">mga opsyon sa pagsasama</a> na "
+"magagamit para sa tema o iba pang mga plugin na iyong na-install."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"Kumuha ng mas mabilis na suporta at tulungan kaming mapabuti ang "
+"compatibility at sukatin ang epekto. <a href=\"%s\">Paganahin ang "
+"pagsubaybay sa paggamit</a> mula sa mga setting ng tools."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "Nawawalang tab ng mga setting."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "Pagsisimula"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>Magaling! Ang iyong pahina ng pag-checkout ay tumatakbo na ngayon "
+"sa Fluid Checkout.</strong> Narito ang ilang hakbang para makapagsimula:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "Nakumpleto"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "I-preview ang datos ng ulat"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "Ipadala ngayon"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "Awtomatikong matukoy"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "Albanian"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "Amharic"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "Arabe"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "Armenian"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "Azerbaijani"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "Basque"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "Belarusian"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "Bengali"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "Bosnian"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "Bulgaro"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "Burmese"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "Katalan"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "Tsino"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "Tsino (Pinasimple)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "Tsino (Hong Kong)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "Tsino (Tradisyonal)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "Kroato"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "Czech"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "Danish"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "Olandes"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "Ingles"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "Ingles (Australyano)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "Ingles (Gran Britanya)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "Estonian"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "Farsi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "Pinlandes"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "Pilipino"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "Pranses"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "Pranses (Canada)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "Galician"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "Georgian"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "Aleman"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "Griyego"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "Gujarati"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "Hebreo"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "Hindi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "Hungarian"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "Icelandic"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "Indones"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "Italyano"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "Hapon"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "Kannada"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "Kazakh"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "Khmer"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "Koreano"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "Kirghiz"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "Lao"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "Latwiano"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "Lithuanian"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "Macedonian"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "Malayo"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "Malayalam"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "Marathi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "Mongolian"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "Nepali"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "Norwegian"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "Polish"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "Portuges"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "Portuges (Brazil)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "Portuges (Portugal)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "Punjabi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "Romanian"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "Ruso"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "Serbyo"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "Sinhalese"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "Eslobako"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "Eslobenyano"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "Espanyol"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "Espanyol (Latin America)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "Swahili"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "Suweko"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "Tamil"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "Telugu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "Thai"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "Turko"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "Ukranyano"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "Urdu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "Vietnamese"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "Zulu"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Awtomatikong pagkumpleto ng address ng Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Bersyon ng Google Places API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"Piliin kung aling bersyon ng Google Places API ang gagamitin. "
+"Inirerekomenda namin ang paglipat sa bagong Places API sa lalong madaling "
+"panahon."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"Inirerekomenda namin ang paggamit ng &quot;Places API (Bago)&quot; simula "
+"Marso 1, 2025. Ililipat ng Google ang bersyong &quot;Places API "
+"(Legacy)&quot; sa status na Legacy, ibig sabihin ay hindi mo na mapapagana "
+"ang serbisyong ito para sa mga bagong API key at ang bersyong iyon ng API "
+"ay kalaunan ay hindi na magiging available. Ang mga umiiral nang account na "
+"gumagamit na ng Legacy API ay maaaring patuloy na gumana nang walang "
+"anumang pagkaantala."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(Inirerekomenda)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Susi ng Google API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"I-paste ang iyong Google API key at gamitin ang test button para "
+"kumpirmahing gumagana ito para sa website na ito. Siguraduhing ang key ay "
+"valid at pinapayagan para sa iyong domain, kung hindi ay maaaring "
+"maharangan ang address field na pumipigil sa mga customer na makumpleto ang "
+"kanilang mga order."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "Paganahin ang awtomatikong pagkumpleto ng address ng Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr ""
+"Paganahin ang awtomatikong pagkumpleto ng address gamit ang mga Google Maps "
+"API."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Wika ng Google API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"Gagamitin ang wikang ito upang ipakita ang mga mungkahi sa address ng "
+"Google Places API at ang mga address ay awtomatikong makukumpleto rin sa "
+"wikang ito."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "Mga uri ng resulta"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Iwanang blangko upang tanggapin ang anumang uri ng mga resulta, na "
+"karaniwang nagbibigay ng mas mahusay na mga resultang tumutugma. <a "
+"href=\"%s\" target=\"_blank\">Tingnan ang dokumentasyon para sa higit pang "
+"mga detalye</a> .<br> Pumili ng hanggang 5 uri ng resulta ng paghahanap ng "
+"address para ibalik sa mga field na awtomatikong nagkumpleto ng "
+"address.<br> Bisitahin ang dokumentasyon ng Google Maps upang matuto nang "
+"higit pa tungkol sa <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">mga sinusuportahang uri</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "Mga uri ng resulta (Legacy API)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Anong uri ng mga resulta ng paghahanap ng address ang ibabalik kapag "
+"ginagamit ang Places API (Legacy).<br> Bisitahin ang dokumentasyon ng "
+"Legacy Google Places API upang matuto nang higit pa tungkol sa mga <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">sinusuportahang uri</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "Mga patlang ng kumpanya"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "Paganahin ang autocomplete para sa pangalan ng kumpanya kung magagamit"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Paganahin ang autocompletion ng field ng kumpanya kasama ang impormasyon ng "
+"pangalan ng kumpanya kapag ibinalik mula sa mga Google Maps API."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "Paghahanap ng negosyo"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "Paganahin ang paghahanap ng mga negosyo sa field ng kumpanya"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"Paganahin ang mungkahi ng mga address na nauugnay sa isang negosyo kapag "
+"nagta-type sa field ng kumpanya, pagkatapos ay i-autocomplete ang lahat ng "
+"field ng address kapag napili ang isang negosyo mula sa mga mungkahi."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "Mga uri ng resulta ng kumpanya"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Pumili ng hanggang 5 uri ng resulta ng paghahanap ng address na ibabalik sa "
+"mga field ng kumpanya na awtomatikong kumpleto.<br> Ang inirerekomendang "
+"halaga ay <code>establishment</code> , na kinabibilangan ng karamihan sa "
+"mga uri ng negosyo.<br> Iwanang blangko upang tanggapin ang anumang uri ng "
+"mga resulta, kabilang ang mga resultang walang kaugnayan sa mga "
+"negosyo.<br> Bisitahin ang dokumentasyon ng Google Maps upang matuto nang "
+"higit pa tungkol sa <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">mga sinusuportahang uri</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Logo ng Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "Ipakita ang teksto at logo na &quot;Pinapagana ng Google&quot;"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"Kapag na-check, ang teksto at logo na &quot;Powered by Google&quot; ay "
+"ipapakita sa ibaba ng kahon ng mga mungkahi sa autocomplete ng address."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "Awtomatikong pagkumpleto ng address ng Brasil API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "Brasil API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "Paganahin ang autocomplete ng Brasil API address para sa mga CEP field"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"Gamitin ang Brasil API para kunin at i-autofill ang mga address gamit ang "
+"CEP/Postcode field. May kaugnayan lamang para sa mga address sa Brazil."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "Bersyon ng API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "Piliin kung aling bersyon ng Brasil API CEP method ang gagamitin."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "Paglipat ng address book"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "Mga address ng WooCommerce"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"Kopyahin ang mga kasalukuyang shipping at billing address mula sa "
+"WooCommerce papunta sa address book ng mga customer."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "Paganahin ang tampok na address book"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"Payagan ang mga customer na mag-save ng maraming address at tukuyin ang "
+"default na address na gagamitin para sa pagpapadala at pagsingil."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "Mga label ng address"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr ""
+"Payagan ang mga customer na magdagdag ng custom na label para sa bawat "
+"address"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"Pinapadali ng mga label ng address para sa mga customer na matukoy ang "
+"pagkakaiba ng kanilang mga naka-save na address (hal.: &quot;Bahay ni "
+"Nanay&quot;). Pribado ang mga label ng address para sa mga customer, at "
+"hindi ipapakita o ipi-print sa pahina ng mga detalye ng order o mga invoice."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "Layout ng pagpapakita"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr ""
+"Piliin kung paano ipapakita ang mga naka-save na address sa checkout at sa "
+"cart."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"Nalalapat sa checkout at sa cart. Ang mga naka-save na address sa pahina ng "
+"account ay palaging gumagamit ng layout ng mga card."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "Mga kard ng address"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "Listahan ng address"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "Patlang na dropdown"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "Paghahanap ng address"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"Ipakita ang filter sa paghahanap ng address sa frontend kapag ang customer "
+"ay mayroon nang kahit ganitong bilang ng mga naka-save na address na "
+"magagamit."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "Hindi ginagamit kapag ang layout ng display ay nakatakda sa dropdown field."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "Mga Address"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr ""
+"Paganahin ang mga pag-optimize ng pahina ng cart para makakita ng higit "
+"pang mga opsyon"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "Buod ng nakadikit na order"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"Piliin ang posisyon kung saan ipapakita ang seksyon ng mga coupon code sa "
+"pahina ng cart. Naaangkop lamang kapag naka-enable ang AJAX cart, at kung "
+"naka-enable ang paggamit ng mga coupon code sa mga setting ng WooCommerce."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "Layout ng cross-sell"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "Mga cross-sell na ipinapakita"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "Mga Aytem"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "Pag-optimize ng pahina ng cart"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"Bigyan ang iyong cart ng parehong malinaw at nakatuon sa conversion na "
+"layout gaya ng sa iyong checkout."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr ""
+"Itugma ang layout ng cart sa pahina ng checkout para sa isang pare-parehong "
+"proseso ng pagbili."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"Panatilihing laging updated ang cart sa background, walang muling "
+"pag-reload ng buong pahina kapag nagbago ang dami."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"Maglagay ng mga coupon code, shipping, at cross-sell kung saan mismo ang "
+"mga ito pinakamahusay na nagko-convert."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"Panatilihing nakikita ang buod ng order habang nag-i-scroll, at magdagdag "
+"ng mga simbolo ng tiwala kung saan kailangan ng mga mamimili ng katiyakan."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "Mga Kolum"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"Mga pangkalahatang istilo para sa mga hakbang sa pag-checkout, buod ng "
+"order at iba pang mga seksyon. Nalalapat sa iba pang pag-checkout, cart, "
+"salamat (natanggap na ang order), at tingnan ang mga pahina ng order."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"Kapag ginagamit ang layout na <em>&quot;1 column&quot;</em> kasama ang "
+"template ng disenyo <em>na &quot;Split&quot;</em> , ang kanang column ay "
+"ipapakita lamang kung aktibo ang bahagi ng widget ng sidebar ng pahina "
+"(Checkout Sidebar, Cart Sidebar, o Order Received Sidebar). Kung hindi, "
+"mananatili ang pahina bilang isang column na may mga Split style."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "Hatiin ang background ng haligi"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"Pumili ng kulay ng background para sa pangalawang column na Split design. "
+"Iwanang blangko para magamit ang kulay ng background ng buod ng order."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "Mga template ng pahina"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "Template ng pag-checkout"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"Inirerekomenda para sa mas kaunting mga abala sa pag-checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">Basahin ang pananaliksik tungkol sa pag-abandona sa "
+"cart</a> ."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "Malagkit na progress bar"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "Estilo ng progress bar"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "Mga kabuuan ng order"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "Kulay ng background"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "Link ng aksyon"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "Buod ng order sa mobile"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "Inisyal na estado ng mobile"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "Paganahin ang pag-edit ng mga item sa cart sa checkout"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"Payagan ang mga customer na baguhin ang dami ng produkto o mag-alis ng mga "
+"item nang direkta sa pahina ng pag-checkout."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "Mga error sa item sa cart"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"Naaangkop lamang kapag ang coupon code ay ipinapakita bilang isang hiwalay "
+"na seksyon sa mga pahina ng checkout o cart, at kung ang paggamit ng mga "
+"coupon code ay pinagana sa mga setting ng WooCommerce."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "Posisyon ng mga code ng kupon"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "Butones ng paglalapat ng kupon"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "Piliin ang istilo ng button na &quot;ilapat ang kupon&quot;."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "Linya ng address 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"Ang setting na ito ay nakabahagi sa pagitan ng mga seksyong Checkout at "
+"Local pickup. Sa seksyong Local pickup, nagpapasya rin ito kung ang "
+"Ship/Pickup selector ay lalabas sa loob ng seksyong paraan ng pagpapadala "
+"(bago ang address) o bilang isang hiwalay na seksyon (pagkatapos)."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "Mga account ng customer"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "Pag-checkout ng bisita"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"Mga opsyon sa pag-checkout ng bisita, pag-login, at paggawa ng account mula "
+"sa pahina ng mga setting ng WooCommerce Account. Pinamamahalaan ang mga ito "
+"rito para sa iyong kaginhawahan, kaya maaari kang gumamit ng iba&#39;t "
+"ibang halaga sa bawat profile ng mga setting."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "Payagan ang mga customer na mag-checkout nang walang account"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Inirerekomenda</strong> para hindi hilingin sa mga customer na "
+"gumawa ng account o mag-log in habang nagche-checkout, na maaaring "
+"magpababa ng mga conversion rate."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"Kapag naka-disable, kailangang mag-log in o gumawa ng account ang mga "
+"customer para makumpleto ang pagbili."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "Mag-login sa pag-checkout"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "Paganahin ang pag-log in habang nagche-checkout"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr ""
+"Magpakita ng link para sa mga bumabalik na customer para mag-log in mula sa "
+"pahina ng checkout."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "Paglikha ng account"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "Payagan ang mga customer na lumikha ng account habang nagche-checkout"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "Maaaring gumawa ng account ang mga customer bago mag-order."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr ""
+"Payagan ang mga customer na lumikha ng account mula sa pahina ng Aking "
+"account"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr ""
+"Maaaring magparehistro ang mga customer ng bagong account mula sa pahina ng "
+"Aking account."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "Pangalan ng Gumagamit"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "Bumuo mula sa pangalan ng customer"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Inirerekomenda</strong> para hindi hilingin sa mga customer na "
+"pumili ng username habang nagche-checkout, na maaaring magpababa ng mga "
+"conversion rate."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"Ang username ay nabubuo mula sa pangalan ng customer, o mula sa email "
+"address kapag hindi maaaring gamitin ang isang pangalan."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "Password"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "Ipadala ang link sa pag-setup ng password"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Inirerekomenda ito</strong> para hindi hilingin sa mga customer na "
+"magtakda ng password habang nagche-checkout, na maaaring magpababa ng mga "
+"conversion rate."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr ""
+"Makakatanggap ang mga customer ng email para ligtas na makagawa ng kanilang "
+"password."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"Hayaang makumpleto ng mga rehistradong customer ang checkout nang hindi na "
+"kailangang mag-log in at iugnay ang order sa kanilang kasalukuyang account "
+"kapag tumutugma ang mga detalye sa pakikipag-ugnayan."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "Mensahe ng umiiral na account"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr ""
+"Hayaang gumawa ng account ang mga customer pagkatapos nilang mag-order, "
+"mula sa pahina ng pasasalamat."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"May mga opsyon sa seksyong ito kapag pinagana ang guest checkout at account "
+"matching. Paganahin ang parehong feature sa itaas para ma-configure ang "
+"naantalang paggawa ng account."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "Paganahin ang naantalang paggawa ng account"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"Paganahin ang naantalang paggawa ng account kapag naka-enable ang parehong "
+"guest checkout at account matching."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "Posisyon ng seksyon"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "Bago ang seksyon ng mga detalye ng customer"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "Pagkatapos ng seksyon ng mga detalye ng customer"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "Mga benepisyo sa paggawa ng account"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "Ang pag-iwang blangko ng patlang ay magpapakita ng default na teksto."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "Mga inline na button"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "Mga kinakailangang field"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "Paganahin ang mga field ng mensahe para sa regalo sa checkout"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "Pinalawak na mensahe ng regalo"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "Palaging pinalawak ang field ng pagpapakita ng mensahe ng regalo"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "Mensahe ng regalo sa mga detalye ng order"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"Walang magagamit na mga integrasyon sa ngayon sa seksyong ito. Ang mga "
+"opsyon na may kaugnayan sa bawat plugin at tema ay lilitaw lamang dito "
+"kapag na-activate ang plugin o tema na iyon."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "Mga patlang ng telepono"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "Pagiging nakikita sa larangan"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "Posisyon sa larangan"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "Kodigo ng bansa ng telepono at pagpapatunay"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "Bansa"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "Paganahin ang bansa sa mga field ng telepono"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "Salain ang mga bansa para sa pagpapadala o pagsingil"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"Limitahan ang tagapili ng bansa sa bawat field ng telepono sa mga bansang "
+"pinapayagan para sa pagpapadala o pagsingil sa iyong tindahan."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "Pagpapatunay"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "Paganahin ang simpleng pagpapatunay batay sa mga patakaran ng bansa"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"Sinusuri kung ang numero ng telepono ay balido para sa napiling bansa, "
+"kasama ang country code at haba."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"Mas mahigpit na pagsusuri na ang numero ay isang wastong mobile, fixed "
+"line, o iba pang tinatanggap na uri para sa napiling bansa. Maaaring "
+"tanggihan ang ilang wastong numero."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "Mga uri ng pagpapatunay"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "Mga Placeholder"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"Walang mga license key na kailangang pamahalaan sa ngayon. Lalabas dito ang "
+"mga license key kapag aktibo ang isang lisensyadong Fluid Checkout plugin o "
+"add-on."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "Uri ng default na paghahatid"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "Piliin kung aling uri ng paghahatid ang pipiliin bilang default."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "Mga patlang ng sona ng pagpapadala"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Piliin kung aling mga field ang ipapakita para sa mga field ng filter ng "
+"local pickup shipping zone. Iwanang blangko para ipakita ang lahat ng "
+"available na opsyon."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Ipapakita ang mga field na ito bilang filter para sa mga lokal na paraan ng "
+"pagpapadala para sa pagkuha. Maaaring lumitaw pa rin ang ilang field sa "
+"checkout kapag hindi ito napili rito, kung kinakailangan ng mga compatible "
+"na plugin na gumana nang maayos ang mga ito."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "Address ng pagpapadala ng order"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "Pag-optimize ng pahina ng pagbabayad ng order"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"Bigyan ang mga hindi nabayarang order ng parehong malinaw at nakatuon sa "
+"conversion na layout gaya ng sa checkout."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"I-optimize ang layout ng pahina ng pagbabayad ng order para sa mga order na "
+"nakabinbin ang bayad."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"Itugma ang karanasan sa pagbabayad ng order sa iyong checkout para sa isang "
+"pare-parehong proseso ng pagbili."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"Magdagdag ng mga simbolo at badge ng tiwala kung saan kailangan ng mga "
+"mamimili ng katiyakan bago magbayad."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "Pag-optimize ng pahina ng pasasalamat"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"Gawing mas malinaw ang pahina ng pasasalamat at mga detalye ng order para "
+"sa mga customer pagkatapos nilang bumili."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr ""
+"I-optimize ang pahina ng pasasalamat at mga detalye ng order ng account "
+"gamit ang mas malinaw na layout."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"Ipakita ang progreso ng katayuan ng order, mga aksyon, mga download, at mga "
+"tala kung saan may katuturan ang mga ito."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr ""
+"I-customize ang mga seksyon ng detalye ng order sa mga notification sa "
+"email."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"Magdagdag ng mga simbolo at badge ng tiwala kung saan kailangan ng mga "
+"mamimili ng katiyakan pagkatapos bumili."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "Mga abiso sa email"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"I-enable ang pahina ng pasasalamat at mga pag-optimize ng detalye ng order "
+"para makakita ng higit pang mga opsyon"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "Gumamit ng malawak na layout sa pahina ng pasasalamat"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"Ang mga opsyong ito ay makakaapekto sa pahina ng pasasalamat, pagtingin sa "
+"mga detalye ng order sa mga pahina ng account at sa mga notification sa "
+"email."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "I-save ang mga setting"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "Mga Dokumento"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "Kariton"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "Salamat"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "Awtomatikong pagkumpleto ng address"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "Mga badge ng tiwala"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "Wala kang pahintulot na i-save ang mga setting na ito."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "Hindi wastong kahilingan sa pag-save."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "Na-save na ang iyong mga setting."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "Nagse-save..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "Hindi ma-save ang mga setting. Pakisubukang muli."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "Abiso ng pag-alis"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "Buksan ang menu ng mga setting"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "Isara ang menu ng mga setting"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "Preview"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "Palawakin ang preview"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "I-collapse ang preview"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "Ipakita ang header at footer"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "Itago ang header at footer"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "Preview ng pahina"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "I-preview ang viewport"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "Tableta"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "Desktop"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "Lapad ng preview"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "Bawasan ang lapad"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "Lapad ng preview sa mga pixel"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "Dagdagan ang lapad"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "I-preview bilang"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "Bisita"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "Naka-log in na"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "Pahina ng pag-preview"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "Palawakin ang preview para sa mas malapitang pagtingin"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "Makukuha gamit ang %s."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "I-on ang mga ito"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr ""
+"Naka-off ang mga pag-optimize para sa pahinang ito. %s para i-preview ang "
+"pahina."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "%s preview"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "Nakahiwalay na sesyon · walang na-save"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "Pagsubaybay sa paggamit"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Magpadala ng mga ulat sa kapaligiran ng site na hindi sensitibo upang "
+"matulungan ang Fluid Checkout na mapabuti ang compatibility. Hindi "
+"ipapadala ang mga ulat hangga&#39;t hindi pinagana sa mga opsyon sa ibaba."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "Magpadala ng mga ulat sa pagsubaybay sa paggamit sa Fluid Checkout"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"Ang mga ulat na ito ay tumutulong sa amin na mapabuti ang compatibility at "
+"suporta para sa iyong site at ipinapadala linggu-linggo kapag pinagana."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"Walang customer, admin user, o anumang iba pang sensitibong data ang kasama "
+"sa mga ulat."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "Pangunahing impormasyon sa kapaligiran"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"Data ng listahan ng WordPress, PHP, WooCommerce, tema, at plugin. Palaging "
+"kasama kapag naka-enable ang pag-uulat. Nakakatulong ito sa amin na "
+"maunawaan ang kapaligiran kung saan tumatakbo ang iyong site."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "Mga setting ng plugin"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"Nagpapadala ng mga setting ng plugin ng Fluid Checkout para makatulong sa "
+"mga kahilingan sa suporta at tumutulong sa amin na maunawaan kung paano mo "
+"ginagamit ang aming mga plugin."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "Malapit na"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "Mga sukatan ng benta"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"Bilang ng buwanang order at kabuuang benta sa loob ng isang taon bago "
+"i-install ang Fluid Checkout hanggang ngayon. Nakakatulong ito sa amin na "
+"maunawaan kung mas malaki ang kinikita mo gamit ang aming mga plugin. "
+"Walang data ng customer o user ang ipinapadala."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "Mga Utility"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"Gamitin ang mga dropdown component <code>TomSelect</code> sa halip na "
+"<code>select2</code>"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"Ang TomSelect ay isang mas simpleng dropdown selection component na hindi "
+"gaanong madaling magkamali kumpara sa Select2, habang nag-aalok ng parehong "
+"functionality."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"Itinatakda ang laki ng font sa loob ng mga form field sa 16px sa mga "
+"pahinang na-optimize ng plugin na ito upang maiwasan ang awtomatikong "
+"pag-zoom in kapag nakikipag-ugnayan sa mga form field sa maliliit na device."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"Maaaring awtomatikong mag-zoom in ang Safari at iba pang mga browser sa mga "
+"mobile device upang mas madaling basahin ang teksto kapag ang laki ng font "
+"ay mas maliit sa 16px."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "Paganahin ang pagsubaybay sa pagproseso ng script sa browser console."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "Mga hindi nabawasang asset"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Mga script ng Google Maps"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "Huwag tanggalin ang mga dobleng script ng Google Maps"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"Kapag pinagana, HINDI maaalis ang mga duplicate na script ng Google Maps na "
+"maaaring magdulot ng mga error at isyu sa performance. Gamitin lamang ang "
+"opsyong ito habang nag-troubleshoot."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "Mga lugar ng widget"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "Huling hakbang sa mobile"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "Ipakita lamang ang mga widget sa huling hakbang sa mobile"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"Ipakita lamang ang mga widget ng checkout trust badge kapag tinitingnan ang "
+"huling hakbang sa checkout sa mga mobile device"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "Pamantayan"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "Patlang ng numero ng VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "Magdagdag ng field na may VAT number sa billing form."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "Label ng patlang"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"Itakda ang label ng field ng VAT number (hal. VAT number). Sa mga website "
+"na may maraming wika, mas mainam na iwanang blangko ang field na ito at "
+"isalin ang orihinal na string."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "Numero ng VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "EU-VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "Paganahin ang field ng VAT number para makakita ng higit pang mga opsyon"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "Pagpapatunay ng VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "Patunayan ang field ng VAT number para sa EU-VAT habang nagche-checkout"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"Sinusuri kung ang ibinigay na VAT Number ay isang wastong VAT number na "
+"nakarehistro sa European VIES Database (VAT Information Exchange System)."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "Numero ng VAT sa tindahan"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"Ang VAT number ng tindahan na ginagamit para sa paghiling ng EU-VAT "
+"validation, at nakalimbag sa mga invoice.<br> <strong>Lubos naming "
+"inirerekomenda ang pagdagdag ng iyong Shop VAT number</strong> dahil kung "
+"hindi, maaaring hindi wasto ang mga resulta ng konsultasyon sa VIES para sa "
+"mga layunin ng accounting.<br> Ie.: <code>ATU99999999</code> o "
+"<code>EE999999999</code> ."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "Baliktarin ang karga"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "Ilapat ang mekanismo ng reverse charge"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"Itakda ang rate ng buwis sa zero at ipakita ang &quot;Reverse charge&quot; "
+"sa mga invoice kapag valid ang VAT number ng customer. Maaaring kailanganin "
+"ang ibang text na &quot;Reverse charge&quot; depende sa bansa ng tindahan."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "Parehong bansa"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr ""
+"Maglapat ng mekanismo ng reverse charge para sa mga transaksyon sa bansang "
+"pinagbentahan:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"Nagbibigay-daan sa paglalapat ng mekanismo ng reverse charge para sa mga "
+"transaksyon sa pagitan ng mga kumpanya sa parehong bansa kung saan "
+"matatagpuan ang tindahan."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "Mga eksepsiyon sa reverse charge"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr ""
+"Pumili ng mga karagdagang bansa para laktawan ang paglalapat ng mekanismo "
+"ng reverse charge."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"Sisingilin ng buwis ang mga order mula sa mga bansang ito kahit na may "
+"ibinigay na wastong VAT number."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "Baliktarin ang label ng singil sa mga invoice"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr ""
+"Maglagay ng label na &quot;reverse charge&quot; sa checkout page at mga "
+"detalye ng order."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "Teksto ng baligtarin na singil sa mga invoice"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "Itakda ang label na &quot;reverse charge&quot; na teksto sa mga invoice."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "Babayaran ang buwis sa pamamagitan ng reverse charge"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "Pangalan ng kumpanya"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "Awtomatikong kumpleto ang pangalan ng kumpanya mula sa numero ng VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"Ilagay ang pangalan ng kompanya ng pagsingil batay sa wastong numero ng VAT "
+"na ibinigay ng customer."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "Pag-edit ng pangalan ng kumpanya"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "Payagan ang pag-edit ng awtomatikong napunang pangalan ng kumpanya"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"Kapag naka-enable, maaaring baguhin ng mga customer ang pangalan ng "
+"kumpanya na nauugnay sa ibinigay na VAT number."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "EU-VAT para sa mga digital na produkto"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"Mula Enero 1, 2015, nagkaroon ng mga pagbabago sa mga regulasyon ng EU VAT "
+"patungkol sa mga digital na produkto, na nakakaapekto lamang sa mga "
+"transaksyong B2C. Ang VAT sa mga digital na produkto ay dapat kalkulahin "
+"batay sa lokasyon ng customer, at kailangang kolektahin ang ebidensya nito "
+"(IP address at billing address)."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "Mga klase sa buwis para sa mga digital na produkto"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "Pumili ng ilang klase ng buwis"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "Ebidensya ng lokasyon"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "Kolektahin ang ebidensya ng lokasyon ng customer"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"Sine-save ang IP address at pinapatunayan ito laban sa billing address ng "
+"customer. Dapat kumpirmahin ng customer ang kanilang billing address sa "
+"pamamagitan ng paglalagay ng checkbox sa checkout page kung ang bansa mula "
+"sa kanilang billing address at IP ay hindi magkatugma."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"Ang opsyong ito ay pinamamahalaan sa Fluid Checkout. <a href=\"%s\">Baguhin "
+"ito sa mga setting ng Customer account</a> ."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"Ang opsyong ito ay pinamamahalaan sa Fluid Checkout. Baguhin ito sa ilalim "
+"ng Fluid Checkout &gt; Mga account ng customer."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"Ang opsyong ito ay pinamamahalaan sa Fluid Checkout. Ang destinasyon ng "
+"pagpapadala ay palaging nakatakda sa &quot;Default sa address ng "
+"pagpapadala ng customer&quot; kapag na-activate ang Fluid Checkout. Maaari "
+"pa ring magbigay ang mga customer ng iba&#39;t ibang address ng pagpapadala "
+"at pagsingil habang nagche-checkout.<br><br> May opsyon para itakda ang "
+"default na billing address na kapareho ng shipping address sa <a "
+"href=\"%s\">mga setting ng Fluid Checkout</a> ."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"Ang opsyong ito ay pinamamahalaan sa Fluid Checkout. Ang destinasyon ng "
+"pagpapadala ay palaging nakatakda sa &quot;Default sa address ng "
+"pagpapadala ng customer&quot; kapag na-activate ang Fluid Checkout. Maaari "
+"pa ring magbigay ang mga customer ng iba&#39;t ibang address ng pagpapadala "
+"at pagsingil habang nagche-checkout.<br><br> May opsyon para sa pagtatakda "
+"ng default na billing address na kapareho ng shipping address sa "
+"WooCommerce &gt; Settings &gt; Fluid Checkout."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr ""
+"Inilipat na ang mga setting na ito sa WP Admin &gt; Fluid Checkout &gt; Mga "
+"Setting."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"Hindi na ginagamit ang tab na ito ng Mga Setting ng WooCommerce at aalisin "
+"na ito sa Fluid Checkout 6.0."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "Pumunta sa pahina ng mga setting"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "Permanenteng itago ang tab na ito"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "Preview ng ulat ng site"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"Ito ang datos na isasama sa susunod na ulat ng kapaligiran ng site batay sa "
+"iyong kasalukuyang mga setting."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "Naglo-load ng preview ng ulat..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "Hindi ma-load ang preview ng ulat ng site. Subukan muli."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "Hindi maipadala ang ulat ng site. Subukan muli."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "Matagumpay na naipadala ang ulat ng site."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "Paganahin at ipadala ngayon"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "Isara"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr ""
+"May kahilingan na para sa ulat ng site na isinasagawa na. Subukan muli "
+"maya-maya."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "Hindi pinagana ang pag-uulat ng kapaligiran ng site."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "Walang datos ng ulat ng site na maaaring ipadala."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"Hindi maaaring magpadala ng mga ulat sa kapaligiran ang domain ng site na "
+"ito (hindi kasama ang mga lokal o development domain)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "Isang ulat sa site ang ipinadala kamakailan. Subukan muli mamaya."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "Hindi maipadala ang ulat ng site. Subukan muli mamaya."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "Hindi magagamit ang pag-uulat ng kapaligiran ng site."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "Walang magagamit na datos ng ulat ng site para sa mga napiling setting."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "Hindi ka pinapayagang pamahalaan ang mga ulat ng site."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "Tampok na PRO"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "Iba pang mga plugin"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "Kunin lamang ang add-on na ito — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "I-install ang add-on"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "Mag-upgrade sa PRO — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"<a target=\"_blank\" href=\"%1$s\">Kumuha ng %2$s</a> para ma-unlock ang "
+"mga opsyong ito."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "Dagdag"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "Tingnan ang dokumentasyon"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"Ang mga kahilingan ay nangangailangan ng isang naka-log in na WordPress "
+"user. Alisin ang user_id upang magamit ang data ng kasalukuyang user, o "
+"ipasa ang user_id upang i-target ang isa pang account kapag maaaring i-edit "
+"ng tumatawag ang user na iyon (kakayahan sa edit_user). Ang mga hindi "
+"na-authenticate na kahilingan ay nagbabalik ng fc_api_forbidden. Ang isang "
+"hindi wastong user_id ay nagbabalik ng fc_api_user_not_found."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr ""
+"HTTP 200 na may { &quot;data&quot;: { ... } } kapag ang handler ay nagbalik "
+"ng payload."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"HTTP 200 na may { &quot;success&quot;: true } kapag walang payload "
+"(halimbawa, DELETE)."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"Ang mga pagkabigo ay nagbabalik ng WordPress REST error na JSON mula sa "
+"WP_Error (code, message, data.status). Ang mga wire code ay gumagamit ng "
+"prefix na fc_api_*."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "Bawal pumasok."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "Hindi natagpuan ang target na gumagamit."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "Hindi magagamit ang tampok na ito."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "Kulang ang kinakailangang field ng address."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "Hindi wasto ang postcode o ZIP code."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "Hindi wasto ang numero ng telepono."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "Hindi wasto ang estado o county."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "Hindi wasto ang bansa o walang mga field ng address."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "Hindi maproseso ang kahilingan."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "Balik sa nakaraang hakbang"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "Laktawan ang mga setting"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "Magsimulang muli at bumalik sa unang hakbang na may gabay na pag-setup"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "Magsimula muli"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "Pakikumpleto ang lahat ng mga sub-hakbang bago magpatuloy."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "Palawakin"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "I-collapse"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "Laktawan"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "Markahan bilang kumpleto"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "Markahan bilang hindi kumpleto"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "Tingnan ang buong laki ng larawan: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "Larawan ng gabay sa pag-setup na may buong laki"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "Isara ang larawan"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "Pag-setup na Ginagabayan ng Fluid Checkout"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "Maligayang pagdating"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "Galugarin ang iyong checkout"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "Handa na ang lahat"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "Wala kang pahintulot na ma-access ang pahinang ito."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "Pumunta sa hakbang %1$d: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"Ang gabay na setup na ito ay makakatulong sa iyo na maging pamilyar sa "
+"Fluid Checkout. Ang mga hakbang sa ibaba ay mga placeholder lamang sa "
+"ngayon."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "Magpatuloy sa susunod na hakbang kapag handa ka na."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr ""
+"Buksan ang checkout ng iyong tindahan para makita ang Fluid Checkout na "
+"gumagana."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "Tingnan ang pahina ng pag-checkout"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"Maaari kang bumalik sa mga setting ng Fluid Checkout upang ipagpatuloy ang "
+"pag-configure ng iyong tindahan."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "Suriin ang mga setting ng checkout at cart"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "Galugarin ang mga add-on mula sa dashboard"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "Tapusin at pumunta sa mga setting"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"I-update ang opsyon sa visibility ng billing phone field mula sa legacy "
+"value upang tumugma sa mga kumbensiyon ng WooCommerce."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"I-update ang opsyon sa visibility ng field ng shipping phone mula sa legacy "
+"value upang tumugma sa mga kumbensiyon ng WooCommerce."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"Kopyahin ang setting ng kulay ng background ng buod ng order papunta sa "
+"bagong opsyon ng kulay ng background ng pangalawang column na Split design."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"Ang pinahusay na tampok na &quot;select fields&quot; ay palaging hindi "
+"pinagana kapag ginagamit ang Biteship plugin."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"Ang posisyon ng place order ay palaging nakatakda sa &quot;Sa ibaba ng buod "
+"ng order&quot; kapag ginagamit ang German Market. Kinakailangan ng plugin "
+"na iyon na maipakita ang button na place order at mga legal na checkbox sa "
+"ibaba ng buod ng order."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"Ang posisyon ng place order ay palaging nakatakda sa &quot;Sa ibaba ng buod "
+"ng order&quot; kapag ginagamit ang Germanized para sa WooCommerce. "
+"Kinakailangan ng plugin na iyon na maipakita ang button na place order at "
+"mga legal na checkbox sa ibaba ng buod ng order."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "I-edit ang mga lokasyon ng pagkuha"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Gamitin ang lokal na label ng pagkuha mula sa mga setting ng WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Kapag naka-enable, ang label ng opsyon sa pagkuha sa checkout ay tumutugma "
+"sa pamagat mula sa mga setting ng lokasyon ng pagkuha ng WooCommerce. Kapag "
+"naka-disable, gagamitin ng label ang maisasalin na tekstong &quot;Local "
+"pickup&quot; mula sa Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2856,3 +4847,115 @@ msgstr "Oo"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "Juan"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "Usa"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "Halimbawang Kumpanya"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "123 Pangunahing Kalye"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "Kahit saan"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "Paki-iwan po ang pakete sa may pintuan."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "Beanie"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "Takip"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "T-Shirt"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr ""
+"Natanggap na namin ang order mo at magpapadala kami ng update kapag "
+"naipadala na ito."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "Gabay sa gumagamit"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "Places API (Bago)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "Places API (Legacy)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "Bersyon 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "Bersyon 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ Mas mabilis na pag-checkout sa susunod ✔ Pamahalaan ang iyong mga "
+"kagustuhan sa pagbabayad ✔ Tingnan ang katayuan at kasaysayan ng order"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "Nakatago"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "Opsyonal"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "Kinakailangan"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Pagpapadala sa address"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Lokal na pagkuha"

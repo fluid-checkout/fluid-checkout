@@ -1,15 +1,20 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // DISTRACTION FREE HEADER
 // ------------------------------------
 
-body#{ $_body-theme-selector }.checkout-distraction-free.woocommerce-checkout .header-contents .header-center-items,
-body#{ $_body-theme-selector }.checkout-distraction-free.woocommerce-checkout .header-contents .header-right-items {
+body#{ $body-theme-selector }.checkout-distraction-free.woocommerce-checkout .header-contents .header-center-items,
+body#{ $body-theme-selector }.checkout-distraction-free.woocommerce-checkout .header-contents .header-right-items {
 	display: none !important; // Needed to override theme styles
 }
 
 
 
-body#{ $_body-theme-selector }.checkout-distraction-free.woocommerce-checkout .header-contents .header-left-items .logo-holder {
+body#{ $body-theme-selector }.checkout-distraction-free.woocommerce-checkout .header-contents .header-left-items .logo-holder {
 	position: absolute;
 	left: 50%; // No need to add RTL support, needs to use `left` to centralized element.
 	transform: translateX( -50% );

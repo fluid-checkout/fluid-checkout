@@ -1,8 +1,16 @@
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 
-body#{ $_body-theme-selector }#{ $_body-page-selector }:not( .body-boxed ) .fc-content.container {
+body#{ $body-theme-selector }#{ $body-page-selector }:not( .body-boxed ) .fc-content.container {
 	max-width: 100%;
 	padding-#{ $alignment-left }: remsize( 2rem );
 	padding-#{ $alignment-right }: remsize( 2rem );
@@ -14,7 +22,7 @@ body#{ $_body-theme-selector }#{ $_body-page-selector }:not( .body-boxed ) .fc-c
 	}
 }
 
-body#{ $_body-theme-selector }#{ $_body-theme-selector }.header-v-default .section-page-header .page-header-inner {
+body#{ $body-theme-selector }#{ $body-theme-selector }.header-v-default .section-page-header .page-header-inner {
 	padding-bottom: 40px; // Use `px` as units to match theme styles
 
 	@media (min-width: 992px) { // Needed to use theme's breakpoint
@@ -22,6 +30,6 @@ body#{ $_body-theme-selector }#{ $_body-theme-selector }.header-v-default .secti
 	}
 }
 
-body#{ $_body-theme-selector }#{ $_body-theme-selector }.has-checkout-header.header-v-default #main #content-wrap {
+body#{ $body-theme-selector }#{ $body-theme-selector }.has-checkout-header.header-v-default #main #content-wrap {
 	padding-top: 0;
 }

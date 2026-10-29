@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-content .l-section-h {
+body#{ $body-theme-selector } .fc-content .l-section-h {
 	padding-top: var(--header-height); // Use theme variable to match its styles
 }

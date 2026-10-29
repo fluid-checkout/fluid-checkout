@@ -1,13 +1,22 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // FREE SHIPPING BAR
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper .wd-shipping-progress-bar {
+body#{ $body-theme-selector } .fc-wrapper .wd-shipping-progress-bar {
 	margin-bottom: $global-spacing-small;
 }
 
 
 
-body#{ $_body-theme-selector } .fc-wrapper .wd-shipping-progress-bar .wd-progress-bar {
+body#{ $body-theme-selector } .fc-wrapper .wd-shipping-progress-bar .wd-progress-bar {
 	border-radius: $checkout-substep-border-radius;
 }
+

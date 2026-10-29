@@ -1,0 +1,76 @@
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
+// Guided setup image modal. Imported with `@import` from `admin-guided-setup.scss`.
+
+// ------------------------------------
+// GUIDED SETUP IMAGE MODAL
+// ------------------------------------
+
+.fc-setup-image-modal {
+	align-items: center;
+	display: flex;
+	inset: 0;
+	justify-content: center;
+	padding: 24px;
+	position: fixed;
+	z-index: 100000;
+}
+
+.fc-setup-image-modal[hidden] {
+	display: none;
+}
+
+.fc-setup-image-modal__backdrop {
+	background: rgba( 0, 0, 0, 0.75 );
+	inset: 0;
+	position: absolute;
+}
+
+.fc-setup-image-modal__dialog {
+	max-height: calc( 100vh - 48px );
+	max-width: calc( 100vw - 48px );
+	position: relative;
+	z-index: 1;
+}
+
+.fc-setup-image-modal__image {
+	display: block;
+	height: auto;
+	max-height: calc( 100vh - 48px );
+	max-width: calc( 100vw - 48px );
+	width: auto;
+}
+
+.fc-setup-image-modal__close {
+	align-items: center;
+	background: $white;
+	border: 1px solid $admin-separator-color;
+	border-radius: 50%;
+	box-shadow: 0 2px 8px rgba( 0, 0, 0, 0.15 );
+	cursor: pointer;
+	display: inline-flex;
+	height: 36px;
+	justify-content: center;
+	padding: 0;
+	position: absolute;
+	#{$alignment-right}: -12px;
+	top: -12px;
+	width: 36px;
+}
+
+.fc-setup-image-modal__close .dashicons {
+	color: $fc-settings-text-color;
+	font-size: 20px;
+	height: 20px;
+	width: 20px;
+}
+
+.fc-setup-image-modal__close:focus {
+	box-shadow: 0 0 0 2px $white, 0 0 0 4px $admin-text-color;
+	outline: none;
+}
+
+body.fc-guided-setup-image-modal-open {
+	overflow: hidden;
+}

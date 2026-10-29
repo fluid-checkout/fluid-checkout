@@ -1,8 +1,13 @@
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+
 // ------------------------------------
 // ORDER SUMMARY
 // ------------------------------------
 
-body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-review__head:before,
-body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-review__head:after {
+body#{ $body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-review__head:before,
+body#{ $body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-review__head:after {
 	content: none;
 }

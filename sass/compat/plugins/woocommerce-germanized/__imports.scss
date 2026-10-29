@@ -1,7 +1,6 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"checkout-additional-notes",
-	"checkout-place-order",
-	"woocommerce-form-fields";
+@use "checkout-additional-notes";
+@use "checkout-place-order";
+@use "woocommerce-form-fields";

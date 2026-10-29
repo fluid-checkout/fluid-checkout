@@ -1,0 +1,10 @@
+// Animations used by Fluid Checkout Lite and PRO (via Lite CSS).
+// Lives in Lite only — not synced from standards.
+// Lite defaults / checkout steps: fade-in-up, fade-out-down, fade-in-down, fade-out-up.
+// PRO cart item remove: fade-out-right.
+
+@use '../lib/flyout-block/theme/animations/fade-in-up';
+@use '../lib/flyout-block/theme/animations/fade-in-down';
+@use '../lib/flyout-block/theme/animations/fade-out-up';
+@use '../lib/flyout-block/theme/animations/fade-out-down';
+@use '../lib/flyout-block/theme/animations/fade-out-right';

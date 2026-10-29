@@ -1,16 +1,21 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row {
+body#{ $body-theme-selector } div.woocommerce form .form-row {
 	display: block;
 }
 
-body#{ $_body-theme-selector } .woocommerce input[type="checkbox"] {
+body#{ $body-theme-selector } .woocommerce input[type="checkbox"] {
 	height: auto;
 }
 
-body#{ $_body-theme-selector } .woocommerce form .form-row .input-text.input-text {
+body#{ $body-theme-selector } .woocommerce form .form-row .input-text.input-text {
 	height: var( --fluidcheckout--field--height );
 	padding-left: var( --fluidcheckout--field--padding-left );
 	font-size: var( --fluidcheckout--field--font-size );

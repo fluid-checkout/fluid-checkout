@@ -30,7 +30,7 @@ class FluidCheckout_ThemeCompat_Divi extends FluidCheckout {
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 
@@ -73,7 +73,16 @@ class FluidCheckout_ThemeCompat_Divi extends FluidCheckout {
 
 			ob_start();
 			?>
-				<a href="<?php echo esc_url( apply_filters( 'fc_checkout_header_logo_home_url', home_url( '/' ) ) ); ?>">
+				<a href="<?php
+					/**
+					 * Filters the URL used by the checkout header logo.
+					 *
+					 * @since 1.5.4
+					 *
+					 * @param mixed $url URL.
+					 */
+					echo esc_url( apply_filters( 'fc_checkout_header_logo_home_url', home_url( '/' ) ) );
+				?>">
 					<img src="<?php echo esc_attr( $logo ); ?>" width="<?php echo esc_attr( $logo_width ); ?>" height="<?php echo esc_attr( $logo_height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" id="logo" data-height-percentage="<?php echo esc_attr( et_get_option( 'logo_height', '54' ) ); ?>" />
 				</a>
 			<?php

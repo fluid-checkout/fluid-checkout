@@ -1,8 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT CONTENT
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-content .row-parent {
+body#{ $body-theme-selector } .fc-content .row-parent {
 	padding-top: 0;
 
 	@media (#{$bp-smaller-than-tablet}) { 
@@ -10,3 +18,4 @@ body#{ $_body-theme-selector } .fc-content .row-parent {
 		padding-#{ $alignment-right }: remsize( 2rem ) !important; // Needed to override theme styles
 	}
 }
+

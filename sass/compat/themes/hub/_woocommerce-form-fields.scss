@@ -1,28 +1,36 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row {
+body#{ $body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row {
 	display: block;
 }
 
-body#{ $_body-theme-selector } div.woocommerce .woocommerce-additional-fields {
+body#{ $body-theme-selector } div.woocommerce .woocommerce-additional-fields {
 	margin-bottom: 0;
 	padding-top: 0;
 }
 
-body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row label.checkbox {
+body#{ $body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row label.checkbox {
 	display: inline;
 }
 
-body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row label.checkbox input {
+body#{ $body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row label.checkbox input {
 	margin-top: 0;
 }
 
 
 
 
-body#{ $_body-theme-selector } div.woocommerce form {
+body#{ $body-theme-selector } div.woocommerce form {
 	textarea,
 	select,
 	input[type="email"],
@@ -39,3 +47,4 @@ body#{ $_body-theme-selector } div.woocommerce form {
 		border: $form-field-border-width solid $form-field-border-color;
 	}
 }
+

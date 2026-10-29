@@ -270,10 +270,6 @@ msgstr "Fluid Checkoutデータベースが正常に更新されました。"
 msgid "The database changes where applied successfully."
 msgstr "データベースの変更が正常に適用されました。"
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "オッケー"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "解散"
@@ -385,34 +381,9 @@ msgstr "ドキュメントを読む"
 msgid "Don't show this again"
 msgstr "二度と見せるな"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "特別オファー"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr "Fluid Checkoutの良さをカートページとサンキューページに拡張しましょう。"
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "フルード・チェックアウトPRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr "デザインテンプレート、最適化されたカートと注文受付ページ、アカウントマッチングなど。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"<strong>WooCommerceのチェックアウトのコンバージョン率</"
-"strong>をさらに向上させ、全旅程で一貫した購買体験を実現するための最高のツールです。"
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -434,10 +405,6 @@ msgstr "チェックアウトページでカートの内容を編集する"
 msgid "Account matching / user matching"
 msgstr "アカウント・マッチング／ユーザー・マッチング"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "エクスプレス・チェックアウト・ボタン"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "カートとサンキューページの信頼マーク"
@@ -445,10 +412,6 @@ msgstr "カートとサンキューページの信頼マーク"
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "チェックアウトページでクーポンコードを入力する位置が増えます。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "カートページにクーポンコード欄を統合"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -462,229 +425,25 @@ msgstr "ギフト・メッセージと荷造り伝票"
 msgid "Local pickup and in-store collection"
 msgstr "現地での受け取りと店舗での受け取り"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "PROへのアップグレード 99ユーロ"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Fluid Checkout PRO - バンドル"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "PROの全機能＋全アドオンを特別価格で。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr "このバンドルには、現在提供しているすべてのアドオンと、今後開始するFluid Checkoutアドオンが含まれています。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "226ユーロ相当 (42%割引)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Googleアドレスオートコンプリート"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "アドレス帳"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "EU-VATアシスタント"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "今後のすべてのアドオン"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* アクティブなサブスクリプションを持っている限り。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "バンドル - わずか129ユーロ"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr "価格はすべてユーロ表示です。当ウェブサイトに掲載されている価格と異なる場合は、当ウェブサイトに掲載されているオファーが優先して適用されます。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "アドオン"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "これらのアドオンでチェックアウト体験を向上させましょう。"
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "すでに持っている - このオファーを隠す"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "インストール＆起動"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "活性化"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "チェックアウトの入力項目が最大40％削減されます。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr "配送の遅れや不満足な顧客を避ける。お客様が初めて購入されたときから、<strong>正しい住所情報</strong>を収集しましょう。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "このアドオンを入手する 29 EUR"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "アドレス帳"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "配送先と請求先の住所を複数保存できます。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr "顧客に<strong>複数の配送先住所と請求先住所をアカウントに保存させ、チェックアウトとカートページで使用する住所を選択させます。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "このアドオンを入手する。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "お店のEU-VATバリデーションを簡素化します。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"チェックアウトページで<strong>EUのVAT番号を収集・検証</"
-"strong>し、リバースチャージ方式で税金を取り除き、必要に応じて顧客の所在地を確認します。"
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "このアドオンを手に入れる 39 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"すべてのアドオンは別売りで、<strong>Fluid Checkout Lite</strong> "
-"プラグインをインストールして有効化する必要があります。"
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "画像を選択する"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" "
-"target=\"_blank\">アカウントにログイン</a>してライセンス・キーを取得するか、<a href=\"%s\" "
-"target=\"_blank\">新しいライセンス・キーを購入</a>してください。"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "sまで有効です。"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "sで失効しました。"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" "
-"target=\"_blank\">アカウントにログイン</a>してライセンスキーを更新し、引き続きアップデートとサポートをご利用ください。"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "ライセンスキーがキャンセルされました。"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" "
-"target=\"_blank\">新しいライセンス・キーを購入する</a>と、引き続きアップデートとサポートを受けることができます。"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "エラー："
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "セットアップ & ドキュメンテーション"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "素晴らしい！あなたのチェックアウトページはFluid Checkoutで実行されています。"
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "ここで、いくつかのリソースを紹介しよう："
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr "インストールガイド<a href=\"%s\" target=\"_blank\">Fluidチェックアウトを使用する</a>をお読みください。"
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "<a href=\"%s\">チェックアウト・オプション</a>のレイアウトとデザインを設定します。"
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr "インストールしている他のプラグインで利用可能な<a href=\"%s\">統合オプション</a>があるかどうかを確認します。"
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"Fluid Checkoutの機能の詳細については、<a href=\"%s\" "
-"target=\"_blank\">ドキュメント</a>をご覧ください。"
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"ヘルプが必要な場合は、<a href=\"%s\" "
-"target=\"_blank\">公式サポートチャンネルでサポートチケットを開いてください</a>。"
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -697,14 +456,6 @@ msgstr "カートの最適化"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "カートページの最適化を有効にする"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "チェックアウトページと同様のレイアウトでカートページを表示します。"
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "ヘッダーとフッター"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -735,13 +486,6 @@ msgstr "カートのページでスクロールしても注文の概要が表示
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "クーポンコード"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr "カートページのクーポンコード表示位置を選択します。AJAXカートとチェックアウトページの統合クーポンコードが有効な場合にのみ適用されます。"
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -833,10 +577,6 @@ msgstr "テーマのクロスセル・レイアウト"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "カートページに表示するクロスセルアイテムの数"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "信頼のシンボルとバッジ"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "カートページにウィジェットエリアを追加する"
@@ -850,10 +590,6 @@ msgstr "これらのウィジェットエリアは、カートページに信頼
 #: inc/admin/admin-settings-checkout.php:50
 msgid "Checkout"
 msgstr "チェックアウト"
-
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "レイアウト＆デザイン"
 
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
@@ -870,21 +606,6 @@ msgstr "ダークモード"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "ダークモードを有効にする"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "ヘッダーとフッターのテンプレート"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"チェックアウトページで気が散らないように、気が散らないヘッダーとフッターを使用することをお勧めします。<a "
-"href=\"https://baymard.com/blog/cart-abandonment\" "
-"target=\"_blank\">カート放棄に関する調査を読む</a>."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -929,10 +650,6 @@ msgid ""
 "Choose a background color for the checkout page footer. Only applies when "
 "using the distraction free header and footer."
 msgstr "チェックアウトページのフッターの背景色を選択します。邪魔にならないヘッダーとフッターを使用する場合にのみ適用されます。"
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "チェックアウト要素"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1011,16 +728,6 @@ msgstr "ショップページへのリンク"
 msgid "Cart items"
 msgstr "カートアイテム"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "チェックアウトページでカート項目を編集するオプションを有効にする。"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr "顧客がチェックアウトのページで直接商品の数量を変更したり、商品を削除したりできるようにする。"
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "チェックアウトページでカートアイテムのエラーを隠す"
@@ -1068,33 +775,9 @@ msgid ""
 "checkout page."
 msgstr "これらのウィジェットエリアは、チェックアウトページにトラストシンボルとトラストバッジを追加するために使用されます。"
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"マルチステップ・チェックアウト・レイアウトを使用している場合、モバイルデバイスで最後のチェックアウト・ステップを表示している時のみ、チェックアウト・サイ"
-"ドバー・ウィジェットを表示する。"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "統合されたクーポンコードのセクションを有効にする"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr "WooCommerceの設定でクーポンコードの使用が有効になっている場合のみ適用されます。"
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "クーポンコードのセクションタイトルを表示する"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr "クーポンコードがチェックアウトまたはカートのページに別のセクションとして表示されている場合にのみ適用されます。"
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1113,15 +796,6 @@ msgstr "支払い方法の前の段階として"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "支払い方法の後のサブステップとして"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"クーポン適用」ボタンのスタイルを選択します。クーポンコード欄がチェックアウトページの「チェックアウトステップの前」、またはカートページの「カートアイテム"
-"欄の前」に表示されている場合にのみ適用されます。"
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1168,19 +842,6 @@ msgid ""
 msgstr ""
 "ほとんどの顧客が実際に \"Address line 2 "
 "\"フィールドを必要とする場合、または正しい配送先住所を取得することが重要な場合（例えば、食品やその他の生鮮品を配送する場合）にのみ推奨されます。"
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "追加」リンクボタンを小文字で表示する"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"オプションフィールドの \"追加 \"リンクボタンのラベルを<code>小文字</code>にします（例：\"電話番号を追加 \"の代わりに "
-"\"電話番号を追加\"）。このオプションは、クーポンコードフィールドのリンクボタンにも影響します。"
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1267,21 +928,6 @@ msgstr "発送前住所"
 msgid "After shipping address"
 msgstr "発送先住所以降"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "最初の配送方法が自動的に選択されないようにする"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"<br>このオプションを有効にすると、各配送パッケージで以前に他の配送方法が選択されていない場合、利用可能な最初の配送方法は自動的に選択されません。<b"
-"r>このオプションは、選択された配送方法をクリアするオプションがローカルピックアップ機能で有効になっている場合に自動的に有効になります。"
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "現地ピックアップ"
@@ -1297,19 +943,6 @@ msgid ""
 "Replaces the shipping address with the pickup point location when a local "
 "pickup shipping method is selected."
 msgstr "ローカルピックアップの配送方法を選択した場合、配送先住所をピックアップポイントの場所に置き換えます。"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "集荷場所のサブステップで配送方法をクリアするオプションを表示する。"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"選択した配送方法をクリアするために、受け取り場所のサブステップにリンクボタンを表示します。これは、以前にローカルピックアップメソッドが選択された場合に、"
-"配送先住所セクションを再度表示するために使用できます。"
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1383,29 +1016,6 @@ msgstr "チェックアウトフォームに請求先電話番号フィールド
 msgid "Choose in which step to display the billing phone field."
 msgstr "どのステップで請求先電話フィールドを表示するかを選択します。"
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "国別ルールに基づく電話番号検証を有効にする"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr "無効にすると、国番号や市外局番がその国で有効かどうかをチェックしません。"
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "出荷または請求のために許可された国のみを表示する"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"有効にすると、配送先電話番号フィールドでは配送が許可された国のみが利用可能になり、請求先電話番号フィールドでは請求が許可された国のみが利用可能になります"
-"。"
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "国旗の横に国コードを表示"
@@ -1438,19 +1048,11 @@ msgstr "追加オーダーメモフィールドの可視性を定義します。
 msgid "Gift options"
 msgstr "ギフト・オプション"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "チェックアウトページでギフトメッセージやその他のギフトオプションを表示する"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
 "order."
 msgstr "注文時にギフトメッセージやその他のギフト関連オプションを追加できるようにする。"
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "ギフトメッセージフィールドを常に展開して表示する"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1499,24 +1101,9 @@ msgstr "ダッシュボード"
 msgid "Integrations"
 msgstr "統合"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr "現在、このセクションで利用可能な統合はありません。各プラグインに関連するオプションは、そのプラグインが有効になっている場合にのみここに表示されます。"
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "ライセンスキー"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"現在、このセクションにはライセンスキーのオプションはありません。各プラグインまたはアドオンに関連するオプションは、そのプラグインが有効化されたときにここ"
-"に表示されます。"
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1603,12 +1190,6 @@ msgid ""
 "These widget areas are used to add trust symbols and trust badges on the "
 "thank you page."
 msgstr "これらのウィジェットエリアは、サンキューページにトラストシンボルやトラストバッジを追加するために使用されます。"
-
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr "これらのオプションは、サンキューページ、アカウントページの注文詳細の表示、および電子メール通知に影響します。"
 
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
@@ -1700,19 +1281,6 @@ msgstr "最小化されていない資産をロードする"
 msgid "Enhanced select fields"
 msgstr "セレクト・フィールドの強化"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr "<code>select2</code>ドロップダウン・コンポーネントを<code>TomSelect</code>に置き換える。"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelectは、WooCommerceのチェックアウトページで実際に使用されるのと同じ機能を提供しながら、Select2"
-"よりもエラーが起こりにくい、よりシンプルなドロップダウンセレクションコンポーネントです。"
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "フォームフィールドの自動ズームインを修正"
@@ -1720,32 +1288,6 @@ msgstr "フォームフィールドの自動ズームインを修正"
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "フォームフィールド内の<code>font-size</code>を16pxに設定する。"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"フォームフィールド内のフォントサイズが16"
-"pxより小さい場合、Safariやその他のブラウザは、テキストを読みやすくするために、モバイルデバイス上で自動的にズームインする可能性があります。このオ"
-"プションを有効にすると、Fluid "
-"Checkoutによって最適化されたページでは、フォームフィールド内のフォントサイズが16pxに設定され、ズームインが回避されます。"
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"Fluid "
-"Checkoutが有効になっている場合、配送先は常に「顧客の配送先住所がデフォルト」に設定されます。顧客はチェックアウト中に異なる配送先住所と請求先住所"
-"を提供することができます。デフォルトの請求先住所を配送先住所と同じに設定するオプションは、WooCommerce > Settings > Fluid "
-"Checkoutで利用可能です。"
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1770,14 +1312,6 @@ msgstr "(プロ)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(実験的）"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "確認"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "電話番号の確認"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2261,10 +1795,6 @@ msgstr "プログレスバーの後"
 msgid "Before coupon codes section"
 msgstr "クーポンコード欄の前に"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "国際電話番号フィールドを有効にする"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "各国のルールに従って電話番号をフォーマットする。"
@@ -2272,16 +1802,6 @@ msgstr "各国のルールに従って電話番号をフォーマットする。
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "正確な電話番号の検証"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"選択した国コードのルールに基づいて、電話番号が有効な携帯電話番号または固定電話番号であることを確認しようとします。このオプションは<code>intl-"
-"tel-input</code>の正確な検証機能を使います。"
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2324,24 +1844,6 @@ msgstr "2列"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1列"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"チェックアウトのステップ、注文の概要、その他のセクションのための一般的なスタイルです。<br>また、カートページ、注文受付ページ、注文を見るページなどの"
-"他のページにも適用される場合があります。"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"デザインテンプレート <em>\"Split\"</em> は、<em>\"1 column\"</em> "
-"レイアウトを使用している場合は使用できず、<em>\"Minimalist\"</em>を選択した場合にフォールバックします。"
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2426,6 +1928,2340 @@ msgstr ""
 "請求先住所のセクションが配送先住所のセクションよりも先に表示され、かつ配送先電話番号の入力欄が「必須」に設定されている場合、請求先電話番号の入力欄も「必"
 "須」に設定されることがあります。これは、該当するオプションがチェックされた際に配送先住所を請求先住所にコピーできるようにするためです。そうしないと、顧客"
 "がチェックアウトフォームを完了できなくなる可能性があります。"
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "設定プロファイル"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "設定プロファイル"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "この操作を実行する権限がありません。"
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "プラグインを有効にする権限がありません。"
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "プラグインが見つかりません。"
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "プラグインが有効化されました。"
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "以下の変更が適用されます："
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Fluid Checkout 5.0 "
+"以降、設定の保存方法が変更されました。必要に応じて以前のバージョンにダウングレードできるよう、従来のオプションは引き続きデータベースに保存されています。"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"新しい設定で店舗を約2"
+"週間稼働させてきたため、データベースに保存されていた旧バージョンの設定をクリーンアップすることができました。なお、クリーンアップ後にプラグインを以前のバ"
+"ージョンにダウングレードする必要がある場合、すべての設定でデフォルト値が使用される点にご注意ください。"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "「Fluid Checkout」設定の整理"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "不要なオプションを削除する"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "「Fluid Checkout」の改善にご協力ください"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"Fluid Checkout "
+"と匿名化されたサイト環境レポートを共有することで、より迅速なサポートを受けられるほか、互換性の向上や影響の測定にも役立ちます。顧客情報、ユーザー情報、機"
+"密データは一切含まれません。「ツール」の設定から、共有する内容をいつでも選択できます。"
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "サイト環境レポートを有効にする"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "設定を確認する"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr "このプレビューの有効期限が切れました。管理ページを再読み込みして、新しいプレビューを開始してください。"
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "プレビューの有効期限が切れました"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "プレビュー画面では注文を行うことはできません。"
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "プレビュー版ではログイン機能はご利用いただけません。"
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "プレビュー画面ではアカウントを作成することはできません。"
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "プレビューでは、他のサイトへのリクエストはブロックされます。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "処理中…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "問題が発生しました。もう一度お試しください。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "プラグインを有効にする"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - 包括的なチェックアウトパッケージ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"すべてのPRO機能とすべてのアドオンが、1"
+"つの価格に含まれています。デザインテンプレート、最適化されたカートページや注文確認ページ、アカウント連携など、さまざまな機能が利用可能です。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "注文決済ページの最適化"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "対応している決済方法の「エクスプレスチェックアウト」ボタン"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "アカウント作成の遅延"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Google Maps API を使った住所の自動補完"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "アドレス帳に複数の保存済み住所を登録する"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "EU-VATアシスタント"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "このセクションを非表示にする"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "詳細はこちら"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "早期アクセスを入手する"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "アドオンを有効にする"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "チェックアウトのプロセスをさらに充実させましょう"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "APIキーのテスト"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "セットアップの手順"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "オプション"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "<a href=\"%s\">のチェックアウトオプション</a>で、レイアウトとデザインを設定します。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr "ゲストチェックアウトを有効にし、および／または <a href=\"%s\">顧客アカウントの設定</a> を確認してください。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"<a href=\"%1$s\">カート</a>、<a href=\"%2$s\">お礼</a>、および<a "
+"href=\"%3$s\">注文決済</a>ページを最適化します。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr "Google マップの <a href=\"%s\">住所の自動補完</a> を有効にします。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr "<a href=\"%s\">アドレス帳</a>で、複数の保存済み住所を有効にします。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr "使用しているテーマやインストール済みの他のプラグインに対して、<a href=\"%s\">連携オプション</a>が利用可能かどうかを確認してください。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"より迅速なサポートを受けられるほか、互換性の向上や影響の測定にもご協力いただけます。<a "
+"href=\"%s\">ツールの設定から利用状況の追跡を有効にしてください</a>。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "「設定」タブが表示されません。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "はじめに"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>素晴らしい！チェックアウトページがFluid Checkoutで動作するようになりました。</strong> "
+"利用を開始するための手順をいくつかご紹介します："
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "完了"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "レポートデータのプレビュー"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "今すぐ送信"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "自動検出"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "アフリカーンス語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "アルバニア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "アムハラ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "アラビア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "アルメニア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "アゼルバイジャン語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "バスク語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "ベラルーシ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "ベンガル語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "ボスニア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "ブルガリア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "ビルマ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "カタロニア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "中国語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "中国語（簡体字）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "中国語（香港）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "中国語（繁体字）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "クロアチア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "チェコ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "デンマーク語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "オランダ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "英語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "英語（オーストラリア）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "英語（イギリス）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "エストニア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "ペルシア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "フィンランド語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "フィリピン人"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "フランス語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "フランス語（カナダ）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "ガリシア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "グルジア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "ドイツ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "ギリシャ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "グジャラート語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "ヘブライ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "ヒンディー語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "ハンガリー語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "アイスランド語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "インドネシア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "イタリア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "日本語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "カンナダ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "カザフ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "クメール語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "韓国語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "キルギス"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "ラオス"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "ラトビア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "リトアニア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "マケドニア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "マレー語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "マラヤーラム語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "マラーティー語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "モンゴル語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "ネパール語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "ノルウェー語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "ポーランド語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "ポルトガル語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "ポルトガル語（ブラジル）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "ポルトガル語（ポルトガル）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "パンジャブ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "ルーマニア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "ロシア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "セルビア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "シンハラ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "スロバキア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "スロベニア語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "スペイン語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "スペイン語（ラテンアメリカ）"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "スワヒリ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "スウェーデン語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "タミル語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "テルグ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "タイ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "トルコ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "ウクライナ語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "ウルドゥー語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "ベトナム語"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "ズールー語"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Googleの住所オートコンプリート"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Google Places API のバージョン"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr "使用する Google Places API のバージョンを選択してください。できるだけ早く新しい Places API へ移行することをお勧めします。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"2025年3月1日より、「Places API（新）」のご利用をお勧めします。Googleは「Places "
+"API（レガシー）」をレガシーステータスに移行する予定です。これにより、新しいAPIキーではこのサービスを有効にできなくなり、最終的には当該バージョンの"
+"APIが利用できなくなります。 すでにレガシーAPIをご利用中の既存アカウントについては、引き続き問題なくご利用いただけます。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(おすすめ)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Google API キー"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"Google API "
+"キーを貼り付け、テストボタンをクリックして、このウェブサイトで正常に動作するか確認してください。キーが有効であり、お使いのドメインで許可されていることを"
+"必ず確認してください。そうしないと、アドレス欄がブロックされ、顧客が注文を完了できなくなる可能性があります。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "Googleの住所オートコンプリートを有効にする"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr "Google Maps API を使用して、住所の自動補完機能を有効にします。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Google APIの言語"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr "この言語は、Google Places API の住所候補を表示するために使用され、住所の自動補完もこの言語で行われます。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "結果の種類"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"空欄のままにすると、あらゆる種類の結果が受け入れられ、通常はより適切な検索結果が得られます。<a href=\"%s\" "
+"target=\"_blank\">詳細についてはドキュメントをご覧ください</"
+"a>。<br>住所のオートコンプリートフィールドで表示する検索結果の種類を、最大5つまで選択してください。 <br>Google "
+"マップのドキュメントにアクセスして、<a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">サポートされているタイプ</a>について詳しくご確認ください。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "結果の種類（レガシーAPI）"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Places API（レガシー）を使用する際、どのタイプの住所検索結果を返すか。 <br>レガシー版 Google Places API "
+"のドキュメントにアクセスして、<a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">サポートされているタイプ</a>について詳しくご確認ください。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "会社の分野"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "利用可能な場合は、会社名のオートコンプリートを有効にする"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr "Google Maps API から返された会社名情報をもとに、会社名のフィールドのオートコンプリート機能を有効にします。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "企業検索"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "「会社」フィールドでの企業検索を有効にする"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"「会社名」フィールドに入力すると、その企業に関連付けられた住所の候補が表示されるようにし、候補から企業を選択した際に、すべての住所フィールドが自動補完さ"
+"れるようにします。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "企業の業績の種類"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"企業のフィールドのオートコンプリートで表示する住所検索結果の種類を、最大5つまで選択してください。<br>推奨値は <code>事業所</code> "
+"です。これには、ほとんどの業種が含まれます。<br>空欄のままにすると、事業に関連しない結果を含め、あらゆる種類の結果が受け入れられます。 "
+"<br><a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">サポートされている種類</a>の詳細については、Google マップのドキュメントをご覧ください。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Googleのロゴ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "「Powered by Google」というテキストとロゴを表示する"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr "このチェックボックスをオンにすると、アドレスの自動補完候補ボックスの下部に、「Powered by Google」というテキストとロゴが表示されます。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "ブラジル API の住所オートコンプリート"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "ブラジル API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "CEPフィールドで「Enable Brasil API」の住所オートコンプリート機能を有効にする"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr "Brasil API を使用して、CEP/郵便番号フィールドから住所を取得し、自動入力を行ってください。これはブラジルの住所にのみ適用されます。"
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "APIのバージョン"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "Brasil APIのCEPメソッドのどのバージョンを使用するかを指定してください。"
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "アドレス帳の移行"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "WooCommerceのアドレス"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr "WooCommerce に登録されている配送先住所および請求先住所を、顧客のアドレス帳にコピーします。"
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "アドレス帳機能を有効にする"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr "顧客が複数の住所を登録できるようにし、配送先および請求先として使用するデフォルトの住所を設定できるようにします。"
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "宛名ラベル"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "顧客が各住所ごとにカスタムラベルを追加できるようにする"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"住所ラベルを使用すると、お客様は保存済みの住所（例：「実家」）を区別しやすくなります。住所ラベルはお客様個人の情報であり、注文詳細ページや請求書には表示"
+"・印刷されません。"
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "表示レイアウト"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr "保存済みの住所が、決済画面やカート画面でどのように表示されるかを選択してください。"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr "チェックアウト時およびカート画面で適用されます。アカウントページに登録された住所は、常にカード形式で表示されます。"
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "住所カード"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "アドレス一覧"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "ドロップダウンフィールド"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "住所検索"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr "顧客が保存済みの住所を少なくともこの数以上持っている場合、フロントエンドに住所検索フィルターを表示する。"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "表示レイアウトがドロップダウンフィールドに設定されている場合は使用されません。"
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "住所"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "カートページの最適化を有効にすると、さらに多くのオプションが表示されます"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "固定表示の注文概要"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"カートページ上でクーポンコードセクションを表示する位置を選択してください。これは、AJAXカートが有効になっている場合、かつWooCommerceの設定"
+"でクーポンコードの使用が有効になっている場合にのみ適用されます。"
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "クロスセルの構成"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "クロスセルの表示"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "商品"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "カートページの最適化"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr "カートページにも、チェックアウトページと同じく、見やすくコンバージョンを重視したレイアウトを採用しましょう。"
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr "カート画面のレイアウトを決済ページと統一し、一貫性のある購入プロセスを確保しましょう。"
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr "数量が変更されてもページ全体が再読み込みされることなく、バックグラウンドでカートを常に最新の状態に保つ。"
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr "クーポンコード、配送情報、クロスセルを、コンバージョン率が最も高くなる場所に配置しましょう。"
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr "スクロール中でも注文概要が表示されたままになるようにし、買い物客に安心感が必要な箇所には信頼の証となるマークを追加してください。"
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "コラム"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"チェックアウトの手順、注文概要、その他のセクションに共通するスタイルです。他のチェックアウトページ、カートページ、「注文完了（注文受付）」ページ、注文確"
+"認ページにも適用されます。"
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"<em>「1列」</em>レイアウトを<em>「Split」</"
+"em>デザインテンプレートと組み合わせて使用する場合、ページのサイドバーウィジェットエリア（「チェックアウトサイドバー」、「カートサイドバー」、または「"
+"注文受領サイドバー」）が有効になっている場合にのみ、右側の列が表示されます。それ以外の場合は、ページは「Split」スタイルの1"
+"列レイアウトのままとなります。"
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "列の背景を分割する"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr "「スプリット」デザインのセカンダリカラムの背景色を選択してください。空欄のままにすると、注文概要の背景色が使用されます。"
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "ページテンプレート"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "チェックアウトテンプレート"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"決済時の気が散る要素を減らすためにおすすめです。<a "
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">カート放棄に関する調査結果を読む</a>。"
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "固定される進行状況バー"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "プログレスバーのスタイル"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "注文合計額"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "背景色"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "アクションリンク"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "モバイル注文の概要"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "モバイルの初期状態"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "チェックアウト時にカート内の商品の編集を有効にする"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr "顧客がチェックアウトページで直接、商品の数量を変更したり、商品を削除したりできるようにします。"
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "カート内の商品に関するエラー"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"この機能は、チェックアウトページまたはカートページにクーポンコードの入力欄が独立したセクションとして表示されており、かつWooCommerceの設定でク"
+"ーポンコードの使用が有効になっている場合にのみ適用されます。"
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "クーポンコードの掲載位置"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "「クーポンを適用」ボタン"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "「クーポンを適用」ボタンのスタイルを選択してください。"
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "宛先欄 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"この設定は、「チェックアウト」セクションと「店頭受取」セクションで共通して適用されます。「店頭受取」セクションでは、この設定によって、「配送／店頭受取」"
+"の選択項目が、配送方法セクション内（住所入力欄の前）に表示されるか、それとも独立したセクション（その後に）として表示されるかが決まります。"
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "顧客アカウント"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "ゲストチェックアウト"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"WooCommerceの「アカウント」設定ページにある、ゲストチェックアウト、ログイン、およびアカウント作成のオプションです。これらの設定は、利便性を考"
+"慮してここで一元管理されており、設定プロファイルごとに異なる値を設定することができます。"
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "アカウントなしで顧客が購入手続きを行えるようにする"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>推奨</strong> "
+"これにより、顧客はチェックアウト時にアカウントの作成やログインを求められることがなくなり、コンバージョン率の低下を防ぐことができます。"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr "この機能が無効になっている場合、お客様は購入を完了するためにログインするか、アカウントを作成する必要があります。"
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "決済時にログインする"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "チェックアウト時のログインを有効にする"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr "チェックアウトページに、リピーターのお客様がログインできるリンクを表示してください。"
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "アカウントの作成"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "チェックアウト時に顧客がアカウントを作成できるようにする"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "お客様は、ご注文の前にアカウントを作成することができます。"
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "「マイアカウント」ページから、顧客がアカウントを作成できるようにする"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "お客様は「マイアカウント」ページから新しいアカウントを登録できます。"
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "ユーザー名"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "顧客名から生成する"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>推奨</strong> "
+"これにより、チェックアウト時にユーザー名を入力するよう求められることがなくなり、コンバージョン率の低下を防ぐことができます。"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr "ユーザー名は、顧客名から生成されます。顧客名を使用できない場合は、メールアドレスから生成されます。"
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "パスワード"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "パスワード設定用リンクを送信する"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>推奨</strong> "
+"これにより、顧客がチェックアウト時にパスワードの設定を求められることがなくなり、コンバージョン率の低下を防ぐことができます。"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "お客様には、安全にパスワードを設定するためのメールが届きます。"
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr "登録済みの顧客がログインせずにチェックアウトを完了できるようにし、連絡先情報が一致する場合は、その注文を既存のアカウントに関連付けるようにします。"
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "既存アカウントに関するお知らせ"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr "注文完了後の「注文完了ページ」から、顧客がアカウントを作成できるようにします。"
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"このセクションのオプションは、ゲストチェックアウトとアカウント照合が有効になっている場合に利用可能です。アカウントの遅延作成を設定するには、上記の両方の"
+"機能を有効にしてください。"
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "アカウント作成の遅延を有効にする"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr "「ゲストチェックアウト」と「アカウント照合」の両方が有効になっている場合、アカウント作成の遅延を有効にします。"
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "セクションの位置"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "「顧客情報」セクションの前"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "「お客様の詳細」セクションの後"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "アカウント作成のメリット"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "この欄を空欄のままにすると、デフォルトのテキストが表示されます。"
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "インラインボタン"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "必須項目"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "チェックアウト時にギフトメッセージ入力欄を有効にする"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "ギフトメッセージの詳細"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "「ギフトメッセージ」入力欄を常に展開した状態に表示する"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "注文詳細のギフトメッセージ"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"現在、このセクションでは利用可能な連携機能はありません。各プラグインやテーマに関連するオプションは、そのプラグインまたはテーマが有効化された場合にのみ、"
+"ここに表示されます。"
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "電話番号の入力欄"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "フィールドの可視性"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "フィールド上の位置"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "電話の国番号と検証"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "国"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "「電話の国」フィールドを有効にする"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "配送先または請求先として対象国を絞り込む"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr "各電話番号入力欄の国選択リストを、ストアで配送先または請求先として許可されている国に限定してください。"
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "検証"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "各国の規則に基づいた簡易な検証を有効にする"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr "国番号や桁数を含め、選択した国においてその電話番号が有効かどうかを確認します。"
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"選択した国において、その番号が有効な携帯電話番号、固定電話番号、またはその他の許容される種類の番号であるかどうかを、より厳格にチェックします。これにより"
+"、有効な番号であっても拒否される場合があります。"
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "検証の種類"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "プレースホルダー"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"現在、管理すべきライセンスキーはありません。ライセンスを取得済みのFluid "
+"Checkoutプラグインまたはアドオンが有効になっている場合、ここにライセンスキーが表示されます。"
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "デフォルトの配送方法"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "デフォルトで選択される配送方法を選択してください。"
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "配送エリアのフィールド"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr "「店頭受取」の配送エリアフィルターで表示する項目を選択してください。空欄のままにすると、利用可能なすべてのオプションが表示されます。"
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"これらの項目は、店頭受け取りの配送方法のフィルタとして表示されます。互換性のあるプラグインが正常に動作するために必要な場合、ここで選択されていなくても、"
+"チェックアウト時に一部の項目が表示されることがあります。"
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "注文の配送先住所"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "注文・支払いページの最適化"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr "未決済の注文ページにも、チェックアウトページと同じ、明確でコンバージョン重視のレイアウトを採用してください。"
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr "支払待ちの注文について、注文の支払いページのレイアウトを最適化します。"
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr "注文・支払い・受け取りの体験を、チェックアウトプロセスに合わせて調整し、一貫性のある購入体験を実現しましょう。"
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr "購入者が支払い前に安心感を求める箇所には、信頼を示すアイコンやバッジを表示しましょう。"
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "「ありがとう」ページの最適化"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr "購入後の顧客向けに、お礼ページと注文詳細をより分かりやすくしてください。"
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr "「ありがとう」ページと注文明細ページを、より見やすいレイアウトに最適化してください。"
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr "注文状況の進捗、アクション、ダウンロード、およびメモは、適切な場所に表示してください。"
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "メール通知の注文詳細セクションをカスタマイズします。"
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr "購入後に安心感が必要な箇所には、信頼を示すマークやバッジを表示しましょう。"
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "メール通知"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr "「お礼ページ」と「注文詳細」の最適化を有効にして、さらに多くのオプションを確認してください"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "「ありがとう」ページではワイドレイアウトを使用する"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr "これらの設定は、サンキューページ、アカウントページでの注文詳細の表示、およびメール通知に影響します。"
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "設定を保存"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "ドキュメント"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "カート"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "ありがとうございます"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "住所の自動補完"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "信頼バッジ"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "これらの設定を保存する権限がありません。"
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "保存リクエストが無効です。"
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "設定が保存されました。"
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "保存中..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "設定を保存できませんでした。もう一度お試しください。"
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "通知を閉じる"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "設定メニューを開く"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "設定メニューを閉じる"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "プレビュー"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "プレビューを拡大"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "プレビューを折りたたむ"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "ヘッダーとフッターを表示する"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "ヘッダーとフッターを非表示にする"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "ページのプレビュー"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "プレビュービューポート"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "タブレット"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "デスクトップ"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "プレビューの幅"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "幅を狭くする"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "プレビューの幅（ピクセル単位）"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "幅を広げる"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "プレビュー形式として"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "ゲスト"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "ログイン済み"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "プレビューページ"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "プレビューを拡大して詳しく見る"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "%s で利用可能です。"
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "電源を入れてください"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr "このページの最適化機能は無効になっています。%s をクリックしてページをプレビューしてください。"
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "%s のプレビュー"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "独立したセッション・何も保存されません"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "利用状況の追跡"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Fluid "
+"Checkoutの互換性向上に役立てるため、機密性を含まないサイト環境レポートを送信してください。以下のオプションで有効に設定するまで、レポートは送信さ"
+"れません。"
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "Fluid Checkoutに利用状況の追跡レポートを送信する"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr "これらのレポートは、お客様のサイトに対する互換性やサポートの向上に役立ち、有効に設定されている場合は毎週送信されます。"
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr "レポートには、顧客情報、管理者ユーザー情報、その他の機密データは一切含まれていません。"
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "基本的な環境情報"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"WordPress、PHP、WooCommerce、テーマ、およびプラグインの一覧データ。レポート機能が有効になっている場合は、常に含まれます。これによ"
+"り、お客様のサイトが稼働している環境を把握するのに役立ちます。"
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "プラグインの設定"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"サポートリクエストへの対応に役立てるため、また、お客様が当社のプラグインをどのようにご利用になっているかを把握するために、Fluid "
+"Checkoutプラグインの設定情報を送信します。"
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "近日公開予定"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "販売指標"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"Fluid "
+"Checkoutを導入する1"
+"年前から今日までの、月ごとの注文数および総売上高です。これにより、当社のプラグインを導入することで収益が増加しているかどうかを把握することができます。顧"
+"客やユーザーのデータが送信されることは一切ありません。"
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "ユーティリティ"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr "<code>select2</code>の代わりに、<code>TomSelect</code>ドロップダウンコンポーネントを使用してください。"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelectは、Select2と同じ機能を提供しつつ、Select2"
+"よりもエラーが発生しにくく、よりシンプルなドロップダウン選択コンポーネントです。"
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"このプラグインによって最適化されたページにおいて、小型デバイスでフォームフィールドを操作する際に自動的に拡大表示されるのを防ぐため、フォームフィールド内"
+"のフォントサイズを16pxに設定します。"
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"Safari やその他のブラウザでは、モバイル端末において、フォントサイズが 16px "
+"未満の場合、テキストを読みやすくするために自動的に拡大表示されることがあります。"
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "ブラウザのコンソールでスクリプト処理の追跡を有効にします。"
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "未圧縮のアセット"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Google マップのスクリプト"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "Google マップのスクリプトの重複は削除しないでください"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"このオプションを有効にしても、重複するGoogle "
+"Mapsスクリプトは削除されません。これにより、エラーやパフォーマンスの問題が発生する可能性があります。このオプションは、トラブルシューティングを行う場"
+"合のみ使用してください。"
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "ウィジェット領域"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "モバイル版での最後のステップ"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "モバイルでは、最後のステップでのみウィジェットを表示する"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr "モバイル端末で最終決済ステップを表示している場合のみ、決済信頼バッジウィジェットを表示する"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "標準"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "VAT番号入力欄"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "請求フォームにVAT番号の入力欄を追加してください。"
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "フィールドラベル"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"VAT番号フィールドのラベル（例：VAT番号）を設定します。多言語対応のウェブサイトでは、このフィールドを空のままにし、元の文字列を翻訳する方が望ましい"
+"です。"
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "VAT番号"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "EUの付加価値税"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "VAT番号の入力欄を有効にすると、さらに多くのオプションが表示されます"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "VATの有効性確認"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "チェックアウト時にEU-VATのVAT番号フィールドの有効性を確認する"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr "入力されたVAT番号が、欧州のVIESデータベース（VAT情報交換システム）に登録されている有効なVAT番号であるかどうかを確認します。"
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "店舗のVAT番号"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"EU-"
+"VATの有効性確認の申請に使用され、請求書にも記載されている当店のVAT番号です。<br><strong>会計上の目的でVIES照会結果が有効とならない"
+"可能性があるため、当店のVAT番号</strong>を追加することを強くお勧めします。 <br>例：<code>ATU99999999</code> "
+"または <code>EE999999999</code>。"
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "リバースチャージ"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "リバースチャージ制度を適用する"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"顧客のVAT番号が有効な場合、税率をゼロに設定し、請求書に「リバースチャージ」と表示します。店舗の所在国によっては、異なる「リバースチャージ」の文言が必"
+"要になる場合があります。"
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "同じ国"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr "店舗所在国における取引には、リバースチャージ方式を適用する："
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr "店舗と同じ国内の企業間取引において、リバースチャージ方式の適用が可能になります。"
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "リバースチャージの例外"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr "リバースチャージ制度の適用を免除する国をさらに選択してください。"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr "これらの国からのご注文については、有効なVAT番号が提示された場合でも、税金が課されます。"
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "請求書上のリバースチャージ表示"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr "チェックアウトページおよび注文詳細画面で、「リバースチャージ」というラベルを設定してください。"
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "請求書におけるリバースチャージに関する記載"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "請求書の「リバースチャージ」というテキストのラベルを設定します。"
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "リバースチャージ方式により納付すべき税金"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "会社名"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "VAT番号から会社名を自動補完する"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr "お客様から提供された有効なVAT番号に基づき、請求先企業名を入力してください。"
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "会社名の編集"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "自動入力された会社名の編集を許可する"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr "この機能を有効にすると、顧客は指定されたVAT番号に関連付けられている会社名を変更できるようになります。"
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "デジタル商品に対するEUの付加価値税（VAT）"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"2015年1月1日より、デジタル商品に関するEUの付加価値税（VAT）規制が改正され、これはB2"
+"C取引にのみ影響を及ぼします。デジタル商品の付加価値税は、顧客の所在地に基づいて計算する必要があり、その根拠となる情報（IPアドレスおよび請求先住所）を"
+"収集する必要があります。"
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "デジタル商品の税区分"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "いくつかの税区分を選択してください"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "位置情報の証拠"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "顧客の位置情報の証拠を収集する"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"IPアドレスを保存し、顧客の請求先住所と照合して検証します。請求先住所の国とIPアドレスの国が一致しない場合、顧客はチェックアウトページでチェックボック"
+"スにチェックを入れて、請求先住所を確認する必要があります。"
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr "このオプションは「Fluid Checkout」で管理されます。<a href=\"%s\">「顧客アカウント設定」</a>で変更してください。"
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr "この設定は「Fluid Checkout」で管理されます。「Fluid Checkout」＞「顧客アカウント」で変更してください。"
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"このオプションはFluid Checkoutで管理されます。Fluid "
+"Checkoutが有効になっている場合、配送先には常に「顧客の配送先住所をデフォルトとする」が設定されます。 "
+"顧客は、チェックアウト時に別の配送先住所や請求先住所を入力することも可能です。<br><br>請求先住所を配送先住所と同じにする設定オプションは、<a "
+"href=\"%s\">Fluid Checkoutの設定</a>で利用可能です。"
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"この設定はFluid Checkoutで管理されます。 Fluid "
+"Checkoutが有効になっている場合、配送先には常に「顧客の配送先住所をデフォルトとする」が設定されます。顧客はチェックアウト時に、配送先住所や請求先"
+"住所を別途指定することも可能です。<br><br>請求先住所を配送先住所と同じにする設定オプションは、WooCommerce > 設定 > Fluid "
+"Checkout から利用できます。"
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr "これらの設定は、「WP管理画面」＞「Fluid Checkout」＞「設定」に移動されました。"
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr "この「WooCommerce 設定」タブは非推奨となっており、Fluid Checkout 6.0 で削除される予定です。"
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "設定ページへ移動"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "このタブを永久に非表示にする"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "現場報告書のプレビュー"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr "これは、現在の設定に基づいて、次回のサイト環境レポートに含まれる予定のデータです。"
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "レポートのプレビューを読み込み中..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "サイトレポートのプレビューを読み込めませんでした。もう一度お試しください。"
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "サイトレポートを送信できませんでした。もう一度お試しください。"
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "サイトレポートの送信に成功しました。"
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "有効にして今すぐ送信"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "閉じる"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr "サイトレポートの依頼はすでに処理中です。しばらくしてからもう一度お試しください。"
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "サイト環境のレポート機能は無効になっています。"
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "送信可能なサイトレポートデータはありません。"
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr "このサイトのドメインからは環境レポートを送信できません（ローカルドメインや開発用ドメインは対象外です）。"
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "先日、現場報告書が送付されました。後ほど再度お試しください。"
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "サイトレポートを送信できませんでした。後ほど再度お試しください。"
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "サイト環境に関するレポートは利用できません。"
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "選択された設定に関するサイトレポートデータは存在しません。"
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "サイトレポートを管理することは許可されていません。"
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "PRO機能"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "その他のプラグイン"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "このアドオンだけを入手する — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "アドオンをインストールする"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "PROにアップグレード — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr "<a target=\"_blank\" href=\"%1$s\">%2$s</a>を入手して、これらのオプションをアンロックしてください。"
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "アドオン"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "ドキュメントを表示する"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"リクエストを行うには、WordPress にログイン済みのユーザーが必要です。user_id "
+"を省略すると現在のユーザーのデータが使用されます。また、呼び出し元がそのユーザーを編集できる場合（edit_user 権限）、user_id "
+"を指定して別のアカウントを対象とすることができます。認証されていないリクエストに対しては、fc_api_forbidden が返されます。 無効な "
+"user_id を指定すると、fc_api_user_not_found が返されます。"
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr "ハンドラーがペイロードを返す際、HTTP 200 ステータスコードと共に { \"data\": { ... } } が返されます。"
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr "ペイロードがない場合（例：DELETE）、HTTP 200 ステータスコードと { \"success\": true } が返されます。"
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"エラーが発生すると、WP_Error から WordPress REST エラーの "
+"JSON（code、message、data.status）が返されます。Wire コードでは、fc_api_* というプレフィックスが使用されます。"
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "アクセス禁止。"
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "対象ユーザーが見つかりませんでした。"
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "この機能はご利用いただけません。"
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "必須の入力項目が欠けています。"
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "郵便番号が正しくありません。"
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "電話番号が無効です。"
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "州または郡の指定が無効です。"
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "国が不正な値であるか、住所欄がありません。"
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "リクエストを処理できませんでした。"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "前の手順に戻る"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "設定へスキップ"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "最初からやり直し、ガイド付きセットアップの最初のステップに戻る"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "最初からやり直す"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "先に進む前に、すべてのサブ手順を完了してください。"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "展開"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "折りたたむ"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "スキップ"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "「完了」としてマークする"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "「未完了」としてマークする"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "画像をフルサイズで表示：%s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "フルサイズのセットアップガイド画像"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "画像を閉じる"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "Fluid Checkout ガイド付きセットアップ"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "ようこそ"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "お会計の詳細を確認する"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "準備完了"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "このページにアクセスする権限がありません。"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "ステップ %1$d: %2$s へ進む"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr "このセットアップガイドは、Fluid Checkout の使い方を理解するのに役立ちます。以下の手順は、現時点では仮のものです。"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "準備ができたら、次の手順に進んでください。"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "ストアのチェックアウト画面を開いて、Fluid Checkoutの実際の動作をご覧ください。"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "決済ページを表示する"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr "「Fluid Checkout」の設定画面に戻って、ストアの設定を続行することができます。"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "チェックアウトとカートの設定を確認する"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "ダッシュボードからアドオンを探索する"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "完了して設定画面へ進む"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr "「請求先電話番号」フィールドの表示設定を、従来の値からWooCommerceの規約に合わせて更新してください。"
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr "「配送先電話番号」フィールドの表示設定を、従来の値からWooCommerceの規約に合わせて更新してください。"
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr "注文概要の背景色設定を、新しい「Split」デザインの「セカンダリ列の背景色」オプションにコピーします。"
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr "Biteshipプラグインを使用している場合、拡張選択フィールド機能は常に無効になっています。"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"「German "
+"Market」を使用する場合、注文位置は常に「注文概要の下」に設定されます。このプラグインでは、注文ボタンと法的チェックボックスを注文概要の下に表示する"
+"必要があります。"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"「Germanized for "
+"WooCommerce」を使用する場合、注文ボタンの位置は常に「注文概要の下」に設定されます。このプラグインでは、注文ボタンと法的チェックボックスを注文"
+"概要の下に表示する必要があります。"
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "受け取り場所を編集する"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerceの設定から「店頭受取」ラベルを使用する"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"この機能を有効にすると、チェックアウト時の「店頭受取」オプションのラベルは、WooCommerceの店頭受取場所設定で指定されたタイトルと一致します。無"
+"効にすると、ラベルにはFluid Checkoutの翻訳可能な「店頭受取」というテキストが使用されます。"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2577,3 +4413,114 @@ msgstr "はい"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "ジョン"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "ドー"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "例：会社名"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "メインストリート123番地"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "エニータウン"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "荷物は玄関先に置いておいてください。"
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "ビーニー"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "キャップ"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "Tシャツ"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr "ご注文を承りました。発送の際は、改めてご連絡いたします。"
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "ユーザーガイド"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "Places API（新機能）"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "Places API（旧バージョン）"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "バージョン 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "バージョン 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ 次回はよりスムーズに決済\n"
+"✔ お支払い設定の管理\n"
+"✔ 注文状況や注文履歴の確認"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "非表示"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "任意"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "必須"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "配送先住所"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "店頭受け取り"

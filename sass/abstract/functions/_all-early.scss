@@ -1,16 +1,2 @@
-// ------------------------------------
-// FUNCTIONS ALL-EARLY
-//
-// CAUTION:
-//
-// This file is supposed to
-// import all functions needed early
-// in the SASS processing, usually
-// before the processing the
-// `_variables.scss` file.
-//
-// ------------------------------------
-
-@import
-    "strip-unit",
-    "remsize";
+@forward "strip-unit";
+@forward "remsize";

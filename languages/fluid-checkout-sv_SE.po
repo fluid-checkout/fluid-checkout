@@ -277,10 +277,6 @@ msgstr "Fluid Checkout-databasen uppdaterades framgångsrikt"
 msgid "The database changes where applied successfully."
 msgstr "Databasändringarna tillämpades framgångsrikt."
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "Ok"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "Avvisa"
@@ -399,39 +395,9 @@ msgstr "Läs dokumentation"
 msgid "Don't show this again"
 msgstr "Visa inte detta igen"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "Specialerbjudanden"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"Utöka alla fördelar med Fluid Checkout till din kundvagnssida och dina "
-"tacksidor."
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Vätskekontroll PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"Designmallar, optimerade sidor för kundvagn och ordermottagning, "
-"kontomatchning och mycket mer."
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"De bästa verktygen för att ytterligare <strong>förbättra din "
-"konverteringsgrad i WooCommerce-kassan</strong> och göra köpupplevelsen "
-"konsekvent under hela resan."
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -453,10 +419,6 @@ msgstr "Redigera varukorgens innehåll på kassasidan"
 msgid "Account matching / user matching"
 msgstr "Matchning av konto/användare"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "Express Checkout-knappar från betalningsmetoder som stöds"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "Förtroendesymboler på kundvagns- och tack-sidorna"
@@ -464,10 +426,6 @@ msgstr "Förtroendesymboler på kundvagns- och tack-sidorna"
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "Fler positioner för kupongkoden på kassasidan"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "Integrerat fält för kupongkod på kundvagnssidan"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -481,243 +439,25 @@ msgstr "Presentmeddelanden och följesedlar"
 msgid "Local pickup and in-store collection"
 msgstr "Lokal upphämtning och hämtning i butik"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "Uppgradera till PRO &mdash; 99 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Fluid Checkout PRO - Paket"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "Alla PRO-funktioner + alla tillägg till ett specialpris."
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"Paketet innehåller alla tillägg som vi för närvarande erbjuder och Fluid "
-"Checkout-tillägg som vi lanserar i framtiden."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "226 EUR värde (Spara 42%)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Google Adress Autocomplete"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "Adressbok"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "Assistent för EU-VAT"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "Alla framtida tillägg *."
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* Så länge du har en aktiv prenumeration."
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "Skaffa paketet - endast 129 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"Alla priser visas i EUR. Om det finns några avvikelser från priserna på vår "
-"webbplats, kommer de erbjudanden som visas på webbplatsen att tillämpas."
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "Tilläggstjänster"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "Förbättra din kassaupplevelse med dessa tillägg."
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "Jag har det redan - Dölj detta erbjudande"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "Installerad &mdash; Aktivera"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "Aktiverad"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "Upp till 40 % färre fält att fylla i i kassan."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"Undvik leveransförseningar och missnöjda kunder. Samla in <strong>korrekt "
-"adressinformation</strong> från första gången de handlar hos dig."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "Skaffa detta tillägg &mdash; 29 EUR"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "Adressbok"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "Flera sparade adresser för frakt och fakturering."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"Låt kunderna <strong>spara flera leverans- och "
-"faktureringsadresser</strong> på sitt konto och välja vilka som ska "
-"användas i kassan och på varukorgssidorna."
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "Skaffa detta tillägg &mdash; 59 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "Förenklad EU-VAT-validering för din butik."
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"Samla in och <strong>validera EU-momsnummer på kassasidan</strong>, ta bort "
-"skatteavgifter på omvänd debitering och bekräfta kundens plats vid behov."
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "Skaffa detta tillägg &mdash; 39 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"Alla tillägg säljs separat och kräver att plugin-programmet <strong>Fluid "
-"Checkout Lite</strong> installeras och aktiveras, förutom när det anges."
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Välj en bild"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Logga in "
-"på ditt konto</a> för att få din licensnyckel, eller <a href=\"%s\" "
-"target=\"_blank\">köp en ny licensnyckel</a>."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "Giltig till %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "Utgått den %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Logga in "
-"på ditt konto</a> för att förnya din licensnyckel och fortsätta att få "
-"uppdateringar och support."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "Licensnyckeln har annullerats."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">Köp en ny licensnyckel</a> och fortsätt "
-"att få uppdateringar och support."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "Fel:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "Installation och dokumentation"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "Jättebra! Din kassasida körs nu på Fluid Checkout."
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "Här är några resurser som du kan använda för att komma igång:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"Läs installationsguiden <a href=\"%s\" target=\"_blank\">Göra klart med "
-"Fluid Checkout</a>."
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "Konfigurera layout och design på <a href=\"%s\">checkout-alternativen</a>."
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"Kontrollera om det finns några <a href=\"%s\">integrationsalternativ</a> "
-"tillgängliga för andra plugins som du har installerat."
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"Besök <a href=\"%s\" target=\"_blank\">vår dokumentation</a> för mer "
-"information om Fluid Checkout-funktioner."
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"Om du någonsin behöver hjälp kan du <a href=\"%s\" target=\"_blank\">öppna "
-"en supportbiljett</a> på vår officiella supportkanal."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -730,14 +470,6 @@ msgstr "Optimering av kundvagnar"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "Aktivera optimering av kundvagnssidan"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "Visa sidan för kundvagnen med en layout som liknar kassasidan."
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "Sidhuvud och sidfot"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -772,16 +504,6 @@ msgstr ""
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "Kupongkoder"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"Välj position där avsnittet med kupongkoder ska visas på kundvagnssidan. "
-"Gäller endast när AJAX-korgen och de integrerade kupongkoderna i kassan är "
-"aktiverade."
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -873,10 +595,6 @@ msgstr "Temats layout för korsförsäljning"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "Antal korsförsäljningsartiklar som ska visas på kundvagnssidan"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "Förtroendesymboler &amp; märken"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "Lägg till widgetområden på kundvagnssidan"
@@ -893,10 +611,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "Checka ut"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "Layout &amp; design"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "Layout för kassan"
@@ -912,22 +626,6 @@ msgstr "Mörkt läge"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "Aktivera mörkt läge"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "Mallar för sidhuvud och sidfot"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"Vi rekommenderar att du använder distraktionsfri sidhuvud och sidfot för "
-"att undvika distraktioner på kassasidan. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Läs "
-"forskningen om övergivna kundvagnar</a>."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -980,10 +678,6 @@ msgid ""
 msgstr ""
 "Välj en bakgrundsfärg för sidfoten på kassasidan. Gäller endast när du "
 "använder distraktionsfri sidhuvud och sidfot."
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "Checkout-element"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1067,18 +761,6 @@ msgstr "Länk till butikssida"
 msgid "Cart items"
 msgstr "Artiklar i kundvagnen"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "Aktivera alternativ för att redigera artiklar i kundvagnen på kassasidan"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"Låt kunderna ändra produktkvantiteter eller ta bort artiklar direkt på "
-"kassasidan."
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "Dölj fel på artiklar i kundvagnen på kassasidan"
@@ -1129,37 +811,9 @@ msgstr ""
 "Dessa widgetområden används för att lägga till förtroendesymboler och "
 "förtroendemärken på kassasidan."
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"Visa widgetar i sidofältet för kassan endast när det sista kassasteget "
-"visas på mobila enheter när kassalayout i flera steg används"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "Aktivera integrerad kupongkodssektion"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr ""
-"Gäller endast om användning av kupongkoder är aktiverad i "
-"WooCommerce-inställningarna."
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "Visa rubriken för avsnittet om kupongkoder"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"Gäller endast när kupongkoden visas som ett separat avsnitt på kassa- eller "
-"varukorgssidorna."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1178,16 +832,6 @@ msgstr "Som ett steg före betalningsmetoder"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "Som ett understeg efter betalningsmetoder"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"Välj stil för knappen \"tillämpa kupong\". Gäller endast när avsnittet med "
-"kupongkoden visas \"Före kassastegen\" på kassasidan eller \"Före avsnittet "
-"med artiklar i varukorgen\" på varukorgssidan."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1236,21 +880,6 @@ msgstr ""
 "Rekommenderas endast när de flesta kunder faktiskt behöver fältet "
 "\"Adressrad 2\", eller när det är viktigt att få rätt leveransadress (t.ex. "
 "vid leverans av livsmedel och andra lättfördärvliga produkter)."
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "Visa länkarna för \"Lägg till\" med gemener"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"Gör etiketterna för det valfria fältet \"Lägg till\" länk-knappen som "
-"<code>låg bokstav</code> (t.ex. \"Lägg till telefonnummer\" istället för "
-"\"Lägg till telefonnummer\"). Detta alternativ påverkar även länkknapparna "
-"för kupongkodsfält."
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1342,24 +971,6 @@ msgstr "Före leveransadress"
 msgid "After shipping address"
 msgstr "Efter leveransadress"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "Förhindra automatiskt val av den första leveransmetoden"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"När alternativet är aktiverat väljs inte den första tillgängliga "
-"leveransmetoden automatiskt när ingen annan leveransmetod tidigare har "
-"valts för varje leveranspaket. <br>Det här alternativet aktiveras "
-"automatiskt om alternativet för att rensa den valda leveransmetoden är "
-"aktiverat för funktionen Lokal upphämtning."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Lokal upphämtning"
@@ -1379,23 +990,6 @@ msgid ""
 msgstr ""
 "Ersätter leveransadressen med platsen för upphämtningspunkten när en "
 "leveransmetod för lokal upphämtning har valts."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Visa alternativ för att rensa fraktmetoder i understeget för "
-"upphämtningsplats"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Visa en länkknapp i understeget för upphämtningsplats för att rensa de "
-"valda leveransmetoderna. Detta kan användas för att visa "
-"leveransadressavsnittet igen om en lokal upphämtningsmetod tidigare har "
-"valts."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1474,33 +1068,6 @@ msgstr "Lägg till ett fält för faktureringstelefon i utcheckningsformuläret.
 msgid "Choose in which step to display the billing phone field."
 msgstr "Välj i vilket steg du vill visa fältet för faktureringstelefon."
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "Aktivera validering av telefonnummer baserat på landsregler"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"När den är inaktiverad kontrollerar inte valideringen av telefonfältet om "
-"lands- eller riktnummer är giltiga för landet."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "Visa endast tillåtna länder för leverans eller fakturering"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"När den är aktiverad kommer endast de länder som är tillåtna för leverans "
-"att vara tillgängliga i telefonfältet för leverans och endast de länder som "
-"är tillåtna för fakturering kommer att vara tillgängliga i telefonfältet "
-"för fakturering."
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "Visa landskod bredvid flaggan"
@@ -1533,10 +1100,6 @@ msgstr "Definiera synligheten för fältet för ytterligare orderanteckningar."
 msgid "Gift options"
 msgstr "Presentalternativ"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "Visa gåvomeddelande och andra gåvoalternativ på kassasidan"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1544,10 +1107,6 @@ msgid ""
 msgstr ""
 "Gör det möjligt för kunderna att lägga till ett presentmeddelande och andra "
 "presentrelaterade alternativ till beställningen."
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "Visa fälten för gåvomeddelanden alltid expanderade"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1603,28 +1162,9 @@ msgstr "Instrumentpanel"
 msgid "Integrations"
 msgstr "Integrationer"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"Inga integrationer är tillgängliga för tillfället i det här avsnittet. De "
-"alternativ som är relaterade till varje plugin visas bara här om det "
-"pluginet är aktiverat."
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "Licensnycklar"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"Inga alternativ för licensnycklar är tillgängliga för tillfället i det här "
-"avsnittet. De alternativ som är relaterade till varje plugin eller tillägg "
-"kommer att visas här när det pluginet är aktiverat."
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1722,14 +1262,6 @@ msgstr ""
 "Dessa widgetområden används för att lägga till förtroendesymboler och "
 "förtroendemärken på tacksidan."
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"Dessa alternativ påverkar tacksidan, visa orderdetaljer på kontosidor och "
-"på e-postmeddelanden."
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "Beställning av åtgärder"
@@ -1822,20 +1354,6 @@ msgstr "Ladda obegränsade tillgångar"
 msgid "Enhanced select fields"
 msgstr "Förbättrade urvalsfält"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr "Ersätt <code>select2</code> dropdown-komponenter med <code>TomSelect</code>"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect är en enklare komponent för rullgardinsval som är mindre benägen "
-"att göra fel än Select2, samtidigt som den erbjuder samma funktioner som "
-"faktiskt används på WooCommerce-kassasidor."
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "Fixa automatisk inzoomning på formulärfält"
@@ -1843,35 +1361,6 @@ msgstr "Fixa automatisk inzoomning på formulärfält"
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "Ställ in <code>fontstorlek</code> i formulärfält till 16px"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"När teckenstorleken i formulärfält är mindre än 16px kan Safari och andra "
-"webbläsare automatiskt zooma in på mobila enheter för att göra texten "
-"lättare att läsa. När det här alternativet är aktiverat kommer det att "
-"ställa in teckenstorleken för inuti formulärfälten till 16px på sidor som "
-"optimerats av Fluid Checkout för att undvika att den zoomar in."
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"Fraktdestinationen är alltid inställd på \"Standard för kundens "
-"leveransadress\" när Fluid Checkout är aktiverat. Kunder kan fortfarande "
-"ange olika leverans- och faktureringsadresser under utcheckningen, ett "
-"alternativ för att ställa in standardfaktureringsadressen så att den är "
-"densamma som leveransadressen finns på WooCommerce > Inställningar > Fluid "
-"Checkout."
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1898,14 +1387,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(experimentell)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "Bekräfta"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "Verifiera telefonnummer"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2436,10 +1917,6 @@ msgstr "Efter förloppsindikatorn"
 msgid "Before coupon codes section"
 msgstr "Före avsnittet om kupongkoder"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "Aktivera fält för internationella telefonnummer"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "Formatera telefonnummer enligt de regler som gäller för varje land."
@@ -2447,18 +1924,6 @@ msgstr "Formatera telefonnummer enligt de regler som gäller för varje land."
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "Använd exakt validering av telefonnummer"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"Försök att säkerställa att telefonnumret är ett giltigt mobil- eller "
-"fastnummer baserat på reglerna för den valda landskoden. Det här "
-"alternativet använder funktionen <code>intl-tel-input</code> för exakt "
-"validering, som kan ge falskt positiva resultat för vissa telefonnummer."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2505,26 +1970,6 @@ msgstr "2 kolumner"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 kolumn"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"Allmänna stilar för kassans steg, ordersammanfattning och andra avsnitt. "
-"<br> Kan även gälla andra sidor, t.ex. sidorna Kundvagn, Mottagen order och "
-"Visa order."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"Designmallen <em>\"Split\"</em> är inte tillgänglig när du använder <em>\"1 "
-"column\"</em> layout och kommer att falla tillbaka till "
-"<em>\"Minimalist\"</em> om den väljs."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2620,6 +2065,2532 @@ msgstr ""
 "säkerställa att leveransadressen kan kopieras till faktureringsadressen när "
 "det alternativet är markerat, annars kan kunden eventuellt inte slutföra "
 "kassen."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "Inställningsprofiler"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "Inställningsprofil"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "Du har inte behörighet att utföra den här åtgärden."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "Du har inte behörighet att aktivera tillägg."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "Plugin saknas."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "Tillägget är aktiverat."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "Följande ändringar kommer att genomföras:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Från och med Fluid Checkout 5.0 sparas inställningarna på ett annat sätt. "
+"De gamla inställningarna lagras fortfarande i databasen för att möjliggöra "
+"nedgradering till tidigare versioner vid behov."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"Din butik har varit igång i ungefär två veckor med de nya inställningarna, "
+"så att du har kunnat rensa bort gamla alternativ som lagrats i databasen. "
+"Observera att om du efter rensningen behöver återgå till tidigare versioner "
+"av tillägget kommer det att använda standardvärden för alla inställningar."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "Rensning av inställningarna för ”Fluid Checkout”"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "Ta bort kvarvarande alternativ"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "Hjälp oss att förbättra Fluid Checkout"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"Dela anonyma rapporter om webbplatsmiljön med Fluid Checkout för att få "
+"snabbare support och hjälpa oss att förbättra kompatibiliteten och mäta "
+"effekterna. Inga kund- eller användaruppgifter eller känsliga uppgifter "
+"ingår. Du kan när som helst välja vad som ska delas via inställningarna "
+"under Verktyg."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "Aktivera rapporter om webbplatsmiljön"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "Granska inställningar"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"Denna förhandsgranskning har löpt ut. Uppdatera administratörssidan för att "
+"starta en ny förhandsgranskning."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "Förhandsvisningen har gått ut"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "Det går inte att lägga beställningar i förhandsgranskningen."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "Det går inte att logga in i förhandsvisningen."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "Det går inte att skapa konton i förhandsgranskningen."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "Förfrågningar till andra webbplatser blockeras i förhandsvisningen."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "Bearbetar…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "Något gick fel. Försök igen."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "Aktivera tillägg"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO – Det kompletta kassapaketet"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"Alla PRO-funktioner + alla tillägg, till ett enda pris. Designmallar, "
+"optimerade sidor för varukorg och orderbekräftelse, kontoavstämning och "
+"mycket mer."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "Optimerad betalningssida för beställningar"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "Knappar för snabbkassa från stödda betalningsmetoder"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "Försenad kontoskapande"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Automatisk adresskomplettering med Google Maps-API:er"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "Flera sparade adresser i adressboken"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "EU-momsassistent"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "Dölj detta avsnitt"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "Läs mer"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "Få förhandsåtkomst"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "Aktivera tillägg"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "Få ut mer av din köpprocess"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "Testa API-nyckeln"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "Guidad installation"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "Alternativ"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "Ställ in layout och design för <a href=\"%s\">kassalternativen</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"Aktivera gästkassan och/eller granska <a href=\"%s\">inställningarna för "
+"kundkonton</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"Aktivera de optimerade sidorna <a href=\"%1$s\">kundvagn</a>, <a "
+"href=\"%2$s\">tack</a> och <a href=\"%3$s\">betalning</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr "Aktivera <a href=\"%s\">automatisk adresskomplettering</a> från Google Maps."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr "Aktivera flera sparade adresser med <a href=\"%s\">adressboken</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"Kontrollera om det finns några <a href=\"%s\">integrationsalternativ</a> "
+"tillgängliga för temat eller andra plugins som du har installerat."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"Få snabbare support och hjälp oss att förbättra kompatibiliteten och mäta "
+"effekten. <a href=\"%s\">Aktivera användningsspårning</a> i verktygets "
+"inställningar."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "Fliken ”Inställningar” saknas."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "Kom igång"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>Fantastiskt! Din kassasida körs nu på Fluid Checkout.</strong> Här "
+"är några steg för att komma igång:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "Avslutat"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "Förhandsgranska rapportdata"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "Skicka nu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "Automatisk identifiering"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "afrikaans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "albansk"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "Amhariska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "Arabiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "Armeniska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "Azerbajdzjansk"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "baskiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "vitrysk"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "bengali"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "bosnisk"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "bulgariska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "burmesiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "katalanska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "Kinesiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "Kinesiska (förenklad)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "Kinesiska (Hongkong)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "Kinesiska (traditionell)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "Kroatiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "Tjeckiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "Danska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "nederländska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "Engelska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "Engelska (australiensisk)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "Engelska (Storbritannien)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "Estniska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "Farsi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "Finska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "filippinsk"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "Franska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "Franska (kanadensiska)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "galiciska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "georgiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "Tyska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "Grekiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "gujarati"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "hebreiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "Hindi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "ungerska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "isländska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "Indonesiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "Italienska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "Japanska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "Kannada"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "kazakisk"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "khmer"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "koreanska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "Kirgiziska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "Laos"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "lettiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "litauiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "makedonska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "malajiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "malayalam"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "marathi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "mongoliska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "nepalesiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "norska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "Polska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "portugisiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "Portugisiska (Brasilien)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "Portugisiska (Portugal)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "punjabi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "rumänska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "ryska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "serbiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "singalesiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "slovakiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "slovenska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "Spanska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "Spanska (Latinamerika)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "swahili"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "Svenska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "Tamil"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "telugu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "Thailändska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "Turkiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "ukrainska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "Urdu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "vietnamesiska"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "Zulu"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Automatisk komplettering av adresser i Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Version av Google Places API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"Välj vilken version av Google Places API du vill använda. Vi rekommenderar "
+"att du går över till det nya Places API så snart som möjligt."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"Vi rekommenderar att du använder ”Places API (New)”, eftersom Google från "
+"och med den 1 mars 2025 kommer att övergå till att behandla versionen "
+"”Places API (Legacy)” som en äldre version. Det innebär att du inte längre "
+"kommer att kunna aktivera den här tjänsten för nya API-nycklar och att den "
+"versionen av API:et så småningom inte kommer att vara tillgänglig längre. "
+"Befintliga konton som redan använder Legacy API kan fortsätta att fungera "
+"utan avbrott."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(Rekommenderas)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Google API-nyckel"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"Klistra in din Google API-nyckel och använd testknappen för att kontrollera "
+"att den fungerar för den här webbplatsen. Se till att nyckeln är giltig och "
+"godkänd för din domän, annars kan adressfältet blockeras, vilket hindrar "
+"kunderna från att slutföra sina beställningar."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "Aktivera automatisk komplettering av adresser från Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr "Aktivera automatisk adresskomplettering med hjälp av Google Maps-API:erna."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Språk för Google API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"Detta språk kommer att användas för att visa adressförslag från Google "
+"Places API, och adresserna kommer även att fyllas i automatiskt på detta "
+"språk."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "Resultattyper"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Lämna fältet tomt för att acceptera alla typer av resultat, vilket oftast "
+"ger bättre träffar. <a href=\"%s\" target=\"_blank\">Se dokumentationen för "
+"mer information</a>. <br>Välj upp till 5 typer av adresssökresultat som ska "
+"visas i fälten för automatisk adresskomplettering. <br>Besök "
+"dokumentationen för Google Maps för att lära dig mer om de <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">typer som stöds</a>."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "Resultattyper (äldre API)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Vilken typ av adresssökresultat ska returneras vid användning av Places API "
+"(Legacy). <br>Besök dokumentationen för det äldre Google Places API för att "
+"lära dig mer om de <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">typer som stöds</a>."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "Företagsuppgifter"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr ""
+"Aktivera automatisk komplettering för företagsnamnet om det finns "
+"tillgängligt"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Aktivera automatisk komplettering av fältet ”Företag” med uppgifter om "
+"företagsnamnet när dessa returneras från Google Maps API:er."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "Företagssökning"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "Aktivera sökning efter företag i fältet ”Företag”"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"Aktivera förslag på adresser kopplade till ett företag när man skriver i "
+"fältet för företagsnamn, och låt sedan alla adressfält fyllas i automatiskt "
+"när ett företag väljs bland förslagen."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "Typer av företagsresultat"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Välj upp till 5 typer av adresssökresultat som ska visas vid automatisk "
+"komplettering av företagsfält. <br>Det rekommenderade värdet är "
+"<code>etablissemang</code>, vilket omfattar de flesta typer av företag. "
+"<br>Lämna fältet tomt för att acceptera alla typer av resultat, inklusive "
+"resultat som inte är relaterade till företag. <br>Besök dokumentationen för "
+"Google Maps för att lära dig mer om de <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">typer som stöds</a>."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Googles logotyp"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "Visa texten och logotypen ”Powered by Google”"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"Om denna ruta är markerad visas texten och logotypen ”Powered by Google” "
+"längst ned i rutan med förslag för automatisk adresskomplettering."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "Automatisk komplettering av adresser via Brasil API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "Brasil API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "Aktivera automatisk adresskomplettering via Brasil API för CEP-fält"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"Använd Brasil API för att hämta och fylla i adresser automatiskt med hjälp "
+"av fältet CEP/postnummer. Gäller endast brasilianska adresser."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "API-version"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "Välj vilken version av CEP-metoden i Brasil API som ska användas."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "Överföring av adressbok"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "WooCommerce-adresser"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"Kopiera befintliga leverans- och faktureringsadresser från WooCommerce till "
+"kundernas adressbok."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "Aktivera adressboksfunktionen"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"Låt kunderna spara flera adresser och ange vilken adress som ska användas "
+"som standard för leverans och fakturering."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "Adressetiketter"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "Låt kunderna lägga till en egen etikett för varje adress"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"Adressetiketter gör det enklare för kunderna att skilja mellan sina sparade "
+"adresser (t.ex. ”Mammans hus”). Adressetiketterna är privata för kunderna "
+"och visas eller skrivs inte ut på sidan med orderinformation eller på "
+"fakturor."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "Skärmlayout"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr "Välj hur sparade adresser ska visas vid kassan och i varukorgen."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"Gäller vid kassan och i varukorgen. Sparade adresser på kontosidan visas "
+"alltid i kortlayout."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "Adresskort"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "Adresslista"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "Rullgardinsfält"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "Adresssökning"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"Visa sökfiltret för adresser på webbplatsen när kunden har minst detta "
+"antal sparade adresser tillgängliga."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "Används inte när visningslayouten är inställd på rullgardinsfält."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "Adresser"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "Aktivera optimeringar för varukorgssidan för att se fler alternativ"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "Sammanfattning av beställningar som ska sparas"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"Välj var avsnittet med rabattkoder ska visas på varukorgssidan. Gäller "
+"endast när AJAX-varukorgen är aktiverad och om användning av rabattkoder är "
+"aktiverad i WooCommerce-inställningarna."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "Upplägg för korsförsäljning"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "Korsförsäljning visas"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "Artiklar"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "Optimering av varukorgssidan"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"Se till att din varukorg har samma överskådliga och konverteringsinriktade "
+"layout som din kassa."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr ""
+"Anpassa kundvagnens utformning till kassasidan för att skapa en enhetlig "
+"köpprocess."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"Se till att varukorgen alltid uppdateras i bakgrunden, så att hela sidan "
+"inte behöver laddas om när antalet ändras."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"Placera rabattkoder, fraktinformation och korsförsäljning precis där de ger "
+"bäst konvertering."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"Se till att orderöversikten förblir synlig när man bläddrar, och lägg till "
+"symboler som inger förtroende där kunderna behöver känna sig trygga."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "Kolumner"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"Allmänna stilar för stegen i kassan, ordersammanfattningen och andra "
+"avsnitt. Gäller även övriga sidor för kassan, varukorgen, tack-sidan "
+"(beställning mottagen) och sidan för att visa beställningen."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"När du använder layouten <em>\"1 kolumn\"</em> tillsammans med designmallen "
+"<em>\"Split\"</em> visas en högerkolumn endast om sidans widgetområde i "
+"sidofältet är aktivt (sidofältet vid kassen, sidofältet vid varukorgen "
+"eller sidofältet vid mottagen beställning). I övriga fall visas sidan som "
+"en enda kolumn med Split-stilar."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "Delad kolumnbakgrund"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"Välj en bakgrundsfärg för den sekundära kolumnen i ”Split”-layouten. Lämna "
+"fältet tomt om du vill använda bakgrundsfärgen för ordersammanfattningen."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "Sidmallar"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "Kassamall"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"Rekommenderas för att minska antalet distraktioner vid kassan. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Läs "
+"studien om övergivna varukorgar</a>."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "Fast progressionsindikator"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "Stil för förloppsindikator"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "Beställningssumma"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "Bakgrundsfärg"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "Handlingslänk"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "Sammanfattning av mobilbeställning"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "Mobilens utgångsläge"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "Aktivera redigering av varor i varukorgen vid kassan"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr "Låt kunderna ändra produktmängder eller ta bort varor direkt på kassasidan."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "Fel i varukorgen"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"Gäller endast när kupongkoden visas som ett separat avsnitt på kassan eller "
+"i varukorgen, och om användning av kupongkoder är aktiverad i "
+"WooCommerce-inställningarna."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "Placering av kupongkoder"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "Knappen ”Använd kupong”"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "Välj utseende på knappen ”Använd kupong”."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "Adressrad 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"Denna inställning gäller både avsnitten ”Kassa” och ”Lokal avhämtning”. I "
+"avsnittet ”Lokal avhämtning” avgör den dessutom om valet mellan ”Leverans” "
+"och ”Avhämtning” ska visas inom avsnittet för leveranssätt (före adressen) "
+"eller som ett separat avsnitt (efter)."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "Kundkonton"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "Gästkassa"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"Alternativ för gästkassa, inloggning och skapande av konto på "
+"inställningssidan för WooCommerce-konton. De hanteras här för att "
+"underlätta för dig och så att du kan använda olika värden per "
+"inställningsprofil."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "Låt kunderna genomföra köpet utan att behöva skapa ett konto"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Rekommenderas</strong> så att kunderna inte behöver skapa ett konto "
+"eller logga in vid utcheckningen, vilket kan sänka konverteringsgraden."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"När funktionen är inaktiverad måste kunderna logga in eller skapa ett konto "
+"för att slutföra köpet."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "Logga in vid kassan"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "Aktivera inloggning vid utcheckning"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr "Visa en länk på kassasidan där återkommande kunder kan logga in."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "Skapa konto"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "Låt kunderna skapa ett konto vid utcheckningen"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "Kunderna kan skapa ett konto innan de lägger sin beställning."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "Låt kunderna skapa ett konto från sidan ”Mitt konto”"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "Kunderna kan registrera ett nytt konto på sidan ”Mitt konto”."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "Användarnamn"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "Skapa utifrån kundens namn"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Rekommenderas</strong> så att kunderna inte behöver välja ett "
+"användarnamn vid utcheckningen, vilket kan sänka konverteringsgraden."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"Ett användarnamn skapas utifrån kundens namn, eller utifrån e-postadressen "
+"om namnet inte kan användas."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "Lösenord"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "Skicka länk för att ställa in lösenord"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Rekommenderas</strong> så att kunderna inte behöver ange ett "
+"lösenord vid utcheckningen, vilket kan sänka konverteringsgraden."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr ""
+"Kunderna får ett e-postmeddelande där de kan skapa sitt lösenord på ett "
+"säkert sätt."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"Låt registrerade kunder slutföra köpet utan att logga in och koppla "
+"beställningen till deras befintliga konto när kontaktuppgifterna stämmer "
+"överens."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "Meddelande om befintligt konto"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr ""
+"Låt kunderna skapa ett konto efter att de har lagt sin beställning, direkt "
+"från tack-sidan."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"Alternativen i det här avsnittet är tillgängliga när gästkassan och "
+"kontomatchning är aktiverade. Aktivera båda funktionerna ovan för att "
+"konfigurera fördröjd kontoupprättelse."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "Aktivera fördröjd kontoskapning"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"Aktivera fördröjd kontoskapning när både gästkassa och kontomatchning är "
+"aktiverade."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "Avdelningsposition"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "Före avsnittet om kunduppgifter"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "Efter avsnittet om kunduppgifter"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "Fördelar med att skapa ett konto"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "Om du lämnar fältet tomt visas standardtexten."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "Knappar i texten"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "Obligatoriska fält"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "Aktivera fält för presenthälsningar vid kassan"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "Utökad presenthälsning"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "Fältet för presenthälsning ska alltid vara utfällt"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "Presenthälsning i orderinformationen"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"Det finns för närvarande inga integrationer tillgängliga i det här "
+"avsnittet. Alternativen för respektive plugin och tema visas här först när "
+"det aktuella pluginet eller temat har aktiverats."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "Telefonfält"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "Synlighet på fältet"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "Fältposition"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "Landsnummer för telefon och validering"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "Land"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "Aktivera land i telefonfälten"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "Filtrera länder för leverans eller fakturering"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"Begränsa landsväljaren i varje telefonnummerfält till de länder som är "
+"tillåtna för leverans eller fakturering i din butik."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "Validering"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "Aktivera enkel validering baserad på landsregler"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"Kontrollerar att telefonnumret är giltigt för det valda landet, inklusive "
+"landskod och antal siffror."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"En strängare kontroll av att numret är ett giltigt mobilnummer, fastnummer "
+"eller annan godkänd typ för det valda landet. Detta kan leda till att vissa "
+"giltiga nummer avvisas."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "Valideringstyper"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "Platshållare"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"Det finns inga licensnycklar att hantera just nu. Licensnycklar kommer att "
+"visas här när ett licensierat Fluid Checkout-plugin eller tillägg är aktivt."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "Standardleveranssätt"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "Välj vilken leveransmetod som ska väljas som standard."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "Fält för leveranszoner"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Välj vilka fält som ska visas för filterfälten för fraktzoner vid lokal "
+"upphämtning. Lämna fältet tomt för att visa alla tillgängliga alternativ."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Dessa fält visas som ett filter för leveransalternativen vid lokal "
+"avhämtning. Vissa fält kan fortfarande visas i kassan även om de inte har "
+"valts här, om kompatibla tillägg kräver dem för att fungera korrekt."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "Leveransadress för beställningen"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "Optimering av betalningssidan vid beställning"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"Se till att obetalda beställningar har samma tydliga och "
+"konverteringsinriktade layout som kassan."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"Optimera utformningen av betalningssidan för beställningar som väntar på "
+"betalning."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"Anpassa betalningsupplevelsen efter din kassa för att skapa en enhetlig "
+"köpprocess."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"Lägg till förtroendesymboler och märken där kunderna behöver känna sig "
+"trygga innan de betalar."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "Optimering av tack-sidan"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"Gör tacksidan och orderinformationen tydligare för kunderna efter att de "
+"har gjort ett köp."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr ""
+"Optimera tack-sidan och orderinformationen i kundkontot genom att använda "
+"en tydligare layout."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"Visa statusuppdateringar, åtgärder, nedladdningar och anteckningar där det "
+"är lämpligt."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "Anpassa avsnitten med orderinformation i e-postmeddelandena."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"Lägg till förtroendesymboler och märken där kunderna behöver känna sig "
+"trygga efter köpet."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "E-postmeddelanden"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"Aktivera optimeringar för tack-sidan och orderdetaljerna för att se fler "
+"alternativ"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "Använd bred layout på tacksidan"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"Dessa inställningar påverkar tacksidan, visningen av orderinformation på "
+"kontosidorna samt i e-postmeddelanden."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "Spara inställningar"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "Dokument"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "Varukorg"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "Tack"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "Automatisk komplettering av adresser"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "Förtroendemärken"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "Du har inte behörighet att spara dessa inställningar."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "Ogiltig begäran om att spara."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "Dina inställningar har sparats."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "Sparar..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "Inställningarna kunde inte sparas. Försök igen."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "Stäng meddelandet"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "Öppna inställningsmenyn"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "Stäng inställningsmenyn"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "Förhandsgranskning"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "Visa förhandsgranskning i full storlek"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "Dölj förhandsgranskning"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "Visa sidhuvud och sidfot"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "Dölj sidhuvud och sidfot"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "Förhandsgranskning av sidan"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "Förhandsgranskningsfönster"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "Surfplatta"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "Skrivbord"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "Förhandsgranskningsbredd"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "Minska bredden"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "Förhandsgranskningsbredd i pixlar"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "Öka bredden"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "Förhandsgranska som"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "Gäst"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "Inloggad"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "Förhandsgranskningssida"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "Klicka på för att förstora förhandsvisningen och se närmare"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "Finns med %s."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "Slå på dem"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr ""
+"Optimeringarna för den här sidan är inaktiverade. %s för att "
+"förhandsgranska sidan."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "%s förhandsgranskning"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "Isolerad session · ingenting sparas"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "Användningsspårning"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Skicka rapporter om webbplatsmiljön som inte innehåller känslig information "
+"för att hjälpa Fluid Checkout att förbättra kompatibiliteten. Rapporterna "
+"skickas inte förrän funktionen har aktiverats i inställningarna nedan."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "Skicka rapporter om användningsstatistik till Fluid Checkout"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"Dessa rapporter hjälper oss att förbättra kompatibiliteten och supporten "
+"för din webbplats och skickas varje vecka när funktionen är aktiverad."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"Inga uppgifter om kunder, administratörer eller andra känsliga uppgifter "
+"ingår i rapporterna."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "Grundläggande miljöinformation"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"Data om WordPress, PHP, WooCommerce, teman och plugins. Ingår alltid när "
+"rapportering är aktiverad. Hjälper oss att förstå den miljö som din "
+"webbplats körs i."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "Inställningar för tillägg"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"Skickar inställningarna för Fluid Checkout-pluginet för att underlätta "
+"supportärenden och hjälpa oss att förstå hur du använder våra plugins."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "Kommer snart"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "Försäljningsmått"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"Antalet beställningar per månad och den totala försäljningen under ett år "
+"före installationen av Fluid Checkout fram till idag. Detta hjälper oss att "
+"förstå om ni tjänar mer pengar när våra plugins är installerade. Inga kund- "
+"eller användaruppgifter skickas någonsin."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "Allmännyttiga tjänster"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"Använd rullgardinskomponenterna <code>TomSelect</code> istället för "
+"<code>select2</code>"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect är en enklare komponent för rullgardinsmenyer som är mindre "
+"benägen att ge upphov till fel än Select2, samtidigt som den erbjuder samma "
+"funktionalitet."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"Ställer in teckenstorleken i formulärfälten till 16px på sidor som "
+"optimerats av detta tillägg för att undvika att bilden automatiskt zoomas "
+"in när man interagerar med formulärfälten på små enheter."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"Safari och andra webbläsare kan automatiskt zooma in på mobila enheter för "
+"att göra texten lättare att läsa när teckenstorleken är mindre än 16px."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "Aktivera spårning av skriptbearbetning i webbläsarkonsolen."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "Icke-minifierade resurser"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Skript för Google Maps"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "Ta inte bort dubbla Google Maps-skript"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"När denna funktion är aktiverad kommer dubbla Google Maps-skript INTE att "
+"tas bort, vilket kan orsaka fel och prestandaproblem. Använd endast detta "
+"alternativ vid felsökning."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "Widgetområden"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "Sista steget på mobilen"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "Visa widgetar endast i sista steget på mobilen"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"Visa widgetar med betrodd betalningsmärkning endast när det sista steget i "
+"kassan visas på mobila enheter"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "Standard"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "Fält för momsregistreringsnummer"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "Lägg till ett fält för momsregistreringsnummer i faktureringsformuläret."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "Fältetikett"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"Ange etiketten för fältet för momsregistreringsnummer (dvs. "
+"”Momsregistreringsnummer”). På flerspråkiga webbplatser är det bättre att "
+"lämna detta fält tomt och översätta den ursprungliga strängen."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "Momsnummer"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "EU-moms"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "Aktivera fältet för momsregistreringsnummer för att se fler alternativ"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "Mervärdesskattevalidering"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "Validera fältet för EU-momsnummer vid utcheckningen"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"Kontrollerar om det angivna momsnumret är ett giltigt momsnummer som är "
+"registrerat i den europeiska VIES-databasen (VAT Information Exchange "
+"System)."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "Företagets momsregistreringsnummer"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"Butikens momsregistreringsnummer som används för att begära "
+"EU-momsvalidering och som anges på fakturorna. <br><strong>Vi rekommenderar "
+"starkt att du lägger till ditt butiks momsregistreringsnummer</strong>, "
+"eftersom resultaten från VIES-sökningen annars kanske inte är giltiga för "
+"bokföringsändamål. <br>Exempel: <code>ATU99999999</code> eller "
+"<code>EE999999999</code>."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "Omvänd skattskyldighet"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "Tillämpa systemet med omvänd skattskyldighet"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"Ställ in skattesatsen till noll och visa ”Omvänd skattskyldighet” på "
+"fakturorna när kundens momsregistreringsnummer är giltigt. En annan text "
+"för ”Omvänd skattskyldighet” kan krävas beroende på i vilket land butiken "
+"är belägen."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "Samma land"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr ""
+"Tillämpa mekanismen för omvänd skattskyldighet för transaktioner i butikens "
+"hemland:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"Gör det möjligt att tillämpa mekanismen för omvänd skattskyldighet för "
+"transaktioner mellan företag i samma land som butiken."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "Undantag från omvänd skattskyldighet"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr ""
+"Välj ytterligare länder för att undvika att tillämpa mekanismen för omvänd "
+"skattskyldighet."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"Skatt kommer att debiteras för beställningar från dessa länder även om ett "
+"giltigt momsregistreringsnummer anges."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "Etikett för omvänd skattskyldighet på fakturor"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr ""
+"Ange beteckningen ”omvänd skattskyldighet” på kassasidan och i "
+"orderinformationen."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "Text om omvänd skattskyldighet på fakturor"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "Ange etiketten ”omvänd skattskyldighet” på fakturorna."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "Skatt som ska betalas enligt principen om omvänd skattskyldighet"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "Företagsnamn"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "Automatisk komplettering av företagsnamn utifrån momsregistreringsnummer"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"Ange faktureringsföretagets namn utifrån det giltiga momsnumret som kunden "
+"har uppgett."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "Redigering av företagsnamn"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "Tillåt redigering av automatiskt ifyllt företagsnamn"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"När denna funktion är aktiverad kan kunderna ändra det företagsnamn som är "
+"kopplat till det angivna momsnumret."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "EU-moms för digitala varor"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"Från och med den 1 januari 2015 har ändringar införts i EU:s "
+"mervärdesskatteregler avseende digitala varor, vilket enbart påverkar "
+"B2C-transaktioner. Mervärdesskatten på digitala varor måste beräknas "
+"utifrån kundens vistelseort, och bevis för detta måste samlas in (IP-adress "
+"och faktureringsadress)."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "Skatteklasser för digitala varor"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "Välj några skatteklasser"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "Bevis på plats"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "Samla in bevis på kundens vistelseort"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"Sparar IP-adressen och jämför den med kundens faktureringsadress. Kunden "
+"måste bekräfta sin faktureringsadress genom att markera en kryssruta på "
+"utcheckningssidan om landet för faktureringsadressen och IP-adressen inte "
+"stämmer överens."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"Denna inställning hanteras i Fluid Checkout. <a href=\"%s\">Ändra den i "
+"inställningarna för kundkonton</a>."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"Denna inställning hanteras i Fluid Checkout. Ändra den under Fluid Checkout "
+"> Kundkonton."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"Denna inställning hanteras i Fluid Checkout. Leveransadressen är alltid "
+"inställd på ”Använd kundens leveransadress som standard” när Fluid Checkout "
+"är aktiverat. Kunderna kan fortfarande ange olika leverans- och "
+"faktureringsadresser vid utcheckningen.<br><br>Ett alternativ för att "
+"ställa in standardfaktureringsadressen så att den är densamma som "
+"leveransadressen finns i <a href=\"%s\">inställningarna för Fluid "
+"Checkout</a>."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"Denna inställning hanteras i Fluid Checkout. Leveransadressen är alltid "
+"inställd på ”Standard: kundens leveransadress” när Fluid Checkout är "
+"aktiverat. Kunderna kan fortfarande ange olika leverans- och "
+"faktureringsadresser vid utcheckningen.<br><br>Ett alternativ för att "
+"ställa in standardfaktureringsadressen så att den är densamma som "
+"leveransadressen finns under WooCommerce > Inställningar > Fluid Checkout."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr ""
+"Dessa inställningar har flyttats till WP Admin > Fluid Checkout > "
+"Inställningar."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"Fliken ”WooCommerce-inställningar” är föråldrad och kommer att tas bort i "
+"Fluid Checkout 6.0."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "Gå till inställningssidan"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "Dölj den här fliken permanent"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "Förhandsgranskning av platsrapporten"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"Detta är de uppgifter som skulle ingå i nästa rapport om webbplatsmiljön "
+"utifrån dina nuvarande inställningar."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "Hämtar förhandsgranskning av rapporten..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr ""
+"Det gick inte att ladda förhandsvisningen av webbplatsrapporten. Försök "
+"igen."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "Det gick inte att skicka platsrapporten. Försök igen."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "Webbplatsrapporten har skickats."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "Aktivera och skicka nu"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "Stäng"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr ""
+"En begäran om platsrapport är redan under behandling. Försök igen om en "
+"stund."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "Rapporteringen av webbplatsmiljön är inaktiverad."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "Det finns inga uppgifter från platsrapporter att skicka."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"Denna webbplatsdomän kan inte skicka miljörapporter (lokala domäner och "
+"utvecklingsdomäner undantas)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "En platsrapport skickades nyligen. Försök igen senare."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "Webbplatsrapporten kunde inte skickas. Försök igen senare."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "Det finns ingen rapportering om anläggningsmiljön."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "Det finns inga uppgifter från platsrapporter för de valda inställningarna."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "Du har inte behörighet att hantera webbplatsrapporter."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "PRO-funktion"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "Andra tillägg"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "Köp endast detta tillägg — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "Installera tillägg"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "Uppgradera till PRO — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"<a target=\"_blank\" href=\"%1$s\">Skaffa %2$s</a> för att låsa upp dessa "
+"alternativ."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "Tillägg"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "Visa dokumentationen"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"Förfrågningar kräver att användaren är inloggad i WordPress. Utelämna "
+"user_id för att använda den aktuella användarens data, eller ange user_id "
+"för att rikta förfrågan till ett annat konto när den som gör förfrågan har "
+"behörighet att redigera den användaren (behörigheten edit_user). "
+"Icke-autentiserade förfrågningar returnerar fc_api_forbidden. Ett ogiltigt "
+"user_id returnerar fc_api_user_not_found."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr "HTTP 200 med { \"data\": { ... } } när hanteraren returnerar en nyttolast."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"HTTP 200 med { \"success\": true } när det inte finns någon nyttolast (till "
+"exempel DELETE)."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"Fel returnerar JSON-data för WordPress REST-fel från WP_Error (kod, "
+"meddelande, data.status). Wire-koder använder prefixet fc_api_*."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "Tillträde förbjudet."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "Målanvändaren hittades inte."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "Den här funktionen är inte tillgänglig."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "Ett obligatoriskt adressfält saknas."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "Postnumret är ogiltigt."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "Telefonnumret är ogiltigt."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "Delstaten eller länet är ogiltigt."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "Landet är ogiltigt eller saknar adressfält."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "Begäran kunde inte behandlas."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "Tillbaka till föregående steg"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "Gå direkt till inställningarna"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "Börja om och gå tillbaka till det första steget i den guidade installationen"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "Börja om"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "Vänligen slutför alla delsteg innan du fortsätter."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "Visa mer"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "Dölj"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "Hoppa över"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "Markera som avslutad"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "Markera som ofullständig"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "Visa bilden i full storlek: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "Bild på installationsguiden i full storlek"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "Stäng bilden"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "Guidad installation av Fluid Checkout"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "Välkommen"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "Utforska din kassa"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "Allt är klart"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "Du har inte behörighet att komma åt den här sidan."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "Gå till steg %1$d: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"Den här guidade installationen hjälper dig att bekanta dig med Fluid "
+"Checkout. Stegen nedan är för närvarande endast platshållare."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "Gå vidare till nästa steg när du är redo."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "Öppna kassan i din butik för att se hur Fluid Checkout fungerar."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "Visa kassan"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"Du kan gå tillbaka till inställningarna för Fluid Checkout för att "
+"fortsätta konfigurera din webbutik."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "Granska inställningarna för kassa och varukorg"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "Utforska tillägg från instrumentpanelen"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "Slutför och gå till inställningarna"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Ändra synlighetsinställningen för fältet ”Faktureringsnummer” från det "
+"gamla värdet så att det överensstämmer med WooCommerces konventioner."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Ändra synlighetsinställningen för fältet ”Telefonnummer vid leverans” från "
+"det gamla värdet så att det överensstämmer med WooCommerces konventioner."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"Kopiera inställningen för bakgrundsfärgen i ordersammanfattningen till "
+"alternativet för bakgrundsfärgen i den sekundära kolumnen i den nya "
+"Split-designen."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"Funktionen för utökade urvalsfält är alltid inaktiverad när man använder "
+"Biteship-tillägget."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"Placeringen av orderknappen är alltid inställd på ”Under "
+"ordersammanfattningen” när man använder German Market. Det tillägget kräver "
+"att orderknappen och de juridiska kryssrutorna visas under "
+"ordersammanfattningen."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"Placeringen av beställningsknappen är alltid inställd på ”Under "
+"beställningssammanfattningen” när man använder Germanized för WooCommerce. "
+"Det tillägget kräver att beställningsknappen och de juridiska kryssrutorna "
+"visas under beställningssammanfattningen."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Redigera upphämtningsplatser"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Använd etiketten för lokal upphämtning från WooCommerce-inställningarna"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"När funktionen är aktiverad stämmer etiketten för avhämtningsalternativet "
+"vid kassan överens med rubriken i inställningarna för avhämtningsplatser i "
+"WooCommerce. När funktionen är inaktiverad använder etiketten den "
+"översättningsbara texten ”Lokal avhämtning” från Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2771,3 +4742,114 @@ msgstr "Ja"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "John"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "Hind"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "Exempelföretag"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "123 Main Street"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "Anytown"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "Lägg gärna paketet vid ytterdörren."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "Mössa"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "Keps"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "T-shirt"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr "Vi har mottagit din beställning och kommer att meddela dig när den skickas."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "Användarhandbok"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "Places API (nytt)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "Places API (äldre version)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "Version 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "Version 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ Snabbare utcheckning nästa gång\n"
+"✔ Hantera dina betalningsinställningar\n"
+"✔ Se orderstatus och orderhistorik"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "Dold"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "Valfritt"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "Obligatoriskt"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Leveransadress"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Lokalt avhämtning"

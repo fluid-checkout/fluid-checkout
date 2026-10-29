@@ -23,7 +23,7 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );

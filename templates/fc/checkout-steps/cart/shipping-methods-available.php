@@ -6,9 +6,8 @@
  *
  * @see     https://woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 4.0.3
+ * @version 5.0.0
  * @wc-version 11.2.0
- * @fc-version 4.2.9
  * @original plugins/woocommerce/templates/cart/cart-shipping.php
  */
 
@@ -31,7 +30,16 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 		<?php if ( ! empty( $available_methods ) && is_array( $available_methods ) ) : ?>
 
 			<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element markup ?>
-			<?php echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
+			<?php
+				/**
+				 * Filters the opening markup of the shipping method options list.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string $html HTML markup.
+				 */
+				echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' );
+			?>
 
 			<?php // CHANGE: Add shipping methods elements markup ?>
 			<?php
@@ -70,6 +78,17 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 					checked( $checked_method, true, false )
 				);
 
+				/**
+				 * Filters the HTML for the shipping method option.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string           $html          HTML markup.
+				 * @param WC_Shipping_Rate $method        Method.
+				 * @param int              $package_index Zero-based package index.
+				 * @param string           $chosen_method Chosen method.
+				 * @param mixed            $first         First.
+				 */
 				echo apply_filters( 'fc_shipping_method_option_markup',
 					sprintf( '<li class="shipping-method__option">%9$s
 						<label for="shipping_method_%1$d_%2$s" class="shipping-method__option-label has-price %7$s"><div class="shipping-method__option-label-wrapper">%5$s</div>%8$s%6$s</label>
@@ -90,7 +109,16 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 			endforeach; ?>
 
 			<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element closing tag ?>
-			<?php echo apply_filters( 'fc_shipping_method_option_end_tag_markup', '</ul>' ); ?>
+			<?php
+				/**
+				 * Filters the closing markup of the shipping method options list.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string $html HTML markup. Default `</ul>`.
+				 */
+				echo apply_filters( 'fc_shipping_method_option_end_tag_markup', '</ul>' );
+			?>
 
 			<?php // CHANGE: Remove shipping calculator and related messages, moved to template file `fc-pro/cart/cart/shipping-methods-calculate-shipping.php` ?>
 
@@ -111,8 +139,8 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 		</div>
 	<?php endif; ?>
 
-	<?php // CHANGE: Conditionally display message for when shipping costs are calculated during checkout, but shipping address has not yet been provided ?>
-	<?php if ( is_checkout() && 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_shipping_cost_requires_address' ) && ! $has_calculated_shipping ) : ?>
+	<?php // CHANGE: Conditionally display message for when shipping costs require an address, but shipping address has not yet been provided ?>
+	<?php if ( ( is_checkout() || FluidCheckout_Steps::instance()->is_cart_page_or_fragment() ) && 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_shipping_cost_requires_address' ) && ! $has_calculated_shipping ) : ?>
 		<div class="fc-shipping-method__incomplete-address shipping-method__package">
 			<div class="shipping-method__options">
 				<?php echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'woocommerce' ) ) ); ?>

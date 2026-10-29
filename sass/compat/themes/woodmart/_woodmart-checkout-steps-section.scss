@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // WOODMART CHECKOUT STEPS
 // ------------------------------------
 
-body#{ $_body-theme-selector }.has-checkout-header .page-title {
+body#{ $body-theme-selector }.has-checkout-header .page-title {
 	margin-top: 0;
 }

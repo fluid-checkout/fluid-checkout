@@ -1,8 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT COUPON CODE
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
 	position: relative;
 	margin-#{ $alignment-left }: $global-spacing-tiny;
 	margin-#{ $alignment-right }: - $global-spacing-tiny;
@@ -17,7 +25,7 @@ body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-codes__coupon-amount .wooc
 		outline-offset: $focus-outline-offset-link;
 	}
 }
-body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon::before {
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon::before {
 	position: absolute;
 	display: block;
 	top: 0;
@@ -28,3 +36,4 @@ body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-codes__coupon-amount .wooc
 	text-align: center;
 	text-indent: 0;
 }
+

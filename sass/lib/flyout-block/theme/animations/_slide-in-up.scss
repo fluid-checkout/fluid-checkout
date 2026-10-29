@@ -1,0 +1,13 @@
+@use '../../../../abstract' as *;
+
+.slide-in-up { animation: slide-in-up $global-animation-duration $global-animation-easing; }
+@keyframes slide-in-up {
+	from {
+		transform: translate3d(0, 100%, 0);
+		visibility: visible;
+	}
+
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}

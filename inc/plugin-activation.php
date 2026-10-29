@@ -11,6 +11,12 @@ class FluidCheckout_Activation {
 	 */
 	public static function on_activation() {
 		self::set_first_activation_time_option();
+
+		// Drop a leftover schedule without changing the saved choice
+		if ( class_exists( 'FC_Telemetry_Client' ) && FC_Telemetry_Client::is_disabled_by_constant() ) {
+			FC_Telemetry_Client::unschedule_telemetry_cron( FluidCheckout::get_telemetry_api_url() );
+		}
+
 		wp_cache_flush();
 	}
 

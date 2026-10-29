@@ -1,8 +1,13 @@
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // ORDER SUMMARY
 // ------------------------------------
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } #order_review .shop_table .cart-subtotal .woocommerce-Price-amount,
-body#{ $_body-theme-selector }#{ $_body-page-selector } #order_review .shop_table .product-total .woocommerce-Price-amount {
+body#{ $body-theme-selector }#{ $body-page-selector } #order_review .shop_table .cart-subtotal .woocommerce-Price-amount,
+body#{ $body-theme-selector }#{ $body-page-selector } #order_review .shop_table .product-total .woocommerce-Price-amount {
 	font-weight: 400;
 }

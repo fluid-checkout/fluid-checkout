@@ -1,8 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT HEADER
 // ------------------------------------
 
-body#{ $_body-theme-selector } header.fc-checkout-header {
+body#{ $body-theme-selector } header.fc-checkout-header {
 	position: fixed !important; // Needed to override theme styles breaking the layout
 	top: 0 !important; // Needed to override theme styles breaking the layout
 
@@ -11,10 +19,11 @@ body#{ $_body-theme-selector } header.fc-checkout-header {
 	}
 }
 // With admin bar
-body#{ $_body-theme-selector }.admin-bar header.fc-checkout-header {
+body#{ $body-theme-selector }.admin-bar header.fc-checkout-header {
 	top: 46px !important; // Needed to override theme styles breaking the layout. Uses pixels to match WordPress admin bar.
 
 	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
 		top: 32px !important; // Needed to override theme styles breaking the layout. Uses pixels to match WordPress admin bar.
 	}
 }
+

@@ -277,10 +277,6 @@ msgstr "Fluid Checkout andmebaasi uuendati edukalt"
 msgid "The database changes where applied successfully."
 msgstr "Andmebaasi muudatused rakendati edukalt."
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "Ok"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "Lase lahti"
@@ -398,39 +394,9 @@ msgstr "Dokumentatsiooni lugemine"
 msgid "Don't show this again"
 msgstr "Ära näita seda enam"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "Eripakkumised"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"Laiendage kõik Fluid Checkout'i headused oma ostukorvilehele ja tänu "
-"lehekülgedele."
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Fluid Checkout PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"Disainimallid, optimeeritud ostukorv ja saadud tellimuse leheküljed, "
-"kontode sobitamine ja palju muud."
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"Parimad vahendid, et veelgi <strong>parandada oma WooCommerce'i kassakonto "
-"konversioonimäära</strong> ja muuta ostukogemus kogu teekonna jooksul "
-"järjepidevaks."
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -452,10 +418,6 @@ msgstr "Muuda ostukorvi sisu kassalehel"
 msgid "Account matching / user matching"
 msgstr "Konto sobitamine / kasutaja sobitamine"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "Express Checkout nupud toetatud makseviisidest"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "Usaldussümbolid ostukorvis ja tänu lehekülgedel"
@@ -463,10 +425,6 @@ msgstr "Usaldussümbolid ostukorvis ja tänu lehekülgedel"
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "Rohkem positsioone kupongi kood kassaleheküljel"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "Integreeritud kupongikoodi väli ostukorvilehel"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -480,245 +438,25 @@ msgstr "Kinkesõnumid ja pakkelehti"
 msgid "Local pickup and in-store collection"
 msgstr "Kohaliku kättesaamise ja kohapealse kogumise võimalus"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "Uuendage PRO &mdash; 99 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Fluid Checkout PRO - pakett"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "Kõik PRO-funktsioonid + kõik lisad erihinnaga."
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"Pakett sisaldab kõiki lisasid, mida me praegu pakume, ja Fluid Checkouti "
-"lisasid, mida käivitame tulevikus."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "226 EUR väärtuses (42% kokkuhoid)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Google'i aadressi automaatne täitmine"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "Aadressiraamat"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "ELi käibemaksu assistent"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "Kõik tulevased lisad *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* Niikaua, kuni teil on aktiivne tellimus."
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "Hankige pakett - ainult 129 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"Kõik hinnad on esitatud eurodes. Kui meie veebilehel on hinnavahe, siis on "
-"veebilehel esitatud pakkumised ülimuslikud ja neid kohaldatakse."
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "Lisandid"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "Parandage oma kassakogemust nende lisanditega."
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "Mul on see juba olemas - Peida see pakkumine"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "Paigaldatud &mdash; Aktiveeri"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "Aktiveeritud"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "Kuni 40% vähem täidetavaid kassavälju."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"Vältige tarne hilinemist ja rahulolematuid kliente. Koguge "
-"<strong>korrektsed aadressiandmed</strong> alates esimesest ostukorrast, "
-"kui nad teilt ostavad."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "Hankige see lisa &mdash; 29 EUR"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "Aadressiraamat"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "Mitu salvestatud aadressi saatmiseks ja arveldamiseks."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"Laske klientidel <strong>säästma mitu saatmis- ja arveldusaadressi</strong> "
-"oma kontole ja valima, milliseid neist kasutada kassas ja ostukorvilehel."
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "Hankige see lisa &mdash; 59 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "Lihtsustatud ELi käibemaksu valideerimine teie kaupluse jaoks."
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"Kogub ja <strong>valideerib ELi käibemaksunumbreid kassalehel</strong>, "
-"eemaldab maksumaksu pöördmaksustamise alusel ja kinnitab vajaduse korral "
-"kliendi asukoha."
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "Hankige see lisa &mdash; 39 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"Kõik lisad müüakse eraldi ja nõuavad <strong>Fluid Checkout Lite</strong> "
-"pluginate paigaldamist ja aktiveerimist, välja arvatud juhul, kui see on "
-"märgitud."
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Valige pilt"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Logige "
-"sisse oma kontole</a>, et saada oma litsentsivõti või <a href=\"%s\" "
-"target=\"_blank\">ostke uus litsentsivõti</a>."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "Kehtib kuni %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "Aegunud %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Logige "
-"sisse oma kontole</a>, et uuendada oma litsentsivõtit ja jätkata uuenduste "
-"ja toetuse saamist."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "Litsentsivõti tühistatud."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">Ostke uus litsentsivõti</a> ja jätkake "
-"uuenduste ja toe saamist."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "Viga:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "Seadistamine ja dokumentatsioon"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "Suurepärane! Teie kassalehekülg töötab nüüd Fluid Checkout'is."
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "Siin on mõned ressursid, millega alustada:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"Lugege paigaldusjuhendit <a href=\"%s\" target=\"_blank\">Fluid "
-"Checkout'iga alustades</a>."
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "Seadistage paigutus ja kujundus <a href=\"%s\">kassa valikud</a>."
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"Kontrollige, kas on olemas <a href=\"%s\">integreerimisvõimalused</a> "
-"teiste paigaldatud pluginate jaoks."
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"Külastage <a href=\"%s\" target=\"_blank\">Meie dokumentatsiooni</a>, et "
-"saada lisateavet Fluid Checkout funktsioonide kohta."
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"Kui vajate kunagi abi, <a href=\"%s\" target=\"_blank\">avage tugipilet</a> "
-"meie ametlikus tugikanalis."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -731,14 +469,6 @@ msgstr "Ostukorvi optimeerimine"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "Võimaldage ostukorvilehe optimeerimine"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "Näita ostukorvi lehekülge, mille kujundus on sarnane kassalehega."
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "Pealkiri ja jalusosa"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -771,16 +501,6 @@ msgstr "Teha tellimuse kokkuvõte nähtavaks ostukorvilehel kerimise ajal"
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "Kupongi koodid"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"Valige positsioon, kus kupongikoodide sektsioon ostukorvilehel kuvatakse. "
-"Kohaldatakse ainult siis, kui AJAX ostukorv ja integreeritud kupongikoodid "
-"kassalehel on lubatud."
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -872,10 +592,6 @@ msgstr "Teema ristmüükide paigutus"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "Ostukorvi lehel kuvatavate ristmüügiartiklite arv"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "Usaldussümbolid ja -märgid"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "Lisage ostukorvilehel vidinate alad"
@@ -892,10 +608,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "Kassa"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "Kujundus & kujundus"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "Kassa paigutus"
@@ -911,22 +623,6 @@ msgstr "Tume režiim"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "Tume režiimi sisselülitamine"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "Pea- ja jaluslehe mallid"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"Soovitame kasutada häireteta päise- ja jaluslehte, et vältida tähelepanu "
-"kõrvalejuhtimist kassalehel. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Luge "
-"uuringuid ostukorvist loobumise kohta</a>."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -977,10 +673,6 @@ msgid ""
 msgstr ""
 "Valige kassalehe alumise osa taustavärv. Kehtib ainult siis, kui kasutate "
 "häireteta päise ja jaluslehe."
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "Kassasüsteemi elemendid"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1064,18 +756,6 @@ msgstr "Link poe lehele"
 msgid "Cart items"
 msgstr "Ostukorvi esemed"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "Võimaldage ostukorvipunktide muutmine kassalehel"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"Võimaldage klientidel muuta toodete koguseid või eemaldada kaupu otse "
-"kassaleheküljel."
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "Varjata ostukorvis olevad vead kassalehel"
@@ -1127,38 +807,9 @@ msgstr ""
 "Neid vidinaid kasutatakse usaldussümbolite ja usaldusmärkide lisamiseks "
 "kassaleheküljele."
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"Näita kassasüsteemi külgriba vidinaid ainult viimase kassasüsteemi sammu "
-"vaatamisel mobiilseadmetes, kui kasutad mitmeastmelise kassasüsteemi "
-"paigutust."
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "Integreeritud kupongikoodi sektsiooni sisselülitamine"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr ""
-"Kohaldatakse ainult juhul, kui kupongikoodide kasutamine on WooCommerce'i "
-"seadetes lubatud."
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "Kuvada kupongikoodide jaotise pealkiri"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"Kohaldatakse ainult siis, kui kuponkikood kuvatakse eraldi sektsioonina "
-"kassa- või ostukorvilehel."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1177,16 +828,6 @@ msgstr "Makseviisidele eelneva alamtegevusena"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "Makseviiside järgse alljärgnevusena"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"Valige nupu \"kohaldatakse kupongi\" stiil. Kohaldatakse ainult siis, kui "
-"kupongikoodi sektsioon kuvatakse \"Enne kassasammu\" kassaleheküljel või "
-"\"Enne ostukorvipunktide sektsiooni\" ostukorvilehel."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1235,20 +876,6 @@ msgstr ""
 "Soovitatav ainult siis, kui enamik kliente vajab tegelikult välja "
 "\"Aadressi rida 2\" või kui õige tarneaadressi saamine on väga oluline (nt "
 "toiduainete ja muude kergesti riknevate toodete tarnimisel)."
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "Näita \"Lisa\" lingi nupud väiketähtedega"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"Muutke valikulise välja \"Lisa\" lingi nupu sildid <kood>kitsaks</kood> (st "
-"\"Lisa telefoninumber\" asemel \"Lisa telefoninumber\"). See valik mõjutab "
-"ka kupongikoodide väljade linginuppe."
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1337,24 +964,6 @@ msgstr "Enne saatmise aadressi"
 msgid "After shipping address"
 msgstr "Pärast saatmisaadressi"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "Esimese saatmisviisi automaatse valiku vältimine"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Kui see on aktiveeritud, ei valita automaatselt esimest kättesaadavat "
-"saatmismeetodit, kui iga saatepaketi jaoks ei ole eelnevalt valitud muud "
-"saatmismeetodit. <br>See valik on automaatselt aktiveeritud, kui valitud "
-"saatmismeetodi kustutamise võimalus on lubatud funktsiooni Kohalik "
-"pealevõtmine puhul."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Kohalik pealevõtmine"
@@ -1372,22 +981,6 @@ msgid ""
 msgstr ""
 "Asendab tarneaadressi pealevõtmiskoha asukohaga, kui on valitud kohalik "
 "pealevõtmise tarneviis."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Näita valikuvõimalust saatmisviiside kustutamiseks pealevõtmiskoha "
-"allsammulises etapis"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Näita lingi nuppu pealevõtmiskoha alampunktis, et tühjendada valitud "
-"saatmisviisid. Seda saab kasutada selleks, et lubada uuesti näidata "
-"tarneaadressi osa, kui eelnevalt oli valitud kohalik kättesaamismeetod."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1466,32 +1059,6 @@ msgstr "Lisage arveldustelefoni väli kassavormi."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Valige, millises etapis kuvatakse arveldustelefoni väli."
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "Võimaldab telefoninumbri valideerimise riigireeglite alusel"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"Kui see on välja lülitatud, ei kontrolli telefonivälja valideerimine, kas "
-"riigi või piirkonna koodid on riigi jaoks kehtivad."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "Näita ainult lubatud riike saatmiseks või arveldamiseks"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"Kui see on aktiveeritud, on saatmise telefoniväljal saadaval ainult "
-"saatmiseks lubatud riigid ja arveldamise telefoniväljal ainult "
-"arveldamiseks lubatud riigid."
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "Näita riigi koodi lipu kõrval"
@@ -1524,10 +1091,6 @@ msgstr "Määrake täiendavate tellimuse märkuste välja nähtavus."
 msgid "Gift options"
 msgstr "Kinkimisvõimalused"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "Kuvada kinkesõnum ja muud kingituse valikud kassas lehel"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1535,10 +1098,6 @@ msgid ""
 msgstr ""
 "Võimaldage klientidel lisada tellimusele kinkesõnum ja muid kingitusega "
 "seotud võimalusi."
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "Kuvada kingitusteate väljad alati laiendatud kujul"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1594,27 +1153,9 @@ msgstr "Armatuurlaud"
 msgid "Integrations"
 msgstr "Integratsioonid"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"Selles jaotises ei ole hetkel integratsioonid saadaval. Iga pluginaga "
-"seotud valikud kuvatakse siin ainult siis, kui see plugin on aktiveeritud."
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "Litsentsivõtmed"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"Selles jaotises ei ole hetkel saadaval ühtegi litsentsivõtme valikut. Iga "
-"pluginaga või lisandiga seotud valikud ilmuvad siia, kui see plugin on "
-"aktiveeritud."
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1714,14 +1255,6 @@ msgstr ""
 "Neid vidinaid kasutatakse usaldussümbolite ja usaldusmärkide lisamiseks "
 "tänulehele."
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"Need valikud mõjutavad tänu lehekülge , tellimuse üksikasjade vaatamist "
-"konto lehekülgedel ja e-posti teavitustel."
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "Tellimusmeetmed"
@@ -1814,22 +1347,6 @@ msgstr "Laadige minimeerimata varasid"
 msgid "Enhanced select fields"
 msgstr "Täiustatud valitud väljad"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr ""
-"Asendage <code>select2</code> rippmenüü komponendid "
-"<code>TomSelect</code>-iga."
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect on lihtsam rippmenüüst valiku komponent, mis on vähem vigade "
-"suhtes altid kui Select2, pakkudes samas samu funktsioone, mida tegelikult "
-"kasutatakse WooCommerce'i kassalehekülgedel."
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "Fikseeri automaatne sisse suumimine vormiväljadel"
@@ -1837,34 +1354,6 @@ msgstr "Fikseeri automaatne sisse suumimine vormiväljadel"
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "Määra <code>font-size</code> vormiväljade sees 16px-le"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"Kui kirjasuurus vormiväljade sees on väiksem kui 16 pikslit, võivad Safari "
-"ja teised brauserid teksti lugemise hõlbustamiseks mobiilseadmetes "
-"automaatselt suumida. Kui see valik on aktiveeritud, seab see Fluid "
-"Checkouti poolt optimeeritud lehekülgedel vormiväljade sees oleva "
-"kirjasuuruse 16 pikslile, et vältida selle sisse suumimist."
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"Kui Fluid Checkout on aktiveeritud, on saatmise sihtkohaks alati määratud "
-"\"vaikimisi kliendi saatmisaadress\". Kliendid võivad endiselt esitada "
-"erinevaid saatmis- ja arveldusaadresse kassas, valik, millega saab määrata "
-"vaikimisi arveldusaadressi samaks kui saatmisaadress, on saadaval aadressil "
-"WooCommerce > Seaded > Fluid Checkout."
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1891,14 +1380,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimentaalne)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "Kinnitage"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "Kontrollida telefoninumber"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2416,10 +1897,6 @@ msgstr "Pärast eduriba"
 msgid "Before coupon codes section"
 msgstr "Enne kupongikoodide sektsiooni"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "Võimaldab rahvusvahelise telefoninumbri väljad"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "Vormindage telefoninumbrid vastavalt iga riigi eeskirjadele."
@@ -2427,18 +1904,6 @@ msgstr "Vormindage telefoninumbrid vastavalt iga riigi eeskirjadele."
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "Kasutage täpset telefoninumbri valideerimist"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"Proovige veenduda, et telefoninumber on kehtiv mobiil- või "
-"lauatelefoninumber, mis põhineb valitud riigikoodi reeglitel. See valik "
-"kasutab <code>intl-tel-input</code> täpset valideerimisfunktsiooni, mis "
-"võib mõne telefoninumbri puhul anda valepositiivseid tulemusi."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2485,26 +1950,6 @@ msgstr "2 veergu"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 veerg"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"Üldised stiilid kassasammude, tellimuse kokkuvõtte ja muude jaotiste jaoks. "
-"<br>Võib kohaldada ka teistele lehekülgedele, näiteks ostukorvi, tellimuse "
-"saamise ja tellimuse vaatamise lehekülgedele."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"Kujundusmall <em>\"Split\"</em> ei ole saadaval, kui kasutatakse <em>\"1 "
-"veerg\"</em> paigutust ja selle valimise korral langeb tagasi "
-"<em>\"Minimalistlik\"</em>."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2597,6 +2042,2500 @@ msgstr ""
 "kohustuslikuks. See on vajalik selleks, et tagada tarneaadressi kopeerimine "
 "arve aadressile, kui see valik on märgitud; vastasel juhul ei pruugi klient "
 "suuda ostukorvi vormi täita."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "Seadistusprofiilid"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "Seadete profiil"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "Teil puudub õigus seda toimingut teha."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "Sul puudub õigus pistikprogramme aktiveerida."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "Puuduv pistikprogramm."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "Pistikprogramm on aktiveeritud."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "Rakendatakse järgmised muudatused:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Alates Fluid Checkout 5.0 versioonist salvestatakse seaded teistmoodi. "
+"Vanad seaded on endiselt andmebaasis säilitatud, et vajaduse korral oleks "
+"võimalik minna tagasi eelmistele versioonidele."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"Teie pood on uute seadistustega töötanud umbes 2 nädalat, seega saite "
+"andmebaasis salvestatud vanad seadistused kustutada. Palun pange tähele, et "
+"kui peate pärast puhastamist minna tagasi pistikprogrammi eelmistele "
+"versioonidele, kasutab see kõigi seadistuste puhul vaikimisi väärtusi."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "Fluid Checkout’i seadete puhastamine"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "Kustuta järelejäänud valikud"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "Aita meil Fluid Checkouti täiustada"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"Jaga Fluid Checkoutiga anonüümseid veebikeskkonna aruandeid, et saada "
+"kiiremat tuge ning aidata meil parandada ühilduvust ja mõõta mõju. Aruanded "
+"ei sisalda kliendi-, kasutaja- ega tundlikke andmeid. Saad igal ajal menüü "
+"„Tööriistad” seadetest valida, milliseid andmeid jagatakse."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "Luba veebisaidi keskkonna aruanded"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "Vaata seadeid"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"Selle eelvaate kehtivusaeg on lõppenud. Laadige haldusleht uuesti, et "
+"alustada uut eelvaadet."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "Eelvaade on aegunud"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "Eelvaates ei ole võimalik tellimusi esitada."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "Eelvaates ei ole sisselogimine võimalik."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "Eelvaates ei ole võimalik kontosid luua."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "Eelvaates on blokeeritud päringud teistele veebisaitidele."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "Töötlemine…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "Midagi läks valesti. Palun proovi uuesti."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "Plugin aktiveerimine"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO – Täielik kassapakett"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"Kõik PRO-funktsioonid + kõik lisamoodulid ühe hinnaga. Disainimallid, "
+"optimeeritud ostukorvi ja tellimuse kinnituse leheküljed, kontode "
+"ühendamine ja palju muud."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "Optimeeritud tellimuse maksmise leht"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "Toetatud makseviiside kiirmakse nupud"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "Konto loomise viivitus"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Aadressi automaatne täitmine Google Mapsi API-de abil"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "Aadressiraamatusse salvestatud mitu aadressi"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "ELi käibemaksu abimees"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "Peida see osa"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "Lisateave"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "Hangi varajane juurdepääs"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "Lülita lisandmoodul sisse"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "Saage oma ostukogemusest veelgi rohkem kasu"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "API-võtme testimine"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "Juhendatud seadistamine"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "Valikud"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "Määrake paigutus ja kujundus lehel <a href=\"%s\">ostukorvi valikud</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"Luba külaliskassasse minek ja/või vaata <a href=\"%s\">kliendikontode "
+"seadeid</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"Luba optimeeritud <a href=\"%1$s\">ostukorvi</a>, <a "
+"href=\"%2$s\">tänulehe</a> ja <a href=\"%3$s\">tellimuse maksmise</a> "
+"leheküljed."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr "Luba Google Mapsis <a href=\"%s\">aadresside automaatne täiendamine</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr ""
+"Luba mitme salvestatud aadressi kasutamine <a "
+"href=\"%s\">aadressiraamatu</a> abil."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"Kontrolli, kas sinu teema või muude paigaldatud pistikprogrammide jaoks on "
+"saadaval mingeid <a href=\"%s\">integreerimisvõimalusi</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"Saate kiiremat tuge ning aitate meil parandada ühilduvust ja mõõta mõju. <a "
+"href=\"%s\">Lülitage tööriistade seadetes sisse kasutamise jälgimine</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "Puudub vahekaart „Seaded”."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "Esimesed sammud"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>Suurepärane! Teie kassaleht töötab nüüd Fluid Checkouti "
+"platvormil.</strong> Siin on mõned sammud, millega alustada:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "Lõpetatud"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "Aruande andmete eelvaade"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "Saada kohe"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "Automaatne tuvastamine"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "afrikaani keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "Albaania"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "amhari keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "araabia keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "armeenia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "Aserbaidžaani"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "baski"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "valgevene"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "bengali keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "bosnia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "Bulgaaria"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "Birma"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "katalaani"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "hiina keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "Hiina (lihtsustatud)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "Hiina (Hongkong)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "Hiina keel (traditsiooniline)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "horvaadi keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "Tšehhi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "Taani"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "hollandi keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "inglise keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "inglise keel (Austraalia)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "inglise keel (Suurbritannia)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "eesti keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "Farsi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "soome keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "Filipiinlane"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "prantsuse keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "Prantsuse (Kanada)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "galiitsia keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "Gruusia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "Saksa keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "kreeka"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "gudžarati keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "heebrea keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "hindi keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "ungari keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "islandi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "indoneesia keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "itaalia keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "jaapani keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "Kannada"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "Kasahhi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "khmeeri keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "Korea"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "Kõrgõz"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "Laos"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "Läti"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "Leedu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "Makedoonia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "malai keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "malajalami keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "marathi keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "mongoolia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "nepaali keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "norra keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "Poola"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "portugali keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "portugali keel (Brasiilia)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "portugali keel (Portugal)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "pandžabi keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "Rumeenia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "vene"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "serbia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "singali keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "Slovaki"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "Sloveeni keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "hispaania keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "Hispaania keel (Ladina-Ameerika)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "suahiili keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "Rootsi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "tamili keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "telugu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "tai keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "Türgi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "ukraina"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "urdu keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "vietnami keel"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "Zulu"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Google’i aadresside automaatne täiendamine"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Google Places API versioon"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"Valige, millist Google Places API versiooni soovite kasutada. Soovitame "
+"minna üle uuele Places API-le niipea kui võimalik."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"Soovitame kasutada „Places API (New)“, kuna alates 1. märtsist 2025 viib "
+"Google versiooni „Places API (Legacy)“ vananenud staatusesse, mis tähendab, "
+"et te ei saa seda teenust enam uute API-võtmete jaoks aktiveerida ning et "
+"see API-versioon ei ole lõpuks enam kättesaadav. Olemasolevad kontod, mis "
+"juba kasutavad vana API-d, võivad jätkata töötamist ilma häireteta."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(Soovitatav)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Google’i API-võti"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"Kopeeri oma Google API-võti ja kasuta testinuppu, et veenduda, et see "
+"toimib sellel veebisaidil. Veendu, et võti on kehtiv ja sinu domeenile "
+"lubatud, vastasel juhul võib aadressiväli blokeeruda, mis takistab "
+"klientidel tellimusi lõpule viimast."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "Luba Google’i aadresside automaatne täiendamine"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr "Luba aadresside automaatne täiendamine Google Mapsi API-de abil."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Google API keel"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"Seda keelt kasutatakse Google Places API aadressisoovituste kuvamiseks ning "
+"aadressid täidetakse automaatselt samuti selles keeles."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "Tulemustüübid"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Jäta tühjaks, et aktsepteerida mis tahes tüüpi tulemusi, mis annab "
+"tavaliselt paremaid vasteid. <a href=\"%s\" target=\"_blank\">Lisateavet "
+"leiad dokumentatsioonist</a>. <br>Vali kuni 5 tüüpi aadressiotsingu "
+"tulemusi, mida kuvatakse aadressi automaatse täitmise väljadel. <br>Külasta "
+"Google Mapsi dokumentatsiooni, et saada lisateavet <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">toetatud tüüpide kohta</a>."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "Tulemustüübid (vanem API)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Millist tüüpi aadressiotsingu tulemusi tuleks tagastada Places API (Legacy) "
+"kasutamisel. <br>Külasta vana Google Places API dokumentatsiooni, et saada "
+"lisateavet <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">toetatud tüüpide</a> kohta."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "Ettevõtte valdkonnad"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "Luba ettevõtte nime automaatne täiendamine, kui see on võimalik"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Luba ettevõtte välja automaatne täitmine ettevõtte nime andmetega, kui need "
+"saadakse Google Mapsi API-dest."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "Ettevõtete otsing"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "Luba ettevõtete otsingut ettevõtte väljal"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"Luba ettevõttega seotud aadresside soovituste kuvamine ettevõtte väljale "
+"kirjutamisel ning täida seejärel automaatselt kõik aadressiväljad, kui "
+"soovituste hulgast valitakse välja ettevõte."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "Ettevõtte tulemuste liigid"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Valige kuni 5 aadressiotsingu tulemuste tüüpi, mida kuvatakse ettevõtte "
+"väljade automaatse täitmise funktsioonis. <br>Soovitatav väärtus on "
+"<code>ettevõte</code>, mis hõlmab enamikku ettevõtete tüüpe. <br>Jätke väli "
+"tühjaks, et aktsepteerida mis tahes tüüpi tulemusi, sealhulgas tulemusi, "
+"mis ei ole seotud ettevõtetega. <br>Külasta Google Mapsi dokumentatsiooni, "
+"et saada lisateavet <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">toetatud tüüpide</a> kohta."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Google'i logo"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "Näita teksti ja logo „Powered by Google“"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"Kui see valik on märgitud, kuvatakse aadressi automaatse täiendamise "
+"soovituste kasti allosas tekst ja logo „Powered by Google“."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "Brasil API aadresside automaatne täiendamine"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "Brasiilia API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "Luba CEP-väljade puhul Brasiilia API aadresside automaatne täitmine"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"Kasutage Brasil API-d aadresside hankimiseks ja automaatseks täitmiseks, "
+"kasutades CEP/postikoodi välja. Kehtib ainult Brasiilia aadresside puhul."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "API versioon"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "Valige, millist Brasil API CEP-meetodi versiooni soovite kasutada."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "Aadressiraamatu ülekandmine"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "WooCommerce’i aadressid"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"Kopeeri olemasolevad tarne- ja arveldusadressid WooCommerce’ist klientide "
+"aadressiraamatusse."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "Luba aadressiraamatu funktsioon"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"Võimaldage klientidel salvestada mitu aadressi ja määrata vaikimisi "
+"aadress, mida kasutatakse kauba saatmiseks ja arve esitamiseks."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "Aadressietiketid"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "Võimaldage klientidel lisada igale aadressile kohandatud silt"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"Aadressisildid aitavad klientidel kergemini eristada oma salvestatud "
+"aadresse (nt „Ema maja”). Aadressisildid on klientidele privaatsed ning "
+"neid ei kuvata ega trükita tellimuse üksikasjade lehel ega arvetel."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "Ekraani paigutus"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr "Valige, kuidas salvestatud aadresse kuvatakse kassasse minnes ja ostukorvis."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"Kehtib kassas ja ostukorvis. Kontolehel salvestatud aadressid kuvatakse "
+"alati kaardipaigutusena."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "Aadressikaardid"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "Aadresside nimekiri"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "Rippmenüüväli"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "Aadressiotsing"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"Näita kasutajaliideses aadressiotsingu filtrit, kui kliendil on salvestatud "
+"vähemalt see arv aadresse."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "Seda ei kasutata, kui kuvamisviisiks on valitud rippmenüü."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "Aadressid"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "Luba ostukorvi lehe optimeerimised, et näha rohkem valikuid"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "Kinnitatud tellimuse kokkuvõte"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"Valige koht, kus kupongikoodide osa ostukorvi lehel kuvada. Kehtib ainult "
+"juhul, kui AJAX-ostukorv on aktiveeritud ja kui kupongikoodide kasutamine "
+"on WooCommerce’i seadetes lubatud."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "Ristmüügi ülesehitus"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "Kuvatakse seotud tooteid"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "Kaubad"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "Ostukorvi lehe optimeerimine"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr "Andke oma ostukorvile sama selge ja müügile suunatud kujundus nagu kassale."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr "Kohandage ostukorvi kujundus kassalehega, et tagada ühtne ostukogemus."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"Hoia ostukorvi sisu taustal alati ajakohasena – koguste muutumisel ei "
+"laadita lehte uuesti täielikult."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"Paiguta sooduskoodid, saatmiskulud ja täiendavad tooted just sinna, kus "
+"need toovad kõige rohkem müüki."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"Hoidke tellimuse kokkuvõte kerimise ajal nähtaval ning lisage usaldusmärgid "
+"kohtadesse, kus ostjad vajavad kindlustunnet."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "Veerud"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"Kassasse mineku etappide, tellimuse kokkuvõtte ja muude osade üldised "
+"stiilid. Kehtib ka teiste kassasse mineku, ostukorvi, tänulehe (tellimus on "
+"vastu võetud) ja tellimuse vaatamise lehtede puhul."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"Kui kasutatakse <em>\"1 veerg\"</em> paigutust koos <em>\"Split\"</em> "
+"kujundusmalliga, kuvatakse parempoolne veerg ainult juhul, kui lehe "
+"külgriba vidinaala on aktiivne (kassasse mineku külgriba, ostukorvi "
+"külgriba või tellimuse kättesaamise külgriba). Muul juhul jääb leht "
+"üheveeruliseks, kasutades „Split“ stiile."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "Veeru taust jagatud"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"Valige „Split“-kujunduse teise veeru taustavärv. Jätke väli tühjaks, kui "
+"soovite kasutada tellimuse kokkuvõtte taustavärvi."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "Lehekülje mallid"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "Kassasse mineku mall"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"Soovitatav, et vähendada ostukorvi tühjendamisel esinevaid segavaid "
+"tegureid. <a href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">Loe uuringut ostukorvi hülgamise kohta</a>."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "Kinnitatud edenemisriba"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "Edusammude riba stiil"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "Tellimuste kogusummad"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "Taustavärv"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "Tegevuslink"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "Mobiiltellimuse kokkuvõte"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "Mobiilseadme algseisund"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "Luba ostukorvi toodete muutmine kassasse jõudmisel"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"Võimaldage klientidel muuta toodete koguseid või eemaldada tooteid otse "
+"kassaleheküljel."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "Ostukorvi toodete vead"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"Kehtib ainult juhul, kui kupongikood on esitatud eraldi osana kassasse "
+"mineku või ostukorvi lehel ning kui kupongikoodide kasutamine on "
+"WooCommerce’i seadetes lubatud."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "Kupongikoodide asukoht"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "Kupongi rakendamise nupp"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "Vali nupu „Kupongi rakenda” stiil."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "Aadressirida 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"See seade kehtib nii „Kassasse“ kui ka „Kohapealne kättesaamine“ jaotiste "
+"puhul. Jaotises „Kohapealne kättesaamine“ määrab see ka, kas valik "
+"„Saadetis/Kättesaamine“ kuvatakse saatmisviisi jaotises (enne aadressi) või "
+"eraldi jaotises (pärast seda)."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "Kliendikontod"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "Külaliskassasse"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"WooCommerce’i kontode seadete lehel asuvad külaliskassasse mineku, "
+"sisselogimise ja konto loomise valikud. Neid hallatakse siin teie mugavuse "
+"huvides, et saaksite kasutada erinevaid väärtusi iga seadete profiili puhul."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "Võimaldage klientidel teha ostu ilma kontota"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Soovitatav</strong>, et klientidel ei palutaks kassasse minnes "
+"kontot luua ega sisse logida, mis võib vähendada konversioonimäärasid."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"Kui see funktsioon on keelatud, peavad kliendid sisse logima või konto "
+"looma, et ostu lõpule viia."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "Logi sisse kassasse minnes"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "Luba sisselogimine ostukorvi tühjendamise ajal"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr "Näita kassalehel püsiklientidele linki sisselogimiseks."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "Konto loomine"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "Võimaldage klientidel kassasse minnes konto luua"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "Kliendid saavad enne tellimuse esitamist luua konto."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "Võimaldage klientidel luua konto leheküljel „Minu konto“"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "Kliendid saavad luua uue konto lehel „Minu konto”."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "Kasutajanimi"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "Loo kliendi nime põhjal"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Soovitatav</strong>, et klientidel ei palutaks kassasse minnes "
+"kasutajanime valida, mis võib vähendada konversioonimäära."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"Kasutajanimi luuakse kliendi nime põhjal või, kui nime kasutada ei ole "
+"võimalik, e-posti aadressi põhjal."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "Parool"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "Saada parooli seadistamise link"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Soovitatav</strong>, et klientidelt ei küsitaks kassasse minnes "
+"parooli, mis võib vähendada konversioonimäära."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "Kliendid saavad e-kirja, milles palutakse neil luua turvaline parool."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"Võimaldage registreeritud klientidel sooritada ostu lõpetamine ilma "
+"sisselogimata ning seostage tellimus nende olemasoleva kontoga, kui "
+"kontaktandmed ühtivad."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "Teade olemasoleva konto kohta"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr "Võimaldage klientidel luua konto pärast tellimuse esitamist tänulehelt."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"Selles jaotises olevad valikud on kättesaadavad, kui külaliskassasse minek "
+"ja kontode sobitamine on lubatud. Luba mõlemad eespool nimetatud "
+"funktsioonid, et seadistada konto loomise edasilükkamine."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "Luba konto loomise edasilükkamine"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"Luba konto loomise edasilükkamine, kui nii külaliskassasse minek kui ka "
+"kontode sobitamine on lubatud."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "Lõigu asukoht"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "Enne kliendi andmete osa"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "Pärast kliendi andmete osa"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "Konto loomise eelised"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "Kui väli jäetakse tühjaks, kuvatakse vaikimisi tekst."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "Tekstisisesed nupud"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "Kohustuslikud väljad"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "Luba kinkesõnumi väljad kassasse jõudmisel"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "Täiendatud kingituse sõnum"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "Kinkesõnumi väljale jääb alati avatud"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "Kingituse sõnum tellimuse üksikasjades"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"Praegu pole selles jaotises ühtegi integratsiooni saadaval. Iga "
+"pistikprogrammi ja teemaga seotud valikud kuvatakse siin alles siis, kui "
+"vastav pistikprogramm või teema on aktiveeritud."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "Telefoni väljad"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "Välja nähtavus"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "Väljakupositsioon"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "Riigi telefonikood ja selle kontrollimine"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "Riik"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "Luba riigi valik telefoninumbri väljadel"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "Filtreeri riike tarne- või arveldusandmete alusel"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"Piirata iga telefoninumbri väljal riigi valikut vaid nendele riikidele, "
+"kuhu teie poest on lubatud saata kaupa või kuhu on lubatud arveid esitada."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "Valideerimine"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "Luba lihtne kehtivuse kontroll riikide eeskirjade alusel"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"Kontrollib, kas valitud riigi puhul on telefoninumber kehtiv, sealhulgas "
+"riigikood ja numbrite pikkus."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"Rangem kontroll, et number oleks valitud riigis kehtiv mobiili-, "
+"tavatelefoni- või muu aktsepteeritud tüüpi number. Võib tagasi lükata mõned "
+"kehtivad numbrid."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "Valideerimise tüübid"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "Asendussümbolid"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"Hetkel pole hallatavaid litsentsivõtmeid. Litsentsivõtmed kuvatakse siin, "
+"kui on aktiivne litsentsitud Fluid Checkouti pistikprogramm või lisand."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "Vaikimisi valitud kohaletoimetamise viis"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "Valige, milline kohaletoimetamise viis on vaikimisi valitud."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "Saadetiste tsoonide väljad"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Valige, millised väljad kuvatakse kohaliku kättesaamise tarnepiirkonna "
+"filtri väljadena. Jätke tühjaks, et kuvada kõik saadaval olevad valikud."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Need väljad kuvatakse kohaliku kättesaamise tarneviiside filtri all. Mõned "
+"väljad võivad kassasse jõudes siiski ilmuda, isegi kui neid siin ei ole "
+"valitud, kui ühilduvad pistikprogrammid vajavad neid oma nõuetekohaseks "
+"toimimiseks."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "Tellimuse tarneadresse"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "Tellimuse maksmise lehe optimeerimine"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"Andke tasumata tellimustele sama selge ja müügile suunatud kujundus nagu "
+"kassale."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr "Optimeerige maksmisele ootavate tellimuste maksmislehe kujundust."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"Kohanda tellimuse tasumise protsessi oma kassasse, et tagada ühtne "
+"ostukogemus."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"Lisage usaldusmärgid ja tunnused kohtadesse, kus ostjad vajavad enne "
+"maksmist kinnitust."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "Tänulehe optimeerimine"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"Tee klientidele pärast ostu sooritamist tänuleht ja tellimuse üksikasjad "
+"selgemaks."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr "Optimeerige tänulehte ja tellimuse üksikasju selgema kujundusega."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"Näita tellimuse staatuse kulgu, toiminguid, allalaadimisi ja märkmeid seal, "
+"kus see on asjakohane."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "Kohandage e-posti teavituste tellimuse üksikasjade osi."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"Lisage usaldusmärgid ja tunnused kohtadesse, kus ostjad vajavad pärast ostu "
+"kinnitust."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "E-posti teated"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"Lülita sisse tänulehe ja tellimuse üksikasjade optimeerimine, et näha "
+"rohkem valikuid"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "Kasuta tänulehel laia paigutust"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"Need valikud mõjutavad tänulehte, tellimuse üksikasjade kuvamist "
+"kontolehtedel ja e-posti teavitustes."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "Salvesta seaded"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "Dokumendid"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "Ostukorv"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "Tänan"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "Aadressi automaatne täiendamine"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "Usaldusmärgid"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "Sul pole õigust neid seadeid salvestada."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "Salvestusnõue on kehtetu."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "Teie seaded on salvestatud."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "Salvestatakse..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "Seadeid ei õnnestunud salvestada. Palun proovi uuesti."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "Teate sulgemine"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "Ava seadete menüü"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "Sulge seadete menüü"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "Eelvaade"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "Ava eelvaade"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "Peida eelvaade"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "Näita päist ja jalust"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "Pealkirja ja jalus peita"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "Lehekülje eelvaade"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "Eelvaatevaateala"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "Tahvelarvuti"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "Töölaua"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "Eelvaate laius"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "Vähenda laius"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "Eelvaate laius pikslites"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "Suurenda laius"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "Eelvaade kui"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "Külaline"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "Sisse logitud"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "Eelvaate leht"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "Ava eelvaade, et seda lähemalt vaadata"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "Saadaval koos %s-ga."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "Lülita need sisse"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr ""
+"Selle lehe optimeerimisfunktsioonid on välja lülitatud. %s, et lehte "
+"eelvaadata."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "%s eelvaade"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "Isolatsioonirežiim · midagi ei salvestata"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "Kasutamise jälgimine"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Saada mittesalajasi veebikeskkonna aruandeid, et aidata Fluid Checkoutil "
+"ühilduvust parandada. Aruandeid ei saadeta enne, kui see on allpool "
+"olevates valikutes sisse lülitatud."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "Saada kasutamisjälgimisaruanded Fluid Checkoutile"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"Need aruanded aitavad meil parandada teie veebisaidi ühilduvust ja toetust "
+"ning neid saadetakse igal nädalal, kui see funktsioon on sisse lülitatud."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"Aruannetes ei sisaldu ühtegi kliendi-, administraatori- ega muud tundlikku "
+"andmet."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "Põhiteave keskkonna kohta"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"WordPressi, PHP, WooCommerce’i, teemade ja pistikprogrammide loendi andmed. "
+"Need lisatakse alati, kui aruandlus on sisse lülitatud. See aitab meil "
+"mõista keskkonda, milles teie veebisait töötab."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "Plugina seaded"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"Saadab Fluid Checkouti pistikprogrammi seaded, et aidata kaasa "
+"tugipäringute lahendamisel ja aidata meil mõista, kuidas te meie "
+"pistikprogramme kasutate."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "Peagi saadaval"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "Müüginäitajad"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"Kuu tellimuste arv ja kogumüük alates Fluid Checkouti paigaldamisele "
+"eelnenud aastast kuni tänaseni. See aitab meil aru saada, kas teenite meie "
+"pistikprogrammide kasutamisel rohkem tulu. Kliendi- ega kasutajaandmeid ei "
+"edastata kunagi."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "Kommunaalteenused"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"Kasuta <code>TomSelect</code> rippmenüü komponente <code>select2</code> "
+"asemel"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect on lihtsam rippmenüü komponent, mis on vähem veaprobleemidele "
+"altis kui Select2, pakkudes samas sama funktsionaalsust."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"Määrab selle pistikprogrammi poolt optimeeritud lehtedel vormiväljade "
+"kirjasuuruseks 16px, et vältida automaatset suurendamist, kui väikestel "
+"seadmetel vormiväljadega suheldakse."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"Safari ja teised brauserid võivad mobiilseadmetel teksti automaatselt "
+"suurendada, et seda oleks kergem lugeda, kui kirjasuurus on väiksem kui "
+"16px."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "Luba skriptide töötlemise jälgimine brauseri konsoolis."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "Minifitseerimata ressursid"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Google Mapsi skriptid"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "Ära eemalda dubleeritud Google Mapsi skripte"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"Kui see valik on aktiveeritud, siis Google Mapsi skripte ei eemaldata, mis "
+"võib põhjustada vigu ja jõudlusprobleeme. Kasuta seda valikut ainult "
+"veaotsingul."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "Vidinapiirkonnad"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "Viimane samm mobiilis"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "Näita vidinaid mobiilseadmetel ainult viimases etapis"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"Näita ostukorvi usaldusmärgi vidinaid ainult siis, kui mobiilseadmes "
+"vaadatakse ostukorvi viimast sammu"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "Standard"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "Käibemaksukohustuslase numbri väli"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "Lisa arvevormile käibemaksunumbri väli."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "Välja silt"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"Määrake käibemaksunumbri välja silt (nt „käibemaksunumber”). Mitmekeelsetel "
+"veebisaitidel on parem jätta see väli tühjaks ja tõlkida algne tekst."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "käibemaksukohustuslase number"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "ELi käibemaks"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "Lülita käibemaksunumbri väli sisse, et näha rohkem valikuid"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "käibemaksu kinnitamine"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "Kontrolli kassasse minnes ELi käibemaksunumbri välja kehtivust"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"Kontrollib, kas esitatud käibemaksukohustuslase number on kehtiv ja "
+"registreeritud Euroopa VIES-andmebaasis (käibemaksu teabevahetussüsteem)."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "Kaupluse käibemaksukood"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"Kaupluse käibemaksukood, mida kasutatakse ELi käibemaksu kinnituse "
+"taotlemiseks ja mis on trükitud arvetele. <br><strong>Soovitame tungivalt "
+"lisada oma kaupluse käibemaksukoodi</strong>, kuna vastasel juhul võivad "
+"VIES-i päringu tulemused raamatupidamise eesmärgil kehtetuks osutuda. "
+"<br>Näiteks: <code>ATU99999999</code> või <code>EE999999999</code>."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "Kohustuse ülekandmine"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "Kohaldada pöördmaksustamise korda"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"Kui kliendi käibemaksunumber on kehtiv, seadke maksumäär nulliks ja kuvage "
+"arvetel tekst „Kohustuse ülekandmine”. Sõltuvalt poe asukohariigist võib "
+"olla vaja kasutada teistsugust teksti „Kohustuse ülekandmine”."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "Sama riik"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr ""
+"Kohaldage pöördmaksustamise korda tehingute suhtes, mis toimuvad poe "
+"asukohariigis:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"Võimaldab kohaldada pöördmaksustamise korda tehingute puhul, mis toimuvad "
+"kaupluse asukohariigis asuvate ettevõtete vahel."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "Kohustuse ülekandmise erandid"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr ""
+"Valige täiendavad riigid, mille puhul pöördmaksustamise mehhanismi "
+"kohaldamist ei rakendata."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"Nendest riikidest pärit tellimustelt võetakse makse ka siis, kui on "
+"esitatud kehtiv käibemaksukohustuslase number."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "Arvetel olev „pöördmaksustamise“ märge"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr "Märgi kassalehel ja tellimuse üksikasjades valik „pöördmaksustamine”."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "Arvetel esitatav pöördmaksustamise tekst"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "Määrake arvetele teksti „pöördmaksustamine” silt."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "Maks, mis tuleb tasuda pöördmaksustamise korras"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "Ettevõtte nimi"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "Ettevõtte nime automaatne täiendamine käibemaksunumbri alusel"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"Sisestage arve esitaja nimi vastavalt kliendi esitatud kehtivale "
+"käibemaksunumbrile."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "Ettevõtte nime muutmine"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "Luba automaatselt täidetud ettevõtte nime muutmist"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"Kui see funktsioon on aktiveeritud, saavad kliendid muuta esitatud "
+"käibemaksunumbriga seotud ettevõtte nime."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "Digitaalsete kaupade ELi käibemaks"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"Alates 1. jaanuarist 2015 on digitaalsete kaupade suhtes tehtud muudatusi "
+"ELi käibemaksueeskirjades, mis mõjutavad ainult B2C-tehinguid. Digitaalsete "
+"kaupade käibemaks tuleb arvutada kliendi asukoha alusel ning selle kohta "
+"tuleb koguda tõendusmaterjali (IP-aadress ja arveaadress)."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "Digitaalsete kaupade maksuklassid"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "Valige mõned maksuklassid"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "Asukoha tõendid"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "Koguda tõendeid kliendi asukoha kohta"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"Salvestab IP-aadressi ja võrdleb seda kliendi arveldusadresseeriga. Kui "
+"kliendi arveldusadresseer ja IP-aadress ei lange kokku, peab klient oma "
+"arveldusadresseeri kinnitama, märkides selleks kassaleheküljel vastava "
+"valikukasti."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"Seda valikut hallatakse Fluid Checkoutis. <a href=\"%s\">Muuda seda "
+"kliendikontode seadetes</a>."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"Seda valikut hallatakse Fluid Checkoutis. Saad seda muuta menüüs „Fluid "
+"Checkout > Kliendikontod”."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"Seda valikut hallatakse Fluid Checkoutis. Kui Fluid Checkout on "
+"aktiveeritud, on saatmiskohaks alati määratud „Vaikimisi kliendi "
+"saatmisadresse”. Kliendid saavad kassasse minnes siiski sisestada erinevad "
+"tarne- ja arveldusadressid.<br><br>Võimalus määrata vaikimisi "
+"arveldusadressiks sama aadress, mis on tarneaadress, on saadaval <a "
+"href=\"%s\">Fluid Checkouti seadetes</a>."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"Seda valikut hallatakse Fluid Checkoutis. Kui Fluid Checkout on "
+"aktiveeritud, on tarne sihtkoht alati seatud valikule „Vaikimisi kliendi "
+"tarneaadress“. Kliendid saavad kassasse minnes siiski sisestada erinevad "
+"tarne- ja arveldusadressid.<br><br>Võimalus määrata vaikimisi "
+"arveldusadressiks sama aadress, mis on tarneaadress, on saadaval menüüs "
+"WooCommerce > Seaded > Fluid Checkout."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr "Need seaded on viidud menüüsse „WP Admin > Fluid Checkout > Seaded“."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"See WooCommerce’i seadete vahekaart on vananenud ja eemaldatakse versioonis "
+"Fluid Checkout 6.0."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "Mine seadete lehele"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "Peida see vahekaart lõplikult"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "Veebilehe aruande eelvaade"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"Need on andmed, mis lisataks järgmisesse veebikeskkonna aruandesse teie "
+"praeguste seadistuste põhjal."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "Aruande eelvaate laadimine..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "Veebilehe aruande eelvaadet ei õnnestunud laadida. Proovi uuesti."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "Veebisaidi aruannet ei õnnestunud saata. Proovi uuesti."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "Veebisaidi aruanne saadeti edukalt ära."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "Luba ja saada kohe"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "Sulge"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr ""
+"Kohapealse aruande taotlus on juba menetluses. Palun proovi veidi aja "
+"pärast uuesti."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "Veebisaidi keskkonnaaruandlus on välja lülitatud."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "Saada pole ühtegi asukoha aruande andmeid."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"Sellelt veebisaidi domeenilt ei saa saata keskkonnaaruandeid (välja arvatud "
+"kohalikud või arendusdomeenid)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "Hiljuti saadeti kohapealne aruanne. Proovi hiljem uuesti."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "Veebilehe aruannet ei õnnestunud saata. Proovi hiljem uuesti."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "Asukoha keskkonnaalaseid aruandeid ei ole kättesaadavad."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "Valitud seadete puhul ei ole saadaval ühtegi vaatluskohtade aruande andmeid."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "Teil ei ole õigust hallata veebisaidi aruandeid."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "PRO-funktsioon"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "Muud pistikprogrammid"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "Hangi ainult see lisand — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "Paigalda lisand"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "Uuenda PRO-versioonile &mdash; %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr "<a target=\"_blank\" href=\"%1$s\">Hangi %2$s</a>, et need valikud avada."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "Lisandmoodul"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "Vaata dokumentatsiooni"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"Päringute tegemiseks peab WordPressi kasutaja olema sisse logitud. Jäta "
+"user_id välja, et kasutada praeguse kasutaja andmeid, või edasta user_id, "
+"et suunata päring teisele kontole, kui päringu tegija saab seda kasutajat "
+"muuta (õigus edit_user). Autentimata päringud tagastavad vea "
+"fc_api_forbidden. Kehtetu user_id tagastab vea fc_api_user_not_found."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr "HTTP 200 koos { \"data\": { ... } }, kui käitleja tagastab andmepaketi."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr "HTTP 200 koos { \"success\": true }, kui andmeid ei ole (näiteks DELETE)."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"Vigade korral tagastatakse WordPressi REST-viga JSON-vormingus WP_Error-i "
+"kaudu (kood, sõnum, data.status). Wire-koodides kasutatakse eesliidet "
+"fc_api_*."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "Juurdepääs keelatud."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "Sihtkasutajat ei leitud."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "See funktsioon ei ole saadaval."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "Puudub kohustuslik aadressiväli."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "Postikood või ZIP-kood on kehtetu."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "Telefoninumber on kehtetu."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "Osariik või maakond on kehtetu."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "Riik on kehtetu või sellel puuduvad aadressiväljad."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "Päringut ei õnnestunud töödelda."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "Tagasi eelmisele sammile"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "Mine otse seadistustesse"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "Alusta uuesti ja naase esimese juhendatud seadistamise sammu juurde"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "Alusta uuesti"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "Palun viige kõik alametapid lõpule, enne kui jätkate."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "Laadi lahti"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "Kokku klappida"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "Vahelejätmine"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "Märgi lõpetatuks"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "Märgi lõpetamata"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "Vaata pilti täissuuruses: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "Täissuuruses seadistamisjuhendi pilt"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "Sulge pilt"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "Fluid Checkouti juhendatud seadistamine"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "Tere tulemast"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "Tutvu oma ostukorviga"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "Kõik on valmis"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "Teil puudub juurdepääsuõigus sellele lehele."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "Mine sammu %1$d juurde: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"See juhendatud seadistamine aitab teil Fluid Checkoutiga tutvuda. Allpool "
+"toodud sammud on praegu vaid paigahoidjad."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "Kui olete valmis, jätkake järgmise sammuga."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "Ava oma poe kassaleht, et näha Fluid Checkouti töös."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "Vaata kassalehekülge"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"Võite naasta Fluid Checkouti seadistuste juurde, et jätkata oma poe "
+"konfigureerimist."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "Vaata kassasse mineku ja ostukorvi seadeid"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "Tutvu lisandmodulitega juhtpaneelist"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "Lõpeta ja mine seadistustesse"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Muuda arveldustelefoni välja nähtavuse seadet, et see vastaks WooCommerce’i "
+"tavadele."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Muuda saadetise telefoninumbri välja nähtavuse seadet, et see vastaks "
+"WooCommerce’i tavadele."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"Kopeeri tellimuse kokkuvõtte taustavärvi seade uue „Split design” teise "
+"veeru taustavärvi valikule."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"Biteshipi pistikprogrammi kasutamisel on täiustatud valikuväljade "
+"funktsioon alati välja lülitatud."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"Saksa turu kasutamisel on tellimuse esitamise asukoht alati seatud valikule "
+"„Tellimuse kokkuvõtte all”. See pistikprogramm nõuab, et tellimuse "
+"esitamise nupp ja õiguslikud valikukastid kuvataks tellimuse kokkuvõtte all."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"Plugin „Germanized for WooCommerce“ kasutamisel on tellimuse esitamise "
+"asukoht alati seatud valikule „Tellimuse kokkuvõtte all“. See plugin nõuab, "
+"et tellimuse esitamise nupp ja õiguslikud valikukastid kuvataks tellimuse "
+"kokkuvõtte all."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Muuda kättesaamiskohti"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Kasuta WooCommerce’i seadistustest pärit kohaliku kättesaamise sildit"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Kui see on sisse lülitatud, vastab kassas kuvatav isikliku kättesaamise "
+"valiku silt pealkirjale, mis on määratud WooCommerce’i isikliku "
+"kättesaamise asukoha seadetes. Kui see on välja lülitatud, kasutatakse "
+"sildil Fluid Checkout’ist pärit tõlgitavat teksti „Isiklik kättesaamine”."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2748,3 +4687,114 @@ msgstr "Jah"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "John"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "Doe"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "Näiteettevõte"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "123 Main Street"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "Mis tahes linn"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "Palun jätke pakk välisukse juurde."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "Müts"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "Kork"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "T-särk"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr "Saime teie tellimuse kätte ja saadame teile teate, kui see lähetatakse."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "Kasutusjuhend"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "Places API (uus)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "Places API (vanem versioon)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "Versioon 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "2. versioon"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ Järgmine kord kiirem kassasse minek\n"
+"✔ Makse-eelistuste haldamine\n"
+"✔ Tellimuse staatuse ja ajaloo vaatamine"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "Peidetud"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "Vabatahtlik"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "Kohustuslik"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Saadetise aadress"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Kohapealne kättesaamine"

@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce .select2-container .select2-selection--single .select2-selection__rendered {
+body#{ $body-theme-selector } div.woocommerce .select2-container .select2-selection--single .select2-selection__rendered {
 	padding: 0 1.07em !important; // Needed to override theme styles set with `!important`
 }

@@ -1,11 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .select2-container--default .select2-search--dropdown {
+body#{ $body-theme-selector } .select2-container--default .select2-search--dropdown {
 	padding: 4px; // Use default component's value to override theme styles
 }
 
-body#{ $_body-theme-selector } .select2-container--default .select2-results__option {
+body#{ $body-theme-selector } .select2-container--default .select2-results__option {
 	padding: 6px; // Use default component's value to override theme styles
 }

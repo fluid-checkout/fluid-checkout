@@ -277,10 +277,6 @@ msgstr "Cơ sở dữ liệu Fluid Checkout đã được cập nhật thành c�
 msgid "The database changes where applied successfully."
 msgstr "Cơ sở dữ liệu sẽ thay đổi khi áp dụng thành công."
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "Được rồi"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "Miễn nhiệm"
@@ -398,39 +394,9 @@ msgstr "Đọc tài liệu"
 msgid "Don't show this again"
 msgstr "Đừng hiển thị điều này nữa"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "Khuyến mại đặc biệt"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"Mở rộng mọi tiện ích của Fluid Checkout vào trang giỏ hàng và trang cảm ơn "
-"của bạn."
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Thanh toán Fluid PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"Thiết kế mẫu, tối ưu hóa giỏ hàng và các trang nhận đơn hàng, đối chiếu tài "
-"khoản và nhiều hơn nữa."
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"Công cụ tốt nhất giúp <strong>cải thiện tỷ lệ chuyển đổi thanh toán "
-"WooCommerce của bạn</strong> và mang lại trải nghiệm mua hàng nhất quán "
-"trong toàn bộ hành trình."
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -452,10 +418,6 @@ msgstr "Chỉnh sửa nội dung giỏ hàng tại trang thanh toán"
 msgid "Account matching / user matching"
 msgstr "So khớp tài khoản / so khớp người dùng"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "Nút Thanh toán nhanh từ các phương thức thanh toán được hỗ trợ"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "Biểu tượng tin cậy trên giỏ hàng và trang cảm ơn"
@@ -463,10 +425,6 @@ msgstr "Biểu tượng tin cậy trên giỏ hàng và trang cảm ơn"
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "Nhiều vị trí hơn cho mã phiếu giảm giá trên trang thanh toán"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "Trường mã phiếu giảm giá tích hợp trên trang giỏ hàng"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -480,250 +438,25 @@ msgstr "Tin nhắn quà tặng và phiếu đóng gói"
 msgid "Local pickup and in-store collection"
 msgstr "Nhận hàng tại địa phương và nhận hàng tại cửa hàng"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "Nâng cấp lên PRO — 99 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Fluid Checkout PRO – Gói"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "Tất cả các tính năng PRO + Tất cả các tiện ích bổ sung với mức giá đặc biệt."
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"Gói này bao gồm tất cả các tiện ích bổ sung mà chúng tôi hiện đang cung cấp "
-"và các tiện ích bổ sung Fluid Checkout mà chúng tôi sẽ ra mắt trong tương "
-"lai."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "Giá trị 226 EUR (Tiết kiệm 42%)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Tự động hoàn thành địa chỉ Google"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "Sổ địa chỉ"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "Trợ lý EU-VAT"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "Tất cả các tiện ích bổ sung trong tương lai *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* Miễn là bạn vẫn còn đăng ký."
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "Nhận trọn bộ – Chỉ 129 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"Tất cả giá được hiển thị bằng EUR. Nếu có bất kỳ sự khác biệt nào với giá "
-"trên trang web của chúng tôi, các ưu đãi được hiển thị trên trang web sẽ "
-"thay thế các ưu đãi này và sẽ được áp dụng."
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "Tiện ích bổ sung"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "Nâng cao trải nghiệm thanh toán của bạn với các tiện ích bổ sung này."
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "Tôi đã có nó – Ẩn ưu đãi này"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "Đã cài đặt — Kích hoạt"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "Đã kích hoạt"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "Giảm tới 40% số trường thanh toán cần điền."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"Tránh tình trạng giao hàng chậm trễ và khách hàng không hài lòng. Thu thập "
-"<strong>thông tin địa chỉ chính xác</strong> ngay từ lần đầu tiên họ mua "
-"hàng của bạn."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "Nhận tiện ích bổ sung này — 29 EUR"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "Sổ địa chỉ"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "Nhiều địa chỉ đã lưu để giao hàng và thanh toán."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"Cho phép khách hàng <strong>lưu nhiều địa chỉ giao hàng và thanh "
-"toán</strong> vào tài khoản của họ và chọn địa chỉ nào sẽ sử dụng khi thanh "
-"toán và trên trang giỏ hàng."
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "Nhận tiện ích bổ sung này — 59 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "Xác thực EU-VAT đơn giản cho cửa hàng của bạn."
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"Thu thập và <strong>xác thực số VAT của EU tại trang thanh toán</strong> , "
-"xóa phí thuế theo cơ sở tính thuế ngược và xác nhận vị trí của khách hàng "
-"khi cần."
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "Nhận tiện ích bổ sung này — 39 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"Tất cả các tiện ích bổ sung đều được bán riêng và yêu cầu phải cài đặt và "
-"kích hoạt plugin <strong>Fluid Checkout Lite</strong> , trừ khi có ghi chú "
-"khác."
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Chọn một hình ảnh"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Đăng nhập "
-"vào tài khoản của bạn</a> để lấy mã bản quyền hoặc <a href=\"%s\" "
-"target=\"_blank\">mua mã bản quyền mới</a> ."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "Có hiệu lực đến %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "Đã hết hạn vào %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Đăng nhập "
-"vào tài khoản của bạn</a> để gia hạn khóa cấp phép và tiếp tục nhận các bản "
-"cập nhật và hỗ trợ."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "Khóa cấp phép đã bị hủy."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">Mua mã bản quyền mới</a> và tiếp tục nhận "
-"được các bản cập nhật và hỗ trợ."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "Lỗi: "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "Thiết lập &amp; Tài liệu"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "Tuyệt! Trang thanh toán của bạn hiện đang chạy trên Fluid Checkout."
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "Sau đây là một số tài nguyên để bạn bắt đầu:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"Đọc hướng dẫn cài đặt <a href=\"%s\" target=\"_blank\">Bắt đầu với Fluid "
-"Checkout</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr ""
-"Thiết lập bố cục và thiết kế cho <a href=\"%s\">các tùy chọn thanh toán</a> "
-"."
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"Kiểm tra xem có <a href=\"%s\">tùy chọn tích hợp</a> nào khả dụng cho các "
-"plugin khác mà bạn đã cài đặt không."
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"Truy cập <a href=\"%s\" target=\"_blank\">tài liệu của chúng tôi</a> để "
-"biết thêm thông tin về các tính năng của Fluid Checkout."
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"Nếu bạn cần trợ giúp, <a href=\"%s\" target=\"_blank\">hãy mở phiếu hỗ "
-"trợ</a> trên kênh hỗ trợ chính thức của chúng tôi."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -736,14 +469,6 @@ msgstr "Tối ưu hóa giỏ hàng"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "Bật tối ưu hóa trang giỏ hàng"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "Hiển thị trang giỏ hàng với bố cục tương tự như trang thanh toán."
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "Đầu trang và chân trang"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -777,16 +502,6 @@ msgstr "Làm cho tóm tắt đơn hàng vẫn hiển thị trên trang giỏ hà
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "Mã giảm giá"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"Chọn vị trí hiển thị phần mã phiếu giảm giá trên trang giỏ hàng. Chỉ áp "
-"dụng khi giỏ hàng AJAX và mã phiếu giảm giá tích hợp trong trang thanh toán "
-"được bật."
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -878,10 +593,6 @@ msgstr "Bố cục bán chéo của chủ đề"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "Số lượng mặt hàng bán kèm để hiển thị trên trang giỏ hàng"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "Biểu tượng và huy hiệu tin cậy"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "Thêm khu vực tiện ích vào trang giỏ hàng"
@@ -898,10 +609,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "Thanh toán"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "Bố cục &amp; thiết kế"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "Bố cục thanh toán"
@@ -917,22 +624,6 @@ msgstr "Chế độ tối"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "Bật chế độ tối"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "Mẫu tiêu đề và chân trang"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"Chúng tôi khuyên bạn nên sử dụng tiêu đề và chân trang không gây mất tập "
-"trung để tránh mất tập trung ở trang thanh toán. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Đọc "
-"nghiên cứu về tình trạng bỏ giỏ hàng</a> ."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -983,10 +674,6 @@ msgid ""
 msgstr ""
 "Chọn màu nền cho chân trang thanh toán. Chỉ áp dụng khi sử dụng đầu trang "
 "và chân trang không gây mất tập trung."
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "Các yếu tố kiểm tra"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1072,18 +759,6 @@ msgstr "Liên kết đến trang cửa hàng"
 msgid "Cart items"
 msgstr "Các mặt hàng trong giỏ hàng"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "Bật tùy chọn chỉnh sửa các mục trong giỏ hàng trên trang thanh toán"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"Cho phép khách hàng thay đổi số lượng sản phẩm hoặc xóa sản phẩm trực tiếp "
-"tại trang thanh toán."
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "Ẩn lỗi các mục trong giỏ hàng tại trang thanh toán"
@@ -1134,35 +809,9 @@ msgstr ""
 "Các khu vực tiện ích này được sử dụng để thêm biểu tượng tin cậy và huy "
 "hiệu tin cậy trên trang thanh toán."
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"Chỉ hiển thị tiện ích thanh bên thanh toán khi xem bước thanh toán cuối "
-"cùng trên thiết bị di động khi sử dụng bố cục thanh toán nhiều bước"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "Bật phần mã phiếu giảm giá tích hợp"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr "Chỉ áp dụng nếu sử dụng mã phiếu giảm giá trong cài đặt WooCommerce."
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "Hiển thị tiêu đề phần mã phiếu giảm giá"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"Chỉ áp dụng khi mã phiếu giảm giá được hiển thị thành một mục riêng trên "
-"trang thanh toán hoặc trang giỏ hàng."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1181,17 +830,6 @@ msgstr "Là một bước phụ trước khi thanh toán"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "Là một bước phụ sau phương thức thanh toán"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"Chọn kiểu nút &quot;áp dụng phiếu giảm giá&quot;. Chỉ áp dụng khi phần mã "
-"phiếu giảm giá được hiển thị &quot;Trước các bước thanh toán&quot; trên "
-"trang thanh toán hoặc &quot;Trước phần mục giỏ hàng&quot; trên trang giỏ "
-"hàng."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1239,21 +877,6 @@ msgstr ""
 "Chỉ nên sử dụng khi hầu hết khách hàng thực sự cần trường &quot;Dòng địa "
 "chỉ 2&quot; hoặc khi việc có đúng địa chỉ giao hàng là rất quan trọng (ví "
 "dụ: nếu giao thực phẩm và các sản phẩm dễ hỏng khác)."
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "Hiển thị các nút liên kết &quot;Thêm&quot; bằng chữ thường"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"Đặt nhãn của nút liên kết &quot;Thêm&quot; trường tùy chọn thành "
-"<code>lowercase</code> (ví dụ: &quot;Thêm số điện thoại&quot; thay vì "
-"&quot;Thêm số điện thoại&quot;). Tùy chọn này cũng ảnh hưởng đến các nút "
-"liên kết cho trường mã phiếu giảm giá."
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1344,23 +967,6 @@ msgstr "Trước khi gửi địa chỉ"
 msgid "After shipping address"
 msgstr "Địa chỉ sau khi giao hàng"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "Ngăn chặn việc tự động lựa chọn phương thức vận chuyển đầu tiên"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Khi được bật, phương thức vận chuyển đầu tiên khả dụng sẽ không được tự "
-"động chọn khi chưa có phương thức vận chuyển nào khác được chọn cho mỗi gói "
-"hàng.<br> Tùy chọn này sẽ tự động được bật nếu tùy chọn xóa phương thức "
-"giao hàng đã chọn được bật cho tính năng Nhận hàng tại địa phương."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Nhận hàng tại địa phương"
@@ -1380,23 +986,6 @@ msgid ""
 msgstr ""
 "Thay thế địa chỉ giao hàng bằng địa điểm nhận hàng khi chọn phương thức "
 "giao hàng đến tận nơi."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Hiển thị tùy chọn để xóa phương thức vận chuyển trong bước phụ địa điểm "
-"nhận hàng"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Hiển thị nút liên kết trên bước phụ địa điểm nhận hàng để xóa các phương "
-"thức giao hàng đã chọn. Có thể sử dụng nút này để cho phép hiển thị lại "
-"phần địa chỉ giao hàng nếu đã chọn phương thức nhận hàng tại địa phương "
-"trước đó."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1475,32 +1064,6 @@ msgstr "Thêm trường số điện thoại thanh toán vào biểu mẫu thanh
 msgid "Choose in which step to display the billing phone field."
 msgstr "Chọn bước để hiển thị trường số điện thoại thanh toán."
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "Cho phép xác thực số điện thoại dựa trên quy tắc quốc gia"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"Khi tắt, tính năng xác thực trường điện thoại sẽ không kiểm tra xem mã quốc "
-"gia hoặc mã vùng có hợp lệ đối với quốc gia đó hay không."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "Chỉ hiển thị các quốc gia được phép vận chuyển hoặc thanh toán"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"Khi được bật, chỉ những quốc gia được phép vận chuyển mới có trong trường "
-"số điện thoại giao hàng và chỉ những quốc gia được phép thanh toán mới có "
-"trong trường số điện thoại thanh toán."
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "Hiển thị mã quốc gia bên cạnh lá cờ"
@@ -1533,12 +1096,6 @@ msgstr "Xác định khả năng hiển thị của trường ghi chú đơn hà
 msgid "Gift options"
 msgstr "Tùy chọn quà tặng"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr ""
-"Hiển thị tin nhắn quà tặng và các tùy chọn quà tặng khác tại trang thanh "
-"toán"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1546,10 +1103,6 @@ msgid ""
 msgstr ""
 "Cho phép khách hàng thêm tin nhắn quà tặng và các tùy chọn liên quan đến "
 "quà tặng khác vào đơn hàng."
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "Hiển thị các trường tin nhắn quà tặng luôn được mở rộng"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1605,27 +1158,9 @@ msgstr "Bảng điều khiển"
 msgid "Integrations"
 msgstr "Tích hợp"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"Hiện tại không có tích hợp nào khả dụng trong phần này. Các tùy chọn liên "
-"quan đến từng plugin sẽ chỉ xuất hiện ở đây nếu plugin đó được kích hoạt."
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "Khóa cấp phép"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"Hiện tại không có tùy chọn khóa cấp phép nào khả dụng trên phần này. Các "
-"tùy chọn liên quan đến từng plugin hoặc tiện ích bổ sung sẽ xuất hiện ở đây "
-"khi plugin đó được kích hoạt."
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1725,14 +1260,6 @@ msgstr ""
 "Các khu vực tiện ích này được sử dụng để thêm biểu tượng tin cậy và huy "
 "hiệu tin cậy vào trang cảm ơn."
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"Các tùy chọn này ảnh hưởng đến trang cảm ơn, xem chi tiết đơn hàng trên "
-"trang tài khoản và thông báo qua email."
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "Đặt hàng hành động"
@@ -1825,22 +1352,6 @@ msgstr "Tải các tài sản chưa thu nhỏ"
 msgid "Enhanced select fields"
 msgstr "Các trường chọn nâng cao"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr ""
-"Thay thế các thành phần dropdown <code>select2</code> bằng "
-"<code>TomSelect</code>"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect là thành phần lựa chọn thả xuống đơn giản hơn, ít xảy ra lỗi hơn "
-"Select2, đồng thời cung cấp các tính năng giống như những tính năng thực sự "
-"được sử dụng trên các trang thanh toán WooCommerce."
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "Sửa lỗi tự động phóng to các trường biểu mẫu"
@@ -1848,34 +1359,6 @@ msgstr "Sửa lỗi tự động phóng to các trường biểu mẫu"
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "Đặt <code>font-size</code> bên trong các trường biểu mẫu thành 16px"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"Khi kích thước phông chữ bên trong các trường biểu mẫu nhỏ hơn 16px, Safari "
-"và các trình duyệt khác có thể tự động phóng to trên thiết bị di động để "
-"giúp văn bản dễ đọc hơn. Khi tùy chọn này được bật, nó sẽ đặt kích thước "
-"phông chữ bên trong các trường biểu mẫu thành 16px trên các trang được "
-"Fluid Checkout tối ưu hóa để tránh việc phóng to."
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"Điểm đến giao hàng luôn được đặt thành &quot;Mặc định là địa chỉ giao hàng "
-"của khách hàng&quot; khi Fluid Checkout được kích hoạt. Khách hàng vẫn có "
-"thể cung cấp các địa chỉ giao hàng và thanh toán khác nhau trong quá trình "
-"thanh toán, tùy chọn để đặt địa chỉ thanh toán mặc định giống với địa chỉ "
-"giao hàng có tại WooCommerce &gt; Cài đặt &gt; Fluid Checkout."
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1902,14 +1385,6 @@ msgstr "(CHUYÊN NGHIỆP)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(thử nghiệm)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "Xác nhận"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "Xác minh số điện thoại"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2432,10 +1907,6 @@ msgstr "Sau thanh tiến trình"
 msgid "Before coupon codes section"
 msgstr "Trước phần mã giảm giá"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "Cho phép các trường số điện thoại quốc tế"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "Định dạng số điện thoại theo quy định của từng quốc gia."
@@ -2443,18 +1914,6 @@ msgstr "Định dạng số điện thoại theo quy định của từng quốc
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "Sử dụng xác thực số điện thoại chính xác"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"Hãy đảm bảo số điện thoại là số di động hoặc cố định hợp lệ dựa trên quy "
-"tắc mã quốc gia đã chọn. Tùy chọn này sử dụng tính năng xác thực chính xác "
-"<code>intl-tel-input</code> , có thể đưa ra kết quả dương tính giả cho một "
-"số số điện thoại."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2495,26 +1954,6 @@ msgstr "2 cột"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 cột"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"Các kiểu dáng chung cho các bước thanh toán, tóm tắt đơn hàng và các phần "
-"khác.<br> Điều này cũng có thể áp dụng cho các trang khác như Giỏ hàng, Đơn "
-"hàng đã nhận và Xem đơn hàng."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"Mẫu thiết kế <em>&quot;Split&quot;</em> không khả dụng khi sử dụng bố cục "
-"<em>&quot;1 cột&quot;</em> và sẽ tự động chuyển sang bố <em>cục "
-"&quot;Minimalist&quot;</em> nếu được chọn."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2615,6 +2054,2518 @@ msgstr ""
 "bảo địa chỉ giao hàng có thể được sao chép vào địa chỉ thanh toán khi tùy "
 "chọn đó được chọn, nếu không khách hàng có thể không hoàn tất được biểu mẫu "
 "thanh toán."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "Hồ sơ cài đặt"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "Hồ sơ cài đặt"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "Bạn không có quyền thực hiện hành động này."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "Bạn không có quyền kích hoạt plugin."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "Thiếu plugin."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "Plugin đã được kích hoạt."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "Những thay đổi sau đây sẽ được áp dụng:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Từ Fluid Checkout 5.0 trở đi, cài đặt được lưu theo cách khác. Các tùy chọn "
+"cũ vẫn được lưu trữ trong cơ sở dữ liệu để cho phép hạ cấp xuống các phiên "
+"bản trước nếu cần."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"Cửa hàng của bạn đã hoạt động được khoảng 2 tuần với các cài đặt mới, vì "
+"vậy bạn có thể đã dọn dẹp các tùy chọn cũ được lưu trữ trong cơ sở dữ liệu. "
+"Xin lưu ý rằng sau khi dọn dẹp, nếu bạn cần hạ cấp xuống các phiên bản "
+"trước của plugin, nó sẽ sử dụng các giá trị mặc định cho tất cả các cài đặt."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "Dọn dẹp cài đặt Fluid Checkout"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "Xóa các tùy chọn còn sót lại"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "Hãy giúp chúng tôi cải thiện Fluid Checkout."
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"Chia sẻ báo cáo môi trường trang web ẩn danh với Fluid Checkout để nhận hỗ "
+"trợ nhanh hơn và giúp chúng tôi cải thiện khả năng tương thích cũng như đo "
+"lường tác động. Không có dữ liệu khách hàng, người dùng hoặc dữ liệu nhạy "
+"cảm nào được bao gồm. Bạn có thể chọn những gì được chia sẻ bất cứ lúc nào "
+"từ cài đặt Công cụ."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "Cho phép báo cáo môi trường trang web"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "Xem lại cài đặt"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"Chế độ xem trước này đã hết hạn. Vui lòng tải lại trang quản trị để bắt đầu "
+"chế độ xem trước mới."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "Bản xem trước đã hết hạn"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "Hiện tại chưa thể đặt hàng trong phần xem trước."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "Tính năng đăng nhập hiện chưa khả dụng trong phiên bản xem trước."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "Không thể tạo tài khoản trong chế độ xem trước."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "Các yêu cầu truy cập từ các trang web khác bị chặn trong chế độ xem trước."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "Xử lý…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "Đã xảy ra lỗi. Vui lòng thử lại."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "Kích hoạt plugin"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - Giải pháp thanh toán hoàn chỉnh"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"Tất cả các tính năng PRO + tất cả các tiện ích bổ sung, chỉ với một mức "
+"giá. Mẫu thiết kế, trang giỏ hàng và trang xác nhận đơn hàng được tối ưu "
+"hóa, đồng bộ tài khoản và nhiều hơn nữa."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "Trang thanh toán đơn hàng được tối ưu hóa"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "Nút thanh toán nhanh từ các phương thức thanh toán được hỗ trợ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "Tạo tài khoản bị trì hoãn"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Tự động điền địa chỉ bằng API Google Maps"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "Lưu nhiều địa chỉ cùng với sổ địa chỉ."
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "Trợ lý VAT EU"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "Ẩn phần này"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "Tìm hiểu thêm"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "Nhận quyền truy cập sớm"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "Kích hoạt tiện ích bổ sung"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "Tận dụng tối đa hành trình thanh toán của bạn"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "Khóa API thử nghiệm"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "Hướng dẫn cài đặt"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "Tùy chọn"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr ""
+"Thiết lập bố cục và thiết kế cho <a href=\"%s\">các tùy chọn thanh toán</a> "
+"."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"Cho phép thanh toán với tư cách khách không đăng nhập và/hoặc xem lại <a "
+"href=\"%s\">cài đặt tài khoản khách hàng</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"Kích hoạt <a href=\"%1$s\">trang giỏ hàng</a> , <a href=\"%2$s\">trang cảm "
+"ơn</a> và trang <a href=\"%3$s\">thanh toán đơn hàng</a> đã được tối ưu hóa."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr "Bật tính năng <a href=\"%s\">tự động điền địa chỉ</a> trên Google Maps."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr "Cho phép lưu nhiều địa chỉ cùng lúc với <a href=\"%s\">sổ địa chỉ</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"Kiểm tra xem có <a href=\"%s\">tùy chọn tích hợp</a> nào khả dụng cho giao "
+"diện hoặc các plugin khác mà bạn đã cài đặt hay không."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"Nhận hỗ trợ nhanh hơn và giúp chúng tôi cải thiện khả năng tương thích cũng "
+"như đo lường tác động. <a href=\"%s\">Bật tính năng theo dõi sử dụng</a> từ "
+"cài đặt công cụ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "Thiếu tab cài đặt."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "Bắt đầu"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>Tuyệt vời! Trang thanh toán của bạn hiện đã được triển khai trên "
+"Fluid Checkout.</strong> Sau đây là một vài bước để bắt đầu:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "Hoàn thành"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "Xem trước dữ liệu báo cáo"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "Gửi ngay"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "Tự động phát hiện"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "Tiếng Afrikaans"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "người Albania"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "tiếng Amharic"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "tiếng Ả Rập"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "người Armenia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "tiếng Azerbaijan"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "Basque"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "tiếng Belarus"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "tiếng Bengali"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "người Bosnia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "tiếng Bulgaria"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "người Miến Điện"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "tiếng Catalan"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "Trung Quốc"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "Tiếng Trung (Giản thể)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "Tiếng Trung (Hồng Kông)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "Tiếng Trung (Truyền thống)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "tiếng Croatia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "tiếng Séc"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "tiếng Đan Mạch"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "Tiếng Hà Lan"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "Tiếng Anh"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "Tiếng Anh (Úc)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "Tiếng Anh (Vương quốc Anh)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "tiếng Estonia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "tiếng Ba Tư"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "Phần Lan"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "người Philippines"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "tiếng Pháp"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "Tiếng Pháp (Canada)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "người Galicia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "người Gruzia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "tiếng Đức"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "tiếng Hy Lạp"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "tiếng Gujarati"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "tiếng Do Thái"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "Tiếng Hindi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "Tiếng Hungary"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "tiếng Iceland"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "Tiếng Indonesia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "Ý"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "Tiếng Nhật"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "Kannada"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "tiếng Kazakh"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "Khmer"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "tiếng Hàn"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "Kyrgyz"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "Lào"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "tiếng Latvia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "tiếng Litva"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "Macedonia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "Mã Lai"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "Tiếng Malayalam"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "Tiếng Marathi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "Mông Cổ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "tiếng Nepal"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "tiếng Na Uy"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "Đánh bóng"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "tiếng Bồ Đào Nha"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "Tiếng Bồ Đào Nha (Brazil)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "Tiếng Bồ Đào Nha (Bồ Đào Nha)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "tiếng Punjabi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "tiếng Romania"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "Tiếng Nga"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "tiếng Serbia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "người Sinhalese"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "tiếng Slovak"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "tiếng Slovenia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "tiếng Tây Ban Nha"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "Tiếng Tây Ban Nha (Mỹ Latinh)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "Tiếng Swahili"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "Thụy Điển"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "Tiếng Tamil"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "Tiếng Telugu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "Thái Lan"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "tiếng Thổ Nhĩ Kỳ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "tiếng Ukraina"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "tiếng Urdu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "Tiếng Việt"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "Người Zulu"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Tính năng tự động hoàn thành địa chỉ của Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Phiên bản API Google Places"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"Hãy chọn phiên bản API Google Places mà bạn muốn sử dụng. Chúng tôi khuyên "
+"bạn nên chuyển sang API Places mới càng sớm càng tốt."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"Chúng tôi khuyên bạn nên sử dụng &quot;Places API (New)&quot; vì kể từ ngày "
+"1 tháng 3 năm 2025, Google sẽ chuyển phiên bản &quot;Places API "
+"(Legacy)&quot; sang trạng thái Legacy, có nghĩa là bạn sẽ không còn có thể "
+"kích hoạt dịch vụ này cho các khóa API mới và phiên bản API đó cuối cùng sẽ "
+"không còn khả dụng nữa. Các tài khoản hiện có đang sử dụng API Legacy có "
+"thể tiếp tục hoạt động mà không bị gián đoạn."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(Khuyến khích)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Khóa API của Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"Dán khóa API của Google và sử dụng nút kiểm tra để xác nhận xem nó có hoạt "
+"động trên trang web này hay không. Hãy đảm bảo khóa hợp lệ và được cho phép "
+"đối với tên miền của bạn, nếu không, trường địa chỉ có thể bị chặn, ngăn "
+"cản khách hàng hoàn tất đơn đặt hàng."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "Bật tính năng tự động điền địa chỉ của Google."
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr ""
+"Kích hoạt tính năng tự động hoàn thành địa chỉ bằng cách sử dụng API của "
+"Google Maps."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Ngôn ngữ API của Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"Ngôn ngữ này sẽ được sử dụng để hiển thị các gợi ý địa chỉ từ API Google "
+"Places và địa chỉ cũng sẽ được tự động hoàn thành bằng ngôn ngữ này."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "Các loại kết quả"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Để trống nếu muốn chấp nhận bất kỳ loại kết quả nào, điều này thường mang "
+"lại kết quả phù hợp tốt hơn. <a href=\"%s\" target=\"_blank\">Xem tài liệu "
+"để biết thêm chi tiết</a> .<br> Chọn tối đa 5 loại kết quả tìm kiếm địa chỉ "
+"để hiển thị trên các trường tự động điền địa chỉ.<br> Hãy truy cập tài liệu "
+"hướng dẫn của Google Maps để tìm hiểu thêm về <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">các loại bản đồ được hỗ trợ</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "Các loại kết quả (API cũ)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Loại kết quả tìm kiếm địa chỉ nào sẽ được trả về khi sử dụng API Địa điểm "
+"(Phiên bản cũ)?<br> Hãy truy cập tài liệu của API Google Places phiên bản "
+"cũ để tìm hiểu thêm về <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">các loại dữ liệu được hỗ trợ</a> "
+"."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "Lĩnh vực của công ty"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "Bật tính năng tự động điền tên công ty nếu có."
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Cho phép tự động điền thông tin tên công ty vào trường thông tin công ty "
+"khi nhận được dữ liệu từ API của Google Maps."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "Tìm kiếm doanh nghiệp"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "Cho phép tìm kiếm doanh nghiệp trong lĩnh vực công ty."
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"Cho phép gợi ý địa chỉ liên kết với doanh nghiệp khi nhập thông tin công ty "
+"vào trường thông tin doanh nghiệp, sau đó tự động điền tất cả các trường "
+"địa chỉ khi chọn một doanh nghiệp từ các gợi ý."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "Các loại kết quả của công ty"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Chọn tối đa 5 loại kết quả tìm kiếm địa chỉ để hiển thị trong các trường "
+"thông tin công ty được tự động điền.<br> Giá trị đề xuất là "
+"<code>establishment</code> , bao gồm hầu hết các loại hình doanh "
+"nghiệp.<br> Để trống nếu bạn muốn chấp nhận bất kỳ loại kết quả nào, bao "
+"gồm cả những kết quả không liên quan đến doanh nghiệp.<br> Hãy truy cập tài "
+"liệu hướng dẫn của Google Maps để tìm hiểu thêm về <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">các loại bản đồ được hỗ trợ</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Logo Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "Hiển thị văn bản và logo &quot;Được cung cấp bởi Google&quot;"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"Khi được chọn, dòng chữ và logo &quot;Powered by Google&quot; sẽ hiển thị ở "
+"cuối hộp gợi ý tự động điền địa chỉ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "Tự động điền địa chỉ API Brazil"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "API Brazil"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "Bật tính năng tự động điền địa chỉ API Brazil cho các trường CEP."
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"Sử dụng API của Brazil để truy xuất và tự động điền địa chỉ bằng cách sử "
+"dụng trường CEP/Mã bưu chính. Chỉ áp dụng cho địa chỉ tại Brazil."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "Phiên bản API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "Hãy chọn phiên bản phương thức Brasil API CEP mà bạn muốn sử dụng."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "Di chuyển sổ địa chỉ"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "Địa chỉ WooCommerce"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"Sao chép địa chỉ giao hàng và thanh toán hiện có từ WooCommerce vào sổ địa "
+"chỉ của khách hàng."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "Kích hoạt tính năng sổ địa chỉ"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"Cho phép khách hàng lưu nhiều địa chỉ và thiết lập địa chỉ mặc định được sử "
+"dụng cho việc giao hàng và thanh toán."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "Nhãn địa chỉ"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "Cho phép khách hàng thêm nhãn tùy chỉnh cho từng địa chỉ."
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"Nhãn địa chỉ giúp khách hàng dễ dàng phân biệt giữa các địa chỉ đã lưu của "
+"họ (ví dụ: &quot;Nhà của mẹ&quot;). Các nhãn địa chỉ này chỉ dành riêng cho "
+"khách hàng và sẽ không được hiển thị hoặc in trên trang chi tiết đơn hàng "
+"hoặc hóa đơn."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "Bố cục hiển thị"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr "Chọn cách hiển thị địa chỉ đã lưu tại trang thanh toán và trong giỏ hàng."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"Áp dụng khi thanh toán và trên giỏ hàng. Địa chỉ đã lưu trên trang tài "
+"khoản luôn sử dụng định dạng thẻ."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "Thẻ địa chỉ"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "Danh sách địa chỉ"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "Trường thả xuống"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "Tìm kiếm địa chỉ"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"Hiển thị bộ lọc tìm kiếm địa chỉ trên giao diện người dùng khi khách hàng "
+"đã lưu ít nhất số lượng địa chỉ này."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "Không được sử dụng khi bố cục hiển thị được đặt thành trường thả xuống."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "Địa chỉ"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "Bật tùy chọn tối ưu hóa trang giỏ hàng để xem thêm các tùy chọn khác."
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "Tóm tắt đơn hàng dính"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"Chọn vị trí hiển thị phần mã giảm giá trên trang giỏ hàng. Chỉ áp dụng khi "
+"giỏ hàng AJAX được bật và nếu việc sử dụng mã giảm giá được cho phép trong "
+"cài đặt WooCommerce."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "Bố cục bán chéo"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "Các sản phẩm bán chéo được hiển thị"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "Mặt hàng"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "Tối ưu hóa trang giỏ hàng"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"Hãy thiết kế giỏ hàng của bạn sao cho rõ ràng và tập trung vào chuyển đổi, "
+"giống như trang thanh toán."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr ""
+"Hãy đảm bảo bố cục giỏ hàng khớp với trang thanh toán để tạo sự nhất quán "
+"trong trải nghiệm mua sắm."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"Luôn cập nhật giỏ hàng trong nền, không cần tải lại toàn bộ trang khi số "
+"lượng hàng hóa thay đổi."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"Đặt mã giảm giá, thông tin vận chuyển và các chương trình khuyến mãi kết "
+"hợp chính xác ở những vị trí mang lại hiệu quả chuyển đổi cao nhất."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"Hãy giữ cho tóm tắt đơn hàng luôn hiển thị khi cuộn trang và thêm các biểu "
+"tượng tin cậy ở những nơi khách hàng cần được trấn an."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "Cột"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"Các kiểu dáng chung cho các bước thanh toán, tóm tắt đơn hàng và các phần "
+"khác. Áp dụng cho các trang thanh toán, giỏ hàng, cảm ơn (đã nhận đơn hàng) "
+"và xem đơn hàng khác."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"Khi sử dụng bố cục <em>&quot;1 cột&quot;</em> với mẫu thiết kế "
+"<em>&quot;Chia đôi&quot;</em> , cột bên phải chỉ hiển thị nếu khu vực tiện "
+"ích thanh bên của trang được kích hoạt (Thanh bên Thanh toán, Thanh bên Giỏ "
+"hàng hoặc Thanh bên Đơn hàng đã nhận). Nếu không, trang sẽ vẫn là một cột "
+"duy nhất với kiểu chia đôi."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "Nền chia cột"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"Chọn màu nền cho cột phụ của thiết kế Chia đôi. Để trống nếu muốn sử dụng "
+"màu nền của tóm tắt đơn hàng."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "Mẫu trang"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "Mẫu thanh toán"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"Được khuyến nghị để giảm thiểu sự phân tâm khi thanh toán. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Hãy "
+"đọc nghiên cứu về tình trạng bỏ giỏ hàng</a> ."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "Thanh tiến độ cố định"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "Kiểu thanh tiến độ"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "Tổng cộng đơn hàng"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "Màu nền"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "Liên kết hành động"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "Tóm tắt đơn hàng trên di động"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "Trạng thái ban đầu trên thiết bị di động"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "Cho phép chỉnh sửa các mặt hàng trong giỏ hàng khi thanh toán"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"Cho phép khách hàng thay đổi số lượng sản phẩm hoặc xóa sản phẩm trực tiếp "
+"tại trang thanh toán."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "Lỗi mặt hàng trong giỏ hàng"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"Chỉ áp dụng khi mã giảm giá được hiển thị trong một phần riêng biệt trên "
+"trang thanh toán hoặc giỏ hàng, và nếu việc sử dụng mã giảm giá được bật "
+"trong cài đặt WooCommerce."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "Vị trí của mã giảm giá"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "Áp dụng nút mã giảm giá"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "Chọn kiểu dáng của nút &quot;áp dụng mã giảm giá&quot;."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "Dòng địa chỉ 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"Cài đặt này được áp dụng chung cho cả phần Thanh toán và phần Nhận hàng tại "
+"cửa hàng. Tại phần Nhận hàng tại cửa hàng, nó cũng quyết định xem bộ chọn "
+"Giao hàng/Nhận hàng sẽ hiển thị bên trong phần phương thức vận chuyển "
+"(trước địa chỉ) hay là một phần riêng biệt (sau đó)."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "Tài khoản khách hàng"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "Thanh toán với tư cách khách"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"Các tùy chọn thanh toán với tư cách khách, đăng nhập và tạo tài khoản được "
+"quản lý tại trang cài đặt Tài khoản WooCommerce. Chúng được quản lý tại đây "
+"để thuận tiện cho bạn, và bạn có thể sử dụng các giá trị khác nhau cho mỗi "
+"cấu hình cài đặt."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "Cho phép khách hàng thanh toán mà không cần tài khoản"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Nên chọn tùy chọn</strong> này để khách hàng không phải tạo tài "
+"khoản hoặc đăng nhập trong quá trình thanh toán, điều này có thể giúp giảm "
+"tỷ lệ chuyển đổi."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"Khi tính năng này bị vô hiệu hóa, khách hàng phải đăng nhập hoặc tạo tài "
+"khoản để hoàn tất giao dịch mua hàng."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "Đăng nhập khi thanh toán"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "Cho phép đăng nhập trong quá trình thanh toán"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr "Hiển thị liên kết đăng nhập cho khách hàng cũ từ trang thanh toán."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "Tạo tài khoản"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "Cho phép khách hàng tạo tài khoản trong quá trình thanh toán"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "Khách hàng có thể tạo tài khoản trước khi đặt hàng."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "Cho phép khách hàng tạo tài khoản từ trang Tài khoản của tôi."
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "Khách hàng có thể đăng ký tài khoản mới từ trang Tài khoản của tôi."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "Tên người dùng"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "Tạo từ tên khách hàng"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Nên khuyến nghị</strong> như vậy để khách hàng không phải chọn tên "
+"người dùng trong quá trình thanh toán, điều này có thể làm giảm tỷ lệ "
+"chuyển đổi."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"Tên người dùng được tạo từ tên khách hàng, hoặc từ địa chỉ email khi không "
+"thể sử dụng tên."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "Mật khẩu"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "Gửi liên kết thiết lập mật khẩu"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Nên sử dụng tùy chọn này</strong> để khách hàng không phải thiết "
+"lập mật khẩu trong quá trình thanh toán, điều này có thể giúp giảm tỷ lệ "
+"chuyển đổi."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "Khách hàng sẽ nhận được email hướng dẫn tạo mật khẩu một cách an toàn."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"Cho phép khách hàng đã đăng ký hoàn tất thanh toán mà không cần đăng nhập "
+"và liên kết đơn hàng với tài khoản hiện có của họ khi thông tin liên hệ "
+"trùng khớp."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "Tin nhắn tài khoản hiện có"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr "Cho phép khách hàng tạo tài khoản sau khi đặt hàng, ngay trên trang cảm ơn."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"Các tùy chọn trong phần này khả dụng khi tính năng thanh toán với tư cách "
+"khách và đối khớp tài khoản được bật. Hãy bật cả hai tính năng trên để cấu "
+"hình việc tạo tài khoản trì hoãn."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "Cho phép tạo tài khoản trì hoãn"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"Cho phép tạo tài khoản trì hoãn khi cả tính năng thanh toán với tư cách "
+"khách và tính năng đối khớp tài khoản đều được bật."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "Vị trí phần"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "Trước phần thông tin khách hàng"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "Sau phần thông tin khách hàng"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "Lợi ích khi tạo tài khoản"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "Nếu để trống trường này, văn bản mặc định sẽ được hiển thị."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "Nút nội tuyến"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "Các trường bắt buộc"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "Cho phép chọn ô ghi lời nhắn quà tặng khi thanh toán"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "Tin nhắn quà tặng mở rộng"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "Trường tin nhắn quà tặng luôn được mở rộng"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "Lời nhắn quà tặng trong chi tiết đơn hàng"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"Hiện tại chưa có tích hợp nào khả dụng trong phần này. Các tùy chọn liên "
+"quan đến từng plugin và theme sẽ chỉ xuất hiện ở đây khi plugin hoặc theme "
+"đó được kích hoạt."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "Trường điện thoại"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "Khả năng quan sát thực địa"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "Vị trí trên sân"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "Mã quốc gia và xác thực điện thoại"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "Quốc gia"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "Cho phép chọn quốc gia trong trường số điện thoại"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "Lọc quốc gia để vận chuyển hoặc thanh toán"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"Giới hạn lựa chọn quốc gia trên mỗi trường số điện thoại chỉ cho phép các "
+"quốc gia được phép giao hàng hoặc thanh toán trên cửa hàng của bạn."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "Xác thực"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "Cho phép xác thực đơn giản dựa trên quy tắc của từng quốc gia."
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"Kiểm tra xem số điện thoại có hợp lệ tại quốc gia đã chọn hay không, bao "
+"gồm mã quốc gia và độ dài số."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"Kiểm tra nghiêm ngặt hơn để đảm bảo số điện thoại hợp lệ, dù là di động, "
+"điện thoại cố định hay loại số được chấp nhận khác tại quốc gia đã chọn. Có "
+"thể từ chối một số số hợp lệ."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "Các loại xác thực"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "Các chỗ giữ chỗ"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"Hiện tại chưa có khóa bản quyền nào cần quản lý. Khóa bản quyền sẽ xuất "
+"hiện ở đây khi plugin hoặc tiện ích bổ sung Fluid Checkout có bản quyền "
+"được kích hoạt."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "Loại giao hàng mặc định"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "Hãy chọn loại hình giao hàng sẽ được chọn mặc định."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "Các khu vực vận chuyển"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Chọn các trường sẽ được hiển thị cho bộ lọc khu vực giao hàng nhận tại cửa "
+"hàng. Để trống để hiển thị tất cả các tùy chọn có sẵn."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Các trường này sẽ được hiển thị dưới dạng bộ lọc cho các phương thức giao "
+"hàng nhận tại cửa hàng. Một số trường vẫn có thể xuất hiện ở trang thanh "
+"toán ngay cả khi không được chọn ở đây, nếu các plugin tương thích yêu cầu "
+"chúng hoạt động đúng cách."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "Địa chỉ giao hàng của đơn hàng"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "Tối ưu hóa trang thanh toán đơn hàng"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"Hãy đảm bảo các đơn hàng chưa thanh toán có bố cục rõ ràng và tập trung vào "
+"chuyển đổi tương tự như trang thanh toán."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"Tối ưu hóa bố cục trang thanh toán đơn hàng đối với các đơn hàng đang chờ "
+"thanh toán."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"Đảm bảo trải nghiệm thanh toán đơn hàng đồng nhất với quy trình thanh toán "
+"để tạo ra hành trình mua sắm liền mạch."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"Thêm các biểu tượng và huy hiệu chứng nhận độ tin cậy ở những nơi khách "
+"hàng cần được trấn an trước khi thanh toán."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "Cảm ơn bạn đã tối ưu hóa trang web."
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"Hãy làm cho trang cảm ơn và chi tiết đơn hàng rõ ràng hơn cho khách hàng "
+"sau khi họ mua hàng."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr "Tối ưu hóa trang cảm ơn và chi tiết đơn hàng với bố cục rõ ràng hơn."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"Hiển thị tiến độ trạng thái đơn hàng, các hành động, tải xuống và ghi chú ở "
+"những nơi cần thiết."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "Tùy chỉnh các mục chi tiết đơn hàng trên thông báo email."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"Thêm các biểu tượng và huy hiệu chứng nhận độ tin cậy ở những nơi khách "
+"hàng cần được trấn an sau khi mua hàng."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "Thông báo qua email"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"Bật tùy chọn tối ưu hóa trang cảm ơn và chi tiết đơn hàng để xem thêm các "
+"tùy chọn khác."
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "Sử dụng bố cục rộng cho trang cảm ơn"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"Các tùy chọn này ảnh hưởng đến trang cảm ơn, xem chi tiết đơn hàng trên "
+"trang tài khoản và thông báo qua email."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "Lưu cài đặt"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "Bác sĩ"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "Xe đẩy"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "Cảm ơn"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "Tự động điền địa chỉ"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "Huy hiệu tin cậy"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "Bạn không có quyền lưu các cài đặt này."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "Yêu cầu lưu không hợp lệ."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "Cài đặt của bạn đã được lưu."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "Đang lưu..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "Không thể lưu cài đặt. Vui lòng thử lại."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "Thông báo sa thải"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "Mở menu cài đặt"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "Đóng menu cài đặt"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "Xem trước"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "Xem trước mở rộng"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "Thu gọn xem trước"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "Hiển thị tiêu đề và chân trang"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "Ẩn phần đầu trang và chân trang"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "Xem trước trang"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "Khung nhìn xem trước"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "Viên thuốc"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "Máy tính để bàn"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "Chiều rộng xem trước"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "Giảm chiều rộng"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "Chiều rộng xem trước (tính bằng pixel)"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "Tăng chiều rộng"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "Xem trước dưới dạng"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "Khách mời"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "Đã đăng nhập"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "Trang xem trước"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "Phóng to hình ảnh xem trước để xem chi tiết hơn."
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "Có sẵn với %s."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "Hãy bật chúng lên"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr "Tính năng tối ưu hóa cho trang này đã bị tắt. Nhấn %s để xem trước trang."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "%s xem trước"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "Phiên làm việc riêng biệt · không có gì được lưu"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "Theo dõi mức sử dụng"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Gửi các báo cáo về môi trường trang web không chứa thông tin nhạy cảm để "
+"giúp Fluid Checkout cải thiện khả năng tương thích. Báo cáo sẽ không được "
+"gửi cho đến khi được bật trong các tùy chọn bên dưới."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "Gửi báo cáo theo dõi sử dụng đến Fluid Checkout."
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"Các báo cáo này giúp chúng tôi cải thiện khả năng tương thích và hỗ trợ cho "
+"trang web của bạn và được gửi hàng tuần khi tính năng này được kích hoạt."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"Báo cáo không bao gồm bất kỳ dữ liệu khách hàng, người dùng quản trị hoặc "
+"bất kỳ dữ liệu nhạy cảm nào khác."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "Thông tin cơ bản về môi trường"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"Dữ liệu về WordPress, PHP, WooCommerce, giao diện và danh sách plugin. Luôn "
+"được bao gồm khi chức năng báo cáo được bật. Giúp chúng tôi hiểu rõ môi "
+"trường hoạt động của trang web của bạn."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "Cài đặt plugin"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"Gửi cài đặt plugin Fluid Checkout để hỗ trợ các yêu cầu kỹ thuật và giúp "
+"chúng tôi hiểu cách bạn đang sử dụng các plugin của chúng tôi."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "Sắp ra mắt"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "Số liệu bán hàng"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"Số lượng đơn hàng hàng tháng và tổng doanh thu trong một năm trước khi cài "
+"đặt Fluid Checkout cho đến nay. Giúp chúng tôi hiểu liệu bạn có đang kiếm "
+"được nhiều tiền hơn khi cài đặt plugin của chúng tôi hay không. Không có dữ "
+"liệu khách hàng hoặc người dùng nào được gửi đi."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "Tiện ích"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"Hãy sử dụng các thành phần thả xuống <code>TomSelect</code> thay vì "
+"<code>select2</code>"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect là một thành phần lựa chọn thả xuống đơn giản hơn, ít xảy ra lỗi "
+"hơn so với Select2, trong khi vẫn cung cấp chức năng tương tự."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"Thiết lập kích thước phông chữ bên trong các trường biểu mẫu thành 16px "
+"trên các trang được tối ưu hóa bởi plugin này để tránh tự động phóng to khi "
+"tương tác với các trường biểu mẫu trên các thiết bị có màn hình nhỏ."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"Safari và các trình duyệt khác có thể tự động phóng to trên thiết bị di "
+"động để giúp văn bản dễ đọc hơn khi kích thước phông chữ nhỏ hơn 16px."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "Bật tính năng theo dõi xử lý tập lệnh trên bảng điều khiển trình duyệt."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "Tài sản chưa được khai thác"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Tập lệnh Google Maps"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "Không xóa các tập lệnh Google Maps trùng lặp."
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"Khi được bật, các tập lệnh Google Maps trùng lặp sẽ KHÔNG bị xóa, điều này "
+"có thể gây ra lỗi và các vấn đề về hiệu năng. Chỉ sử dụng tùy chọn này khi "
+"khắc phục sự cố."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "Khu vực tiện ích"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "Bước cuối cùng trên thiết bị di động"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "Chỉ hiển thị tiện ích ở bước cuối cùng trên thiết bị di động."
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"Chỉ hiển thị tiện ích huy hiệu chứng nhận độ tin cậy khi xem bước thanh "
+"toán cuối cùng trên thiết bị di động."
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "Tiêu chuẩn"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "Trường số VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "Thêm trường mã số thuế GTGT vào biểu mẫu hóa đơn."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "Nhãn trường"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"Đặt nhãn cho trường mã số thuế GTGT (ví dụ: Mã số thuế GTGT). Trên các "
+"trang web đa ngôn ngữ, tốt hơn hết là nên để trống trường này và dịch chuỗi "
+"ký tự gốc."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "Mã số thuế GTGT"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "Thuế GTGT EU"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "Bật tùy chọn nhập số VAT để xem thêm các tùy chọn khác."
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "Xác thực VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "Kiểm tra mã số thuế GTGT (VAT) cho EU-VAT trong quá trình thanh toán"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"Kiểm tra xem mã số thuế GTGT được cung cấp có phải là mã số thuế GTGT hợp "
+"lệ đã được đăng ký trên Cơ sở dữ liệu VIES (Hệ thống trao đổi thông tin "
+"thuế GTGT) của châu Âu hay không."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "Mã số thuế GTGT của cửa hàng"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"Mã số thuế GTGT của cửa hàng được sử dụng để yêu cầu xác nhận thuế GTGT EU "
+"và được in trên hóa đơn.<br> <strong>Chúng tôi đặc biệt khuyến nghị bạn "
+"thêm mã số thuế GTGT của cửa hàng</strong> , nếu không kết quả tư vấn VIES "
+"có thể không hợp lệ cho mục đích kế toán.<br> Tức là: "
+"<code>ATU99999999</code> hoặc <code>EE999999999</code> ."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "Điện tích ngược"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "Áp dụng cơ chế sạc ngược"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"Đặt mức thuế suất bằng không và hiển thị &quot;Thuế suất ngược&quot; trên "
+"hóa đơn khi mã số thuế GTGT của khách hàng hợp lệ. Văn bản &quot;Thuế suất "
+"ngược&quot; có thể khác nhau tùy thuộc vào quốc gia của cửa hàng."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "Cùng một quốc gia"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr "Áp dụng cơ chế thu phí ngược cho các giao dịch tại quốc gia của cửa hàng:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"Cho phép áp dụng cơ chế thu thuế ngược đối với các giao dịch giữa các công "
+"ty trong cùng quốc gia với cửa hàng."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "Ngoại lệ thu phí ngược"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr "Chọn thêm các quốc gia khác để bỏ qua việc áp dụng cơ chế tính phí ngược."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"Thuế sẽ được tính cho các đơn đặt hàng từ các quốc gia này ngay cả khi đã "
+"cung cấp mã số thuế GTGT hợp lệ."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "Nhãn giao dịch ngược trên hóa đơn"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr ""
+"Đặt nhãn &quot;thanh toán ngược&quot; trên trang thanh toán và chi tiết đơn "
+"hàng."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "Văn bản thu phí ngược trên hóa đơn"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "Đặt nhãn cho văn bản &quot;thu phí ngược&quot; trên hóa đơn."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "Thuế phải nộp theo cơ chế thu thuế ngược."
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "Tên công ty"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "Tự động điền tên công ty từ mã số thuế GTGT."
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"Điền tên công ty lập hóa đơn dựa trên mã số thuế GTGT hợp lệ do khách hàng "
+"cung cấp."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "Chỉnh sửa tên công ty"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "Cho phép chỉnh sửa tên công ty được điền tự động."
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"Khi được kích hoạt, khách hàng có thể thay đổi tên công ty liên kết với mã "
+"số thuế GTGT đã cung cấp."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "Thuế GTGT EU đối với hàng hóa kỹ thuật số"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"Từ ngày 1 tháng 1 năm 2015, các quy định về thuế GTGT của EU liên quan đến "
+"hàng hóa kỹ thuật số đã được sửa đổi, chỉ áp dụng cho các giao dịch B2C. "
+"Thuế GTGT đối với hàng hóa kỹ thuật số phải được tính dựa trên vị trí của "
+"khách hàng và cần thu thập bằng chứng về điều này (địa chỉ IP và địa chỉ "
+"thanh toán)."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "Các loại thuế đối với hàng hóa kỹ thuật số"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "Chọn một số loại thuế"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "Bằng chứng vị trí"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "Thu thập bằng chứng về vị trí của khách hàng."
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"Hệ thống lưu địa chỉ IP và xác thực địa chỉ này với địa chỉ thanh toán của "
+"khách hàng. Khách hàng phải xác nhận địa chỉ thanh toán của mình bằng cách "
+"chọn vào ô kiểm trên trang thanh toán nếu quốc gia trong địa chỉ thanh toán "
+"và địa chỉ IP không trùng khớp."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"Tùy chọn này được quản lý trong Fluid Checkout. <a href=\"%s\">Hãy thay đổi "
+"nó trong cài đặt tài khoản khách hàng</a> ."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"Tùy chọn này được quản lý trong Fluid Checkout. Thay đổi tùy chọn này trong "
+"Fluid Checkout &gt; Tài khoản khách hàng."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"Tùy chọn này được quản lý trong Fluid Checkout. Địa điểm giao hàng luôn "
+"được đặt là &quot;Mặc định là địa chỉ giao hàng của khách hàng&quot; khi "
+"Fluid Checkout được kích hoạt. Khách hàng vẫn có thể cung cấp địa chỉ giao "
+"hàng và địa chỉ thanh toán khác nhau trong quá trình thanh toán.<br><br> "
+"Trong <a href=\"%s\">phần cài đặt Fluid Checkout</a> , bạn có tùy chọn "
+"thiết lập địa chỉ thanh toán mặc định giống với địa chỉ giao hàng."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"Tùy chọn này được quản lý trong Fluid Checkout. Địa điểm giao hàng luôn "
+"được đặt là &quot;Mặc định là địa chỉ giao hàng của khách hàng&quot; khi "
+"Fluid Checkout được kích hoạt. Khách hàng vẫn có thể cung cấp địa chỉ giao "
+"hàng và địa chỉ thanh toán khác nhau trong quá trình thanh toán.<br><br> "
+"Bạn có thể thiết lập địa chỉ thanh toán mặc định giống với địa chỉ giao "
+"hàng tại WooCommerce &gt; Cài đặt &gt; Fluid Checkout."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr ""
+"Các thiết lập này đã được chuyển đến WP Admin &gt; Fluid Checkout &gt; "
+"Settings."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"Tab Cài đặt WooCommerce này đã lỗi thời và sẽ bị xóa trong Fluid Checkout "
+"6.0."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "Vào trang cài đặt"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "Ẩn tab này vĩnh viễn"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "Xem trước báo cáo trang web"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"Đây là dữ liệu sẽ được đưa vào báo cáo môi trường trang web tiếp theo dựa "
+"trên các cài đặt hiện tại của bạn."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "Đang tải bản xem trước báo cáo..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "Không thể tải bản xem trước báo cáo trang web. Vui lòng thử lại."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "Không thể gửi báo cáo trang web. Vui lòng thử lại."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "Báo cáo hiện trường đã được gửi thành công."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "Kích hoạt và gửi ngay"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "Đóng"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr "Yêu cầu báo cáo hiện trường đang được xử lý. Vui lòng thử lại sau một lát."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "Chức năng báo cáo môi trường trang web đã bị vô hiệu hóa."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "Hiện không có dữ liệu báo cáo trang web nào để gửi."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"Tên miền trang web này không thể gửi báo cáo môi trường (ngoại trừ các tên "
+"miền cục bộ hoặc phát triển)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "Báo cáo sự cố đã được gửi gần đây. Vui lòng thử lại sau."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "Không thể gửi báo cáo trang web. Vui lòng thử lại sau."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "Chức năng báo cáo môi trường trang web hiện không khả dụng."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "Không có dữ liệu báo cáo trang web nào khả dụng cho các cài đặt đã chọn."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "Bạn không được phép quản lý báo cáo trang web."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "Tính năng PRO"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "Các plugin khác"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "Chỉ tải tiện ích bổ sung này — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "Cài đặt tiện ích bổ sung"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "Nâng cấp lên phiên bản PRO — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"<a target=\"_blank\" href=\"%1$s\">Nhận ngay 2%</a> để mở khóa các tùy chọn "
+"này."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "Phần bổ sung"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "Xem tài liệu"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"Các yêu cầu cần người dùng WordPress đã đăng nhập. Bỏ qua user_id để sử "
+"dụng dữ liệu của người dùng hiện tại, hoặc truyền user_id để nhắm mục tiêu "
+"đến một tài khoản khác khi người gọi có thể chỉnh sửa người dùng đó (khả "
+"năng edit_user). Các yêu cầu không được xác thực sẽ trả về "
+"fc_api_forbidden. user_id không hợp lệ sẽ trả về fc_api_user_not_found."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr "HTTP 200 với { &quot;data&quot;: { ... } } khi trình xử lý trả về dữ liệu."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"Trả về mã HTTP 200 với thông tin { &quot;success&quot;: true } khi không có "
+"dữ liệu gửi đi (ví dụ: DELETE)."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"Các lỗi trả về JSON lỗi REST của WordPress từ WP_Error (code, message, "
+"data.status). Mã kết nối sử dụng tiền tố fc_api_*."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "Bị cấm truy cập."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "Không tìm thấy người dùng mục tiêu."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "Tính năng này hiện không khả dụng."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "Thiếu một trường địa chỉ bắt buộc."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "Mã bưu điện hoặc mã vùng ZIP không hợp lệ."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "Số điện thoại không hợp lệ."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "Tiểu bang hoặc quận không hợp lệ."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "Quốc gia không hợp lệ hoặc không có trường địa chỉ."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "Yêu cầu không thể được xử lý."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "Quay lại bước trước"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "Chuyển đến cài đặt"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "Bắt đầu lại và quay lại bước thiết lập hướng dẫn đầu tiên."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "Bắt đầu lại"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "Vui lòng hoàn thành tất cả các bước phụ trước khi tiếp tục."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "Mở rộng"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "Sụp đổ"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "Nhảy"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "Đánh dấu là đã hoàn thành"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "Đánh dấu là chưa hoàn thành"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "Xem ảnh kích thước đầy đủ: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "Hình ảnh hướng dẫn thiết lập đầy đủ"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "Ảnh cận cảnh"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "Hướng dẫn thiết lập thanh toán Fluid"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "Chào mừng"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "Khám phá trang thanh toán của bạn"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "Đã sẵn sàng"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "Bạn không có quyền truy cập vào trang này."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "Chuyển đến bước %1$d: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"Hướng dẫn thiết lập này giúp bạn làm quen với Fluid Checkout. Các bước bên "
+"dưới hiện chỉ là hướng dẫn sơ lược."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "Hãy chuyển sang bước tiếp theo khi bạn đã sẵn sàng."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr ""
+"Mở trang thanh toán của cửa hàng để xem Fluid Checkout hoạt động như thế "
+"nào."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "Xem trang thanh toán"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"Bạn có thể quay lại cài đặt Fluid Checkout để tiếp tục cấu hình cửa hàng "
+"của mình."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "Xem lại cài đặt thanh toán và giỏ hàng"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "Khám phá các tiện ích bổ sung từ bảng điều khiển."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "Hoàn tất và vào cài đặt"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Cập nhật tùy chọn hiển thị trường số điện thoại thanh toán từ giá trị cũ để "
+"phù hợp với quy ước của WooCommerce."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Cập nhật tùy chọn hiển thị trường số điện thoại giao hàng từ giá trị cũ để "
+"phù hợp với quy ước của WooCommerce."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"Sao chép thiết lập màu nền của tóm tắt đơn hàng sang tùy chọn màu nền cột "
+"phụ của thiết kế Chia đôi mới."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"Tính năng chọn trường nâng cao luôn bị vô hiệu hóa khi sử dụng plugin "
+"Biteship."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"Vị trí đặt lệnh luôn được đặt là &quot;Bên dưới tóm tắt đơn hàng&quot; khi "
+"sử dụng German Market. Plugin này yêu cầu nút đặt lệnh và các ô chọn pháp "
+"lý phải được hiển thị bên dưới tóm tắt đơn hàng."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"Vị trí đặt hàng luôn được đặt là &quot;Bên dưới tóm tắt đơn hàng&quot; khi "
+"sử dụng plugin Germanized for WooCommerce. Plugin này yêu cầu nút đặt hàng "
+"và các ô chọn pháp lý phải được hiển thị bên dưới tóm tắt đơn hàng."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Chỉnh sửa địa điểm đón khách"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Sử dụng nhãn nhận hàng tại cửa hàng từ cài đặt WooCommerce."
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Khi được bật, nhãn tùy chọn nhận hàng tại cửa hàng trên trang thanh toán sẽ "
+"khớp với tiêu đề từ cài đặt địa điểm nhận hàng của WooCommerce. Khi bị tắt, "
+"nhãn sẽ sử dụng văn bản &quot;Nhận hàng tại cửa hàng&quot; có thể dịch được "
+"từ Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2766,3 +4717,115 @@ msgstr "Đúng"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "John"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "Nai"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "Ví dụ về công ty"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "123 Phố Chính"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "Anytown"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "Vui lòng để gói hàng ở cửa trước."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "Mũ len"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "Mũ"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "Áo phông"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr ""
+"Chúng tôi đã nhận được đơn đặt hàng của bạn và sẽ thông báo cho bạn khi "
+"hàng được vận chuyển."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "Hướng dẫn sử dụng"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "API Địa điểm (Mới)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "API Địa điểm (Phiên bản cũ)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "Phiên bản 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "Phiên bản 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ Thanh toán nhanh hơn vào lần sau ✔ Quản lý tùy chọn thanh toán của bạn ✔ "
+"Xem trạng thái và lịch sử đơn hàng"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "Ẩn giấu"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "Không bắt buộc"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "Yêu cầu"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Địa chỉ giao hàng"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Nhận hàng tại địa điểm"

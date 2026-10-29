@@ -1,0 +1,14 @@
+@use '../../../../abstract' as *;
+
+.fade-out-left { animation: fade-out-left $global-animation-duration $global-animation-easing; }
+@keyframes fade-out-left {
+	from {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+
+	to {
+		opacity: 0;
+		transform: translate3d(-10%, 0, 0);
+	}
+}

@@ -1,0 +1,183 @@
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
+// Guided setup progress. Imported with `@import` from `admin-guided-setup.scss`.
+
+// ------------------------------------
+// GUIDED SETUP PROGRESS
+// ------------------------------------
+
+.fc-setup-steps-wrapper {
+	margin: 0;
+	opacity: 1;
+	padding: 0 0 4px;
+	position: relative;
+}
+
+.fc-setup-steps {
+	display: inline-flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.fc-setup-steps li {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	float: #{$alignment-left};
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+
+.fc-setup-steps li::before {
+	background-color: $admin-text-color;
+	border-radius: 3px;
+	bottom: 12px;
+	content: "";
+	display: block;
+	height: 2px;
+	#{$alignment-left}: calc(50% + 15px);
+	opacity: 0;
+	position: absolute;
+	transition: all 0.35s ease-in-out;
+	width: 0;
+	z-index: 1;
+}
+
+.fc-guided-setup .fc-setup-steps li::after {
+	background-color: $fc-header-button-border-color;
+	border-radius: 3px;
+	bottom: 12px;
+	content: "";
+	display: block;
+	height: 2px;
+	#{$alignment-left}: calc( 50% + 15px );
+	opacity: 1;
+	position: absolute;
+	width: calc( 100% - 30px );
+}
+
+.fc-guided-setup .fc-setup-steps li:last-of-type::before,
+.fc-guided-setup .fc-setup-steps li:last-of-type::after {
+	display: none;
+}
+
+.fc-guided-setup .fc-setup-steps li.fc-setup-step--done-next-reached::before,
+.fc-guided-setup .fc-setup-steps li.fc-setup-step--current-next-reached::before {
+	#{$alignment-left}: calc( 50% + 15px );
+	opacity: 1;
+	width: calc( 100% - 30px );
+}
+
+.fc-guided-setup .fc-setup-steps li.fc-setup-step--done-next-reached::before {
+	background-color: $admin-text-color-muted;
+}
+
+.fc-guided-setup .fc-setup-steps li .fc-setup-step__name {
+	align-items: center;
+	color: $admin-text-color-subtle;
+	display: flex;
+	flex-direction: column;
+	font-size: $fc-settings-nav-link-font-size;
+	justify-content: flex-end;
+	line-height: $fc-settings-nav-link-line-height;
+	margin-bottom: 6px;
+	min-height: calc( 2 * #{$fc-settings-nav-link-line-height} * 1em );
+	padding: 0 2px;
+	transition: all 0.15s ease-in-out;
+	width: 100%;
+}
+
+.fc-guided-setup .fc-setup-steps li.fc-setup-step--done .fc-setup-step__name,
+.fc-guided-setup .fc-setup-steps li.fc-setup-step--current .fc-setup-step__name {
+	color: $admin-text-color;
+}
+
+.fc-guided-setup .fc-setup-steps li.fc-setup-step--current .fc-setup-step__name {
+	font-weight: bold;
+}
+
+.fc-guided-setup .fc-setup-steps li .fc-setup-step__index {
+	border: 2px solid $fc-header-button-border-color;
+	border-radius: 50%;
+	box-sizing: content-box;
+	color: $admin-text-color-subtle;
+	display: inline-block;
+	font-size: $fc-settings-badge-font-size;
+	font-weight: bold;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	transition: all 0.15s ease-in-out;
+	vertical-align: middle;
+	width: 24px;
+}
+
+a.fc-setup-step__index {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a.fc-setup-step__index:hover {
+	opacity: 0.85;
+}
+
+a.fc-setup-step__index:focus {
+	box-shadow: 0 0 0 2px $white, 0 0 0 4px $admin-text-color;
+	outline: none;
+}
+
+.fc-guided-setup .fc-setup-steps li.fc-setup-step--done .fc-setup-step__index {
+	align-items: center;
+	background-color: $admin-text-color-muted;
+	border-color: $admin-text-color-muted;
+	color: $white;
+	display: inline-flex;
+	font-size: 0;
+	justify-content: center;
+	line-height: 1;
+}
+
+.fc-guided-setup .fc-setup-steps li.fc-setup-step--done .fc-setup-step__index::before {
+	@include admin-dashicon-styles();
+	content: "\f147";
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	font-size: 16px;
+	line-height: 1;
+	font-weight: 400;
+	font-style: normal;
+	text-align: center;
+	vertical-align: middle;
+	color: $white;
+}
+
+.fc-guided-setup .fc-setup-steps li.fc-setup-step--current .fc-setup-step__index {
+	border-color: $admin-text-color;
+	color: $admin-text-color;
+}
+
+.fc-guided-setup .fc-setup-steps li.fc-setup-step--current a.fc-setup-step__index:focus,
+.fc-guided-setup .fc-setup-steps li.fc-setup-step--current a.fc-setup-step__index:focus-visible {
+	box-shadow: none;
+	outline: none;
+}
+
+.fc-guided-setup .fc-setup-steps li.fc-setup-step--current .fc-setup-step__name a {
+	color: $admin-text-color;
+	font-weight: bold;
+}
+
+.fc-guided-setup .fc-setup-steps li .fc-setup-step__name a {
+	color: $admin-text-color;
+	display: block;
+	text-decoration: none;
+}
+
+.fc-guided-setup .fc-setup-steps li .fc-setup-step__name a:hover {
+	text-decoration: underline;
+}

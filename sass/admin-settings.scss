@@ -1,0 +1,18 @@
+// ------------------------------------
+// LOAD PUBLIC API (configured once)
+// ------------------------------------
+@use "admin/admin-settings-tom-select-config";
+@use "abstract" as *;
+@use "abstract/variables-admin" as *;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@use "admin/__imports-admin-settings";
+@use "partials/tom-select-control";
+@use "partials/tom-select-dropdown";
+@use "partials/tom-select-multi";

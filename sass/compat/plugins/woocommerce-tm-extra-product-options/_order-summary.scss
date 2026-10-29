@@ -1,4 +1,9 @@
 @use "sass:math" as math;
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
 
 // ------------------------------------
 // ORDER SUMMARY
@@ -49,3 +54,4 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 	display: inline-block;
 	padding-top: $global-spacing-tiny;
 }
+

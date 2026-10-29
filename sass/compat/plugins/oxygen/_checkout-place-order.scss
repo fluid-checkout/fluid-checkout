@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // CHECKOUT PLACE ORDER
 // ------------------------------------
@@ -6,3 +12,4 @@
 	padding: $place-order-padding;
 	@media (#{$bp-larger-than-desktop}) { padding: $place-order-padding--large-screen; }
 }
+

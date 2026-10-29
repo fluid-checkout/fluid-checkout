@@ -280,10 +280,6 @@ msgstr "திரவ செக்அவுட் தரவுத்தளம் 
 msgid "The database changes where applied successfully."
 msgstr "வெற்றிகரமாகப் பயன்படுத்தப்படும் இடத்தில் தரவுத்தளம் மாறுகிறது."
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "சரி"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "நிராகரி"
@@ -404,39 +400,9 @@ msgstr "ஆவணங்களைப் படியுங்கள்"
 msgid "Don't show this again"
 msgstr "இதை மீண்டும் காட்டாதே"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "சிறப்பு சலுகைகள்"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"உங்கள் கார்ட் பக்கம் மற்றும் நன்றி பக்கங்களுக்கு திரவ செக்அவுட்டின் அனைத்து "
-"நன்மைகளையும் விரிவுபடுத்துங்கள்."
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "திரவ செக்அவுட் புரோ"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"வடிவமைப்பு டெம்ப்ளேட்கள், மேம்படுத்தப்பட்ட வண்டி மற்றும் ஆர்டர் பெறப்பட்ட "
-"பக்கங்கள், கணக்கு பொருத்தம் மற்றும் பல."
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"<strong>உங்கள் WooCommerce செக்அவுட் மாற்று விகிதத்தை மேலும் "
-"மேம்படுத்தவும்</strong> , முழு பயணத்திலும் கொள்முதல் அனுபவத்தை சீரானதாக "
-"மாற்றவும் சிறந்த கருவிகள்."
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -458,10 +424,6 @@ msgstr "செக்அவுட் பக்கத்தில் கூடை 
 msgid "Account matching / user matching"
 msgstr "கணக்கு பொருத்தம் / பயனர் பொருத்தம்"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "ஆதரிக்கப்படும் கட்டண முறைகளிலிருந்து எக்ஸ்பிரஸ் செக்அவுட் பொத்தான்கள்"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "வண்டியிலும் நன்றி பக்கங்களிலும் உள்ள சின்னங்களை நம்புங்கள்."
@@ -469,10 +431,6 @@ msgstr "வண்டியிலும் நன்றி பக்கங்க�
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "செக் அவுட் பக்கத்தில் கூப்பன் குறியீட்டிற்கான கூடுதல் நிலைகள்"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "கார்ட் பக்கத்தில் ஒருங்கிணைந்த கூப்பன் குறியீடு புலம்"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -486,252 +444,25 @@ msgstr "பரிசுச் செய்திகளும் பேக்க�
 msgid "Local pickup and in-store collection"
 msgstr "உள்ளூர் பிக்அப் மற்றும் கடையில் சேகரிப்பு"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "PRO க்கு மேம்படுத்தவும் — 99 யூரோ"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "திரவ செக்அவுட் புரோ - பண்டில்"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "அனைத்து PRO அம்சங்களும் + சிறப்பு விலையில் அனைத்து துணை நிரல்களும்."
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"இந்தத் தொகுப்பில் நாங்கள் தற்போது வழங்கும் அனைத்து ஆட்-ஆன்களும், "
-"எதிர்காலத்தில் நாங்கள் தொடங்கும் ஃபிளூயிட் செக்அவுட் ஆட்-ஆன்களும் அடங்கும்."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "226 யூரோ மதிப்பு (42% சேமிக்கவும்)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "கூகிள் முகவரி தானியங்குநிரப்புதல்"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "முகவரி புத்தகம்"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "EU-VAT உதவியாளர்"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "அனைத்து எதிர்கால துணை நிரல்களும் *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* உங்களிடம் செயலில் சந்தா இருக்கும் வரை."
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "தொகுப்பைப் பெறுங்கள் - 129 யூரோ மட்டுமே."
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"அனைத்து விலைகளும் EUR இல் காட்டப்பட்டுள்ளன. எங்கள் வலைத்தளத்தில் உள்ள "
-"விலைகளில் ஏதேனும் வேறுபாடுகள் இருந்தால், வலைத்தளத்தில் காட்டப்பட்டுள்ள "
-"சலுகைகள் இவற்றை விட அதிகமாக இருக்கும், மேலும் அவை பயன்படுத்தப்படும்."
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "துணை நிரல்கள்"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "இந்த துணை நிரல்களுடன் உங்கள் செக் அவுட் அனுபவத்தை மேம்படுத்தவும்."
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "எனக்கு ஏற்கனவே இது உள்ளது - இந்த சலுகையை மறை."
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "நிறுவப்பட்டது — செயல்படுத்து"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "செயல்படுத்தப்பட்டது"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "நிரப்ப வேண்டிய செக்அவுட் புலங்கள் 40% வரை குறைவாக இருக்கும்."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"டெலிவரி தாமதங்கள் மற்றும் திருப்தியடையாத வாடிக்கையாளர்களைத் தவிர்க்கவும். "
-"அவர்கள் உங்களிடம் முதல் முறை வாங்கும் போது <strong>சரியான முகவரித் "
-"தகவலைச்</strong> சேகரிக்கவும்."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "இந்த ஆட்-ஆனைப் பெறுங்கள் — 29 யூரோ"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "முகவரி புத்தகம்"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "ஷிப்பிங் மற்றும் பில்லிங்கிற்காக பல சேமிக்கப்பட்ட முகவரிகள்."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"வாடிக்கையாளர்கள் தங்கள் கணக்கில் <strong>பல ஷிப்பிங் மற்றும் பில்லிங் "
-"முகவரிகளைச் சேமித்து</strong> , செக்அவுட் மற்றும் கார்ட் பக்கங்களில் "
-"எவற்றைப் பயன்படுத்த வேண்டும் என்பதைத் தேர்வுசெய்ய அனுமதிக்கவும்."
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "இந்த ஆட்-ஆனைப் பெறுங்கள் — 59 யூரோ"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "உங்கள் கடைக்கான எளிமைப்படுத்தப்பட்ட EU-VAT சரிபார்ப்பு."
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"<strong>செக்அவுட் பக்கத்தில் EU VAT எண்களைச் சேகரித்து "
-"சரிபார்க்கவும்</strong> , தலைகீழ் கட்டண அடிப்படையில் வரி கட்டணங்களை "
-"நீக்கவும் மற்றும் தேவைப்படும்போது வாடிக்கையாளர் இருப்பிடத்தை "
-"உறுதிப்படுத்தவும்."
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "இந்த ஆட்-ஆனைப் பெறுங்கள் — 39 யூரோ"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"அனைத்து துணை நிரல்களும் தனித்தனியாக விற்கப்படுகின்றன, மேலும் "
-"குறிப்பிடப்பட்டவை தவிர, <strong>திரவ செக்அவுட் லைட்</strong> செருகுநிரலை "
-"நிறுவி செயல்படுத்த வேண்டும்."
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "ஒரு படத்தைத் தேர்ந்தெடுக்கவும்"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"உங்கள் உரிம சாவியைப் பெற <a href=\"https://fluidcheckout.com/account/\" "
-"target=\"_blank\">உங்கள் கணக்கில் உள்நுழையவும்</a> அல்லது <a href=\"%s\" "
-"target=\"_blank\">புதிய உரிம சாவியை வாங்கவும்</a> ."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "%s வரை செல்லுபடியாகும்."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "%s அன்று காலாவதியானது."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"உங்கள் உரிம விசையைப் புதுப்பிக்க <a "
-"href=\"https://fluidcheckout.com/account/\" target=\"_blank\">உங்கள் "
-"கணக்கில் உள்நுழைந்து</a> புதுப்பிப்புகள் மற்றும் ஆதரவைத் தொடர்ந்து "
-"பெறுங்கள்."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "உரிமச் சாவி ரத்து செய்யப்பட்டது."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">புதிய உரிம விசையை வாங்கி</a> , "
-"புதுப்பிப்புகள் மற்றும் ஆதரவைத் தொடர்ந்து பெறுங்கள்."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "பிழை: "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "அமைப்பு &amp; ஆவணப்படுத்தல்"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "அருமை! உங்கள் செக்அவுட் பக்கம் இப்போது Fluid Checkout-இல் இயங்குகிறது."
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "நீங்கள் தொடங்குவதற்கு சில ஆதாரங்கள் இங்கே:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"நிறுவல் வழிகாட்டியைப் படியுங்கள் <a href=\"%s\" target=\"_blank\">திரவ "
-"செக்அவுட் மூலம் கூறப்பட்டது</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr ""
-"<a href=\"%s\">செக்அவுட் விருப்பங்களில்</a> தளவமைப்பு மற்றும் வடிவமைப்பை "
-"அமைக்கவும்."
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"நீங்கள் நிறுவியுள்ள பிற செருகுநிரல்களுக்கு ஏதேனும் <a "
-"href=\"%s\">ஒருங்கிணைப்பு விருப்பங்கள்</a> உள்ளதா எனச் சரிபார்க்கவும்."
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"திரவ செக்அவுட் அம்சங்களைப் பற்றிய கூடுதல் தகவலுக்கு <a href=\"%s\" "
-"target=\"_blank\">எங்கள் ஆவணங்களைப்</a> பார்வையிடவும்."
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"உங்களுக்கு எப்போதாவது உதவி தேவைப்பட்டால், எங்கள் அதிகாரப்பூர்வ ஆதரவு "
-"சேனலில் <a href=\"%s\" target=\"_blank\">ஒரு ஆதரவு டிக்கெட்டைத் "
-"திறக்கவும்</a> ."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -744,14 +475,6 @@ msgstr "வண்டி மேம்படுத்தல்கள்"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "கார்ட் பக்க மேம்படுத்தல்களை இயக்கு"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "செக்அவுட் பக்கத்தைப் போன்ற தளவமைப்போடு வண்டிப் பக்கத்தைக் காண்பி."
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "தலைப்பு மற்றும் அடிக்குறிப்பு"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -787,16 +510,6 @@ msgstr ""
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "கூப்பன் குறியீடுகள்"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"கார்ட் பக்கத்தில் கூப்பன் குறியீடுகள் பிரிவைக் காண்பிக்க வேண்டிய இடத்தைத் "
-"தேர்ந்தெடுக்கவும். AJAX கார்ட் மற்றும் செக்அவுட் பக்கத்தில் ஒருங்கிணைந்த "
-"கூப்பன் குறியீடுகள் இயக்கப்பட்டிருக்கும் போது மட்டுமே பொருந்தும்."
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -892,10 +605,6 @@ msgstr "கருப்பொருளின் குறுக்கு வி�
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "கூடை பக்கத்தில் காண்பிக்க வேண்டிய குறுக்கு விற்பனை பொருட்களின் எண்ணிக்கை."
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "நம்பிக்கை சின்னங்கள் &amp; பேட்ஜ்கள்"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "வண்டிப் பக்கத்தில் விட்ஜெட் பகுதிகளைச் சேர்க்கவும்."
@@ -912,10 +621,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "சரிபார்"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "தளவமைப்பு &amp; வடிவமைப்பு"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "செக்அவுட் தளவமைப்பு"
@@ -931,22 +636,6 @@ msgstr "இருண்ட பயன்முறை"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "டார்க் பயன்முறையை இயக்கு"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "தலைப்பு மற்றும் அடிக்குறிப்பு வார்ப்புருக்கள்"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"செக்அவுட் பக்கத்தில் கவனச்சிதறல்களைத் தவிர்க்க கவனச்சிதறல் இல்லாத தலைப்பு "
-"மற்றும் அடிக்குறிப்பைப் பயன்படுத்த பரிந்துரைக்கிறோம். <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">வண்டி "
-"கைவிடுதல் பற்றிய ஆராய்ச்சியைப் படியுங்கள்</a> ."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -1002,10 +691,6 @@ msgstr ""
 "செக்அவுட் பக்க அடிக்குறிப்புக்கு பின்னணி நிறத்தைத் தேர்வுசெய்யவும். "
 "கவனச்சிதறல் இல்லாத தலைப்பு மற்றும் அடிக்குறிப்பைப் பயன்படுத்தும் போது "
 "மட்டுமே இது பொருந்தும்."
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "செக்அவுட் கூறுகள்"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1092,18 +777,6 @@ msgstr "கடைப் பக்கத்திற்கான இணைப்�
 msgid "Cart items"
 msgstr "கூடை பொருட்கள்"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "செக்அவுட் பக்கத்தில் கூடை உருப்படிகளைத் திருத்த விருப்பங்களை இயக்கவும்."
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"வாடிக்கையாளர்கள் தயாரிப்பு அளவுகளை மாற்றவோ அல்லது பொருட்களை நேரடியாக "
-"செக்அவுட் பக்கத்தில் அகற்றவோ அனுமதிக்கவும்."
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "செக் அவுட் பக்கத்தில் கூடை உருப்படிகளின் பிழைகளை மறைக்கவும்."
@@ -1158,38 +831,9 @@ msgstr ""
 "இந்த விட்ஜெட் பகுதிகள், செக்அவுட் பக்கத்தில் நம்பிக்கை சின்னங்கள் மற்றும் "
 "நம்பிக்கை பேட்ஜ்களைச் சேர்க்கப் பயன்படுகின்றன."
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"பல-படி செக்அவுட் அமைப்பைப் பயன்படுத்தும் போது மொபைல் சாதனங்களில் கடைசி "
-"செக்அவுட் படியைப் பார்க்கும்போது மட்டுமே செக்அவுட் பக்கப்பட்டி "
-"விட்ஜெட்களைக் காண்பி."
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "ஒருங்கிணைந்த கூப்பன் குறியீடு பிரிவை இயக்கு."
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr ""
-"WooCommerce அமைப்புகளில் கூப்பன் குறியீடுகளின் பயன்பாடு "
-"இயக்கப்பட்டிருந்தால் மட்டுமே பொருந்தும்."
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "கூப்பன் குறியீடுகள் பிரிவு தலைப்பைக் காண்பி."
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"செக்அவுட் அல்லது கார்ட் பக்கங்களில் கூப்பன் குறியீடு தனிப் பிரிவாகக் "
-"காட்டப்படும்போது மட்டுமே பொருந்தும்."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1210,17 +854,6 @@ msgstr "கட்டண முறைகளுக்கு முன் துண
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "கட்டண முறைகளுக்குப் பிறகு துணைப் படியாக"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"&quot;கூப்பனைப் பயன்படுத்து&quot; பொத்தானின் பாணியைத் தேர்ந்தெடுக்கவும். "
-"கூப்பன் குறியீடு பிரிவு &quot;செக் அவுட் படிகளுக்கு முன்&quot; அல்லது "
-"&quot;கார்ட் உருப்படிகளுக்கு முன்&quot; கார்ட் பக்கத்தில் காட்டப்படும் போது "
-"மட்டுமே பொருந்தும்."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1272,21 +905,6 @@ msgstr ""
 "தேவைப்படும்போது அல்லது சரியான ஷிப்பிங் முகவரியைப் பெறுவது மிக முக்கியமானதாக "
 "இருக்கும்போது (அதாவது உணவு மற்றும் பிற அழுகக்கூடிய பொருட்களை டெலிவரி "
 "செய்தால்) மட்டுமே பரிந்துரைக்கப்படுகிறது."
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "&quot;சேர்&quot; இணைப்பு பொத்தான்களை சிறிய எழுத்துக்களில் காட்டவும்."
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"விருப்பப் புலமான &quot;சேர்&quot; இணைப்பு பொத்தானின் லேபிள்களை "
-"<code>lowercase</code> மாற்றவும் (அதாவது &quot;தொலைபேசி எண்ணைச் சேர்&quot; "
-"என்பதற்குப் பதிலாக &quot;தொலைபேசி எண்ணைச் சேர்&quot;). இந்த விருப்பம் "
-"கூப்பன் குறியீடு புலங்களுக்கான இணைப்பு பொத்தான்களையும் பாதிக்கிறது."
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1385,24 +1003,6 @@ msgstr "அனுப்புவதற்கு முந்தைய முக�
 msgid "After shipping address"
 msgstr "அனுப்பிய பிறகு முகவரி"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "முதல் ஷிப்பிங் முறையை தானாகத் தேர்ந்தெடுப்பதைத் தடுக்கவும்."
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"இயக்கப்பட்டால், ஒவ்வொரு ஷிப்பிங் தொகுப்புக்கும் முன்னர் வேறு எந்த ஷிப்பிங் "
-"முறையும் தேர்ந்தெடுக்கப்படாதபோது, கிடைக்கக்கூடிய முதல் ஷிப்பிங் முறை "
-"தானாகவே தேர்ந்தெடுக்கப்படாது.<br> தேர்ந்தெடுக்கப்பட்ட ஷிப்பிங் முறையை "
-"அழிக்கும் விருப்பம் உள்ளூர் பிக்அப் அம்சத்திற்கு இயக்கப்பட்டிருந்தால், இந்த "
-"விருப்பம் தானாகவே இயக்கப்படும்."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "உள்ளூர் பிக்அப் வசதி"
@@ -1422,21 +1022,6 @@ msgid ""
 msgstr ""
 "உள்ளூர் பிக்அப் ஷிப்பிங் முறை தேர்ந்தெடுக்கப்படும்போது, ஷிப்பிங் முகவரியை "
 "பிக்அப் புள்ளி இருப்பிடத்துடன் மாற்றுகிறது."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "பிக்அப் இட துணைப் படியில் ஷிப்பிங் முறைகளை அழிக்க விருப்பத்தைக் காட்டு."
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"தேர்ந்தெடுக்கப்பட்ட ஷிப்பிங் முறைகளை அழிக்க, பிக்அப் இருப்பிட துணைப் "
-"படியில் இணைப்பு பொத்தானைக் காட்டு. உள்ளூர் பிக்அப் முறை முன்பு "
-"தேர்ந்தெடுக்கப்பட்டிருந்தால், ஷிப்பிங் முகவரிப் பிரிவை மீண்டும் காட்ட இதைப் "
-"பயன்படுத்தலாம்."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1519,32 +1104,6 @@ msgstr ""
 "பில்லிங் தொலைபேசி புலத்தை எந்தப் படியில் காட்ட வேண்டும் என்பதைத் "
 "தேர்வுசெய்யவும்."
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "நாட்டு விதிகளின் அடிப்படையில் தொலைபேசி எண் சரிபார்ப்பை இயக்கு."
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"முடக்கப்பட்டிருக்கும் போது, நாடு அல்லது பகுதி குறியீடுகள் நாட்டிற்கு "
-"செல்லுபடியாகுமா என்பதை தொலைபேசி புல சரிபார்ப்பு சரிபார்க்காது."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "ஷிப்பிங் அல்லது பில்லிங்கிற்கு அனுமதிக்கப்பட்ட நாடுகளை மட்டும் காட்டு."
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"இயக்கப்பட்டால், ஷிப்பிங் செய்ய அனுமதிக்கப்பட்ட நாடுகள் மட்டுமே ஷிப்பிங் "
-"தொலைபேசி புலத்தில் கிடைக்கும், மேலும் பில்லிங் செய்ய அனுமதிக்கப்பட்ட "
-"நாடுகள் மட்டுமே பில்லிங் தொலைபேசி புலத்தில் கிடைக்கும்."
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "கொடியின் அருகில் நாட்டின் குறியீட்டைக் காட்டு."
@@ -1577,10 +1136,6 @@ msgstr "கூடுதல் ஆர்டர் குறிப்புகள�
 msgid "Gift options"
 msgstr "பரிசு விருப்பங்கள்"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "பரிசுச் செய்தி மற்றும் பிற பரிசு விருப்பங்களை செக்அவுட் பக்கத்தில் காண்பி."
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1588,10 +1143,6 @@ msgid ""
 msgstr ""
 "வாடிக்கையாளர்கள் ஆர்டரில் பரிசு செய்தி மற்றும் பிற பரிசு தொடர்பான "
 "விருப்பங்களைச் சேர்க்க அனுமதிக்கவும்."
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "பரிசு செய்தி புலங்களை எப்போதும் விரிவாக்கி காட்டு."
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1651,28 +1202,9 @@ msgstr "டாஷ்போர்டு"
 msgid "Integrations"
 msgstr "ஒருங்கிணைப்புகள்"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"இந்தப் பிரிவில் தற்போது எந்த ஒருங்கிணைப்புகளும் கிடைக்கவில்லை. ஒவ்வொரு "
-"செருகுநிரலுக்கும் தொடர்புடைய விருப்பங்கள் அந்த செருகுநிரல் "
-"செயல்படுத்தப்பட்டால் மட்டுமே இங்கே தோன்றும்."
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "உரிம விசைகள்"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"இந்தப் பிரிவில் தற்போது உரிம விசை விருப்பங்கள் எதுவும் கிடைக்கவில்லை. "
-"ஒவ்வொரு செருகுநிரல் அல்லது துணை நிரலுக்கும் தொடர்புடைய விருப்பங்கள் அந்த "
-"செருகுநிரல் செயல்படுத்தப்படும்போது இங்கே தோன்றும்."
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1775,14 +1307,6 @@ msgstr ""
 "இந்த விட்ஜெட் பகுதிகள் நன்றி பக்கத்தில் நம்பிக்கை சின்னங்கள் மற்றும் "
 "நம்பிக்கை பேட்ஜ்களைச் சேர்க்கப் பயன்படுகின்றன."
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"இந்த விருப்பங்கள் நன்றி பக்கத்தைப் பாதிக்கின்றன, கணக்குப் பக்கங்களிலும் "
-"மின்னஞ்சல் அறிவிப்புகளிலும் ஆர்டர் விவரங்களைப் பார்க்கின்றன."
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "செயல்களை ஒழுங்குபடுத்து"
@@ -1875,22 +1399,6 @@ msgstr "குறைக்கப்படாத சொத்துக்கள�
 msgid "Enhanced select fields"
 msgstr "மேம்படுத்தப்பட்ட தேர்ந்தெடுக்கப்பட்ட புலங்கள்"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr ""
-"<code>select2</code> கீழ்தோன்றும் கூறுகளை <code>TomSelect</code> உடன் "
-"மாற்றவும்."
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect என்பது Select2 ஐ விட பிழைகளுக்கு குறைவான வாய்ப்புள்ள ஒரு எளிமையான "
-"கீழ்தோன்றும் தேர்வு கூறு ஆகும், அதே நேரத்தில் WooCommerce செக்அவுட் "
-"பக்கங்களில் உண்மையில் பயன்படுத்தப்படும் அதே அம்சங்களை வழங்குகிறது."
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "படிவ புலங்களில் தானியங்கி பெரிதாக்குதலை சரிசெய்யவும்."
@@ -1898,36 +1406,6 @@ msgstr "படிவ புலங்களில் தானியங்கி 
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "படிவ புலங்களுக்குள் <code>font-size</code> 16px ஆக அமைக்கவும்."
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"படிவப் புலங்களுக்குள் உள்ள எழுத்துரு அளவு 16px ஐ விடக் குறைவாக "
-"இருக்கும்போது, உரையைப் படிக்க எளிதாக்க Safari மற்றும் பிற உலாவிகள் மொபைல் "
-"சாதனங்களில் தானாகவே பெரிதாக்கக்கூடும். இந்த விருப்பம் இயக்கப்பட்டால், "
-"படிவப் புலங்களுக்குள் உள்ள எழுத்துரு அளவை 16px ஆக அமைக்கும், இதனால் அது "
-"பெரிதாக்கப்படுவதைத் தவிர்க்க Fluid Checkout ஆல் மேம்படுத்தப்பட்ட "
-"பக்கங்களில் இருக்கும்."
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"திரவ செக்அவுட் செயல்படுத்தப்படும்போது, ஷிப்பிங் சேருமிடம் எப்போதும் "
-"&quot;வாடிக்கையாளர் ஷிப்பிங் முகவரிக்கு இயல்புநிலை&quot; என்று "
-"அமைக்கப்படும். செக்அவுட்டின் போது வாடிக்கையாளர்கள் வெவ்வேறு ஷிப்பிங் "
-"மற்றும் பில்லிங் முகவரிகளை வழங்க முடியும், இயல்புநிலை பில்லிங் முகவரியை "
-"ஷிப்பிங் முகவரியைப் போலவே அமைப்பதற்கான விருப்பம் WooCommerce &gt; "
-"அமைப்புகள் &gt; திரவ செக்அவுட்டில் கிடைக்கிறது."
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1954,14 +1432,6 @@ msgstr "(புரோ)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(சோதனை)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "உறுதிப்படுத்தவும்"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "தொலைபேசி எண்ணைச் சரிபார்க்கவும்"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2503,10 +1973,6 @@ msgstr "முன்னேற்றப் பட்டிக்குப் ப�
 msgid "Before coupon codes section"
 msgstr "கூப்பன் குறியீடுகளுக்கு முன் பிரிவு"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "சர்வதேச தொலைபேசி எண் புலங்களை இயக்கு."
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "ஒவ்வொரு நாட்டிற்கான விதிகளின்படி தொலைபேசி எண்களை வடிவமைக்கவும்."
@@ -2514,19 +1980,6 @@ msgstr "ஒவ்வொரு நாட்டிற்கான விதிக�
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "துல்லியமான தொலைபேசி எண் சரிபார்ப்பைப் பயன்படுத்தவும்"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"தேர்ந்தெடுக்கப்பட்ட நாட்டுக் குறியீட்டிற்கான விதிகளின் அடிப்படையில், "
-"தொலைபேசி எண் செல்லுபடியாகும் மொபைல் அல்லது லேண்ட்லைன் எண்ணாக இருப்பதை "
-"உறுதிசெய்ய முயற்சிக்கவும். இந்த விருப்பம் <code>intl-tel-input</code> "
-"துல்லியமான சரிபார்ப்பு அம்சத்தைப் பயன்படுத்துகிறது, இது சில தொலைபேசி "
-"எண்களுக்கு தவறான நேர்மறைகளை வழங்கக்கூடும்."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2573,26 +2026,6 @@ msgstr "2 நெடுவரிசைகள்"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 நெடுவரிசை"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"செக் அவுட் படிகள், ஆர்டர் சுருக்கம் மற்றும் பிற பிரிவுகளுக்கான பொதுவான "
-"பாணிகள்.<br> வண்டி, பெறப்பட்ட ஆர்டர் மற்றும் பார்வை ஆர்டர் பக்கங்கள் போன்ற "
-"பிற பக்கங்களுக்கும் பொருந்தக்கூடும்."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"<em>&quot;1 நெடுவரிசை&quot;</em> தளவமைப்பைப் பயன்படுத்தும் போது "
-"<em>&quot;Split&quot;</em> என்ற வடிவமைப்பு டெம்ப்ளேட் கிடைக்காது, மேலும் "
-"தேர்ந்தெடுக்கப்பட்டால் <em>&quot;Minimalist&quot;</em> க்கு திரும்பும்."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2689,6 +2122,2591 @@ msgstr ""
 "விருப்பம் சரிபார்க்கப்படும்போது, ஷிப்பிங் முகவரியை பில்லிங் முகவரிக்கு "
 "நகலெடுக்க முடியும் என்பதை உறுதிப்படுத்த இது தேவைப்படுகிறது; இல்லையெனில், "
 "வாடிக்கையாளரால் செக்அவுட் படிவத்தைப் பூர்த்தி செய்ய முடியாமல் போகலாம்."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "அமைப்புகள் சுயவிவரங்கள்"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "அமைப்புகள் சுயவிவரம்"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "இந்தச் செயலைச் செய்வதற்கு உங்களுக்கு அனுமதி இல்லை."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "செருகுநிரல்களைச் செயல்படுத்த உங்களுக்கு அனுமதி இல்லை."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "செருகுநிரல் காணவில்லை."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "செருகுநிரல் செயல்படுத்தல்."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "பின்வரும் மாற்றங்கள் செயல்படுத்தப்படும்:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Fluid Checkout 5.0 முதல், அமைப்புகள் வேறு விதமாகச் சேமிக்கப்படுகின்றன. "
+"தேவைப்பட்டால் முந்தைய பதிப்புகளுக்குத் தரமிறக்குவதை அனுமதிக்கும் வகையில், "
+"பழைய விருப்பத்தேர்வுகள் இப்போதும் தரவுத்தளத்தில் சேமிக்கப்படுகின்றன."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"உங்கள் ஸ்டோர் புதிய அமைப்புகளில் சுமார் 2 வாரங்களாக இயங்கி வருவதால், "
+"தரவுத்தளத்தில் சேமிக்கப்பட்டுள்ள பழைய விருப்பங்களை நீங்கள் சுத்தம் "
+"செய்யலாம். சுத்தம் செய்த பிறகு, நீங்கள் செருகுநிரலின் முந்தைய "
+"பதிப்புகளுக்குத் தரமிறக்க நேர்ந்தால், அது அனைத்து அமைப்புகளுக்கும் "
+"இயல்புநிலை மதிப்புகளைப் பயன்படுத்தும் என்பதை நினைவில் கொள்ளவும்."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "திரவ சரிபார்ப்பு அமைப்புகள் சுத்திகரிப்பு"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "மீதமுள்ள விருப்பங்களை நீக்கவும்"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "Fluid Checkout-ஐ மேம்படுத்த எங்களுக்கு உதவுங்கள்"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"விரைவான ஆதரவைப் பெறவும், இணக்கத்தன்மையை மேம்படுத்தவும், தாக்கத்தை அளவிடவும் "
+"எங்களுக்கு உதவ, அநாமதேய தளச் சூழல் அறிக்கைகளை Fluid Checkout உடன் பகிரவும். "
+"வாடிக்கையாளர், பயனர் அல்லது முக்கியமான தரவுகள் எதுவும் இதில் "
+"சேர்க்கப்படவில்லை. கருவிகள் அமைப்புகளிலிருந்து எப்போது வேண்டுமானாலும் எதைப் "
+"பகிர வேண்டும் என்பதை நீங்கள் தேர்வு செய்யலாம்."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "தளச் சூழல் அறிக்கைகளை இயக்கு"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "அமைப்புகளை மதிப்பாய்வு செய்யவும்"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"இந்த முன்னோட்டம் காலாவதியாகிவிட்டது. புதிய முன்னோட்டத்தைத் தொடங்க, "
+"நிர்வாகப் பக்கத்தை மீண்டும் ஏற்றவும்."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "முன்னோட்டம் காலாவதியானது"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "முன்னோட்டத்தில் ஆர்டர்களை இட முடியாது."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "முன்னோட்டத்தில் உள்நுழைதல் வசதி இல்லை."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "முன்னோட்டத்தில் கணக்குகளை உருவாக்க முடியாது."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "முன்னோட்டத்தில் மற்ற தளங்களுக்கான கோரிக்கைகள் தடுக்கப்பட்டுள்ளன."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "செயலாக்கம்…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "ஏதோ தவறு நிகழ்ந்துவிட்டது. தயவுசெய்து மீண்டும் முயற்சிக்கவும்."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "செருகுநிரலைச் செயல்படுத்து"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "ஃப்ளூயிட் செக்அவுட் ப்ரோ - முழுமையான செக்அவுட் தொகுப்பு"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"அனைத்து PRO அம்சங்களும் + அனைத்து கூடுதல் சேவைகளும், ஒரே விலையில். "
+"வடிவமைப்பு டெம்ப்ளேட்கள், மேம்படுத்தப்பட்ட கார்ட் மற்றும் ஆர்டர் பெறப்பட்ட "
+"பக்கங்கள், கணக்கு பொருத்தம் மற்றும் இன்னும் பல."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "மேம்படுத்தப்பட்ட ஆர்டர் கட்டணப் பக்கம்"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "ஆதரிக்கப்படும் கட்டண முறைகளிலிருந்து விரைவான செக்அவுட் பொத்தான்கள்"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "கணக்கு உருவாக்கம் தாமதமானது"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "கூகிள் மேப்ஸ் ஏபிஐ-கள் மூலம் முகவரியைத் தானாக நிரப்புதல்"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "முகவரிப் புத்தகத்தில் பல முகவரிகள் சேமிக்கப்பட்டுள்ளன."
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "ஐரோப்பிய ஒன்றிய மதிப்புக்கூட்டு வரி உதவியாளர்"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "இந்தப் பகுதியை மறைக்கவும்"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "மேலும் அறிக"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "முன்கூட்டிய அணுகலைப் பெறுங்கள்"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "துணை நிரலைச் செயல்படுத்து"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "உங்கள் பணம் செலுத்தும் அனுபவத்திலிருந்து அதிகப் பலன்களைப் பெறுங்கள்."
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "சோதனை API விசை"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "வழிகாட்டப்பட்ட அமைப்பு"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "விருப்பங்கள்"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr ""
+"<a href=\"%s\">செக்அவுட் விருப்பங்களில்</a> தளவமைப்பு மற்றும் வடிவமைப்பை "
+"அமைக்கவும்."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"விருந்தினர் செக்-அவுட்டை இயக்கவும் மற்றும்/அல்லது <a "
+"href=\"%s\">வாடிக்கையாளர் கணக்கு அமைப்புகளை</a> மதிப்பாய்வு செய்யவும்."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"மேம்படுத்தப்பட்ட <a href=\"%1$s\">வண்டி</a> , <a href=\"%2$s\">நன்றி</a> "
+"மற்றும் <a href=\"%3$s\">ஆர்டர் கட்டணப்</a> பக்கங்களைச் செயல்படுத்துங்கள்."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr ""
+"கூகுள் மேப்ஸில் <a href=\"%s\">முகவரி தானாக நிரப்புதலைச்</a> "
+"செயல்படுத்துங்கள்."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr ""
+"<a href=\"%s\">முகவரிப் புத்தகத்தில்</a> பல சேமிக்கப்பட்ட முகவரிகளைச் "
+"செயல்படுத்துங்கள்."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"நீங்கள் நிறுவியுள்ள தீம் அல்லது பிற செருகுநிரல்களுக்கு ஏதேனும் <a "
+"href=\"%s\">ஒருங்கிணைப்பு விருப்பங்கள்</a> உள்ளனவா எனச் சரிபார்க்கவும்."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"விரைவான ஆதரவைப் பெறுங்கள், மேலும் இணக்கத்தன்மையை மேம்படுத்தவும் தாக்கத்தை "
+"அளவிடவும் எங்களுக்கு உதவுங்கள். கருவிகளின் அமைப்புகளிலிருந்து <a "
+"href=\"%s\">பயன்பாட்டைக் கண்காணிப்பதை இயக்குங்கள்</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "அமைப்புகள் பகுதி காணவில்லை."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "தொடங்குதல்"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>அற்புதம்! உங்கள் செக்அவுட் பக்கம் இப்போது Fluid Checkout-இல் "
+"இயங்குகிறது.</strong> தொடங்குவதற்கான சில வழிமுறைகள் இதோ:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "நிறைவுற்றது"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "அறிக்கைத் தரவை முன்னோட்டமிடுக"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "இப்போது அனுப்பு"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "தானாகக் கண்டறியும்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "ஆஃப்ரிகான்ஸ்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "அல்பேனியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "அம்ஹாரிக்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "அரபு"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "ஆர்மேனியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "அசர்பைஜானி"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "பாஸ்க்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "பெலாரஷ்யன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "பெங்காலி"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "போஸ்னியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "பல்கேரியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "பர்மிய"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "கட்டலான்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "சீன"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "சீனம் (எளிதாக்கப்பட்டது)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "சீன (ஹாங்காங்)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "சீன (பாரம்பரிய)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "குரோஷியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "செக்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "டேனிஷ்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "டச்சு"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "ஆங்கிலம்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "ஆங்கிலம் (ஆஸ்திரேலிய)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "ஆங்கிலம் (கிரேட் பிரிட்டன்)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "எஸ்டோனியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "பாரசீகம்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "ஃபின்னிஷ்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "பிலிப்பினோ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "பிரெஞ்சு"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "பிரெஞ்சு (கனடிய)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "காலிசியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "ஜார்ஜிய"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "ஜெர்மன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "கிரேக்கம்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "குஜராத்தி"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "ஹீப்ரு"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "ஹிந்தி"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "ஹங்கேரியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "ஐஸ்லாந்திய"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "இந்தோனேசிய"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "இத்தாலிய"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "ஜப்பானிய"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "கன்னடம்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "கசாக்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "கெமர்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "கொரியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "கிர்கிஸ்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "லாவோ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "லாட்வியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "லிதுவேனியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "மாசிடோனியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "மலாய்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "மலையாளம்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "மராத்தி"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "மங்கோலியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "நேபாளி"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "நார்வேஜியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "போலிஷ்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "போர்த்துகீசியம்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "போர்த்துகீசியம் (பிரேசில்)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "போர்த்துகீசியம் (போர்ச்சுகல்)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "பஞ்சாபி"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "ரோமானியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "ரஷ்யன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "செர்பியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "சிங்களம்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "ஸ்லோவாக்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "ஸ்லோவேனியன்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "ஸ்பானிஷ்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "ஸ்பானிஷ் (லத்தீன் அமெரிக்கா)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "சுவாஹிலி"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "ஸ்வீடிஷ்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "நாகர்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "தெலுங்கு"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "தாய்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "துருக்கியம்"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "உக்ரேனிய"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "உருது"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "வியட்நாமிய"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "ஜூலு"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "கூகிள் முகவரி தானியங்கு நிரப்புதல்"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "கூகிள் பிளேசஸ் ஏபிஐ பதிப்பு"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"கூகுள் பிளேசஸ் ஏபிஐ-யின் எந்தப் பதிப்பைப் பயன்படுத்த வேண்டும் என்பதைத் "
+"தேர்வுசெய்யுங்கள். கூடிய விரைவில் புதிய பிளேசஸ் ஏபிஐ-க்கு மாறுமாறு நாங்கள் "
+"பரிந்துரைக்கிறோம்."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"மார்ச் 1, 2025 முதல், கூகிள் &quot;Places API (Legacy)&quot; பதிப்பை மரபு "
+"நிலைக்கு (Legacy status) மாற்றும் என்பதால், &quot;Places API "
+"(New)&quot;-ஐப் பயன்படுத்துமாறு நாங்கள் பரிந்துரைக்கிறோம். இதன் பொருள், "
+"புதிய API திறவிகளுக்கு (API keys) இந்தச் சேவையை உங்களால் இனி இயக்க முடியாது "
+"என்பதும், அந்த API பதிப்பு காலப்போக்கில் இனி கிடைக்காது என்பதுமாகும். "
+"ஏற்கனவே மரபு API-ஐப் பயன்படுத்தும் கணக்குகள் எந்த இடையூறும் இன்றி தொடர்ந்து "
+"செயல்படலாம்."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(பரிந்துரைக்கப்படுகிறது)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "கூகிள் ஏபிஐ சாவி"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"உங்கள் கூகுள் ஏபிஐ கீயை ஒட்டி, அது இந்த இணையதளத்தில் செயல்படுகிறதா என்பதை "
+"உறுதிப்படுத்த சோதனைப் பொத்தானைப் பயன்படுத்தவும். அந்த கீ செல்லுபடியாகும் "
+"மற்றும் உங்கள் டொமைனுக்கு அனுமதிக்கப்பட்டதா என்பதை உறுதிப்படுத்திக் "
+"கொள்ளுங்கள், இல்லையெனில் முகவரிப் புலம் தடுக்கப்பட்டு, வாடிக்கையாளர்கள் "
+"தங்கள் ஆர்டர்களை முடிக்க முடியாமல் போகலாம்."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "கூகிள் முகவரி தானியங்கு நிரப்பலை இயக்கு"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr "கூகுள் மேப்ஸ் ஏபிஐ-களைப் பயன்படுத்தி முகவரி தானியங்கு நிறைவை இயக்குங்கள்."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "கூகிள் ஏபிஐ மொழி"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"கூகுள் பிளேசஸ் ஏபிஐ முகவரிப் பரிந்துரைகளைக் காண்பிக்க இந்த மொழி "
+"பயன்படுத்தப்படும், மேலும் முகவரிகள் இந்த மொழியில் தானாகவே பூர்த்தி "
+"செய்யப்படும்."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "முடிவு வகைகள்"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"எந்த வகையான முடிவுகளையும் ஏற்க இதை காலியாக விடவும்; இது பொதுவாக சிறந்த "
+"பொருத்த முடிவுகளைத் தரும். <a href=\"%s\" target=\"_blank\">மேலும் "
+"விவரங்களுக்கு ஆவணங்களைப் பார்க்கவும்</a> .<br> முகவரி தானியங்கு நிரப்பு "
+"புலங்களில் காண்பிக்க, 5 வகையான முகவரி தேடல் முடிவுகள் வரை "
+"தேர்ந்தெடுக்கவும்.<br> <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">ஆதரிக்கப்படும் வகைகள்</a> பற்றி மேலும் "
+"அறிந்துகொள்ள, கூகுள் மேப்ஸ் ஆவணங்களைப் பார்வையிடவும்."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "முடிவு வகைகள் (பழைய ஏபிஐ)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Places API (பழைய பதிப்பு) ஐப் பயன்படுத்தும்போது எந்த வகையான முகவரித் தேடல் "
+"முடிவுகளைத் திரும்பப் பெற வேண்டும்.<br> <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">ஆதரிக்கப்படும் வகைகளைப்</a> "
+"பற்றி மேலும் அறிந்துகொள்ள, மரபுவழி கூகுள் பிளேசஸ் ஏபிஐ-யின் ஆவணங்களைப் "
+"பார்வையிடவும்."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "நிறுவனத் துறைகள்"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "நிறுவனத்தின் பெயரைத் தானாக நிரப்பும் வசதி இருந்தால், அதைச் செயல்படுத்தவும்."
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"கூகுள் மேப்ஸ் ஏபிஐ-களிலிருந்து நிறுவனத்தின் பெயர் தகவல் திரும்பப் "
+"பெறப்படும்போது, நிறுவனப் புலம் தானாகவே நிரப்பப்படுவதை இயக்கவும்."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "வணிகத் தேடல்"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "நிறுவனப் புலத்தில் வணிகங்களைத் தேடுவதை இயக்கு"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"நிறுவனப் புலத்தில் தட்டச்சு செய்யும்போது, ஒரு வணிகத்துடன் தொடர்புடைய "
+"முகவரிகளின் பரிந்துரையை இயக்கவும்; பின்னர், பரிந்துரைகளிலிருந்து ஒரு வணிகம் "
+"தேர்ந்தெடுக்கப்படும்போது, அனைத்து முகவரிப் புலங்களையும் தானாகவே நிரப்பவும்."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "நிறுவன முடிவு வகைகள்"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"தானாக நிரப்பும் நிறுவனப் புலங்களில் காண்பிக்க, 5 வகையான முகவரித் தேடல் "
+"முடிவுகள் வரை தேர்ந்தெடுக்கவும்.<br> பரிந்துரைக்கப்பட்ட மதிப்பு என்பது "
+"<code>establishment</code> ஆகும், இதில் பெரும்பாலான வணிக வகைகள் "
+"அடங்கும்.<br> வணிகங்கள் தொடர்பில்லாத முடிவுகள் உட்பட, எந்த வகையான "
+"முடிவுகளையும் ஏற்க, இதை காலியாக விடவும்.<br> <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">ஆதரிக்கப்படும் வகைகள்</a> பற்றி மேலும் "
+"அறிந்துகொள்ள, கூகுள் மேப்ஸ் ஆவணங்களைப் பார்வையிடவும்."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "கூகிள் லோகோ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "&quot;கூகிளால் இயக்கப்படுகிறது&quot; என்ற உரையையும் சின்னத்தையும் காட்டு"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"தேர்வுசெய்யப்பட்டால், முகவரித் தானியங்குப் பரிந்துரைப் பெட்டியின் கீழே "
+"&quot;Powered by Google&quot; என்ற உரையும் இலச்சினையும் காட்டப்படும்."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "பிரேசில் API முகவரி தானியங்கு நிரப்புதல்"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "பிரேசில் ஏபிஐ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "CEP புலங்களுக்கான பிரேசில் API முகவரி தானியங்கு நிரப்புதலைச் செயல்படுத்தவும்"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"CEP/அஞ்சல் குறியீடு புலத்தைப் பயன்படுத்தி முகவரிகளை மீட்டெடுத்துத் தானாக "
+"நிரப்ப பிரேசில் API-ஐப் பயன்படுத்தவும். இது பிரேசிலிய முகவரிகளுக்கு மட்டுமே "
+"பொருந்தும்."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "ஏபிஐ பதிப்பு"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr ""
+"பிரேசில் API CEP முறையின் எந்தப் பதிப்பைப் பயன்படுத்த வேண்டும் என்பதைத் "
+"தேர்வுசெய்யவும்."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "முகவரிப் புத்தக இடமாற்றம்"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "WooCommerce முகவரிகள்"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"WooCommerce-இல் ஏற்கனவே உள்ள ஷிப்பிங் மற்றும் பில்லிங் முகவரிகளை "
+"வாடிக்கையாளர்களின் முகவரிப் புத்தகத்தில் நகலெடுக்கவும்."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "முகவரிப் புத்தக அம்சத்தை இயக்கு"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"வாடிக்கையாளர்கள் பல முகவரிகளைச் சேமிக்கவும், அனுப்புதல் மற்றும் கட்டணப் "
+"பட்டியலுக்காகப் பயன்படுத்தப்பட வேண்டிய இயல்புநிலை முகவரியை வரையறுக்கவும் "
+"அனுமதிக்கவும்."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "முகவரி லேபிள்கள்"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr ""
+"ஒவ்வொரு முகவரிக்கும் வாடிக்கையாளர்கள் ஒரு தனிப்பயன் லேபிளைச் சேர்க்க "
+"அனுமதிக்கவும்."
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"முகவரி லேபிள்கள், வாடிக்கையாளர்கள் தாங்கள் சேமித்த முகவரிகளை (உதாரணமாக: "
+"&quot;அம்மாவின் வீடு&quot;) எளிதாக வேறுபடுத்தி அறிய உதவுகின்றன. இந்த முகவரி "
+"லேபிள்கள் வாடிக்கையாளர்களுக்கு மட்டுமேயானவை, மேலும் அவை ஆர்டர் விவரங்கள் "
+"பக்கத்திலோ அல்லது விலைப்பட்டியல்களிலோ காட்டப்படவோ அச்சிடப்படவோ மாட்டாது."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "காட்சி தளவமைப்பு"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr ""
+"பணம் செலுத்தும்போதும், வண்டியிலும் சேமிக்கப்பட்ட முகவரிகள் எவ்வாறு "
+"காட்டப்பட வேண்டும் என்பதைத் தேர்வுசெய்யவும்."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"பணம் செலுத்தும்போதும் மற்றும் கார்ட்டிலும் இது பொருந்தும். கணக்குப் "
+"பக்கத்தில் சேமிக்கப்பட்ட முகவரிகள் எப்போதும் கார்டுகளின் தளவமைப்பையே "
+"பயன்படுத்தும்."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "முகவரி அட்டைகள்"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "முகவரி பட்டியல்"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "கீழ்விரி புலம்"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "முகவரிகள் தேடல்"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"வாடிக்கையாளரிடம் குறைந்தபட்சம் இந்த எண்ணிக்கையிலான சேமிக்கப்பட்ட முகவரிகள் "
+"இருக்கும்போது, முன்பக்கத்தில் முகவரித் தேடல் வடிப்பானைக் காண்பிக்கவும்."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr ""
+"காட்சி தளவமைப்பு கீழ்தோன்றும் புலமாக அமைக்கப்பட்டிருக்கும்போது "
+"பயன்படுத்தப்படாது."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "முகவரிகள்"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "கூடுதல் விருப்பங்களைக் காண, கார்ட் பக்க மேம்படுத்தல்களைச் செயல்படுத்தவும்."
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "ஸ்டிக்கி ஆர்டர் சுருக்கம்"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"கார்ட் பக்கத்தில் கூப்பன் குறியீடுகள் பகுதியைக் காண்பிக்க வேண்டிய இடத்தைத் "
+"தேர்ந்தெடுக்கவும். AJAX கார்ட் இயக்கப்பட்டிருக்கும்போதும், WooCommerce "
+"அமைப்புகளில் கூப்பன் குறியீடுகளின் பயன்பாடு இயக்கப்பட்டிருக்கும்போதும் "
+"மட்டுமே இது பொருந்தும்."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "குறுக்கு விற்பனையின் தளவமைப்பு"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "குறுக்கு விற்பனைகள் காட்டப்பட்டன"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "பொருட்கள்"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "கார்ட் பக்க மேம்படுத்தல்"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"உங்கள் செக்அவுட்டைப் போலவே, உங்கள் கார்ட்டுக்குமான தெளிவான, விற்பனையை "
+"அதிகரிக்கும் வடிவமைப்பை அமையுங்கள்."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr ""
+"சீரான கொள்முதல் அனுபவத்தைப் பெற, கார்ட் அமைப்பை செக்அவுட் பக்கத்துடன் "
+"பொருத்துங்கள்."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"கார்ட்டை எப்போதும் பின்னணியில் புதுப்பித்த நிலையில் வைத்திருங்கள், "
+"பொருட்களின் அளவு மாறும்போது முழுப் பக்கமும் மீண்டும் ஏற்றப்படாது."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"கூப்பன் குறியீடுகள், ஷிப்பிங் மற்றும் கிராஸ்-செல்களை, அவை சிறந்த பலனைத் "
+"தரும் இடங்களில் துல்லியமாக வைக்கவும்."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"ஸ்க்ரோல் செய்யும்போதும் ஆர்டர் சுருக்கம் தெரியும்படி வைக்கவும், மேலும் "
+"வாடிக்கையாளர்களுக்கு உறுதி தேவைப்படும் இடங்களில் நம்பிக்கைச் சின்னங்களைச் "
+"சேர்க்கவும்."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "நெடுவரிசைகள்"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"பணம் செலுத்தும் படிநிலைகள், ஆர்டர் சுருக்கம் மற்றும் பிற பிரிவுகளுக்கான "
+"பொதுவான பாணிகள். இது மற்ற பணம் செலுத்தும் பக்கம், வண்டிப் பக்கம், நன்றி "
+"(ஆர்டர் பெறப்பட்டது), மற்றும் ஆர்டரைப் பார்க்கும் பக்கங்களுக்கும் "
+"பொருந்தும்."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"<em>&quot;Split&quot;</em> வடிவமைப்பு வார்ப்புருவுடன் <em>&quot;1 "
+"column&quot;</em> தளவமைப்பைப் பயன்படுத்தும்போது, பக்கத்தின் பக்கவாட்டுப் "
+"பட்டி விட்ஜெட் பகுதி (செக்அவுட் பக்கவாட்டுப் பட்டி, கார்ட் பக்கவாட்டுப் "
+"பட்டி அல்லது ஆர்டர் பெறப்பட்ட பக்கவாட்டுப் பட்டி) செயலில் இருந்தால் மட்டுமே "
+"ஒரு வலது நெடுவரிசை காட்டப்படும். இல்லையெனில், பக்கம் Split பாணிகளுடன் ஒற்றை "
+"நெடுவரிசையாகவே இருக்கும்."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "பிளவுபட்ட நெடுவரிசை பின்னணி"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"ஸ்பிளிட் டிசைன் இரண்டாம் நிலை நெடுவரிசைக்கு ஒரு பின்னணி நிறத்தைத் "
+"தேர்ந்தெடுக்கவும். ஆர்டர் சுருக்கத்தின் பின்னணி நிறத்தைப் பயன்படுத்த, இதை "
+"காலியாக விடவும்."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "பக்க வார்ப்புருக்கள்"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "செக்அவுட் டெம்ப்ளேட்"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"பணம் செலுத்தும் இடத்தில் கவனச்சிதறல்களைக் குறைக்க இது "
+"பரிந்துரைக்கப்படுகிறது. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">கார்ட் "
+"கைவிடுதல் பற்றிய ஆய்வைப் படியுங்கள்</a> ."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "ஒட்டும் முன்னேற்றப் பட்டை"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "முன்னேற்றப் பட்டி பாணி"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "ஆர்டர் மொத்தங்கள்"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "பின்னணி நிறம்"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "செயல் இணைப்பு"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "மொபைல் ஆர்டர் சுருக்கம்"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "மொபைல் ஆரம்ப நிலை"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "பணம் செலுத்தும் இடத்தில் வண்டியில் உள்ள பொருட்களைத் திருத்துவதை இயக்கு"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"வாடிக்கையாளர்கள் செக்அவுட் பக்கத்திலேயே பொருட்களின் அளவுகளை மாற்றவோ அல்லது "
+"பொருட்களை நீக்கவோ அனுமதிக்கவும்."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "வண்டிப் பொருள் பிழைகள்"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"செக்அவுட் அல்லது கார்ட் பக்கங்களில் கூப்பன் குறியீடு ஒரு தனிப் பிரிவாகக் "
+"காட்டப்படும்போதும், WooCommerce அமைப்புகளில் கூப்பன் குறியீடுகளின் பயன்பாடு "
+"இயக்கப்பட்டிருக்கும்போதும் மட்டுமே இது பொருந்தும்."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "கூப்பன் குறியீடுகளின் நிலை"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "கூப்பனைப் பயன்படுத்து பொத்தான்"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "&quot;கூப்பனைப் பயன்படுத்து&quot; பொத்தானின் பாணியைத் தேர்ந்தெடுக்கவும்."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "முகவரி வரி 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"இந்த அமைப்பு, செக்அவுட் மற்றும் உள்ளூர் பிக்கப் ஆகிய பிரிவுகளுக்கு இடையில் "
+"பகிரப்படுகிறது. உள்ளூர் பிக்கப் பிரிவில், ஷிப்/பிக்கப் தேர்வியானது, "
+"ஷிப்பிங் முறைப் பிரிவின் உள்ளே (முகவரிக்கு முன்) காட்டப்பட வேண்டுமா அல்லது "
+"ஒரு தனிப் பிரிவாக (பின்) காட்டப்பட வேண்டுமா என்பதையும் இது தீர்மானிக்கிறது."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "வாடிக்கையாளர் கணக்குகள்"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "விருந்தினர் சரிபார்க்கப்பட்டார்"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"WooCommerce கணக்குகள் அமைப்புகள் பக்கத்தில் உள்ள விருந்தினர் செக்அவுட், "
+"உள்நுழைவு மற்றும் கணக்கு உருவாக்கும் விருப்பங்கள். உங்கள் வசதிக்காக அவை "
+"இங்கே நிர்வகிக்கப்படுகின்றன, எனவே ஒவ்வொரு அமைப்புகள் சுயவிவரத்திற்கும் "
+"நீங்கள் வெவ்வேறு மதிப்புகளைப் பயன்படுத்தலாம்."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "கணக்கு இல்லாமல் வாடிக்கையாளர்கள் பணம் செலுத்த அனுமதிக்கவும்"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"பணம் செலுத்தும் போது வாடிக்கையாளர்கள் கணக்கை உருவாக்கவோ அல்லது உள்நுழையவோ "
+"கேட்கப்படுவதைத் தவிர்க்க <strong>இது பரிந்துரைக்கப்படுகிறது</strong> , "
+"ஏனெனில் இது விற்பனை விகிதங்களைக் குறைக்கக்கூடும்."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"செயலிழக்கச் செய்யப்பட்டிருக்கும்போது, கொள்முதலைப் பூர்த்தி செய்ய "
+"வாடிக்கையாளர்கள் உள்நுழைய வேண்டும் அல்லது ஒரு கணக்கை உருவாக்க வேண்டும்."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "பணம் செலுத்தும் இடத்தில் உள்நுழையவும்"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "பணம் செலுத்தும் போது உள்நுழைவை இயக்கவும்"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr ""
+"மீண்டும் வரும் வாடிக்கையாளர்கள் செக்அவுட் பக்கத்திலிருந்து உள்நுழைவதற்கான "
+"இணைப்பைக் காண்பிக்கவும்."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "கணக்கு உருவாக்கம்"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "பணம் செலுத்தும் போது வாடிக்கையாளர்கள் கணக்கை உருவாக்க அனுமதிக்கவும்."
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr ""
+"வாடிக்கையாளர்கள் தங்களது ஆர்டரைப் பதிவு செய்வதற்கு முன்பாக ஒரு கணக்கை "
+"உருவாக்கிக்கொள்ளலாம்."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr ""
+"&#39;எனது கணக்கு&#39; பக்கத்திலிருந்து வாடிக்கையாளர்கள் கணக்கை உருவாக்க "
+"அனுமதிக்கவும்."
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr ""
+"வாடிக்கையாளர்கள் &#39;எனது கணக்கு&#39; பக்கத்திலிருந்து ஒரு புதிய கணக்கைப் "
+"பதிவு செய்துகொள்ளலாம்."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "பயனர்பெயர்"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "வாடிக்கையாளரின் பெயரிலிருந்து உருவாக்கவும்"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"பணம் செலுத்தும் போது வாடிக்கையாளர்கள் பயனர்பெயரைத் தேர்ந்தெடுக்கக் "
+"கேட்கப்படுவதைத் தவிர்க்க <strong>இது பரிந்துரைக்கப்படுகிறது</strong> , "
+"ஏனெனில் இது விற்பனை விகிதங்களைக் குறைக்கக்கூடும்."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"பயனர்பெயர் என்பது வாடிக்கையாளர் பெயரிலிருந்தோ, அல்லது பெயரைப் பயன்படுத்த "
+"முடியாத பட்சத்தில் மின்னஞ்சல் முகவரியிலிருந்தோ உருவாக்கப்படுகிறது."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "கடவுச்சொல்"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "கடவுச்சொல் அமைவு இணைப்பை அனுப்பவும்"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"பணம் செலுத்தும் போது வாடிக்கையாளர்கள் கடவுச்சொல்லை அமைக்கக் கோரப்படுவதைத் "
+"தவிர்க்க <strong>இது பரிந்துரைக்கப்படுகிறது</strong> , ஏனெனில் இது விற்பனை "
+"மாற்ற விகிதங்களைக் குறைக்கக்கூடும்."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr ""
+"வாடிக்கையாளர்கள் தங்கள் கடவுச்சொல்லைப் பாதுகாப்பாக உருவாக்குவதற்காக ஓர் "
+"மின்னஞ்சலைப் பெறுவார்கள்."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"பதிவுசெய்யப்பட்ட வாடிக்கையாளர்கள் உள்நுழையாமலேயே பணம் செலுத்துதலை "
+"முடிக்கவும், தொடர்பு விவரங்கள் பொருந்தும்போது அந்த ஆர்டரை அவர்களின் "
+"தற்போதைய கணக்குடன் இணைக்கவும் அனுமதிக்கவும்."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "ஏற்கனவே உள்ள கணக்கு செய்தி"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr ""
+"வாடிக்கையாளர்கள் தங்கள் ஆர்டரைப் பதிவுசெய்த பிறகு, நன்றிப் பக்கத்திலிருந்து "
+"ஒரு கணக்கை உருவாக்கிக்கொள்ள அனுமதிக்கவும்."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"விருந்தினர் செக்-அவுட் மற்றும் கணக்குப் பொருத்தம் ஆகியவை "
+"இயக்கப்பட்டிருக்கும்போது, இந்தப் பிரிவில் உள்ள விருப்பங்கள் கிடைக்கும். "
+"தாமதமான கணக்கு உருவாக்கத்தை உள்ளமைக்க, மேலே உள்ள இரண்டு அம்சங்களையும் "
+"இயக்கவும்."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "தாமதமான கணக்கு உருவாக்கத்தை இயக்கு"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"விருந்தினர் செக்-அவுட் மற்றும் கணக்குப் பொருத்தம் ஆகிய இரண்டும் "
+"இயக்கப்பட்டிருக்கும்போது, தாமதமான கணக்கு உருவாக்கத்தைச் செயல்படுத்தவும்."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "பிரிவு நிலை"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "வாடிக்கையாளர் விவரங்கள் பகுதிக்கு முன்"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "வாடிக்கையாளர் விவரங்கள் பிரிவுக்குப் பிறகு"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "கணக்கு உருவாக்கத்தின் நன்மைகள்"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "புலத்தை காலியாக விட்டால் இயல்புநிலை உரை காட்டப்படும்."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "உள்ளமை பொத்தான்கள்"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "தேவையான புலங்கள்"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "செக் அவுட்டில் பரிசுச் செய்தி புலங்களைச் செயல்படுத்தவும்"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "விரிவாக்கப்பட்ட பரிசுச் செய்தி"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "பரிசுச் செய்தி புலம் எப்போதும் விரிவடைந்த நிலையில் காட்டப்படும்."
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "ஆர்டர் விவரங்களில் பரிசுச் செய்தி"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"தற்சமயம் இந்தப் பிரிவில் எந்த ஒருங்கிணைப்புகளும் கிடைக்கவில்லை. ஒவ்வொரு "
+"பிளகின் அல்லது தீம் செயல்படுத்தப்படும்போது மட்டுமே, அது தொடர்பான "
+"விருப்பத்தேர்வுகள் இங்கே தோன்றும்."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "தொலைபேசி புலங்கள்"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "புலப் பார்வை"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "புல நிலை"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "தொலைபேசி நாட்டுக் குறியீடு மற்றும் சரிபார்ப்பு"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "நாடு"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "தொலைபேசி புலங்களில் நாட்டைச் செயல்படுத்து"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "அனுப்புதல் அல்லது பில்லிங்கிற்காக நாடுகளை வடிகட்டவும்"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"ஒவ்வொரு தொலைபேசி எண் புலத்திலும் உள்ள நாட்டுக் தேர்வியை, உங்கள் கடையில் "
+"அனுப்புவதற்கோ அல்லது கட்டணம் வசூலிப்பதற்கோ அனுமதிக்கப்பட்ட நாடுகளுக்கு "
+"மட்டும் வரம்பிடவும்."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "சரிபார்ப்பு"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "நாட்டு விதிகளின் அடிப்படையில் எளிய சரிபார்ப்பை இயக்கு"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"தேர்ந்தெடுக்கப்பட்ட நாட்டிற்கு தொலைபேசி எண் செல்லுபடியாகிறதா என்பதை, "
+"நாட்டுக் குறியீடு மற்றும் கால அளவு உட்பட, சரிபார்க்கிறது."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"தேர்ந்தெடுக்கப்பட்ட நாட்டிற்குரிய செல்லுபடியாகும் மொபைல், நிலையான தொலைபேசி "
+"அல்லது பிற ஏற்றுக்கொள்ளப்பட்ட வகை எண் தானா என்பதை கடுமையாகச் சரிபார்க்க "
+"வேண்டும். சில செல்லுபடியாகும் எண்கள் நிராகரிக்கப்படலாம்."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "சரிபார்ப்பு வகைகள்"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "இடங்களுக்கானவை"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"தற்சமயம் நிர்வகிக்க உரிமச் சாவிகள் எதுவும் இல்லை. உரிமம் பெற்ற Fluid "
+"Checkout செருகுநிரல் அல்லது துணை நிரல் செயலில் இருக்கும்போது உரிமச் சாவிகள் "
+"இங்கே தோன்றும்."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "இயல்புநிலை விநியோக வகை"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr ""
+"இயல்புநிலையாக எந்த விநியோக வகை தேர்ந்தெடுக்கப்பட வேண்டும் என்பதைத் "
+"தேர்வுசெய்யவும்."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "கப்பல் மண்டல புலங்கள்"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"உள்ளூர் பிக்கப் ஷிப்பிங் மண்டல வடிகட்டிப் புலங்களில் எவை காட்டப்பட வேண்டும் "
+"என்பதைத் தேர்ந்தெடுக்கவும். கிடைக்கக்கூடிய அனைத்து விருப்பங்களையும் காட்ட, "
+"இதை காலியாக விடவும்."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"உள்ளூர் பிக்கப் ஷிப்பிங் முறைகளுக்கான வடிகட்டியாக இந்தப் புலங்கள் "
+"காட்டப்படும். இணக்கமான செருகுநிரல்கள் சரியாகச் செயல்பட சில புலங்கள் "
+"தேவைப்பட்டால், இங்கு தேர்ந்தெடுக்கப்படாதபோதும் அவை செக்அவுட்டின்போது "
+"தோன்றக்கூடும்."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "ஆர்டர் அனுப்பும் முகவரி"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "ஆர்டர் கட்டணப் பக்க மேம்படுத்தல்"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"பணம் செலுத்தப்படாத ஆர்டர்களுக்கும், செக்அவுட்டைப் போலவே தெளிவான, விற்பனையை "
+"அதிகரிக்கும் தளவமைப்பை வழங்குங்கள்."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"பணம் செலுத்தப்படாமல் நிலுவையில் உள்ள ஆர்டர்களுக்கான கட்டணப் பக்கத்தின் "
+"வடிவமைப்பை மேம்படுத்தவும்."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"ஒரு சீரான கொள்முதல் அனுபவத்தைப் பெற, ஆர்டர் செலுத்தும் முறையை உங்கள் "
+"பரிவர்த்தனை முறையுடன் பொருத்துங்கள்."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"வாடிக்கையாளர்கள் பணம் செலுத்துவதற்கு முன் உறுதி தேவைப்படும் இடங்களில் "
+"நம்பிக்கைச் சின்னங்களையும் பேட்ஜ்களையும் சேர்க்கவும்."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "நன்றி பக்க மேம்படுத்தல்"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"வாடிக்கையாளர்கள் பொருளை வாங்கிய பிறகு, அவர்களுக்கு நன்றிப் பக்கத்தையும் "
+"ஆர்டர் விவரங்களையும் மேலும் தெளிவாகக் காட்டுங்கள்."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr ""
+"நன்றிப் பக்கம் மற்றும் கணக்கு ஆர்டர் விவரங்களைத் தெளிவான வடிவமைப்புடன் "
+"மேம்படுத்துங்கள்."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"ஆர்டர் நிலை, முன்னேற்றம், செயல்பாடுகள், பதிவிறக்கங்கள் மற்றும் "
+"குறிப்புகளைப் பொருத்தமான இடங்களில் காண்பிக்கவும்."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "மின்னஞ்சல் அறிவிப்புகளில் உள்ள ஆர்டர் விவரப் பிரிவுகளைத் தனிப்பயனாக்கவும்."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"வாடிக்கையாளர்கள் பொருளை வாங்கிய பிறகு அவர்களுக்கு உறுதி தேவைப்படும் "
+"இடங்களில், நம்பிக்கைச் சின்னங்களையும் பேட்ஜ்களையும் சேர்க்கவும்."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "மின்னஞ்சல் அறிவிப்புகள்"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"கூடுதல் விருப்பங்களைக் காண, நன்றிப் பக்கம் மற்றும் ஆர்டர் விவரங்கள் "
+"மேம்படுத்தல்களைச் செயல்படுத்தவும்."
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "நன்றிப் பக்கத்தில் அகலமான தளவமைப்பைப் பயன்படுத்தவும்"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"இந்த விருப்பங்கள் நன்றி தெரிவிக்கும் பக்கம், கணக்குப் பக்கங்களில் உள்ள "
+"ஆர்டர் விவரங்களைக் காண்பது மற்றும் மின்னஞ்சல் அறிவிப்புகள் ஆகியவற்றைப் "
+"பாதிக்கின்றன."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "அமைப்புகளைச் சேமிக்கவும்"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "ஆவணங்கள்"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "வண்டி"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "நன்றி"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "முகவரி தானியங்கு நிரப்புதல்"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "நம்பிக்கை சின்னங்கள்"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "இந்த அமைப்புகளைச் சேமிக்க உங்களுக்கு அனுமதி இல்லை."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "செல்லாத சேமிப்புக் கோரிக்கை."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "உங்கள் அமைப்புகள் சேமிக்கப்பட்டுவிட்டன."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "சேமிப்பு..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "அமைப்புகளைச் சேமிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "அறிவிப்பை நிராகரி"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "அமைப்புகள் மெனுவைத் திறக்கவும்"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "அமைப்புகள் மெனுவை மூடுக"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "முன்னோட்டம்"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "முன்னோட்டத்தை விரிவாக்கு"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "சுருக்க முன்னோட்டம்"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "தலைப்பு மற்றும் அடிக்குறிப்பைக் காட்டு"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "தலைப்பு மற்றும் அடிக்குறிப்பை மறைக்கவும்"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "பக்க முன்னோட்டம்"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "முன்னோட்டக் காட்சிப்பகுதி"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "டேப்லெட்"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "டெஸ்க்டாப்"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "முன்னோட்ட அகலம்"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "அகலத்தைக் குறைக்கவும்"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "முன்னோட்ட அகலம் பிக்சல்களில்"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "அகலத்தை அதிகரிக்கவும்"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "முன்னோட்டம்"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "விருந்தினர்"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "உள்நுழைந்தார்"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "முன்னோட்டப் பக்கம்"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "மேலும் விரிவாகப் பார்க்க முன்னோட்டத்தை விரிவாக்கவும்"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "%s உடன் கிடைக்கிறது."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "அவற்றை இயக்கவும்"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr ""
+"இந்தப் பக்கத்திற்கான மேம்படுத்தல்கள் முடக்கப்பட்டுள்ளன. பக்கத்தை "
+"முன்னோட்டமிட %s ஐ அழுத்தவும்."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "%s முன்னோட்டம்"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "தனிமைப்படுத்தப்பட்ட அமர்வு · எதுவும் சேமிக்கப்படவில்லை"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "பயன்பாட்டைக் கண்காணித்தல்"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Fluid Checkout இணக்கத்தன்மையை மேம்படுத்த உதவும் வகையில், முக்கியத்துவம் "
+"இல்லாத தளச் சூழல் அறிக்கைகளை அனுப்பவும். கீழே உள்ள விருப்பங்களில் "
+"செயல்படுத்தப்படும் வரை அறிக்கைகள் அனுப்பப்படாது."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "பயன்பாட்டைக் கண்காணிக்கும் அறிக்கைகளை Fluid Checkout-க்கு அனுப்பவும்."
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"இந்த அறிக்கைகள் உங்கள் தளத்திற்கான இணக்கத்தன்மை மற்றும் ஆதரவை மேம்படுத்த "
+"எங்களுக்கு உதவுகின்றன, மேலும் செயல்படுத்தப்படும்போது வாரந்தோறும் "
+"அனுப்பப்படுகின்றன."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"அறிக்கைகளில் வாடிக்கையாளர், நிர்வாகப் பயனர் அல்லது வேறு எந்த முக்கியமான "
+"தரவும் சேர்க்கப்படவில்லை."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "அடிப்படை சுற்றுச்சூழல் தகவல்"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"வேர்ட்பிரஸ், பிஎச்பி, வூகாமர்ஸ், தீம் மற்றும் பிளகின் பட்டியல் தரவுகள். "
+"அறிக்கையிடல் இயக்கப்பட்டிருக்கும்போது இது எப்போதும் சேர்க்கப்படும். உங்கள் "
+"தளம் இயங்கும் சூழலைப் புரிந்துகொள்ள இது எங்களுக்கு உதவுகிறது."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "செருகுநிரல் அமைப்புகள்"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"ஆதரவுக் கோரிக்கைகளுக்கு உதவுவதற்காக Fluid Checkout செருகுநிரல் அமைப்புகளை "
+"அனுப்புகிறது, மேலும் நீங்கள் எங்கள் செருகுநிரல்களை எவ்வாறு "
+"பயன்படுத்துகிறீர்கள் என்பதைப் புரிந்துகொள்ளவும் இது எங்களுக்கு உதவுகிறது."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "விரைவில் வருகிறது"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "விற்பனை அளவீடுகள்"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"Fluid Checkout-ஐ நிறுவுவதற்கு முந்தைய ஓராண்டு முதல் இன்று வரையிலான "
+"மாதாந்திர ஆர்டர் எண்ணிக்கை மற்றும் மொத்த விற்பனை. எங்கள் செருகுநிரல்களை "
+"நிறுவிய பிறகு நீங்கள் அதிகப் பணம் சம்பாதிக்கிறீர்களா என்பதைப் புரிந்துகொள்ள "
+"இது எங்களுக்கு உதவுகிறது. வாடிக்கையாளர் அல்லது பயனர் தரவுகள் எதுவும் "
+"ஒருபோதும் அனுப்பப்படுவதில்லை."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "பயன்பாடுகள்"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"<code>select2</code> க்கு பதிலாக <code>TomSelect</code> கீழ்விரிப் பட்டி "
+"கூறுகளைப் பயன்படுத்தவும்."
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect என்பது Select2-ஐ விடப் பிழைகள் ஏற்பட வாய்ப்பு குறைவான, அதே சமயம் "
+"அதே செயல்பாடுகளை வழங்கும் ஒரு எளிமையான கீழ்விரிப் பட்டியல் தேர்வுக் கூறு "
+"ஆகும்."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"சிறிய சாதனங்களில் படிவப் புலங்களுடன் தொடர்பு கொள்ளும்போது தானாகவே "
+"பெரிதாகுவதைத் தவிர்ப்பதற்காக, இந்தப் பிளகின் மூலம் மேம்படுத்தப்பட்ட "
+"பக்கங்களில் உள்ள படிவப் புலங்களின் எழுத்துரு அளவை 16px ஆக இது அமைக்கிறது."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"மொபைல் சாதனங்களில் எழுத்துரு அளவு 16px-ஐ விடச் சிறியதாக இருக்கும்போது, "
+"உரையை எளிதாகப் படிப்பதற்காக சஃபாரி மற்றும் பிற உலாவிகள் தானாகவே "
+"பெரிதாக்கக்கூடும்."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "உலாவி கன்சோலில் ஸ்கிரிப்ட் செயலாக்கக் கண்காணிப்பை இயக்கவும்."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "குறைக்கப்படாத சொத்துக்கள்"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "கூகிள் மேப்ஸ் ஸ்கிரிப்டுகள்"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "நகல் கூகுள் மேப்ஸ் ஸ்கிரிப்டுகளை அகற்ற வேண்டாம்"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"இதை இயக்கும்போது, நகல் கூகுள் மேப்ஸ் ஸ்கிரிப்டுகள் அகற்றப்படாது, இது "
+"பிழைகளையும் செயல்திறன் சிக்கல்களையும் ஏற்படுத்தக்கூடும். சிக்கல்களைத் "
+"தீர்க்கும்போது மட்டும் இந்த விருப்பத்தைப் பயன்படுத்தவும்."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "விட்ஜெட் பகுதிகள்"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "மொபைலில் கடைசி படி"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "மொபைலில் விட்ஜெட்களைக் கடைசிப் படியில் மட்டும் காண்பிக்கவும்"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"மொபைல் சாதனங்களில் கடைசிப் பரிவர்த்தனைப் படிநிலையைப் பார்க்கும்போது "
+"மட்டும், பரிவர்த்தனை நம்பிக்கைச் சின்ன விட்ஜெட்டுகளைக் காண்பிக்கவும்."
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "தரநிலை"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "VAT எண் புலம்"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "கட்டணப் படிவத்தில் VAT எண் புலத்தைச் சேர்க்கவும்."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "புல லேபிள்"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"VAT எண் புலத்தின் லேபிளை (அதாவது, VAT எண்) அமைக்கவும். பன்மொழி "
+"இணையதளங்களில், இந்தப் புலத்தைக் காலியாக விட்டுவிட்டு அசல் சரத்தை "
+"மொழிபெயர்ப்பது சிறந்தது."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "VAT எண்"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "ஐரோப்பிய ஒன்றிய மதிப்புக்கூட்டு வரி"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "கூடுதல் விருப்பங்களைக் காண, VAT எண் புலத்தைச் செயல்படுத்தவும்."
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "VAT சரிபார்ப்பு"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr ""
+"பணம் செலுத்தும் போது ஐரோப்பிய ஒன்றிய மதிப்புக்கூட்டு வரிக்கு (EU-VAT) "
+"மதிப்புக்கூட்டு வரி எண் புலத்தைச் சரிபார்க்கவும்."
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"வழங்கப்பட்ட VAT எண், ஐரோப்பிய VIES தரவுத்தளத்தில் (VAT தகவல் பரிமாற்ற "
+"அமைப்பு) பதிவுசெய்யப்பட்ட செல்லுபடியாகும் VAT எண் தானா என்பதைச் "
+"சரிபார்க்கிறது."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "கடை VAT எண்"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"ஐரோப்பிய ஒன்றிய மதிப்புக்கூட்டு வரி சரிபார்ப்பைக் கோருவதற்கும், "
+"விலைப்பட்டியல்களில் அச்சிடுவதற்கும் பயன்படுத்தப்படும் கடையின் "
+"மதிப்புக்கூட்டு வரி எண்.<br> <strong>உங்கள் கடை VAT எண்ணைச் சேர்க்குமாறு "
+"நாங்கள் வன்மையாகப் பரிந்துரைக்கிறோம்</strong> , இல்லையெனில் VIES "
+"கலந்தாய்வின் முடிவுகள் கணக்கியல் நோக்கங்களுக்காகச் செல்லுபடியாகாமல் "
+"போகலாம்.<br> அதாவது: <code>ATU99999999</code> அல்லது "
+"<code>EE999999999</code> ."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "எதிர் மின்னூட்டம்"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "எதிர் மின்னூட்ட வழிமுறையைப் பயன்படுத்துங்கள்"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"வாடிக்கையாளரின் VAT எண் செல்லுபடியாகும் பட்சத்தில், வரி விகிதத்தை "
+"பூஜ்ஜியமாக அமைத்து, விலைப்பட்டியல்களில் &quot;Reverse charge&quot; எனக் "
+"காண்பிக்கவும். கடையின் நாட்டைப் பொறுத்து, வேறுபட்ட &quot;Reverse "
+"charge&quot; வாசகம் தேவைப்படலாம்."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "அதே நாடு"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr ""
+"கடை நடைபெறும் நாட்டில் நடைபெறும் பரிவர்த்தனைகளுக்கு எதிர் கட்டண முறையைப் "
+"பயன்படுத்துங்கள்:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"கடை அமைந்துள்ள அதே நாட்டில் உள்ள நிறுவனங்களுக்கு இடையேயான "
+"பரிவர்த்தனைகளுக்கு, எதிர் கட்டண முறையைப் பயன்படுத்த இது உதவுகிறது."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "தலைகீழ் கட்டண விதிவிலக்குகள்"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr ""
+"எதிர் கட்டண முறையைப் பயன்படுத்துவதைத் தவிர்க்க, கூடுதல் நாடுகளைத் "
+"தேர்ந்தெடுக்கவும்."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"சரியான VAT எண் வழங்கப்பட்டாலும், இந்த நாடுகளில் இருந்து வரும் ஆர்டர்களுக்கு "
+"வரிகள் விதிக்கப்படும்."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "விலைப்பட்டியல்களில் தலைகீழ் கட்டண லேபிள்"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr ""
+"பணம் செலுத்தும் பக்கம் மற்றும் ஆர்டர் விவரங்களில் &quot;பணத்தைத் திரும்பப் "
+"பெறுதல்&quot; என்ற குறியீட்டை அமைக்கவும்."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "விலைப்பட்டியல்களில் உள்ள தலைகீழ் கட்டண உரை"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr ""
+"விலைப்பட்டியல்களில் &quot;திரும்பக் கட்டணம்&quot; என்ற உரையின் லேபிளை "
+"அமைக்கவும்."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "தலைகீழ் கட்டண அடிப்படையில் வரி செலுத்தப்பட வேண்டும்"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "நிறுவனத்தின் பெயர்"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "VAT எண்ணிலிருந்து நிறுவனத்தின் பெயரைத் தானாக நிரப்பவும்"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"வாடிக்கையாளர் வழங்கிய செல்லுபடியாகும் VAT எண்ணின் அடிப்படையில் பில்லிங் "
+"நிறுவனத்தின் பெயரை நிரப்பவும்."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "நிறுவனத்தின் பெயர் திருத்தம்"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "தானாக நிரப்பப்பட்ட நிறுவனத்தின் பெயரைத் திருத்த அனுமதிக்கவும்"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"செயல்படுத்தப்படும்போது, வாடிக்கையாளர்கள் வழங்கப்பட்ட VAT எண்ணுடன் "
+"தொடர்புடைய நிறுவனத்தின் பெயரை மாற்றிக்கொள்ளலாம்."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "டிஜிட்டல் பொருட்களுக்கான ஐரோப்பிய ஒன்றிய மதிப்புக்கூட்டு வரி"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"2015, ஜனவரி 1 முதல், டிஜிட்டல் பொருட்கள் தொடர்பான ஐரோப்பிய ஒன்றியத்தின் "
+"மதிப்புக்கூட்டு வரி (VAT) விதிமுறைகளில் மாற்றங்கள் செய்யப்பட்டுள்ளன. இந்த "
+"மாற்றங்கள் பிரத்தியேகமாக B2C பரிவர்த்தனைகளைப் பாதிக்கின்றன. டிஜிட்டல் "
+"பொருட்களுக்கான மதிப்புக்கூட்டு வரியானது, வாடிக்கையாளரின் இருப்பிடத்தின் "
+"அடிப்படையில் கணக்கிடப்பட வேண்டும். மேலும், இதற்கான ஆதாரங்கள் (IP முகவரி "
+"மற்றும் பில்லிங் முகவரி) சேகரிக்கப்பட வேண்டும்."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "டிஜிட்டல் பொருட்களுக்கான வரி வகுப்புகள்"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "சில வரி வகுப்புகளைத் தேர்ந்தெடுக்கவும்"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "இருப்பிடச் சான்றுகள்"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "வாடிக்கையாளரின் இருப்பிட ஆதாரங்களைச் சேகரிக்கவும்"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"ஐபி முகவரியைச் சேமித்து, அதை வாடிக்கையாளரின் பில்லிங் முகவரியுடன் "
+"சரிபார்க்கிறது. வாடிக்கையாளரின் பில்லிங் முகவரி மற்றும் ஐபி முகவரியில் உள்ள "
+"நாடு பொருந்தவில்லை என்றால், அவர்கள் செக்அவுட் பக்கத்தில் உள்ள செக்பாக்ஸைத் "
+"தேர்வுசெய்து தங்கள் பில்லிங் முகவரியை உறுதிப்படுத்த வேண்டும்."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"இந்த விருப்பம் Fluid Checkout-இல் நிர்வகிக்கப்படுகிறது. <a href=\"%s\">இதை "
+"வாடிக்கையாளர் கணக்கு அமைப்புகளில் மாற்றவும்</a> ."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"இந்த விருப்பம் Fluid Checkout-இல் நிர்வகிக்கப்படுகிறது. Fluid Checkout &gt; "
+"வாடிக்கையாளர் கணக்குகள் என்பதற்குள் சென்று இதை மாற்றவும்."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"இந்த விருப்பம் Fluid Checkout-இல் நிர்வகிக்கப்படுகிறது. Fluid Checkout "
+"செயல்படுத்தப்படும்போது, அனுப்பும் முகவரி எப்போதும் &quot;வாடிக்கையாளரின் "
+"அனுப்பும் முகவரிக்கு இயல்புநிலையாக&quot; என அமைக்கப்படும். வாடிக்கையாளர்கள் "
+"செக்அவுட்டின் போது வெவ்வேறு அனுப்பும் மற்றும் பில்லிங் முகவரிகளை "
+"வழங்கலாம்.<br><br> இயல்புநிலை பில்லிங் முகவரியை ஷிப்பிங் முகவரியைப் போலவே "
+"அமைப்பதற்கான ஒரு விருப்பம் <a href=\"%s\">, Fluid Checkout அமைப்புகளில்</a> "
+"உள்ளது."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"இந்த விருப்பம் Fluid Checkout-இல் நிர்வகிக்கப்படுகிறது. Fluid Checkout "
+"செயல்படுத்தப்படும்போது, அனுப்பும் முகவரி எப்போதும் &quot;வாடிக்கையாளரின் "
+"அனுப்பும் முகவரிக்கு இயல்புநிலையாக&quot; என அமைக்கப்படும். வாடிக்கையாளர்கள் "
+"செக்அவுட்டின் போது வெவ்வேறு அனுப்பும் மற்றும் பில்லிங் முகவரிகளை "
+"வழங்கலாம்.<br><br> இயல்புநிலை பில்லிங் முகவரியை ஷிப்பிங் முகவரியைப் போலவே "
+"அமைப்பதற்கான ஒரு விருப்பம் WooCommerce &gt; Settings &gt; Fluid Checkout "
+"இல் கிடைக்கிறது."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr ""
+"இந்த அமைப்புகள் WP Admin &gt; Fluid Checkout &gt; Settings என்பதற்கு "
+"மாற்றப்பட்டுள்ளன."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"இந்த WooCommerce அமைப்புகள் பகுதி வழக்கற்றுப் போயுள்ளது, மேலும் இது Fluid "
+"Checkout 6.0 பதிப்பில் நீக்கப்படும்."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "அமைப்புகள் பக்கத்திற்குச் செல்லவும்"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "இந்த தாவலை நிரந்தரமாக மறைக்கவும்"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "தள அறிக்கை முன்னோட்டம்"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"உங்கள் தற்போதைய அமைப்புகளின் அடிப்படையில், அடுத்த தளச் சூழல் அறிக்கையில் "
+"இந்தத் தரவுகளே சேர்க்கப்படும்."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "அறிக்கை முன்னோட்டம் ஏற்றப்படுகிறது..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "தள அறிக்கை முன்னோட்டத்தை ஏற்ற முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "தள அறிக்கையை அனுப்ப முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "தள அறிக்கை வெற்றிகரமாக அனுப்பப்பட்டது."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "இப்போது செயல்படுத்தி அனுப்பவும்"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "அருகில்"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr ""
+"தள அறிக்கை கோரிக்கை ஏற்கனவே செயலாக்கத்தில் உள்ளது. சிறிது நேரத்தில் "
+"மீண்டும் முயற்சிக்கவும்."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "தளச் சூழல் அறிக்கையிடல் முடக்கப்பட்டுள்ளது."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "அனுப்புவதற்கு தள அறிக்கை தரவுகள் எதுவும் கிடைக்கவில்லை."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"இந்தத் தள டொமைனால் சுற்றுச்சூழல் அறிக்கைகளை அனுப்ப முடியாது (உள்ளூர் அல்லது "
+"மேம்பாட்டு டொமைன்கள் இதற்கு விதிவிலக்கு)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "சமீபத்தில் ஒரு தள அறிக்கை அனுப்பப்பட்டது. பின்னர் மீண்டும் முயற்சிக்கவும்."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "தள அறிக்கையை அனுப்ப முடியவில்லை. பின்னர் மீண்டும் முயற்சிக்கவும்."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "தளச் சூழல் குறித்த அறிக்கை கிடைக்காது."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "தேர்ந்தெடுக்கப்பட்ட அமைப்புகளுக்கு தள அறிக்கை தரவுகள் எதுவும் கிடைக்கவில்லை."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "தள அறிக்கைகளை நிர்வகிக்க உங்களுக்கு அனுமதி இல்லை."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "புரோ அம்சம்"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "பிற செருகுநிரல்கள்"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "இந்த கூடுதல் அம்சத்தை மட்டும் பெறுங்கள் — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "துணை நிரலை நிறுவவும்"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "புரோ பதிப்பிற்கு மேம்படுத்தவும் — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"இந்த விருப்பங்களைத் திறக்க <a target=\"_blank\" href=\"%1$s\">%2$ "
+"பெறுங்கள்</a> ."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "கூடுதல்"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "ஆவணங்களைக் காண்க"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"கோரிக்கைகளுக்கு உள்நுழைந்த வேர்ட்பிரஸ் பயனர் தேவை. தற்போதைய பயனரின் தரவைப் "
+"பயன்படுத்த user_id-ஐத் தவிர்க்கவும், அல்லது அழைப்பவரால் மற்றொரு பயனரைத் "
+"திருத்த முடிந்தால் (edit_user வசதி), அந்தக் கணக்கை இலக்காகக் கொள்ள "
+"user_id-ஐ அனுப்பவும். அங்கீகரிக்கப்படாத கோரிக்கைகள் fc_api_forbidden எனத் "
+"திருப்பியளிக்கும். தவறான user_id fc_api_user_not_found எனத் "
+"திருப்பியளிக்கும்."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr ""
+"ஹேண்ட்லர் ஒரு பேலோடைத் திருப்பி அனுப்பும்போது, { &quot;data&quot;: { ... } "
+"} உடன் HTTP 200 பிழை காட்டப்படும்."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"பேலோட் (உதாரணமாக DELETE) இல்லாதபோது, { &quot;success&quot;: true } உடன் "
+"HTTP 200 காட்டப்படும்."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"தோல்விகள் WP_Error இலிருந்து WordPress REST பிழை JSON ஐ (code, message, "
+"data.status) திருப்பி அனுப்புகின்றன. வயர் கோடுகள் fc_api_* முன்னொட்டைப் "
+"பயன்படுத்துகின்றன."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "அணுகல் தடைசெய்யப்பட்டுள்ளது."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "இலக்கு பயனர் கண்டறியப்படவில்லை."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "இந்த அம்சம் கிடைக்கவில்லை."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "தேவையான முகவரிப் புலம் விடுபட்டுள்ளது."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "அஞ்சல் குறியீடு அல்லது ZIP செல்லாது."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "தொலைபேசி எண் தவறானது."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "மாநிலம் அல்லது மாவட்டம் என்பது செல்லாது."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "நாடு தவறானது அல்லது முகவரிப் புலங்கள் இல்லை."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "கோரிக்கையைச் செயல்படுத்த முடியவில்லை."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "முந்தைய படிக்குத் திரும்பு"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "அமைப்புகளுக்குச் செல்லவும்"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "மீண்டும் தொடங்கி, வழிகாட்டப்பட்ட முதல் அமைவுப் படிக்குத் திரும்பவும்."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "மீண்டும் தொடங்கு"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "தொடர்வதற்கு முன் அனைத்து துணைப் படிநிலைகளையும் நிறைவு செய்யவும்."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "விரிவாக்கு"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "சரிவு"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "தவிர்க்கவும்"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "நிறைவுற்றதாகக் குறிக்கவும்"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "முழுமையற்றதாகக் குறிக்கவும்"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "முழு அளவுப் படத்தைக் காண்க: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "முழு அளவு அமைவு வழிகாட்டி படம்"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "நெருக்கமான படம்"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "திரவ சரிபார்ப்பு வழிகாட்டப்பட்ட அமைப்பு"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "வரவேற்கிறோம்"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "உங்கள் செக்அவுட்டை ஆராயுங்கள்"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "எல்லாம் தயார்"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "இந்தப் பக்கத்தை அணுக உங்களுக்கு அனுமதி இல்லை."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "படி %1$d க்குச் செல்லவும்: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"இந்த வழிகாட்டப்பட்ட அமைப்பு, Fluid Checkout உடன் உங்களுக்குப் பழக்கமாவதற்கு "
+"உதவுகிறது. கீழே உள்ள படிகள் தற்போதைக்கு மாதிரிப் படிகளாகும்."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "நீங்கள் தயாரானதும் அடுத்த கட்டத்திற்குச் செல்லுங்கள்."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "Fluid Checkout செயல்படுவதைக் காண, உங்கள் ஸ்டோர் செக்அவுட்டைத் திறக்கவும்."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "செக்அவுட் பக்கத்தைப் பார்க்கவும்"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"உங்கள் ஸ்டோரைத் தொடர்ந்து உள்ளமைக்க, நீங்கள் Fluid Checkout "
+"அமைப்புகளுக்குத் திரும்பலாம்."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "செக்அவுட் மற்றும் கார்ட் அமைப்புகளை மதிப்பாய்வு செய்யவும்"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "டாஷ்போர்டில் இருந்து துணை நிரல்களை ஆராயுங்கள்"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "முடித்துவிட்டு அமைப்புகளுக்குச் செல்லவும்"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"பில்லிங் தொலைபேசி புலத்தின் தெரிவுநிலை விருப்பத்தை, பழைய மதிப்பிலிருந்து "
+"WooCommerce மரபுகளுக்கு ஏற்றவாறு புதுப்பிக்கவும்."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"WooCommerce மரபுகளுக்கு ஏற்ப, ஷிப்பிங் ஃபோன் ஃபீல்டின் தெரிவுநிலை "
+"விருப்பத்தை பழைய மதிப்பிலிருந்து புதுப்பிக்கவும்."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"ஆர்டர் சுருக்கப் பின்னணி வண்ண அமைப்பை, புதிய பிரிப்பு வடிவமைப்பு இரண்டாம் "
+"நிலை நெடுவரிசைப் பின்னணி வண்ண விருப்பத்திற்கு நகலெடுக்கவும்."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"பைட்ஷிப் செருகுநிரலைப் பயன்படுத்தும்போது, மேம்படுத்தப்பட்ட தேர்வுப் "
+"புலங்கள் அம்சம் எப்போதும் முடக்கப்பட்டிருக்கும்."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"ஜெர்மன் மார்க்கெட்டைப் பயன்படுத்தும்போது, ஆர்டர் செய்யும் நிலை எப்போதும் "
+"&quot;ஆர்டர் சுருக்கத்திற்குக் கீழே&quot; என அமைக்கப்படுகிறது. அந்த "
+"பிளகினுக்கு, ஆர்டர் செய்யும் பொத்தானும் சட்டப்பூர்வ சரிபார்ப்புப் "
+"பெட்டிகளும் ஆர்டர் சுருக்கத்திற்குக் கீழே காட்டப்பட வேண்டும்."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"WooCommerce-க்கான Germanized-ஐப் பயன்படுத்தும்போது, ஆர்டர் செய்யும் நிலை "
+"எப்போதும் &quot;ஆர்டர் சுருக்கத்திற்குக் கீழே&quot; என அமைக்கப்படுகிறது. "
+"அந்த பிளகினுக்கு, ஆர்டர் செய்யும் பொத்தானும் சட்டப்பூர்வ சரிபார்ப்புப் "
+"பெட்டிகளும் ஆர்டர் சுருக்கத்திற்குக் கீழே காட்டப்பட வேண்டும்."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "பிக்கப் இடங்களைத் திருத்தவும்"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "WooCommerce அமைப்புகளிலிருந்து உள்ளூர் பிக்கப் லேபிளைப் பயன்படுத்தவும்"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"இயக்கப்பட்டிருக்கும்போது, செக் அவுட்டில் உள்ள பிக்கப் விருப்ப லேபிள், "
+"WooCommerce பிக்கப் இருப்பிட அமைப்புகளில் உள்ள தலைப்புடன் பொருந்தும். "
+"முடக்கப்பட்டிருக்கும்போது, அந்த லேபிள் Fluid Checkout-இல் உள்ள "
+"மொழிபெயர்க்கக்கூடிய &quot;உள்ளூர் பிக்கப்&quot; என்ற உரையைப் "
+"பயன்படுத்துகிறது."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2840,3 +4858,115 @@ msgstr "ஆம்"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "ஜான்"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "பெண் மான்"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "உதாரண நிறுவனம்"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "123 மெயின் ஸ்ட்ரீட்"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "எனிடவுன்"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "தயவுசெய்து பொட்டலத்தை முன் வாசலில் வைத்துவிட்டுச் செல்லவும்."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "பீனி"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "தொப்பி"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "டி-ஷர்ட்"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr ""
+"உங்கள் ஆர்டரைப் பெற்றுக்கொண்டோம். அது அனுப்பப்படும்போது உங்களுக்குத் தகவல் "
+"அனுப்புவோம்."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "பயனர் வழிகாட்டி"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "இடங்கள் ஏபிஐ (புதியது)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "இடங்கள் ஏபிஐ (பழையது)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "பதிப்பு 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "பதிப்பு 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ அடுத்த முறை விரைவாகப் பணம் செலுத்துங்கள் ✔ உங்கள் கட்டண விருப்பங்களை "
+"நிர்வகிக்கவும் ✔ ஆர்டர் நிலை மற்றும் வரலாற்றைக் காண்க"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "மறைக்கப்பட்ட"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "விருப்பத்தேர்வு"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "தேவைப்படும்"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "அனுப்ப வேண்டிய முகவரி"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "உள்ளூர் பிக்கப்"

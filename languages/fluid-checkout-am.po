@@ -272,10 +272,6 @@ msgstr "የፈሳሽ Checkout ዳታቤዝ በተሳካ ሁኔታ ተዘምኗ�
 msgid "The database changes where applied successfully."
 msgstr "የውሂብ ጎታው በተሳካ ሁኔታ ሲተገበር ይቀየራል።"
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "እሺ"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "አሰናብት"
@@ -385,34 +381,9 @@ msgstr "ሰነዶችን ያንብቡ"
 msgid "Don't show this again"
 msgstr "ይህንን እንደገና አታሳይ"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "ልዩ ቅናሾች"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr "ሁሉንም የፈሳሽ ቼክአውትን መልካምነት ወደ ጋሪ ገጽዎ ያራዝሙ እና አመሰግናለሁ ገጾች።"
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "ፈሳሽ Checkout PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr "የንድፍ አብነቶች፣ የተመቻቹ ጋሪ እና የተቀበሉ ገጾችን ማዘዝ፣ የመለያ ማዛመድ እና ሌሎችም።"
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"<strong>የእርስዎን WooCommerce የፍተሻ ልወጣ መጠን የበለጠ ለማሻሻል</strong> እና በጠቅላላው ጉዞ ላይ "
-"የግዢ ልምዱ ወጥ የሆነ ለማድረግ ምርጡ መሳሪያዎች።"
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -434,10 +405,6 @@ msgstr "በቼክ መውጫ ገጽ ላይ የጋሪ ይዘቶችን ያርትዑ
 msgid "Account matching / user matching"
 msgstr "መለያ ማዛመድ / የተጠቃሚ ተዛማጅ"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "ከሚደገፉ የመክፈያ ዘዴዎች የፍተሻ አዝራሮችን ይግለጹ"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "በጋሪው ላይ የእምነት ምልክቶች እና የምስጋና ገጾች"
@@ -445,10 +412,6 @@ msgstr "በጋሪው ላይ የእምነት ምልክቶች እና የምስጋ�
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "በቼክ መውጫ ገጹ ላይ ለኩፖን ኮድ ተጨማሪ ቦታዎች"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "በጋሪው ገጽ ላይ የተዋሃደ የኩፖን ኮድ መስክ"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -462,235 +425,25 @@ msgstr "የስጦታ መልእክቶች እና የማሸጊያ ወረቀቶች"
 msgid "Local pickup and in-store collection"
 msgstr "የአካባቢ ማንሳት እና በመደብር ውስጥ ስብስብ"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "ወደ PRO አሻሽል - 99 ዩሮ"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "ፈሳሽ ቼክአውት PRO - ጥቅል"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "ሁሉም PRO ባህሪያት + ሁሉም ተጨማሪዎች በልዩ ዋጋ።"
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr "ጥቅሉ በአሁኑ ጊዜ የምናቀርባቸውን ሁሉንም ተጨማሪዎች እና ወደፊት የምንጀምረውን የፈሳሽ ቼክአውት ተጨማሪዎችን ያካትታል።"
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "226 ዩሮ ዋጋ (42% ይቆጥቡ)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "ጎግል አድራሻ ራስ-አጠናቅቅ"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "የአድራሻ ደብተር"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "የአውሮፓ ህብረት-ተእታ ረዳት"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "ሁሉም የወደፊት ተጨማሪዎች *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* ንቁ የደንበኝነት ምዝገባ እስካልዎት ድረስ።"
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "ጥቅሉን ያግኙ - 129 ዩሮ ብቻ"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"ሁሉም ዋጋዎች በዩሮ ውስጥ ይታያሉ። በድረ-ገጻችን ላይ ካሉት ዋጋዎች ጋር ልዩነቶች ካሉ በድረ-ገጹ ላይ የሚታዩት "
-"ቅናሾች እነዚህን ይተካሉ እና ይተገበራሉ።"
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "ተጨማሪዎች"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "በእነዚህ ተጨማሪዎች የፍተሻ ተሞክሮዎን ያሳድጉ።"
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "አስቀድሜ አለኝ - ይህን አቅርቦት ደብቅ"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "ተጭኗል - አግብር"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "ነቅቷል"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "ለመሙላት እስከ 40% ያነሰ የፍተሻ መስኮች።"
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"የማድረስ መዘግየቶችን እና እርካታ የሌላቸውን ደንበኞችን ያስወግዱ። ከእርስዎ ጋር ለመጀመሪያ ጊዜ ሲገዙ "
-"<strong>ትክክለኛውን የአድራሻ መረጃ</strong> ይሰብስቡ."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "ይህን ተጨማሪ ያግኙ - 29 ዩሮ"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "የአድራሻ ደብተር"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "ለመላኪያ እና የክፍያ መጠየቂያ ብዙ የተቀመጡ አድራሻዎች።"
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"ደንበኞች <strong>ብዙ የመላኪያ እና የክፍያ መጠየቂያ አድራሻዎችን በሂሳባቸው ላይ እንዲያስቀምጡ</strong> "
-"ይፍቀዱላቸው እና የትኞቹን በቼክ መውጫ እና በጋሪ ገፆች ላይ እንደሚጠቀሙ ይምረጡ።"
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "ይህን ተጨማሪ ያግኙ - 59 ዩሮ"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "ለሱቅዎ ቀለል ያለ የአውሮፓ ህብረት-ተእታ ማረጋገጫ።"
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"<strong>የአውሮፓ ህብረት ተ.እ.ታ ቁጥሮችን በቼክ መውጫ ገጹ ላይ ይሰብስቡ እና ያረጋግጡ</strong> ፣ የታክስ "
-"ክፍያዎችን በተቃራኒው ክፍያ ያስወግዳል እና አስፈላጊ በሚሆንበት ጊዜ የደንበኞችን ቦታ ያረጋግጣል።"
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "ይህን ተጨማሪ ያግኙ - 39 ዩሮ"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"ሁሉም ማከያዎች የሚሸጡት ለየብቻ ነው እና <strong>Fluid Checkout Lite</strong> ተሰኪ እንዲጫን "
-"እና እንዲነቃ ያስፈልጋል፣ ካልተጠቀሰ በስተቀር።"
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "ምስል ይምረጡ"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"የፍቃድ ቁልፍዎን ለማግኘት <a href=\"https://fluidcheckout.com/account/\" "
-"target=\"_blank\">ወደ መለያዎ ይግቡ</a> ወይም <a href=\"%s\" target=\"_blank\">አዲስ "
-"የፍቃድ ቁልፍ ይግዙ</a> ።"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "እስከ %s ድረስ የሚሰራ።"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "በ%s ላይ ጊዜው አልፎበታል።"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"የፍቃድ ቁልፍዎን ለማደስ <a href=\"https://fluidcheckout.com/account/\" "
-"target=\"_blank\">ወደ መለያዎ ይግቡ</a> እና ማሻሻያዎችን እና ድጋፎችን መቀበልዎን ይቀጥሉ።"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "የፍቃድ ቁልፍ ተሰርዟል።"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">አዲስ የፍቃድ ቁልፍ ይግዙ</a> እና ማሻሻያዎችን እና ድጋፍን "
-"መቀበልዎን ይቀጥሉ።"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "ስህተት፡- "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "ማዋቀር እና ሰነድ"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "በጣም ጥሩ! የፍተሻ ገጽዎ አሁን በፈሳሽ ቼክአውት ላይ እየሰራ ነው።"
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "ለመጀመር ጥቂት ምንጮች እነኚሁና፦"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr "የመጫኛ መመሪያውን ያንብቡ <a href=\"%s\" target=\"_blank\">በፈሳሽ ቼክአውት መገለጽ</a> ።"
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "<a href=\"%s\">በቼክ መውጫ አማራጮች</a> ላይ አቀማመጥ እና ዲዛይን ያዘጋጁ።"
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr "ለሌሎች ለጫኗቸው ፕለጊኖች የሚገኙ <a href=\"%s\">የማዋሃድ አማራጮች</a> ካሉ ያረጋግጡ።"
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"ስለ Fluid Checkout ባህሪያት ተጨማሪ መረጃ ለማግኘት <a href=\"%s\" "
-"target=\"_blank\">ሰነዶቻችንን</a> ይጎብኙ።"
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"በማንኛውም ጊዜ እርዳታ ከፈለጉ፣ <a href=\"%s\" target=\"_blank\">የድጋፍ ትኬት በእኛ ኦፊሴላዊ "
-"የድጋፍ ቻናል ላይ ይክፈቱ</a> ።"
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -703,14 +456,6 @@ msgstr "የካርት ማሻሻያዎች"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "የጋሪ ገጽ ማመቻቸትን አንቃ"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "የጋሪ ገጹን ከቼክ መውጫ ገጹ ጋር ተመሳሳይ በሆነ አቀማመጥ ያሳዩ።"
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "ራስጌ እና ግርጌ"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -743,15 +488,6 @@ msgstr "በማሸብለል ጊዜ የትዕዛዙ ማጠቃለያ በጋሪው �
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "የኩፖን ኮዶች"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"በጋሪ ገጹ ላይ የኩፖን ኮዶች ክፍል የሚታይበትን ቦታ ይምረጡ። የሚመለከተው AJAX ጋሪ እና በቼክ መውጫ ገጹ ውስጥ "
-"ያሉት የተቀናጁ የኩፖን ኮዶች ሲነቁ ብቻ ነው።"
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -843,10 +579,6 @@ msgstr "የገጽታ ተሻጋሪ ሽያጭ አቀማመጥ"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "በጋሪው ገጽ ላይ የሚታዩ የተሻገሩ የሚሸጡ ዕቃዎች ብዛት"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "የእምነት ምልክቶች እና ባጆች"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "የመግብር ቦታዎችን ወደ ጋሪው ገጽ ያክሉ"
@@ -860,10 +592,6 @@ msgstr "እነዚህ መግብር ቦታዎች የታማኝነት ምልክቶ�
 #: inc/admin/admin-settings-checkout.php:50
 msgid "Checkout"
 msgstr "ይመልከቱ"
-
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "አቀማመጥ እና ዲዛይን"
 
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
@@ -880,21 +608,6 @@ msgstr "ጨለማ ሁነታ"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "ጨለማ ሁነታን አንቃ"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "ራስጌ እና ግርጌ አብነቶች"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"በቼክ መውጫ ገጹ ላይ ትኩረት የሚከፋፍሉ ነገሮችን ለማስወገድ ትኩረትን የሚከፋፍሉ ነፃ ራስጌ እና ግርጌ እንዲጠቀሙ "
-"እንመክራለን። <a href=\"https://baymard.com/blog/cart-abandonment\" "
-"target=\"_blank\">ስለ ጋሪ መተው ምርምርን ያንብቡ</a> ።"
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -941,10 +654,6 @@ msgid ""
 "Choose a background color for the checkout page footer. Only applies when "
 "using the distraction free header and footer."
 msgstr "ለቼክ መውጫ ገጽ ግርጌ የጀርባ ቀለም ይምረጡ። ትኩረትን የሚከፋፍሉ ነፃ ራስጌ እና ግርጌ ሲጠቀሙ ብቻ ነው የሚመለከተው።"
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "ክፍሎችን ፈትሽ"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1023,16 +732,6 @@ msgstr "ወደ የሱቅ ገጽ አገናኝ"
 msgid "Cart items"
 msgstr "የካርታ እቃዎች"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "በቼክ መውጫ ገጹ ላይ የጋሪ እቃዎችን ለማርትዕ አማራጮችን ያንቁ"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr "ደንበኞች የምርት መጠንን እንዲቀይሩ ወይም እቃዎችን በቼክ መውጫ ገጹ ላይ እንዲያስወግዱ ይፍቀዱላቸው።"
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "በቼክ መውጫ ገጹ ላይ የጋሪ እቃዎችን ስህተቶች ደብቅ"
@@ -1080,33 +779,9 @@ msgid ""
 "checkout page."
 msgstr "እነዚህ መግብር ቦታዎች የእምነት ምልክቶችን እና የእምነት ባጆችን በቼክ መውጫ ገጹ ላይ ለመጨመር ያገለግላሉ።"
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"ባለብዙ ደረጃ ፍተሻ አቀማመጥን ሲጠቀሙ በሞባይል መሳሪያዎች ላይ የመጨረሻውን የፍተሻ ደረጃ ሲመለከቱ ብቻ የቼክ መውጫ "
-"የጎን አሞሌ መግብሮችን ያሳዩ"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "የተቀናጀ የኩፖን ኮድ ክፍልን አንቃ"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr "በ WooCommerce ቅንብሮች ውስጥ የኩፖን ኮድ መጠቀም ከነቃ ብቻ ነው የሚመለከተው።"
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "የኩፖን ኮዶች ክፍል ርዕስ አሳይ"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr "የሚመለከተው የኩፖን ኮድ እንደ የተለየ ክፍል በቼክ መውጫ ወይም በጋሪ ገፆች ላይ ሲታይ ብቻ ነው።"
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1125,16 +800,6 @@ msgstr "ከመክፈያ ዘዴዎች በፊት እንደ ንዑስ ደረጃ"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "ከክፍያ ዘዴዎች በኋላ እንደ ንዑስ ደረጃ"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"የ &quot;ኩፖን ተግብር&quot; አዝራርን ቅጥ ይምረጡ. የሚመለከተው የኩፖን ኮድ ክፍል &quot;ከፍተሻ ደረጃዎች "
-"በፊት&quot; በቼክ መውጫ ገጹ ላይ ወይም &quot;ከጋሪ እቃዎች ክፍል በፊት&quot; በጋሪው ገጽ ላይ ሲታይ ብቻ "
-"ነው."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1181,20 +846,6 @@ msgid ""
 msgstr ""
 "የሚመከር አብዛኛዎቹ ደንበኞች በትክክል የ&quot;አድራሻ መስመር 2&quot; መስክ ሲፈልጉ ወይም ትክክለኛው የመርከብ "
 "አድራሻ ሲያገኙ ብቻ ነው (ማለትም ምግብ እና ሌሎች ሊበላሹ የሚችሉ ምርቶችን ካደረሱ)።"
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "የ&quot;አክል&quot; ማገናኛ አዝራሮችን በትንሽ ፊደል አሳይ"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"የአማራጭ መስክ መሰየሚያዎችን &quot;አክል&quot; አገናኝ አዝራርን እንደ <code>lowercase</code> "
-"(ማለትም &quot;ስልክ ቁጥር አክል&quot; ከ &quot;ስልክ ቁጥር አክል&quot;) አድርግ. ይህ አማራጭ ለኩፖን "
-"ኮድ መስኮች የአገናኝ ቁልፎችን ይነካል።"
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1282,22 +933,6 @@ msgstr "ከመላኪያ አድራሻ በፊት"
 msgid "After shipping address"
 msgstr "ከመላኪያ አድራሻ በኋላ"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "የመጀመሪያውን የማጓጓዣ ዘዴ አውቶማቲክ ምርጫን አግድ"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"ሲነቃ ለእያንዳንዱ ማጓጓዣ ፓኬጅ ሌላ የመላኪያ ዘዴ ሳይመረጥ ሲቀር የመጀመሪያው የማጓጓዣ ዘዴ በራስ-ሰር "
-"አይመረጥም።<br> የተመረጠውን የማጓጓዣ ዘዴ የማጽዳት አማራጭ ለአካባቢያዊ ማንሳት ባህሪ ከነቃ ይህ አማራጭ በራስ-ሰር "
-"እንዲነቃ ይደረጋል።"
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "የአካባቢ ማንሳት"
@@ -1313,19 +948,6 @@ msgid ""
 "Replaces the shipping address with the pickup point location when a local "
 "pickup shipping method is selected."
 msgstr "የአካባቢያዊ የመርከብ ማጓጓዣ ዘዴ ሲመረጥ የመላኪያ አድራሻውን በተቀማሚው ቦታ ይተካል።"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "በማጓጓዣው ቦታ ንዑስ ክፍል ውስጥ የማጓጓዣ ዘዴዎችን የማጽዳት አማራጭን አሳይ"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"የተመረጡትን የማጓጓዣ ዘዴዎችን ለማጽዳት በተነሳው ቦታ ንዑስ ደረጃ ላይ የአገናኝ አዝራር አሳይ። ይህ ቀደም ብሎ "
-"የአካባቢያዊ የመውሰጃ ዘዴ ከተመረጠ የመላኪያ አድራሻ ክፍሉን ለማሳየት ጥቅም ላይ ሊውል ይችላል።"
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1399,29 +1021,6 @@ msgstr "የክፍያ መጠየቂያ የስልክ መስክ ወደ ተመዝግ�
 msgid "Choose in which step to display the billing phone field."
 msgstr "የክፍያ መጠየቂያ ስልክ መስኩን በየትኛው ደረጃ እንደሚያሳዩ ይምረጡ።"
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "በአገር ህግ መሰረት የስልክ ቁጥር ማረጋገጥን አንቃ"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr "ሲሰናከል የስልክ መስክ ማረጋገጫው የአገር ወይም የአካባቢ ኮዶች ለሀገር የሚሰሩ መሆናቸውን አያረጋግጥም።"
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "ለመላክ ወይም ለክፍያ የተፈቀዱ አገሮችን ብቻ አሳይ"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"ሲነቃ፣ ለመላክ የተፈቀደላቸው አገሮች ብቻ በማጓጓዣው የስልክ መስክ ላይ ይገኛሉ፣ እና ለክፍያ መጠየቂያ የተፈቀደላቸው "
-"አገሮች ብቻ ለክፍያ የስልክ መስኩ ይገኛሉ።"
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "የአገር ኮድ ከባንዲራው አጠገብ አሳይ"
@@ -1454,19 +1053,11 @@ msgstr "የተጨማሪ የትዕዛዝ ማስታወሻዎች መስክን ታ�
 msgid "Gift options"
 msgstr "የስጦታ አማራጮች"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "የስጦታ መልእክት እና ሌሎች የስጦታ አማራጮችን በቼክ መውጫ ገጹ ላይ አሳይ"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
 "order."
 msgstr "ደንበኞች በትእዛዙ ላይ የስጦታ መልእክት እና ሌሎች ከስጦታ ጋር የተያያዙ አማራጮችን እንዲያክሉ ይፍቀዱላቸው።"
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "ሁልጊዜ የተስፋፉ የስጦታ መልእክት መስኮችን አሳይ"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1519,26 +1110,9 @@ msgstr "ዳሽቦርድ"
 msgid "Integrations"
 msgstr "ውህደቶች"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"በዚህ ክፍል ላይ በአሁኑ ጊዜ ምንም ውህደቶች የሉም። ከእያንዳንዱ ፕለጊን ጋር የተያያዙት አማራጮች እዚህ የሚታዩት "
-"ፕለጊኑ ከነቃ ብቻ ነው።"
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "የፍቃድ ቁልፎች"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"በዚህ ክፍል ላይ በአሁኑ ጊዜ ምንም የፍቃድ ቁልፎች አማራጮች የሉም። ፕለጊኑ ሲነቃ ከእያንዳንዱ ተሰኪ ጋር የሚዛመዱ "
-"አማራጮች እዚህ ይታያሉ።"
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1630,14 +1204,6 @@ msgid ""
 "thank you page."
 msgstr "እነዚህ መግብር ቦታዎች የእምነት ምልክቶችን እና የእምነት ባጆችን በምስጋና ገጽ ላይ ለመጨመር ያገለግላሉ።"
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"እነዚህ አማራጮች የምስጋና ገጽ ላይ ተጽእኖ ያሳድራሉ, የትዕዛዝ ዝርዝሮችን በመለያ ገጾች እና በኢሜል ማሳወቂያዎች ላይ "
-"ይመልከቱ."
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "እርምጃዎችን ይዘዙ"
@@ -1728,19 +1294,6 @@ msgstr "ያልተወሳሰቡ ንብረቶችን ጫን"
 msgid "Enhanced select fields"
 msgstr "የተሻሻሉ የተመረጡ መስኮች"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr "<code>select2</code> ተቆልቋይ ክፍሎችን በቶም <code>TomSelect</code> ይተኩ"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect ቀላል ተቆልቋይ መምረጫ አካል ሲሆን ይህም ከ Select2 ያነሰ ለስህተቶች የተጋለጠ ሲሆን "
-"በWooCommerce Checkout ገጾች ላይ ተመሳሳይ ባህሪያትን ያቀርባል።"
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "በቅጽ መስኮች ላይ ራስ-ሰር ማጉላትን ያስተካክሉ"
@@ -1748,31 +1301,6 @@ msgstr "በቅጽ መስኮች ላይ ራስ-ሰር ማጉላትን ያስተካ
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "<code>font-size</code> በቅጽ መስኮች ወደ 16 ፒክስል ያዘጋጁ"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"በቅጽ መስኮች ውስጥ ያለው የቅርጸ-ቁምፊ መጠን ከ16 ፒክስል ያነሰ ከሆነ፣ ሳፋሪ እና ሌሎች አሳሾች ጽሑፉን ለማንበብ "
-"ቀላል ለማድረግ የሞባይል መሳሪያዎችን በራስ-ሰር ሊያሳድጉ ይችላሉ። ይህ አማራጭ ሲነቃ ወደ ውስጥ እንዳይጨምር "
-"በFluid Checkout በተመቻቹ ገፆች ላይ የቅርጸ-ቁምፊውን መጠን በቅጽ መስኮች ውስጥ ወደ 16 ፒክስል ያዘጋጃል።"
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"ፈሳሽ ቼክአውት ሲነቃ የመላኪያ መድረሻው ሁልጊዜ ወደ &quot;ነባሪ ለደንበኛ መላኪያ አድራሻ&quot; ተቀናብሯል። "
-"ደንበኞች አሁንም በቼክ መውጫ ወቅት የተለያዩ የመላኪያ እና የክፍያ መጠየቂያ አድራሻዎችን ማቅረብ ይችላሉ፣ ይህ አማራጭ "
-"ነባሪ የክፍያ መጠየቂያ አድራሻውን የማጓጓዣ አድራሻው WooCommerce&gt; Settings&gt; Fluid "
-"Checkout ላይ ካለው ጋር ተመሳሳይ ነው።"
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1797,14 +1325,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(የሙከራ)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "አረጋግጥ"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "ስልክ ቁጥር ያረጋግጡ"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2293,10 +1813,6 @@ msgstr "ከሂደት አሞሌ በኋላ"
 msgid "Before coupon codes section"
 msgstr "ከኩፖን ኮዶች ክፍል በፊት"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "አለምአቀፍ የስልክ ቁጥር መስኮችን አንቃ"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "በእያንዳንዱ ሀገር ደንቦች መሰረት የስልክ ቁጥሮችን ይቅረጹ."
@@ -2304,17 +1820,6 @@ msgstr "በእያንዳንዱ ሀገር ደንቦች መሰረት የስልክ �
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "ትክክለኛ የስልክ ቁጥር ማረጋገጫ ተጠቀም"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"በተመረጠው የአገር ኮድ ደንቦች ላይ በመመስረት የስልክ ቁጥሩ ትክክለኛ የሞባይል ወይም መደበኛ ስልክ ቁጥር መሆኑን "
-"ለማረጋገጥ ይሞክሩ። ይህ አማራጭ የ <code>intl-tel-input</code> ትክክለኛ የማረጋገጫ ባህሪን ይጠቀማል፣ "
-"ይህም ለአንዳንድ የስልክ ቁጥሮች የውሸት አወንታዊ ውጤቶችን ሊሰጥ ይችላል።"
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2353,24 +1858,6 @@ msgstr "2 አምዶች"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 አምድ"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"ለቼክ መውጫ ደረጃዎች፣ የትዕዛዝ ማጠቃለያ እና ሌሎች ክፍሎች አጠቃላይ ቅጦች።<br> እንዲሁም እንደ ጋሪ፣ የተቀበሉት "
-"ትዕዛዝ እና የትዕዛዝ ገጾች ባሉ ሌሎች ገጾች ላይ ሊተገበር ይችላል።"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"የ <em>&quot;Split&quot;</em> የዲዛይን አብነት <em>&quot;1 አምድ&quot;</em> አቀማመጥ "
-"ሲጠቀሙ አይገኝም እና ከተመረጠ ወደ <em>&quot;Minimalist&quot;</em> ይመለሳል።"
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2463,6 +1950,2371 @@ msgstr ""
 "ከሆነ የክፍያ ስልክ መስኩ &quot;አስፈላጊ&quot; ተብሎ ሊገደድ ይችላል። ይህ አማራጭ ሲረጋገጥ የማጓጓዣ አድራሻው "
 "ወደ የክፍያ አድራሻው ሊገለበጥ እንደሚችል ለማረጋገጥ ያስፈልጋል፣ አለበለዚያ ደንበኛው የክፍያ ቅጽን መሙላት ላይችል "
 "ይችላል።"
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "የቅንብሮች መገለጫዎች"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "የቅንብሮች መገለጫ"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "ይህንን እርምጃ የመፈጸም ፈቃድ የለህም።"
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "ተሰኪዎችን ለማግበር ፈቃድ የለዎትም።"
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "የጠፋ ተሰኪ።"
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "ተሰኪው ነቅቷል።"
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "የሚከተሉት ለውጦች ይተገበራሉ፦"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"ከ Fluid Checkout 5.0 ጀምሮ፣ ቅንብሮች በተለየ መንገድ ይቀመጣሉ። አስፈላጊ ከሆነ ወደ ቀዳሚ ስሪቶች "
+"እንዲወርዱ ለማድረግ የቆዩ አማራጮች አሁንም በመረጃ ቋቱ ውስጥ ይቀመጣሉ።"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"መደብርዎ በአዲሶቹ ቅንብሮች ላይ ለሁለት ሳምንታት ያህል ሲሰራ ቆይቷል፣ ስለዚህ በመረጃ ቋቱ ውስጥ የተከማቹ የቆዩ "
+"አማራጮችን ማጽዳት ይችላሉ። እባክዎ ከጽዳት በኋላ፣ ወደ ቀደሙት የፕለጊኑ ስሪቶች ዝቅ ማድረግ ከፈለጉ ለሁሉም ቅንብሮች "
+"ነባሪ እሴቶችን እንደሚጠቀም ልብ ይበሉ።"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "የፈሳሽ ፍተሻ ቅንብሮችን ማጽዳት"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "የቀሩትን አማራጮች ሰርዝ"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "የፈሳሽ ክፍያን ለማሻሻል ያግዙን"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"ፈጣን ድጋፍ ለማግኘት እና ተኳሃኝነትን ለማሻሻል እና ተጽዕኖን ለመለካት እንዲረዳን ስም-አልባ የጣቢያ አካባቢ "
+"ሪፖርቶችን በFluid Checkout ያጋሩ። ምንም ደንበኛ፣ ተጠቃሚ ወይም ሚስጥራዊ መረጃ አልተካተተም። በማንኛውም ጊዜ "
+"ከመሳሪያዎች ቅንብሮች ውስጥ ምን እንደሚጋራ መምረጥ ይችላሉ።"
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "የጣቢያ አካባቢ ሪፖርቶችን ያንቁ"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "ቅንብሮችን ይገምግሙ"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr "ይህ ቅድመ እይታ ጊዜው አልፎበታል። አዲስ ቅድመ እይታ ለመጀመር የአስተዳዳሪ ገጹን እንደገና ይጫኑ።"
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "ቅድመ እይታ ጊዜው አልፎበታል"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "ትዕዛዞች በቅድመ እይታ ውስጥ ሊቀመጡ አይችሉም።"
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "በቅድመ እይታው ውስጥ መግባት አይገኝም።"
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "መለያዎች በቅድመ እይታ ውስጥ ሊፈጠሩ አይችሉም።"
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "ወደ ሌሎች ጣቢያዎች የሚደረጉ ጥያቄዎች በቅድመ እይታው ውስጥ ታግደዋል።"
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "በማስኬድ ላይ…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "የሆነ ችግር ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።"
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "ተሰኪውን ያግብሩ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - የተሟላ የቼክአውት ጥቅል"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"ሁሉም የፕሮ ፕሮ ባህሪያት + ሁሉም ተጨማሪዎች፣ አንድ ዋጋ። የዲዛይን አብነቶች፣ የተመቻቹ የጋሪ እና የተቀበሉ ገጾች፣ "
+"የመለያ ማመሳሰል እና ብዙ ተጨማሪ ነገሮች።"
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "የተመቻቸ የትዕዛዝ ክፍያ ገጽ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "ከሚደገፉ የክፍያ ዘዴዎች ፈጣን የቼክ መውጫ አዝራሮች"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "የመለያ ፈጠራ ዘግይቷል"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "አድራሻውን በራስ-ሰር ያጠናቅቁ በGoogle Maps APIs"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "ከአድራሻ ደብተር ጋር በርካታ የተቀመጡ አድራሻዎች"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "የአውሮፓ ህብረት-ቫት ረዳት"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "ይህንን ክፍል ደብቅ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "ተጨማሪ ይወቁ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "ቀደም ያለ መዳረሻ ያግኙ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "ተጨማሪውን ያግብሩ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "ከቼክ መውጫ ጉዞዎ የበለጠ ያግኙ"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "የኤፒአይ ቁልፍን ይሞክሩ"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "የሚመራ ማዋቀር"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "አማራጮች"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "<a href=\"%s\">በቼክ መውጫ አማራጮች</a> ላይ አቀማመጥ እና ዲዛይን ያዘጋጁ።"
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr "የእንግዳ ክፍያ መፈጸምን ያንቁ እና/ወይም <a href=\"%s\">የደንበኛ መለያዎች ቅንብሮችን</a> ይገምግሙ።"
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"የተመቻቸ <a href=\"%1$s\">ጋሪን</a> ያንቁ፣ <a href=\"%2$s\">አመሰግናለሁ</a> እና <a "
+"href=\"%3$s\">የክፍያ ገጾችን ይዘዙ</a> ።"
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr "<a href=\"%s\">የአድራሻ ራስ-ሰር ማጠናቀቂያን</a> ከGoogle ካርታዎች ያንቁ።"
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr "<a href=\"%s\">በአድራሻ ደብተር</a> አማካኝነት በርካታ የተቀመጡ አድራሻዎችን ያንቁ።"
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr "ለጭብጡ ወይም ለሌሎች የጫኑዋቸው ተሰኪዎች የሚገኙ <a href=\"%s\">የውህደት አማራጮች</a> ካሉ ያረጋግጡ።"
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"ፈጣን ድጋፍ ያግኙ እና ተኳሃኝነትን ለማሻሻል እና ተጽዕኖን ለመለካት ያግዙን። ከመሳሪያዎች ቅንብሮች <a "
+"href=\"%s\">የአጠቃቀም ክትትልን ያንቁ</a> ።"
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "የቅንብሮች ትር ይጎድላል።"
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "እንደ መጀመር"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>በጣም ጥሩ! የቼክአውት ገጽዎ አሁን በFluid Checkout ላይ እየሰራ ነው።</strong> ለመጀመር "
+"ጥቂት ደረጃዎች እነሆ"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "ተጠናቋል"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "የሪፖርት ውሂብን አስቀድመው ይመልከቱ"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "አሁን ይላኩ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "በራስ-ሰር ፈልግ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "አፍሪካንስ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "አልበንያኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "አማርኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "አረብኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "አርመንያኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "አዘርባጃኒኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "ባስክ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "ቤላሩሲያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "ቤንጋሊ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "ቦስንያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "ቡልጋርያኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "በርሚስ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "ካታሊያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "ቻይንኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "ቻይንኛ (ቀለል ያለ)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "ቻይንኛ (ሆንግ ኮንግ)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "ቻይንኛ (ባህላዊ)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "ክሮኤሽያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "ቼክ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "ዳኒሽ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "ደች"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "እንግሊዝኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "እንግሊዝኛ (አውስትራሊያ)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "እንግሊዝኛ (ታላቋ ብሪታንያ)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "ኢስቶኒያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "ፋርሲ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "ፊኒሽ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "ፊሊፒናዊ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "ፈረንሳይኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "ፈረንሳይኛ (ካናዳዊ)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "ጋላሺያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "ጆርጅያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "ጀርመንኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "ግሪክኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "ጉጅራቲ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "ሂብሩ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "ሂንዲ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "ሃንጋሪያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "አይስላንዲ ክ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "ኢንዶኔዥያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "ጣሊያንኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "ጃፓንኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "ካናዳ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "ካዛክሀ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "ክመር"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "ኮሪያኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "ክይርግያዝ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "ላኦ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "ላትቪያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "ሊቱኒያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "ማስዶንያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "ማላይ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "ማላያላም"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "ማራቲ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "ሞኒጎሊያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "ኔፓሊ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "ኖርወይኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "ፖሊሽ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "ፖርቹጋልኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "ፖርቱጋልኛ (ብራዚል)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "ፖርቱጋልኛ (ፖርቱጋል)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "ፑንጃቢ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "ሮማንያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "ራሺያኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "ሰሪቢያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "ሲንሃሌዝኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "ስሎቫክ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "ስሎቬንያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "ስፓንኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "ስፓኒሽ (ላቲን አሜሪካ)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "ስዋሕሊ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "ስዊድንኛ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "ታሚል"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "ተሉጉ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "ታይ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "ቱሪክሽ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "ዩክሬንያን"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "ኡርዱ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "ቪትናሜሴ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "ዙሉ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "የጉግል አድራሻ ራስ-ሰር አጠናቅቅ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "የጉግል ቦታዎች ኤፒአይ ስሪት"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"የትኛውን የGoogle Places API ስሪት እንደሚጠቀሙ ይምረጡ። በተቻለ ፍጥነት ወደ አዲሱ Places API "
+"እንዲዛወሩ እንመክራለን።"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"ከማርች 1፣ 2025 ጀምሮ &quot;Places API (New)&quot; የሚለውን ስሪት እንዲጠቀሙ እንመክራለን። ጉግል "
+"&quot;Places API (Legacy)&quot; የሚለውን ስሪት ወደ Legacy ሁኔታ ያንቀሳቅሰዋል፣ ይህም ማለት "
+"ይህንን አገልግሎት ለአዲስ የኤፒአይ ቁልፎች ማንቃት አይችሉም እና የኤፒአይው ስሪት በመጨረሻ አይገኝም ማለት ነው። "
+"ቀድሞውኑ Legacy API ን የሚጠቀሙ ነባር መለያዎች ያለ ምንም መቆራረጥ መስራታቸውን ሊቀጥሉ ይችላሉ።"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(የሚመከር)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "የጉግል ኤፒአይ ቁልፍ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"የጉግል ኤፒአይ ቁልፍዎን ይለጥፉ እና ለዚህ ድር ጣቢያ እንደሚሰራ ለማረጋገጥ የሙከራ አዝራሩን ይጠቀሙ። ቁልፉ የሚሰራ "
+"እና ለጎራዎ የተፈቀደ መሆኑን ያረጋግጡ፣ አለበለዚያ የአድራሻ መስኩ ደንበኞች ትዕዛዞቻቸውን እንዳያጠናቅቁ ሊታገድ "
+"ይችላል።"
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "የጉግል አድራሻ ራስ-ሰር ማጠናቀቂያን ያንቁ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr "የGoogle ካርታዎች APIዎችን በመጠቀም የአድራሻ ራስ-ሰር ማጠናቀቅን ያንቁ።"
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "የጉግል ኤፒአይ ቋንቋ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"ይህ ቋንቋ የGoogle Places API አድራሻ ጥቆማዎችን ለማሳየት ጥቅም ላይ ይውላል፣ እና አድራሻዎችም በዚህ ቋንቋ "
+"በራስ-ሰር ይሞላሉ።"
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "የውጤት ዓይነቶች"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"ማንኛውንም አይነት ውጤት ለመቀበል ባዶ ይተዉት፣ ይህም ብዙውን ጊዜ የተሻሉ የማዛመጃ ውጤቶችን ይሰጣል። <a "
+"href=\"%s\" target=\"_blank\">ለተጨማሪ ዝርዝሮች ሰነዱን ይመልከቱ</a> ።<br> በአድራሻ ራስ-ሰር "
+"መሙላት መስኮች ላይ ለመመለስ እስከ 5 የሚደርሱ የአድራሻ ፍለጋ ውጤቶችን ይምረጡ።<br> <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">ስለሚደገፉት አይነቶች</a> የበለጠ ለማወቅ የGoogle ካርታዎችን ሰነድ "
+"ይጎብኙ።"
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "የውጤት ዓይነቶች (ሌጋሲ ኤፒአይ)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"የቦታዎች ኤፒአይ (ሌጋሲ) ሲጠቀሙ ምን አይነት የአድራሻ ፍለጋ ውጤቶች መመለስ አለባቸው።<br> <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">ስለሚደገፉት አይነቶች</a> የበለጠ ለማወቅ "
+"የLegacy Google Places API ሰነዶችን ይጎብኙ።"
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "የኩባንያ መስኮች"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "የሚገኝ ከሆነ ለኩባንያው ስም ራስ-አጠናቅቅን ያንቁ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr "ከGoogle Maps APIዎች ሲመለሱ የኩባንያውን ስም መረጃ በመጠቀም የኩባንያውን መስክ በራስ-ሰር ማጠናቀቅን ያንቁ።"
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "የንግድ ፍለጋ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "በኩባንያው መስክ ውስጥ ንግዶችን መፈለግን ያንቁ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"በኩባንያው መስክ ውስጥ ሲተይቡ ከንግድ ጋር የተያያዙ የአድራሻዎችን ጥቆማ ያንቁ፣ ከዚያም አንድ ንግድ ከአስተያየቶቹ "
+"ውስጥ ሲመረጥ ሁሉንም የአድራሻ መስኮች በራስ-ሰር ያጠናቅቁ።"
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "የኩባንያ ውጤት ዓይነቶች"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"በራስ-ሰር የኩባንያ መስኮች ላይ ለመመለስ እስከ 5 የሚደርሱ የአድራሻ ፍለጋ ውጤቶችን ይምረጡ።<br> የሚመከር ዋጋ "
+"<code>establishment</code> ነው፣ ይህም አብዛኛዎቹን የንግድ ዓይነቶች ያካትታል።<br> ከንግዶች ጋር "
+"ያልተያያዙ ውጤቶችን ጨምሮ ማንኛውንም አይነት ውጤት ለመቀበል ባዶ ይተዉት።<br> <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">ስለሚደገፉት አይነቶች</a> የበለጠ ለማወቅ የGoogle ካርታዎችን ሰነድ "
+"ይጎብኙ።"
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "የጉግል አርማ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "«በGoogle የተጎላበተ» የሚለውን ጽሑፍ እና አርማ አሳይ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"ምልክት ሲደረግበት፣ &quot;በGoogle የተጎላበተ&quot; የሚለው ጽሑፍ እና አርማ በአድራሻው ራስ-ሰር ማጠቃለያ "
+"የአስተያየት ሳጥን ግርጌ ላይ ይታያል።"
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "የብራዚል ኤፒአይ አድራሻ ራስ-ሰር አጠናቅቅ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "የብራዚል ኤፒአይ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "ለCEP መስኮች የብራዚል ኤፒአይ አድራሻ ራስ-ማጠናቀቅን ያንቁ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"የCEP/ፖስትኮድ መስክን በመጠቀም አድራሻዎችን ለማግኘት እና በራስ-ሰር ለመሙላት የብራዚል ኤፒአይ ይጠቀሙ። ለብራዚል "
+"አድራሻዎች ብቻ ተገቢ ነው።"
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "የኤፒአይ ስሪት"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "የትኛውን የብራዚል API CEP ዘዴ ስሪት መጠቀም እንዳለቦት ይምረጡ።"
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "የአድራሻ ደብተር ፍልሰት"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "የዎኦኮሜርስ አድራሻዎች"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr "አሁን ያሉትን የማጓጓዣ እና የክፍያ አድራሻዎችን ከWooCommerce ወደ ደንበኛው የአድራሻ ደብተር ይቅዱ።"
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "የአድራሻ ደብተር ባህሪን ያንቁ"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"ደንበኞች ብዙ አድራሻዎችን እንዲያስቀምጡ እና ለማጓጓዣ እና ለሂሳብ አከፋፈል የሚያገለግል ነባሪ አድራሻ እንዲገልጹ "
+"ይፍቀዱላቸው።"
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "የአድራሻ መለያዎች"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "ደንበኞች ለእያንዳንዱ አድራሻ ብጁ መለያ እንዲያክሉ ይፍቀዱላቸው"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"የአድራሻ መለያዎች ደንበኞች የተቀመጡ አድራሻዎቻቸውን (ለምሳሌ፡ &quot;የእናቶች ቤት&quot;) መለየት ቀላል "
+"ያደርጉላቸዋል። የአድራሻ መለያዎች ለደንበኞች የግል ናቸው፣ እና በትዕዛዝ ዝርዝሮች ገጽ ወይም በደረሰኞች ላይ አይታዩም "
+"ወይም አይታተሙም።"
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "የማሳያ አቀማመጥ"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr "የተቀመጡ አድራሻዎች በቼክ መውጫ እና በጋሪው ላይ እንዴት እንደሚታዩ ይምረጡ።"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr "በቼክ መውጫ እና በጋሪው ላይ ይተገበራል። በመለያ ገጹ ላይ የተቀመጡ አድራሻዎች ሁልጊዜ የካርዶችን አቀማመጥ ይጠቀማሉ።"
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "የአድራሻ ካርዶች"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "የአድራሻ ዝርዝር"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "የተቆልቋይ መስክ"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "የአድራሻ ፍለጋ"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr "ደንበኛው ቢያንስ ይህ የተቀመጡ አድራሻዎች ብዛት ሲኖረው በfrontend ላይ የአድራሻ ፍለጋ ማጣሪያን ያሳዩ።"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "የማሳያ አቀማመጥ ወደ ተቆልቋይ መስክ ሲዋቀር ጥቅም ላይ አይውልም።"
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "አድራሻዎች"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "ተጨማሪ አማራጮችን ለማየት የጋሪ ገጽ ማሻሻያን ያንቁ"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "ተለጣፊ የትዕዛዝ ማጠቃለያ"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"በጋሪ ገጹ ላይ የኩፖን ኮዶችን ክፍል የት እንደሚታይ ቦታ ይምረጡ። የAJAX ጋሪ ሲነቃ እና የኩፖን ኮዶች አጠቃቀም "
+"በWooCommerce ቅንብሮች ውስጥ ከነቃ ብቻ ተፈጻሚ ይሆናል።"
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "የመስቀል-ሽያጭ አቀማመጥ"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "የተሻገሩ ሽያጭዎች ይታያሉ"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "እቃዎች"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "የጋሪ ገጽ ማመቻቸት"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr "ለጋሪዎ ልክ እንደ ቼክአውትዎ ግልጽ፣ ልወጣን ያማከለ አቀማመጥ ይስጡት።"
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr "ወጥ የሆነ የግዢ ጉዞ ለማድረግ የጋሪውን አቀማመጥ ከቼክ መውጫ ገጹ ጋር ያዛምዱት።"
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr "ጋሪውን ሁልጊዜ ከበስተጀርባ ወቅታዊ ያድርጉት፣ ብዛቶች ሲቀየሩ ሙሉ ገጽ እንደገና መጫን አያስፈልግም።"
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr "የኩፖን ኮዶችን፣ መላኪያዎችን እና የሽያጭ ኮዶችን በተሻለ ሁኔታ በሚቀይሩበት ቦታ ላይ ያስቀምጡ።"
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr "የትዕዛዝ ማጠቃለያውን ሲያሸብልሉ እንዲታይ ያድርጉ፣ እና ሸማቾች ማረጋገጫ የሚያስፈልጋቸው የትዕዛዝ ምልክቶችን ያክሉ።"
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "አምዶች"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"የቼክ መውጫ ደረጃዎች፣ የትዕዛዝ ማጠቃለያ እና ሌሎች ክፍሎች አጠቃላይ ቅጦች። ለሌሎች ቼክ መውጫዎች፣ ጋሪዎች፣ "
+"አመሰግናለሁ (ትዕዛዝ ተቀብሏል) እና የትዕዛዝ ገጾችን ይመልከቱ።"
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"የ <em>&quot;1 አምድ&quot;</em> አቀማመጥን ከ <em>&quot;Split&quot;</em> የዲዛይን አብነት "
+"ጋር ሲጠቀሙ፣ የቀኝ አምድ የሚታየው የገጽ የጎን አሞሌ መግብር አካባቢ ንቁ ከሆነ ብቻ ነው (Checkout "
+"Sidebar፣ Cart Sidebar፣ ወይም Order Received Sidebar)። አለበለዚያ ገጹ እንደ Split "
+"styles ያለ ነጠላ አምድ ሆኖ ይቆያል።"
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "የአምድ ዳራውን ክፈል"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"ለ Split design ሁለተኛ ደረጃ አምድ የጀርባ ቀለም ይምረጡ። የትዕዛዝ ማጠቃለያ ዳራ ቀለምን ለመጠቀም ባዶ "
+"ይተዉት።"
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "የገጽ አብነቶች"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "የቼክአውት አብነት"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"በቼክ መውጫ ጊዜ ትኩረትን የሚከፋፍሉ ነገሮችን ለመቀነስ ይመከራል። <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">ስለ ጋሪ "
+"መተው የተደረገውን ጥናት ያንብቡ</a> ።"
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "ተለጣፊ የሂደት አሞሌ"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "የፕሮግረስ ባር ቅጥ"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "የትዕዛዝ ድምር"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "የጀርባ ቀለም"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "የድርጊት አገናኝ"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "የሞባይል ትዕዛዝ ማጠቃለያ"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "የሞባይል የመጀመሪያ ሁኔታ"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "በቼክ መውጫ ላይ የጋሪ እቃዎችን ማርትዕ ያንቁ"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr "ደንበኞች የምርት መጠኖችን እንዲቀይሩ ወይም እቃዎችን በቀጥታ በቼክ መውጫ ገጹ ላይ እንዲያስወግዱ ይፍቀዱላቸው።"
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "የጋሪ ንጥል ስህተቶች"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"የኩፖን ኮድ በቼክ መውጫ ወይም በጋሪ ገጾች ላይ እንደ የተለየ ክፍል ሲታይ እና የኩፖን ኮዶችን መጠቀም "
+"በWooCommerce ቅንብሮች ውስጥ ከነቃ ብቻ ተፈጻሚ ይሆናል።"
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "የኩፖን ኮዶች አቀማመጥ"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "የኩፖን አዝራርን ተግብር"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "የ&quot;ተግብር ኩፖን&quot; አዝራርን ቅጥ ይምረጡ።"
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "የአድራሻ መስመር 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"ይህ ቅንብር በቼክአውት እና በአካባቢያዊ ፒክአፕ ክፍሎች መካከል የተጋራ ነው። በአካባቢያዊ ፒክአፕ ክፍል ላይ፣ "
+"የመርከብ/ፒክአፕ መራጩ በማጓጓዣ ዘዴ ክፍል ውስጥ (ከአድራሻው በፊት) ወይም እንደ የተለየ ክፍል (ከዚያ በኋላ) "
+"እንደሚታይ ይወስናል።"
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "የደንበኛ መለያዎች"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "የእንግዳ ክፍያ"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"ከWooCommerce Accounts ቅንብሮች ገጽ የእንግዳ መክፈያ፣ የመግቢያ እና የመለያ መፍጠሪያ አማራጮች። እዚህ "
+"ለእርስዎ ምቾት ሲባል የሚተዳደሩ ናቸው፣ ስለዚህ በቅንብሮች መገለጫ የተለያዩ እሴቶችን መጠቀም ይችላሉ።"
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "ደንበኞች ያለ መለያ እንዲከፍሉ ይፍቀዱላቸው"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"ደንበኞች በቼክ መውጫ ጊዜ መለያ እንዲፈጥሩ ወይም እንዲገቡ እንዳይጠየቁ <strong>ይመከራል</strong> ፣ ይህም "
+"የልወጣ ተመኖችን ሊቀንስ ይችላል።"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr "ሲሰናከል ደንበኞች ግዢውን ለማጠናቀቅ መግባት ወይም መለያ መፍጠር አለባቸው።"
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "በክፍያ ቦታ ይግቡ"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "በክፍያ ወቅት መግባትን ያንቁ"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr "ተመላሽ ደንበኞች ከቼክ መውጫ ገጹ እንዲገቡ የሚወስድ አገናኝ አሳይ።"
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "የመለያ ፈጠራ"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "ደንበኞች በክፍያ ወቅት መለያ እንዲፈጥሩ ይፍቀዱላቸው"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "ደንበኞች ትዕዛዛቸውን ከማስገባታቸው በፊት መለያ መፍጠር ይችላሉ።"
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "ደንበኞች ከኔ መለያ ገጽ መለያ እንዲፈጥሩ ይፍቀዱላቸው"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "ደንበኞች ከኔ መለያ ገጽ አዲስ መለያ መመዝገብ ይችላሉ።"
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "የተጠቃሚ ስም"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "ከደንበኛ ስም ይፍጠሩ"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"ደንበኞች በቼክ መውጫ ጊዜ የተጠቃሚ ስም እንዳይመርጡ <strong>ይመከራል</strong> ፣ ይህም የልወጣ ተመኖችን "
+"ሊቀንስ ይችላል።"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr "የተጠቃሚ ስም የሚመነጨው ከደንበኛ ስም ወይም ስም መጠቀም በማይቻልበት ጊዜ ከኢሜይል አድራሻ ነው።"
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "የይለፍ ቃል"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "የይለፍ ቃል ማዋቀሪያ አገናኝ ይላኩ"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"ደንበኞች በቼክ መውጫ ጊዜ የይለፍ ቃል እንዲያዘጋጁ እንዳይጠየቁ <strong>ይመከራል</strong> ፣ ይህም የልወጣ "
+"ተመኖችን ሊቀንስ ይችላል።"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "ደንበኞች የይለፍ ቃላቸውን ደህንነቱ በተጠበቀ ሁኔታ ለመፍጠር ኢሜይል ይደርሳቸዋል።"
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"የተመዘገቡ ደንበኞች ሳይገቡ ክፍያውን እንዲያጠናቅቁ ይፍቀዱላቸው እና የእውቂያ ዝርዝሮች ሲዛመዱ ትዕዛዙን ከነባር "
+"መለያቸው ጋር ያዛምዱ።"
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "አሁን ያለ የመለያ መልእክት"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr "ደንበኞች ትዕዛዝ ከሰጡ በኋላ ከምስጋና ገጹ ላይ መለያ እንዲፈጥሩ ይፍቀዱላቸው።"
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"በዚህ ክፍል ውስጥ ያሉ አማራጮች የእንግዳ ክፍያ ሲፈጽሙ እና የመለያ ማመሳሰል ሲነቁ ይገኛሉ። የዘገየ የመለያ መፍጠርን "
+"ለማዋቀር ከላይ ያሉትን ሁለቱንም ባህሪያት ያንቁ።"
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "የዘገየ የመለያ መፍጠርን ያንቁ"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr "የእንግዳ ክፍያ እና የመለያ ማመሳሰል ሲነቁ የዘገየ የመለያ መፍጠርን ያንቁ።"
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "የክፍል አቀማመጥ"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "የደንበኛ ዝርዝሮች ክፍል ከመድረሱ በፊት"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "የደንበኛ ዝርዝሮች ክፍል በኋላ"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "የመለያ መፍጠር ጥቅሞች"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "መስኩን ባዶ መተው ነባሪውን ጽሑፍ ያሳያል።"
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "የመስመር ውስጥ አዝራሮች"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "የሚያስፈልጉ መስኮች"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "በቼክ መውጫ ላይ የስጦታ መልእክት መስኮችን ያንቁ"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "የተዘረጋ የስጦታ መልእክት"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "የስጦታ መልእክት መስክ ሁልጊዜ ተዘርግቷል"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "የስጦታ መልእክት በቅደም ተከተል ዝርዝሮች"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"በዚህ ክፍል በአሁኑ ጊዜ ምንም ውህደቶች የሉም። ከእያንዳንዱ ተሰኪ እና ገጽታ ጋር የተያያዙ አማራጮች እዚህ የሚታዩት "
+"ያ ተሰኪ ወይም ገጽታ ሲነቃ ብቻ ነው።"
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "የስልክ መስኮች"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "የመስክ ታይነት"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "የመስክ አቀማመጥ"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "የስልክ ሀገር ኮድ እና ማረጋገጫ"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "አገር"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "በስልክ መስኮች ላይ አገርን አንቃ"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "አገሮችን ለመላክ ወይም ለክፍያ አጣራ"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"በእያንዳንዱ የስልክ መስክ ላይ ያለውን የአገር መራጭ በሱቅዎ ላይ ለመላክ ወይም ለክፍያ ለተፈቀደላቸው አገሮች ብቻ "
+"ይገድቡ።"
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "ማረጋገጫ"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "በአገር ደንቦች ላይ በመመስረት ቀላል ማረጋገጫን ያንቁ"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr "የስልክ ቁጥሩ ለተመረጠው አገር የሚሰራ መሆኑን ያረጋግጣል፣ ይህም የአገር ኮድ እና ርዝመትን ያካትታል።"
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"ቁጥሩ ለተመረጠው አገር ትክክለኛ የሞባይል፣ የቋሚ መስመር ወይም ሌላ ተቀባይነት ያለው አይነት መሆኑን በጥብቅ "
+"ያረጋግጡ። አንዳንድ ትክክለኛ ቁጥሮችን ውድቅ ሊያደርግ ይችላል።"
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "የማረጋገጫ ዓይነቶች"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "ቦታ ያዢዎች"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"በአሁኑ ጊዜ ለማስተዳደር ምንም የፈቃድ ቁልፎች የሉም። ፈቃድ ያለው የFluid Checkout ተሰኪ ወይም ተጨማሪ ሲነቃ "
+"የፈቃድ ቁልፎች እዚህ ይታያሉ።"
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "ነባሪ የማድረሻ አይነት"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "በነባሪነት የትኛው የማድረሻ አይነት እንደሚመረጥ ይምረጡ።"
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "የማጓጓዣ ዞን መስኮች"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"ለአካባቢያዊ የመውሰጃ ዞን የማጣሪያ መስኮች የትኞቹ መስኮች እንደሚታዩ ይምረጡ። ሁሉንም የሚገኙ አማራጮች ለማሳየት "
+"ባዶውን ይተዉት።"
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"እነዚህ መስኮች ለአካባቢያዊ የመውሰጃ መላኪያ ዘዴዎች ማጣሪያ ሆነው ይታያሉ። አንዳንድ መስኮች እዚህ ካልተመረጡ አሁንም "
+"በቼክ መውጫ ላይ ሊታዩ ይችላሉ፣ ተኳሃኝ ተሰኪዎች በትክክል እንዲሰሩ የሚያስፈልጋቸው ከሆነ።"
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "የማዘዣ መላኪያ አድራሻ"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "የክፍያ ገጽ ማመቻቸትን ይዘዙ"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr "ያልተከፈሉ ትዕዛዞችን ልክ እንደ ቼክአውት ተመሳሳይ ግልጽ፣ ልወጣን ያተኮሩ አቀማመጦችን ይስጡ።"
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr "የክፍያ ጊዜን ለሚጠብቁ ትዕዛዞች የትዕዛዝ ክፍያ ገጽን አቀማመጥ ያሻሽሉ።"
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr "ወጥ የሆነ የግዢ ጉዞ ለማድረግ የትዕዛዝ ክፍያ ልምድን ከቼክ መውጫዎ ጋር ያዛምዱ።"
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr "ሸማቾች ከመክፈልዎ በፊት ማረጋገጫ የሚያስፈልጋቸው የትዕዛዝ ምልክቶችን እና ባጆችን ያክሉ።"
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "የገጽ ማመቻቸትን አመሰግናለሁ"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr "ደንበኞች ከገዙ በኋላ የምስጋና ገጹን እና የትዕዛዝ ዝርዝሮቹን ለደንበኞች ግልጽ ያድርጉት።"
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr "የምስጋና ገጽን እና የመለያ ትዕዛዝ ዝርዝሮችን የበለጠ ግልጽ በሆነ አቀማመጥ ያሻሽሉ።"
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr "የትዕዛዝ ሁኔታ ሂደትን፣ እርምጃዎችን፣ ውርዶችን እና ማስታወሻዎችን ትርጉም በሚሰጡበት ቦታ ያሳዩ።"
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "የትዕዛዝ ዝርዝሮች ክፍሎችን በኢሜይል ማሳወቂያዎች ላይ ያብጁ።"
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr "ሸማቾች ከገዙ በኋላ ማረጋገጫ የሚያስፈልጋቸው የትዕዛዝ ምልክቶችን እና ባጆችን ያክሉ።"
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "የኢሜይል ማሳወቂያዎች"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr "ተጨማሪ አማራጮችን ለማየት የምስጋና ገጽን እና የትዕዛዝ ዝርዝሮችን ማመቻቸት ያንቁ"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "በምስጋና ገጽ ላይ ሰፊ አቀማመጥ ይጠቀሙ"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"እነዚህ አማራጮች የምስጋና ገጹን ይነካሉ፣ የትዕዛዝ ዝርዝሮችን በመለያ ገጾች ላይ እና በኢሜይል ማሳወቂያዎች ላይ "
+"ይመልከቱ።"
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "ቅንብሮችን አስቀምጥ"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "ሰነዶች"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "ጋሪ"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "አመሰግናለሁ"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "የአድራሻ ራስ-ሰር አጠናቅቅ"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "የእምነት ባጆች"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "እነዚህን ቅንብሮች ለማስቀመጥ ፈቃድ የለህም።"
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "ልክ ያልሆነ የማስቀመጫ ጥያቄ።"
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "ቅንብሮችዎ ተቀምጠዋል።"
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "በማስቀመጥ ላይ..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "ቅንብሮች ሊቀመጡ አልቻሉም። እባክዎ እንደገና ይሞክሩ።"
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "ማስታወቂያውን ውድቅ አድርግ"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "የቅንብሮች ምናሌን ክፈት"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "የቅንብሮች ምናሌን ዝጋ"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "ቅድመ እይታ"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "ቅድመ እይታን ዘርጋ"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "ቅድመ እይታን ሰብስብ"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "ራስጌ እና ግርጌ አሳይ"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "ራስጌ እና ግርጌን ደብቅ"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "የገጽ ቅድመ እይታ"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "የእይታ ጣቢያን አስቀድመው ይመልከቱ"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "ጡባዊ"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "ዴስክቶፕ"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "የቅድመ እይታ ስፋት"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "ስፋትን ቀንስ"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "ስፋትን በፒክሰሎች አስቀድመው ይመልከቱ"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "ስፋት ጨምር"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "ቅድመ እይታ እንደ"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "እንግዳ"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "ገብተዋል"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "ቅድመ እይታ ገጽ"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "በቅርበት ለማየት ቅድመ እይታን ዘርጋ"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "ከ%s ጋር ይገኛል።"
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "ያብሩዋቸው"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr "የዚህ ገጽ ማመቻቸት ጠፍቷል። ገጹን ለማየት %s።"
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "የ%s ቅድመ እይታ"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "የተገለለ ክፍለ ጊዜ · ምንም አልተቀመጠም"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "የአጠቃቀም ክትትል"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Fluid Checkout ተኳሃኝነትን ለማሻሻል የሚረዱ ስሜታዊ ያልሆኑ የጣቢያ አካባቢ ሪፖርቶችን ይላኩ። ሪፖርቶች ከታች "
+"ባሉት አማራጮች ውስጥ እስኪነቁ ድረስ አይላኩም።"
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "የአጠቃቀም መከታተያ ሪፖርቶችን ወደ Fluid Checkout ይላኩ"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr "እነዚህ ሪፖርቶች ለጣቢያዎ ተኳሃኝነትን እና ድጋፍን ለማሻሻል ይረዱናል እና ሲነቁ በየሳምንቱ ይላካሉ።"
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr "በሪፖርቶቹ ውስጥ ምንም ደንበኛ፣ የአስተዳዳሪ ተጠቃሚ ወይም ሌላ ሚስጥራዊ መረጃ አልተካተተም።"
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "መሰረታዊ የአካባቢ መረጃ"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"የዎርድፕረስ፣ የPHP፣ የWooCommerce፣ የገጽታ እና የፕለጊን ዝርዝር ውሂብ። ሪፖርት ማድረግ ሲነቃ ሁልጊዜ "
+"ይካተታል። ጣቢያዎ እየሰራ መሆኑን እንድንረዳ ያግዘናል።"
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "የተሰኪ ቅንብሮች"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"የድጋፍ ጥያቄዎችን ለማገዝ የFluid Checkout ተሰኪ ቅንብሮችን ይልካል እና ተሰኪዎቻችንን እንዴት እየተጠቀሙ "
+"እንደሆነ እንድንረዳ ያግዘናል።"
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "በቅርቡ ይመጣል"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "የሽያጭ መለኪያዎች"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"እስከ ዛሬ ድረስ የፈሉይድ ቼክአውት ከመጫንዎ በፊት ወርሃዊ የትዕዛዝ ብዛት እና አጠቃላይ ሽያጮች። ተሰኪዎቻችንን "
+"በመጫን ተጨማሪ ገንዘብ እያገኙ እንደሆነ ለመረዳት ይረዳናል። ምንም የደንበኛ ወይም የተጠቃሚ መረጃ አይላክም።"
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "መገልገያዎች"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr "ከ <code>select2</code> ይልቅ <code>TomSelect</code> ተቆልቋይ ክፍሎችን ይጠቀሙ"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect ከ Select2 ጋር ሲነጻጸር ለስህተት የመጋለጥ እድሉ አነስተኛ የሆነ ቀላል የተቆልቋይ ምርጫ አካል "
+"ሲሆን ተመሳሳይ ተግባርም ይሰጣል።"
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"በትናንሽ መሳሪያዎች ላይ ከቅጽ መስኮች ጋር ሲገናኙ በራስ-ሰር ማጉላትን ለማስወገድ በዚህ ተሰኪ በተመቻቹ ገጾች ላይ "
+"የቅርጸ-ቁምፊውን መጠን ወደ 16 ፒክስል ያዘጋጃል።"
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"የፋየርፎክስ መጠኑ ከ16 ፒክስል በታች ሲሆን ጽሑፉ ለማንበብ ቀላል እንዲሆን ሳፋሪ እና ሌሎች አሳሾች በሞባይል "
+"መሳሪያዎች ላይ በራስ-ሰር ሊያጉሉ ይችላሉ።"
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "በአሳሽ ኮንሶል ላይ የስክሪፕት ሂደት ክትትልን ያንቁ።"
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "ያልተገደቡ ንብረቶች"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "የጉግል ካርታዎች ስክሪፕቶች"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "የተባዙ የGoogle ካርታዎች ስክሪፕቶችን አያስወግዱ"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"ሲነቃ፣ የተባዙ የGoogle ካርታዎች ስክሪፕቶች አይወገዱም፣ ይህም ስህተቶችን እና የአፈጻጸም ችግሮችን ሊያስከትል "
+"ይችላል። መላ ፍለጋ ሲያደርጉ ብቻ ይህንን አማራጭ ይጠቀሙ።"
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "የመግብር ቦታዎች"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "በሞባይል ላይ የመጨረሻው እርምጃ"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "መግብሮችን በሞባይል ላይ በመጨረሻው ደረጃ ላይ ብቻ ያሳዩ"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr "የመጨረሻውን የቼክ መውጫ ደረጃ በሞባይል መሳሪያዎች ላይ ሲመለከቱ ብቻ የቼክ መውጫ የትረስት ባጅ መግብሮችን ያሳዩ"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "መደበኛ"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "የቫት ቁጥር መስክ"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "የቫት ቁጥር መስክ ወደ የክፍያ መጠየቂያ ቅጹ ያክሉ።"
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "የመስክ መለያ"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"የቫት ቁጥር መስኩን መለያ (ማለትም የቫት ቁጥር) ያዘጋጁ። በብዙ ቋንቋዎች በሚዘጋጁ ድር ጣቢያዎች ላይ፣ ይህንን መስክ "
+"ባዶ መተው እና የመጀመሪያውን ሕብረቁምፊ መተርጎም የተሻለ ነው።"
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "የቫት ቁጥር"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "የአውሮፓ ህብረት-ቫት"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "ተጨማሪ አማራጮችን ለማየት የቫት ቁጥር መስኩን ያንቁ"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "የቫት ማረጋገጫ"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "በክፍያ ወቅት የአውሮፓ ህብረት-ቫት የቫት ቁጥር መስክን ያረጋግጡ"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"የተሰጠው የቫት ቁጥር በአውሮፓ VIES የውሂብ ጎታ (የቫት መረጃ ልውውጥ ስርዓት) ላይ የተመዘገበ ትክክለኛ የቫት "
+"ቁጥር መሆኑን ያረጋግጣል።"
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "የተጨማሪ እሴት ታክስ ቁጥር ይግዙ"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"የሱቁ የቫት ቁጥር የአውሮፓ ህብረት-ቫት ማረጋገጫ ለመጠየቅ ጥቅም ላይ የዋለ ሲሆን በደረሰኞች ላይ የታተመ ነው።<br> "
+"የ VIES ምክክር ውጤቶች ለሂሳብ አያያዝ አገልግሎት ላይሆኑ ስለሚችሉ <strong>የሱቅ ቫት ቁጥርዎን እንዲያክሉ "
+"አጥብቀን እንመክራለን</strong> ።<br> ማለትም <code>ATU99999999</code> ወይም "
+"<code>EE999999999</code>"
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "የተገላቢጦሽ ክፍያ"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "የተገላቢጦሽ ክፍያ ዘዴን ይተግብሩ"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"የግብር ተመኑን ወደ ዜሮ ያቀናብሩ እና የደንበኛው የቫት ቁጥር የሚሰራ ሲሆን በደረሰኞች ላይ &quot;የተገላቢጦሽ "
+"ክፍያ&quot; ያሳዩ። እንደ መደብሩ ሀገር የተለየ &quot;የተገላቢጦሽ ክፍያ&quot; ጽሑፍ ሊያስፈልግ ይችላል።"
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "ተመሳሳይ ሀገር"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr "በሱቅ ሀገር ውስጥ ለሚደረጉ ግብይቶች የተገላቢጦሽ ክፍያ ዘዴን ይተግብሩ፡"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"በሱቁ ውስጥ በተመሳሳይ ሀገር ውስጥ ባሉ ኩባንያዎች መካከል ለሚደረጉ ግብይቶች የተገላቢጦሽ ክፍያ ዘዴን መተግበር "
+"ያስችላል።"
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "የተገላቢጦሽ ክፍያ ልዩ ሁኔታዎች"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr "የተገላቢጦሽ ክፍያ ዘዴን ተግባራዊ ለማድረግ ተጨማሪ አገሮችን ይምረጡ።"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr "ትክክለኛ የቫት ቁጥር ቢሰጥም እንኳ ከእነዚህ አገሮች ለሚመጡ ትዕዛዞች ግብር ይከፍላል።"
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "በደረሰኞች ላይ የተገላቢጦሽ የክፍያ መለያ"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr "በቼክ መውጫ ገጹ ላይ &quot;የተገላቢጦሽ ክፍያ&quot; የሚለውን መለያ እና የትዕዛዝ ዝርዝሮችን ያዘጋጁ።"
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "በደረሰኞች ላይ የተገላቢጦሽ የክፍያ ጽሑፍ"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "በደረሰኞች ላይ &quot;የተገላቢጦሽ ክፍያ&quot; የሚለውን መለያ ያዘጋጁ።"
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "በተገላቢጦሽ ክፍያ መሰረት የሚከፈል ግብር"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "የኩባንያ ስም"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "የኩባንያ ስም ከቫት ቁጥር በራስ-ሰር ያጠናቅቁ"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr "ደንበኛው በሰጠው ትክክለኛ የቫት ቁጥር ላይ በመመስረት የክፍያ ኩባንያውን ስም ይሙሉ።"
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "የኩባንያ ስም አርትዖት"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "በራስ-ሰር የተሞላ የኩባንያ ስም አርትዖት ይፍቀዱ"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr "ሲነቃ፣ ደንበኞች ከተሰጠው የቫት ቁጥር ጋር የተያያዘውን የኩባንያ ስም መቀየር ይችላሉ።"
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "ለዲጂታል እቃዎች የአውሮፓ ህብረት-ቫት"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"ከጃንዋሪ 1፣ 2015 ጀምሮ፣ ዲጂታል እቃዎችን በተመለከተ በአውሮፓ ህብረት የቫት ደንቦች ላይ ማሻሻያዎች ተደርገዋል፣ "
+"ይህም የB2C ግብይቶችን ብቻ ይነካል፡፡ በዲጂታል እቃዎች ላይ ያለው የቫት መጠን በደንበኛው ቦታ ላይ ተመስርቶ መሰላ "
+"አለበት፣ እናም የዚህ ማስረጃ መሰብሰብ አለበት (የአይፒ አድራሻ እና የክፍያ አድራሻ)።"
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "ለዲጂታል እቃዎች የግብር ክፍሎች"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "አንዳንድ የግብር ክፍሎችን ይምረጡ"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "የአካባቢ ማስረጃ"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "የደንበኛውን የአካባቢ ማስረጃ ይሰብስቡ"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"የአይፒ አድራሻውን ያስቀምጣል እና ከደንበኛው የክፍያ አድራሻ ጋር በማነፃፀር ያረጋግጣል። ደንበኛው ከክፍያ አድራሻው "
+"እና ከአይፒ አድራሻው ጋር የማይዛመዱ ከሆነ በቼክ መውጫ ገጹ ላይ ባለው የአመልካች ሳጥን ላይ ምልክት በማድረግ የክፍያ "
+"አድራሻቸውን ማረጋገጥ አለባቸው።"
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"ይህ አማራጭ በፈሉድ Checkout ውስጥ የሚተዳደር ነው። <a href=\"%s\">በደንበኛ መለያዎች ቅንብሮች ውስጥ "
+"ይቀይሩት</a> ።"
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr "ይህ አማራጭ በፈሉድ ቼክአውት ውስጥ የሚተዳደር ነው። በፈሉድ ቼክአውት &gt; የደንበኛ መለያዎች ስር ይቀይሩት።"
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"ይህ አማራጭ በFluid Checkout ውስጥ የሚተዳደር ነው። የFluid Checkout ሲነቃ የመላኪያ መድረሻው ሁልጊዜ "
+"&quot;ወደ ደንበኛ መላኪያ አድራሻ ነባሪ&quot; ተብሎ ይቀናበራል። ደንበኞች በቼክ መውጫ ጊዜ የተለያዩ የመላኪያ "
+"እና የክፍያ አድራሻዎችን ማቅረብ ይችላሉ።<br><br> ነባሪውን የክፍያ አድራሻ ከማጓጓዣ አድራሻው ጋር ተመሳሳይ "
+"እንዲሆን ለማድረግ የሚያስችል አማራጭ በ <a href=\"%s\">Fluid Checkout ቅንብሮች</a> ውስጥ ይገኛል።"
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"ይህ አማራጭ በFluid Checkout ውስጥ የሚተዳደር ነው። የFluid Checkout ሲነቃ የመላኪያ መድረሻው ሁልጊዜ "
+"&quot;ወደ ደንበኛ መላኪያ አድራሻ ነባሪ&quot; ተብሎ ይቀናበራል። ደንበኞች በቼክ መውጫ ጊዜ የተለያዩ የመላኪያ "
+"እና የክፍያ አድራሻዎችን ማቅረብ ይችላሉ።<br><br> ነባሪውን የክፍያ አድራሻ ከማጓጓዣ አድራሻው ጋር ተመሳሳይ "
+"እንዲሆን ለማድረግ የሚያስችል አማራጭ በWooCommerce &gt; Settings &gt; Fluid Checkout ላይ "
+"ይገኛል።"
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr "እነዚህ ቅንብሮች ወደ WP Admin &gt; Fluid Checkout &gt; ቅንብሮች ተወስደዋል።"
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr "ይህ የWooCommerce ቅንብሮች ትር ተቋርጧል እና በFluid Checkout 6.0 ውስጥ ይወገዳል።"
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "ወደ ቅንብሮች ገጽ ይሂዱ"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "ይህንን ትር ለዘላለም ደብቅ"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "የጣቢያ ሪፖርት ቅድመ እይታ"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr "ይህ በአሁኑ ቅንብሮችዎ ላይ በመመስረት በሚቀጥለው የጣቢያ አካባቢ ሪፖርት ውስጥ የሚካተተው ውሂብ ነው።"
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "የሪፖርት ቅድመ እይታ በመጫን ላይ..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "የጣቢያ ሪፖርት ቅድመ እይታውን መጫን አልተቻለም። እንደገና ይሞክሩ።"
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "የጣቢያውን ሪፖርት መላክ አልተቻለም። እንደገና ይሞክሩ።"
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "የጣቢያ ሪፖርት በተሳካ ሁኔታ ተልኳል።"
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "አንቃ እና አሁኑኑ ላክ"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "ገጠመ"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr "የጣቢያ ሪፖርት ጥያቄ አስቀድሞ በሂደት ላይ ነው። ከጥቂት ጊዜ በኋላ እንደገና ይሞክሩ።"
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "የጣቢያ አካባቢ ሪፖርት ማድረግ ተሰናክሏል።"
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "ለመላክ ምንም የጣቢያ ሪፖርት ውሂብ የለም።"
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr "ይህ የጣቢያ ጎራ የአካባቢ ሪፖርቶችን መላክ አይችልም (አካባቢያዊ ወይም የልማት ጎራዎች አልተካተቱም)።"
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "የጣቢያ ሪፖርት በቅርቡ ተልኳል። ቆይተው እንደገና ይሞክሩ።"
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "የጣቢያው ሪፖርት ሊላክ አልቻለም። ቆይተው እንደገና ይሞክሩ።"
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "የጣቢያ አካባቢ ሪፖርት ማድረግ አይገኝም።"
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "ለተመረጡት ቅንብሮች ምንም የጣቢያ ሪፖርት ውሂብ የለም።"
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "የጣቢያ ሪፖርቶችን ማስተዳደር አይፈቀድልዎትም።"
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "የፕሮ ባህሪ"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "ሌሎች ተሰኪዎች"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "ይህንን ተጨማሪ ብቻ ያግኙ — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "ተጨማሪውን ይጫኑ"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "ወደ PRO ያሻሽሉ — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr "እነዚህን አማራጮች ለመክፈት <a target=\"_blank\" href=\"%1$s\">%2$s ያግኙ</a> ።"
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "ተጨማሪ"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "ሰነዶችን ይመልከቱ"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"ጥያቄዎች የገባ የዎርድፕረስ ተጠቃሚ ያስፈልጋቸዋል። የተጠቃሚ_መታወቂያ የአሁኑን ተጠቃሚ ውሂብ እንዳይጠቀም ይተዉት፣ "
+"ወይም ደዋዩ ያንን ተጠቃሚ ማርትዕ ሲችል የተጠቃሚ_መታወቂያውን ለሌላ መለያ ኢላማ ለማድረግ ያልፉ (የተጠቃሚ_ማስተካከያ "
+"ችሎታ)። ያልተረጋገጡ ጥያቄዎች fc_api_forbidden ይመልሳሉ። ልክ ያልሆነ የተጠቃሚ_መታወቂያ "
+"fc_api_user_not_foundን ይመልሳል።"
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr "HTTP 200 ከ { &quot;data&quot;: { ... } } ጋር ተቆጣጣሪው የክፍያ ጭነት ሲመልስ።"
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"HTTP 200 ከ { &quot;success&quot;: true } ጋር የክፍያ ጭነት በማይኖርበት ጊዜ (ለምሳሌ "
+"DELETE)።"
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"ውድቀቶች የWordPress REST ስህተት JSONን ከWP_Error ይመልሳሉ (ኮድ፣ መልእክት፣ data.status)። "
+"የሽቦ ኮዶች የfc_api_* ቅድመ ቅጥያ ይጠቀማሉ።"
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "የተከለከለ መዳረሻ።"
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "የታለመው ተጠቃሚ አልተገኘም።"
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "ይህ ባህሪ አይገኝም።"
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "የሚያስፈልግ የአድራሻ መስክ ጠፍቷል።"
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "የፖስታ ኮድ ወይም ዚፕ ኮድ ልክ አይደለም።"
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "የስልክ ቁጥሩ ልክ አይደለም።"
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "ክፍለ ሀገር ወይም አውራጃ ልክ አይደለም።"
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "አገሩ ልክ ያልሆነ ነው ወይም የአድራሻ መስኮች የሉትም።"
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "ጥያቄው ሊካሄድ አልቻለም።"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "ወደ ቀዳሚው ደረጃ ተመለስ"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "ወደ ቅንብሮች ዝለል"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "እንደገና ይጀምሩ እና ወደ መጀመሪያው የሚመራ የማዋቀሪያ ደረጃ ይመለሱ"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "እንደገና ጀምር"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "ከመቀጠልዎ በፊት እባክዎ ሁሉንም ንዑስ ደረጃዎች ያጠናቅቁ።"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "ዘርጋ"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "ሰብስብ"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "ዝለል"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "እንደ ሙሉ ምልክት አድርግበት"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "ያልተሟላ እንደሆነ ምልክት አድርግበት"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "ሙሉ መጠን ያለው ምስል ይመልከቱ፡ %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "የሙሉ መጠን ቅንብር መመሪያ ምስል"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "ምስሉን ዝጋ"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "የፈሉድ ቼክአውት የሚመራ ማዋቀር"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "እንኳን ደህና መጣህ"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "የክፍያ ክፍያዎን ያስሱ"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "ሁሉም ተዘጋጅቷል"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "ወደዚህ ገጽ የመድረስ ፈቃድ የለዎትም።"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "ወደ ደረጃ %1$d ይሂዱ: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"ይህ የሚመራ ቅንብር ከFluid Checkout ጋር እንዲተዋወቁ ይረዳዎታል። ከዚህ በታች ያሉት ደረጃዎች ለጊዜው የቦታ "
+"መያዣዎች ናቸው።"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "ዝግጁ ሲሆኑ ወደሚቀጥለው ደረጃ ይቀጥሉ።"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "የፍሎይድ ቼክአውት በተግባር ላይ ለማየት የሱቅ ቼክአውትዎን ይክፈቱ።"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "የመክፈያ ገጹን ይመልከቱ"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr "መደብርዎን ማዋቀርዎን ለመቀጠል ወደ Fluid Checkout ቅንብሮች መመለስ ይችላሉ።"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "የክፍያ እና የጋሪ ቅንብሮችን ይገምግሙ"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "ከዳሽቦርዱ ላይ ተጨማሪዎችን ያስሱ"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "ጨርስ እና ወደ ቅንብሮች ሂድ"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr "የክፍያ ስልክ መስክ ታይነት አማራጩን ከዎኦኮሜርስ ኮንቬንሽኖች ጋር እንዲዛመድ ከድሮው እሴት ያዘምኑ።"
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr "የማጓጓዣ ስልክ መስክ ታይነት አማራጩን ከዎኦኮሜርስ ኮንቬንሽኖች ጋር እንዲዛመድ ከድሮው እሴት ያዘምኑ።"
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr "የትዕዛዝ ማጠቃለያ ዳራ ቀለም ቅንብሩን ወደ አዲሱ የ Split design ሁለተኛ ደረጃ አምድ ዳራ ቀለም አማራጭ ይቅዱ።"
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr "የተሻሻለው የምርጫ መስኮች ባህሪ የBiteship ተሰኪውን ሲጠቀሙ ሁልጊዜ ይሰናከላል።"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"የጀርመን ገበያን ሲጠቀሙ የቦታ ትዕዛዝ አቀማመጥ ሁልጊዜ &quot;ከትዕዛዝ ማጠቃለያ በታች&quot; ተብሎ ይቀናበራል። "
+"ያ ተሰኪ ከትዕዛዝ ማጠቃለያው በታች የቦታ ትዕዛዝ አዝራር እና ህጋዊ አመልካች ሳጥኖች እንዲታዩ ይፈልጋል።"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"ለWooCommerce ጀርመንኛን ሲጠቀሙ የቦታ ትዕዛዝ አቀማመጥ ሁልጊዜ &quot;ከትዕዛዝ ማጠቃለያ በታች&quot; "
+"ተብሎ ይቀናበራል። ያ ተሰኪ ከትዕዛዝ ማጠቃለያው በታች የቦታ ትዕዛዝ አዝራሩን እና ህጋዊ የአመልካች ሳጥኖችን ይፈልጋል።"
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "የመውሰጃ ቦታዎችን ያርትዑ"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "ከWooCommerce ቅንብሮች የአካባቢውን የመውሰጃ መለያ ይጠቀሙ"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"ሲነቃ፣ በቼክአውት ላይ ያለው የፒክአፕ አማራጭ መለያ ከWooCommerce picack location settings ርዕስ "
+"ጋር ይዛመዳል። ሲሰናከል፣ መለያው ከFluid Checkout የሚተረጎመውን &quot;Local pickup&quot; ጽሑፍ "
+"ይጠቀማል።"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2614,3 +4466,111 @@ msgstr "አዎ"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "ጆን"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "ዶይ"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "የምሳሌ ኩባንያ"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "123 ዋና ጎዳና"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "አንይታውን"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "እባክዎን ጥቅሉን በፊት በር ላይ ይተዉት።"
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "ቢኒ"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "ካፕ"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "ቲሸርት"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr "ትዕዛዝዎን ተቀብለናል እና ሲላክ ዝማኔ እንልክልዎታለን።"
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "የተጠቃሚ መመሪያ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "የቦታዎች ኤፒአይ (አዲስ)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "የቦታዎች ኤፒአይ (ውርስ)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "ስሪት 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "ስሪት 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr "✔ በሚቀጥለው ጊዜ በፍጥነት ይክፈሉ ✔ የክፍያ ምርጫዎችዎን ያስተዳድሩ ✔ የትዕዛዝ ሁኔታን እና ታሪክን ይመልከቱ"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "ተደብቋል"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "አማራጭ"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "ያስፈልጋል"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "ወደ አድራሻው የሚላክ ጭነት"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "የአካባቢው ፒክአፕ"

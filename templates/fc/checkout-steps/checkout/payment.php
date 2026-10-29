@@ -25,7 +25,16 @@ if ( ! wp_doing_ajax() ) {
 <div id="payment" class="woocommerce-checkout-payment">
 
 	<?php // CHANGE: Added hook for before the payment section ?>
-	<?php do_action( 'fc_checkout_before_payment', $checkout ); ?>
+	<?php
+		/**
+		 * Fires before the payment section.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param WC_Checkout $checkout Checkout object.
+		 */
+		do_action( 'fc_checkout_before_payment', $checkout );
+	?>
 
 	<?php if ( WC()->cart && WC()->cart->needs_payment() ) : ?>
 		<?php // CHANGE: Added wrapper for the payment methods list ?>
@@ -49,13 +58,31 @@ if ( ! wp_doing_ajax() ) {
 	<?php // CHANGE: Display info message when payment is not needed ?>
 	<?php else: ?>
 		<?php // translators: %s: Order total amount. ?>
-		<div class="woocommerce-info"><?php echo apply_filters( 'fc_payment_not_needed_message', sprintf( esc_html( __( 'Your order has a total amount due of %s. No further payment is needed.', 'fluid-checkout' ) ), wc_price( 0 ) ) ); ?></div>
+		<div class="woocommerce-info"><?php
+			/**
+			 * Filters the message shown when the order total does not require payment.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $text Text to display.
+			 */
+			echo apply_filters( 'fc_payment_not_needed_message', sprintf( esc_html( __( 'Your order has a total amount due of %s. No further payment is needed.', 'fluid-checkout' ) ), wc_price( 0 ) ) );
+		?></div>
 	<?php endif; ?>
 
 	<?php // CHANGE: Removed place order section, moved to templates/fc/checkout/place-order.php ?>
 
 	<?php // CHANGE: Added hook for after the payment section ?>
-	<?php do_action( 'fc_checkout_after_payment', $checkout ); ?>
+	<?php
+		/**
+		 * Fires after the payment section.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param WC_Checkout $checkout Checkout object.
+		 */
+		do_action( 'fc_checkout_after_payment', $checkout );
+	?>
 
 </div>
 <?php

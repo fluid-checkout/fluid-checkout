@@ -18,28 +18,23 @@ class FluidCheckout_Migration_3_0_5 extends FluidCheckout {
 
 
 	/**
-	 * Get the list of changes applied by this migration.
+	 * Get ordered migration steps for this version.
 	 */
-	public function get_description() {
+	public function get_migration_steps() {
 		return array(
-			__( 'Update the billing phone field visibility option from the legacy value to match WooCommerce conventions.', 'fluid-checkout' ),
+			array(
+				'id'          => 'update_billing_phone_visibility',
+				'description' => __( 'Update the billing phone field visibility option from the legacy value to match WooCommerce conventions.', 'fluid-checkout' ),
+				'risk'        => FluidCheckout_AdminDBMigrations::RISK_LOW,
+				'callback'    => array( $this, 'maybe_update_billing_field_visibility_option' ),
+			),
 		);
 	}
 
 
 
 	/**
-	 * Initialize hooks.
-	 */
-	public function migrate() {
-		// Apply migrations
-		$this->maybe_update_billing_field_visibility_option();
-	}
-
-
-
-	/**
-	 * Update the database version option.
+	 * Update the billing phone field visibility option.
 	 */
 	public function maybe_update_billing_field_visibility_option() {
 		// Define option key

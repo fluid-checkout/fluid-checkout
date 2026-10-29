@@ -56,9 +56,23 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 	 */
 	public function maybe_add_js_settings( $settings ) {
 		// Bail if fragments refresh is not enabled
+		/**
+		 * Filters whether the checkout fragment-refresh feature is enabled.
+		 *
+		 * @since 3.0.4
+		 *
+		 * @param bool $enabled Whether the feature is enabled. Default false.
+		 */
 		if ( true !== apply_filters( 'fc_enable_fragments_refresh', false ) ) { return $settings; }
 
 		// Add settings for fragments refresh
+		/**
+		 * Filters the fragment-refresh settings passed to the frontend script.
+		 *
+		 * @since 3.0.4
+		 *
+		 * @param array $settings Settings to output.
+		 */
 		$settings[ 'fragmentsRefresh' ] = apply_filters( 'fc_fragments_update_settings', array(
 			'updateFragmentsNonce' => wp_create_nonce( 'fc-fragments-refresh' ),
 		) );
@@ -100,6 +114,13 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 	 */
 	public function maybe_enqueue_assets_fragment_refresh() {
 		// Bail if fragments refresh is not enabled
+		/**
+		 * Filters whether the checkout fragment-refresh feature is enabled.
+		 *
+		 * @since 3.0.4
+		 *
+		 * @param bool $enabled Whether the feature is enabled. Default false.
+		 */
 		if ( true !== apply_filters( 'fc_enable_fragments_refresh', false ) ) { return; }
 
 		$this->enqueue_assets_fragment_refresh();
@@ -129,6 +150,13 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 		wp_send_json(
 			array(
 				'result'    => 'success',
+				/**
+				 * Filters the HTML fragments returned by the fragment-refresh request.
+				 *
+				 * @since 3.0.4
+				 *
+				 * @param array $value Value to filter. Default empty array.
+				 */
 				'fragments' => apply_filters( 'fc_update_fragments', array() ),
 			)
 		);

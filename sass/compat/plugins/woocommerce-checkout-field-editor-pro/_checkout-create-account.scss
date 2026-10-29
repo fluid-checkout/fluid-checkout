@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // CHECKOUT CREATE ACCOUNT
 // ------------------------------------
@@ -5,3 +11,4 @@
 .fc-content div.woocommerce form .fc-wrapper .woocommerce-account-fields .fc-field-group:not( :last-child ){
 	margin-bottom: $global-spacing-small;
 }
+

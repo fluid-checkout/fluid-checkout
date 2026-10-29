@@ -277,10 +277,6 @@ msgstr "Hifadhidata ya Malipo ya Maji imesasishwa kwa mafanikio"
 msgid "The database changes where applied successfully."
 msgstr "Hifadhidata inabadilika inapotumika kwa mafanikio."
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "Sawa"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "Ondoa"
@@ -400,39 +396,9 @@ msgstr "Soma nyaraka"
 msgid "Don't show this again"
 msgstr "Usionyeshe hii tena"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "Matoleo maalum"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"Panua uzuri wote wa Malipo ya Maji kwenye ukurasa wako wa rukwama na kurasa "
-"za asante."
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Fluid Checkout PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"Violezo vya muundo, rukwama iliyoboreshwa na kuagiza kurasa zilizopokelewa, "
-"kulinganisha akaunti, na mengi zaidi."
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"Zana bora zaidi za <strong>kuboresha zaidi kiwango chako cha "
-"walioshawishika kulipia WooCommerce</strong> na kufanya hali ya ununuzi "
-"ifanane katika safari nzima."
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -454,10 +420,6 @@ msgstr "Hariri yaliyomo kwenye rukwama kwenye ukurasa wa malipo"
 msgid "Account matching / user matching"
 msgstr "Ulinganishaji wa akaunti / ulinganishaji wa mtumiaji"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "Vifungo vya Express Checkout kutoka kwa njia za malipo zinazotumika"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "Alama za uaminifu kwenye rukwama na kurasa za asante"
@@ -465,10 +427,6 @@ msgstr "Alama za uaminifu kwenye rukwama na kurasa za asante"
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "Nafasi zaidi za msimbo wa kuponi kwenye ukurasa wa malipo"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "Sehemu iliyojumuishwa ya msimbo wa kuponi kwenye ukurasa wa rukwama"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -482,247 +440,25 @@ msgstr "Ujumbe wa zawadi na karatasi za kufunga"
 msgid "Local pickup and in-store collection"
 msgstr "Mkusanyiko wa eneo na mkusanyo wa dukani"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "Pata toleo jipya la PRO — 99 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Fluid Checkout PRO - Bundle"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "Vipengele vyote vya PRO + Viongezi vyote kwa bei maalum."
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"Kifurushi hiki kinajumuisha programu jalizi zote tunazotoa kwa sasa na "
-"programu jalizi za Malipo ya Maji tutakayozindua siku zijazo."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "Thamani ya EUR 226 (Okoa 42%)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Anwani ya Google Imekamilishwa Kiotomatiki"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "Kitabu cha Anwani"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "Msaidizi wa EU-VAT"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "Nyongeza zote za siku zijazo *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* Kwa muda mrefu kama una usajili unaoendelea."
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "Pata Bundle - EUR 129 pekee"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"Bei zote zinaonyeshwa katika EUR. Ikiwa kuna tofauti zozote na bei kwenye "
-"tovuti yetu, matoleo yaliyoonyeshwa kwenye tovuti yanachukua nafasi hizi na "
-"yatatumika."
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "Viongezi"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "Boresha utumiaji wako wa malipo na programu jalizi hizi."
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "Tayari ninayo - Ficha ofa hii"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "Imesakinishwa - Amilisha"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "Imewashwa"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "Hadi 40% chini ya sehemu za kulipa ili kujaza."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"Epuka ucheleweshaji wa uwasilishaji na wateja wasioridhika. Kusanya "
-"<strong>maelezo sahihi ya anwani</strong> kutoka mara ya kwanza wanaponunua "
-"nawe."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "Pata programu jalizi hii — 29 EUR"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "Kitabu cha anwani"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "Anwani nyingi zilizohifadhiwa za usafirishaji na malipo."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"Waruhusu wateja <strong>wahifadhi anwani nyingi za usafirishaji na "
-"bili</strong> kwenye akaunti zao na uchague zipi watatumia wakati wa kulipa "
-"na kurasa za rukwama."
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "Pata programu jalizi hii — 59 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "Uthibitishaji wa EU-VAT uliorahisishwa kwa duka lako."
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"Kusanya na <strong>uidhinishe nambari za VAT za Umoja wa Ulaya kwenye "
-"ukurasa wa kulipa</strong> , huondoa ada za kodi kwa misingi ya malipo ya "
-"kinyume na huthibitisha eneo la mteja inapohitajika."
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "Pata programu jalizi hii — 39 EUR"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"Viongezi vyote vinauzwa kivyake na vinahitaji programu-jalizi ya "
-"<strong>Fluid Checkout Lite</strong> kusakinishwa na kuamilishwa, isipokuwa "
-"inapobainishwa."
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Chagua picha"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Ingia "
-"katika akaunti yako</a> ili upate ufunguo wako wa leseni, au <a href=\"%s\" "
-"target=\"_blank\">ununue ufunguo mpya wa leseni</a> ."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "Itatumika hadi %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "Muda wake uliisha mnamo %s."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Ingia "
-"katika akaunti yako</a> ili usasishe ufunguo wako wa leseni na uendelee "
-"kupokea masasisho na usaidizi."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "Kitufe cha leseni kimeghairiwa."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">Nunua ufunguo mpya wa leseni</a> na "
-"uendelee kupokea masasisho na usaidizi."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "Hitilafu: "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "Mipangilio na Uhifadhi"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "Kubwa! Ukurasa wako wa Malipo sasa unatumia Malipo ya Maji."
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "Hapa kuna nyenzo chache za wewe kuanza:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"Soma mwongozo wa usakinishaji <a href=\"%s\" target=\"_blank\">Kupata "
-"maelezo kwa Malipo ya Maji</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "Sanidi mpangilio na muundo kwenye <a href=\"%s\">chaguo za malipo</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"Angalia ikiwa kuna <a href=\"%s\">chaguo zozote za ujumuishaji</a> "
-"zinazopatikana kwa programu-jalizi zingine ambazo umesakinisha."
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"Tembelea <a href=\"%s\" target=\"_blank\">hati zetu</a> kwa maelezo zaidi "
-"kuhusu vipengele vya Malipo ya Maji."
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"Iwapo utahitaji usaidizi, <a href=\"%s\" target=\"_blank\">fungua tikiti ya "
-"usaidizi</a> kwenye kituo chetu rasmi cha usaidizi."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -735,14 +471,6 @@ msgstr "Uboreshaji wa mikokoteni"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "Washa uboreshaji wa ukurasa wa rukwama"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "Onyesha ukurasa wa rukwama na mpangilio sawa na ukurasa wa malipo."
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "Kichwa na kijachini"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -777,16 +505,6 @@ msgstr ""
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "Misimbo ya kuponi"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"Chagua mahali pa kuonyesha sehemu ya misimbo ya kuponi kwenye ukurasa wa "
-"rukwama. Inatumika tu wakati rukwama ya AJAX na misimbo ya kuponi "
-"iliyounganishwa katika ukurasa wa kulipa zimewashwa."
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -884,10 +602,6 @@ msgstr ""
 "Idadi ya bidhaa zinazouzwa kwa njia tofauti za kuonyesha kwenye ukurasa wa "
 "rukwama"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "Alama za uaminifu na beji"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "Ongeza maeneo ya wijeti kwenye ukurasa wa rukwama"
@@ -904,10 +618,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "Lipa"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "Muundo na muundo"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "Mpangilio wa Malipo"
@@ -923,22 +633,6 @@ msgstr "Hali ya giza"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "Washa hali ya giza"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "Violezo vya kichwa na kijachini"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"Tunapendekeza utumie kichwa na kijachini kisicho na usumbufu ili kuepuka "
-"usumbufu kwenye ukurasa wa kulipa. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Soma "
-"utafiti kuhusu kuacha mikokoteni</a> ."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -991,10 +685,6 @@ msgid ""
 msgstr ""
 "Chagua rangi ya usuli kwa kijachini cha ukurasa wa malipo. Inatumika tu "
 "wakati wa kutumia kichwa na kijachini kisicho na usumbufu."
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "Vipengele vya malipo"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1078,18 +768,6 @@ msgstr "Unganisha kwa ukurasa wa duka"
 msgid "Cart items"
 msgstr "Vitu vya gari"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "Washa chaguo za kuhariri vipengee vya rukwama kwenye ukurasa wa malipo"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"Ruhusu wateja kubadilisha idadi ya bidhaa au kuondoa bidhaa moja kwa moja "
-"kwenye ukurasa wa malipo."
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "Ficha hitilafu za vipengee vya rukwama kwenye ukurasa wa malipo"
@@ -1144,37 +822,9 @@ msgstr ""
 "Maeneo haya ya wijeti hutumiwa kuongeza alama za uaminifu na beji za "
 "uaminifu kwenye ukurasa wa malipo."
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"Onyesha wijeti za upau wa malipo unapotazama tu hatua ya mwisho ya kulipa "
-"kwenye vifaa vya mkononi unapotumia mpangilio wa hatua nyingi wa kulipa"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "Washa sehemu ya msimbo wa kuponi iliyojumuishwa"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr ""
-"Inatumika tu ikiwa matumizi ya misimbo ya kuponi yamewashwa katika "
-"mipangilio ya WooCommerce."
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "Onyesha kichwa cha sehemu ya misimbo ya kuponi"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"Inatumika tu wakati msimbo wa kuponi unaonyeshwa kama sehemu tofauti kwenye "
-"kurasa za malipo au za rukwama."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1195,17 +845,6 @@ msgstr "Kama hatua ndogo kabla ya njia za malipo"
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "Kama hatua ndogo baada ya njia za malipo"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"Chagua mtindo wa kitufe cha &quot;tumia kuponi&quot;. Inatumika tu wakati "
-"sehemu ya msimbo wa kuponi inaonyeshwa &quot;Kabla ya hatua za kulipa&quot; "
-"kwenye ukurasa wa kulipa, au &quot;Kabla ya sehemu ya vitu vya "
-"rukwama&quot; kwenye ukurasa wa rukwama."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1254,21 +893,6 @@ msgstr ""
 "Inapendekezwa tu wakati wateja wengi wanahitaji sehemu ya &quot;Anwani ya "
 "2&quot;, au wakati wa kupata anwani sahihi ya usafirishaji ni muhimu "
 "(yaani, ikiwa unaleta chakula na bidhaa zingine zinazoharibika)."
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "Onyesha vitufe vya kiungo &quot;Ongeza&quot; kwa herufi ndogo"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"Tengeneza lebo za sehemu ya hiari ya kitufe cha kiungo cha "
-"&quot;Ongeza&quot; kama <code>lowercase</code> (yaani. &quot;Ongeza nambari "
-"ya simu&quot; badala ya &quot;Ongeza Nambari ya Simu&quot;). Chaguo hili "
-"pia huathiri vitufe vya viungo vya sehemu za msimbo wa kuponi."
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1364,24 +988,6 @@ msgstr "Kabla ya anwani ya usafirishaji"
 msgid "After shipping address"
 msgstr "Baada ya anwani ya usafirishaji"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "Zuia uteuzi otomatiki wa njia ya kwanza ya usafirishaji"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Ikiwezeshwa, mbinu ya kwanza ya usafirishaji inayopatikana haitachaguliwa "
-"kiotomatiki wakati hakuna njia nyingine ya usafirishaji iliyochaguliwa hapo "
-"awali kwa kila kifurushi cha usafirishaji.<br> Chaguo hili litawezeshwa "
-"kiotomatiki ikiwa chaguo la kufuta njia iliyochaguliwa ya usafirishaji "
-"imewashwa kwa kipengele cha Uchukuaji wa Ndani."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Uchukuzi wa ndani"
@@ -1401,23 +1007,6 @@ msgid ""
 msgstr ""
 "Hubadilisha anwani ya usafirishaji na mahali pa kuchukua wakati njia ya "
 "usafirishaji ya karibu imechaguliwa."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Onyesha chaguo la kufuta njia za usafirishaji katika hatua ndogo ya eneo la "
-"kuchukuliwa"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Onyesha kitufe cha kiungo kwenye hatua ndogo ya eneo la kuchukuliwa ili "
-"kufuta mbinu ulizochagua za usafirishaji. Hii inaweza kutumika kuruhusu "
-"kuonyesha sehemu ya anwani ya usafirishaji tena ikiwa mbinu ya kuchukua "
-"ilichaguliwa hapo awali."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1496,32 +1085,6 @@ msgstr "Ongeza sehemu ya simu ya bili kwenye fomu ya kulipa."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Chagua katika hatua gani ya kuonyesha sehemu ya simu ya bili."
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "Washa uthibitishaji wa nambari ya simu kulingana na sheria za nchi"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"Ikizimwa, uthibitishaji wa sehemu ya simu hautaangalia kama misimbo ya nchi "
-"au eneo ni halali kwa nchi."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "Onyesha nchi zinazoruhusiwa kwa usafirishaji au malipo pekee"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"Ikiwezeshwa, ni nchi zinazoruhusiwa tu kwa usafirishaji zitapatikana katika "
-"sehemu ya simu za usafirishaji, na ni nchi zinazoruhusiwa tu kulipia ndizo "
-"zitapatikana kwa uga wa simu za kutuma bili."
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "Onyesha msimbo wa nchi kando ya bendera"
@@ -1554,12 +1117,6 @@ msgstr "Bainisha mwonekano wa sehemu ya vidokezo vya agizo la ziada."
 msgid "Gift options"
 msgstr "Chaguzi za zawadi"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr ""
-"Onyesha ujumbe wa zawadi na chaguo zingine za zawadi kwenye ukurasa wa "
-"malipo"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1567,10 +1124,6 @@ msgid ""
 msgstr ""
 "Ruhusu wateja waongeze ujumbe wa zawadi na chaguo zingine zinazohusiana na "
 "zawadi kwenye agizo."
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "Onyesha sehemu za ujumbe wa zawadi zilizopanuliwa kila wakati"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1627,28 +1180,9 @@ msgstr "Dashibodi"
 msgid "Integrations"
 msgstr "Ushirikiano"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"Hakuna miunganisho inayopatikana kwa sasa kwenye sehemu hii. Chaguo "
-"zinazohusiana na kila programu-jalizi zitaonekana hapa tu ikiwa "
-"programu-jalizi hiyo imewashwa."
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "Vifunguo vya leseni"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"Hakuna chaguo za vitufe vya leseni zinazopatikana kwa sasa kwenye sehemu "
-"hii. Chaguo zinazohusiana na kila programu-jalizi au programu-jalizi "
-"zitaonekana hapa programu-jalizi hiyo itakapowashwa."
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1751,14 +1285,6 @@ msgstr ""
 "Maeneo haya ya wijeti hutumiwa kuongeza alama za uaminifu na beji za "
 "uaminifu kwenye ukurasa wa asante."
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"Chaguo hizi huathiri ukurasa wa asante , angalia maelezo ya agizo kwenye "
-"kurasa za akaunti na arifa za barua pepe."
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "Agiza vitendo"
@@ -1851,20 +1377,6 @@ msgstr "Pakia mali isiyopunguzwa"
 msgid "Enhanced select fields"
 msgstr "Uga zilizoimarishwa"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr "Badilisha vipengee kunjuzi <code>select2</code> na <code>TomSelect</code>"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect ni sehemu rahisi ya uteuzi wa menyu kunjuzi ambayo haielekei sana "
-"kwa makosa kuliko Select2, huku ikitoa vipengele vile vile ambavyo hutumika "
-"haswa kwenye kurasa za kulipia za WooCommerce."
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "Rekebisha kuvuta kiotomatiki kwenye sehemu za fomu"
@@ -1872,35 +1384,6 @@ msgstr "Rekebisha kuvuta kiotomatiki kwenye sehemu za fomu"
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "Weka <code>font-size</code> ndani ya sehemu za fomu kuwa 16px"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"Wakati ukubwa wa fonti ndani ya sehemu za fomu ni ndogo kuliko 16px, Safari "
-"na vivinjari vingine vinaweza kuvuta kiotomatiki kwenye vifaa vya mkononi "
-"ili kurahisisha maandishi kusoma. Chaguo hili likiwashwa, litaweka saizi ya "
-"fonti ya ndani ya sehemu za fomu hadi 16px kwenye kurasa zilizoboreshwa na "
-"Fluid Checkout ili kuiepusha kukuza ndani."
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"Mahali pa usafirishaji kila mara huwekwa kuwa &quot;Anwani-msingi ya "
-"usafirishaji ya mteja&quot; wakati Fluid Checkout imewashwa. Wateja bado "
-"wanaweza kutoa anwani tofauti za usafirishaji na bili wakati wa kulipa, "
-"chaguo la kuweka anwani chaguo-msingi ya kutuma bili kuwa sawa na anwani ya "
-"usafirishaji inapatikana katika WooCommerce &gt; Mipangilio &gt; Malipo ya "
-"Maji."
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1927,14 +1410,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(majaribio)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "Thibitisha"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "Thibitisha Nambari ya Simu"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2469,10 +1944,6 @@ msgstr "Baada ya bar ya maendeleo"
 msgid "Before coupon codes section"
 msgstr "Kabla ya sehemu ya misimbo ya kuponi"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "Washa sehemu za nambari za simu za kimataifa"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "Fomati nambari za simu kulingana na sheria za kila nchi."
@@ -2480,18 +1951,6 @@ msgstr "Fomati nambari za simu kulingana na sheria za kila nchi."
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "Tumia uthibitishaji sahihi wa nambari ya simu"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"Jaribu kuhakikisha kuwa nambari ya simu ni nambari halali ya rununu au ya "
-"mezani kulingana na sheria za msimbo wa nchi uliochaguliwa. Chaguo hili "
-"hutumia kipengele cha uthibitishaji sahihi <code>intl-tel-input</code> , "
-"ambacho kinaweza kutoa chanya za uwongo kwa baadhi ya nambari za simu."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2538,26 +1997,6 @@ msgstr "Safu wima 2"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "Safu wima 1"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"Mitindo ya jumla ya hatua za kulipa, muhtasari wa agizo na sehemu "
-"zingine.<br> Huenda pia zikatumika kwa kurasa zingine kama vile Rukwama, "
-"Agizo Lililopokelewa na Kuangalia Agizo."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"Kiolezo cha muundo <em>&quot;Gawanya&quot;</em> hakipatikani unapotumia "
-"mpangilio wa <em>&quot;safu wima 1&quot;</em> na kitarudi kwenye "
-"<em>&quot;Minimalist&quot;</em> ikiwa kitachaguliwa."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2657,6 +2096,2534 @@ msgstr ""
 "usafirishaji inaweza kunakiliwa hadi kwenye anwani ya bili wakati chaguo "
 "hilo linapochaguliwa, vinginevyo mteja anaweza asiweze kujaza fomu ya "
 "kulipa."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "Wasifu wa mipangilio"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "Wasifu wa mipangilio"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "Huna ruhusa ya kufanya kitendo hiki."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "Huna ruhusa ya kuamilisha programu-jalizi."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "Programu-jalizi haipo."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "Programu-jalizi imewashwa."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "Mabadiliko yafuatayo yatatumika:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Tangu Fluid Checkout 5.0, mipangilio imehifadhiwa tofauti. Chaguzi za "
+"zamani bado zimehifadhiwa kwenye hifadhidata ili kuruhusu kushushwa daraja "
+"hadi matoleo ya awali ikiwa inahitajika."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"Duka lako limekuwa likifanya kazi kwa takriban wiki 2 kwenye mipangilio "
+"mipya ili uweze kusafisha chaguo za zamani zilizohifadhiwa kwenye "
+"hifadhidata. Tafadhali kumbuka kuwa baada ya kusafisha, ikiwa unahitaji "
+"kushusha kiwango hadi matoleo ya awali ya programu-jalizi itatumia thamani "
+"chaguo-msingi kwa mipangilio yote."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "Usafi wa mipangilio ya Fluid Checkout"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "Futa chaguo zilizobaki"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "Tusaidie kuboresha Malipo ya Maji"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"Shiriki ripoti za mazingira ya tovuti bila majina ukitumia Fluid Checkout "
+"ili kupata usaidizi wa haraka na kutusaidia kuboresha utangamano na kupima "
+"athari. Hakuna data nyeti ya mteja, mtumiaji, au iliyojumuishwa. Unaweza "
+"kuchagua kinachoshirikiwa wakati wowote kutoka kwa mipangilio ya Zana."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "Washa ripoti za mazingira ya tovuti"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "Mipangilio ya ukaguzi"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"Hakikisho hili limekwisha muda wake. Pakia upya ukurasa wa msimamizi ili "
+"kuanza hakikisho jipya."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "Muda wa kuhakiki umeisha"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "Maagizo hayawezi kuwekwa katika onyesho la awali."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "Kuingia hakupatikani katika onyesho la kuchungulia."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "Akaunti haziwezi kuundwa katika onyesho la kuchungulia."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "Maombi kwa tovuti zingine yamezuiwa katika onyesho la awali."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "Inachakata…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "Kuna kitu kimeenda vibaya. Tafadhali jaribu tena."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "Washa programu-jalizi"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - Kifurushi kamili cha malipo"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"Vipengele vyote vya PRO + nyongeza zote, bei moja. Violezo vya muundo, "
+"kikapu kilichoboreshwa na kuagiza kurasa zilizopokelewa, ulinganishaji wa "
+"akaunti, na mengine mengi."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "Ukurasa wa malipo wa agizo ulioboreshwa"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "Vifungo vya malipo kutoka kwa njia za malipo zinazoungwa mkono"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "Kuchelewa kwa uundaji wa akaunti"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "Kukamilisha anwani kiotomatiki kwa kutumia API za Ramani za Google"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "Anwani nyingi zilizohifadhiwa na kitabu cha anwani"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "Msaidizi wa EU-VAT"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "Ficha sehemu hii"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "Pata maelezo zaidi"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "Pata ufikiaji wa mapema"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "Washa programu jalizi"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "Pata faida zaidi kutokana na safari yako ya kulipa"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "Ufunguo wa API ya jaribio"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "Usanidi unaoongozwa"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "Chaguzi"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "Weka mpangilio na muundo kwenye <a href=\"%s\">chaguo za kulipa</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"Washa malipo ya wageni na/au kagua <a href=\"%s\">mipangilio ya akaunti za "
+"wateja</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"Washa <a href=\"%1$s\">kikapu</a> kilichoboreshwa, <a "
+"href=\"%2$s\">asante</a> na <a href=\"%3$s\">uagize kurasa za malipo</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr ""
+"Washa <a href=\"%s\">kukamilisha anwani kiotomatiki</a> kutoka Ramani za "
+"Google."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr ""
+"Washa anwani nyingi zilizohifadhiwa ukitumia <a href=\"%s\">kitabu cha "
+"anwani</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"Angalia kama kuna <a href=\"%s\">chaguo zozote za ujumuishaji</a> "
+"zinazopatikana kwa mandhari au programu-jalizi zingine ulizosakinisha."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"Pata usaidizi wa haraka na utusaidie kuboresha utangamano na kupima athari. "
+"<a href=\"%s\">Washa ufuatiliaji wa matumizi</a> kutoka kwa mipangilio ya "
+"zana."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "Kichupo cha mipangilio hakipo."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "Kuanza"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>Sawa! Ukurasa wako wa malipo sasa unafanya kazi kwenye Fluid "
+"Checkout.</strong> Hapa kuna hatua chache za kuanza:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "Imekamilika"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "Hakiki data ya ripoti"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "Tuma sasa"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "Gundua kiotomatiki"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "Kiafrikana"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "Kialbania"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "Kiamhariki"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "Kiarabu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "Kiarmenia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "Kiazabajani"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "Kibasque"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "Kibelarusi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "Kibengali"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "Kibosnia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "Kibulgaria"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "Kiburma"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "Kikatalani"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "Kichina"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "Kichina (Kilichorahisishwa)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "Kichina (Hong Kong)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "Kichina (Cha Jadi)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "Kikroeshia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "Kicheki"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "Kidenmaki"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "Kiholanzi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "Kiingereza"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "Kiingereza (Kiaustralia)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "Kiingereza (Uingereza)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "Kiestonia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "Kifarsi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "Kifini"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "Kifilipino"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "Kifaransa"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "Kifaransa (Kanada)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "Kigalisia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "Kijojia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "Kijerumani"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "Kigiriki"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "Kigujarati"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "Kiebrania"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "Kihindi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "Kihungaria"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "Kiaisilandi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "Kiindonesia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "Kiitaliano"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "Kijapani"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "Kikannada"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "Kikazakh"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "Kikhmer"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "Kikorea"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "Kyrgyz"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "Kilao"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "Kilatvia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "Kilithuania"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "Kimasedonia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "Kimalei"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "Kimalayalam"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "Kimarathi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "Kimongolia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "Kinepali"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "Kinorwe"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "Kipolandi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "Kireno"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "Kireno (Brazili)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "Kireno (Ureno)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "Kipunjabi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "Kiromania"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "Kirusi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "Kiserbia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "Kisinhali"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "Kislovakia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "Kislovenia"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "Kihispania"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "Kihispania (Amerika ya Kilatini)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "Kiswahili"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "Kiswidi"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "Kitamil"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "Kitelugu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "Kithai"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "Kituruki"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "Kiukreni"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "Kiurdu"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "Kivietnam"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "Kizulu"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Kukamilisha kiotomatiki kwa anwani ya Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Toleo la API ya Google Places"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"Chagua toleo gani la API ya Google Places la kutumia. Tunapendekeza uhamie "
+"kwenye API mpya ya Places haraka iwezekanavyo."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"Tunapendekeza kutumia &quot;Places API (Mpya)&quot; kuanzia Machi 1, 2025, "
+"Google itahamisha toleo la &quot;Places API (Legacy)&quot; hadi hali ya "
+"Legacy, ikimaanisha hutaweza tena kuwezesha huduma hii kwa funguo mpya za "
+"API na kwamba toleo hilo la API hatimaye halitapatikana tena. Akaunti "
+"zilizopo tayari zinazotumia Legacy API zinaweza kuendelea kufanya kazi bila "
+"usumbufu."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(Inapendekezwa)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Ufunguo wa API ya Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"Bandika ufunguo wako wa Google API na utumie kitufe cha majaribio ili "
+"kuthibitisha kuwa unafanya kazi kwa tovuti hii. Hakikisha ufunguo ni halali "
+"na unaruhusiwa kwa kikoa chako, vinginevyo sehemu ya anwani inaweza kuzuiwa "
+"na kuwazuia wateja kukamilisha maagizo yao."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "Washa ukamilishaji otomatiki wa anwani ya Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr ""
+"Washa ukamilishaji kiotomatiki wa anwani kwa kutumia API za Ramani za "
+"Google."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Lugha ya API ya Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"Lugha hii itatumika kuonyesha mapendekezo ya anwani za Google Places API na "
+"anwani pia zitakamilika kiotomatiki katika lugha hii."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "Aina za matokeo"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Acha tupu ili kukubali aina yoyote ya matokeo, ambayo kwa kawaida hutoa "
+"matokeo bora zaidi ya ulinganifu. <a href=\"%s\" target=\"_blank\">Tazama "
+"hati kwa maelezo zaidi</a> .<br> Chagua hadi aina 5 za matokeo ya utafutaji "
+"wa anwani ili urudishe kwenye sehemu za kukamilisha kiotomatiki anwani.<br> "
+"Tembelea hati za Ramani za Google ili upate maelezo zaidi kuhusu <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">aina zinazoungwa mkono</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "Aina za matokeo (API ya Urithi)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Ni aina gani ya matokeo ya utafutaji wa anwani ya kurudi unapotumia Places "
+"API (Legacy).<br> Tembelea hati za API ya Maeneo ya Google Iliyopitwa na "
+"Wakati ili ujifunze zaidi kuhusu <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">aina zinazoungwa mkono</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "Sehemu za kampuni"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr ""
+"Washa kipengele cha kukamilisha kiotomatiki kwa jina la kampuni ikiwa "
+"kinapatikana"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Wezesha ukamilishaji otomatiki wa sehemu ya kampuni ukitumia taarifa ya "
+"jina la kampuni inaporudishwa kutoka kwa API za Ramani za Google."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "Utafutaji wa biashara"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "Wezesha utafutaji wa biashara katika uwanja wa kampuni"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"Washa mapendekezo ya anwani zinazohusiana na biashara unapoandika kwenye "
+"sehemu ya kampuni, kisha jaza kiotomatiki sehemu zote za anwani wakati "
+"biashara imechaguliwa kutoka kwa mapendekezo."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "Aina za matokeo ya kampuni"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"Chagua hadi aina 5 za matokeo ya utafutaji wa anwani ili urudi kwenye "
+"sehemu za kampuni zinazokamilisha kiotomatiki.<br> Thamani inayopendekezwa "
+"ni <code>establishment</code> , ambao unajumuisha aina nyingi za "
+"biashara.<br> Acha tupu ili kukubali aina yoyote ya matokeo, ikiwa ni "
+"pamoja na matokeo ambayo hayahusiani na biashara.<br> Tembelea hati za "
+"Ramani za Google ili upate maelezo zaidi kuhusu <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">aina zinazoungwa mkono</a> ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Nembo ya Google"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "Onyesha maandishi na nembo &quot;Inaendeshwa na Google&quot;"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"Ikichaguliwa, maandishi na nembo &quot;Inaendeshwa na Google&quot; "
+"itaonyeshwa chini ya kisanduku cha mapendekezo ya kukamilisha anwani "
+"kiotomatiki."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "Kukamilisha kiotomatiki anwani ya API ya Brazil"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "API ya Brazil"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "Washa ukamilishaji otomatiki wa anwani ya API ya Brasil kwa sehemu za CEP"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"Tumia API ya Brasil ili kupata na kujaza anwani kiotomatiki kwa kutumia "
+"sehemu ya CEP/Postcode. Inafaa tu kwa anwani za Brazil."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "Toleo la API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "Chagua toleo gani la mbinu ya Brasil API CEP la kutumia."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "Uhamiaji wa kitabu cha anwani"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "Anwani za WooCommerce"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"Nakili anwani zilizopo za usafirishaji na bili kutoka WooCommerce kwenye "
+"kitabu cha anwani cha wateja."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "Washa kipengele cha kitabu cha anwani"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"Waruhusu wateja kuhifadhi anwani nyingi na kufafanua anwani chaguo-msingi "
+"itakayotumika kwa usafirishaji na bili."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "Lebo za anwani"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr "Ruhusu wateja kuongeza lebo maalum kwa kila anwani"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"Lebo za anwani hurahisisha wateja kutofautisha kati ya anwani zao "
+"zilizohifadhiwa (yaani: &quot;Nyumba ya Mama&quot;). Lebo za anwani ni za "
+"faragha kwa wateja, na hazitaonyeshwa au kuchapishwa kwenye ukurasa wa "
+"maelezo ya agizo au ankara."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "Mpangilio wa onyesho"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr ""
+"Chagua jinsi anwani zilizohifadhiwa zinavyoonyeshwa wakati wa kulipa na "
+"kwenye kikapu."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"Hutumika wakati wa kulipa na kwenye kikapu. Anwani zilizohifadhiwa kwenye "
+"ukurasa wa akaunti hutumia mpangilio wa kadi kila wakati."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "Kadi za anwani"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "Orodha ya anwani"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "Sehemu ya kunjuzi"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "Utafutaji wa anwani"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"Onyesha kichujio cha utafutaji wa anwani kwenye sehemu ya mbele wakati "
+"mteja ana angalau idadi hii ya anwani zilizohifadhiwa zinazopatikana."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "Haitumiki wakati mpangilio wa onyesho umewekwa kwenye sehemu ya kushuka."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "Anwani"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "Washa uboreshaji wa ukurasa wa rukwama ili kuona chaguo zaidi"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "Muhtasari wa mpangilio unaonata"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"Chagua mahali pa kuonyesha sehemu ya misimbo ya kuponi kwenye ukurasa wa "
+"kikapu. Inatumika tu wakati kikapu cha AJAX kimewashwa, na ikiwa matumizi "
+"ya misimbo ya kuponi yamewashwa katika mipangilio ya WooCommerce."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "Mpangilio wa mauzo mtambuka"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "Mauzo ya mtambuka yanaonyeshwa"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "Vitu"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "Uboreshaji wa ukurasa wa rukwama"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"Kipe kikapu chako mpangilio uleule ulio wazi, unaolenga ubadilishaji kama "
+"vile malipo yako."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr ""
+"Linganisha mpangilio wa kikapu na ukurasa wa kulipa kwa safari thabiti ya "
+"ununuzi."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"Weka kikapu kikisasishwa kila wakati chinichini, hakuna upakiaji upya wa "
+"ukurasa mzima wakati idadi inabadilika."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"Weka misimbo ya kuponi, usafirishaji, na mauzo mtambuka mahali ambapo "
+"yanabadilisha bidhaa vizuri zaidi."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"Weka muhtasari wa agizo ukionekana unaposogeza, na ongeza alama za uaminifu "
+"ambapo wanunuzi wanahitaji uhakikisho."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "Safu wima"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"Mitindo ya jumla ya hatua za kulipa, muhtasari wa agizo na sehemu zingine. "
+"Inatumika kwa malipo mengine, kikapu, asante (agizo limepokelewa), na "
+"tazama kurasa za agizo."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"Unapotumia mpangilio wa <em>&quot;safu wima 1&quot;</em> pamoja na kiolezo "
+"cha muundo wa <em>&quot;Gawanya&quot;</em> , safu wima ya kulia huonyeshwa "
+"tu ikiwa eneo la wijeti ya upau wa pembeni wa ukurasa linatumika (Upau wa "
+"Pembeni wa Malipo, Upau wa Pembeni wa Kikapu, au Upau wa Pembeni wa Agizo "
+"Uliopokelewa). Vinginevyo ukurasa unabaki kama safu wima moja yenye mitindo "
+"ya Gawanya."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "Gawanya mandharinyuma ya safu wima"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"Chagua rangi ya usuli kwa safu wima ya pili ya muundo wa Gawanya. Acha tupu "
+"ili kutumia rangi ya usuli ya muhtasari wa mpangilio."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "Violezo vya ukurasa"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "Kiolezo cha Malipo"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"Inapendekezwa kwa vikwazo vichache wakati wa kulipa. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Soma "
+"utafiti kuhusu kuachwa kwa kikapu</a> ."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "Upau wa maendeleo unaonata"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "Mtindo wa upau wa maendeleo"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "Jumla ya maagizo"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "Rangi ya mandharinyuma"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "Kiungo cha vitendo"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "Muhtasari wa agizo la simu"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "Hali ya mwanzo ya simu"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "Washa uhariri wa vipengee vya kikapu wakati wa kulipa"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"Ruhusu wateja kubadilisha idadi ya bidhaa au kuondoa bidhaa moja kwa moja "
+"kwenye ukurasa wa malipo."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "Hitilafu za bidhaa za kikapu"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"Inatumika tu wakati msimbo wa kuponi unaonyeshwa kama sehemu tofauti kwenye "
+"kurasa za malipo au rukwama, na ikiwa matumizi ya misimbo ya kuponi "
+"yamewezeshwa katika mipangilio ya WooCommerce."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "Nafasi ya misimbo ya kuponi"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "Kitufe cha kutumia kuponi"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "Chagua mtindo wa kitufe cha &quot;tumia kuponi&quot;."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "Mstari wa anwani 2"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"Mpangilio huu unashirikiwa kati ya sehemu za Malipo na sehemu za kuchukua "
+"za Karibu. Kwenye sehemu ya kuchukua za Karibu, pia huamua kama kiteuzi cha "
+"Usafirishaji/Kuchukua kinaonekana ndani ya sehemu ya njia ya usafirishaji "
+"(kabla ya anwani) au kama sehemu tofauti (baada)."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "Akaunti za wateja"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "Malipo ya wageni"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"Chaguo za kulipa kwa wageni, kuingia, na kuunda akaunti kutoka ukurasa wa "
+"mipangilio ya Akaunti za WooCommerce. Zinasimamiwa hapa kwa urahisi wako, "
+"na kwa hivyo unaweza kutumia thamani tofauti kwa kila wasifu wa mipangilio."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "Ruhusu wateja kulipa bila akaunti"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Inapendekezwa</strong> ili wateja wasiombwe kufungua akaunti au "
+"kuingia wakati wa kulipa, jambo ambalo linaweza kupunguza viwango vya "
+"ubadilishaji."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"Wakizimwa, wateja lazima waingie au wafungue akaunti ili kukamilisha "
+"ununuzi."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "Ingia wakati wa kulipa"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "Washa kuingia wakati wa kulipa"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr ""
+"Onyesha kiungo kwa wateja wanaorejea ili waweze kuingia kutoka ukurasa wa "
+"kulipa."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "Uundaji wa akaunti"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "Waruhusu wateja kufungua akaunti wakati wa kulipa"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "Wateja wanaweza kufungua akaunti kabla ya kuweka oda yao."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "Ruhusu wateja kuunda akaunti kutoka ukurasa wa Akaunti yangu"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr "Wateja wanaweza kusajili akaunti mpya kutoka ukurasa wa Akaunti Yangu."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "Jina la mtumiaji"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "Tengeneza kutoka kwa jina la mteja"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Inapendekezwa</strong> ili wateja wasiulizwe kuchagua jina la "
+"mtumiaji wakati wa kulipa, jambo ambalo linaweza kupunguza viwango vya "
+"ubadilishaji."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"Jina la mtumiaji hutolewa kutokana na jina la mteja, au kutoka kwa anwani "
+"ya barua pepe wakati jina haliwezi kutumika."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "Nenosiri"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "Tuma kiungo cha usanidi wa nenosiri"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>Inapendekezwa</strong> ili wateja wasiombwe kuweka nenosiri wakati "
+"wa kulipa, jambo ambalo linaweza kupunguza viwango vya ubadilishaji."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "Wateja hupokea barua pepe ili kuunda nenosiri lao kwa usalama."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"Waruhusu wateja waliosajiliwa kukamilisha malipo bila kuingia na kuhusisha "
+"agizo na akaunti yao iliyopo wakati maelezo ya mawasiliano yanapolingana."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "Ujumbe wa akaunti uliopo"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr ""
+"Waruhusu wateja wafungue akaunti baada ya kuweka oda yao, kutoka ukurasa wa "
+"shukrani."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"Chaguo katika sehemu hii zinapatikana wakati malipo ya mgeni na "
+"ulinganishaji wa akaunti vimewashwa. Washa vipengele vyote viwili hapo juu "
+"ili kusanidi uundaji wa akaunti uliocheleweshwa."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "Wezesha uundaji wa akaunti uliochelewa"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"Wezesha uundaji wa akaunti uliocheleweshwa wakati malipo ya wageni na "
+"ulinganishaji wa akaunti umewezeshwa."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "Nafasi ya sehemu"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "Sehemu ya maelezo ya mteja kabla ya"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "Sehemu ya maelezo ya baada ya mteja"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "Faida za kuunda akaunti"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "Kuacha sehemu tupu kutaonyesha maandishi chaguo-msingi."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "Vifungo vilivyo ndani ya mstari"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "Sehemu zinazohitajika"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "Washa sehemu za ujumbe wa zawadi wakati wa kulipa"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "Ujumbe wa zawadi uliopanuliwa"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "Sehemu ya ujumbe wa zawadi ya onyesho hupanuliwa kila wakati"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "Ujumbe wa zawadi katika maelezo ya mpangilio"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"Hakuna miunganisho inayopatikana kwa sasa katika sehemu hii. Chaguo "
+"zinazohusiana na kila programu-jalizi na mandhari zitaonekana hapa tu "
+"wakati programu-jalizi au mandhari hiyo imewashwa."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "Sehemu za simu"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "Mwonekano wa uwanja"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "Nafasi ya uwanjani"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "Nambari ya simu ya nchi na uthibitisho"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "Nchi"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "Washa sehemu za simu za nchi"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "Chuja nchi kwa ajili ya usafirishaji au bili"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"Weka kikomo cha kiteuzi cha nchi kwenye kila sehemu ya simu kwa nchi "
+"zinazoruhusiwa kwa usafirishaji au bili kwenye duka lako."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "Uthibitisho"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "Wezesha uthibitishaji rahisi kulingana na sheria za nchi"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"Huangalia kwamba nambari ya simu ni halali kwa nchi iliyochaguliwa, "
+"ikijumuisha msimbo wa nchi na urefu."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"Hakikisha kwa makini zaidi kwamba nambari hiyo ni ya simu halali, laini "
+"isiyobadilika, au aina nyingine inayokubalika kwa nchi iliyochaguliwa. "
+"Huenda ikakataa baadhi ya nambari halali."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "Aina za uthibitishaji"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "Vishikilia nafasi"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"Hakuna funguo za leseni za kudhibiti kwa sasa. Funguo za leseni zitaonekana "
+"hapa wakati programu-jalizi au programu-jalizi ya Fluid Checkout "
+"iliyoidhinishwa inapotumika."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "Aina chaguomsingi ya uwasilishaji"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "Chagua aina ya uwasilishaji itakayochaguliwa kwa chaguo-msingi."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "Sehemu za eneo la usafirishaji"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Chagua sehemu zipi zitaonyeshwa kwa sehemu za kichujio cha eneo la "
+"usafirishaji la eneo la kuchukua mizigo. Acha tupu ili kuonyesha chaguo "
+"zote zinazopatikana."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Sehemu hizi zitaonyeshwa kama kichujio cha mbinu za usafirishaji wa ndani. "
+"Sehemu zingine zinaweza kuonekana wakati wa kulipa zisipochaguliwa hapa, "
+"ikiwa programu-jalizi zinazooana zinahitaji zifanye kazi vizuri."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "Anwani ya usafirishaji wa oda"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "Uboreshaji wa ukurasa wa malipo ya agizo"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"Toa maagizo yasiyolipwa mpangilio uleule ulio wazi, unaolenga ubadilishaji "
+"kama vile malipo."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"Boresha mpangilio wa ukurasa wa malipo wa agizo kwa ajili ya maagizo "
+"yanayosubiri malipo."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"Linganisha hali ya malipo ya agizo na malipo yako kwa safari thabiti ya "
+"ununuzi."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"Ongeza alama na beji za uaminifu ambapo wanunuzi wanahitaji uhakikisho "
+"kabla ya kulipa."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "Asante kwa uboreshaji wa ukurasa"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"Fanya ukurasa wa shukrani na maelezo ya kuagiza yawe wazi zaidi kwa wateja "
+"baada ya kununua."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr ""
+"Boresha ukurasa wa shukrani na maelezo ya agizo la akaunti kwa mpangilio "
+"ulio wazi zaidi."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"Onyesha maendeleo ya hali ya mpangilio, vitendo, vipakuliwa, na madokezo "
+"ambapo yanaeleweka."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "Badilisha sehemu za maelezo ya agizo kwenye arifa za barua pepe."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"Ongeza alama na beji za uaminifu ambapo wanunuzi wanahitaji uhakikisho "
+"baada ya ununuzi."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "Arifa za barua pepe"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"Washa ukurasa wa shukrani na uboreshaji wa maelezo ya agizo ili kuona "
+"chaguo zaidi"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "Tumia mpangilio mpana kwenye ukurasa wa shukrani"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"Chaguo hizi huathiri ukurasa wa shukrani, angalia maelezo ya agizo kwenye "
+"kurasa za akaunti na arifa za barua pepe."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "Hifadhi mipangilio"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "Hati"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "Kikapu"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "Asante"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "Kukamilisha anwani kiotomatiki"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "Beji za uaminifu"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "Huna ruhusa ya kuhifadhi mipangilio hii."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "Ombi batili la kuhifadhi."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "Mipangilio yako imehifadhiwa."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "Inahifadhi..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "Mipangilio haikuweza kuhifadhiwa. Tafadhali jaribu tena."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "Ondoa taarifa"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "Fungua menyu ya mipangilio"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "Funga menyu ya mipangilio"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "Hakikisho"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "Panua onyesho la kuchungulia"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "Kunja onyesho la kuchungulia"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "Onyesha kichwa cha habari na kijachini"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "Ficha kichwa cha habari na kijachini"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "Hakikisho la ukurasa"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "Hakiki mlango wa kutazama"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "Kompyuta kibao"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "Eneo-kazi"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "Upana wa hakikisho"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "Punguza upana"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "Upana wa hakikisho katika pikseli"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "Ongeza upana"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "Hakiki kama"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "Mgeni"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "Umeingia"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "Ukurasa wa hakikisho"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "Panua onyesho la kukagua kwa ajili ya kuangalia kwa karibu zaidi"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "Inapatikana na %s."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "Washa"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr "Uboreshaji wa ukurasa huu umezimwa. %s ili kuhakiki ukurasa."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "Onyesho la awali la %s"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "Kipindi kilichotengwa · hakuna kilichohifadhiwa"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "Ufuatiliaji wa matumizi"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Tuma ripoti za mazingira ya tovuti zisizo nyeti ili kusaidia Fluid Checkout "
+"kuboresha utangamano. Ripoti hazitumwi hadi ziwezeshwe katika chaguo zilizo "
+"hapa chini."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "Tuma ripoti za ufuatiliaji wa matumizi kwa Fluid Checkout"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"Ripoti hizi hutusaidia kuboresha utangamano na usaidizi kwa tovuti yako na "
+"hutumwa kila wiki inapowezeshwa."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"Hakuna mteja, mtumiaji wa msimamizi, au data nyingine yoyote nyeti "
+"iliyojumuishwa katika ripoti."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "Taarifa za msingi za mazingira"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"WordPress, PHP, WooCommerce, orodha ya mandhari, na programu-jalizi. "
+"Hujumuishwa kila wakati wakati kuripoti kunawezeshwa. Hutusaidia kuelewa "
+"mazingira ambayo tovuti yako inafanya kazi."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "Mipangilio ya programu-jalizi"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"Hutuma mipangilio ya programu-jalizi ya Fluid Checkout ili kusaidia na "
+"maombi ya usaidizi na hutusaidia kuelewa jinsi unavyotumia programu-jalizi "
+"zetu."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "Inakuja hivi karibuni"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "Vipimo vya mauzo"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"Hesabu ya oda za kila mwezi na jumla ya mauzo kwa mwaka mmoja kabla ya "
+"kusakinisha Fluid Checkout hadi leo. Inatusaidia kuelewa ikiwa unapata pesa "
+"zaidi ukitumia programu-jalizi zetu zilizosakinishwa. Hakuna data ya mteja "
+"au mtumiaji inayotumwa."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "Huduma za umma"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"Tumia vipengele vya kunjuzi <code>TomSelect</code> badala ya "
+"<code>select2</code>"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect ni sehemu rahisi zaidi ya uteuzi wa menyu kunjuzi ambayo haina "
+"uwezekano mkubwa wa kufanya makosa kama Select2, huku ikitoa utendaji sawa."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"Huweka ukubwa wa fonti ndani ya sehemu za fomu kuwa pikseli 16 kwenye "
+"kurasa zilizoboreshwa na programu-jalizi hii ili kuepuka kukuza kiotomatiki "
+"wakati wa kuingiliana na sehemu za fomu kwenye vifaa vidogo."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"Safari na vivinjari vingine vinaweza kukuza kiotomatiki kwenye vifaa vya "
+"mkononi ili kurahisisha usomaji wa maandishi wakati ukubwa wa fonti ni "
+"mdogo kuliko pikseli 16."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "Washa ufuatiliaji wa usindikaji wa hati kwenye koni ya kivinjari."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "Mali zisizopunguzwa"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Hati za Ramani za Google"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "Usiondoe nakala za hati za Ramani za Google"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"Inapowezeshwa, nakala za hati za Ramani za Google HAZITAONDOLEWA jambo "
+"ambalo linaweza kusababisha hitilafu na matatizo ya utendaji. Tumia chaguo "
+"hili pekee wakati wa kutatua matatizo."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "Maeneo ya wijeti"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "Hatua ya mwisho kwenye simu"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "Onyesha wijeti katika hatua ya mwisho kwenye simu pekee"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"Onyesha wijeti za beji ya uaminifu wa malipo unapoangalia hatua ya mwisho "
+"ya malipo kwenye vifaa vya mkononi pekee"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "Kiwango"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "Sehemu ya nambari ya VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "Ongeza sehemu ya nambari ya VAT kwenye fomu ya bili."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "Lebo ya sehemu"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"Weka lebo ya sehemu ya nambari ya VAT (yaani nambari ya VAT). Kwenye tovuti "
+"za lugha nyingi, ni bora kuacha sehemu hii ikiwa tupu na kutafsiri mfuatano "
+"asilia."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "Nambari ya VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "EU-VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "Washa sehemu ya nambari ya VAT ili kuona chaguo zaidi"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "Uthibitisho wa VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "Thibitisha sehemu ya nambari ya VAT kwa EU-VAT wakati wa kulipa"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"Huangalia kama Nambari ya VAT iliyotolewa ni nambari halali ya VAT "
+"iliyosajiliwa kwenye Hifadhidata ya Ulaya ya VIES (Mfumo wa Kubadilishana "
+"Taarifa wa VAT)."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "Nambari ya VAT ya duka"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"Nambari ya VAT ya duka iliyotumika kuomba uthibitisho wa EU-VAT, na "
+"kuchapishwa kwenye ankara.<br> <strong>Tunapendekeza sana kuongeza nambari "
+"yako ya VAT ya Duka</strong> kwani vinginevyo matokeo ya mashauriano ya "
+"VIES yanaweza yasiwe halali kwa madhumuni ya uhasibu.<br> Yaani.: "
+"<code>ATU99999999</code> au <code>EE999999999</code> ."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "Chaji ya kinyume"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "Tumia utaratibu wa kuchaji kinyume"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"Weka kiwango cha kodi hadi sifuri na uonyeshe &quot;Tozo ya kinyume&quot; "
+"kwenye ankara wakati nambari ya VAT ya mteja ni halali. Maandishi tofauti "
+"ya &quot;Tozo ya kinyume&quot; yanaweza kuhitajika kulingana na nchi ya "
+"duka."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "Nchi moja"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr "Tumia utaratibu wa kuchaji kinyume kwa miamala katika nchi ya duka:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"Huwezesha kutumia utaratibu wa malipo ya nyuma kwa miamala kati ya "
+"makampuni katika nchi moja na duka."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "Vighairi vya malipo ya kinyume"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr "Chagua nchi zingine ili kuruka kutumia utaratibu wa kuchaji kinyume."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"Ushuru utatozwa kwa maagizo kutoka nchi hizi hata wakati nambari halali ya "
+"VAT itatolewa."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "Lebo ya malipo ya kinyume kwenye ankara"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr ""
+"Weka lebo ya &quot;malipo ya nyuma&quot; kwenye ukurasa wa malipo na "
+"maelezo ya oda."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "Maandishi ya malipo ya kinyume kwenye ankara"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "Weka lebo ya maandishi ya &quot;malipo ya nyuma&quot; kwenye ankara."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "Kodi itakayolipwa kwa msingi wa malipo ya nyuma"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "Jina la kampuni"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "Jaza jina la kampuni kiotomatiki kutoka nambari ya VAT"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"Jaza jina la kampuni ya bili kulingana na nambari halali ya VAT iliyotolewa "
+"na mteja."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "Uhariri wa jina la kampuni"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "Ruhusu uhariri wa jina la kampuni lililojazwa kiotomatiki"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"Inapowezeshwa, wateja wanaweza kubadilisha jina la kampuni linalohusiana na "
+"nambari ya VAT iliyotolewa."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "EU-VAT kwa bidhaa za kidijitali"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"Kuanzia Januari 1, 2015, marekebisho yamefanywa kwa kanuni za VAT za EU "
+"kuhusu bidhaa za kidijitali, na kuathiri miamala ya B2C pekee. VAT kwa "
+"bidhaa za kidijitali lazima ihesabiwe kulingana na eneo la mteja, na "
+"ushahidi wa hili unahitaji kukusanywa (anwani ya IP na anwani ya bili)."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "Madarasa ya kodi kwa bidhaa za kidijitali"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "Chagua baadhi ya madarasa ya kodi"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "Ushahidi wa eneo"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "Kusanya ushahidi wa eneo la mteja"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"Huhifadhi anwani ya IP na kuithibitisha dhidi ya anwani ya bili ya mteja. "
+"Mteja lazima athibitishe anwani yake ya bili kwa kuchagua kisanduku cha "
+"kuteua kwenye ukurasa wa malipo ikiwa nchi kutoka kwa anwani yake ya bili "
+"na IP hailingani."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"Chaguo hili linadhibitiwa katika Fluid Checkout. <a href=\"%s\">Libadilishe "
+"katika mipangilio ya akaunti za Wateja</a> ."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"Chaguo hili linadhibitiwa katika Fluid Checkout. Libadilishe chini ya Fluid "
+"Checkout &gt; Akaunti za wateja."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"Chaguo hili linadhibitiwa katika Fluid Checkout. Sehemu ya usafirishaji "
+"huwekwa kila wakati kuwa &quot;Anwani chaguo-msingi ya usafirishaji wa "
+"mteja&quot; wakati Fluid Checkout inapowashwa. Wateja bado wanaweza kutoa "
+"anwani tofauti za usafirishaji na bili wakati wa malipo.<br><br> Chaguo la "
+"kuweka anwani chaguo-msingi ya bili kuwa sawa na anwani ya usafirishaji "
+"linapatikana katika <a href=\"%s\">mipangilio ya Fluid Checkout</a> ."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"Chaguo hili linadhibitiwa katika Fluid Checkout. Sehemu ya usafirishaji "
+"huwekwa kila wakati kuwa &quot;Anwani chaguo-msingi ya usafirishaji wa "
+"mteja&quot; wakati Fluid Checkout inapowashwa. Wateja bado wanaweza kutoa "
+"anwani tofauti za usafirishaji na bili wakati wa malipo.<br><br> Chaguo la "
+"kuweka anwani chaguo-msingi ya bili kuwa sawa na anwani ya usafirishaji "
+"linapatikana katika WooCommerce &gt; Mipangilio &gt; Malipo ya Maji."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr ""
+"Mipangilio hii imehamishiwa kwenye WP Admin &gt; Fluid Checkout &gt; "
+"Mipangilio."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"Kichupo hiki cha Mipangilio ya WooCommerce kimeondolewa kwenye huduma na "
+"kitaondolewa katika Fluid Checkout 6.0."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "Nenda kwenye ukurasa wa mipangilio"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "Ficha kichupo hiki kabisa"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "Hakikisho la ripoti ya tovuti"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"Hii ndiyo data ambayo itajumuishwa katika ripoti inayofuata ya mazingira ya "
+"tovuti kulingana na mipangilio yako ya sasa."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "Inapakia hakikisho la ripoti..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "Haikuweza kupakia onyesho la kuchungulia ripoti ya tovuti. Jaribu tena."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "Haikuweza kutuma ripoti ya tovuti. Jaribu tena."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "Ripoti ya tovuti imetumwa kwa mafanikio."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "Wezesha na utume sasa"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "Funga"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr ""
+"Ombi la ripoti ya tovuti tayari linaendelea. Jaribu tena baada ya muda "
+"mfupi."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "Kuripoti mazingira ya tovuti kumezimwa."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "Hakuna data ya ripoti ya tovuti inayopatikana ya kutuma."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"Kikoa hiki cha tovuti hakiwezi kutuma ripoti za mazingira (vikoa vya ndani "
+"au vya maendeleo havijajumuishwa)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "Ripoti ya tovuti ilitumwa hivi majuzi. Jaribu tena baadaye."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "Ripoti ya tovuti haikuweza kutumwa. Jaribu tena baadaye."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "Ripoti ya mazingira ya tovuti haipatikani."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "Hakuna data ya ripoti ya tovuti inayopatikana kwa mipangilio iliyochaguliwa."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "Huruhusiwi kudhibiti ripoti za tovuti."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "Kipengele cha PRO"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "Programu-jalizi zingine"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "Pata programu hii jalizi pekee — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "Sakinisha programu jalizi"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "Boresha hadi PRO — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr "<a target=\"_blank\" href=\"%1$s\">Pata %2$s</a> ili kufungua chaguo hizi."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "Nyongeza"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "Tazama hati"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"Maombi yanahitaji mtumiaji wa WordPress aliyeingia. Acha kitambulisho cha "
+"mtumiaji ili kutumia data ya mtumiaji wa sasa, au toa kitambulisho cha "
+"mtumiaji ili kulenga akaunti nyingine wakati mpigaji anaweza kuhariri "
+"mtumiaji huyo (uwezo wa kuhariri_mtumiaji). Maombi ambayo hayajathibitishwa "
+"hurejesha fc_api_forbidden. Kitambulisho cha mtumiaji batili hurejesha "
+"fc_api_user_not_found."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr ""
+"HTTP 200 yenye { &quot;data&quot;: { ... } } wakati kidhibiti kinarudisha "
+"mzigo wa malipo."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"HTTP 200 yenye { &quot;success&quot;: true } wakati hakuna mzigo wa malipo "
+"(kwa mfano DELETE)."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"Kushindwa hurejesha hitilafu ya WordPress REST JSON kutoka WP_Error "
+"(msimbo, ujumbe, data.status). Misimbo ya waya hutumia kiambishi awali cha "
+"fc_api_*."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "Ufikiaji uliopigwa marufuku."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "Mtumiaji lengwa hakupatikana."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "Kipengele hiki hakipatikani."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "Sehemu ya anwani inayohitajika haipo."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "Nambari ya posta au ZIP si sahihi."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "Nambari ya simu si sahihi."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "Jimbo au kaunti si sahihi."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "Nchi si sahihi au haina sehemu za anwani."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "Ombi halikuweza kushughulikiwa."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "Rudi kwenye hatua iliyotangulia"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "Ruka hadi kwenye mipangilio"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "Anza upya na urudi kwenye hatua ya kwanza ya usanidi iliyoongozwa"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "Anza upya"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "Tafadhali kamilisha hatua ndogo zote kabla ya kuendelea."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "Panua"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "Kunja"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "Ruka"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "Weka alama kama imekamilika"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "Weka alama kama haijakamilika"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "Tazama picha ya ukubwa kamili: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "Picha ya mwongozo wa usanidi wa ukubwa kamili"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "Funga picha"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "Usanidi Unaoongozwa na Kulipa kwa Maji"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "Karibu"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "Chunguza malipo yako"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "Zote zimewekwa"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "Huna ruhusa ya kufikia ukurasa huu."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "Nenda kwenye hatua ya %1$d: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"Mpangilio huu unaoongozwa hukusaidia kufahamu Fluid Checkout. Hatua zilizo "
+"hapa chini ni vihifadhi nafasi kwa sasa."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "Endelea hadi hatua inayofuata ukiwa tayari."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "Fungua malipo yako ya dukani ili uone Malipo ya Fluid yakiendelea."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "Tazama ukurasa wa malipo"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"Unaweza kurudi kwenye mipangilio ya Fluid Checkout ili kuendelea kusanidi "
+"duka lako."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "Kagua mipangilio ya malipo na kikapu"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "Gundua programu jalizi kutoka kwenye dashibodi"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "Maliza na uende kwenye mipangilio"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Sasisha chaguo la mwonekano wa sehemu ya simu ya bili kutoka thamani ya "
+"zamani ili ilingane na mikataba ya WooCommerce."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"Sasisha chaguo la mwonekano wa sehemu ya simu ya usafirishaji kutoka "
+"thamani ya zamani ili ilingane na mikataba ya WooCommerce."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"Nakili mpangilio wa rangi ya usuli wa muhtasari wa mpangilio kwenye chaguo "
+"jipya la rangi ya usuli ya safu wima ya pili ya muundo wa Mgawanyiko."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"Kipengele cha sehemu teule kilichoboreshwa huzimwa kila wakati unapotumia "
+"programu-jalizi ya Biteship."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"Nafasi ya mpangilio wa mahali huwekwa kila wakati kuwa &quot;Chini ya "
+"muhtasari wa mpangilio&quot; unapotumia Soko la Ujerumani. Programu-jalizi "
+"hiyo inahitaji kitufe cha mpangilio wa mahali na visanduku halali vya "
+"kuteua vionyeshwe chini ya muhtasari wa mpangilio."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"Nafasi ya mpangilio wa mahali huwekwa kila wakati kuwa &quot;Chini ya "
+"muhtasari wa mpangilio&quot; unapotumia Kijerumani kwa WooCommerce. "
+"Programu-jalizi hiyo inahitaji kitufe cha mpangilio wa mahali na visanduku "
+"vya kuteua halali vionyeshwe chini ya muhtasari wa mpangilio."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "Hariri maeneo ya kuchukuliwa"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "Tumia lebo ya kuchukua kutoka kwa mipangilio ya WooCommerce"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"Inapowashwa, lebo ya chaguo la kuchukua kwenye malipo inalingana na kichwa "
+"kutoka kwa mipangilio ya eneo la kuchukua la WooCommerce. Inapozimwa, lebo "
+"hutumia maandishi ya &quot;Kuchukua kwa Ndani&quot; yanayoweza kutafsiriwa "
+"kutoka kwa Fluid Checkout."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2808,3 +4775,113 @@ msgstr "Ndiyo"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "Yohana"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "Doe"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "Kampuni ya Mfano"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "123 Mtaa Mkuu"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "Mji wowote"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "Tafadhali acha kifurushi mlangoni."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "Kofia ya maharagwe"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "Kofia"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "T-shati"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr "Tumepokea oda yako na tutakutumia taarifa mpya itakaposafirishwa."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "Mwongozo wa mtumiaji"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "API ya Maeneo (Mpya)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "API ya Maeneo (Urithi)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "Toleo la 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "Toleo la 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ Lipa haraka zaidi wakati mwingine ✔ Dhibiti mapendeleo yako ya malipo ✔ "
+"Tazama hali ya agizo na historia"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "Imefichwa"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "Hiari"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "Inahitajika"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "Usafirishaji kwa anwani"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "Kuchukua bidhaa za ndani"

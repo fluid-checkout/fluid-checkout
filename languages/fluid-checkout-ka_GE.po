@@ -277,10 +277,6 @@ msgstr "Fluid Checkout მონაცემთა ბაზა წარმა�
 msgid "The database changes where applied successfully."
 msgstr "მონაცემთა ბაზა იცვლება იქ, სადაც წარმატებით გამოიყენება."
 
-#: inc/admin/admin-notice-db-migrations-applied.php:59
-msgid "Ok"
-msgstr "კარგი"
-
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr "გაუქმება"
@@ -399,39 +395,9 @@ msgstr "წაიკითხეთ დოკუმენტაცია"
 msgid "Don't show this again"
 msgstr "აღარ აჩვენო ეს"
 
-#: inc/admin/admin-setting-type-fc-addons.php:41
-msgid "Special offers"
-msgstr "სპეციალური შეთავაზებები"
-
-#: inc/admin/admin-setting-type-fc-addons.php:43
-msgid ""
-"Extend all the goodness of Fluid Checkout to your cart page and thank you "
-"pages."
-msgstr ""
-"გააფართოვეთ Fluid Checkout-ის მთელი სიკეთე თქვენი კალათის გვერდზე და "
-"მადლობა გადაგიხადოთ გვერდებზე."
-
 #: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Fluid Checkout PRO"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
-msgid ""
-"Design templates, optimized cart and order received pages, account "
-"matching, and much more."
-msgstr ""
-"დიზაინის შაბლონები, ოპტიმიზებული კალათა და შეკვეთის მიღებული გვერდები, "
-"ანგარიშის შესატყვისი და მრავალი სხვა."
-
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
-msgid ""
-"The best tools to further <strong>improve your WooCommerce checkout "
-"conversion rate</strong> and make the purchase experience consistent on the "
-"entire journey."
-msgstr ""
-"საუკეთესო ინსტრუმენტები <strong>თქვენი WooCommerce გადახდის კონვერტაციის "
-"კურსის შემდგომი გასაუმჯობესებლად</strong> და შესყიდვის გამოცდილების "
-"თანმიმდევრული გახადოს მთელი მოგზაურობის განმავლობაში."
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
@@ -453,10 +419,6 @@ msgstr "შეცვალეთ კალათის შინაარსი 
 msgid "Account matching / user matching"
 msgstr "ანგარიშის შესატყვისი / მომხმარებლის დამთხვევა"
 
-#: inc/admin/admin-setting-type-fc-addons.php:62
-msgid "Express Checkout buttons from supported payment methods"
-msgstr "Express Checkout ღილაკები მხარდაჭერილი გადახდის მეთოდებიდან"
-
 #: inc/admin/admin-setting-type-fc-addons.php:63
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "ნდობის სიმბოლოები კალათაში და მადლობის გვერდებზე"
@@ -464,10 +426,6 @@ msgstr "ნდობის სიმბოლოები კალათაშ�
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
 msgstr "მეტი პოზიციები კუპონის კოდისთვის გადახდის გვერდზე"
-
-#: inc/admin/admin-setting-type-fc-addons.php:65
-msgid "Integrated coupon code field on the cart page"
-msgstr "ინტეგრირებული კუპონის კოდის ველი კალათის გვერდზე"
 
 #: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
@@ -481,245 +439,25 @@ msgstr "სასაჩუქრე შეტყობინებები დ�
 msgid "Local pickup and in-store collection"
 msgstr "ადგილობრივი პიკაპი და მაღაზიაში კოლექცია"
 
-#: inc/admin/admin-setting-type-fc-addons.php:72
-msgid "Upgrade to PRO &mdash; 99 EUR"
-msgstr "განახლება PRO-ზე — 99 ევრო"
-
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO – Bundle"
-msgstr "Fluid Checkout PRO – Bundle"
-
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
-msgid "All PRO features + All add-ons for a special price."
-msgstr "ყველა PRO ფუნქცია + ყველა დანამატი სპეციალურ ფასად."
-
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
-msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout "
-"add-ons we launch in the future."
-msgstr ""
-"ნაკრები მოიცავს ყველა დანამატს, რომელსაც ამჟამად ვთავაზობთ და Fluid "
-"Checkout-ის დანამატებს, რომლებსაც მომავალში გავუშვით."
-
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
-msgid "226 EUR value (Save 42%)"
-msgstr "226 ევრო ღირებულება (დაზოგეთ 42%)"
-
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
-msgid "Google Address Autocomplete"
-msgstr "Google მისამართის ავტომატური დასრულება"
-
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
-msgid "Address Book"
-msgstr "მისამართების წიგნი"
-
 #: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "EU-VAT ასისტენტი"
-
-#: inc/admin/admin-setting-type-fc-addons.php:92
-msgid "All future add-ons *"
-msgstr "ყველა მომავალი დანამატი *"
-
-#: inc/admin/admin-setting-type-fc-addons.php:94
-msgid "* For as long as you have an active subscription."
-msgstr "* სანამ აქტიური გამოწერა გაქვთ."
-
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the Bundle – Only 129 EUR"
-msgstr "მიიღეთ პაკეტი - მხოლოდ 129 ევრო"
-
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
-msgid ""
-"All prices shown in EUR. If there are any divergencies with the prices on "
-"our website, the offers shown on the website superseed these and will be "
-"applied."
-msgstr ""
-"ყველა ფასი ნაჩვენებია ევროში. თუ არსებობს რაიმე განსხვავება ჩვენს ვებსაიტზე "
-"ფასებთან დაკავშირებით, ვებსაიტზე ნაჩვენები შეთავაზებები ანაცვლებს მათ და "
-"გამოყენებული იქნება."
-
-#: inc/admin/admin-setting-type-fc-addons.php:116
-msgid "Add-ons"
-msgstr "დანამატები"
-
-#: inc/admin/admin-setting-type-fc-addons.php:117
-msgid "Enhance your checkout experience with these add-ons."
-msgstr "გააუმჯობესეთ თქვენი შეკვეთის გამოცდილება ამ დანამატებით."
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it – Hide this offer"
 msgstr "მე უკვე მაქვს - დამალე ეს შეთავაზება"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
-msgid "Installed &mdash; Activate"
-msgstr "დაინსტალირებული - გააქტიურება"
-
 #: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "გააქტიურებულია"
-
-#: inc/admin/admin-setting-type-fc-addons.php:168
-msgid "Up to 40% less checkout fields to fill in."
-msgstr "40%-მდე ნაკლები შეკვეთის ველები შესავსებად."
-
-#: inc/admin/admin-setting-type-fc-addons.php:172
-msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the "
-"<strong>correct address information</strong> from the first time they buy "
-"with you."
-msgstr ""
-"მოერიდეთ მიწოდების დაგვიანებას და უკმაყოფილო მომხმარებლებს. შეაგროვეთ "
-"<strong>სწორი მისამართის ინფორმაცია</strong> თქვენთან ყიდვისთანავე."
-
-#: inc/admin/admin-setting-type-fc-addons.php:180
-msgid "Get this add-on &mdash; 29 EUR"
-msgstr "მიიღეთ ეს დანამატი - 29 ევრო"
 
 #: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "მისამართების წიგნი"
 
-#: inc/admin/admin-setting-type-fc-addons.php:190
-msgid "Multiple saved addresses for shipping and billing."
-msgstr "მრავალი შენახული მისამართი მიწოდებისა და ბილინგისთვის."
-
-#: inc/admin/admin-setting-type-fc-addons.php:194
-msgid ""
-"Let customers <strong>save multiple shipping and billing addresses</strong> "
-"on their account and choose which ones to use at checkout and cart pages."
-msgstr ""
-"მიეცით საშუალება კლიენტებს <strong>შეინახონ მიწოდების და ბილინგის რამდენიმე "
-"მისამართი</strong> საკუთარ ანგარიშზე და აირჩიონ რომელი გამოიყენონ გადახდისა "
-"და კალათის გვერდებზე."
-
-#: inc/admin/admin-setting-type-fc-addons.php:202
-msgid "Get this add-on &mdash; 59 EUR"
-msgstr "მიიღეთ ეს დანამატი - 59 ევრო"
-
-#: inc/admin/admin-setting-type-fc-addons.php:212
-msgid "Simplified EU-VAT validation for your store."
-msgstr "გამარტივებული EU-VAT ვალიდაცია თქვენი მაღაზიისთვის."
-
-#: inc/admin/admin-setting-type-fc-addons.php:216
-msgid ""
-"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
-"removes tax charges on reverse charge basis and confirms customer location "
-"when needed."
-msgstr ""
-"შეაგროვეთ და <strong>დაადასტურეთ ევროკავშირის დღგ-ს ნომრები გადახდის "
-"გვერდზე</strong> , ამოიღებს საგადასახადო გადასახადებს უკუ გადახდის "
-"საფუძველზე და დაადასტურეთ კლიენტის მდებარეობა საჭიროების შემთხვევაში."
-
-#: inc/admin/admin-setting-type-fc-addons.php:224
-msgid "Get this add-on &mdash; 39 EUR"
-msgstr "მიიღეთ ეს დანამატი - 39 ევრო"
-
-#: inc/admin/admin-setting-type-fc-addons.php:233
-msgid ""
-"All add-ons are sold separately and require the <strong>Fluid Checkout "
-"Lite</strong> plugin to be installed and activated, except when noted."
-msgstr ""
-"ყველა დანამატი იყიდება ცალ-ცალკე და მოითხოვს <strong>Fluid Checkout "
-"Lite</strong> მოდულის დაინსტალირებას და გააქტიურებას, გარდა აღნიშნულისა."
-
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "აირჩიეთ სურათი"
-
-#: inc/admin/admin-setting-type-fc-license-key.php:142
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to get your license key, or <a href=\"%s\" "
-"target=\"_blank\">purchase a new license key</a>."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">შედით "
-"თქვენს ანგარიშში,</a> რომ მიიღოთ თქვენი ლიცენზიის გასაღები, ან <a "
-"href=\"%s\" target=\"_blank\">შეიძინოთ ახალი ლიცენზიის გასაღები</a> ."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:152
-#. translators: %s: License key expiration date.
-msgid "Valid until %s."
-msgstr "ძალაშია %s-მდე."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:158
-#. translators: %s: License key expiration date.
-msgid "Expired on %s."
-msgstr "ვადა ამოიწურა %s-ზე."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:160
-msgid ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
-"your account</a> to renew your license key and continue to receive updates "
-"and support."
-msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">შედით "
-"თქვენს ანგარიშში,</a> რათა განაახლოთ თქვენი ლიცენზიის გასაღები და "
-"გააგრძელოთ განახლებებისა და მხარდაჭერის მიღება."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:163
-msgid "License key cancelled."
-msgstr "ლიცენზიის გასაღები გაუქმდა."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:165
-msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
-"continue to receive updates and support."
-msgstr ""
-"<a href=\"%s\" target=\"_blank\">შეიძინეთ ახალი ლიცენზიის გასაღები</a> და "
-"განაგრძეთ განახლებებისა და მხარდაჭერის მიღება."
-
-#: inc/admin/admin-setting-type-fc-license-key.php:168
-msgid "Error: "
-msgstr "შეცდომა: "
-
-#: inc/admin/admin-setting-type-fc-setup.php:41
-msgid "Setup & Documentation"
-msgstr "დაყენება და დოკუმენტაცია"
-
-#: inc/admin/admin-setting-type-fc-setup.php:42
-msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr "დიდი! თქვენი გადახდის გვერდი ახლა მუშაობს Fluid Checkout-ზე."
-
-#: inc/admin/admin-setting-type-fc-setup.php:44
-msgid "Here are a few resources for you to get started:"
-msgstr "აქ მოცემულია რამდენიმე რესურსი, რომ დაიწყოთ:"
-
-#: inc/admin/admin-setting-type-fc-setup.php:48
-msgid ""
-"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
-"with Fluid Checkout</a>."
-msgstr ""
-"წაიკითხეთ ინსტალაციის სახელმძღვანელო <a href=\"%s\" target=\"_blank\">Fluid "
-"Checkout-ის საშუალებით</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:49
-msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr "დააყენეთ განლაგება და დიზაინი <a href=\"%s\">გადახდის ვარიანტებზე</a> ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:50
-msgid ""
-"Check if there are any <a href=\"%s\">integration options</a> available for "
-"other plugins you have installed."
-msgstr ""
-"შეამოწმეთ არის თუ არა <a href=\"%s\">ინტეგრაციის ვარიანტები</a> თქვენს მიერ "
-"დაინსტალირებული სხვა დანამატებისთვის."
-
-#: inc/admin/admin-setting-type-fc-setup.php:51
-msgid ""
-"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
-"information about Fluid Checkout features."
-msgstr ""
-"ეწვიეთ <a href=\"%s\" target=\"_blank\">ჩვენს დოკუმენტაციას</a> დამატებითი "
-"ინფორმაციისთვის Fluid Checkout-ის ფუნქციების შესახებ."
-
-#: inc/admin/admin-setting-type-fc-setup.php:52
-msgid ""
-"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
-"ticket</a> on our official support channel."
-msgstr ""
-"თუ ოდესმე დაგჭირდებათ დახმარება, <a href=\"%s\" target=\"_blank\">გახსენით "
-"მხარდაჭერის ბილეთი</a> ჩვენს ოფიციალურ მხარდაჭერის არხზე."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -732,14 +470,6 @@ msgstr "კალათის ოპტიმიზაცია"
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
 msgstr "ჩართეთ კალათის გვერდის ოპტიმიზაცია"
-
-#: inc/admin/admin-settings-cart.php:80
-msgid "Display the cart page with a layout similar to the checkout page."
-msgstr "აჩვენეთ კალათის გვერდი შეკვეთის გვერდის მსგავსი განლაგებით."
-
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
-msgid "Header and footer"
-msgstr "სათაური და ქვედა კოლონტიტული"
 
 #: inc/admin/admin-settings-cart.php:103
 msgid "Header and footer template"
@@ -773,16 +503,6 @@ msgstr "შეკვეთის შეჯამება დარჩეს ხ
 #: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "კუპონის კოდები"
-
-#: inc/admin/admin-settings-cart.php:142
-msgid ""
-"Select position where to display the coupon codes section on the cart page. "
-"Only applicable when AJAX cart and the integrated coupon codes in the "
-"checkout page are enabled."
-msgstr ""
-"აირჩიეთ პოზიცია, სადაც აჩვენოთ კუპონის კოდების განყოფილება კალათის გვერდზე. "
-"გამოიყენება მხოლოდ მაშინ, როდესაც ჩართულია AJAX კალათა და ინტეგრირებული "
-"კუპონის კოდები შეკვეთის გვერდზე."
 
 #: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
@@ -878,10 +598,6 @@ msgstr "თემის ჯვარედინი გაყიდვები�
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "ჯვარედინი გაყიდვების საქონლის რაოდენობა კალათის გვერდზე გამოსატანად"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
-msgid "Trust symbols &amp; badges"
-msgstr "ნდობის სიმბოლოები და სამკერდე ნიშნები"
-
 #: inc/admin/admin-settings-cart.php:220
 msgid "Add widget areas to the cart page"
 msgstr "დაამატეთ ვიჯეტის არეები კალათის გვერდზე"
@@ -898,10 +614,6 @@ msgstr ""
 msgid "Checkout"
 msgstr "გადახდა"
 
-#: inc/admin/admin-settings-checkout.php:71
-msgid "Layout &amp; design"
-msgstr "განლაგება და დიზაინი"
-
 #: inc/admin/admin-settings-checkout.php:78
 msgid "Checkout layout"
 msgstr "შეკვეთის განლაგება"
@@ -917,22 +629,6 @@ msgstr "მუქი რეჟიმი"
 #: inc/admin/admin-settings-checkout.php:102
 msgid "Enable dark mode"
 msgstr "ბნელი რეჟიმის ჩართვა"
-
-#: inc/admin/admin-settings-checkout.php:124
-msgid "Header and footer templates"
-msgstr "სათაურის და ქვედა კოლონტიტულის შაბლონები"
-
-#: inc/admin/admin-settings-checkout.php:125
-msgid ""
-"We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
-"the research about cart abandonment</a>."
-msgstr ""
-"ჩვენ გირჩევთ გამოიყენოთ ყურადღების გადატანის გარეშე სათაური და ქვედა "
-"კოლონტიტული, რათა თავიდან აიცილოთ ყურადღების გაფანტვა შეკვეთის გვერდზე. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" "
-"target=\"_blank\">წაიკითხეთ კვლევა ურიკის მიტოვების შესახებ</a> ."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -987,10 +683,6 @@ msgstr ""
 "აირჩიეთ ფონის ფერი შეკვეთის გვერდის ქვედა კოლონტიტულისთვის. გამოიყენება "
 "მხოლოდ ყურადღების გადატანის გარეშე სათაურის და ქვედა კოლონტიტულის "
 "გამოყენებისას."
-
-#: inc/admin/admin-settings-checkout.php:188
-msgid "Checkout elements"
-msgstr "შეკვეთის ელემენტები"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1076,18 +768,6 @@ msgstr "ბმული მაღაზიის გვერდზე"
 msgid "Cart items"
 msgstr "კალათის ნივთები"
 
-#: inc/admin/admin-settings-checkout.php:290
-msgid "Enable options to edit cart items on the checkout page"
-msgstr "ჩართეთ კალათის ელემენტების რედაქტირების ვარიანტები გადახდის გვერდზე"
-
-#: inc/admin/admin-settings-checkout.php:291
-msgid ""
-"Allow customers to change product quantities or removing items directly at "
-"the checkout page."
-msgstr ""
-"მიეცით საშუალება მომხმარებლებს შეცვალონ პროდუქტის რაოდენობა ან ამოიღონ "
-"ნივთები პირდაპირ გადახდის გვერდზე."
-
 #: inc/admin/admin-settings-checkout.php:301
 msgid "Hide cart items errors at the checkout page"
 msgstr "დამალეთ კალათის ელემენტების შეცდომები გადახდის გვერდზე"
@@ -1140,38 +820,9 @@ msgstr ""
 "ეს ვიჯეტის არეები გამოიყენება ნდობის სიმბოლოების დასამატებლად და ნდობის "
 "სამკერდე ნიშნების შეკვეთის გვერდზე."
 
-#: inc/admin/admin-settings-checkout.php:339
-msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step "
-"on mobile devices when using multi-step checkout layout"
-msgstr ""
-"შეკვეთის გვერდითი ზოლის ვიჯეტების ჩვენება მხოლოდ მობილური მოწყობილობებზე "
-"გადახდის ბოლო საფეხურის ნახვისას, მრავალსაფეხურიანი შეკვეთის განლაგების "
-"გამოყენებისას"
-
-#: inc/admin/admin-settings-checkout.php:364
-msgid "Enable integrated coupon code section"
-msgstr "ჩართეთ ინტეგრირებული კუპონის კოდის განყოფილება"
-
-#: inc/admin/admin-settings-checkout.php:365
-msgid ""
-"Only applicable if use of coupon codes are enabled in the WooCommerce "
-"settings."
-msgstr ""
-"გამოიყენება მხოლოდ იმ შემთხვევაში, თუ კუპონის კოდების გამოყენება ჩართულია "
-"WooCommerce-ის პარამეტრებში."
-
 #: inc/admin/admin-settings-checkout.php:374
 msgid "Display the coupon codes section title"
 msgstr "აჩვენეთ კუპონის კოდების განყოფილების სათაური"
-
-#: inc/admin/admin-settings-checkout.php:375
-msgid ""
-"Only applicable when coupon code is displayed as a separate section on the "
-"checkout or cart pages."
-msgstr ""
-"გამოიყენება მხოლოდ მაშინ, როდესაც კუპონის კოდი ნაჩვენებია როგორც ცალკე "
-"სექცია გადახდის ან კალათის გვერდებზე."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
@@ -1192,16 +843,6 @@ msgstr "როგორც ქვენაბიჯი გადახდის 
 #: inc/admin/admin-settings-checkout.php:392
 msgid "As a substep after payment methods"
 msgstr "როგორც ქვენაბიჯი გადახდის მეთოდების შემდეგ"
-
-#: inc/admin/admin-settings-checkout.php:402
-msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the "
-"coupon code section is displayed \"Before the checkout steps\" on the "
-"checkout page, or \"Before the cart items section\" on the cart page."
-msgstr ""
-"აირჩიეთ ღილაკის &quot;გამოყენების კუპონის&quot; სტილი. გამოიყენება მხოლოდ "
-"მაშინ, როდესაც კუპონის კოდის განყოფილება ნაჩვენებია „გადასაღების ნაბიჯების "
-"წინ“ გადახდის გვერდზე, ან „კალათის ნივთების განყოფილებამდე“ კალათის გვერდზე."
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "Default button style"
@@ -1251,21 +892,6 @@ msgstr ""
 "სჭირდება ველი &quot;Address line 2&quot; ან როცა გადამზიდავი სწორი "
 "მისამართის მიღება გადამწყვეტია (ანუ საკვებისა და სხვა მალფუჭებადი "
 "პროდუქტების მიწოდებისას)."
-
-#: inc/admin/admin-settings-checkout.php:451
-msgid "Display the \"Add\" link buttons in lowercase"
-msgstr "აჩვენეთ &quot;დამატება&quot; ბმული ღილაკები მცირე ასოებით"
-
-#: inc/admin/admin-settings-checkout.php:452
-msgid ""
-"Make the labels of optional field \"Add\" link button as "
-"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
-"Number\"). This option also affects the link buttons for coupon code fields."
-msgstr ""
-"არასავალდებულო ველის „დამატება“ ბმულის ღილაკის ეტიკეტები "
-"<code>lowercase</code> რეგისტრებით გააკეთეთ (ანუ „ტელეფონის ნომრის "
-"დამატება“ ნაცვლად „ტელეფონის ნომრის დამატება“). ეს პარამეტრი ასევე "
-"მოქმედებს კუპონის კოდის ველების ბმულის ღილაკებზე."
 
 #: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
@@ -1359,24 +985,6 @@ msgstr "გაგზავნამდე მისამართი"
 msgid "After shipping address"
 msgstr "მიწოდების შემდეგ მისამართი"
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Prevent automatic selection of the first shipping method"
-msgstr "თავიდან აიცილეთ პირველი გადაზიდვის მეთოდის ავტომატური შერჩევა"
-
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"როდესაც ჩართულია, მიწოდების პირველი ხელმისაწვდომი მეთოდი ავტომატურად არ "
-"შეირჩევა, როდესაც ადრე არ იყო შერჩეული მიწოდების სხვა მეთოდი თითოეული "
-"გადაზიდვის პაკეტისთვის.<br> ეს პარამეტრი ავტომატურად ჩაირთვება, თუ არჩეული "
-"მიწოდების მეთოდის გასუფთავების ვარიანტი ჩართულია ლოკალური აღების "
-"ფუნქციისთვის."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "ადგილობრივი პიკაპი"
@@ -1396,23 +1004,6 @@ msgid ""
 msgstr ""
 "ანაცვლებს მიწოდების მისამართს პიკაპის ადგილის მდებარეობით, როდესაც არჩეულია "
 "მიწოდების ადგილობრივი მეთოდი."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"აჩვენეთ ოფცია მიწოდების მეთოდების გასასუფთავებლად პიკაპის ადგილმდებარეობის "
-"ქვესაფეხურზე"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"აჩვენეთ ბმულის ღილაკი პიკაპის მდებარეობის ქვესაფეხურზე არჩეული გადაზიდვის "
-"მეთოდების გასასუფთავებლად. ეს შეიძლება გამოყენებულ იქნას მიწოდების "
-"მისამართის სექციის ხელახლა ჩვენების დასაშვებად, თუ ადრე არჩეული იყო "
-"ადგილობრივი აღების მეთოდი."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -1491,32 +1082,6 @@ msgstr "დაამატეთ ბილინგის ტელეფონ�
 msgid "Choose in which step to display the billing phone field."
 msgstr "აირჩიეთ, რომელ საფეხურზე გამოჩნდეს ბილინგის ტელეფონის ველი."
 
-#: inc/admin/admin-settings-checkout.php:645
-msgid "Enable phone number validation based on country rules"
-msgstr "ჩართეთ ტელეფონის ნომრის ვალიდაცია ქვეყნის წესების მიხედვით"
-
-#: inc/admin/admin-settings-checkout.php:646
-msgid ""
-"When disabled, the phone field validation will not check if country or area "
-"codes are valid for the country."
-msgstr ""
-"როდესაც გამორთულია, ტელეფონის ველის ვალიდაცია არ შეამოწმებს, მოქმედებს თუ "
-"არა ქვეყნის ან რეგიონის კოდები ქვეყნისთვის."
-
-#: inc/admin/admin-settings-checkout.php:656
-msgid "Only show allowed countries for shipping or billing"
-msgstr "ნებადართული ქვეყნების ჩვენება მხოლოდ მიწოდებისთვის ან ბილინგისთვის"
-
-#: inc/admin/admin-settings-checkout.php:657
-msgid ""
-"When enabled, only the countries allowed for shipping will be available in "
-"the shipping phone field, and only countries allowed for billing will be "
-"available for the billing phone field."
-msgstr ""
-"როდესაც ჩართულია, მხოლოდ მიწოდებისთვის დაშვებული ქვეყნები იქნება "
-"ხელმისაწვდომი მიწოდების ტელეფონის ველში და მხოლოდ ბილინგისთვის დაშვებული "
-"ქვეყნები ხელმისაწვდომი იქნება ბილინგის ტელეფონის ველში."
-
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "აჩვენეთ ქვეყნის კოდი დროშის გვერდით"
@@ -1549,10 +1114,6 @@ msgstr "განსაზღვრეთ დამატებითი შე�
 msgid "Gift options"
 msgstr "საჩუქრების ვარიანტები"
 
-#: inc/admin/admin-settings-checkout.php:706
-msgid "Display gift message and other gift options at the checkout page"
-msgstr "აჩვენეთ საჩუქრის შეტყობინება და საჩუქრის სხვა ვარიანტები გადახდის გვერდზე"
-
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
@@ -1560,10 +1121,6 @@ msgid ""
 msgstr ""
 "მიეცით საშუალება კლიენტებს, დაამატონ შეკვეთას სასაჩუქრე შეტყობინება და "
 "საჩუქართან დაკავშირებული სხვა ვარიანტები."
-
-#: inc/admin/admin-settings-checkout.php:717
-msgid "Display the gift message fields always expanded"
-msgstr "საჩუქრის შეტყობინების ველების ჩვენება ყოველთვის გაფართოებული"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -1622,28 +1179,9 @@ msgstr "დაფა"
 msgid "Integrations"
 msgstr "ინტეგრაციები"
 
-#: inc/admin/admin-settings-integrations.php:95
-msgid ""
-"No integrations available at the moment on this section. The options "
-"related to each plugin will only appear here if that plugin is activated."
-msgstr ""
-"ამ განყოფილებაში ამჟამად ინტეგრაცია არ არის ხელმისაწვდომი. თითოეულ "
-"დანამატთან დაკავშირებული პარამეტრები აქ გამოჩნდება მხოლოდ იმ შემთხვევაში, "
-"თუ ეს დანამატი გააქტიურებულია."
-
 #: inc/admin/admin-settings-license-keys.php:54
 msgid "License keys"
 msgstr "ლიცენზიის გასაღებები"
-
-#: inc/admin/admin-settings-license-keys.php:85
-msgid ""
-"No license keys options available at the moment on this section. The "
-"options related to each plugin or add-on will appear here when that plugin "
-"is activated."
-msgstr ""
-"ამ განყოფილებაში ამჟამად არ არის ხელმისაწვდომი ლიცენზიის გასაღებების "
-"პარამეტრები. თითოეულ დანამატთან ან დანამატთან დაკავშირებული პარამეტრები აქ "
-"გამოჩნდება, როდესაც ეს დანამატი გააქტიურდება."
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
@@ -1744,14 +1282,6 @@ msgstr ""
 "ვიჯეტის ეს ზონები გამოიყენება მადლობის გვერდზე ნდობის სიმბოლოების და ნდობის "
 "სამკერდე ნიშნების დასამატებლად."
 
-#: inc/admin/admin-settings-order-received.php:145
-msgid ""
-"These options affect the thank you page , view order details on account "
-"pages and on email notifications."
-msgstr ""
-"ეს პარამეტრები გავლენას ახდენს მადლობის გვერდზე, იხილეთ შეკვეთის დეტალები "
-"ანგარიშის გვერდებზე და ელ.ფოსტის შეტყობინებებზე."
-
 #: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "შეუკვეთეთ მოქმედებები"
@@ -1844,22 +1374,6 @@ msgstr "ჩატვირთეთ არამინიფიცირებ�
 msgid "Enhanced select fields"
 msgstr "გაძლიერებული არჩეული ველები"
 
-#: inc/admin/admin-settings-tools.php:113
-msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr ""
-"შეცვალეთ <code>select2</code> ჩამოსაშლელი კომპონენტები "
-"<code>TomSelect</code> ით"
-
-#: inc/admin/admin-settings-tools.php:114
-msgid ""
-"TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually "
-"used on WooCommerce checkout pages."
-msgstr ""
-"TomSelect არის უფრო მარტივი ჩამოსაშლელი შერჩევის კომპონენტი, რომელიც "
-"ნაკლებად მიდრეკილია შეცდომისკენ, ვიდრე Select2, ხოლო გთავაზობთ იგივე "
-"ფუნქციებს, რომლებიც რეალურად გამოიყენება WooCommerce-ის შეკვეთის გვერდებზე."
-
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "დააფიქსირეთ ავტომატური მასშტაბირება ფორმის ველებზე"
@@ -1867,35 +1381,6 @@ msgstr "დააფიქსირეთ ავტომატური მა�
 #: inc/admin/admin-settings-tools.php:123
 msgid "Set <code>font-size</code> inside form fields to 16px"
 msgstr "დააყენეთ <code>font-size</code> ფორმის ველებში 16 პიქსელზე"
-
-#: inc/admin/admin-settings-tools.php:124
-msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and "
-"other browsers might automatically zoom in on mobile devices to make the "
-"text easier to read. When this option is enabled, it will set the font size "
-"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
-"avoid it zooming in."
-msgstr ""
-"როდესაც ფორმის ველებში შრიფტის ზომა 16 პიქსელზე ნაკლებია, Safari-მ და სხვა "
-"ბრაუზერებმა შეიძლება ავტომატურად გაადიდონ მობილურ მოწყობილობებზე ტექსტის "
-"წაკითხვის გასაადვილებლად. როდესაც ეს პარამეტრი ჩართულია, ის დააყენებს "
-"შრიფტის ზომას ფორმის ველებში 16 პიქსელზე Fluid Checkout-ის მიერ "
-"ოპტიმიზირებული გვერდებზე, რათა თავიდან აიცილოს მისი მასშტაბირება."
-
-#: inc/admin/admin-settings-wc-shipping.php:50
-msgid ""
-"The shipping destination is always set to \"Default to customer shipping "
-"address\" when Fluid Checkout is activated. Customers can still provide "
-"different shipping and billing addresses during checkout, an option for "
-"setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout."
-msgstr ""
-"გადაზიდვის დანიშნულების ადგილი ყოველთვის დაყენებულია &quot;ნაგულისხმევი "
-"მომხმარებლისთვის მიწოდების მისამართი&quot;, როდესაც Fluid Checkout "
-"გააქტიურებულია. კლიენტებს შეუძლიათ კვლავ მიაწოდონ მიწოდების და ბილინგის "
-"სხვადასხვა მისამართი შეკვეთის დროს, ბილინგის ნაგულისხმევი მისამართის "
-"დაყენების ოფცია, როგორც მიწოდების მისამართი, ხელმისაწვდომია WooCommerce "
-"&gt; Settings &gt; Fluid Checkout."
 
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
@@ -1922,14 +1407,6 @@ msgstr "(პროფ)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(ექსპერიმენტული)"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
-msgid "Confirm"
-msgstr "დაადასტურეთ"
-
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
-msgid "Verify Phone Number"
-msgstr "დაადასტურეთ ტელეფონის ნომერი"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
@@ -2460,10 +1937,6 @@ msgstr "პროგრესის ზოლის შემდეგ"
 msgid "Before coupon codes section"
 msgstr "კუპონის კოდების განყოფილებამდე"
 
-#: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number fields"
-msgstr "ჩართეთ საერთაშორისო ტელეფონის ნომრის ველები"
-
 #: inc/admin/admin-settings-checkout.php:662
 msgid "Format phone numbers according to the rules for each country."
 msgstr "ტელეფონის ნომრების ფორმატირება თითოეული ქვეყნის წესების შესაბამისად."
@@ -2471,18 +1944,6 @@ msgstr "ტელეფონის ნომრების ფორმატ�
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Use precise phone number validation"
 msgstr "გამოიყენეთ ტელეფონის ნომრის ზუსტი დადასტურება"
-
-#: inc/admin/admin-settings-checkout.php:684
-msgid ""
-"Try to ensure the phone number is a valid mobile or landline number based "
-"on the rules for the selected country code. This option uses the "
-"<code>intl-tel-input</code> precise validation feature, which may give "
-"false positives for some phone numbers."
-msgstr ""
-"დარწმუნდით, რომ ტელეფონის ნომერი სწორი მობილური ან სახმელეთო ნომერია "
-"არჩეული ქვეყნის კოდის წესების მიხედვით. ეს პარამეტრი იყენებს "
-"<code>intl-tel-input</code> ზუსტი დადასტურების ფუნქციას, რომელმაც შეიძლება "
-"ზოგიერთი ტელეფონის ნომრისთვის ცრუ დადებითი შედეგი გამოიღოს."
 
 #: inc/admin/admin.php:225
 msgid ""
@@ -2529,26 +1990,6 @@ msgstr "2 სვეტი"
 #: inc/admin/admin-settings-checkout.php:99
 msgid "1 column"
 msgstr "1 სვეტი"
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"<br>Might also apply to other pages such as the Cart, Order Received and "
-"View Order pages."
-msgstr ""
-"შეკვეთის გაფორმების ნაბიჯების, შეკვეთის შეჯამებისა და სხვა სექციების ზოგადი "
-"სტილები.<br> შესაძლოა, ეს ასევე ეხებოდეს სხვა გვერდებს, როგორიცაა „კალათა“, "
-"„შეკვეთა მიღებულია“ და „შეკვეთის ნახვა“."
-
-#: inc/admin/admin-settings-checkout.php:110
-msgid ""
-"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
-"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
-"chosen."
-msgstr ""
-"დიზაინის შაბლონი <em>„გაყოფა“</em> მიუწვდომელია <em>„1 სვეტის“</em> "
-"განლაგების გამოყენებისას და არჩევის შემთხვევაში ისევ "
-"<em>„მინიმალისტურზე“</em> გადავა."
 
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
@@ -2647,6 +2088,2537 @@ msgstr ""
 "„სავალდებულო“. ეს აუცილებელია იმისათვის, რომ მიწოდების მისამართის კოპირება "
 "გადახდის მისამართზე მოხდეს ამ ოფციის მონიშვნის შემთხვევაში, წინააღმდეგ "
 "შემთხვევაში, მომხმარებელმა შესაძლოა ვერ შეძლოს შეკვეთის ფორმის შევსება."
+
+#: inc/settings.php:513
+msgid "Settings profiles"
+msgstr "პარამეტრების პროფილები"
+
+#: inc/settings.php:514
+msgid "Settings profile"
+msgstr "პარამეტრების პროფილი"
+
+#: inc/admin/admin-dashboard-actions.php:43, inc/admin/admin-setting-type-fc-setup.php:450
+msgid "You do not have permission to perform this action."
+msgstr "თქვენ არ გაქვთ ამ მოქმედების შესრულების უფლება."
+
+#: inc/admin/admin-dashboard-actions.php:58
+msgid "You do not have permission to activate plugins."
+msgstr "თქვენ არ გაქვთ დანამატების გააქტიურების ნებართვა."
+
+#: inc/admin/admin-dashboard-actions.php:65
+msgid "Missing plugin."
+msgstr "დანამატი აკლია."
+
+#: inc/admin/admin-dashboard-actions.php:76
+msgid "Plugin activated."
+msgstr "მოდული გააქტიურებულია."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "The following changes will be applied:"
+msgstr "შემდეგი ცვლილებები გამოყენებული იქნება:"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
+"are still stored in the database to allow downgrades to previous versions "
+"if needed."
+msgstr ""
+"Fluid Checkout 5.0-დან მოყოლებული, პარამეტრები განსხვავებულად ინახება. "
+"მოძველებული პარამეტრები კვლავ ინახება მონაცემთა ბაზაში, რათა საჭიროების "
+"შემთხვევაში წინა ვერსიებზე დაბლა დაბრუნდეს."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
+msgid ""
+"Your store has been running for about 2 weeks on the new settings so you "
+"could clean up legacy options stored in the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"თქვენი მაღაზია დაახლოებით 2 კვირაა მუშაობს ახალ პარამეტრებზე, ამიტომ "
+"შეგიძლიათ გაასუფთაოთ მონაცემთა ბაზაში შენახული მემკვიდრეობითი პარამეტრები. "
+"გაითვალისწინეთ, რომ გასუფთავების შემდეგ, თუ დაგჭირდებათ დანამატის წინა "
+"ვერსიებზე გადასვლა, ის ყველა პარამეტრისთვის გამოიყენებს ნაგულისხმევ "
+"მნიშვნელობებს."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
+msgid "Fluid Checkout settings cleanup"
+msgstr "Fluid Checkout-ის პარამეტრების გასუფთავება"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:91
+msgid "Delete leftover options"
+msgstr "დარჩენილი ვარიანტების წაშლა"
+
+#: inc/admin/admin-notice-telemetry.php:43
+msgid "Help us improve Fluid Checkout"
+msgstr "დაგვეხმარეთ Fluid Checkout-ის გაუმჯობესებაში"
+
+#: inc/admin/admin-notice-telemetry.php:44
+msgid ""
+"Share anonymous site environment reports with Fluid Checkout to get faster "
+"support and help us improve compatibility and measure impact. No customer, "
+"user, or sensitive data are included. You can choose what is shared anytime "
+"from the Tools settings."
+msgstr ""
+"საიტის გარემოს ანონიმური ანგარიშები გააზიარეთ Fluid Checkout-ის "
+"გამოყენებით, რათა მიიღოთ უფრო სწრაფი მხარდაჭერა და დაგვეხმაროთ თავსებადობის "
+"გაუმჯობესებასა და გავლენის გაზომვაში. მომხმარებლის, მომხმარებლის ან "
+"მგრძნობიარე მონაცემები არ შედის. თქვენ შეგიძლიათ ნებისმიერ დროს აირჩიოთ, თუ "
+"რა გაზიარდება ხელსაწყოების პარამეტრებიდან."
+
+#: inc/admin/admin-notice-telemetry.php:49
+msgid "Enable site environment reports"
+msgstr "საიტის გარემოს ანგარიშების ჩართვა"
+
+#: inc/admin/admin-notice-telemetry.php:54
+msgid "Review settings"
+msgstr "პარამეტრების მიმოხილვა"
+
+#: inc/admin/admin-preview.php:761
+msgid "This preview has expired. Reload the admin page to start a new preview."
+msgstr ""
+"ეს წინასწარი გადახედვის ვადა ამოიწურა. ახალი წინასწარი გადახედვის "
+"დასაწყებად გადატვირთეთ ადმინისტრატორის გვერდი."
+
+#: inc/admin/admin-preview.php:761
+msgid "Preview expired"
+msgstr "გადახედვის ვადა ამოიწურა"
+
+#: inc/admin/admin-preview.php:770
+msgid "Orders cannot be placed in the preview."
+msgstr "შეკვეთების განთავსება წინასწარი გადახედვისას შეუძლებელია."
+
+#: inc/admin/admin-preview.php:779
+msgid "Logging in is not available in the preview."
+msgstr "წინასწარი გადახედვისას შესვლა მიუწვდომელია."
+
+#: inc/admin/admin-preview.php:857
+msgid "Accounts cannot be created in the preview."
+msgstr "წინასწარი გადახედვისას ანგარიშების შექმნა შეუძლებელია."
+
+#: inc/admin/admin-preview.php:916
+msgid "Requests to other sites are blocked in the preview."
+msgstr "სხვა საიტების მოთხოვნები წინასწარი გადახედვისას დაბლოკილია."
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-promo.php:66
+msgid "Processing…"
+msgstr "დამუშავება…"
+
+#: inc/admin/admin-setting-type-fc-addons.php:79, inc/admin/admin-setting-type-fc-promo.php:67
+msgid "Something went wrong. Please try again."
+msgstr "რაღაც შეცდომა მოხდა. გთხოვთ, სცადოთ ხელახლა."
+
+#: inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-promo.php:68, inc/admin/admin-setting-type-fc-promo.php:197
+msgid "Activate plugin"
+msgstr "პლაგინის გააქტიურება"
+
+#: inc/admin/admin-setting-type-fc-addons.php:100
+msgid "Fluid Checkout PRO - The complete checkout package"
+msgstr "Fluid Checkout PRO - სრული გადახდის პაკეტი"
+
+#: inc/admin/admin-setting-type-fc-addons.php:101
+msgid ""
+"All PRO features + all add-ons, one price. Design templates, optimized cart "
+"and order received pages, account matching, and much more."
+msgstr ""
+"ყველა PRO ფუნქცია + ყველა დამატება, ერთი ფასი. დიზაინის შაბლონები, "
+"ოპტიმიზებული კალათისა და შეკვეთების მიღების გვერდები, ანგარიშების "
+"შესაბამისობა და ბევრი სხვა."
+
+#: inc/admin/admin-setting-type-fc-addons.php:106
+msgid "Optimized order pay page"
+msgstr "ოპტიმიზებული შეკვეთის გადახდის გვერდი"
+
+#: inc/admin/admin-setting-type-fc-addons.php:107
+msgid "Express checkout buttons from supported payment methods"
+msgstr "სწრაფი გადახდის ღილაკები მხარდაჭერილი გადახდის მეთოდებიდან"
+
+#: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
+msgid "Delayed account creation"
+msgstr "ანგარიშის შექმნის დაგვიანება"
+
+#: inc/admin/admin-setting-type-fc-addons.php:112
+msgid "Address autocomplete with Google Maps APIs"
+msgstr "მისამართის ავტომატური შევსება Google Maps API-ებით"
+
+#: inc/admin/admin-setting-type-fc-addons.php:113
+msgid "Multiple saved addresses with the address book"
+msgstr "მისამართების წიგნში შენახული მრავალი მისამართი"
+
+#: inc/admin/admin-setting-type-fc-addons.php:118
+msgid "EU-VAT assistant"
+msgstr "ევროკავშირის დღგ-ს ასისტენტი"
+
+#: inc/admin/admin-setting-type-fc-addons.php:305
+msgid "Hide this section"
+msgstr "ამ სექციის დამალვა"
+
+#: inc/admin/admin-setting-type-fc-addons.php:394, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+msgid "Learn more"
+msgstr "შეიტყვეთ მეტი"
+
+#: inc/admin/admin-setting-type-fc-addons.php:463
+msgid "Get early access"
+msgstr "მიიღეთ ადრეული წვდომა"
+
+#: inc/admin/admin-setting-type-fc-addons.php:448
+msgid "Activate add-on"
+msgstr "დანამატის გააქტიურება"
+
+#: inc/admin/admin-setting-type-fc-addons.php:527
+msgid "Get more out of your checkout journey"
+msgstr "მიიღეთ მეტი თქვენი გადახდის პროცესიდან"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:52
+msgid "Test API key"
+msgstr "ტესტირების API გასაღები"
+
+#: inc/admin/admin-setting-type-fc-gaa-google-api-key.php:53, inc/admin/admin-setting-type-fc-setup.php:523, inc/admin/guided-setup/guided-setup-fluid-checkout.php:333
+msgid "Guided setup"
+msgstr "მართვადი დაყენება"
+
+#: inc/admin/admin-setting-type-fc-layout-selector.php:39, inc/admin/admin-settings-renderer.php:788
+msgid "Options"
+msgstr "პარამეტრები"
+
+#: inc/admin/admin-setting-type-fc-setup.php:62
+#. translators: %s: Checkout settings URL.
+msgid "Set up layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr ""
+"<a href=\"%s\">შეკვეთის გაფორმების ვარიანტებში</a> დააყენეთ განლაგება და "
+"დიზაინი."
+
+#: inc/admin/admin-setting-type-fc-setup.php:67
+#. translators: %s: Customer accounts settings URL.
+msgid ""
+"Enable guest checkout and/or review <a href=\"%s\">customer accounts "
+"settings</a>."
+msgstr ""
+"ჩართეთ სტუმრის მიერ შეკვეთის გაფორმება და/ან გადახედეთ <a "
+"href=\"%s\">მომხმარებლის ანგარიშების პარამეტრებს</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:72
+#. translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL.
+msgid ""
+"Enable optimized <a href=\"%1$s\">cart</a>, <a href=\"%2$s\">thank you</a> "
+"and <a href=\"%3$s\">order pay</a> pages."
+msgstr ""
+"ჩართეთ ოპტიმიზებული <a href=\"%1$s\">კალათის</a> , <a "
+"href=\"%2$s\">მადლობის</a> და <a href=\"%3$s\">შეკვეთის გადახდის</a> "
+"გვერდები."
+
+#: inc/admin/admin-setting-type-fc-setup.php:78
+#. translators: %s: Address autocomplete settings URL.
+msgid "Enable <a href=\"%s\">address autocomplete</a> from Google Maps."
+msgstr "ჩართეთ <a href=\"%s\">მისამართის ავტომატური შევსება</a> Google Maps-დან."
+
+#: inc/admin/admin-setting-type-fc-setup.php:84
+#. translators: %s: Address book settings URL.
+msgid "Enable multiple saved addresses with <a href=\"%s\">address book</a>."
+msgstr "<a href=\"%s\">მისამართების წიგნით</a> მრავალი შენახული მისამართის ჩართვა."
+
+#: inc/admin/admin-setting-type-fc-setup.php:90
+#. translators: %s: Integrations settings URL.
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"the theme or other plugins you have installed."
+msgstr ""
+"შეამოწმეთ, არის თუ არა ხელმისაწვდომი <a href=\"%s\">ინტეგრაციის "
+"ვარიანტები</a> თემისთვის ან თქვენს მიერ დაინსტალირებული სხვა "
+"დანამატებისთვის."
+
+#: inc/admin/admin-setting-type-fc-setup.php:95
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. <a "
+"href=\"%s\">Enable usage tracking</a> from the tools settings."
+msgstr ""
+"მიიღეთ უფრო სწრაფი მხარდაჭერა და დაგვეხმარეთ თავსებადობის გაუმჯობესებასა და "
+"გავლენის გაზომვაში. <a href=\"%s\">ჩართეთ გამოყენების თვალყურის დევნება</a> "
+"ხელსაწყოების პარამეტრებიდან."
+
+#: inc/admin/admin-setting-type-fc-setup.php:459
+msgid "Missing settings tab."
+msgstr "პარამეტრების ჩანართი აკლია."
+
+#: inc/admin/admin-setting-type-fc-setup.php:486
+msgid "Getting started"
+msgstr "დაწყება"
+
+#: inc/admin/admin-setting-type-fc-setup.php:490
+msgid ""
+"<strong>Great! Your checkout page is now running on Fluid "
+"Checkout.</strong> Here are a few steps to get started:"
+msgstr ""
+"<strong>შესანიშნავია! თქვენი გადახდის გვერდი ახლა მუშაობს Fluid "
+"Checkout-ზე.</strong> აქ მოცემულია რამდენიმე ნაბიჯი დასაწყებად:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
+msgid "Completed"
+msgstr "დასრულებულია"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:81
+msgid "Preview report data"
+msgstr "ანგარიშის მონაცემების გადახედვა"
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
+msgid "Send now"
+msgstr "გაგზავნა ახლავე"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:6, inc/admin/admin-settings-address-autocomplete.php:43
+msgid "Auto-detect"
+msgstr "ავტომატური ამოცნობა"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:7
+msgid "Afrikaans"
+msgstr "აფრიკაანსი"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:8
+msgid "Albanian"
+msgstr "ალბანური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:9
+msgid "Amharic"
+msgstr "ამჰარული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:10
+msgid "Arabic"
+msgstr "არაბული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:11
+msgid "Armenian"
+msgstr "სომხური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:12
+msgid "Azerbaijani"
+msgstr "აზერბაიჯანული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:13
+msgid "Basque"
+msgstr "ბასკური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:14
+msgid "Belarusian"
+msgstr "ბელორუსული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:15
+msgid "Bengali"
+msgstr "ბენგალური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:16
+msgid "Bosnian"
+msgstr "ბოსნიური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:17
+msgid "Bulgarian"
+msgstr "ბულგარული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:18
+msgid "Burmese"
+msgstr "ბირმული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:19
+msgid "Catalan"
+msgstr "კატალანური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:20
+msgid "Chinese"
+msgstr "ჩინური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:21
+msgid "Chinese (Simplified)"
+msgstr "ჩინური (გამარტივებული)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:22
+msgid "Chinese (Hong Kong)"
+msgstr "ჩინური (ჰონგ-კონგი)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:23
+msgid "Chinese (Traditional)"
+msgstr "ჩინური (ტრადიციული)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:24
+msgid "Croatian"
+msgstr "ხორვატული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:25
+msgid "Czech"
+msgstr "ჩეხური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:26
+msgid "Danish"
+msgstr "დანიური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:27
+msgid "Dutch"
+msgstr "ჰოლანდიური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:28
+msgid "English"
+msgstr "ინგლისური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:29
+msgid "English (Australian)"
+msgstr "ინგლისური (ავსტრალიური)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:30
+msgid "English (Great Britain)"
+msgstr "ინგლისური (დიდი ბრიტანეთი)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:31
+msgid "Estonian"
+msgstr "ესტონური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:32
+msgid "Farsi"
+msgstr "ფარსი"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:33
+msgid "Finnish"
+msgstr "ფინური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:34
+msgid "Filipino"
+msgstr "ფილიპინური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:35
+msgid "French"
+msgstr "ფრანგული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:36
+msgid "French (Canadian)"
+msgstr "ფრანგული (კანადური)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:37
+msgid "Galician"
+msgstr "გალისიური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:38
+msgid "Georgian"
+msgstr "ქართული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:39
+msgid "German"
+msgstr "გერმანული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:40
+msgid "Greek"
+msgstr "ბერძნული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:41
+msgid "Gujarati"
+msgstr "გუჯარათული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:42
+msgid "Hebrew"
+msgstr "ებრაული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:43
+msgid "Hindi"
+msgstr "ჰინდი"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:44
+msgid "Hungarian"
+msgstr "უნგრული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:45
+msgid "Icelandic"
+msgstr "ისლანდიური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:46
+msgid "Indonesian"
+msgstr "ინდონეზიური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:47
+msgid "Italian"
+msgstr "იტალიური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:48
+msgid "Japanese"
+msgstr "იაპონური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:49
+msgid "Kannada"
+msgstr "კანადა"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:50
+msgid "Kazakh"
+msgstr "ყაზახური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:51
+msgid "Khmer"
+msgstr "ქმერული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:52
+msgid "Korean"
+msgstr "კორეული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:53
+msgid "Kyrgyz"
+msgstr "ყირგიზული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:54
+msgid "Lao"
+msgstr "ლაოსური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:55
+msgid "Latvian"
+msgstr "ლატვიური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:56
+msgid "Lithuanian"
+msgstr "ლიტვური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:57
+msgid "Macedonian"
+msgstr "მაკედონური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:58
+msgid "Malay"
+msgstr "მალაიური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:59
+msgid "Malayalam"
+msgstr "მალაიალამური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:60
+msgid "Marathi"
+msgstr "მარათჰი"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:61
+msgid "Mongolian"
+msgstr "მონღოლური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:62
+msgid "Nepali"
+msgstr "ნეპალური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:63
+msgid "Norwegian"
+msgstr "ნორვეგიული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:64
+msgid "Polish"
+msgstr "პოლონური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:65
+msgid "Portuguese"
+msgstr "პორტუგალიური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:66
+msgid "Portuguese (Brazil)"
+msgstr "პორტუგალიური (ბრაზილია)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:67
+msgid "Portuguese (Portugal)"
+msgstr "პორტუგალიური (პორტუგალია)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:68
+msgid "Punjabi"
+msgstr "პენჯაბური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:69
+msgid "Romanian"
+msgstr "რუმინული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:70
+msgid "Russian"
+msgstr "რუსული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:71
+msgid "Serbian"
+msgstr "სერბული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:72
+msgid "Sinhalese"
+msgstr "სინჰალური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:73
+msgid "Slovak"
+msgstr "სლოვაკური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:74
+msgid "Slovenian"
+msgstr "სლოვენური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:75
+msgid "Spanish"
+msgstr "ესპანური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:76
+msgid "Spanish (Latin America)"
+msgstr "ესპანური (ლათინური ამერიკა)"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:77
+msgid "Swahili"
+msgstr "სუაჰილი"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:78
+msgid "Swedish"
+msgstr "შვედური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:79
+msgid "Tamil"
+msgstr "ტამილური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:80
+msgid "Telugu"
+msgstr "ტელუგუ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:81
+msgid "Thai"
+msgstr "ტაილანდური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:82
+msgid "Turkish"
+msgstr "თურქული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:83
+msgid "Ukrainian"
+msgstr "უკრაინული"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:84
+msgid "Urdu"
+msgstr "ურდუ"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:85
+msgid "Vietnamese"
+msgstr "ვიეტნამური"
+
+#: inc/admin/admin-settings-address-autocomplete-language-options.php:86
+msgid "Zulu"
+msgstr "ზულუ"
+
+#: inc/admin/admin-settings-address-autocomplete.php:54, inc/admin/admin-settings-address-autocomplete.php:91
+msgid "Google address autocomplete"
+msgstr "Google მისამართის ავტომატური შევსება"
+
+#: inc/admin/admin-settings-address-autocomplete.php:63
+msgid "Google Places API version"
+msgstr "Google Places API-ის ვერსია"
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"Choose which version of the Google Places API to use. We recommend moving "
+"to the new Places API as soon as possible."
+msgstr ""
+"აირჩიეთ Google Places API-ის რომელი ვერსია გამოიყენოთ. გირჩევთ, რაც "
+"შეიძლება მალე გადახვიდეთ ახალ Places API-ზე."
+
+#: inc/admin/admin-settings-address-autocomplete.php:65
+msgid ""
+"We recommend using \"Places API (New)\" as effective March 1, 2025, Google "
+"will move the \"Places API (Legacy)\" version into Legacy status, meaning "
+"you will no longer be able to enable this service for new API keys and that "
+"that version of the API will eventually not be available anymore. Existing "
+"accounts already using the Legacy API may continue to work without "
+"disruptions."
+msgstr ""
+"გირჩევთ გამოიყენოთ „Places API (ახალი)“. 2025 წლის 1 მარტიდან Google "
+"„Places API (Legacy)“ ვერსიას Legacy სტატუსში გადაიყვანს, რაც იმას ნიშნავს, "
+"რომ თქვენ აღარ შეძლებთ ამ სერვისის ჩართვას ახალი API გასაღებებისთვის და "
+"API-ს ეს ვერსია საბოლოოდ აღარ იქნება ხელმისაწვდომი. არსებული ანგარიშები, "
+"რომლებიც უკვე იყენებენ Legacy API-ს, შესაძლოა განაგრძონ მუშაობა "
+"შეფერხებების გარეშე."
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgid "(Recommended)"
+msgstr "(რეკომენდებულია)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:79
+msgid "Google API key"
+msgstr "Google API გასაღები"
+
+#: inc/admin/admin-settings-address-autocomplete.php:80
+msgid ""
+"Paste your Google API key and use the test button to confirm it works for "
+"this website. Make sure the key is valid and allowed for your domain, "
+"otherwise the address field might get blocked preventing customers from "
+"completing their orders."
+msgstr ""
+"ჩასვით თქვენი Google API გასაღები და გამოიყენეთ ტესტირების ღილაკი იმის "
+"დასადასტურებლად, რომ ის ამ ვებსაიტზე მუშაობს. დარწმუნდით, რომ გასაღები "
+"სწორია და დაშვებულია თქვენი დომენისთვის, წინააღმდეგ შემთხვევაში, მისამართის "
+"ველი შეიძლება დაიბლოკოს, რაც მომხმარებლებს შეკვეთების შესრულებაში ხელს "
+"შეუშლის."
+
+#: inc/admin/admin-settings-address-autocomplete.php:92
+msgid "Enable Google address autocomplete"
+msgstr "ჩართეთ Google მისამართის ავტომატური შევსება"
+
+#: inc/admin/admin-settings-address-autocomplete.php:93
+msgid "Enable address autocompletion using the Google Maps APIs."
+msgstr "ჩართეთ მისამართის ავტომატური შევსება Google Maps API-ების გამოყენებით."
+
+#: inc/admin/admin-settings-address-autocomplete.php:103
+msgid "Google API language"
+msgstr "Google API-ის ენა"
+
+#: inc/admin/admin-settings-address-autocomplete.php:105
+msgid ""
+"This language will be used to display the Google Places API address "
+"suggestions and addresses will also be autocompleted in this language."
+msgstr ""
+"ეს ენა გამოყენებული იქნება Google Places API-ის მისამართების "
+"შემოთავაზებების საჩვენებლად და მისამართები ასევე ავტომატურად შეივსება ამ "
+"ენაზე."
+
+#: inc/admin/admin-settings-address-autocomplete.php:120
+msgid "Result types"
+msgstr "შედეგების ტიპები"
+
+#: inc/admin/admin-settings-address-autocomplete.php:122
+msgid ""
+"Leave empty to accept any type of results, which usually yields better "
+"matching results. <a href=\"%s\" target=\"_blank\">See documentation for "
+"more details</a>. <br>Select up to 5 types of address search results to "
+"return on address autocomplete fields. <br>Visit the Google Maps "
+"documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"ნებისმიერი ტიპის შედეგის მისაღებად, რომელიც, როგორც წესი, უკეთეს შესაბამის "
+"შედეგებს იძლევა, ცარიელი დატოვეთ. <a href=\"%s\" "
+"target=\"_blank\">დამატებითი ინფორმაციისთვის იხილეთ დოკუმენტაცია</a> .<br> "
+"აირჩიეთ მისამართის ავტომატური შევსების ველებში დასაბრუნებლად 5 ტიპის "
+"მისამართის ძიების შედეგი.<br> <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">მხარდაჭერილი ტიპების</a> შესახებ დამატებითი "
+"ინფორმაციისთვის ეწვიეთ Google Maps-ის დოკუმენტაციას."
+
+#: inc/admin/admin-settings-address-autocomplete.php:139
+msgid "Result types (Legacy API)"
+msgstr "შედეგების ტიპები (Legacy API)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:141
+msgid ""
+"Which type of address search results to return when using Places API "
+"(Legacy). <br>Visit the documentation of the Legacy Google Places API to "
+"learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">supported types</a>."
+msgstr ""
+"მისამართის ძიების რომელი ტიპის შედეგები უნდა დაბრუნდეს Places API-ის "
+"(Legacy) გამოყენებისას.<br> <a "
+"href=\"https://developers.google.com/maps/documentation/places/web-service/"
+"supported_types#table3\" target=\"_blank\">მხარდაჭერილი ტიპების</a> შესახებ "
+"დამატებითი ინფორმაციისთვის იხილეთ Legacy Google Places API-ის დოკუმენტაცია."
+
+#: inc/admin/admin-settings-address-autocomplete.php:156
+msgid "Company fields"
+msgstr "კომპანიის ველები"
+
+#: inc/admin/admin-settings-address-autocomplete.php:157
+msgid "Enable autocomplete for the company name if available"
+msgstr "ჩართეთ კომპანიის სახელის ავტომატური შევსება, თუ ეს შესაძლებელია"
+
+#: inc/admin/admin-settings-address-autocomplete.php:158
+msgid ""
+"Enable autocompletion of the company field with the company name "
+"information when returned from the Google Maps APIs."
+msgstr ""
+"Google Maps API-ებიდან დაბრუნებისას, კომპანიის ველის ავტომატური შევსების "
+"ჩართვა კომპანიის სახელის ინფორმაციით."
+
+#: inc/admin/admin-settings-address-autocomplete.php:172
+msgid "Business search"
+msgstr "ბიზნესის ძიება"
+
+#: inc/admin/admin-settings-address-autocomplete.php:173
+msgid "Enable search for businesses in the company field"
+msgstr "კომპანიის სფეროში ბიზნესების ძიების ჩართვა"
+
+#: inc/admin/admin-settings-address-autocomplete.php:174
+msgid ""
+"Enable suggestion of addresses associated with a business when typing in "
+"the company field, then autocomplete all addresses fields when a business "
+"is selected from the suggestions."
+msgstr ""
+"კომპანიის ველში აკრეფისას ჩართეთ ბიზნესთან დაკავშირებული მისამართების "
+"შეთავაზება, შემდეგ კი, როდესაც ბიზნესი შეთავაზებებიდან იქნება არჩეული, "
+"ყველა მისამართის ველი ავტომატურად შეავსეთ."
+
+#: inc/admin/admin-settings-address-autocomplete.php:188
+msgid "Company result types"
+msgstr "კომპანიის შედეგების ტიპები"
+
+#: inc/admin/admin-settings-address-autocomplete.php:190
+msgid ""
+"Select up to 5 types of address search results to return on autocomplete "
+"company fields. <br>Recommended value is <code>establishment</code>, which "
+"includes most types of businesses. <br>Leave empty to accept any type of "
+"results, including results that are not related to businesses. <br>Visit "
+"the Google Maps documentation to learn more about the <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">supported types</a>."
+msgstr ""
+"კომპანიის ავტომატური შევსების ველებში დასაბრუნებლად აირჩიეთ მისამართის "
+"ძიების 5 ტიპის შედეგი.<br> რეკომენდებული ღირებულებაა "
+"<code>establishment</code> , რომელიც მოიცავს ბიზნესის ტიპების "
+"უმეტესობას.<br> ნებისმიერი ტიპის შედეგის მისაღებად, მათ შორის ბიზნესებთან "
+"დაუკავშირებელი შედეგების მისაღებად, ცარიელი დატოვეთ.<br> <a "
+"href=\"https://developers.google.com/maps/documentation/javascript/place-"
+"types\" target=\"_blank\">მხარდაჭერილი ტიპების</a> შესახებ დამატებითი "
+"ინფორმაციისთვის ეწვიეთ Google Maps-ის დოკუმენტაციას."
+
+#: inc/admin/admin-settings-address-autocomplete.php:207
+msgid "Google logo"
+msgstr "Google-ის ლოგო"
+
+#: inc/admin/admin-settings-address-autocomplete.php:208
+msgid "Show text and logo \"Powered by Google\""
+msgstr "ტექსტისა და ლოგოს ჩვენება „Google-ის მხარდაჭერით“"
+
+#: inc/admin/admin-settings-address-autocomplete.php:209
+msgid ""
+"When checked, the text and logo \"Powered by Google\" will be displayed at "
+"the bottom of the address autocomplete suggestions box."
+msgstr ""
+"მონიშვნის შემთხვევაში, მისამართის ავტომატური შევსების შემოთავაზებების ველის "
+"ბოლოში გამოჩნდება ტექსტი და ლოგო „მხარდაჭერილია Google-ის მიერ“."
+
+#: inc/admin/admin-settings-address-autocomplete.php:228
+msgid "Brasil API address autocomplete"
+msgstr "ბრაზილიის API მისამართის ავტომატური შევსება"
+
+#: inc/admin/admin-settings-address-autocomplete.php:236
+msgid "Brasil API"
+msgstr "ბრაზილიის API"
+
+#: inc/admin/admin-settings-address-autocomplete.php:237
+msgid "Enable Brasil API address autocomplete for CEP fields"
+msgstr "CEP ველებისთვის Brasil API მისამართის ავტომატური შევსების ჩართვა"
+
+#: inc/admin/admin-settings-address-autocomplete.php:238
+msgid ""
+"Use Brasil API to retrieve and autofill addresses using the CEP/Postcode "
+"field. Only relevant for Brazilian addresses."
+msgstr ""
+"CEP/საფოსტო ინდექსის ველის გამოყენებით მისამართების მისაღებად და "
+"ავტომატურად შესავსებად გამოიყენეთ Brasil API. მხოლოდ ბრაზილიური "
+"მისამართებისთვისაა შესაფერისი."
+
+#: inc/admin/admin-settings-address-autocomplete.php:248
+msgid "API version"
+msgstr "API ვერსია"
+
+#: inc/admin/admin-settings-address-autocomplete.php:249
+msgid "Choose which version of the Brasil API CEP method to use."
+msgstr "აირჩიეთ Brasil API CEP მეთოდის რომელი ვერსია გამოიყენოთ."
+
+#: inc/admin/admin-settings-address-book.php:65
+msgid "Address book migration"
+msgstr "მისამართების წიგნის მიგრაცია"
+
+#: inc/admin/admin-settings-address-book.php:73
+msgid "WooCommerce addresses"
+msgstr "WooCommerce-ის მისამართები"
+
+#: inc/admin/admin-settings-address-book.php:74
+msgid ""
+"Copy existing shipping and billing addresses from WooCommerce into the "
+"customers' address book."
+msgstr ""
+"WooCommerce-დან არსებული მიწოდებისა და გადახდის მისამართები დააკოპირეთ "
+"მომხმარებლის მისამართების წიგნში."
+
+#: inc/admin/admin-settings-address-book.php:120
+msgid "Enable the address book feature"
+msgstr "მისამართების წიგნის ფუნქციის ჩართვა"
+
+#: inc/admin/admin-settings-address-book.php:121
+msgid ""
+"Allow customers to save multiple addresses and define the default address "
+"to be used for shipping and billing."
+msgstr ""
+"მიეცით მომხმარებლებს საშუალება შეინახონ მრავალი მისამართი და განსაზღვრონ "
+"ნაგულისხმევი მისამართი, რომელიც გამოყენებული იქნება მიწოდებისა და "
+"ანგარიშსწორებისთვის."
+
+#: inc/admin/admin-settings-address-book.php:130
+msgid "Address labels"
+msgstr "მისამართის ეტიკეტები"
+
+#: inc/admin/admin-settings-address-book.php:131
+msgid "Allow customers to add a custom label for each address"
+msgstr ""
+"მიეცით მომხმარებლებს საშუალება, დაამატონ მორგებული ეტიკეტი თითოეული "
+"მისამართისთვის"
+
+#: inc/admin/admin-settings-address-book.php:132
+msgid ""
+"Address labels make it easier to for customers to distinguish between their "
+"saved addresses (ie.: \"Mom's House\"). The address labels are private to "
+"the customers, and will not be displayed or printed on the order details "
+"page or invoices."
+msgstr ""
+"მისამართის ეტიკეტები მომხმარებლებს აადვილებს შენახული მისამართების (მაგ.: "
+"„დედის სახლი“) გარჩევას. მისამართის ეტიკეტები მხოლოდ მომხმარებლებისთვისაა "
+"ხელმისაწვდომი და არ გამოჩნდება ან დაიბეჭდება შეკვეთის დეტალების გვერდზე ან "
+"ინვოისებში."
+
+#: inc/admin/admin-settings-address-book.php:145
+msgid "Display layout"
+msgstr "ეკრანის განლაგება"
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid "Choose how saved addresses are displayed at checkout and on the cart."
+msgstr ""
+"აირჩიეთ, თუ როგორ გამოჩნდება შენახული მისამართები შეკვეთის გაფორმებისას და "
+"კალათაში."
+
+#: inc/admin/admin-settings-address-book.php:146
+msgid ""
+"Applies at checkout and on the cart. Saved addresses on the account page "
+"always use the cards layout."
+msgstr ""
+"მოქმედებს შეკვეთის გაფორმებისას და კალათაში. ანგარიშის გვერდზე შენახული "
+"მისამართები ყოველთვის ბარათების განლაგებას იყენებს."
+
+#: inc/admin/admin-settings-address-book.php:150
+msgid "Address cards"
+msgstr "მისამართის ბარათები"
+
+#: inc/admin/admin-settings-address-book.php:151
+msgid "Address list"
+msgstr "მისამართების სია"
+
+#: inc/admin/admin-settings-address-book.php:152
+msgid "Dropdown field"
+msgstr "ჩამოსაშლელი ველი"
+
+#: inc/admin/admin-settings-address-book.php:164
+msgid "Address search"
+msgstr "მისამართის ძიება"
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid ""
+"Show address search filter on frontend when customer has at least this "
+"number of saved addresses available."
+msgstr ""
+"მისამართის ძიების ფილტრის ჩვენება წინა პლანზე, როდესაც მომხმარებელს აქვს "
+"შენახული მისამართების სულ მცირე ეს რაოდენობა ხელმისაწვდომი."
+
+#: inc/admin/admin-settings-address-book.php:166
+msgid "Not used when display layout is set to dropdown field."
+msgstr "არ გამოიყენება, როდესაც ეკრანის განლაგება დაყენებულია ჩამოსაშლელ ველზე."
+
+#: inc/admin/admin-settings-address-book.php:170
+msgid "Addresses"
+msgstr "მისამართები"
+
+#: inc/admin/admin-settings-cart.php:123
+msgid "Enable cart page optimizations to see more options"
+msgstr "მეტი ვარიანტის სანახავად ჩართეთ კალათის გვერდის ოპტიმიზაცია"
+
+#: inc/admin/admin-settings-cart.php:135
+msgid "Sticky order summary"
+msgstr "ფიქსირებული შეკვეთის შეჯამება"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart is enabled, and if use of coupon codes are "
+"enabled in the WooCommerce settings."
+msgstr ""
+"აირჩიეთ პოზიცია, სადაც კალათის გვერდზე გამოჩნდება კუპონის კოდების "
+"განყოფილება. მოქმედებს მხოლოდ მაშინ, როდესაც AJAX კალათა ჩართულია და თუ "
+"კუპონის კოდების გამოყენება ჩართულია WooCommerce-ის პარამეტრებში."
+
+#: inc/admin/admin-settings-cart.php:225
+msgid "Layout of cross-sell"
+msgstr "ჯვარედინი გაყიდვების განლაგება"
+
+#: inc/admin/admin-settings-cart.php:244
+msgid "Cross-sells displayed"
+msgstr "ნაჩვენები ჯვარედინი გაყიდვები"
+
+#: inc/admin/admin-settings-cart.php:250
+msgid "Items"
+msgstr "ნივთები"
+
+#: inc/admin/admin-settings-cart.php:282
+msgid "Cart page optimization"
+msgstr "კალათის გვერდის ოპტიმიზაცია"
+
+#: inc/admin/admin-settings-cart.php:287
+msgid "Give your cart the same clear, conversion-focused layout as your checkout."
+msgstr ""
+"მიანიჭეთ თქვენს კალათას იგივე მკაფიო, კონვერსიაზე ორიენტირებული განლაგება, "
+"როგორც თქვენს შეკვეთის გაფორმებას."
+
+#: inc/admin/admin-settings-cart.php:289
+msgid ""
+"Match the cart layout to the checkout page for a consistent purchase "
+"journey."
+msgstr "თანმიმდევრული შესყიდვისთვის, კალათის განლაგება შეკვეთის გვერდს შეუსაბამეთ."
+
+#: inc/admin/admin-settings-cart.php:290
+msgid ""
+"Keep the cart always updated in the background, no full page reloads when "
+"quantities change."
+msgstr ""
+"კალათა მუდმივად განახლებული უნდა იყოს ფონურ რეჟიმში, რაოდენობის შეცვლისას "
+"გვერდის სრული გადატვირთვა აკრძალულია."
+
+#: inc/admin/admin-settings-cart.php:291
+msgid ""
+"Place coupon codes, shipping, and cross-sells exactly where they convert "
+"best."
+msgstr ""
+"განათავსეთ კუპონის კოდები, მიწოდება და ჯვარედინი გაყიდვები ზუსტად იქ, სადაც "
+"ისინი ყველაზე მეტ კონვერსიას ახდენენ."
+
+#: inc/admin/admin-settings-cart.php:292
+msgid ""
+"Keep the order summary visible while scrolling, and add trust symbols where "
+"shoppers need reassurance."
+msgstr ""
+"შეკვეთის შეჯამება გადახვევისას თვალსაჩინო უნდა იყოს და დაამატეთ ნდობის "
+"სიმბოლოები იმ ადგილებში, სადაც მყიდველებს ნდობა სჭირდებათ."
+
+#: inc/admin/admin-settings-checkout.php:87
+msgid "Columns"
+msgstr "სვეტები"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to other checkout, cart, thank you (order received), and view order "
+"pages."
+msgstr ""
+"გადახდის ეტაპების, შეკვეთის შეჯამებისა და სხვა სექციების ზოგადი სტილები. "
+"ვრცელდება სხვა გადახდის, კალათის, მადლობის გადახდის (შეკვეთის მიღების) და "
+"შეკვეთის ნახვის გვერდებზე."
+
+#: inc/admin/admin-settings-checkout.php:121
+msgid ""
+"When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
+"design template, a right column is shown only if the page sidebar widget "
+"area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). "
+"Otherwise the page stays as a single column with Split styles."
+msgstr ""
+"<em>„გაყოფის“</em> დიზაინის შაბლონთან ერთად <em>„1 სვეტის“</em> განლაგების "
+"გამოყენებისას, მარჯვენა სვეტი მხოლოდ იმ შემთხვევაში ჩანს, თუ გვერდის "
+"გვერდითი ზოლის ვიჯეტის არე აქტიურია (გადახდის გვერდითი ზოლი, კალათის "
+"გვერდითი ზოლი ან შეკვეთის მიღების გვერდითი ზოლი). წინააღმდეგ შემთხვევაში, "
+"გვერდი რჩება ერთ სვეტად გაყოფის სტილებით."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Split column background"
+msgstr "გაყოფილი სვეტის ფონი"
+
+#: inc/admin/admin-settings-checkout.php:140
+msgid ""
+"Choose a background color for the Split design secondary column. Leave "
+"empty to use the order summary background color."
+msgstr ""
+"აირჩიეთ ფონის ფერი გაყოფილი დიზაინის მეორადი სვეტისთვის. შეკვეთის შეჯამების "
+"ფონის ფერის გამოსაყენებლად დატოვეთ ცარიელი."
+
+#: inc/admin/admin-settings-checkout.php:169
+msgid "Page templates"
+msgstr "გვერდის შაბლონები"
+
+#: inc/admin/admin-settings-checkout.php:176
+msgid "Checkout template"
+msgstr "გადახდის შაბლონი"
+
+#: inc/admin/admin-settings-checkout.php:178
+msgid ""
+"Recommended for fewer distractions at checkout. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"რეკომენდებულია შეკვეთის გაფორმებისას ყურადღების გაფანტვის შესამცირებლად. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">წაიკითხეთ კვლევა კალათის მიტოვების შესახებ</a> ."
+
+#: inc/admin/admin-settings-checkout.php:271
+msgid "Sticky progress bar"
+msgstr "წებოვანი პროგრესის ზოლი"
+
+#: inc/admin/admin-settings-checkout.php:284
+msgid "Progress bar style"
+msgstr "პროგრესის ზოლის სტილი"
+
+#: inc/admin/admin-settings-checkout.php:325
+msgid "Order totals"
+msgstr "შეკვეთის ჯამური რაოდენობა"
+
+#: inc/admin/admin-settings-checkout.php:335
+msgid "Background color"
+msgstr "ფონის ფერი"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Action link"
+msgstr "მოქმედების ბმული"
+
+#: inc/admin/admin-settings-checkout.php:362
+msgid "Mobile order summary"
+msgstr "მობილური შეკვეთის შეჯამება"
+
+#: inc/admin/admin-settings-checkout.php:379
+msgid "Mobile initial state"
+msgstr "მობილურის საწყისი მდგომარეობა"
+
+#: inc/admin/admin-settings-checkout.php:417
+msgid "Enable editing cart items at checkout"
+msgstr "კალათის ნივთების რედაქტირების ჩართვა შეკვეთის გაფორმებისას"
+
+#: inc/admin/admin-settings-checkout.php:418
+msgid ""
+"Allow customers to change product quantities or remove items directly at "
+"the checkout page."
+msgstr ""
+"მიეცით მომხმარებლებს საშუალება შეცვალონ პროდუქტის რაოდენობა ან წაშალონ "
+"ნივთები პირდაპირ შეკვეთის გვერდზე."
+
+#: inc/admin/admin-settings-checkout.php:427
+msgid "Cart item errors"
+msgstr "კალათის ნივთების შეცდომები"
+
+#: inc/admin/admin-settings-checkout.php:459
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages, and if use of coupon codes are enabled in the "
+"WooCommerce settings."
+msgstr ""
+"გამოიყენება მხოლოდ მაშინ, როდესაც კუპონის კოდი ნაჩვენებია ცალკე "
+"განყოფილებაში შეკვეთის ან კალათის გვერდებზე და თუ კუპონის კოდების "
+"გამოყენება ჩართულია WooCommerce-ის პარამეტრებში."
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "Coupon codes position"
+msgstr "კუპონის კოდების პოზიცია"
+
+#: inc/admin/admin-settings-checkout.php:487
+msgid "Apply coupon button"
+msgstr "კუპონის გამოყენების ღილაკი"
+
+#: inc/admin/admin-settings-checkout.php:489
+msgid "Select style of the \"apply coupon\" button."
+msgstr "აირჩიეთ „კუპონის გამოყენება“ ღილაკის სტილი."
+
+#: inc/admin/admin-settings-checkout.php:559
+msgid "Address line 2"
+msgstr "მისამართის მე-2 ხაზი"
+
+#: inc/admin/admin-settings-checkout.php:619, inc/admin/admin-settings-local-pickup.php:164
+msgid ""
+"This setting is shared between the Checkout and Local pickup sections. On "
+"the Local pickup section, it also decides whether the Ship/Pickup selector "
+"shows inside the shipping method section (before the address) or as a "
+"separate section (after)."
+msgstr ""
+"ეს პარამეტრი გაზიარებულია „შეკვეთის გაფორმებისა“ და „ადგილობრივი აღების“ "
+"სექციებს შორის. „ადგილობრივი აღების“ განყოფილებაში ასევე გადაწყდება, "
+"გამოჩნდება თუ არა „გაგზავნის/აღების“ სექციის შიგნით (მისამართის წინ) თუ "
+"ცალკე განყოფილებად (შემდეგ)."
+
+#: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:332
+msgid "Customer accounts"
+msgstr "მომხმარებლის ანგარიშები"
+
+#: inc/admin/admin-settings-customer-accounts.php:74, inc/admin/admin-settings-customer-accounts.php:81
+msgid "Guest checkout"
+msgstr "სტუმრის გასვლა"
+
+#: inc/admin/admin-settings-customer-accounts.php:76
+msgid ""
+"Guest checkout, login, and account creation options from the WooCommerce "
+"Accounts settings page. They are managed here for your convenience, and so "
+"you can use different values per settings profile."
+msgstr ""
+"სტუმრის მიერ შეკვეთის, შესვლისა და ანგარიშის შექმნის ვარიანტები WooCommerce "
+"ანგარიშების პარამეტრების გვერდიდან. ისინი აქ იმართება თქვენი "
+"მოხერხებულობისთვის და ამიტომ შეგიძლიათ გამოიყენოთ სხვადასხვა მნიშვნელობები "
+"პარამეტრების პროფილის მიხედვით."
+
+#: inc/admin/admin-settings-customer-accounts.php:82
+msgid "Allow customers to checkout without an account"
+msgstr "მიეცით მომხმარებლებს საშუალება, ანგარიშის გარეშე განახორციელონ გადახდა"
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to create an "
+"account or log in during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>რეკომენდებულია</strong> , რათა მომხმარებლებს არ მოეთხოვოთ ანგარიშის "
+"შექმნა ან შესვლა შეკვეთის გაფორმებისას, რამაც შეიძლება შეამციროს "
+"კონვერტაციის მაჩვენებლები."
+
+#: inc/admin/admin-settings-customer-accounts.php:83
+msgid ""
+"When disabled, customers must log in or create an account to complete the "
+"purchase."
+msgstr ""
+"გამორთვის შემთხვევაში, მომხმარებლებმა შესყიდვის დასასრულებლად უნდა შევიდნენ "
+"სისტემაში ან შექმნან ანგარიში."
+
+#: inc/admin/admin-settings-customer-accounts.php:91
+msgid "Login at checkout"
+msgstr "შედით სისტემაში გადახდისას"
+
+#: inc/admin/admin-settings-customer-accounts.php:92
+msgid "Enable log-in during checkout"
+msgstr "ჩართეთ შესვლა შეკვეთის გაფორმებისას"
+
+#: inc/admin/admin-settings-customer-accounts.php:93
+msgid "Show a link for returning customers to log in from the checkout page."
+msgstr ""
+"აჩვენეთ ბმული დაბრუნებული მომხმარებლებისთვის, რათა ისინი შეკვეთის გვერდიდან "
+"შევიდნენ სისტემაში."
+
+#: inc/admin/admin-settings-customer-accounts.php:101, inc/admin/admin-settings-customer-accounts.php:222
+msgid "Account creation"
+msgstr "ანგარიშის შექმნა"
+
+#: inc/admin/admin-settings-customer-accounts.php:102
+msgid "Allow customers to create an account during checkout"
+msgstr "მიეცით მომხმარებლებს ანგარიშის შექმნის საშუალება შეკვეთის გაფორმებისას"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account before placing their order."
+msgstr "მომხმარებლებს შეუძლიათ ანგარიშის შექმნა შეკვეთის განთავსებამდე."
+
+#: inc/admin/admin-settings-customer-accounts.php:110
+msgid "Allow customers to create an account from the My account page"
+msgstr "მომხმარებლებისთვის ანგარიშის შექმნის ნებართვა „ჩემი ანგარიშის“ გვერდიდან"
+
+#: inc/admin/admin-settings-customer-accounts.php:111
+msgid "Customers can register a new account from the My account page."
+msgstr ""
+"მომხმარებლებს ახალი ანგარიშის რეგისტრაცია შეუძლიათ „ჩემი ანგარიშის“ "
+"გვერდიდან."
+
+#: inc/admin/admin-settings-customer-accounts.php:118
+msgid "Username"
+msgstr "მომხმარებლის სახელი"
+
+#: inc/admin/admin-settings-customer-accounts.php:119
+msgid "Generate from customer's name"
+msgstr "გენერირება მომხმარებლის სახელიდან"
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to choose a "
+"username during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>რეკომენდებულია</strong> , რათა მომხმარებლებს არ სთხოვონ "
+"მომხმარებლის სახელის არჩევა შეკვეთის გაფორმებისას, რამაც შეიძლება შეამციროს "
+"კონვერტაციის მაჩვენებლები."
+
+#: inc/admin/admin-settings-customer-accounts.php:120
+msgid ""
+"A username is generated from the customer name, or from the email address "
+"when a name cannot be used."
+msgstr ""
+"მომხმარებლის სახელი გენერირდება მომხმარებლის სახელიდან ან ელექტრონული "
+"ფოსტის მისამართიდან, როდესაც სახელის გამოყენება შეუძლებელია."
+
+#: inc/admin/admin-settings-customer-accounts.php:131
+msgid "Password"
+msgstr "პაროლი"
+
+#: inc/admin/admin-settings-customer-accounts.php:132
+msgid "Send password setup link"
+msgstr "პაროლის დაყენების ბმულის გაგზავნა"
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid ""
+"<strong>Recommended</strong> so customers are not asked to set a password "
+"during checkout, which can lower conversion rates."
+msgstr ""
+"<strong>რეკომენდებულია</strong> , რათა მომხმარებლებს არ მოსთხოვონ პაროლის "
+"დაყენება შეკვეთის გაფორმებისას, რამაც შეიძლება შეამციროს კონვერტაციის "
+"მაჩვენებლები."
+
+#: inc/admin/admin-settings-customer-accounts.php:133
+msgid "Customers receive an email to create their password securely."
+msgstr "მომხმარებლები მიიღებენ ელ.წერილს პაროლის უსაფრთხოდ შესაქმნელად."
+
+#: inc/admin/admin-settings-customer-accounts.php:154
+msgid ""
+"Let registered customers complete checkout without logging in and associate "
+"the order with their existing account when contact details match."
+msgstr ""
+"მიეცით რეგისტრირებულ მომხმარებლებს საშუალება, დაასრულონ გადახდა სისტემაში "
+"შესვლის გარეშე და დააკავშირონ შეკვეთა მათ არსებულ ანგარიშთან, თუ საკონტაქტო "
+"ინფორმაცია ემთხვევა."
+
+#: inc/admin/admin-settings-customer-accounts.php:171
+msgid "Existing account message"
+msgstr "არსებული ანგარიშის შეტყობინება"
+
+#: inc/admin/admin-settings-customer-accounts.php:196
+msgid ""
+"Let customers create an account after placing their order, from the thank "
+"you page."
+msgstr ""
+"მიეცით მომხმარებლებს საშუალება შექმნან ანგარიში შეკვეთის განთავსების "
+"შემდეგ, მადლობის გვერდიდან."
+
+#: inc/admin/admin-settings-customer-accounts.php:203, inc/admin/admin-settings-customer-accounts.php:213
+msgid ""
+"Options in this section are available when guest checkout and account "
+"matching are enabled. Enable both features above to configure delayed "
+"account creation."
+msgstr ""
+"ამ სექციაში არსებული ვარიანტები ხელმისაწვდომია, როდესაც სტუმრის მიერ "
+"შეკვეთის გაფორმება და ანგარიშის შესაბამისობა ჩართულია. ჩართეთ ზემოთ "
+"მოცემული ორივე ფუნქცია ანგარიშის შექმნის დაგვიანების კონფიგურაციისთვის."
+
+#: inc/admin/admin-settings-customer-accounts.php:223
+msgid "Enable delayed account creation"
+msgstr "ანგარიშის დაგვიანებული შექმნის ჩართვა"
+
+#: inc/admin/admin-settings-customer-accounts.php:224
+msgid ""
+"Enable delayed account creation when both guest checkout and account "
+"matching are enabled."
+msgstr ""
+"ჩართეთ ანგარიშის შექმნის დაგვიანება, როდესაც ჩართულია როგორც სტუმრის მიერ "
+"გადახდა, ასევე ანგარიშის შესაბამისობა."
+
+#: inc/admin/admin-settings-customer-accounts.php:238
+msgid "Section position"
+msgstr "სექციის პოზიცია"
+
+#: inc/admin/admin-settings-customer-accounts.php:244
+msgid "Before customer details section"
+msgstr "მომხმარებლის დეტალების განყოფილებამდე"
+
+#: inc/admin/admin-settings-customer-accounts.php:245
+msgid "After customer details section"
+msgstr "მომხმარებლის დეტალების განყოფილების შემდეგ"
+
+#: inc/admin/admin-settings-customer-accounts.php:259
+msgid "Account creation benefits"
+msgstr "ანგარიშის შექმნის უპირატესობები"
+
+#: inc/admin/admin-settings-customer-accounts.php:260
+msgid "Leaving the field empty will display the default text."
+msgstr "ველის ცარიელი დატოვების შემთხვევაში გამოჩნდება ნაგულისხმევი ტექსტი."
+
+#: inc/admin/admin-settings-express-checkout.php:84
+msgid "Inline buttons"
+msgstr "ჩასმული ღილაკები"
+
+#: inc/admin/admin-settings-express-checkout.php:98
+msgid "Required fields"
+msgstr "სავალდებულო ველები"
+
+#: inc/admin/admin-settings-gift-options.php:73
+msgid "Enable gift message fields at checkout"
+msgstr "ჩართეთ საჩუქრის შეტყობინების ველები გადახდისას"
+
+#: inc/admin/admin-settings-gift-options.php:83
+msgid "Expanded gift message"
+msgstr "გაფართოებული საჩუქრის შეტყობინება"
+
+#: inc/admin/admin-settings-gift-options.php:84
+msgid "Display gift message field always expanded"
+msgstr "საჩუქრის შეტყობინების ველის ჩვენება ყოველთვის გაფართოებულია"
+
+#: inc/admin/admin-settings-gift-options.php:97
+msgid "Gift message in order details"
+msgstr "საჩუქრის შეტყობინება შეკვეთის დეტალებში"
+
+#: inc/admin/admin-settings-integrations.php:97
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin and theme will only appear here when that plugin or "
+"theme is activated."
+msgstr ""
+"ამ სექციაში ამჟამად ინტეგრაციები მიუწვდომელია. თითოეულ დანამატთან და "
+"თემასთან დაკავშირებული ვარიანტები აქ მხოლოდ მაშინ გამოჩნდება, როდესაც ეს "
+"დანამატი ან თემა გააქტიურდება."
+
+#: inc/admin/admin-settings-international-phone.php:38, inc/admin/admin-settings-page.php:335
+msgid "Phone fields"
+msgstr "ტელეფონის ველები"
+
+#: inc/admin/admin-settings-international-phone.php:73, inc/admin/admin-settings-international-phone.php:120, inc/admin/admin-settings-vat-assistant.php:121
+msgid "Field visibility"
+msgstr "ველის ხილვადობა"
+
+#: inc/admin/admin-settings-international-phone.php:88, inc/admin/admin-settings-international-phone.php:135
+msgid "Field position"
+msgstr "საველე პოზიცია"
+
+#: inc/admin/admin-settings-international-phone.php:160
+msgid "Phone country code & validation"
+msgstr "ტელეფონის ქვეყნის კოდი და ვალიდაცია"
+
+#: inc/admin/admin-settings-international-phone.php:169
+msgid "Country"
+msgstr "ქვეყანა"
+
+#: inc/admin/admin-settings-international-phone.php:170
+msgid "Enable country on phone fields"
+msgstr "ტელეფონის ველებში ქვეყნის ჩართვა"
+
+#: inc/admin/admin-settings-international-phone.php:193
+msgid "Filter countries for shipping or billing"
+msgstr "გაფილტრეთ ქვეყნები მიწოდების ან გადახდისთვის"
+
+#: inc/admin/admin-settings-international-phone.php:194
+msgid ""
+"Limit the country selector on each phone field to the countries allowed for "
+"shipping or billing on your store."
+msgstr ""
+"თითოეულ ტელეფონის ველში ქვეყნის სელექტორი შეზღუდეთ იმ ქვეყნებით, რომლებიც "
+"თქვენს მაღაზიაში მიწოდების ან ანგარიშსწორებისთვისაა დაშვებული."
+
+#: inc/admin/admin-settings-international-phone.php:208
+msgid "Validation"
+msgstr "ვალიდაცია"
+
+#: inc/admin/admin-settings-international-phone.php:209
+msgid "Enable simple validation based on country rules"
+msgstr "ქვეყნის წესებზე დაფუძნებული მარტივი ვალიდაციის ჩართვა"
+
+#: inc/admin/admin-settings-international-phone.php:210
+msgid ""
+"Checks that the phone number is valid for the selected country, including "
+"country code and length."
+msgstr ""
+"ამოწმებს, რომ ტელეფონის ნომერი სწორია არჩეული ქვეყნისთვის, მათ შორის "
+"ქვეყნის კოდი და სიგრძე."
+
+#: inc/admin/admin-settings-international-phone.php:224
+msgid ""
+"Stricter check that the number is a valid mobile, fixed line, or other "
+"accepted type for the selected country. May reject some valid numbers."
+msgstr ""
+"უფრო მკაცრად შეამოწმეთ, რომ ნომერი არის მობილური, ფიქსირებული ან სხვა "
+"მისაღები ტიპის, არჩეული ქვეყნისთვის. შესაძლოა, ზოგიერთი სწორი ნომერი "
+"უარყოფილ იქნას."
+
+#: inc/admin/admin-settings-international-phone.php:237
+msgid "Validation types"
+msgstr "ვალიდაციის ტიპები"
+
+#: inc/admin/admin-settings-international-phone.php:259
+msgid "Placeholders"
+msgstr "ჩანაცვლების მფლობელები"
+
+#: inc/admin/admin-settings-license-keys.php:66
+msgid ""
+"No license keys to manage at the moment. License keys will appear here when "
+"a licensed Fluid Checkout plugin or add-on is active."
+msgstr ""
+"ამჟამად მართვის ლიცენზიის გასაღებები არ არის. ლიცენზიის გასაღებები აქ "
+"გამოჩნდება, როდესაც ლიცენზირებული Fluid Checkout-ის მოდული ან დამატება "
+"აქტიური იქნება."
+
+#: inc/admin/admin-settings-local-pickup.php:92
+msgid "Default delivery type"
+msgstr "ნაგულისხმევი მიწოდების ტიპი"
+
+#: inc/admin/admin-settings-local-pickup.php:94
+msgid "Choose which delivery type will be selected by default."
+msgstr "აირჩიეთ, მიწოდების რომელი ტიპი იქნება არჩეული სტანდარტულად."
+
+#: inc/admin/admin-settings-local-pickup.php:112
+msgid "Shipping zone fields"
+msgstr "გადაზიდვის ზონის ველები"
+
+#: inc/admin/admin-settings-local-pickup.php:113
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"აირჩიეთ, რომელი ველები გამოჩნდება ადგილობრივი აღების ზონის ფილტრის "
+"ველებისთვის. ყველა ხელმისაწვდომი ვარიანტის საჩვენებლად დატოვეთ ცარიელი."
+
+#: inc/admin/admin-settings-local-pickup.php:114
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"ეს ველები გამოჩნდება, როგორც ფილტრი ადგილობრივი აღების მიწოდების "
+"მეთოდებისთვის. ზოგიერთი ველი შეიძლება მაინც გამოჩნდეს შეკვეთის "
+"გაფორმებისას, თუ აქ არ არის არჩეული, თუ თავსებადი დანამატები მოითხოვს მათ "
+"სწორად მუშაობას."
+
+#: inc/admin/admin-settings-local-pickup.php:130
+msgid "Order shipping address"
+msgstr "შეკვეთის მიწოდების მისამართი"
+
+#: inc/admin/admin-settings-order-pay.php:55
+msgid "Order pay page optimization"
+msgstr "შეკვეთის გადახდის გვერდის ოპტიმიზაცია"
+
+#: inc/admin/admin-settings-order-pay.php:60
+msgid "Give unpaid orders the same clear, conversion-focused layout as checkout."
+msgstr ""
+"გადაუხდელ შეკვეთებს მიეცით იგივე მკაფიო, კონვერსიაზე ორიენტირებული "
+"განლაგება, როგორც გადახდის პროცესს."
+
+#: inc/admin/admin-settings-order-pay.php:62
+msgid "Optimize the layout of the order pay page for orders pending payment."
+msgstr ""
+"გადახდის მომლოდინე შეკვეთებისთვის ოპტიმიზაცია გაუკეთეთ შეკვეთის გადახდის "
+"გვერდის განლაგებას."
+
+#: inc/admin/admin-settings-order-pay.php:63
+msgid ""
+"Match the order pay experience to your checkout for a consistent purchase "
+"journey."
+msgstr ""
+"თანმიმდევრული შესყიდვის გამოცდილებისთვის, შეუსაბამეთ შეკვეთის გადახდის "
+"გამოცდილება თქვენს გადახდის პროცესს."
+
+#: inc/admin/admin-settings-order-pay.php:64
+msgid "Add trust symbols and badges where shoppers need reassurance before paying."
+msgstr ""
+"დაამატეთ ნდობის სიმბოლოები და სამკერდე ნიშნები, სადაც მყიდველებს გადახდამდე "
+"დარწმუნება სჭირდებათ."
+
+#: inc/admin/admin-settings-order-received.php:55
+msgid "Thank you page optimization"
+msgstr "მადლობა გვერდის ოპტიმიზაციას"
+
+#: inc/admin/admin-settings-order-received.php:60
+msgid ""
+"Make the thank you page and order details clearer for customers after they "
+"buy."
+msgstr ""
+"შეძენის შემდეგ, მომხმარებლებისთვის მადლობის გვერდი და შეკვეთის დეტალები "
+"უფრო ნათელი გახადეთ."
+
+#: inc/admin/admin-settings-order-received.php:62
+msgid "Optimize the thank you page and account order details with a clearer layout."
+msgstr ""
+"ოპტიმიზაცია გაუკეთეთ მადლობის გვერდს და ანგარიშის შეკვეთის დეტალებს უფრო "
+"მკაფიო განლაგებით."
+
+#: inc/admin/admin-settings-order-received.php:63
+msgid ""
+"Show order status progress, actions, downloads, and notes where they make "
+"sense."
+msgstr ""
+"აჩვენეთ შეკვეთის სტატუსის პროგრესი, მოქმედებები, ჩამოტვირთვები და "
+"შენიშვნები, სადაც ეს აზრი აქვს."
+
+#: inc/admin/admin-settings-order-received.php:64
+msgid "Customize order details sections on email notifications."
+msgstr "ელფოსტის შეტყობინებებში შეკვეთის დეტალების განყოფილებების პერსონალიზება."
+
+#: inc/admin/admin-settings-order-received.php:65
+msgid "Add trust symbols and badges where shoppers need reassurance after purchase."
+msgstr ""
+"დაამატეთ ნდობის სიმბოლოები და სამკერდე ნიშნები, სადაც მყიდველებს შეძენის "
+"შემდეგ დარწმუნება სჭირდებათ."
+
+#: inc/admin/admin-settings-order-received.php:122
+msgid "Email notifications"
+msgstr "ელფოსტის შეტყობინებები"
+
+#: inc/admin/admin-settings-order-received.php:164, inc/admin/admin-settings-order-received.php:233
+msgid "Enable thank you page and order details optimizations to see more options"
+msgstr ""
+"მეტი ვარიანტის სანახავად ჩართეთ მადლობის გვერდი და შეკვეთის დეტალების "
+"ოპტიმიზაცია"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Use wide layout on thank you page"
+msgstr "მადლობის გვერდზე ფართო განლაგების გამოყენება"
+
+#: inc/admin/admin-settings-order-received.php:223
+msgid ""
+"These options affect the thank you page, view order details on account "
+"pages and on email notifications."
+msgstr ""
+"ეს პარამეტრები გავლენას ახდენს მადლობის გვერდზე, შეკვეთის დეტალების ნახვაზე "
+"ანგარიშის გვერდებზე და ელექტრონული ფოსტის შეტყობინებებზე."
+
+#: inc/admin/admin-settings-page.php:255, inc/admin/admin-settings-page.php:720, inc/admin/admin-settings-page.php:857
+msgid "Save settings"
+msgstr "პარამეტრების შენახვა"
+
+#: inc/admin/admin-settings-page.php:305
+msgid "Docs"
+msgstr "დოკუმენტები"
+
+#: inc/admin/admin-settings-page.php:325, inc/admin/admin-settings-preview.php:94, inc/admin/admin-settings-trust-symbols.php:104
+msgid "Cart"
+msgstr "კალათა"
+
+#: inc/admin/admin-settings-page.php:326, inc/admin/admin-settings-preview.php:100, inc/admin/admin-settings-trust-symbols.php:136
+msgid "Thank you"
+msgstr "გმადლობთ"
+
+#: inc/admin/admin-settings-page.php:329
+msgid "Address autocomplete"
+msgstr "მისამართის ავტომატური შევსება"
+
+#: inc/admin/admin-settings-page.php:336, inc/admin/admin-settings-trust-symbols.php:38
+msgid "Trust badges"
+msgstr "ნდობის ნიშნები"
+
+#: inc/admin/admin-settings-page.php:607
+msgid "You do not have permission to save these settings."
+msgstr "თქვენ არ გაქვთ ამ პარამეტრების შენახვის უფლება."
+
+#: inc/admin/admin-settings-page.php:618
+msgid "Invalid save request."
+msgstr "შენახვის მოთხოვნა არასწორია."
+
+#: inc/admin/admin-settings-page.php:627, inc/admin/admin-settings-page.php:721, inc/admin/admin-settings-page.php:824
+msgid "Your settings have been saved."
+msgstr "თქვენი პარამეტრები შენახულია."
+
+#: inc/admin/admin-settings-page.php:719
+msgid "Saving..."
+msgstr "შენახვა..."
+
+#: inc/admin/admin-settings-page.php:722
+msgid "Settings could not be saved. Please try again."
+msgstr "პარამეტრების შენახვა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა."
+
+#: inc/admin/admin-settings-page.php:723
+msgid "Dismiss notice"
+msgstr "შეტყობინების უარყოფა"
+
+#: inc/admin/admin-settings-page.php:795, inc/admin/admin-settings-page.php:796
+msgid "Open settings menu"
+msgstr "პარამეტრების მენიუს გახსნა"
+
+#: inc/admin/admin-settings-page.php:797
+msgid "Close settings menu"
+msgstr "პარამეტრების მენიუს დახურვა"
+
+#: inc/admin/admin-settings-page.php:875, inc/admin/admin-settings-preview.php:285
+msgid "Preview"
+msgstr "გადახედვა"
+
+#: inc/admin/admin-settings-preview.php:283, inc/admin/admin-settings-preview.php:409, inc/admin/admin-settings-preview.php:409
+msgid "Expand preview"
+msgstr "გადახედვის გაფართოება"
+
+#: inc/admin/admin-settings-preview.php:284
+msgid "Collapse preview"
+msgstr "გადახედვის ჩაკეცვა"
+
+#: inc/admin/admin-settings-preview.php:286, inc/admin/admin-settings-preview.php:486, inc/admin/admin-settings-preview.php:486
+msgid "Show header and footer"
+msgstr "სათაურისა და ქვედა კოლონტიტულის ჩვენება"
+
+#: inc/admin/admin-settings-preview.php:287, inc/admin/admin-settings-preview.php:342
+msgid "Hide header and footer"
+msgstr "სათაურისა და ქვედა კოლონტიტულის დამალვა"
+
+#: inc/admin/admin-settings-preview.php:403, inc/admin/admin-settings-preview.php:536
+msgid "Page preview"
+msgstr "გვერდის გადახედვა"
+
+#: inc/admin/admin-settings-preview.php:429
+msgid "Preview viewport"
+msgstr "გადახედვის ფანჯარა"
+
+#: inc/admin/admin-settings-preview.php:438, inc/admin/admin-settings-preview.php:444
+msgid "Tablet"
+msgstr "პლანშეტი"
+
+#: inc/admin/admin-settings-preview.php:446, inc/admin/admin-settings-preview.php:452
+msgid "Desktop"
+msgstr "სამუშაო მაგიდა"
+
+#: inc/admin/admin-settings-preview.php:456
+msgid "Preview width"
+msgstr "გადახედვის სიგანე"
+
+#: inc/admin/admin-settings-preview.php:461, inc/admin/admin-settings-preview.php:462
+msgid "Decrease width"
+msgstr "სიგანის შემცირება"
+
+#: inc/admin/admin-settings-preview.php:468, inc/admin/admin-settings-preview.php:469
+msgid "Preview width in pixels"
+msgstr "გადახედვის სიგანე პიქსელებში"
+
+#: inc/admin/admin-settings-preview.php:476, inc/admin/admin-settings-preview.php:477
+msgid "Increase width"
+msgstr "სიგანის გაზრდა"
+
+#: inc/admin/admin-settings-preview.php:493
+msgid "Preview as"
+msgstr "გადახედვა, როგორც"
+
+#: inc/admin/admin-settings-preview.php:494, inc/admin/admin-settings-preview.php:496
+msgid "Guest"
+msgstr "სტუმარი"
+
+#: inc/admin/admin-settings-preview.php:498, inc/admin/admin-settings-preview.php:500
+msgid "Logged in"
+msgstr "შესული ხართ"
+
+#: inc/admin/admin-settings-preview.php:513
+msgid "Preview page"
+msgstr "გვერდის გადახედვა"
+
+#: inc/admin/admin-settings-preview.php:531
+msgid "Expand preview for a closer look"
+msgstr "გააფართოვეთ წინასწარი გადახედვა უფრო ახლოს სანახავად"
+
+#: inc/admin/admin-settings-preview.php:580
+#. translators: %s: HTML link to Fluid Checkout PRO pricing page
+msgid "Available with %s."
+msgstr "ხელმისაწვდომია %s-თან ერთად."
+
+#: inc/admin/admin-settings-preview.php:597
+msgid "Turn them on"
+msgstr "ჩართეთ ისინი"
+
+#: inc/admin/admin-settings-preview.php:602
+#. translators: %s: HTML link to the setting that enables the optimizations of the page
+msgid "Optimizations for this page are turned off. %s to preview the page."
+msgstr "ამ გვერდის ოპტიმიზაცია გამორთულია. გვერდის გადახედვისთვის %s."
+
+#: inc/admin/admin-settings-preview.php:636
+#. translators: %s: preview page label, e.g. Checkout
+msgid "%s preview"
+msgstr "%s-ის გადახედვა"
+
+#: inc/admin/admin-settings-preview.php:650
+msgid "Isolated session · nothing is saved"
+msgstr "იზოლირებული სესია · არაფერია შენახული"
+
+#: inc/admin/admin-settings-tools.php:87, inc/admin/admin-settings-tools.php:94
+msgid "Usage tracking"
+msgstr "გამოყენების თვალყურის დევნება"
+
+#: inc/admin/admin-settings-tools.php:89
+msgid ""
+"Send non-sensitive site environment reports to help Fluid Checkout improve "
+"compatibility. Reports are not sent until enabled in the options below."
+msgstr ""
+"Fluid Checkout-ს თავსებადობის გასაუმჯობესებლად საიტის გარემოს არასენსიტიური "
+"ანგარიშების გაგზავნა. ანგარიშები არ იგზავნება ქვემოთ მოცემულ პარამეტრებში "
+"ჩართვის გარეშე."
+
+#: inc/admin/admin-settings-tools.php:95
+msgid "Send usage tracking reports to Fluid Checkout"
+msgstr "გამოყენების თვალთვალის ანგარიშების გაგზავნა Fluid Checkout-ში"
+
+#: inc/admin/admin-settings-tools.php:96
+msgid ""
+"These reports help us improve compatibility and support for your site and "
+"are sent weekly when enabled."
+msgstr ""
+"ეს ანგარიშები გვეხმარება თქვენი საიტის თავსებადობისა და მხარდაჭერის "
+"გაუმჯობესებაში და იგზავნება ყოველკვირეულად, ჩართვის შემთხვევაში."
+
+#: inc/admin/admin-settings-tools.php:97
+msgid ""
+"No customer, admin user, or any other sensitive data is included in the "
+"reports."
+msgstr ""
+"ანგარიშებში არ შედის არცერთი მომხმარებელი, ადმინისტრატორი ან სხვა "
+"მგრძნობიარე მონაცემი."
+
+#: inc/admin/admin-settings-tools.php:105
+msgid "Basic environment info"
+msgstr "გარემოს ძირითადი ინფორმაცია"
+
+#: inc/admin/admin-settings-tools.php:106
+msgid ""
+"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
+"when reporting is enabled. Helps us understand the environment your site is "
+"running in."
+msgstr ""
+"WordPress-ის, PHP-ის, WooCommerce-ის, თემისა და დანამატების სიის "
+"მონაცემები. ყოველთვის შედის, როდესაც ანგარიშგება ჩართულია. გვეხმარება "
+"გავიგოთ, თუ რა გარემოში მუშაობს თქვენი საიტი."
+
+#: inc/admin/admin-settings-tools.php:119
+msgid "Plugin settings"
+msgstr "დანამატის პარამეტრები"
+
+#: inc/admin/admin-settings-tools.php:120
+msgid ""
+"Sends Fluid Checkout plugin settings to help with support requests and "
+"helps us understand how you are using our plugins."
+msgstr ""
+"აგზავნის Fluid Checkout დანამატის პარამეტრებს დახმარების მოთხოვნებთან "
+"დასახმარებლად და გვეხმარება გავიგოთ, თუ როგორ იყენებთ ჩვენს დანამატებს."
+
+#: inc/admin/admin-settings-tools.php:126
+msgid "Coming soon"
+msgstr "მალე"
+
+#: inc/admin/admin-settings-tools.php:134
+msgid "Sales metrics"
+msgstr "გაყიდვების მაჩვენებლები"
+
+#: inc/admin/admin-settings-tools.php:135
+msgid ""
+"Monthly order count and total sales for one year prior to installing Fluid "
+"Checkout up to today. Helps us understand if you are making more money with "
+"our plugins installed. No customer or user data is ever sent."
+msgstr ""
+"ყოველთვიური შეკვეთების რაოდენობა და გაყიდვების ჯამური რაოდენობა Fluid "
+"Checkout-ის ინსტალაციამდე ერთი წლის განმავლობაში დღემდე. გვეხმარება "
+"გავიგოთ, გამოიმუშავებთ თუ არა მეტ ფულს ჩვენი დაინსტალირებული დანამატებით. "
+"მომხმარებლის ან მომხმარებლის მონაცემები არასდროს იგზავნება."
+
+#: inc/admin/admin-settings-tools.php:151
+msgid "Utilities"
+msgstr "კომუნალური მომსახურება"
+
+#: inc/admin/admin-settings-tools.php:159
+msgid ""
+"Use <code>TomSelect</code> dropdown components instead of "
+"<code>select2</code>"
+msgstr ""
+"<code>select2</code> ნაცვლად გამოიყენეთ <code>TomSelect</code> ჩამოსაშლელი "
+"სიის კომპონენტები"
+
+#: inc/admin/admin-settings-tools.php:160
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same functionality."
+msgstr ""
+"TomSelect არის უფრო მარტივი ჩამოსაშლელი სიის შერჩევის კომპონენტი, რომელიც "
+"Select2-თან შედარებით ნაკლებად მიდრეკილია შეცდომებისკენ, თუმცა იგივე "
+"ფუნქციონალურობას გთავაზობთ."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Sets the font size inside form fields to 16px on pages optimized by this "
+"plugin to avoid automatically zooming in when interacting with form fields "
+"on small devices."
+msgstr ""
+"ამ მოდულით ოპტიმიზებულ გვერდებზე ფორმის ველებში შრიფტის ზომას 16 პიქსელზე "
+"აყენებს, რათა თავიდან იქნას აცილებული ავტომატური მასშტაბირება პატარა "
+"მოწყობილობებზე ფორმის ველებთან ურთიერთქმედებისას."
+
+#: inc/admin/admin-settings-tools.php:170
+msgid ""
+"Safari and other browsers might automatically zoom in on mobile devices to "
+"make the text easier to read when the font size is smaller than 16px."
+msgstr ""
+"Safari-მ და სხვა ბრაუზერებმა შეიძლება ავტომატურად გაზარდონ მასშტაბი მობილურ "
+"მოწყობილობებზე, რათა ტექსტი უფრო ადვილად წასაკითხი იყოს, როდესაც შრიფტის "
+"ზომა 16 პიქსელზე ნაკლებია."
+
+#: inc/admin/admin-settings-tools.php:192
+msgid "Enable script processing tracking on the browser console."
+msgstr "ჩართეთ სკრიპტის დამუშავების თვალყურის დევნება ბრაუზერის კონსოლზე."
+
+#: inc/admin/admin-settings-tools.php:199
+msgid "Unminified assets"
+msgstr "არამინიფიცირებული აქტივები"
+
+#: inc/admin/admin-settings-tools.php:212
+msgid "Google Maps scripts"
+msgstr "Google Maps-ის სკრიპტები"
+
+#: inc/admin/admin-settings-tools.php:213
+msgid "Do not remove duplicate Google Maps scripts"
+msgstr "არ წაშალოთ დუბლიკატი Google Maps სკრიპტები"
+
+#: inc/admin/admin-settings-tools.php:214
+msgid ""
+"When enabled, duplicate Google Maps scripts will NOT be removed which can "
+"cause errors and performance issues. Only use this option while "
+"troubleshooting."
+msgstr ""
+"ჩართვის შემთხვევაში, დუბლიკატი Google Maps სკრიპტები არ წაიშლება, რამაც "
+"შეიძლება გამოიწვიოს შეცდომები და მუშაობის პრობლემები. გამოიყენეთ ეს "
+"ვარიანტი მხოლოდ პრობლემების მოგვარებისას."
+
+#: inc/admin/admin-settings-trust-symbols.php:74, inc/admin/admin-settings-trust-symbols.php:113, inc/admin/admin-settings-trust-symbols.php:145, inc/admin/admin-settings-trust-symbols.php:173
+msgid "Widget areas"
+msgstr "ვიჯეტის არეები"
+
+#: inc/admin/admin-settings-trust-symbols.php:83
+msgid "Last step on mobile"
+msgstr "ბოლო ნაბიჯი მობილურზე"
+
+#: inc/admin/admin-settings-trust-symbols.php:84
+msgid "Display widgets only at last step on mobile"
+msgstr "ვიჯეტების ჩვენება მხოლოდ მობილურზე ბოლო ეტაპზე"
+
+#: inc/admin/admin-settings-trust-symbols.php:85
+msgid ""
+"Display checkout trust badge widgets only when viewing the last checkout "
+"step on mobile devices"
+msgstr ""
+"ნდობის სამკერდე ნიშნის ვიჯეტების ჩვენება მხოლოდ მობილურ მოწყობილობებზე ბოლო "
+"შეკვეთის ეტაპის ნახვისას"
+
+#: inc/admin/admin-settings-vat-assistant.php:42
+msgid "Standard"
+msgstr "სტანდარტული"
+
+#: inc/admin/admin-settings-vat-assistant.php:113
+msgid "VAT number field"
+msgstr "დღგ-ს ნომრის ველი"
+
+#: inc/admin/admin-settings-vat-assistant.php:123
+msgid "Add a VAT number field to the billing form."
+msgstr "დაამატეთ დღგ-ს ნომრის ველი ანგარიშსწორების ფორმაში."
+
+#: inc/admin/admin-settings-vat-assistant.php:138
+msgid "Field label"
+msgstr "ველის იარლიყი"
+
+#: inc/admin/admin-settings-vat-assistant.php:140
+msgid ""
+"Set the label of the VAT number field (ie. VAT number). On multi-language "
+"websites, it is better to leave this field empty and translate the original "
+"string."
+msgstr ""
+"დააყენეთ დღგ-ს ნომრის ველის იარლიყი (მაგ. დღგ-ს ნომერი). მრავალენოვან "
+"ვებსაიტებზე უმჯობესია ეს ველი ცარიელი დატოვოთ და ორიგინალი სტრიქონი "
+"თარგმნოთ."
+
+#: inc/admin/admin-settings-vat-assistant.php:144
+msgid "VAT Number"
+msgstr "დღგ-ს ნომერი"
+
+#: inc/admin/admin-settings-vat-assistant.php:160
+msgid "EU-VAT"
+msgstr "ევროკავშირის დღგ"
+
+#: inc/admin/admin-settings-vat-assistant.php:170
+msgid "Enable the VAT number field to see more options"
+msgstr "მეტი ვარიანტის სანახავად ჩართეთ დღგ-ს ნომრის ველი"
+
+#: inc/admin/admin-settings-vat-assistant.php:181
+msgid "VAT validation"
+msgstr "დღგ-ს ვალიდაცია"
+
+#: inc/admin/admin-settings-vat-assistant.php:182
+msgid "Validate VAT number field for EU-VAT during checkout"
+msgstr "შეკვეთის გაფორმებისას დაადასტურეთ დღგ-ს ნომრის ველი ევროკავშირის დღგ-სთვის"
+
+#: inc/admin/admin-settings-vat-assistant.php:183
+msgid ""
+"Checks if the VAT Number provided is a valid VAT number registered on the "
+"European VIES Database (VAT Information Exchange System)."
+msgstr ""
+"ამოწმებს, არის თუ არა მოწოდებული დღგ-ს ნომერი ევროპულ VIES მონაცემთა ბაზაში "
+"(დღგ-ს ინფორმაციის გაცვლის სისტემა) რეგისტრირებული მოქმედი დღგ-ს ნომერი."
+
+#: inc/admin/admin-settings-vat-assistant.php:197
+msgid "Shop VAT number"
+msgstr "მაღაზიის დღგ-ს ნომერი"
+
+#: inc/admin/admin-settings-vat-assistant.php:198
+msgid ""
+"The shop's VAT number used for requesting EU-VAT validation, and printed on "
+"invoices. <br><strong>We strongly recommend adding your Shop VAT "
+"number</strong> as otherwise the VIES consultation results might not be "
+"valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or "
+"<code>EE999999999</code>."
+msgstr ""
+"მაღაზიის დღგ-ს ნომერი, რომელიც გამოიყენება ევროკავშირის დღგ-ს დადასტურების "
+"მოთხოვნისთვის და დაბეჭდილია ინვოისებზე.<br> <strong>გირჩევთ, დაამატოთ "
+"თქვენი მაღაზიის დღგ-ს ნომერი,</strong> რადგან წინააღმდეგ შემთხვევაში, VIES "
+"კონსულტაციის შედეგები შესაძლოა ბუღალტრული აღრიცხვის მიზნებისთვის არ იყოს "
+"ვალიდური.<br> ანუ: <code>ATU99999999</code> ან <code>EE999999999</code> ."
+
+#: inc/admin/admin-settings-vat-assistant.php:212, inc/admin/admin-settings-vat-assistant.php:267
+msgid "Reverse charge"
+msgstr "უკუ დატვირთვა"
+
+#: inc/admin/admin-settings-vat-assistant.php:213
+msgid "Apply reverse charge mechanism"
+msgstr "გამოიყენეთ საპირისპირო დატენვის მექანიზმი"
+
+#: inc/admin/admin-settings-vat-assistant.php:214
+msgid ""
+"Set tax rate to zero and display \"Reverse charge\" on invoices when the "
+"customer's VAT number is valid. A different \"Reverse charge\" text might "
+"be required depending on the store's country."
+msgstr ""
+"დააყენეთ გადასახადის განაკვეთი ნულზე და ინვოისებზე აჩვენეთ წარწერა "
+"„უკუდარიცხვა“, როდესაც მომხმარებლის დღგ-ს ნომერი ძალაშია. მაღაზიის ქვეყნის "
+"მიხედვით, შესაძლოა საჭირო გახდეს განსხვავებული ტექსტი „უკუდარიცხვა“."
+
+#: inc/admin/admin-settings-vat-assistant.php:228
+msgid "Same country"
+msgstr "იგივე ქვეყანა"
+
+#: inc/admin/admin-settings-vat-assistant.php:229
+msgid "Apply reverse charge mechanism for transactions in the shop country:"
+msgstr "მაღაზიის ქვეყანაში ტრანზაქციებისთვის გამოიყენეთ უკუდაბეგვრის მექანიზმი:"
+
+#: inc/admin/admin-settings-vat-assistant.php:230
+msgid ""
+"Enables applying reverse charge mechanism for transactions between "
+"companies in the same country as the shop."
+msgstr ""
+"საშუალებას იძლევა, მაღაზიასთან ერთად იმავე ქვეყანაში მყოფ კომპანიებს შორის "
+"ტრანზაქციებისთვის უკუდაბეგვრის მექანიზმი იქნას გამოყენებული."
+
+#: inc/admin/admin-settings-vat-assistant.php:244
+msgid "Reverse charge exceptions"
+msgstr "უკუდაბეგვრის გამონაკლისები"
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid "Select additional countries to skip applying the reverse charge mechanism."
+msgstr ""
+"უკუდაბეგვრის მექანიზმის გამოყენების გამოტოვებისთვის აირჩიეთ დამატებითი "
+"ქვეყნები."
+
+#: inc/admin/admin-settings-vat-assistant.php:246
+msgid ""
+"Taxes will be charged to orders from these countries even when a valid VAT "
+"number is provided."
+msgstr ""
+"ამ ქვეყნებიდან შეკვეთებზე გადასახადები დაწესდება მაშინაც კი, თუ მითითებული "
+"იქნება მოქმედი დღგ-ს ნომერი."
+
+#: inc/admin/admin-settings-vat-assistant.php:261
+msgid "Reverse charge label on invoices"
+msgstr "ინვოისებზე უკუანგარიშსწორების ეტიკეტი"
+
+#: inc/admin/admin-settings-vat-assistant.php:263
+msgid "Set the label of \"reverse charge\" on the checkout page and order details."
+msgstr "განათავსეთ „უკუდარიცხვის“ ეტიკეტი შეკვეთის გვერდზე და შეკვეთის დეტალებზე."
+
+#: inc/admin/admin-settings-vat-assistant.php:278
+msgid "Reverse charge text on invoices"
+msgstr "ინვოისებზე უკუანგარიშსწორების ტექსტი"
+
+#: inc/admin/admin-settings-vat-assistant.php:280
+msgid "Set the label of \"reverse charge\" text on invoices."
+msgstr "ინვოისებზე დააყენეთ „უკუდარიცხვის“ ტექსტის წარწერა."
+
+#: inc/admin/admin-settings-vat-assistant.php:284
+msgid "Tax to be paid on reverse charge basis"
+msgstr "უკუდაბეგვრის საფუძველზე გადასახდელი გადასახადი"
+
+#: inc/admin/admin-settings-vat-assistant.php:295
+msgid "Company name"
+msgstr "კომპანიის სახელი"
+
+#: inc/admin/admin-settings-vat-assistant.php:296
+msgid "Autocomplete company name from VAT number"
+msgstr "კომპანიის სახელის ავტომატური შევსება დღგ-ს ნომრიდან"
+
+#: inc/admin/admin-settings-vat-assistant.php:297
+msgid ""
+"Fill in the billing company name based on the valid VAT number provided by "
+"the customer."
+msgstr ""
+"შეავსეთ გადამხდელი კომპანიის დასახელება მომხმარებლის მიერ მოწოდებული "
+"მოქმედი დღგ-ს ნომრის მიხედვით."
+
+#: inc/admin/admin-settings-vat-assistant.php:310
+msgid "Company name editing"
+msgstr "კომპანიის სახელწოდების რედაქტირება"
+
+#: inc/admin/admin-settings-vat-assistant.php:311
+msgid "Allow editing of auto-filled company name"
+msgstr "ავტომატურად შევსებული კომპანიის სახელის რედაქტირების დაშვება"
+
+#: inc/admin/admin-settings-vat-assistant.php:312
+msgid ""
+"When enabled, customers can change the company name associated with the "
+"provided VAT number."
+msgstr ""
+"ჩართვის შემთხვევაში, მომხმარებლებს შეუძლიათ შეცვალონ მოწოდებულ დღგ-ს "
+"ნომერთან დაკავშირებული კომპანიის სახელი."
+
+#: inc/admin/admin-settings-vat-assistant.php:331
+msgid "EU-VAT for digital goods"
+msgstr "ევროკავშირის დღგ ციფრული საქონლისთვის"
+
+#: inc/admin/admin-settings-vat-assistant.php:333
+msgid ""
+"From January 1st, 2015, modifications have been made to the EU VAT "
+"regulations concerning digital goods, impacting exclusively B2C "
+"transactions. The VAT on digital goods must be calculated based on the "
+"customer's location, and evidence of this needs to be collected (IP address "
+"and billing address)."
+msgstr ""
+"2015 წლის 1 იანვრიდან, ციფრული საქონლის შესახებ ევროკავშირის დღგ-ს "
+"რეგულაციებში ცვლილებები შევიდა, რაც მხოლოდ B2C ტრანზაქციებზე მოქმედებს. "
+"ციფრულ საქონელზე დღგ უნდა გამოითვალოს მომხმარებლის მდებარეობის მიხედვით და "
+"ამის დამადასტურებელი საბუთის წარდგენა აუცილებელია (IP მისამართი და გადახდის "
+"მისამართი)."
+
+#: inc/admin/admin-settings-vat-assistant.php:339
+msgid "Tax classes for digital goods"
+msgstr "ციფრული საქონლის საგადასახადო კლასები"
+
+#: inc/admin/admin-settings-vat-assistant.php:347
+msgid "Select some tax classes"
+msgstr "აირჩიეთ რამდენიმე საგადასახადო კლასი"
+
+#: inc/admin/admin-settings-vat-assistant.php:354
+msgid "Location evidence"
+msgstr "ადგილმდებარეობის მტკიცებულება"
+
+#: inc/admin/admin-settings-vat-assistant.php:355
+msgid "Collect customer's location evidence"
+msgstr "შეაგროვეთ მომხმარებლის ადგილმდებარეობის დამადასტურებელი საბუთები"
+
+#: inc/admin/admin-settings-vat-assistant.php:356
+msgid ""
+"Saves the IP address and validate it against the customer's billing "
+"address. Customer's must confirm their billing address by checking a "
+"checkbox on the checkout page if the country from their billing address and "
+"IP do not match."
+msgstr ""
+"ინახავს IP მისამართს და ამოწმებს მას მომხმარებლის გადახდის მისამართთან. თუ "
+"მათი გადახდის მისამართიდან მითითებული ქვეყანა და IP მისამართი არ ემთხვევა, "
+"მომხმარებელმა უნდა დაადასტუროს თავისი გადახდის მისამართი გადახდის გვერდზე "
+"შესაბამისი ველის მონიშვნით."
+
+#: inc/admin/admin-settings-wc-accounts.php:56
+#. translators: %s: URL to the Fluid Checkout Customer accounts settings page.
+msgid ""
+"This option is managed in Fluid Checkout. <a href=\"%s\">Change it in "
+"Customer accounts settings</a>."
+msgstr ""
+"ეს პარამეტრი იმართება Fluid Checkout-ში. <a href=\"%s\">შეცვალეთ ის "
+"მომხმარებლის ანგარიშების პარამეტრებში</a> ."
+
+#: inc/admin/admin-settings-wc-accounts.php:59
+msgid ""
+"This option is managed in Fluid Checkout. Change it under Fluid Checkout > "
+"Customer accounts."
+msgstr ""
+"ეს პარამეტრი იმართება Fluid Checkout-ში. შეცვალეთ ის Fluid Checkout &gt; "
+"მომხმარებლის ანგარიშებში."
+
+#: inc/admin/admin-settings-wc-shipping.php:36
+#. translators: %s: URL to the Fluid Checkout checkout settings page.
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available in the <a "
+"href=\"%s\">Fluid Checkout settings</a>."
+msgstr ""
+"ეს პარამეტრი იმართება Fluid Checkout-ში. Fluid Checkout-ის გააქტიურების "
+"შემთხვევაში, მიწოდების დანიშნულების ადგილი ყოველთვის დაყენებულია "
+"„მომხმარებლის მიწოდების ნაგულისხმევ მისამართზე“. მომხმარებლებს კვლავ "
+"შეუძლიათ მიუთითონ სხვადასხვა მიწოდების და გადახდის მისამართები შეკვეთის "
+"გაფორმებისას.<br><br> <a href=\"%s\">Fluid Checkout-ის პარამეტრებში</a> "
+"ხელმისაწვდომია ნაგულისხმევი გადახდის მისამართის მიწოდების მისამართის "
+"იდენტურად დაყენების ვარიანტი."
+
+#: inc/admin/admin-settings-wc-shipping.php:39
+msgid ""
+"This option is managed in Fluid Checkout. The shipping destination is "
+"always set to \"Default to customer shipping address\" when Fluid Checkout "
+"is activated. Customers can still provide different shipping and billing "
+"addresses during checkout.<br><br>An option for setting the default billing "
+"address to be the same as the shipping address is available at WooCommerce "
+"> Settings > Fluid Checkout."
+msgstr ""
+"ეს პარამეტრი იმართება Fluid Checkout-ში. Fluid Checkout-ის გააქტიურებისას, "
+"მიწოდების დანიშნულების ადგილი ყოველთვის დაყენებულია „მომხმარებლის მიწოდების "
+"ნაგულისხმევ მისამართზე“. მომხმარებლებს კვლავ შეუძლიათ მიუთითონ სხვადასხვა "
+"მიწოდების და გადახდის მისამართები შეკვეთის გაფორმებისას.<br><br> "
+"ნაგულისხმევი გადახდის მისამართის მიწოდების მისამართის იდენტურად დაყენების "
+"ვარიანტი ხელმისაწვდომია WooCommerce &gt; პარამეტრები &gt; Fluid Checkout-ში."
+
+#: inc/admin/admin-tab-fluid-checkout.php:104
+msgid "These settings have been moved to WP Admin > Fluid Checkout > Settings."
+msgstr "ეს პარამეტრები გადატანილია WP Admin &gt; Fluid Checkout &gt; Settings-ში."
+
+#: inc/admin/admin-tab-fluid-checkout.php:105
+msgid ""
+"This WooCommerce Settings tab is deprecated and will be removed in Fluid "
+"Checkout 6.0."
+msgstr ""
+"WooCommerce-ის პარამეტრების ეს ჩანართი მოძველებულია და Fluid Checkout "
+"6.0-ში წაიშლება."
+
+#: inc/admin/admin-tab-fluid-checkout.php:107
+msgid "Go to settings page"
+msgstr "გადადით პარამეტრების გვერდზე"
+
+#: inc/admin/admin-tab-fluid-checkout.php:108
+msgid "Hide this tab permanently"
+msgstr "ამ ჩანართის სამუდამოდ დამალვა"
+
+#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
+msgid "Site report preview"
+msgstr "საიტის ანგარიშის გადახედვა"
+
+#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
+msgid ""
+"This is the data that would be included in the next site environment report "
+"based on your current settings."
+msgstr ""
+"ეს არის მონაცემები, რომლებიც თქვენი მიმდინარე პარამეტრების მიხედვით შევა "
+"საიტის გარემოს შემდეგ ანგარიშში."
+
+#: inc/admin/admin-telemetry.php:62
+msgid "Loading report preview..."
+msgstr "ანგარიშის გადახედვის ჩატვირთვა..."
+
+#: inc/admin/admin-telemetry.php:63
+msgid "Could not load the site report preview. Try again."
+msgstr "საიტის ანგარიშის გადახედვის ჩატვირთვა ვერ მოხერხდა. სცადეთ ხელახლა."
+
+#: inc/admin/admin-telemetry.php:64
+msgid "Could not send the site report. Try again."
+msgstr "საიტის ანგარიშის გაგზავნა ვერ მოხერხდა. სცადეთ ხელახლა."
+
+#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
+msgid "Site report sent successfully."
+msgstr "საიტის ანგარიში წარმატებით გაიგზავნა."
+
+#: inc/admin/admin-telemetry.php:67
+msgid "Enable and send now"
+msgstr "ჩართეთ და გაგზავნეთ ახლავე"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
+msgid "Close"
+msgstr "დახურვა"
+
+#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
+msgid "A site report request is already in progress. Try again in a moment."
+msgstr ""
+"საიტის შესახებ შეტყობინების მოთხოვნა უკვე მიმდინარეობს. სცადეთ ხელახლა ცოტა "
+"ხანში."
+
+#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
+msgid "Site environment reporting is disabled."
+msgstr "საიტის გარემოს შესახებ ანგარიშგება გამორთულია."
+
+#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
+msgid "No site report data is available to send."
+msgstr "საიტის ანგარიშის მონაცემები გასაგზავნად მიუწვდომელია."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
+msgid ""
+"This site domain cannot send environment reports (local or development "
+"domains are excluded)."
+msgstr ""
+"ამ საიტის დომენს არ შეუძლია გარემოსდაცვითი ანგარიშების გაგზავნა "
+"(გამორიცხულია ადგილობრივი ან განვითარების დომენები)."
+
+#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
+msgid "A site report was sent recently. Try again later."
+msgstr "საიტის შესახებ ანგარიში ცოტა ხნის წინ გაიგზავნა. სცადეთ მოგვიანებით."
+
+#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
+msgid "The site report could not be sent. Try again later."
+msgstr "საიტის ანგარიშის გაგზავნა ვერ მოხერხდა. სცადეთ მოგვიანებით."
+
+#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
+msgid "Site environment reporting is not available."
+msgstr "საიტის გარემოს შესახებ ანგარიშგება მიუწვდომელია."
+
+#: inc/admin/admin-telemetry.php:136
+msgid "No site report data is available for the selected settings."
+msgstr "არჩეული პარამეტრებისთვის საიტის ანგარიშის მონაცემები მიუწვდომელია."
+
+#: inc/admin/admin-telemetry.php:213
+msgid "You are not allowed to manage site reports."
+msgstr "საიტის ანგარიშების მართვის უფლება არ გაქვთ."
+
+#: inc/admin/admin.php:309
+msgid "PRO feature"
+msgstr "PRO ფუნქცია"
+
+#: inc/admin/admin.php:350
+msgid "Other plugins"
+msgstr "სხვა დანამატები"
+
+#: inc/admin/admin.php:363
+#. translators: %s: formatted price including currency, e.g. "29 EUR"
+msgid "Get only this add-on &mdash; %s"
+msgstr "მხოლოდ ამ დანამატის მიღება — %s"
+
+#: inc/admin/admin.php:372
+msgid "Install add-on"
+msgstr "დანამატის ინსტალაცია"
+
+#: inc/admin/admin.php:382
+#. translators: %s: formatted price including currency, e.g. "129 EUR"
+msgid "Upgrade to PRO &mdash; %s"
+msgstr "განაახლეთ PRO-ზე — %s"
+
+#: inc/admin/admin.php:459
+#. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+msgid "<a target=\"_blank\" href=\"%1$s\">Get %2$s</a> to unlock these options."
+msgstr ""
+"ამ ვარიანტების განსაბლოკად <a target=\"_blank\" href=\"%1$s\">მიიღეთ "
+"%2$s</a> ."
+
+#: inc/admin/admin.php:461
+msgid "Add-on"
+msgstr "დამატება"
+
+#: inc/admin/admin.php:514
+msgid "View documentation"
+msgstr "დოკუმენტაციის ნახვა"
+
+#: inc/rest-api/documentation.php:301
+msgid ""
+"Requests require a logged-in WordPress user. Omit user_id to use the "
+"current user's data, or pass user_id to target another account when the "
+"caller can edit that user (edit_user capability). Unauthenticated requests "
+"return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found."
+msgstr ""
+"მოთხოვნებისთვის საჭიროა შესული WordPress მომხმარებელი. გამოტოვეთ user_id "
+"მიმდინარე მომხმარებლის მონაცემების გამოსაყენებლად, ან გადაეცით user_id სხვა "
+"ანგარიშის სამიზნედ, როდესაც აბონენტს შეუძლია ამ მომხმარებლის რედაქტირება "
+"(edit_user შესაძლებლობა). არაავტორიზებული მოთხოვნები აბრუნებს "
+"fc_api_forbidden-ს. არასწორი user_id აბრუნებს fc_api_user_not_found-ს."
+
+#: inc/rest-api/documentation.php:316
+msgid "HTTP 200 with { \"data\": { ... } } when the handler returns a payload."
+msgstr ""
+"HTTP 200 { &quot;მონაცემები&quot;: { ... } }-ით, როდესაც დამმუშავებელი "
+"აბრუნებს დატვირთვას."
+
+#: inc/rest-api/documentation.php:317
+msgid ""
+"HTTP 200 with { \"success\": true } when there is no payload (for example "
+"DELETE)."
+msgstr ""
+"HTTP 200 { &quot;success&quot;: true }-ით, როდესაც დატვირთვა არ არის "
+"(მაგალითად, DELETE)."
+
+#: inc/rest-api/documentation.php:318
+msgid ""
+"Failures return WordPress REST error JSON from WP_Error (code, message, "
+"data.status). Wire codes use the fc_api_* prefix."
+msgstr ""
+"წარუმატებლობის შემთხვევაში, WP_Error-დან (კოდი, შეტყობინება, "
+"მონაცემები.სტატუს) ბრუნდება WordPress REST შეცდომა JSON. სადენიანი კოდები "
+"იყენებენ fc_api_* პრეფიქსს."
+
+#: inc/rest-api/errors.php:65
+msgid "Forbidden access."
+msgstr "აკრძალული წვდომა."
+
+#: inc/rest-api/errors.php:69
+msgid "Target user was not found."
+msgstr "სამიზნე მომხმარებელი ვერ მოიძებნა."
+
+#: inc/rest-api/errors.php:73
+msgid "This feature is not available."
+msgstr "ეს ფუნქცია მიუწვდომელია."
+
+#: inc/rest-api/errors.php:77
+msgid "A required address field is missing."
+msgstr "მისამართის სავალდებულო ველი აკლია."
+
+#: inc/rest-api/errors.php:81
+msgid "Postcode or ZIP is invalid."
+msgstr "საფოსტო ინდექსი არასწორია."
+
+#: inc/rest-api/errors.php:85
+msgid "Phone number is invalid."
+msgstr "ტელეფონის ნომერი არასწორია."
+
+#: inc/rest-api/errors.php:89
+msgid "State or county is invalid."
+msgstr "შტატი ან ოლქი არასწორია."
+
+#: inc/rest-api/errors.php:93
+msgid "Country is invalid or has no address fields."
+msgstr "ქვეყანა არასწორია ან მისამართის ველები არ აქვს."
+
+#: inc/rest-api/errors.php:97
+msgid "The request could not be processed."
+msgstr "მოთხოვნის დამუშავება ვერ მოხერხდა."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:504, inc/admin/guided-setup/abstract-guided-setup.php:618
+msgid "Back to previous step"
+msgstr "წინა ნაბიჯზე დაბრუნება"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:533, inc/admin/guided-setup/abstract-guided-setup.php:533
+msgid "Skip to settings"
+msgstr "გადასვლა პარამეტრებზე"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over and return to the first guided setup step"
+msgstr "დაიწყეთ თავიდან და დაუბრუნდით პირველ ინსტრუქციას დაყენების ეტაპზე"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:567
+msgid "Start over"
+msgstr "თავიდან დაწყება"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:612
+msgid "Please complete all sub-steps before continuing."
+msgstr "გთხოვთ, გაგრძელებამდე დაასრულოთ ყველა ქვენაბიჯი."
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:613, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Expand"
+msgstr "გაფართოება"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:614, inc/admin/guided-setup/abstract-guided-setup.php:1203
+msgid "Collapse"
+msgstr "ჩაკეცვა"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:615, inc/admin/guided-setup/abstract-guided-setup.php:1198
+msgid "Skip"
+msgstr "გამოტოვება"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:616, inc/admin/guided-setup/abstract-guided-setup.php:1243
+msgid "Mark as complete"
+msgstr "დასრულებულად მონიშვნა"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:617, inc/admin/guided-setup/abstract-guided-setup.php:1249
+msgid "Mark as incomplete"
+msgstr "არასრულად მონიშვნა"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1054
+#. translators: %s: image description.
+msgid "View full-size image: %s"
+msgstr "სრული ზომის სურათის ნახვა: %s"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1086
+msgid "Full-size setup guide image"
+msgstr "სრული ზომის დაყენების სახელმძღვანელოს სურათი"
+
+#: inc/admin/guided-setup/abstract-guided-setup.php:1087
+msgid "Close image"
+msgstr "სურათის დახურვა"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:56
+msgid "Fluid Checkout Guided Setup"
+msgstr "სითხის შემოწმების მართვადი დაყენება"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
+msgid "Welcome"
+msgstr "კეთილი იყოს თქვენი მობრძანება"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Explore your checkout"
+msgstr "გაეცანით თქვენს გადახდის პროცესს"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
+msgid "All set"
+msgstr "ყველაფერი მზადაა"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:319
+msgid "You do not have permission to access this page."
+msgstr "თქვენ არ გაქვთ ამ გვერდზე წვდომის ნებართვა."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:369
+#. translators: %1$d: step number, %2$s: step name
+msgid "Go to step %1$d: %2$s"
+msgstr "გადასვლა ნაბიჯ %1$d-ზე: %2$s"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
+msgid ""
+"This guided setup helps you get familiar with Fluid Checkout. The steps "
+"below are placeholders for now."
+msgstr ""
+"ეს ინსტრუქციული დაყენება დაგეხმარებათ Fluid Checkout-ის გაცნობაში. ქვემოთ "
+"მოცემული ნაბიჯები ამჟამად ჩანაცვლებითია."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
+msgid "Continue to the next step when you are ready."
+msgstr "გააგრძელეთ შემდეგ ეტაპზე, როდესაც მზად იქნებით."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Open your store checkout to see Fluid Checkout in action."
+msgstr "გახსენით თქვენი მაღაზიის სალარო, რომ ნახოთ Fluid Checkout-ის მოქმედებაში."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "View checkout page"
+msgstr "გადახდის გვერდის ნახვა"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
+msgid ""
+"You can return to Fluid Checkout settings to continue configuring your "
+"store."
+msgstr ""
+"მაღაზიის კონფიგურაციის გასაგრძელებლად, შეგიძლიათ დაბრუნდეთ Fluid "
+"Checkout-ის პარამეტრებში."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
+msgid "Review checkout and cart settings"
+msgstr "გადახედეთ შეკვეთის გაფორმებას და კალათის პარამეტრებს"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
+msgid "Explore add-ons from the dashboard"
+msgstr "დაფიდან დამატებების დათვალიერება"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
+msgid "Finish & go to settings"
+msgstr "დასრულება და პარამეტრებში გადასვლა"
+
+#: inc/admin/migrations/migration-3.0.5.php:25
+msgid ""
+"Update the billing phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"განაახლეთ გადახდის ტელეფონის ველის ხილვადობის პარამეტრი მემკვიდრეობით "
+"მიღებული მნიშვნელობიდან, რათა შეესაბამებოდეს WooCommerce კონვენციებს."
+
+#: inc/admin/migrations/migration-4.2.5.php:25
+msgid ""
+"Update the shipping phone field visibility option from the legacy value to "
+"match WooCommerce conventions."
+msgstr ""
+"განაახლეთ მიწოდების ტელეფონის ველის ხილვადობის პარამეტრი მემკვიდრეობით "
+"მიღებული მნიშვნელობიდან, რათა შეესაბამებოდეს WooCommerce-ის კონვენციებს."
+
+#: inc/admin/migrations/migration-4.3.0.php:25
+msgid ""
+"Copy the order summary background color setting to the new Split design "
+"secondary column background color option."
+msgstr ""
+"შეკვეთის შეჯამების ფონის ფერის პარამეტრი დააკოპირეთ ახალ „დიზაინის გაყოფის "
+"მეორადი სვეტის ფონის ფერის“ ვარიანტში."
+
+#: inc/compat/plugins/compat-plugin-biteship.php:61
+msgid ""
+"The enhanced select fields feature is always disabled when using the "
+"Biteship plugin."
+msgstr ""
+"Biteship დანამატის გამოყენებისას გაუმჯობესებული შერჩევის ველების ფუნქცია "
+"ყოველთვის გამორთულია."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-german-market.php:112
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using German Market. That plugin requires the place order button and legal "
+"checkboxes to be displayed below the order summary."
+msgstr ""
+"German Market-ის გამოყენებისას შეკვეთის განთავსების პოზიცია ყოველთვის "
+"დაყენებულია „შეკვეთის შეჯამების ქვემოთ“. ამ მოდულისთვის საჭიროა შეკვეთის "
+"განთავსების ღილაკის და იურიდიული ველების ჩვენება შეკვეთის შეჯამების ქვემოთ."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:243
+msgid ""
+"The place order position is always set to \"Below the order summary\" when "
+"using Germanized for WooCommerce. That plugin requires the place order "
+"button and legal checkboxes to be displayed below the order summary."
+msgstr ""
+"WooCommerce-ისთვის Germanized-ის გამოყენებისას, შეკვეთის განთავსების "
+"პოზიცია ყოველთვის დაყენებულია „შეკვეთის შეჯამების ქვემოთ“. ამ მოდულისთვის "
+"საჭიროა შეკვეთის განთავსების ღილაკის და იურიდიული ველების ჩვენება შეკვეთის "
+"შეჯამების ქვემოთ."
+
+#: inc/admin/admin-settings-local-pickup.php:95
+msgid "Edit pickup locations"
+msgstr "აყვანის ადგილების რედაქტირება"
+
+#: inc/admin/admin-settings-local-pickup.php:132
+msgid "Use local pickup label from WooCommerce settings"
+msgstr "გამოიყენეთ ადგილობრივი აღების ეტიკეტი WooCommerce-ის პარამეტრებიდან"
+
+#: inc/admin/admin-settings-local-pickup.php:133
+msgid ""
+"When enabled, the pickup option label on checkout matches the title from "
+"WooCommerce pickup location settings. When disabled, the label uses the "
+"translatable \"Local pickup\" text from Fluid Checkout."
+msgstr ""
+"ჩართვის შემთხვევაში, შეკვეთისას აღების ვარიანტის ეტიკეტი ემთხვევა "
+"WooCommerce-ის აღების ადგილმდებარეობის პარამეტრების სათაურს. გამორთვის "
+"შემთხვევაში, ეტიკეტი იყენებს Fluid Checkout-დან თარგმნად ტექსტს "
+"„ადგილობრივი აღება“."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2798,3 +4770,115 @@ msgstr "დიახ"
 msgctxt "Substep review checkbox line"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#: inc/admin/admin-preview-dummy-data.php:115
+msgctxt "Dummy customer first name in the admin preview"
+msgid "John"
+msgstr "ჯონი"
+
+#: inc/admin/admin-preview-dummy-data.php:116
+msgctxt "Dummy customer last name in the admin preview"
+msgid "Doe"
+msgstr "დოუ"
+
+#: inc/admin/admin-preview-dummy-data.php:126
+msgctxt "Dummy customer company in the admin preview"
+msgid "Example Company"
+msgstr "მაგალითი კომპანია"
+
+#: inc/admin/admin-preview-dummy-data.php:173
+msgctxt "Dummy customer street address in the admin preview"
+msgid "123 Main Street"
+msgstr "მეინ სტრიტი 123"
+
+#: inc/admin/admin-preview-dummy-data.php:175
+msgctxt "Dummy customer city in the admin preview"
+msgid "Anytown"
+msgstr "ნებისმიერი ქალაქი"
+
+#: inc/admin/admin-preview-dummy-data.php:283
+msgctxt "Dummy order notes in the admin preview"
+msgid "Please leave the package at the front door."
+msgstr "გთხოვთ, პაკეტი წინა კართან დატოვოთ."
+
+#: inc/admin/admin-preview-dummy-data.php:314
+msgctxt "Dummy product name in the admin preview"
+msgid "Beanie"
+msgstr "ქუდი"
+
+#: inc/admin/admin-preview-dummy-data.php:315
+msgctxt "Dummy product name in the admin preview"
+msgid "Cap"
+msgstr "ქუდი"
+
+#: inc/admin/admin-preview-dummy-data.php:316
+msgctxt "Dummy product name in the admin preview"
+msgid "T-Shirt"
+msgstr "მაისური"
+
+#: inc/admin/admin-preview-dummy-data.php:448
+msgctxt "Dummy order update in the admin preview"
+msgid "We received your order and will send you an update when it ships."
+msgstr ""
+"ჩვენ მივიღეთ თქვენი შეკვეთა და გამოგზავნისთანავე გამოგიგზავნით განახლებულ "
+"ინფორმაციას."
+
+#: inc/admin/admin-preview-dummy-data.php:473
+msgctxt "Dummy download in the admin preview"
+msgid "User guide"
+msgstr "მომხმარებლის სახელმძღვანელო"
+
+#: inc/admin/admin-settings-address-autocomplete.php:69
+msgctxt "Google Places API versions"
+msgid "Places API (New)"
+msgstr "ადგილების API (ახალი)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:70
+msgctxt "Google Places API versions"
+msgid "Places API (Legacy)"
+msgstr "ადგილების API (Legacy)"
+
+#: inc/admin/admin-settings-address-autocomplete.php:253
+msgctxt "Brasil API versions"
+msgid "Version 1"
+msgstr "ვერსია 1"
+
+#: inc/admin/admin-settings-address-autocomplete.php:254
+msgctxt "Brasil API versions"
+msgid "Version 2"
+msgstr "ვერსია 2"
+
+#: inc/admin/admin-settings-customer-accounts.php:264
+msgctxt "Delayed account creation benefits placeholder text"
+msgid ""
+"✔ Checkout faster next time\n"
+"✔ Manage your payment preferences\n"
+"✔ View order status and history"
+msgstr ""
+"✔ შემდეგ ჯერზე უფრო სწრაფად განახორციელეთ გადახდა ✔ მართეთ თქვენი გადახდის "
+"პარამეტრები ✔ ნახეთ შეკვეთის სტატუსი და ისტორია"
+
+#: inc/admin/admin-settings-vat-assistant.php:127
+msgctxt "VAT number field visibility"
+msgid "Hidden"
+msgstr "დამალული"
+
+#: inc/admin/admin-settings-vat-assistant.php:128
+msgctxt "VAT number field visibility"
+msgid "Optional"
+msgstr "არასავალდებულო"
+
+#: inc/admin/admin-settings-vat-assistant.php:129
+msgctxt "VAT number field visibility"
+msgid "Required"
+msgstr "სავალდებულო"
+
+#: inc/admin/admin-settings-local-pickup.php:117
+msgctxt "Delivery type"
+msgid "Shipping to address"
+msgstr "მიწოდება მისამართზე"
+
+#: inc/admin/admin-settings-local-pickup.php:118
+msgctxt "Delivery type"
+msgid "Local pickup"
+msgstr "ადგილობრივი აღება"
