@@ -47,13 +47,13 @@
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
 }
-.fc-wrapper .fc-step__substep:first-of-type {
+.fc-wrapper .fc-step__substep[data-substep-first] {
 	@media (#{$bp-larger-than-tablet}) {
 		border-top-#{ $alignment-left }-radius: $checkout-substep-border-radius;
 		border-top-#{ $alignment-right }-radius: $checkout-substep-border-radius;
 	}
 }
-.fc-wrapper .fc-step__substep:last-of-type {
+.fc-wrapper .fc-step__substep[data-substep-last] {
 	@media (#{$bp-larger-than-tablet}) {
 		border-bottom-#{ $alignment-left }-radius: $checkout-substep-border-radius;
 		border-bottom-#{ $alignment-right }-radius: $checkout-substep-border-radius;
@@ -129,7 +129,7 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 .has-checkout-layout--multi-step .fc-checkout-step[data-step-complete] {
 	margin: 0 0 remsize( -.1rem ); // Prevent double borders
 }
-.has-checkout-layout--multi-step .fc-checkout-step .fc-step__substep:first-of-type {
+.has-checkout-layout--multi-step .fc-checkout-step .fc-step__substep[data-substep-first] {
 	margin-top: 0;
 	border-top: 0;
 }
