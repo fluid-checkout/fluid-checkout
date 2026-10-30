@@ -1079,22 +1079,34 @@
 	 *
 	 * @return  Object
 	 */
+	var normalizeFormFieldKey = function( key ) {
+		if ( key.length > 2 && '[]' === key.slice( -2 ) ) {
+			return key.slice( 0, -2 );
+		}
+
+		return key;
+	};
+
+
+
 	var serializeFormData = function( form ) {
 		var formData = new FormData( form );
 		var data = { };
 
 		// Iterate through form fields and build a plain object
 		formData.forEach( function( value, key ) {
+			var dataKey = normalizeFormFieldKey( key );
+
 			// Maybe convert duplicate keys to arrays
-			if ( Object.prototype.hasOwnProperty.call( data, key ) ) {
-				if ( ! Array.isArray( data[ key ] ) ) {
-					data[ key ] = [ data[ key ] ];
+			if ( Object.prototype.hasOwnProperty.call( data, dataKey ) ) {
+				if ( ! Array.isArray( data[ dataKey ] ) ) {
+					data[ dataKey ] = [ data[ dataKey ] ];
 				}
 
-				data[ key ].push( value );
+				data[ dataKey ].push( value );
 			}
 			else {
-				data[ key ] = value;
+				data[ dataKey ] = value;
 			}
 		} );
 
@@ -1460,6 +1472,14 @@
 					}
 
 					return;
+				}
+
+				if ( response.data && response.data.maxReachedStepIndex !== undefined && response.data.maxReachedStepIndex !== null ) {
+					resetMaxReachedStepIndex( response.data.maxReachedStepIndex );
+				}
+
+				if ( response.data && response.data.currentStep ) {
+					_currentStepSlug = response.data.currentStep;
 				}
 
 				if ( 'function' === typeof _settings.onStepProcessSuccess ) {
@@ -1983,6 +2003,9 @@
 		// Mark the script as initialized
 		_hasInitialized = true;
 	};
+
+	_publicMethods.enableContinueButton = enableContinueButton;
+	_publicMethods.disableContinueButton = disableContinueButton;
 
 
 	//

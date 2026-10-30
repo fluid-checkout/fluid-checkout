@@ -119,6 +119,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 		// Scripts
 		wp_register_script( 'fc-guided-setup', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-guided-setup' ), array( 'fc-utils', 'fc-collapsible-block' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-guided-setup-fluid-checkout', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-guided-setup-fluid-checkout' ), array( 'fc-guided-setup' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 
@@ -135,6 +136,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 */
 	public function load_guided_setup() {
 		require_once self::$directory_path . 'inc/admin/guided-setup/abstract-guided-setup.php';
+		require_once self::$directory_path . 'inc/admin/guided-setup/class-guided-setup-checkout-data.php';
 		require_once self::$directory_path . 'inc/admin/guided-setup/guided-setup-fluid-checkout.php';
 	}
 

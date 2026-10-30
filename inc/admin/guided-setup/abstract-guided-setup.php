@@ -1576,6 +1576,40 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 
 
 	/**
+	 * Clear the WordPress admin footer on the guided setup page.
+	 *
+	 * @param   string  $text  Footer text.
+	 *
+	 * @return  string
+	 */
+	public function clear_guided_setup_admin_footer( $text ) {
+		if ( ! $this->is_guided_setup_page() ) {
+			return $text;
+		}
+
+		return '';
+	}
+
+
+
+	/**
+	 * Maybe output the fcSettingsAdmin inline script on the guided setup page.
+	 */
+	public function maybe_output_settings_inline_script() {
+		if ( ! $this->is_guided_setup_page() ) {
+			return;
+		}
+
+		if ( ! class_exists( 'FluidCheckout_Enqueue' ) ) {
+			return;
+		}
+
+		FluidCheckout_Enqueue::instance()->output_settings_inline_script_admin();
+	}
+
+
+
+	/**
 	 * Add admin body class on the guided setup page.
 	 *
 	 * @param   string  $classes  Admin body classes.
@@ -1694,6 +1728,8 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			return array(
 				'current_step'      => '',
 				'sub_step_progress' => array(),
+				'answers'           => array(),
+				'started_at'        => '',
 				'completed_at'      => '',
 			);
 		}
@@ -1708,6 +1744,8 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			array(
 				'current_step'      => '',
 				'sub_step_progress' => array(),
+				'answers'           => array(),
+				'started_at'        => '',
 				'completed_at'      => '',
 			)
 		);

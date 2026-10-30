@@ -1,0 +1,99 @@
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
+// Checkout guided setup — settings field layout inside a narrow column within the wider step card.
+
+.fc-guided-setup .fc-setup-card .fc-setup-card__inner > form {
+	box-sizing: border-box;
+	max-width: $fc-settings-content-max-width;
+	margin-inline: auto;
+	padding: 12px 20px 0;
+}
+
+.fc-guided-setup .fc-settings-field--inline {
+	flex-direction: column;
+	gap: 8px;
+}
+
+.fc-guided-setup .fc-settings-field__label {
+	flex: 0 0 auto;
+	padding-top: 0;
+	font-size: $fc-settings-card-title-font-size;
+	font-weight: $fc-settings-card-title-font-weight;
+	line-height: $fc-settings-card-title-line-height;
+}
+
+.fc-guided-setup .fc-settings-field--inline:has( > .fc-settings-field__control .fc-settings-switch ) > .fc-settings-field__label {
+	padding-top: 0;
+}
+
+.fc-guided-setup .fc-settings-field__control {
+	padding-top: 0;
+	width: 100%;
+}
+
+.fc-guided-setup .fc-settings-field + .fc-settings-field {
+	margin-top: 14px;
+}
+
+// Section heading: separate from welcome intro, fields sit under the title.
+.fc-guided-setup form h2.fc-setup-section-title {
+	margin-top: 32px;
+	margin-bottom: 6px;
+}
+
+.fc-guided-setup form h2.fc-setup-section-title + .fc-settings-field {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+// Email field and newsletter opt-in toggle are grouped with a tighter gap.
+.fc-guided-setup .fc-settings-field:has( [data-fc-setup-newsletter-email] ) + .fc-settings-field {
+	margin-top: 10px;
+	padding-top: 0;
+}
+
+.fc-guided-setup .fc-settings-field--control-only > .fc-settings-field__control {
+	padding-top: 0;
+	width: 100%;
+}
+
+.fc-guided-setup [data-fc-setup-delivery-section][hidden] {
+	display: none !important;
+}
+
+// Option boxes (same as settings layout options; inputs styled under .fc-settings-wrap there).
+.fc-guided-setup .fc-settings-radio-option {
+	align-items: center;
+}
+
+.fc-guided-setup .fc-settings-radio-option__label {
+	align-self: center;
+}
+
+.fc-guided-setup .fc-settings-radio-option input[type="radio"],
+.fc-guided-setup .fc-settings-radio-option input[type="checkbox"] {
+	flex: 0 0 auto;
+	align-self: center;
+	margin: 0 !important; // Override WP admin checkbox/radio offsets in option boxes.
+	width: $fc-settings-radio-size;
+	min-width: $fc-settings-radio-size;
+	height: $fc-settings-radio-size;
+	accent-color: $fc-settings-focus-outline-color;
+	outline: none;
+	box-shadow: none;
+}
+
+.fc-guided-setup .fc-settings-radio-option input[type="radio"]:checked::before {
+	width: $fc-settings-radio-dot-size;
+	height: $fc-settings-radio-dot-size;
+	margin: auto;
+}
+
+.fc-guided-setup .fc-settings-radio-option input[type="radio"]:focus,
+.fc-guided-setup .fc-settings-radio-option input[type="radio"]:focus-visible,
+.fc-guided-setup .fc-settings-radio-option input[type="checkbox"]:focus,
+.fc-guided-setup .fc-settings-radio-option input[type="checkbox"]:focus-visible {
+	outline: none;
+	box-shadow: none;
+}

@@ -1013,7 +1013,14 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 				}
 			}
 
-			return $payload;
+			/**
+			 * Filters the telemetry payload before it is sent or previewed.
+			 *
+			 * @param array       $payload Telemetry payload.
+			 * @param array       $groups  Data groups included in the payload.
+			 * @param string|null $api_url Telemetry API base URL.
+			 */
+			return apply_filters( 'fc_telemetry_payload', $payload, $groups, $api_url );
 		}
 
 

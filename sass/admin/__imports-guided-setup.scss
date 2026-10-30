@@ -4,6 +4,7 @@
 @use "admin-settings-focus";
 @use "admin-settings-card";
 @use "admin-settings-field";
+@use "admin-settings-layout-options";
 
 @use "guided-setup-layout";
 @use "guided-setup-header";
@@ -12,3 +13,4 @@
 @use "guided-setup-step-image";
 @use "guided-setup-image-modal";
 @use "guided-setup-sub-steps";
+@use "guided-setup-checkout-fields";
