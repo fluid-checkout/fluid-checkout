@@ -1,5 +1,6 @@
 /* global Cookies */
 
+// CHANGE: Add ajaxPrefilter for wc_form_encoding (WAF-safe form-urlencoded request bodies)
 /**
  * Encode the body of requests that opt in with the `wc_form_encoding` option
  * the way a browser form submission would.
@@ -43,6 +44,7 @@ if ( 'function' === typeof jQuery.ajaxPrefilter ) {
 		}
 	} );
 }
+// CHANGE: END - ajaxPrefilter for wc_form_encoding
 
 jQuery( function ( $ ) {
 	// Orderby

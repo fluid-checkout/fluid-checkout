@@ -1028,6 +1028,7 @@ jQuery( function ( $ ) {
 						.removeClass(
 							'woocommerce-invalid woocommerce-invalid-required-field woocommerce-invalid-email woocommerce-invalid-phone'
 						)
+						// CHANGE: Add woocommerce-validated class when the field validates
 						.addClass( 'woocommerce-validated' );
 				}
 			}
@@ -1153,6 +1154,7 @@ jQuery( function ( $ ) {
 					.toString()
 					.replace( '%%endpoint%%', 'update_order_review' ),
 				data: data,
+				// CHANGE: Use wc_form_encoding for WAF-safe form-urlencoded AJAX bodies
 				wc_form_encoding: true,
 				success: function ( data ) {
 					// Reload the page if requested
@@ -1355,6 +1357,7 @@ jQuery( function ( $ ) {
 
 					// Add notices returned by this event.
 					if ( rendersNotices ) {
+						// CHANGE: Wrap update order review notices in woocommerce-notices-wrapper
 						$form.prepend(
 							'<div class="woocommerce-notices-wrapper woocommerce-NoticeGroup woocommerce-NoticeGroup-updateOrderReview">' +
 								data.messages +
@@ -1548,6 +1551,7 @@ jQuery( function ( $ ) {
 					type: 'POST',
 					url: wc_checkout_params.checkout_url,
 					data: $form.serialize(),
+					// CHANGE: Use wc_form_encoding for WAF-safe form-urlencoded AJAX bodies
 					wc_form_encoding: true,
 					dataType: 'json',
 					success: function ( result ) {
@@ -1702,6 +1706,7 @@ jQuery( function ( $ ) {
 			$(
 				'.woocommerce-NoticeGroup-checkout, .woocommerce-error, .woocommerce-message, .is-error, .is-success'
 			).remove();
+			// CHANGE: Wrap checkout error notices in woocommerce-notices-wrapper
 			wc_checkout_form.$checkout_form.prepend(
 				'<div class="woocommerce-notices-wrapper woocommerce-NoticeGroup woocommerce-NoticeGroup-checkout">' +
 					error_message +
@@ -1907,6 +1912,7 @@ jQuery( function ( $ ) {
 					.toString()
 					.replace( '%%endpoint%%', 'apply_coupon' ),
 				data: data,
+				// CHANGE: Use wc_form_encoding for WAF-safe form-urlencoded AJAX bodies
 				wc_form_encoding: true,
 				success: function ( response ) {
 					$(
@@ -1985,6 +1991,7 @@ jQuery( function ( $ ) {
 					.toString()
 					.replace( '%%endpoint%%', 'remove_coupon' ),
 				data: data,
+				// CHANGE: Use wc_form_encoding for WAF-safe form-urlencoded AJAX bodies
 				wc_form_encoding: true,
 				success: function ( code ) {
 					$(

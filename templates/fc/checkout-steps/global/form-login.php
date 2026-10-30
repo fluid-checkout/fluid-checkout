@@ -83,34 +83,20 @@ $unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 		</label>
 	</p>
 
-	<?php // CHANGE: Move login button to its own section ?>
+	<?php // CHANGE: Move login button to its own section and customize button classes and label ?>
 	<p class="fc-login-button">
 		<?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
 		<input type="hidden" name="redirect" value="<?php echo esc_url( $redirect ); ?>" />
-		<?php // CHANGE: Change login button label to be consistent across checkout, also adding filter for custom button classes. ?>
 		<button type="submit" class="woocommerce-form-login__submit <?php
-			/**
-			 * Filters the CSS classes of the login submit button.
-			 *
-			 * @since 4.0.5
-			 *
-			 * @param string $classes CSS classes. Default `woocommerce-button button`.
-			 */
-			echo esc_attr( apply_filters( 'fc_checkout_login_button_classes', 'woocommerce-button button' ) );
-		?> <?php echo esc_attr( function_exists( 'wc_wp_theme_get_element_class_name' ) ? wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>"><?php
-			// CHANGE: Keep filtered label with `esc_html` (dynamic string, not `esc_html_e`)
-			echo esc_html(
-				/**
-				 * Filters the login button label at checkout.
-				 *
-				 * @since 1.2.0
-				 *
-				 * @param string $label Label text.
-				 */
-				apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) )
+			echo esc_attr(
+				apply_filters( 'fc_checkout_login_button_classes', 'woocommerce-button button' )
+				. ( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' )
 			);
-		?></button>
+		?>" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>">
+			<?php echo esc_html( apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) ) ); ?>
+		</button>
 	</p>
+	<?php // CHANGE: END - Move login button to its own section and customize button classes and label ?>
 
 	<p class="lost_password">
 		<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Lost your password?', 'woocommerce' ); ?></a>
