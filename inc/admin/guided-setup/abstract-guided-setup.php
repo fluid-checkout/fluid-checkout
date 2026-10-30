@@ -237,9 +237,30 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 	 */
 	public function maybe_strip_admin_notices_on_guided_setup() {
 		// Bail if Fluid Checkout admin helpers are unavailable
-		if ( ! class_exists( 'FluidCheckout_Admin' ) ) { return; }
+		if ( ! class_exists( 'FluidCheckout_Admin' ) ) {
+			return;
+		}
 
 		FluidCheckout_Admin::strip_non_fc_admin_notices_on_load( false );
+
+		add_action( 'admin_notices', array( $this, 'output_guided_setup_admin_header' ), 1 );
+	}
+
+
+
+	/**
+	 * Output the shared Fluid Checkout admin header on the guided setup screen.
+	 */
+	public function output_guided_setup_admin_header() {
+		if ( ! $this->is_guided_setup_page() ) {
+			return;
+		}
+
+		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) ) {
+			return;
+		}
+
+		FluidCheckout_Admin_Settings_Page::instance()->output_admin_header_for_guided_setup( $this );
 	}
 
 
@@ -563,7 +584,7 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 
 
 	/**
-	 * Output the left side of guided setup step actions (back, start over, skip to settings).
+	 * Output the left side of guided setup step actions (back to previous step).
 	 *
 	 * @param   string  $step_slug  Step slug.
 	 */
@@ -571,12 +592,57 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 		?>
 		<div class="fc-setup-step-actions__start">
 			<?php $this->output_back_to_previous_step_button( $step_slug ); ?>
-			<div class="fc-setup-step-actions__links">
-				<?php $this->output_start_over_link(); ?>
-				<?php $this->output_skip_to_settings_link(); ?>
-			</div>
 		</div>
 		<?php
+	}
+
+
+
+	/**
+	 * Output start over and skip to settings links in the admin header.
+	 */
+	public function output_guided_setup_header_action_links() {
+		?>
+		<a href="<?php echo esc_url( $this->get_start_over_guided_setup_url() ); ?>" class="fc-header__button fc-setup-start-over" aria-label="<?php echo esc_attr__( 'Start over and return to the first guided setup step', 'fluid-checkout' ); ?>"><?php echo esc_html__( 'Start over', 'fluid-checkout' ); ?></a>
+		<a href="<?php echo esc_url( $this->get_skip_guided_setup_url() ); ?>" class="fc-header__button fc-setup-skip-to-settings" aria-label="<?php echo esc_attr__( 'Skip to settings', 'fluid-checkout' ); ?>"><?php echo esc_html__( 'Skip to settings', 'fluid-checkout' ); ?></a>
+		<?php
+	}
+
+
+
+	/**
+	 * Badge label beside the admin header logo on the guided setup screen.
+	 *
+	 * @return string Empty when no badge should be shown.
+	 */
+	protected function get_guided_setup_header_badge_label() {
+		return '';
+	}
+
+
+
+	/**
+	 * Append the guided setup badge beside the admin header logo.
+	 *
+	 * @param string $html Markup after the header logo title.
+	 *
+	 * @return string
+	 */
+	public function filter_settings_header_guided_setup_badge( $html ) {
+		if ( ! $this->is_guided_setup_page() ) {
+			return $html;
+		}
+
+		$label = $this->get_guided_setup_header_badge_label();
+
+		if ( '' === $label ) {
+			return $html;
+		}
+
+		return $html . sprintf(
+			'<span class="fc-header__guided-setup-badge fc-settings-badge">%s</span>',
+			esc_html( $label )
+		);
 	}
 
 
@@ -1623,7 +1689,7 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			return $classes;
 		}
 
-		return $classes . ' ' . $this->get_config_value( 'body_class' );
+		return $classes . ' fc-settings-page ' . $this->get_config_value( 'body_class' );
 	}
 
 

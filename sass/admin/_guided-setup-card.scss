@@ -14,7 +14,7 @@
 	box-shadow: 0 2px 5px rgba( 0, 0, 0, 0.05 );
 	display: none;
 	#{$alignment-left}: 0; // Guided setup script slides the card on this side.
-	margin: $fc-settings-card-margin-bottom 0 0;
+	margin: 0;
 	max-width: 100%;
 	opacity: 0;
 	position: relative;

@@ -81,6 +81,8 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		add_filter( 'update_footer', array( $this, 'clear_guided_setup_admin_footer' ), 11 );
 
 		add_filter( 'fc_telemetry_guided_setup_progress', array( $this, 'sanitize_guided_setup_progress_for_telemetry' ), 10, 2 );
+
+		add_filter( 'fc_settings_header_logo_after_title', array( $this, 'filter_settings_header_guided_setup_badge' ), 10 );
 	}
 
 
@@ -103,6 +105,17 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 	 */
 	public function get_guided_setup_title() {
 		return __( 'Fluid Checkout', 'fluid-checkout' );
+	}
+
+
+
+	/**
+	 * Badge label beside the admin header logo on the guided setup screen.
+	 *
+	 * @return string
+	 */
+	protected function get_guided_setup_header_badge_label() {
+		return __( 'Guided setup', 'fluid-checkout' );
 	}
 
 
@@ -382,11 +395,6 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		$answers              = $this->get_stored_answers();
 		?>
 		<div class="wrap fc-wrap fc-guided-setup">
-
-			<header class="fc-setup-header">
-				<span class="fc-setup-header__badge"><?php echo esc_html__( 'Guided setup', 'fluid-checkout' ); ?></span>
-				<h1 class="fc-setup-header__title"><?php echo esc_html( $this->get_guided_setup_title() ); ?></h1>
-			</header>
 
 			<div class="fc-setup-steps-wrapper">
 				<ul class="fc-setup-steps">

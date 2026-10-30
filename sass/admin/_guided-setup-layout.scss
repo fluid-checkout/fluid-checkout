@@ -8,7 +8,7 @@
 body.fc-guided-setup .fc-wrap {
 	margin: 0 auto;
 	max-width: 850px;
-	padding: 35px 15px;
+	padding: 20px 15px;
 }
 
 body.fc-guided-setup .notice,
@@ -24,4 +24,12 @@ body.fc-guided-setup #wpfooter {
 
 body.fc-guided-setup #wpbody-content {
 	padding-bottom: 0;
+}
+
+body.fc-guided-setup.auto-fold #wpcontent {
+	padding-left: 0;
+}
+
+body.rtl.fc-guided-setup.auto-fold #wpcontent {
+	padding-right: 0;
 }
