@@ -5,6 +5,7 @@
  * DEPENDS ON:
  * - jQuery // Settings field changes, as the color picker triggers them with jQuery
  * - FCUtils // Utility functions
+ * - FCSettingsPage // Values of the settings form
  */
 
 (function ( root, factory ) {
@@ -31,12 +32,17 @@
 	var _collapseTimer = null;
 	var _previewMode = 'guest';
 	var _isHeaderFooterVisible = false;
+	var _isHeaderFooterShownForTab = false;
 	var _cssVariables = {};
 	var _colorScheme = '';
 	var _bodyClasses = {};
+	var _colorSchemeBodyClasses = {};
+	var _ignoredStyleIds = [];
 	var _fieldValues = {};
 	var _computedCssValueRequests = {};
 	var _computedCssValueRequestId = 0;
+	var _computedCssVariablesRequests = {};
+	var _computedCssVariablesRequestId = 0;
 	var _isPreviewLoading = false;
 	var _isPreviewReady = false;
 	var _isRefreshingStyles = false;
@@ -68,6 +74,7 @@
 		headerFooterSelector:        '[data-fc-settings-preview-header-footer]',
 		viewportInputSelector:       'input[name="fc-settings-preview-viewport"]',
 		enableSettingFieldSelector:  '[name="###NAME###"][type="checkbox"]',
+		ignoredFieldSelector:        '[data-fc-settings-preview-ignore]',
 		hasPreviewClass:             'has-preview',
 		isExpandedClass:             'is-preview-expanded',
 		isEnterClass:                'is-preview-enter',
@@ -77,6 +84,7 @@
 		pageAttribute:               'data-fc-settings-preview-page',
 		urlAttribute:                'data-fc-settings-preview-url',
 		enableSettingAttribute:      'data-fc-settings-preview-enable-setting',
+		enabledAttribute:            'data-fc-settings-preview-enabled',
 		placeholderScaleProperty:    '--fc-settings-preview-scale',
 		viewportWidths:              { mobile: 350, tablet: 750, desktop: 1000 },
 		widthMin:                    320,
@@ -93,6 +101,8 @@
 		initialPage:                 'checkout',
 		placeholderSrcdocs:          {},
 		defaultPage:                 'checkout',
+		switchPageWithTab:           true,
+		headerFooterTabs:            [],
 		modeQueryArg:                'fc_preview_mode',
 		guestMode:                   'guest',
 		loggedInMode:                'logged_in',
@@ -550,6 +560,26 @@
 	};
 
 	/**
+	 * Load a document in a new copy of the iframe, as loading another document in the same iframe adds a step to the browser history.
+	 *
+	 * @param  {Element}  frame      Preview iframe.
+	 * @param  {string}   attribute  Attribute of the document, `src` for its URL or `srcdoc` for its HTML.
+	 * @param  {string}   value      URL or HTML of the document.
+	 */
+	var loadFrameDocument = function( frame, attribute, value ) {
+		// Get a copy of the iframe
+		var newFrame = frame.cloneNode( false );
+
+		// Set the document of the new iframe, before it is in the page
+		newFrame.removeAttribute( 'src' );
+		newFrame.removeAttribute( 'srcdoc' );
+		newFrame.setAttribute( attribute, value );
+
+		// Replace the iframe
+		frame.parentNode.replaceChild( newFrame, frame );
+	};
+
+	/**
 	 * Load a page preview in the iframe, or the placeholder for pages that cannot be previewed.
 	 *
 	 * @param  {string}  page  Preview page slug.
@@ -564,14 +594,12 @@
 
 		// Maybe show the placeholder
 		if ( ! url ) {
-			frame.setAttribute( 'srcdoc', _settings.placeholderSrcdocs[ page ] );
-			frame.removeAttribute( 'src' );
+			loadFrameDocument( frame, 'srcdoc', _settings.placeholderSrcdocs[ page ] );
 			markPreviewLoading();
 		}
 		// Otherwise, maybe load the page preview, unless it is already loaded
 		else if ( previewUrl !== frame.getAttribute( 'src' ) ) {
-			frame.setAttribute( 'src', previewUrl );
-			frame.removeAttribute( 'srcdoc' );
+			loadFrameDocument( frame, 'src', previewUrl );
 			markPreviewLoading();
 		}
 	};
@@ -668,7 +696,7 @@
 	};
 
 	/**
-	 * Get the preview URL of a page tab, or an empty string when the page cannot be previewed: pages that require PRO, and pages disabled in the settings form, also by unsaved changes.
+	 * Get the preview URL of a page tab, or an empty string when the page cannot be previewed: pages that require PRO, and pages disabled in the settings form or in the saved settings.
 	 *
 	 * @param  {Element|null}  pageTab  Preview page tab.
 	 *
@@ -688,6 +716,9 @@
 
 		// Bail if the page is disabled in the settings form
 		if ( enableField && ! enableField.checked ) { return ''; }
+
+		// Bail if the page is disabled in the saved settings, for forms without the field of the setting that enables it
+		if ( ! enableField && 'no' === pageTab.getAttribute( _settings.enabledAttribute ) ) { return ''; }
 
 		return pageTab.getAttribute( _settings.urlAttribute ) || '';
 	};
@@ -768,17 +799,26 @@
 	 */
 	var sendPreviewState = function() {
 		var requestId;
+		var request;
 
 		// Send the header and footer visibility, the values entered in the fields in the current mode, and styles
 		postMessageToPreview( { type: 'setHeaderFooterVisibility', visible: _isHeaderFooterVisible } );
 		postMessageToPreview( { type: 'setFieldValues', values: _fieldValues[ _previewMode ] || [] } );
 		postMessageToPreview( { type: 'setColorScheme', scheme: _colorScheme } );
+		postMessageToPreview( { type: 'setIgnoredStyleIds', ids: _ignoredStyleIds } );
 		postMessageToPreview( { type: 'setCssVariables', variables: _cssVariables } );
 		postMessageToPreview( { type: 'setBodyClasses', classes: _bodyClasses } );
+		postMessageToPreview( { type: 'setColorSchemeBodyClasses', classes: _colorSchemeBodyClasses } );
 
 		// Iterate pending computed value requests, sent again as a reload drops them
 		for ( requestId in _computedCssValueRequests ) {
 			postMessageToPreview( { type: 'getComputedCssValue', requestId: requestId, property: _computedCssValueRequests[ requestId ].property, value: _computedCssValueRequests[ requestId ].value } );
+		}
+
+		// Iterate pending computed CSS variables requests, sent again as a reload drops them
+		for ( requestId in _computedCssVariablesRequests ) {
+			request = _computedCssVariablesRequests[ requestId ];
+			postMessageToPreview( { type: 'getComputedCssVariables', requestId: requestId, className: request.className, names: request.names, colorSchemes: request.colorSchemes } );
 		}
 	};
 
@@ -797,6 +837,24 @@
 		// Resolve the request with the computed value
 		delete _computedCssValueRequests[ requestId ];
 		request.resolve( value );
+	};
+
+	/**
+	 * Resolve a computed CSS variables request with the values sent by the page preview.
+	 *
+	 * @param  {number|string}  requestId  Request ID.
+	 * @param  {Object}         values     Computed values by color scheme and CSS variable name.
+	 */
+	var resolveComputedCssVariablesRequest = function( requestId, values ) {
+		// Get the request
+		var request = _computedCssVariablesRequests[ requestId ];
+
+		// Bail if the request is already resolved
+		if ( ! request ) { return; }
+
+		// Resolve the request with the computed values
+		delete _computedCssVariablesRequests[ requestId ];
+		request.resolve( values );
 	};
 
 
@@ -904,6 +962,29 @@
 		postMessageToPreview( { type: 'setHeaderFooterVisibility', visible: visible } );
 	};
 
+	/**
+	 * Show the header and footer while a settings tab set to show them is active, and hide them again after leaving it.
+	 * A visibility changed with the toggle button while that tab is active stays.
+	 *
+	 * @param  {string}  tab  Settings tab slug.
+	 */
+	var maybeToggleHeaderFooterForTab = function( tab ) {
+		// Maybe show the header and footer for the tab
+		if ( -1 !== _settings.headerFooterTabs.indexOf( tab ) ) {
+			// Bail if the header and footer are already visible
+			if ( _isHeaderFooterVisible ) { return; }
+
+			// Show the header and footer, remembering that the tab shows them
+			setHeaderFooterVisible( true );
+			_isHeaderFooterShownForTab = true;
+		}
+		// Otherwise, maybe hide the header and footer shown for the previous tab
+		else if ( _isHeaderFooterShownForTab ) {
+			setHeaderFooterVisible( false );
+			_isHeaderFooterShownForTab = false;
+		}
+	};
+
 
 
 	/**
@@ -946,13 +1027,17 @@
 		// Bail if a request is saving, which saves again once it finishes, so an older request cannot overwrite newer values
 		if ( _isSavingDraft ) { return; }
 
-		// Send the settings form values
+		// Mark the unsaved settings as saving
 		_hasUnsavedDraft = false;
 		_isSavingDraft = true;
-		formData = new FormData( document.querySelector( _settings.formSelector ) );
+
+		// Get the settings form values, with the names of its fields, so only the settings of this form are unsaved changes
+		formData = FCSettingsPage.getFormData( document.querySelector( _settings.formSelector ) );
 		formData.set( 'action', _settings.draftAction );
 		formData.set( 'nonce', _settings.draftNonce );
 		formData.set( 'token', _settings.previewToken );
+
+		// Send the settings form values
 		fetch( _settings.ajaxUrl, { method: 'POST', credentials: 'same-origin', body: formData } ).then( handleDraftSaved, handleDraftSaved );
 	};
 
@@ -1014,7 +1099,7 @@
 		// Otherwise reload the iframe, for pages without the frame script such as error pages
 		else {
 			_needsReload = false;
-			frame.setAttribute( 'src', frame.getAttribute( 'src' ) );
+			loadFrameDocument( frame, 'src', frame.getAttribute( 'src' ) );
 			markPreviewLoading();
 		}
 	};
@@ -1155,9 +1240,10 @@
 		}
 		// HEADER AND FOOTER TOGGLE
 		else if ( matchedElement = e.target.closest( _settings.headerFooterSelector ) ) {
-			// Toggle the header and footer, remembered in the browser
+			// Toggle the header and footer, remembered in the browser and kept after leaving a tab that shows them
 			setHeaderFooterVisible( ! _isHeaderFooterVisible );
 			saveState( 'headerFooter', _isHeaderFooterVisible );
+			_isHeaderFooterShownForTab = false;
 			e.preventDefault();
 		}
 	};
@@ -1291,6 +1377,9 @@
 		// Bail if the change is not for a settings field, such as for the preview controls
 		if ( ! e.target.closest( _settings.formSelector ) || e.target.closest( _settings.previewSelector ) ) { return; }
 
+		// Bail if the preview ignores the field, as another script shows its changes in the page preview
+		if ( e.target.closest( _settings.ignoredFieldSelector ) ) { return; }
+
 		// Bail if the current user has no preview token
 		if ( ! _settings.previewToken ) { return; }
 
@@ -1341,6 +1430,9 @@
 		if ( 'ready' === e.data.type ) {
 			_isPreviewReady = true;
 			sendPreviewState();
+
+			// Notify listeners that the page preview loaded, with the color scheme of the page
+			window.dispatchEvent( new CustomEvent( 'fcSettingsPreviewReady', { detail: { colorScheme: e.data.colorScheme } } ) );
 		}
 		// STYLES REFRESHED
 		else if ( 'stylesRefreshed' === e.data.type ) {
@@ -1351,6 +1443,10 @@
 		// COMPUTED CSS VALUE
 		else if ( 'computedCssValue' === e.data.type ) {
 			resolveComputedCssValueRequest( e.data.requestId, e.data.value );
+		}
+		// COMPUTED CSS VARIABLES
+		else if ( 'computedCssVariables' === e.data.type ) {
+			resolveComputedCssVariablesRequest( e.data.requestId, e.data.values );
 		}
 		// FIELD VALUES
 		else if ( 'fieldValues' === e.data.type ) {
@@ -1402,7 +1498,17 @@
 		// Bail if tab slug is missing
 		if ( ! tab ) { return; }
 
-		syncFromSettingsTab( tab );
+		// Maybe show the preview page of the tab
+		if ( _settings.switchPageWithTab ) {
+			syncFromSettingsTab( tab );
+		}
+		// Otherwise, only show or hide the preview, as the admin page keeps its preview page when switching tabs
+		else {
+			setPreviewVisibilityForTab( tab );
+		}
+
+		// Maybe show or hide the header and footer for the tab
+		maybeToggleHeaderFooterForTab( tab );
 	};
 
 
@@ -1456,6 +1562,32 @@
 	};
 
 	/**
+	 * Add or remove body classes of the page preview for the color scheme it shows, replacing those set before with this method.
+	 *
+	 * @param  {Object}  classes  Whether each class is added, by color scheme (`light` or `dark`) and class name.
+	 */
+	_publicMethods.setColorSchemeBodyClasses = function( classes ) {
+		// Remember the classes, sent again after each reload
+		_colorSchemeBodyClasses = classes;
+
+		// Send the classes to the page preview
+		postMessageToPreview( { type: 'setColorSchemeBodyClasses', classes: _colorSchemeBodyClasses } );
+	};
+
+	/**
+	 * Ignore the styles of style elements in the page preview, replacing the ones ignored before.
+	 *
+	 * @param  {Array}  ids  IDs of the style elements to ignore.
+	 */
+	_publicMethods.setIgnoredStyleIds = function( ids ) {
+		// Remember the style elements to ignore, sent again after each reload
+		_ignoredStyleIds = ids;
+
+		// Send the style elements to ignore to the page preview
+		postMessageToPreview( { type: 'setIgnoredStyleIds', ids: _ignoredStyleIds } );
+	};
+
+	/**
 	 * Get the computed value of a CSS property value in the page preview, such as a font size in pixels.
 	 * The page preview computes it, as the admin page cannot read the page preview when it is on another domain.
 	 *
@@ -1474,6 +1606,30 @@
 			// Otherwise resolve without a value, as the iframe shows a placeholder
 			else {
 				resolve( '' );
+			}
+		} );
+	};
+
+	/**
+	 * Get the computed values of CSS variables in the page preview for each color scheme, read from a hidden element with a class whose styles set them.
+	 * The CSS variables set with `setCssVariables()` and the ignored style elements do not apply while reading the values.
+	 *
+	 * @param   {string}   className     Class of the element whose styles set the CSS variables.
+	 * @param   {Array}    names         CSS variable names.
+	 * @param   {Array}    colorSchemes  Color schemes to read the values for, `light` or `dark`.
+	 * @return  {Promise}                Promise resolving to the computed values by color scheme and CSS variable name, or an empty object when the iframe shows a placeholder.
+	 */
+	_publicMethods.getComputedCssVariables = function( className, names, colorSchemes ) {
+		return new Promise( function( resolve ) {
+			// Maybe ask the page preview, which sends the computed values back
+			if ( getPreviewOrigin() ) {
+				_computedCssVariablesRequestId++;
+				_computedCssVariablesRequests[ _computedCssVariablesRequestId ] = { className: className, names: names, colorSchemes: colorSchemes, resolve: resolve };
+				postMessageToPreview( { type: 'getComputedCssVariables', requestId: _computedCssVariablesRequestId, className: className, names: names, colorSchemes: colorSchemes } );
+			}
+			// Otherwise resolve without values, as the iframe shows a placeholder
+			else {
+				resolve( {} );
 			}
 		} );
 	};
@@ -1562,6 +1718,9 @@
 
 		setPreviewMode( initialMode, !! initialTabMode && initialTabMode !== savedState.mode );
 		setHeaderFooterVisible( true === savedState.headerFooter );
+
+		// Maybe show the header and footer for the initial settings tab
+		maybeToggleHeaderFooterForTab( _settings.initialTab );
 
 		// Sync from the initial settings tab, with the desktop page preview filling the available width
 		setDesktopFillViewport();

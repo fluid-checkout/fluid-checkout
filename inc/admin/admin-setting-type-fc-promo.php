@@ -32,13 +32,13 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 
 
 	/**
-	 * Enqueue Activate AJAX script on the Fluid Checkout settings page.
+	 * Enqueue Activate AJAX script on admin pages with the settings page layout.
 	 *
 	 * Needed for promo cards on add-on tabs. Dashboard may replace this handle with PRO’s script.
 	 */
 	public function enqueue_scripts() {
-		// Bail if not on the Fluid Checkout settings page
-		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) || ! FluidCheckout_Admin_Settings_Page::instance()->is_settings_page() ) { return; }
+		// Bail if not on an admin page with the settings page layout
+		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) || ! FluidCheckout_Admin_Settings_Page::instance()->is_settings_layout_page() ) { return; }
 
 		// Bail if already enqueued (Dashboard tab may own enqueue there)
 		if ( wp_script_is( 'fc-admin-dashboard-addons', 'enqueued' ) ) { return; }
@@ -53,8 +53,8 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 	 * @param   array  $settings  Admin JS settings.
 	 */
 	public function add_js_settings_admin( $settings ) {
-		// Bail if not on the Fluid Checkout settings page
-		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) || ! FluidCheckout_Admin_Settings_Page::instance()->is_settings_page() ) { return $settings; }
+		// Bail if not on an admin page with the settings page layout
+		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) || ! FluidCheckout_Admin_Settings_Page::instance()->is_settings_layout_page() ) { return $settings; }
 
 		// Bail if dashboard add-ons settings already set (Dashboard tab owns that screen)
 		if ( array_key_exists( 'dashboardAddons', $settings ) ) { return $settings; }

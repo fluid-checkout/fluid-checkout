@@ -411,7 +411,6 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Added: New settings pages, with guided setup and live preview of checkout pages.
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
-* Added: Setting to choose a background color for the Split design secondary column (PRO feature).
 * Added: Filter `fc_local_pickup_shipping_zone_fields_options` for the local pickup shipping zone fields setting (PRO feature).
 * Added: Filter `fc_available_shipping_methods` to change the shipping methods shown for a package.
 * Added: Filter `fc_prevent_shipping_method_autoselect` to prevent automatic selection of the first shipping method. Return `true` to prevent auto-selecting a shipping method.

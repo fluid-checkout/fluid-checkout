@@ -27,6 +27,11 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	const WC_SETTINGS_TAB_ID = 'fc_checkout';
 
 	/**
+	 * Prefix of the notice names that store the dismissed messages of settings moved to another page.
+	 */
+	const MOVED_SETTING_NOTICE_PREFIX = 'moved_setting_';
+
+	/**
 	 * Settings page hook suffix, set when registering the admin menu.
 	 *
 	 * @var string
@@ -63,11 +68,14 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		add_action( 'admin_init', array( $this, 'maybe_save_settings' ), 10 );
 		add_action( 'wp_ajax_fc_settings_save', array( $this, 'ajax_save_settings' ), 10 );
 
+		// Messages of settings moved to another page
+		add_action( 'wp_ajax_fc_settings_set_moved_setting_message_dismissed', array( $this, 'ajax_set_moved_setting_message_dismissed' ), 10 );
+
 		// Admin body class
 		add_filter( 'admin_body_class', array( $this, 'add_admin_body_class' ), 10 );
 
 		// Admin page header
-		add_action( 'admin_notices', array( $this, 'output_admin_header' ), 1 );
+		add_action( 'admin_notices', array( $this, 'maybe_output_admin_header' ), 1 ); // Before other admin notices, so the page header comes first
 
 		// Remove WooCommerce Help tabs on this page
 		add_action( 'admin_head', array( $this, 'maybe_remove_help_tabs' ), 10 );
@@ -208,6 +216,18 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
+	 * Check whether the current request is for an admin page with the settings page layout.
+	 */
+	public function is_settings_layout_page() {
+		/**
+		 * Filters whether the current request is for an admin page with the settings page layout.
+		 *
+		 * @since 5.0.0
+		 */
+		return true === apply_filters( 'fc_is_admin_settings_layout_page', $this->is_settings_page() );
+	}
+
+	/**
 	 * Add a body class on the Fluid Checkout settings page.
 	 *
 	 * @param  string  $classes  Space-separated list of admin body classes.
@@ -263,15 +283,10 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 	/**
 	 * Output the Fluid Checkout admin page header.
+	 *
+	 * @param  bool  $can_save  Whether the save button should be enabled.
 	 */
-	public function output_admin_header() {
-		// Bail if not on the settings page
-		if ( ! $this->is_settings_page() ) { return; }
-
-		$tabs = $this->get_tabs();
-		$current_tab = $this->get_current_tab();
-		$can_save = ! empty( $tabs[ $current_tab ][ 'show_save_button' ] );
-
+	public function output_admin_header( $can_save ) {
 		$logo_url = FluidCheckout::$directory_url . 'images/admin/fluid-checkout-checkmark-logo.svg';
 		$home_url = 'https://fluidcheckout.com/?mtm_campaign=admin-header&mtm_kwd=logo&mtm_source=settings-header';
 		$support_url = 'https://fluidcheckout.com/support/?mtm_campaign=admin-header&mtm_kwd=support&mtm_source=settings-header';
@@ -312,6 +327,21 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			<?php $this->output_settings_header_action_buttons( $can_save ); ?>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Maybe output the Fluid Checkout admin page header on the settings page.
+	 */
+	public function maybe_output_admin_header() {
+		// Bail if not on the settings page
+		if ( ! $this->is_settings_page() ) { return; }
+
+		// Get whether the current tab can be saved
+		$tabs = $this->get_tabs();
+		$current_tab = $this->get_current_tab();
+		$can_save = ! empty( $tabs[ $current_tab ][ 'show_save_button' ] );
+
+		$this->output_admin_header( $can_save );
 	}
 
 
@@ -517,6 +547,42 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
+	 * Get the names of the fields in the form that sent the request, including unchecked checkboxes.
+	 *
+	 * @param  array  $post_data  Request data, with the field names the settings scripts send.
+	 */
+	public function get_posted_field_names( $post_data ) {
+		// Bail if the request has no field names
+		if ( ! is_array( $post_data ) || ! isset( $post_data[ 'fc_settings_field_names' ] ) || ! is_array( $post_data[ 'fc_settings_field_names' ] ) ) { return array(); }
+
+		return preg_replace( '/\[\]$/', '', array_map( 'sanitize_text_field', wp_unslash( $post_data[ 'fc_settings_field_names' ] ) ) );
+	}
+
+	/**
+	 * Get the settings of the fields in a form, so a form with some of the settings does not unset the others.
+	 * Without field names, gets all settings except those moved to another page, as the settings page shows a message in their place.
+	 *
+	 * @param  array  $settings     Settings arrays.
+	 * @param  array  $field_names  Names of the fields in the form.
+	 */
+	public function get_settings_in_form( $settings, $field_names ) {
+		// Maybe keep all settings except those moved to another page, when the form does not send its field names
+		if ( empty( $field_names ) ) {
+			$settings = array_filter( $settings, function( $setting ) {
+				return ! $this->is_settings_field_moved( $setting );
+			} );
+		}
+		// Otherwise, keep the settings of the fields in the form
+		else {
+			$settings = array_filter( $settings, function( $setting ) use ( $field_names ) {
+				return isset( $setting[ 'id' ] ) && in_array( isset( $setting[ 'field_name' ] ) ? $setting[ 'field_name' ] : $setting[ 'id' ], $field_names, true );
+			} );
+		}
+
+		return $settings;
+	}
+
+	/**
 	 * Get the settings tab slug active when saving settings.
 	 *
 	 * @param  array  $post_data  Request data from a settings save.
@@ -535,7 +601,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 	/**
 	 * Save settings from a POST request.
-	 * All tab panels are rendered in one form, so every saveable tab is saved together.
+	 * All tab panels are rendered in one form, so every saveable tab is saved together. Forms of other admin pages with some of the settings only save those.
 	 *
 	 * @param  array  $post_data  Request data from a settings save.
 	 */
@@ -543,11 +609,20 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		$current_tab = $this->get_current_tab_from_save_request( $post_data );
 		$tabs = $this->get_tabs();
 
+		// Get the names of the fields in the form, empty when the request does not send them
+		$field_names = $this->get_posted_field_names( $post_data );
+
 		foreach ( $tabs as $tab => $tab_args ) {
 			// Skip separators and tabs without settings to save
 			if ( 'tab' !== $tab_args[ 'type' ] || ! $tab_args[ 'show_save_button' ] ) { continue; }
 
-			$settings = $this->get_saveable_settings( $this->get_tab_settings( $tab ), $post_data );
+			// Get the settings of the tab that are in the form
+			$settings = $this->get_settings_in_form( $this->get_saveable_settings( $this->get_tab_settings( $tab ), $post_data ), $field_names );
+
+			// Skip tabs without settings in a form that sends its field names
+			if ( ! empty( $field_names ) && empty( $settings ) ) { continue; }
+
+			// Save the settings of the tab
 			FluidCheckout_Settings::instance()->save_settings( $settings );
 
 			// Run the section save hook
@@ -642,6 +717,81 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 
 	/**
+	 * Move a settings field to another page, so the settings page shows a message with a link to its new place instead of the field.
+	 * Other pages that show the field, such as its new place, still show and save it.
+	 *
+	 * @param  array   $settings     Admin settings argument values.
+	 * @param  string  $option_name  Option name of the settings field to move.
+	 * @param  array   $moved        Where the settings field moved: the `url` of its new place, and optionally the `text` of the message, with `%s` for the link, and the `link_text`.
+	 */
+	public function move_settings_field( $settings, $option_name, $moved ) {
+		// Bail if the settings arguments are not valid
+		if ( ! is_array( $settings ) ) { return $settings; }
+
+		// Iterate settings
+		foreach ( $settings as $key => $setting_args ) {
+			// Skip settings other than the target settings field
+			if ( ! is_array( $setting_args ) || ! array_key_exists( 'id', $setting_args ) || $option_name !== $setting_args[ 'id' ] ) { continue; }
+
+			// Move the settings field
+			$settings[ $key ][ 'moved' ] = $moved;
+		}
+
+		return $settings;
+	}
+
+	/**
+	 * Check whether a settings field was moved to another page.
+	 *
+	 * @param  array  $setting_args  Settings field arguments.
+	 */
+	public function is_settings_field_moved( $setting_args ) {
+		return is_array( $setting_args ) && ! empty( $setting_args[ 'moved' ][ 'url' ] );
+	}
+
+	/**
+	 * Check whether the message of a setting moved to another page was dismissed.
+	 *
+	 * @param  string  $option_name  Option name of the setting.
+	 */
+	public function is_moved_setting_message_dismissed( $option_name ) {
+		return FluidCheckout_AdminNotices::instance()->is_dismissed( self::MOVED_SETTING_NOTICE_PREFIX . $option_name );
+	}
+
+	/**
+	 * Dismiss the message of a setting moved to another page, or show it again, through admin AJAX.
+	 */
+	public function ajax_set_moved_setting_message_dismissed() {
+		// Bail if user does not have enough permissions
+		if ( ! current_user_can( self::CAPABILITY ) ) { wp_send_json_error( null, 403 ); }
+
+		// Check the nonce
+		check_ajax_referer( 'fc_settings_set_moved_setting_message_dismissed', 'nonce' );
+
+		// Get the option name of the setting, and whether to dismiss its message or show it again
+		$option_name = isset( $_POST[ 'option_name' ] ) ? sanitize_text_field( wp_unslash( $_POST[ 'option_name' ] ) ) : '';
+		$is_dismissed = isset( $_POST[ 'dismissed' ] ) && 'yes' === sanitize_text_field( wp_unslash( $_POST[ 'dismissed' ] ) );
+
+		// Iterate settings tabs, to only change the messages of settings moved to another page
+		foreach ( array_keys( $this->get_tabs() ) as $tab ) {
+			// Iterate settings of the tab
+			foreach ( $this->get_tab_settings( $tab ) as $setting ) {
+				// Skip other settings, and settings that did not move
+				if ( ! isset( $setting[ 'id' ] ) || $option_name !== $setting[ 'id' ] || ! $this->is_settings_field_moved( $setting ) ) { continue; }
+
+				// Dismiss the message, or show it again
+				FluidCheckout_AdminNotices::instance()->set_dismissed( self::MOVED_SETTING_NOTICE_PREFIX . $option_name, $is_dismissed );
+				wp_send_json_success();
+			}
+		}
+
+		// Send the error for settings that did not move
+		wp_send_json_error();
+	}
+
+
+
+	/**
 	 * Register assets.
 	 */
 	public function register_assets() {
@@ -663,6 +813,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		wp_add_inline_script( 'fc-admin-settings-colorpicker', '(function(){var i=function(){FCAdminSettingsColorPicker.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-enhanced-select', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-enhanced-select' ), array( 'tomselect' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-enhanced-select', 'window.addEventListener("load",function(){FCAdminSettingsEnhancedSelect.init();});' );
+		wp_register_script( 'fc-admin-settings-css-value', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-css-value' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-admin-settings-css-value', '(function(){var i=function(){FCAdminSettingsCssValue.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 	}
 
 	/**
@@ -683,6 +835,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		wp_enqueue_script( 'fc-admin-settings-nav' );
 		wp_enqueue_script( 'fc-admin-settings-colorpicker' );
 		wp_enqueue_script( 'fc-admin-settings-enhanced-select' );
+		wp_enqueue_script( 'fc-admin-settings-css-value' );
 	}
 
 	/**
@@ -703,29 +856,34 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	 * @param   array  $settings  Admin JS settings.
 	 */
 	public function add_js_settings_admin( $settings ) {
-		// Bail if not on the settings page
-		if ( ! $this->is_settings_page() ) { return $settings; }
+		// Bail if not on an admin page with the settings page layout
+		if ( ! $this->is_settings_layout_page() ) { return $settings; }
 
-		$settings[ 'setupChecklist' ] = array(
-			'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
-			'syncTabAction'      => 'fc_setup_checklist_mark_tab',
-			'nonce'              => wp_create_nonce( 'fc_setup_checklist_mark_tab' ),
-			'tabToChecklistStep' => class_exists( 'FluidCheckout_Admin_SettingType_Setup' ) ? FluidCheckout_Admin_SettingType_Setup::instance()->get_checklist_tab_to_step_map() : array(),
-			'i18n'               => array(
-				'completed' => __( 'Completed', 'fluid-checkout' ),
-			),
-		);
+		// Maybe add the setup checklist settings, only on the settings page
+		if ( $this->is_settings_page() ) {
+			$settings[ 'setupChecklist' ] = array(
+				'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
+				'syncTabAction'      => 'fc_setup_checklist_mark_tab',
+				'nonce'              => wp_create_nonce( 'fc_setup_checklist_mark_tab' ),
+				'tabToChecklistStep' => class_exists( 'FluidCheckout_Admin_SettingType_Setup' ) ? FluidCheckout_Admin_SettingType_Setup::instance()->get_checklist_tab_to_step_map() : array(),
+				'i18n'               => array(
+					'completed' => __( 'Completed', 'fluid-checkout' ),
+				),
+			);
+		}
 
 		$settings[ 'settingsPage' ] = array(
-			'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
-			'saveAction' => 'fc_settings_save',
+			'ajaxUrl'             => admin_url( 'admin-ajax.php' ),
+			'saveAction'          => 'fc_settings_save',
+			'movedMessageNonce'   => wp_create_nonce( 'fc_settings_set_moved_setting_message_dismissed' ),
 			// Copy for AJAX save and floating header notices on the settings page
-			'i18n'       => array(
-				'saving'        => __( 'Saving...', 'fluid-checkout' ),
-				'save'          => __( 'Save settings', 'fluid-checkout' ),
-				'saved'         => __( 'Your settings have been saved.', 'fluid-checkout' ),
-				'saveError'     => __( 'Settings could not be saved. Please try again.', 'fluid-checkout' ),
-				'dismissNotice' => __( 'Dismiss notice', 'fluid-checkout' ), // aria-label on the floating header notice dismiss button
+			'i18n'                => array(
+				'saving'               => __( 'Saving...', 'fluid-checkout' ),
+				'save'                 => __( 'Save settings', 'fluid-checkout' ),
+				'saved'                => __( 'Your settings have been saved.', 'fluid-checkout' ),
+				'saveError'            => __( 'Settings could not be saved. Please try again.', 'fluid-checkout' ),
+				'dismissNotice'        => __( 'Dismiss notice', 'fluid-checkout' ), // aria-label on the floating header notice dismiss button
+				'movedMessageError'    => __( 'The change could not be saved. Please try again.', 'fluid-checkout' ),
 			),
 		);
 
@@ -733,11 +891,11 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
-	 * Maybe output `fcSettingsAdmin` on the Fluid Checkout settings page.
+	 * Maybe output `fcSettingsAdmin` on admin pages with the settings page layout.
 	 */
 	public function maybe_output_settings_inline_script_admin() {
-		// Bail if not on the settings page
-		if ( ! $this->is_settings_page() ) { return; }
+		// Bail if not on an admin page with the settings page layout
+		if ( ! $this->is_settings_layout_page() ) { return; }
 
 		FluidCheckout_Enqueue::instance()->output_settings_inline_script_admin();
 	}
@@ -769,15 +927,45 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		// Bail if user does not have enough permissions
 		if ( ! current_user_can( self::CAPABILITY ) ) { return; }
 
-		$tabs = $this->get_tabs();
+		// Get current tab
 		$current_tab = $this->get_current_tab();
+
+		// Output the settings page layout
+		$this->output_layout( array(
+			'title'          => __( 'Settings', 'fluid-checkout' ),
+			'form_url'       => $this->get_settings_url( $current_tab ),
+			'tabs'           => $this->get_tabs(),
+			'current_tab'    => $current_tab,
+		) );
+	}
+
+	/**
+	 * Output the settings page layout, with the sidebar navigation, the tab panels in one form and the page preview.
+	 *
+	 * @param  array  $args  Layout arguments: `title` of the sidebar, `form_url`, `tabs` (like the settings tabs, optionally with a `title` shown above their contents instead of their `label`), `current_tab`, `nav_callback` that outputs the navigation for the tabs and current tab, and `tab_content_callback` that outputs the contents of a tab. The callbacks default to those of the settings page.
+	 */
+	public function output_layout( $args ) {
+		// Get layout arguments
+		$args = wp_parse_args( $args, array(
+			'title'                    => '',
+			'form_url'                 => '',
+			'tabs'                     => array(),
+			'current_tab'              => '',
+			'nav_callback'             => array( $this, 'output_sidebar_nav' ),
+			'tab_content_callback'     => array( $this, 'output_tab_content' ),
+		) );
+
+		// Get tabs, and whether the current tab can be saved and has the page preview
+		$tabs = $args[ 'tabs' ];
+		$current_tab = $args[ 'current_tab' ];
 		$can_save = ! empty( $tabs[ $current_tab ][ 'show_save_button' ] );
 		$has_preview = class_exists( 'FluidCheckout_Admin_Settings_Preview' ) && FluidCheckout_Admin_Settings_Preview::instance()->is_preview_visible_for_tab( $current_tab );
 		$layout_class = 'fc-settings-layout';
 		$layout_class .= $has_preview ? ' has-preview' : '';
 		?>
 		<div class="wrap woocommerce fc-wrap fc-settings-wrap">
-			<form method="post" action="<?php echo esc_url( $this->get_settings_url( $current_tab ) ); ?>" id="mainform" class="fc-settings-form" enctype="multipart/form-data" data-fc-settings-form>
+			<?php // Stop browsers from restoring unsaved values when going back to the page, as the page scripts start from the saved settings ?>
+			<form method="post" action="<?php echo esc_url( $args[ 'form_url' ] ); ?>" id="mainform" class="fc-settings-form" enctype="multipart/form-data" autocomplete="off" data-fc-settings-form>
 				<div class="<?php echo esc_attr( $layout_class ); ?>" data-fc-settings-layout>
 					<?php
 					/**
@@ -811,12 +999,12 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 										<path stroke-linecap="round" stroke-linejoin="round" d="M18 6L6 18"/>
 									</svg>
 								</button>
-								<h1 class="fc-settings-sidebar-header__title"><?php echo esc_html( __( 'Settings', 'fluid-checkout' ) ); ?></h1>
+								<h1 class="fc-settings-sidebar-header__title"><?php echo esc_html( $args[ 'title' ] ); ?></h1>
 								<div class="fc-settings-sidebar-header__actions">
 									<?php $this->output_settings_header_action_buttons( $can_save ); ?>
 								</div>
 							</div>
-							<?php $this->output_sidebar_nav( $tabs, $current_tab ); ?>
+							<?php call_user_func( $args[ 'nav_callback' ], $tabs, $current_tab ); ?>
 						</div>
 					</div>
 
@@ -835,22 +1023,18 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 								if ( 'separator' === $tab_args[ 'type' ] ) { continue; }
 
 								$is_active = $tab === $current_tab;
+
+								// Get the title shown above the tab contents, the label unless the tab has its own title
+								$tab_title = ! empty( $tab_args[ 'title' ] ) ? $tab_args[ 'title' ] : $tab_args[ 'label' ];
 								?>
 								<div
 									class="fc-settings-tab fc-settings-tab--<?php echo esc_attr( $tab ); ?><?php echo $is_active ? ' is-active' : ''; ?>"
 									data-fc-settings-tab="<?php echo esc_attr( $tab ); ?>"
 									data-fc-settings-show-save="<?php echo $tab_args[ 'show_save_button' ] ? 'yes' : 'no'; ?>"
 								>
-									<h2 class="fc-settings-content__title"><?php echo esc_html( $tab_args[ 'label' ] ); ?></h2>
+									<h2 class="fc-settings-content__title"><?php echo esc_html( $tab_title ); ?></h2>
 
-									<?php
-									FluidCheckout_Admin_Settings_Renderer::instance()->output_fields( $this->get_tab_settings( $tab ) );
-
-									/**
-									 * Output additional content for a tab of the Fluid Checkout settings page.
-									 */
-									do_action( 'fc_admin_settings_tab_' . $tab );
-									?>
+									<?php call_user_func( $args[ 'tab_content_callback' ], $tab, $tab_args ); ?>
 								</div>
 							<?php endforeach; ?>
 
@@ -897,6 +1081,22 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			</form>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Output the contents of a settings tab: its settings fields and additional content.
+	 *
+	 * @param  string  $tab        Settings tab slug.
+	 * @param  array   $_tab_args  Settings tab arguments, not used by the settings page.
+	 */
+	public function output_tab_content( $tab, $_tab_args ) {
+		// Output settings fields of the tab
+		FluidCheckout_Admin_Settings_Renderer::instance()->output_fields( $this->get_tab_settings( $tab ) );
+
+		/**
+		 * Output additional content for a tab of the Fluid Checkout settings page.
+		 */
+		do_action( 'fc_admin_settings_tab_' . $tab );
 	}
 
 	/**

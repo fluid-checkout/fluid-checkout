@@ -3,16 +3,16 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Page preview column for the Fluid Checkout settings page.
- * Shown on all tabs except Dashboard and License Keys.
+ * Shown on all tabs except Dashboard and License Keys, and on other admin pages that output it with their own configuration.
  */
 class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 
 	/**
-	 * Settings tabs where the preview column is hidden.
+	 * Tabs of the settings page layout where the preview column is hidden, including the Design editor page without PRO.
 	 *
 	 * @var string[]
 	 */
-	const HIDDEN_TABS = array( 'dashboard', 'license_keys' );
+	const HIDDEN_TABS = array( 'dashboard', 'license_keys', 'design_editor' );
 
 	/**
 	 * Browser storage key of the preview state: preview mode, header and footer visibility, and expanded state.
@@ -35,6 +35,13 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	 * @var array|null
 	 */
 	private $tab_preview_modes = null;
+
+	/**
+	 * Settings tab, or the slug of another admin page, whose preview pane configuration the preview script gets, set before enqueueing its assets.
+	 *
+	 * @var string|null
+	 */
+	private $preview_tab = null;
 
 
 
@@ -134,6 +141,9 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		$defaults = array(
 			'default_page'           => 'checkout',
 			'show_page_tabs'         => true,
+			'switch_page_with_tab'   => true,
+			// Settings tabs that show the header and footer in the page preview while active
+			'header_footer_tabs'     => array(),
 			'status_text'            => '',
 			// Settings that only change the page styles, refreshed without reloading the preview
 			'style_settings'         => array(
@@ -151,7 +161,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		 * @since  5.0.0
 		 *
 		 * @param  array   $config  Preview pane configuration.
-		 * @param  string  $tab     Settings tab slug.
+		 * @param  string  $tab     Settings tab slug, or the slug another admin page uses for its preview pane configuration.
 		 *
 		 * @return array  Preview pane configuration.
 		 */
@@ -193,6 +203,18 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		return FluidCheckout_Admin_Preview::instance()->get_preview_url( $page_args[ 'url' ] );
 	}
 
+	/**
+	 * Check whether a preview page is enabled in the saved settings.
+	 *
+	 * @param  array  $page_args  Preview page arguments.
+	 */
+	public function is_preview_page_enabled( $page_args ) {
+		// Bail if the page has no setting that enables it
+		if ( empty( $page_args[ 'enable_setting' ] ) ) { return true; }
+
+		return 'yes' === FluidCheckout_Settings::instance()->get_option( $page_args[ 'enable_setting' ] );
+	}
+
 
 
 	/**
@@ -223,8 +245,16 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'fc-admin-settings-preview', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-preview' ), array( 'jquery', 'fc-utils', 'fc-admin-settings-enhanced-select' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-admin-settings-preview', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-preview' ), array( 'jquery', 'fc-utils', 'fc-settings-page', 'fc-admin-settings-enhanced-select' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-preview', 'window.addEventListener("load",function(){if(window.fcSettingsAdmin&&fcSettingsAdmin.settingsPreview){FCAdminSettingsPreview.init(fcSettingsAdmin.settingsPreview);}});' );
+	}
+
+	/**
+	 * Enqueue preview assets.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-admin-settings-preview' );
 	}
 
 	/**
@@ -236,37 +266,47 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		// Bail if settings page class is not available
 		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) ) { return; }
 
+		// Get settings page
 		$page = FluidCheckout_Admin_Settings_Page::instance();
 
 		// Bail if not on the Fluid Checkout settings page
 		if ( ! $page->is_settings_page() ) { return; }
 
-		wp_enqueue_script( 'fc-admin-settings-preview' );
+		// Set the tab whose preview pane configuration the preview script gets
+		$this->set_preview_tab( $page->get_current_tab() );
+
+		$this->enqueue_assets();
 	}
 
 	/**
-	 * Add preview script settings to `fcSettingsAdmin` on the settings page.
+	 * Set the settings tab, or the slug another admin page uses for its preview pane configuration, whose configuration the preview script gets.
+	 *
+	 * @param  string  $tab  Settings tab slug, or the slug another admin page uses for its preview pane configuration.
+	 */
+	public function set_preview_tab( $tab ) {
+		$this->preview_tab = $tab;
+	}
+
+	/**
+	 * Add preview script settings to `fcSettingsAdmin`, for the tab whose preview assets are enqueued.
 	 *
 	 * @param   array  $settings  Admin JS settings.
 	 */
 	public function add_js_settings_admin( $settings ) {
-		// Bail if settings page class is not available
-		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) ) { return $settings; }
-
-		$page = FluidCheckout_Admin_Settings_Page::instance();
-
-		// Bail if not on the Fluid Checkout settings page
-		if ( ! $page->is_settings_page() ) { return $settings; }
+		// Bail if the preview assets are not enqueued
+		if ( null === $this->preview_tab ) { return $settings; }
 
 		// Get preview pane configuration
-		$config = $this->get_preview_config( $page->get_current_tab() );
+		$config = $this->get_preview_config( $this->preview_tab );
 
 		$settings[ 'settingsPreview' ] = array(
 			'hiddenTabs'         => self::HIDDEN_TABS,
-			'initialTab'         => $page->get_current_tab(),
-			'initialPage'        => $this->get_preview_page_for_tab( $page->get_current_tab() ),
+			'initialTab'         => $this->preview_tab,
+			'initialPage'        => $this->get_preview_page_for_tab( $this->preview_tab ),
 			'placeholderSrcdocs' => $this->get_placeholder_iframe_srcdocs(),
 			'defaultPage'        => $config[ 'default_page' ],
+			'switchPageWithTab'  => $config[ 'switch_page_with_tab' ],
+			'headerFooterTabs'   => $config[ 'header_footer_tabs' ],
 			'modeQueryArg'       => FluidCheckout_Admin_Preview::MODE_QUERY_ARG,
 			'guestMode'          => FluidCheckout_Admin_Preview::MODE_GUEST,
 			'loggedInMode'       => FluidCheckout_Admin_Preview::MODE_LOGGED_IN,
@@ -521,6 +561,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 						data-fc-settings-preview-page="<?php echo esc_attr( $page_slug ); ?>"
 						data-fc-settings-preview-url="<?php echo esc_url( $this->get_preview_page_url( $page_args ) ); ?>"
 						data-fc-settings-preview-enable-setting="<?php echo esc_attr( isset( $page_args[ 'enable_setting' ] ) ? $page_args[ 'enable_setting' ] : '' ); ?>"
+						data-fc-settings-preview-enabled="<?php echo $this->is_preview_page_enabled( $page_args ) ? 'yes' : 'no'; ?>"
 					><?php echo esc_html( $page_args[ 'label' ] ); ?></button>
 				<?php endforeach; ?>
 			</div>

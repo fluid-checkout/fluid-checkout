@@ -27,19 +27,30 @@
 		conditionalFieldsForTriggerSelector:   '[data-conditional-id="###ID###"]',
 		conditionalFieldKeyAttribute:          'data-conditional-id',
 		conditionalFieldValueAttribute:        'data-conditional-value',
+		conditionalFieldModeAttribute:         'data-conditional-mode',
+		conditionalModeDisable:                'disable',
 
 		settingsFieldSelector:                 '.fc-settings-field',
 		settingsRowSelector:                   '.fc-settings-field, tr',
+		settingsCardSelector:                  '.fc-settings-card',
+		settingsTabSelector:                   '[data-fc-settings-tab]',
 		layoutOptionsSelector:                 '.fc-settings-sectioned-buttons, .fc-settings-radio-options',
 		layoutOptionSelector:                  '.fc-settings-sectioned-buttons__option, .fc-settings-radio-option',
 		isSelectedClass:                       'is-selected',
 		disabledFieldClass:                    'fc-settings-field--disabled',
+		isDisabledClass:                       'is-disabled',
 
 		contentSelector:                       '.fc-settings-content',
 		actionsSelector:                       '.fc-settings-actions',
 		formSelector:                          '[data-fc-settings-form]',
+		invalidFieldSelector:                  '[aria-invalid="true"]',
 		saveButtonSelector:                    '[data-fc-settings-save]',
 		noticesSelector:                       '[data-fc-settings-notices]',
+		movedMessageSelector:                  '[data-fc-settings-moved-message]',
+		movedMessageContentSelector:           '[data-fc-settings-moved-message-content]',
+		movedMessageConfirmationSelector:      '[data-fc-settings-moved-message-confirmation]',
+		movedMessageDismissSelector:           '[data-fc-settings-moved-message-dismiss]',
+		movedMessageUndoSelector:              '[data-fc-settings-moved-message-undo]',
 		isBusyClass:                           'is-busy',
 		isPinnedClass:                         'is-pinned',
 		noticeVisibleClass:                    'is-visible',
@@ -48,9 +59,12 @@
 		hiddenClass:                           'hidden',
 
 		syncedSelectAttribute:                 'data-fc-settings-sync-group',
+		movedMessageAttribute:                 'data-fc-settings-moved-message',
 
 		ajaxUrl:                               '',
 		saveAction:                            'fc_settings_save',
+		movedMessageAction:                    'fc_settings_set_moved_setting_message_dismissed',
+		movedMessageNonce:                     '',
 		noticeDismissDelayMs:                  5000,
 		noticeHideTransitionMs:                300,
 
@@ -60,11 +74,13 @@
 			saved:                             'Your settings have been saved.',
 			saveError:                         'Settings could not be saved. Please try again.',
 			dismissNotice:                     'Dismiss notice', // aria-label on the floating header notice dismiss button
+			movedMessageError:                 'The change could not be saved. Please try again.',
 		},
 	};
 	var _triggerFieldIds = [];
 	var _actionsSyncScheduled = false;
 	var _isSavingSettings = false;
+	var _hasUnsavedChanges = false;
 	var _settingsNoticeTimeout = null;
 	var _modifierHoldTimer = null;
 	var _isShowingShortcuts = false;
@@ -214,6 +230,9 @@
 	var getConditionalContainer = function( element ) {
 		// Bail if element is not valid
 		if ( ! element ) { return null; }
+
+		// Maybe use the card itself, for cards shown only while their condition matches
+		if ( element.matches( _settings.settingsCardSelector ) ) { return element; }
 
 		// Prefer the nearest settings field row
 		var settingsField = element.closest( _settings.settingsFieldSelector );
@@ -528,11 +547,17 @@
 				isVisible = doAllConditionalConditionsMatch( conditionalField );
 			}
 
-			// Maybe show/hide field row
-			if ( isVisible ) {
+			// Maybe disable instead of hide the field row, for fields that stay visible. Inert rows still send their values when saving.
+			if ( _settings.conditionalModeDisable === conditionalField.getAttribute( _settings.conditionalFieldModeAttribute ) ) {
+				fieldRow.classList.toggle( _settings.isDisabledClass, ! isVisible );
+				fieldRow.inert = ! isVisible;
+			}
+			// Otherwise, maybe show the field row
+			else if ( isVisible ) {
 				fieldRow.classList.remove( _settings.hiddenClass );
 				fieldRow.style.display = ''; // Clear custom display style
 			}
+			// Otherwise, hide the field row
 			else {
 				fieldRow.classList.add( _settings.hiddenClass );
 				fieldRow.style.display = 'none';
@@ -641,16 +666,79 @@
 
 
 	/**
+	 * Dismiss the message of a setting moved to another page, or show it again.
+	 *
+	 * @param   {Element}  button       Dismiss or undo button of the message.
+	 * @param   {boolean}  isDismissed  Whether to dismiss the message, or show it again.
+	 */
+	var setMovedSettingMessageDismissed = function( button, isDismissed ) {
+		var message;
+		var formData;
+
+		// Prevent sending the request twice
+		button.disabled = true;
+
+		// Get the request data, with the setting of the message
+		message = button.closest( _settings.movedMessageSelector );
+		formData = new FormData();
+		formData.append( 'action', _settings.movedMessageAction );
+		formData.append( 'nonce', _settings.movedMessageNonce );
+		formData.append( 'option_name', message.getAttribute( _settings.movedMessageAttribute ) );
+		formData.append( 'dismissed', isDismissed ? 'yes' : 'no' );
+
+		// Send the request
+		window.fetch( _settings.ajaxUrl, {
+			method:      'POST',
+			body:        formData,
+			credentials: 'same-origin',
+		} )
+			.then( function( response ) {
+				return response.json();
+			} )
+			.then( function( response ) {
+				// Maybe show the confirmation with the undo button in place of the message, or the message again
+				if ( response && response.success ) {
+					message.querySelector( _settings.movedMessageContentSelector ).hidden = isDismissed;
+					message.querySelector( _settings.movedMessageConfirmationSelector ).hidden = ! isDismissed;
+
+					// Move the focus to the button now shown, as the clicked button is hidden
+					message.querySelector( isDismissed ? _settings.movedMessageUndoSelector : _settings.movedMessageDismissSelector ).focus();
+				}
+				// Otherwise, show the error
+				else {
+					showSettingsSaveNotice( 'error', _settings.i18n.movedMessageError );
+				}
+			} )
+			.catch( function() {
+				// Show the error
+				showSettingsSaveNotice( 'error', _settings.i18n.movedMessageError );
+			} )
+			.finally( function() {
+				// Allow using the button again
+				button.disabled = false;
+			} );
+	};
+
+
+
+	/**
 	 * Handle click events.
 	 *
 	 * @param   {Event}  event  The click event.
 	 */
 	var handleClick = function( event ) {
-		var triggerFieldId;
+		var matchedElement;
 
+		// DISMISS MOVED SETTING MESSAGE
+		if ( matchedElement = event.target.closest( _settings.movedMessageDismissSelector ) ) {
+			setMovedSettingMessageDismissed( matchedElement, true );
+		}
+		// UNDO DISMISSING MOVED SETTING MESSAGE
+		else if ( matchedElement = event.target.closest( _settings.movedMessageUndoSelector ) ) {
+			setMovedSettingMessageDismissed( matchedElement, false );
+		}
 		// CONDITIONAL FIELDS TRIGGER
-		triggerFieldId = resolveTriggerFieldId( event.target );
-		if ( triggerFieldId ) {
+		else if ( resolveTriggerFieldId( event.target ) ) {
 			maybeProcessConditionalFields( event.target );
 		}
 	};
@@ -801,6 +889,9 @@
 	 * @param   {Event}  event  The change event.
 	 */
 	var handleChange = function( event ) {
+		// UNSAVED CHANGES
+		maybeSetUnsavedChanges( event.target );
+
 		// LAYOUT OPTION SELECTED STATE
 		syncLayoutOptionSelectedState( event.target );
 
@@ -812,6 +903,46 @@
 		if ( triggerFieldId ) {
 			maybeProcessConditionalFields( event.target );
 		}
+	};
+
+
+
+	/**
+	 * Remember that the settings form has unsaved changes, when a setting changes.
+	 * Only named fields of the settings tabs count, not the controls of the page preview or the navigation.
+	 *
+	 * @param   {Element}  field  Changed form field.
+	 */
+	var maybeSetUnsavedChanges = function( field ) {
+		// Bail if the field is not a setting of the settings form
+		if ( ! field.name || ! field.form || ! field.form.matches( _settings.formSelector ) || ! field.closest( _settings.settingsTabSelector ) ) { return; }
+
+		// Remember the unsaved changes
+		_hasUnsavedChanges = true;
+	};
+
+	/**
+	 * Handle input events.
+	 *
+	 * @param   {Event}  event  The input event.
+	 */
+	var handleInput = function( event ) {
+		// UNSAVED CHANGES
+		maybeSetUnsavedChanges( event.target );
+	};
+
+	/**
+	 * Ask to confirm leaving the page while the settings form has unsaved changes, which would be lost.
+	 *
+	 * @param   {Event}  event  The beforeunload event.
+	 */
+	var handleBeforeUnload = function( event ) {
+		// Bail if there are no unsaved changes
+		if ( ! _hasUnsavedChanges ) { return; }
+
+		// Ask to confirm leaving the page, with the message of the browser
+		event.preventDefault();
+		event.returnValue = '';
 	};
 
 
@@ -1061,7 +1192,11 @@
 		_isSavingSettings = true;
 		setSaveButtonsSavingState();
 
-		formData = new FormData( form );
+		// Mark the changes as saved now, so changes made while saving stay unsaved
+		_hasUnsavedChanges = false;
+
+		// Get the settings form values, with the names of its fields
+		formData = _publicMethods.getFormData( form );
 		formData.append( 'action', _settings.saveAction );
 
 		activeTab = getActiveSettingsTabSlug();
@@ -1095,10 +1230,16 @@
 					return;
 				}
 
+				// Mark the changes as unsaved again, as the save failed
+				_hasUnsavedChanges = true;
+
 				message = response && response.data && response.data.message ? response.data.message : saveErrorMessage;
 				showSettingsSaveNotice( 'error', message );
 			} )
 			.catch( function() {
+				// Mark the changes as unsaved again, as the save failed
+				_hasUnsavedChanges = true;
+
 				showSettingsSaveNotice( 'error', saveErrorMessage );
 			} )
 			.finally( function() {
@@ -1374,6 +1515,38 @@
 
 
 	/**
+	 * Get the values of a settings form with the names of its fields, also of unchecked checkboxes, so only the settings of the form are saved.
+	 * Fields marked as not valid are left out, so their saved values stay.
+	 *
+	 * @param   {Element}   form  Settings form.
+	 * @return  {FormData}        Values and field names of the form.
+	 */
+	_publicMethods.getFormData = function( form ) {
+		// Get the values of the form
+		var formData = new FormData( form );
+		var fieldNames = {};
+		var i;
+
+		// Iterate form fields, to send their names
+		for ( i = 0; i < form.elements.length; i++ ) {
+			// Skip fields without a name, or with a name already sent
+			if ( ! form.elements[ i ].name || fieldNames[ form.elements[ i ].name ] ) { continue; }
+
+			// Maybe remove the value of a field marked as not valid, and skip its name
+			if ( form.elements[ i ].matches( _settings.invalidFieldSelector ) ) {
+				formData.delete( form.elements[ i ].name );
+				continue;
+			}
+
+			// Add the field name
+			fieldNames[ form.elements[ i ].name ] = true;
+			formData.append( 'fc_settings_field_names[]', form.elements[ i ].name );
+		}
+
+		return formData;
+	};
+
+	/**
 	 * Initialize component and set related handlers.
 	 *
 	 * @param   {Object}  options  Optional settings overrides (e.g. fieldIdPrefix).
@@ -1400,7 +1573,9 @@
 		// Event handlers
 		window.addEventListener( 'click', handleClick, true );
 		window.addEventListener( 'change', handleChange, true );
+		document.addEventListener( 'input', handleInput, true );
 		window.addEventListener( 'submit', handleSubmit, true );
+		window.addEventListener( 'beforeunload', handleBeforeUnload );
 		document.addEventListener( 'keydown', handleKeydown, true );
 		document.addEventListener( 'keydown', handleModifierHoldKeydown, true );
 		document.addEventListener( 'keyup', handleModifierHoldKeyup, true );

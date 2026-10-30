@@ -1,0 +1,62 @@
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+
+
+
+@use "abstract" as *;
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS CUSTOM STYLES
+// ------------------------------------
+
+// Apply each field style only with its body class, as a variable without a value would replace the theme styles
+@include form-field-styles( $body-page-selector, 'has-fc-field-font-size', $select2-element: '.select2-selection__rendered' ) {
+	font-size: $form-field-font-size !important; // Needed to override theme styles
+}
+
+@include form-field-styles( $body-page-selector, 'has-fc-field-height', $include-textarea: false, $select2-element: false ) {
+	height: $form-field-height !important; // Needed to override theme styles
+}
+
+@include form-field-styles( $body-page-selector, 'has-fc-field-border-radius', $select2-element: false ) {
+	border-radius: $form-field-border-radius !important; // Needed to override theme styles
+}
+
+@include form-field-styles( $body-page-selector, 'has-fc-field-border-width' ) {
+	border-width: $form-field-border-width !important; // Needed to override theme styles
+	border-style: solid !important; // Needed to show the border when the theme fields have none
+}
+
+@include form-field-styles( $body-page-selector, 'has-fc-field-padding-horizontal', $select2-element: false ) {
+	padding-left: $form-field-padding-horizontal; // No `!important`, so the padding set by the international phone field still applies
+	padding-right: $form-field-padding-horizontal;
+}
+
+
+
+@include form-field-styles( $body-page-selector, 'has-fc-field-text-color', $select2-element: '.select2-selection__rendered' ) {
+	color: $form-field-text-color !important; // Needed to override theme styles
+}
+
+@include form-field-styles( $body-page-selector, 'has-fc-field-background-color' ) {
+	background-color: $form-field-background-color !important; // Needed to override theme styles
+}
+
+@include form-field-styles( $body-page-selector, 'has-fc-field-border-color', $row-state: ":not( [class*='woocommerce-invalid'] ):not( .woocommerce-validated )" ) {
+	border-color: $form-field-border-color !important; // Needed to override theme styles
+}
+
+@include form-field-styles( $body-page-selector, 'has-fc-field-box-shadow' ) {
+	box-shadow: $form-field-box-shadow !important; // Needed to override theme styles
+}
+
+
+
+@include form-field-styles( $body-page-selector, 'has-fc-field-background-color--focus', $field-state: ':focus', $select2-element: '.select2-container:is( .select2-container--focus, .select2-container--open ) .select2-selection' ) {
+	background-color: $form-field-background-color--focus !important; // Needed to override theme styles
+}
+
+@include form-field-styles( $body-page-selector, 'has-fc-field-box-shadow--focus', $field-state: ':focus', $select2-element: '.select2-container:is( .select2-container--focus, .select2-container--open ) .select2-selection' ) {
+	box-shadow: $form-field-box-shadow--focus !important; // Needed to override theme styles
+}

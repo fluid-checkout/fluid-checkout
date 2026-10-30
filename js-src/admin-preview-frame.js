@@ -55,6 +55,8 @@
 	var _cssVariables = {};
 	var _colorScheme = '';
 	var _hasDarkModeClass = false;
+	var _ignoredStyleIds = [];
+	var _colorSchemeBodyClasses = {};
 	var _shippingMethods = {};
 	var _originalFetch = null;
 	var _originalXhrOpen = null;
@@ -207,14 +209,14 @@
 
 
 	/**
-	 * Maybe send the ready message to the admin page, when the preview is shown in its frame.
+	 * Maybe send the ready message to the admin page, with the color scheme of the page, when the preview is shown in its frame.
 	 */
 	var maybeSendReadyMessage = function() {
 		// Bail if not shown in a frame, or the admin origin is not available
 		if ( root.parent === root || ! _settings.adminOrigin ) { return; }
 
-		// Send ready message to the admin page
-		root.parent.postMessage( { source: _settings.messageSource, type: 'ready' }, _settings.adminOrigin );
+		// Send ready message to the admin page, with the color scheme the page has before the admin page forces one
+		root.parent.postMessage( { source: _settings.messageSource, type: 'ready', colorScheme: _hasDarkModeClass ? 'dark' : 'light' }, _settings.adminOrigin );
 	};
 
 
@@ -401,6 +403,9 @@
 
 		// Update the CSS variables of the color scheme
 		updatePreviewStyles();
+
+		// Update the body classes of the color scheme
+		setColorSchemeBodyClasses( _colorSchemeBodyClasses );
 	};
 
 	/**
@@ -415,6 +420,54 @@
 		for ( className in classes ) {
 			document.body.classList.toggle( className, true === classes[ className ] );
 		}
+	};
+
+	/**
+	 * Add or remove the body classes of the color scheme that the page preview shows, forced or its own.
+	 *
+	 * @param {Object}  classes  Whether each class is added, by color scheme (`light` or `dark`) and class name.
+	 */
+	var setColorSchemeBodyClasses = function( classes ) {
+		// Remember the classes, used again when the color scheme changes
+		_colorSchemeBodyClasses = classes;
+
+		// Add or remove the classes of the color scheme that the page shows
+		setBodyClasses( _colorSchemeBodyClasses[ document.body.classList.contains( _settings.darkModeClass ) ? 'dark' : 'light' ] || {} );
+	};
+
+	/**
+	 * Disable or enable the styles of style elements.
+	 *
+	 * @param {Array}    ids         IDs of the style elements.
+	 * @param {boolean}  isDisabled  Whether to disable the styles.
+	 */
+	var setStyleElementsDisabled = function( ids, isDisabled ) {
+		var styleElement;
+		var i;
+
+		// Iterate style elements
+		for ( i = 0; i < ids.length; i++ ) {
+			styleElement = document.getElementById( ids[ i ] );
+
+			// Maybe disable or enable the styles of the element
+			if ( styleElement && styleElement.sheet ) {
+				styleElement.sheet.disabled = isDisabled;
+			}
+		}
+	};
+
+	/**
+	 * Ignore the styles of style elements, replacing the ones ignored before.
+	 *
+	 * @param {Array}  ids  IDs of the style elements to ignore.
+	 */
+	var setIgnoredStyleIds = function( ids ) {
+		// Use the styles of the elements ignored before again
+		setStyleElementsDisabled( _ignoredStyleIds, false );
+
+		// Ignore the styles of the new elements
+		_ignoredStyleIds = ids;
+		setStyleElementsDisabled( _ignoredStyleIds, true );
 	};
 
 	/**
@@ -451,6 +504,65 @@
 
 		// Send the computed value to the admin page
 		root.parent.postMessage( { source: _settings.messageSource, type: 'computedCssValue', requestId: requestId, value: computedValue }, _settings.adminOrigin );
+	};
+
+	/**
+	 * Send the computed values of CSS variables for each color scheme to the admin page, read from a hidden element with a class whose styles set them.
+	 * The CSS variables set by the admin page do not apply while reading the values, and the ignored style elements stay ignored.
+	 *
+	 * @param {number|string}  requestId     Request ID.
+	 * @param {string}         className     Class of the element whose styles set the CSS variables.
+	 * @param {Array}          names         CSS variable names.
+	 * @param {Array}          colorSchemes  Color schemes to read the values for, `light` or `dark`.
+	 */
+	var sendComputedCssVariables = function( requestId, className, names, colorSchemes ) {
+		var values = {};
+		var probe;
+		var colorScheme;
+		var cssVariables;
+		var computedStyle;
+		var i;
+		var j;
+
+		// Add the hidden element with the class
+		probe = document.createElement( 'div' );
+		probe.className = className;
+		probe.hidden = true;
+		document.body.appendChild( probe );
+
+		// Remember the color scheme and the CSS variables set by the admin page, restored after reading the values
+		colorScheme = _colorScheme;
+		cssVariables = _cssVariables;
+
+		// Read the values, restoring the page preview afterwards
+		try {
+			// Ignore the CSS variables set by the admin page while reading the values
+			_cssVariables = {};
+
+			// Iterate color schemes
+			for ( i = 0; i < colorSchemes.length; i++ ) {
+				// Use the color scheme, then get the styles of the hidden element
+				setColorScheme( colorSchemes[ i ] );
+				computedStyle = root.getComputedStyle( probe );
+				values[ colorSchemes[ i ] ] = {};
+
+				// Iterate CSS variables
+				for ( j = 0; j < names.length; j++ ) {
+					values[ colorSchemes[ i ] ][ names[ j ] ] = computedStyle.getPropertyValue( names[ j ] ).trim();
+				}
+			}
+		}
+		// Restore the CSS variables and the color scheme set by the admin page, also when reading the values fails
+		finally {
+			_cssVariables = cssVariables;
+			setColorScheme( colorScheme );
+
+			// Remove the hidden element
+			probe.remove();
+		}
+
+		// Send the computed values to the admin page
+		root.parent.postMessage( { source: _settings.messageSource, type: 'computedCssVariables', requestId: requestId, values: values }, _settings.adminOrigin );
 	};
 
 
@@ -767,9 +879,21 @@
 		else if ( 'setBodyClasses' === e.data.type ) {
 			setBodyClasses( e.data.classes );
 		}
+		// SET COLOR SCHEME BODY CLASSES
+		else if ( 'setColorSchemeBodyClasses' === e.data.type ) {
+			setColorSchemeBodyClasses( e.data.classes );
+		}
+		// SET IGNORED STYLE IDS
+		else if ( 'setIgnoredStyleIds' === e.data.type ) {
+			setIgnoredStyleIds( e.data.ids );
+		}
 		// GET COMPUTED CSS VALUE
 		else if ( 'getComputedCssValue' === e.data.type ) {
 			sendComputedCssValue( e.data.requestId, e.data.property, e.data.value );
+		}
+		// GET COMPUTED CSS VARIABLES
+		else if ( 'getComputedCssVariables' === e.data.type ) {
+			sendComputedCssVariables( e.data.requestId, e.data.className, e.data.names, e.data.colorSchemes );
 		}
 		// REFRESH STYLES
 		else if ( 'refreshStyles' === e.data.type ) {

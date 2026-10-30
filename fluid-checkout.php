@@ -295,6 +295,7 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 		 * Load settings manager.
 		 */
 		public function load_settings() {
+			require_once self::$directory_path . 'inc/abstract-profile-storage.php';
 			require_once self::$directory_path . 'inc/settings.php';
 		}
 
@@ -606,11 +607,13 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 				}
 			}
 
-			// Fluid Checkout settings page in the admin
+			// Fluid Checkout admin pages, which can output the preview pane
 			if ( is_admin() && ! wp_doing_ajax() ) {
 				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Admin menu page slug.
 				$page = isset( $_GET[ 'page' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'page' ] ) ) : '';
-				if ( 'fluid-checkout' === $page ) {
+
+				// Maybe load it on pages with a Fluid Checkout page slug
+				if ( 0 === strpos( $page, 'fluid-checkout' ) ) {
 					return true;
 				}
 			}

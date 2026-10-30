@@ -34,6 +34,9 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Settings page
 		add_action( 'init', array( $this, 'load_settings_page' ), 10 );
 
+		// Design editor promo page
+		add_action( 'init', array( $this, 'load_design_editor_promo' ), 10 );
+
 		// Load dashboard
 		add_action( 'init', array( $this, 'load_dashboard' ), 10 );
 
@@ -152,6 +155,18 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 
 	/**
+	 * Load the Design editor admin page with the promo card, when PRO is not active.
+	 */
+	public function load_design_editor_promo() {
+		// Bail if PRO is active, as PRO adds the Design editor page
+		if ( FluidCheckout::instance()->is_pro_activated() ) { return; }
+
+		include_once self::$directory_path . 'inc/admin/admin-design-editor-promo.php';
+	}
+
+
+
+	/**
 	 * Enqueue admin settings assets.
 	 */
 	public function enqueue_assets() {
@@ -223,8 +238,10 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Load settings field types
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-paragraph.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-separator.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-group-title.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-promo.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-input.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-css-value.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-select.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-multiselect.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-telemetry.php';
