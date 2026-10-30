@@ -3,7 +3,7 @@
 
 // Checkout guided setup — settings field layout inside a narrow column within the wider step card.
 
-.fc-guided-setup .fc-setup-card .fc-setup-card__inner > form {
+body.fc-guided-setup:not( .fc-guided-setup--wide-content ) .fc-setup-card .fc-setup-card__inner > form {
 	box-sizing: border-box;
 	max-width: $fc-settings-content-max-width;
 	margin-inline: auto;

@@ -1,0 +1,30 @@
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
+// Guided setup step content width. Default is narrow (600px form column inside the shell).
+// Add body class `fc-guided-setup--wide-content` via guided setup config `content_layout` => `wide`.
+
+$fc-guided-setup-wide-wrap-max-width: $fc-settings-dashboard-content-max-width !default;
+$fc-guided-setup-wide-content-inset: 25px !default;
+
+body.fc-guided-setup--wide-content .fc-wrap {
+	max-width: $fc-guided-setup-wide-wrap-max-width;
+}
+
+// Match footer inset (`.fc-setup-card__footer` uses 25px) on all sides of the step content area.
+body.fc-guided-setup--wide-content .fc-setup-card .fc-setup-card__inner {
+	padding: $fc-guided-setup-wide-content-inset;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		padding: $fc-guided-setup-wide-content-inset;
+	}
+}
+
+body.fc-guided-setup--wide-content .fc-setup-card .fc-setup-card__inner > form,
+body.fc-guided-setup--wide-content .fc-setup-card .fc-setup-card__inner > .fc-setup-step-content {
+	box-sizing: border-box;
+	max-width: none;
+	width: 100%;
+	margin-inline: 0;
+	padding: 0;
+}

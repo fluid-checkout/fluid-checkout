@@ -1,0 +1,82 @@
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
+// Recommended setup step — preview recommendation rows (IA / styling shell).
+
+.fc-guided-setup .fc-setup-recommendation-options {
+	display: grid;
+	grid-template-columns: minmax( 0, 1fr );
+	gap: 8px;
+	width: 100%;
+	margin-top: 20px;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 12px;
+	width: 100%;
+	max-width: none;
+	margin: 0;
+	padding: 13px 12px;
+	border: 1px solid $fc-settings-input-border-color;
+	border-radius: $fc-settings-input-border-radius;
+	background: $white;
+	box-shadow: $fc-settings-input-box-shadow;
+	box-sizing: border-box;
+	color: $fc-settings-text-color;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option:hover,
+.fc-guided-setup .fc-setup-recommendation-option:has( .fc-settings-toggle:checked ) {
+	background: $white;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option.is-disabled {
+	background: $fc-settings-input-background-color-disabled;
+	cursor: not-allowed;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option.is-disabled:hover,
+.fc-guided-setup .fc-setup-recommendation-option.is-disabled:has( .fc-settings-toggle:checked ) {
+	background: $fc-settings-input-background-color-disabled;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option__switch {
+	flex: 0 0 auto;
+	margin: 2px 0 0;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option__content {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option__title {
+	display: block;
+	margin: 0 0 4px;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.35;
+	color: $fc-settings-text-color;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option__description {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.45;
+	color: $admin-text-color-muted;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option.is-disabled .fc-setup-recommendation-option__title,
+.fc-guided-setup .fc-setup-recommendation-option.is-disabled .fc-setup-recommendation-option__description {
+	color: $fc-settings-input-color-disabled;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option__badge {
+	flex: 0 0 auto;
+	margin-top: 0;
+}

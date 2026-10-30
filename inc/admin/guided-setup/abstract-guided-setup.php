@@ -230,6 +230,8 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 
 		// Hide all admin notices (FC and third-party) on guided setup screens
 		add_action( 'load-' . $this->page_hook_suffix, array( $this, 'maybe_strip_admin_notices_on_guided_setup' ), 20 );
+
+		add_filter( 'fc_settings_header_logo_after_title', array( $this, 'filter_settings_header_guided_setup_badge' ), 10 );
 	}
 
 	/**
@@ -1689,7 +1691,13 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			return $classes;
 		}
 
-		return $classes . ' fc-settings-page ' . $this->get_config_value( 'body_class' );
+		$classes .= ' fc-settings-page ' . $this->get_config_value( 'body_class' );
+
+		if ( 'wide' === $this->get_config_value( 'content_layout' ) ) {
+			$classes .= ' fc-guided-setup--wide-content';
+		}
+
+		return $classes;
 	}
 
 

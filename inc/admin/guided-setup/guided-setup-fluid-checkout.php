@@ -40,6 +40,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 			'capability'                       => 'manage_woocommerce',
 
 			'body_class'                       => 'fc-guided-setup',
+			'content_layout'                   => 'narrow',
 			'script_handle'                    => 'fc-guided-setup-fluid-checkout',
 			'base_script_handle'               => 'fc-guided-setup',
 			'style_handle'                     => 'fc-admin-guided-setup',
@@ -81,8 +82,6 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		add_filter( 'update_footer', array( $this, 'clear_guided_setup_admin_footer' ), 11 );
 
 		add_filter( 'fc_telemetry_guided_setup_progress', array( $this, 'sanitize_guided_setup_progress_for_telemetry' ), 10, 2 );
-
-		add_filter( 'fc_settings_header_logo_after_title', array( $this, 'filter_settings_header_guided_setup_badge' ), 10 );
 	}
 
 
@@ -622,6 +621,116 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
+	 * Preview recommendation rows for the recommended_setup step (styling / IA only).
+	 *
+	 * @return array<int, array<string, mixed>>
+	 */
+	protected function get_recommended_setup_preview_settings() {
+		return array(
+			array(
+				'id'          => 'multi_step_checkout',
+				'title'       => __( 'Multi-step checkout', 'fluid-checkout' ),
+				'description' => __( 'Split checkout into clear steps so customers know where they are in the flow.', 'fluid-checkout' ),
+				'checked'     => true,
+				'is_pro'      => false,
+			),
+			array(
+				'id'          => 'shipping_before_billing',
+				'title'       => __( 'Shipping before billing', 'fluid-checkout' ),
+				'description' => __( 'Collect the shipping address first, then copy it to billing when both are the same.', 'fluid-checkout' ),
+				'checked'     => true,
+				'is_pro'      => false,
+			),
+			array(
+				'id'          => 'hide_optional_fields',
+				'title'       => __( 'Hide optional fields by default', 'fluid-checkout' ),
+				'description' => __( 'Keep company, address line 2, and order notes behind an Add link until they are needed.', 'fluid-checkout' ),
+				'checked'     => true,
+				'is_pro'      => false,
+			),
+			array(
+				'id'          => 'google_address_autocomplete',
+				'title'       => __( 'Google address autocomplete', 'fluid-checkout' ),
+				'description' => __( 'Suggest verified addresses as customers type to reduce typos and failed deliveries.', 'fluid-checkout' ),
+				'checked'     => false,
+				'is_pro'      => true,
+			),
+			array(
+				'id'          => 'address_book',
+				'title'       => __( 'Address book at checkout', 'fluid-checkout' ),
+				'description' => __( 'Let logged-in customers pick a saved address instead of retyping it every time.', 'fluid-checkout' ),
+				'checked'     => false,
+				'is_pro'      => true,
+			),
+		);
+	}
+
+
+
+	/**
+	 * Output preview recommendation toggles (not connected to real settings yet).
+	 */
+	protected function output_recommended_setup_preview_settings() {
+		$settings = $this->get_recommended_setup_preview_settings();
+
+		if ( empty( $settings ) ) {
+			return;
+		}
+
+		$pro_badge_html = '';
+
+		if ( class_exists( 'FluidCheckout_Admin' ) ) {
+			$pro_badge_html = FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'guided-setup-recommendations' );
+		}
+		?>
+		<div class="fc-setup-recommendation-options" role="group" aria-label="<?php echo esc_attr__( 'Recommended checkout settings', 'fluid-checkout' ); ?>">
+			<?php foreach ( $settings as $setting ) : ?>
+				<?php
+				$input_id     = 'fc_setup_recommendation_preview_' . $setting['id'];
+				$is_disabled  = ! empty( $setting['is_pro'] ) && ! empty( $pro_badge_html );
+				$option_class = 'fc-setup-recommendation-option';
+
+				if ( $is_disabled ) {
+					$option_class .= ' is-disabled';
+				}
+
+				$switch_class = 'fc-settings-switch fc-setup-recommendation-option__switch';
+
+				if ( $is_disabled ) {
+					$switch_class .= ' fc-settings-switch--disabled';
+				}
+				?>
+				<div class="<?php echo esc_attr( $option_class ); ?>">
+					<span class="<?php echo esc_attr( $switch_class ); ?>">
+						<input
+							type="checkbox"
+							class="fc-settings-toggle fc-settings-toggle--round"
+							id="<?php echo esc_attr( $input_id ); ?>"
+							value="1"
+							<?php checked( ! empty( $setting['checked'] ) ); ?>
+							<?php disabled( $is_disabled ); ?>
+							aria-labelledby="<?php echo esc_attr( $input_id ); ?>-label"
+						/>
+						<label for="<?php echo esc_attr( $input_id ); ?>"><span class="screen-reader-text"><?php echo esc_html( $setting['title'] ); ?></span></label>
+					</span>
+					<div class="fc-setup-recommendation-option__content">
+						<span class="fc-setup-recommendation-option__title" id="<?php echo esc_attr( $input_id ); ?>-label"><?php echo esc_html( $setting['title'] ); ?></span>
+						<p class="fc-setup-recommendation-option__description"><?php echo esc_html( $setting['description'] ); ?></p>
+					</div>
+					<div class="fc-setup-recommendation-option__badge">
+						<?php if ( ! empty( $setting['is_pro'] ) && ! empty( $pro_badge_html ) ) : ?>
+							<?php echo $pro_badge_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<?php endif; ?>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		</div>
+		<?php
+	}
+
+
+
+	/**
 	 * Output recommended_setup placeholder step.
 	 */
 	protected function output_step_recommended_setup() {
@@ -630,7 +739,8 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 			<div class="fc-setup-card__inner">
 				<form>
 					<h2><?php echo esc_html__( 'Recommended setup', 'fluid-checkout' ); ?></h2>
-					<p class="fc-setup-intro"><?php echo esc_html__( 'This is where personalized checkout recommendations will appear. For now, continue to finish the guided setup—your answers are saved, but no checkout settings are changed automatically yet.', 'fluid-checkout' ); ?></p>
+					<p class="fc-setup-intro"><?php echo esc_html__( 'Based on what you told us, these checkout options are a good starting point. Preview how recommendations will look—nothing here is saved to your store settings yet.', 'fluid-checkout' ); ?></p>
+					<?php $this->output_recommended_setup_preview_settings(); ?>
 				</form>
 			</div>
 			<div class="fc-setup-card__footer">

@@ -8,6 +8,7 @@
 @use "admin-settings-header";
 
 @use "guided-setup-layout";
+@use "guided-setup-content-width";
 @use "guided-setup-header";
 @use "guided-setup-progress";
 @use "guided-setup-card";
@@ -15,3 +16,4 @@
 @use "guided-setup-image-modal";
 @use "guided-setup-sub-steps";
 @use "guided-setup-checkout-fields";
+@use "guided-setup-recommendations";
