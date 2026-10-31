@@ -695,9 +695,84 @@ class FluidCheckout_Guided_Setup_Recommendations {
 
 
 	/**
-	 * Build recommended step rows (Lite + up to 3 PRO), all checked.
+	 * Whether PRO recommendation option keys can be applied on finish.
+	 *
+	 * Lite default: false (promo rows only). PRO enables apply via
+	 * `fc_guided_setup_apply_pro_recommendation_options`.
+	 *
+	 * @return bool
+	 */
+	public function should_apply_pro_recommendation_options() {
+		/**
+		 * Filters whether PRO recommendation option keys are applied on finish.
+		 *
+		 * @param bool $apply Default false on Lite.
+		 */
+		return (bool) apply_filters( 'fc_guided_setup_apply_pro_recommendation_options', false );
+	}
+
+
+
+	/**
+	 * Max PRO recommendation rows to include.
+	 *
+	 * Lite default: 3 promo rows. PRO removes the cap via
+	 * `fc_guided_setup_pro_recommendation_row_limit` (return null).
+	 *
+	 * @return int|null Null means no cap.
+	 */
+	public function get_pro_recommendation_row_limit() {
+		/**
+		 * Filters the max number of PRO recommendation rows.
+		 *
+		 * Return null for no cap.
+		 *
+		 * @param int|null $limit Default 3 on Lite.
+		 */
+		$limit = apply_filters( 'fc_guided_setup_pro_recommendation_row_limit', 3 );
+
+		if ( null === $limit ) {
+			return null;
+		}
+
+		return max( 0, (int) $limit );
+	}
+
+
+
+	/**
+	 * Whether a recommendation row matches the active profile value (or default).
+	 *
+	 * @param array $row Recommended row with option_key and value.
+	 *
+	 * @return bool
+	 */
+	public function is_recommendation_already_applied( $row ) {
+		$row        = is_array( $row ) ? $row : array();
+		$option_key = isset( $row['option_key'] ) ? (string) $row['option_key'] : ( isset( $row['id'] ) ? (string) $row['id'] : '' );
+
+		// Bail if the row has no option key or recommended value
+		if ( '' === $option_key || ! array_key_exists( 'value', $row ) ) {
+			return false;
+		}
+
+		// Bail if settings are unavailable
+		if ( ! class_exists( 'FluidCheckout_Settings' ) ) {
+			return false;
+		}
+
+		$current = FluidCheckout_Settings::instance()->get_option( $option_key );
+
+		return $this->recommendation_values_match( $current, $row['value'] );
+	}
+
+
+
+	/**
+	 * Build recommended step rows (Lite + PRO), all checked.
 	 *
 	 * Checkout layout is always first. Other rows are sorted by score.
+	 * Lite caps PRO promo rows; PRO does not.
 	 *
 	 * @param array $answers             Wizard answers.
 	 * @param array $profile_values      Merged profile values.
@@ -714,6 +789,7 @@ class FluidCheckout_Guided_Setup_Recommendations {
 		$scored              = $this->get_scored_recommendation_rows( $answers, $profile_values, $suppressed_keys );
 		$lite_rows           = array();
 		$pro_rows            = array();
+		$pro_limit           = $this->get_pro_recommendation_row_limit();
 
 		// Iterate scored registry rows
 		foreach ( $scored as $item ) {
@@ -751,8 +827,11 @@ class FluidCheckout_Guided_Setup_Recommendations {
 			$rows[] = $this->normalize_recommended_row( $definition );
 		}
 
-		// Iterate top 3 PRO rows
-		foreach ( array_slice( $pro_rows, 0, 3 ) as $definition ) {
+		// Maybe cap PRO promo rows on Lite
+		$pro_definitions = null === $pro_limit ? $pro_rows : array_slice( $pro_rows, 0, (int) $pro_limit );
+
+		// Iterate PRO rows
+		foreach ( $pro_definitions as $definition ) {
 			$rows[] = $this->normalize_recommended_row( $definition );
 		}
 
@@ -1061,7 +1140,7 @@ class FluidCheckout_Guided_Setup_Recommendations {
 	 *
 	 * Starts from filtered profile_values, then drops:
 	 * - option keys the merchant unchecked on recommended_setup (user_overrides list)
-	 * - option keys belonging to PRO recommended rows
+	 * - option keys belonging to PRO recommended rows when PRO is not active
 	 *
 	 * @param array $recommendations Progress recommendations blob.
 	 *
@@ -1074,6 +1153,7 @@ class FluidCheckout_Guided_Setup_Recommendations {
 		$recommended     = isset( $recommendations['recommended'] ) && is_array( $recommendations['recommended'] ) ? $recommendations['recommended'] : array();
 		$defaults        = $this->get_settings_defaults();
 		$values          = $this->sanitize_option_map( $profile_values, $defaults );
+		$apply_pro       = $this->should_apply_pro_recommendation_options();
 
 		// Iterate recommended rows
 		foreach ( $recommended as $row ) {
@@ -1085,12 +1165,12 @@ class FluidCheckout_Guided_Setup_Recommendations {
 			}
 
 			// Drop PRO promo option keys from Lite apply
-			if ( ! empty( $row['is_pro'] ) ) {
+			if ( ! empty( $row['is_pro'] ) && ! $apply_pro ) {
 				unset( $values[ $option_key ] );
 			}
 		}
 
-		// Iterate excluded Lite toggles
+		// Iterate excluded toggles
 		foreach ( $excluded_keys as $option_key ) {
 			unset( $values[ $option_key ] );
 		}
@@ -1101,13 +1181,14 @@ class FluidCheckout_Guided_Setup_Recommendations {
 
 
 	/**
-	 * Build user_overrides from recommended_setup Lite toggle form data.
+	 * Build user_overrides from recommended_setup toggle form data.
 	 *
-	 * Unchecked Lite option keys are stored as an exclusion list and omitted from
+	 * Unchecked option keys are stored as an exclusion list and omitted from
 	 * the filtered profile_values when applying settings on finish. Checked option keys
 	 * are posted as `recommendation_toggles[]` (unchecked boxes are omitted).
+	 * PRO rows are ignored on Lite (disabled promos) and included when PRO is active.
 	 *
-	 * @param array $recommended Recommended rows from progress.
+	 * @param array $recommended Recommended rows from progress (pending rows only when hiding applied).
 	 * @param array $form_data   Posted form data.
 	 *
 	 * @return string[]
@@ -1119,11 +1200,12 @@ class FluidCheckout_Guided_Setup_Recommendations {
 		$checked_raw  = is_array( $checked_raw ) ? $checked_raw : array( $checked_raw );
 		$checked_keys = array_map( 'strval', $checked_raw );
 		$excluded     = array();
+		$apply_pro    = $this->should_apply_pro_recommendation_options();
 
 		// Iterate recommended rows
 		foreach ( $recommended as $row ) {
-			// Skip PRO rows (disabled on Lite)
-			if ( ! empty( $row['is_pro'] ) ) {
+			// Skip PRO rows on Lite (disabled promos)
+			if ( ! empty( $row['is_pro'] ) && ! $apply_pro ) {
 				continue;
 			}
 

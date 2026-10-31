@@ -145,4 +145,107 @@ class FluidCheckout_Guided_Setup_FluidCheckout_Test extends TestCase {
 		$this->assertSame( 'merchant@example.com', $sanitized['answers']['email'] );
 	}
 
+
+
+	/**
+	 * Test: recommended_setup persists Lite exclusions and applies remaining profile values.
+	 *
+	 * Unchecked Lite toggles are stored as user_overrides and skipped on apply.
+	 * PRO recommendation keys are never written from the Lite apply path.
+	 */
+	public function test_recommended_setup_saves_overrides_and_applies_settings() {
+		$settings = FluidCheckout_Settings::instance();
+		$engine   = FluidCheckout_Guided_Setup_Recommendations::instance();
+
+		$answers = FluidCheckout_Guided_Setup_Checkout_Data::get_default_answers(
+			array(
+				'business_industry' => 'fashion-apparel-accessories',
+				'customer_audience' => 'dtc',
+				'customer_location' => 'domestic',
+				'product_types'     => array( 'physical' ),
+				'delivery_methods'  => array( 'ship_to_address' ),
+			)
+		);
+
+		// Seed baseline profile values opposite to what recommendations will apply
+		$settings->update_active_profile_values(
+			array(
+				'fc_enable_checkout_hide_optional_fields' => 'no',
+				'fc_show_shipping_section_highlighted'    => 'no',
+				'fc_gaa_enabled'                          => 'no',
+			)
+		);
+		$settings->invalidate_cache();
+
+		FluidCheckout_Admin_GuidedSetup::set_progress_for_slug(
+			'fc_checkout',
+			array(
+				'answers'         => $answers,
+				'recommendations' => array(
+					'answers_hash'   => $engine->get_answers_hash( $answers ),
+					'profile_values' => array(
+						'fc_enable_checkout_hide_optional_fields' => 'yes',
+						'fc_show_shipping_section_highlighted'    => 'yes',
+						'fc_gaa_enabled'                          => 'yes',
+					),
+					'recommended'    => array(
+						array(
+							'option_key'  => 'fc_enable_checkout_hide_optional_fields',
+							'value'       => 'yes',
+							'checked'     => true,
+							'is_pro'      => false,
+							'title'       => 'Hide optional fields',
+							'description' => '',
+						),
+						array(
+							'option_key'  => 'fc_show_shipping_section_highlighted',
+							'value'       => 'yes',
+							'checked'     => true,
+							'is_pro'      => false,
+							'title'       => 'Highlight shipping',
+							'description' => '',
+						),
+						array(
+							'option_key'  => 'fc_gaa_enabled',
+							'value'       => 'yes',
+							'checked'     => true,
+							'is_pro'      => true,
+							'title'       => 'Google Address Autocomplete',
+							'description' => '',
+						),
+					),
+					'user_overrides' => array(),
+				),
+			)
+		);
+
+		$reflection     = new ReflectionClass( $this->wizard );
+		$save_overrides = $reflection->getMethod( 'save_recommended_setup_user_overrides' );
+		$apply          = $reflection->getMethod( 'maybe_apply_recommendations_on_finish' );
+		$save_overrides->setAccessible( true );
+		$apply->setAccessible( true );
+
+		// Keep hide-optional checked; leave highlight-shipping unchecked (excluded)
+		$save_overrides->invoke(
+			$this->wizard,
+			array(
+				'recommendation_toggles' => array( 'fc_enable_checkout_hide_optional_fields' ),
+			)
+		);
+
+		$progress = FluidCheckout_Admin_GuidedSetup::get_progress_for_slug( 'fc_checkout' );
+
+		$this->assertSame(
+			array( 'fc_show_shipping_section_highlighted' ),
+			$progress['recommendations']['user_overrides']
+		);
+
+		$apply->invoke( $this->wizard );
+		$settings->invalidate_cache();
+
+		$this->assertSame( 'yes', $settings->get_option( 'fc_enable_checkout_hide_optional_fields' ) );
+		$this->assertSame( 'no', $settings->get_option( 'fc_show_shipping_section_highlighted' ) );
+		$this->assertSame( 'no', $settings->get_option( 'fc_gaa_enabled' ) );
+	}
+
 }

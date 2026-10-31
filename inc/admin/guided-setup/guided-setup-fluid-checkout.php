@@ -109,6 +109,42 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
+	 * Guided setup URL for the first incomplete step, or recommended_setup when answers are ready.
+	 *
+	 * @return string
+	 */
+	public function get_guided_setup_resume_url() {
+		$answers = $this->get_stored_answers();
+		$step    = FluidCheckout_Guided_Setup_Checkout_Data::get_resume_step_slug( $answers );
+
+		return $this->get_guided_setup_step_url( $step );
+	}
+
+
+
+	/**
+	 * Clear completion and ensure the resume step is reachable.
+	 *
+	 * Used when an extension (e.g. PRO) re-opens the wizard after activation.
+	 */
+	public function prepare_progress_for_reactivation() {
+		$answers     = $this->get_stored_answers();
+		$resume_step = FluidCheckout_Guided_Setup_Checkout_Data::get_resume_step_slug( $answers );
+
+		self::set_progress_for_slug(
+			$this->get_guided_setup_id(),
+			array(
+				'completed_at' => '',
+			)
+		);
+
+		// Move max-reached forward when needed so the resume step is allowed by the URL guard
+		$this->advance_step( $resume_step );
+	}
+
+
+
+	/**
 	 * Badge label beside the admin header logo on the guided setup screen.
 	 *
 	 * @return string
@@ -380,6 +416,8 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 				'emailRequired'              => __( 'Please enter a valid email address for the newsletter.', 'fluid-checkout' ),
 				'productTypesRequired'       => __( 'Please select at least one product type.', 'fluid-checkout' ),
 				'deliveryMethodsRequired'    => __( 'Please select at least one delivery method for physical products.', 'fluid-checkout' ),
+				'showAlreadyApplied'         => __( 'Show already applied', 'fluid-checkout' ),
+				'hideAlreadyApplied'         => __( 'Hide already applied', 'fluid-checkout' ),
 			)
 		);
 
@@ -707,13 +745,135 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 	/**
 	 * Whether PRO recommendation toggles start checked.
 	 *
-	 * Lite shows PRO rows unchecked (promo only). PRO guided setup starts them checked
-	 * so they can be applied with the rest of the recommendations.
+	 * Lite default: unchecked (promo only). PRO enables checked via
+	 * `fc_guided_setup_pro_recommendations_checked_by_default`.
 	 *
 	 * @return bool
 	 */
 	protected function is_pro_recommendations_checked_by_default() {
-		return class_exists( 'FluidCheckout' ) && FluidCheckout::instance()->is_pro_activated();
+		/**
+		 * Filters whether PRO recommendation toggles start checked.
+		 *
+		 * @param bool $checked Default false on Lite.
+		 */
+		return (bool) apply_filters( 'fc_guided_setup_pro_recommendations_checked_by_default', false );
+	}
+
+
+
+	/**
+	 * Whether already-applied recommendations are hidden behind an expand link.
+	 *
+	 * Lite default: show every recommendation. PRO can enable hiding via
+	 * `fc_guided_setup_hide_already_applied_recommendations`.
+	 *
+	 * @return bool
+	 */
+	protected function should_hide_already_applied_recommendations() {
+		/**
+		 * Filters whether already-applied recommendations are hidden until expanded.
+		 *
+		 * @param bool $hide Default false on Lite.
+		 */
+		return (bool) apply_filters( 'fc_guided_setup_hide_already_applied_recommendations', false );
+	}
+
+
+
+	/**
+	 * Split recommendation rows into pending and already-applied groups.
+	 *
+	 * @param array $settings Recommendation rows.
+	 *
+	 * @return array{pending:array,applied:array}
+	 */
+	protected function partition_recommended_setup_settings( $settings ) {
+		$settings = is_array( $settings ) ? $settings : array();
+		$pending  = array();
+		$applied  = array();
+		$engine   = class_exists( 'FluidCheckout_Guided_Setup_Recommendations' )
+			? FluidCheckout_Guided_Setup_Recommendations::instance()
+			: null;
+
+		// Lite (and missing engine): treat every row as pending
+		if ( ! $this->should_hide_already_applied_recommendations() || ! $engine ) {
+			return array(
+				'pending' => $settings,
+				'applied' => array(),
+			);
+		}
+
+		// Iterate rows and compare each recommended value to the active profile
+		foreach ( $settings as $setting ) {
+			if ( $engine->is_recommendation_already_applied( $setting ) ) {
+				$applied[] = $setting;
+				continue;
+			}
+
+			$pending[] = $setting;
+		}
+
+		return array(
+			'pending' => $pending,
+			'applied' => $applied,
+		);
+	}
+
+
+
+	/**
+	 * Output one recommendation toggle row.
+	 *
+	 * @param array $setting     Recommendation row.
+	 * @param bool  $interactive Whether the toggle posts with the form.
+	 */
+	protected function output_recommended_setup_setting_row( $setting, $interactive = true ) {
+		$setting         = is_array( $setting ) ? $setting : array();
+		$option_key      = isset( $setting['option_key'] ) ? (string) $setting['option_key'] : ( isset( $setting['id'] ) ? (string) $setting['id'] : '' );
+		$input_id        = 'fc_setup_recommendation_' . sanitize_html_class( $option_key );
+		$is_pro          = ! empty( $setting['is_pro'] );
+		$show_pro_badges = class_exists( 'FluidCheckout' ) && ! FluidCheckout::instance()->is_pro_activated();
+		$is_disabled     = ! $interactive || ( $is_pro && $show_pro_badges );
+		$option_class    = 'fc-setup-recommendation-option';
+		$pro_badge_html  = ( $is_pro && $show_pro_badges ) ? $this->get_recommendation_pro_badge_html( $setting ) : '';
+
+		if ( $is_disabled ) {
+			$option_class .= ' is-disabled';
+		}
+
+		$switch_class = 'fc-settings-switch fc-setup-recommendation-option__switch';
+
+		if ( $is_disabled ) {
+			$switch_class .= ' fc-settings-switch--disabled';
+		}
+		?>
+		<div class="<?php echo esc_attr( $option_class ); ?>">
+			<span class="<?php echo esc_attr( $switch_class ); ?>">
+				<input
+					type="checkbox"
+					class="fc-settings-toggle fc-settings-toggle--round"
+					id="<?php echo esc_attr( $input_id ); ?>"
+					<?php if ( $interactive && ! ( $is_pro && $show_pro_badges ) ) : ?>
+						name="recommendation_toggles[]"
+					<?php endif; ?>
+					value="<?php echo esc_attr( $option_key ); ?>"
+					<?php checked( ! empty( $setting['checked'] ) || ! $interactive ); ?>
+					<?php disabled( $is_disabled ); ?>
+					aria-labelledby="<?php echo esc_attr( $input_id ); ?>-label"
+				/>
+				<label for="<?php echo esc_attr( $input_id ); ?>"><span class="screen-reader-text"><?php echo esc_html( $setting['title'] ); ?></span></label>
+			</span>
+			<div class="fc-setup-recommendation-option__content">
+				<span class="fc-setup-recommendation-option__title" id="<?php echo esc_attr( $input_id ); ?>-label"><?php echo esc_html( $setting['title'] ); ?></span>
+				<p class="fc-setup-recommendation-option__description"><?php echo esc_html( $setting['description'] ); ?></p>
+			</div>
+			<div class="fc-setup-recommendation-option__badge">
+				<?php if ( ! empty( $pro_badge_html ) ) : ?>
+					<?php echo $pro_badge_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php endif; ?>
+			</div>
+		</div>
+		<?php
 	}
 
 
@@ -722,56 +882,31 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 	 * Output recommendation toggles for the recommended_setup step.
 	 */
 	protected function output_recommended_setup_settings() {
-		$settings          = $this->get_recommended_setup_settings();
-		$show_pro_badges   = class_exists( 'FluidCheckout' ) && ! FluidCheckout::instance()->is_pro_activated();
+		$settings   = $this->get_recommended_setup_settings();
+		$partition  = $this->partition_recommended_setup_settings( $settings );
+		$pending    = $partition['pending'];
+		$applied    = $partition['applied'];
+		$hide_applied = $this->should_hide_already_applied_recommendations();
 		?>
 		<div class="fc-setup-recommendation-options" role="group" aria-label="<?php echo esc_attr__( 'Recommended checkout settings', 'fluid-checkout' ); ?>">
-			<?php foreach ( $settings as $setting ) : ?>
-				<?php
-				$option_key      = isset( $setting['option_key'] ) ? (string) $setting['option_key'] : ( isset( $setting['id'] ) ? (string) $setting['id'] : '' );
-				$input_id        = 'fc_setup_recommendation_' . sanitize_html_class( $option_key );
-				$is_pro          = ! empty( $setting['is_pro'] );
-				$is_disabled     = $is_pro && $show_pro_badges;
-				$option_class    = 'fc-setup-recommendation-option';
-				$pro_badge_html  = $is_disabled ? $this->get_recommendation_pro_badge_html( $setting ) : '';
+			<?php if ( empty( $pending ) && $hide_applied ) : ?>
+				<p class="fc-setup-recommendation-empty"><?php echo esc_html__( 'No more recommendations to apply', 'fluid-checkout' ); ?></p>
+			<?php else : ?>
+				<?php foreach ( $pending as $setting ) : ?>
+					<?php $this->output_recommended_setup_setting_row( $setting, true ); ?>
+				<?php endforeach; ?>
+			<?php endif; ?>
 
-				if ( $is_disabled ) {
-					$option_class .= ' is-disabled';
-				}
-
-				$switch_class = 'fc-settings-switch fc-setup-recommendation-option__switch';
-
-				if ( $is_disabled ) {
-					$switch_class .= ' fc-settings-switch--disabled';
-				}
-				?>
-				<div class="<?php echo esc_attr( $option_class ); ?>">
-					<span class="<?php echo esc_attr( $switch_class ); ?>">
-						<input
-							type="checkbox"
-							class="fc-settings-toggle fc-settings-toggle--round"
-							id="<?php echo esc_attr( $input_id ); ?>"
-							<?php if ( ! $is_disabled ) : ?>
-								name="recommendation_toggles[]"
-							<?php endif; ?>
-							value="<?php echo esc_attr( $option_key ); ?>"
-							<?php checked( ! empty( $setting['checked'] ) ); ?>
-							<?php disabled( $is_disabled ); ?>
-							aria-labelledby="<?php echo esc_attr( $input_id ); ?>-label"
-						/>
-						<label for="<?php echo esc_attr( $input_id ); ?>"><span class="screen-reader-text"><?php echo esc_html( $setting['title'] ); ?></span></label>
-					</span>
-					<div class="fc-setup-recommendation-option__content">
-						<span class="fc-setup-recommendation-option__title" id="<?php echo esc_attr( $input_id ); ?>-label"><?php echo esc_html( $setting['title'] ); ?></span>
-						<p class="fc-setup-recommendation-option__description"><?php echo esc_html( $setting['description'] ); ?></p>
-					</div>
-					<div class="fc-setup-recommendation-option__badge">
-						<?php if ( ! empty( $pro_badge_html ) ) : ?>
-							<?php echo $pro_badge_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						<?php endif; ?>
-					</div>
+			<?php if ( $hide_applied && ! empty( $applied ) ) : ?>
+				<p class="fc-setup-recommendation-applied-toggle">
+					<a href="#" class="button button-link" data-fc-setup-show-applied-recommendations aria-expanded="false"><?php echo esc_html__( 'Show already applied', 'fluid-checkout' ); ?></a>
+				</p>
+				<div class="fc-setup-recommendation-applied is-collapsed" data-fc-setup-applied-recommendations hidden>
+					<?php foreach ( $applied as $setting ) : ?>
+						<?php $this->output_recommended_setup_setting_row( $setting, false ); ?>
+					<?php endforeach; ?>
 				</div>
-			<?php endforeach; ?>
+			<?php endif; ?>
 		</div>
 		<?php
 	}
@@ -868,26 +1003,40 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		?>
 		<div class="fc-setup-card <?php echo esc_attr( $this->get_step_card_visibility_class( 'wrap_up' ) ); ?>" data-fc-setup-step="wrap_up">
 			<div class="fc-setup-card__inner">
-				<form>
-					<h2><?php echo esc_html__( 'All set', 'fluid-checkout' ); ?></h2>
-					<p class="fc-setup-intro"><?php echo esc_html__( 'Your recommended setup options have been applied.', 'fluid-checkout' ) ; ?></p>
-					<p class="fc-setup-intro"><?php echo esc_html__( 'Test your checkout process and return to Fluid Checkout settings to adjust any settings if needed.', 'fluid-checkout' ) . ' ' . esc_html__( 'You can use the built-in live preview in settings to see how settings changes affect your checkout before saving them.', 'fluid-checkout' ); ?></p>
-					<p class="fc-setup-intro"><?php
-						echo wp_kses_post(
-							sprintf(
-								/* translators: %s: support page URL */
-								__( 'If you need help, <a href="%s" target="_blank" rel="noopener noreferrer">contact our support team</a>.', 'fluid-checkout' ),
-								esc_url( 'https://fluidcheckout.com/support/?mtm_campaign=guided-setup&mtm_kwd=support&mtm_source=lite-plugin' )
-							)
-						);
-					?></p>
-				</form>
+				<h2><?php echo esc_html__( 'All set', 'fluid-checkout' ); ?></h2>
+				<p class="fc-setup-intro"><?php echo esc_html__( 'Your recommended setup options have been applied.', 'fluid-checkout' ) ; ?></p>
+				<p class="fc-setup-intro"><?php echo esc_html__( 'Test your checkout process and return to Fluid Checkout settings to adjust any settings if needed.', 'fluid-checkout' ) . ' ' . esc_html__( 'You can use the built-in live preview in settings to see how settings changes affect your checkout before saving them.', 'fluid-checkout' ); ?></p>
+				<?php
+				/**
+				 * Fires after the wrap-up intro copy, before the support link.
+				 *
+				 * @param FluidCheckout_Admin_GuidedSetup_FluidCheckout $wizard Checkout guided setup instance.
+				 */
+				do_action( 'fc_guided_setup_wrap_up_content', $this );
+				?>
+				<p class="fc-setup-intro"><?php
+					echo wp_kses_post(
+						sprintf(
+							/* translators: %s: support page URL */
+							__( 'If you need help, <a href="%s" target="_blank" rel="noopener noreferrer">contact our support team</a>.', 'fluid-checkout' ),
+							esc_url( 'https://fluidcheckout.com/support/?mtm_campaign=guided-setup&mtm_kwd=support&mtm_source=lite-plugin' )
+						)
+					);
+				?></p>
 			</div>
 			<div class="fc-setup-card__footer">
 				<div class="fc-setup-step-actions">
 					<?php $this->output_step_actions_start( 'wrap_up' ); ?>
 					<div class="fc-setup-submit">
 						<a href="<?php echo esc_url( $this->get_start_over_guided_setup_url() ); ?>" class="button button-secondary fc-setup-start-over" aria-label="<?php echo esc_attr__( 'Start over and return to the first guided setup step', 'fluid-checkout' ); ?>"><?php echo esc_html__( 'Start over', 'fluid-checkout' ); ?></a>
+						<?php
+						/**
+						 * Fires in the wrap-up submit area after Start over and before Finish.
+						 *
+						 * @param FluidCheckout_Admin_GuidedSetup_FluidCheckout $wizard Checkout guided setup instance.
+						 */
+						do_action( 'fc_guided_setup_wrap_up_submit_actions', $this );
+						?>
 						<a href="<?php echo esc_url( $this->get_finish_url() ); ?>" class="button button-primary"><?php echo esc_html__( 'Finish & go to settings', 'fluid-checkout' ); ?></a>
 					</div>
 				</div>
@@ -1092,7 +1241,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
-	 * Persist Lite toggle overrides from the recommended_setup step.
+	 * Persist toggle overrides from the recommended_setup step.
 	 *
 	 * @param array $form_data Form data.
 	 */
@@ -1104,9 +1253,17 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 		$this->maybe_refresh_recommendations_cache();
 
+		$engine          = FluidCheckout_Guided_Setup_Recommendations::instance();
 		$recommendations = $this->get_recommendations_progress();
 		$recommended     = isset( $recommendations['recommended'] ) && is_array( $recommendations['recommended'] ) ? $recommendations['recommended'] : array();
-		$overrides       = FluidCheckout_Guided_Setup_Recommendations::instance()->build_user_overrides_from_form( $recommended, $form_data );
+
+		// Only pending (not already applied) rows are posted as toggles when PRO hides applied ones
+		if ( $this->should_hide_already_applied_recommendations() ) {
+			$partition   = $this->partition_recommended_setup_settings( $recommended );
+			$recommended = $partition['pending'];
+		}
+
+		$overrides = $engine->build_user_overrides_from_form( $recommended, $form_data );
 
 		$recommendations['user_overrides'] = $overrides;
 

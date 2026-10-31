@@ -90,3 +90,24 @@
 	align-self: center;
 	margin: 0;
 }
+
+.fc-guided-setup .fc-setup-recommendation-empty {
+	margin: 12px 0 0;
+	color: $admin-text-color-muted;
+}
+
+.fc-guided-setup .fc-setup-recommendation-applied-toggle {
+	margin: 16px 0 0;
+}
+
+.fc-guided-setup .fc-setup-recommendation-applied {
+	display: grid;
+	grid-template-columns: minmax( 0, 1fr );
+	gap: 8px;
+	margin-top: 8px;
+}
+
+.fc-guided-setup .fc-setup-recommendation-applied.is-collapsed,
+.fc-guided-setup .fc-setup-recommendation-applied[hidden] {
+	display: none;
+}

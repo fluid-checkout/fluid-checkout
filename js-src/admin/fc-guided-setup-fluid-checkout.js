@@ -32,7 +32,13 @@
 		deliveryMethodSelector:         '[data-fc-setup-delivery-method]',
 		autosaveFormSelector:           '[data-fc-setup-autosave="1"]',
 		recommendationsMountSelector:   '[data-fc-setup-recommendations]',
+		showAppliedSelector:            '[data-fc-setup-show-applied-recommendations]',
+		appliedRecommendationsSelector: '[data-fc-setup-applied-recommendations]',
 		debounceMs:                     400,
+		i18n: {
+			showAlreadyApplied: 'Show already applied',
+			hideAlreadyApplied: 'Hide already applied',
+		},
 	};
 
 	var _guidedSetupSettings = null;
@@ -52,6 +58,11 @@
 
 		if ( root.fcSettingsAdmin && root.fcSettingsAdmin.guidedSetup ) {
 			_guidedSetupSettings = root.fcSettingsAdmin.guidedSetup;
+
+			// Maybe merge localized i18n into local defaults
+			if ( _guidedSetupSettings.i18n ) {
+				_settings.i18n = Object.assign( {}, _settings.i18n, _guidedSetupSettings.i18n );
+			}
 		}
 
 		return _guidedSetupSettings;
@@ -360,6 +371,42 @@
 
 
 	/**
+	 * Toggle visibility of already-applied recommendation rows on PRO.
+	 *
+	 * @param   Event    e       Click event.
+	 * @param   Element  button  Toggle link.
+	 */
+	var handleShowAppliedRecommendationsClick = function( e, button ) {
+		var mount = button.closest( _settings.recommendationsMountSelector );
+		var applied = mount ? mount.querySelector( _settings.appliedRecommendationsSelector ) : null;
+		var expanded;
+
+		e.preventDefault();
+
+		// Bail if the applied list is missing
+		if ( ! applied ) {
+			return;
+		}
+
+		expanded = 'true' === button.getAttribute( 'aria-expanded' );
+
+		if ( expanded ) {
+			button.setAttribute( 'aria-expanded', 'false' );
+			button.textContent = ( _settings.i18n && _settings.i18n.showAlreadyApplied ) ? _settings.i18n.showAlreadyApplied : 'Show already applied';
+			applied.setAttribute( 'hidden', '' );
+			applied.classList.add( 'is-collapsed' );
+		}
+		else {
+			button.setAttribute( 'aria-expanded', 'true' );
+			button.textContent = ( _settings.i18n && _settings.i18n.hideAlreadyApplied ) ? _settings.i18n.hideAlreadyApplied : 'Hide already applied';
+			applied.removeAttribute( 'hidden' );
+			applied.classList.remove( 'is-collapsed' );
+		}
+	};
+
+
+
+	/**
 	 * Schedule a debounced answers autosave for the given form.
 	 *
 	 * @param   Element  form  Autosave-enabled step form.
@@ -492,6 +539,15 @@
 
 			if ( target && target.matches( _settings.newsletterEmailSelector ) ) {
 				syncContinueButtonForCard( card );
+			}
+		} );
+
+		container.addEventListener( 'click', function( e ) {
+			var button = e.target.closest( _settings.showAppliedSelector );
+
+			// SHOW ALREADY APPLIED
+			if ( button ) {
+				handleShowAppliedRecommendationsClick( e, button );
 			}
 		} );
 	};

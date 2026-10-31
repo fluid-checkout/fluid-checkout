@@ -609,4 +609,80 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 		return ! empty( $value );
 	}
 
+
+
+	/**
+	 * Whether about_store required answers are present and valid.
+	 *
+	 * @param array $answers Stored answers.
+	 *
+	 * @return bool
+	 */
+	public static function has_required_about_store_answers( $answers ) {
+		$answers = self::get_default_answers( $answers );
+
+		if ( empty( $answers['business_industry'] ) || ! array_key_exists( $answers['business_industry'], self::get_industries() ) ) {
+			return false;
+		}
+
+		if ( empty( $answers['customer_audience'] ) || ! array_key_exists( $answers['customer_audience'], self::get_customer_audience_options() ) ) {
+			return false;
+		}
+
+		if ( empty( $answers['customer_location'] ) || ! array_key_exists( $answers['customer_location'], self::get_customer_location_options() ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+
+
+	/**
+	 * Whether product_types required answers are present and valid.
+	 *
+	 * @param array $answers Stored answers.
+	 *
+	 * @return bool
+	 */
+	public static function has_required_product_types_answers( $answers ) {
+		$answers = self::get_default_answers( $answers );
+
+		if ( empty( $answers['product_types'] ) || ! is_array( $answers['product_types'] ) ) {
+			return false;
+		}
+
+		// Physical catalogs also need at least one delivery method
+		if ( in_array( 'physical', $answers['product_types'], true ) && empty( $answers['delivery_methods'] ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+
+
+	/**
+	 * First guided setup step that still needs answers, or recommended_setup when ready.
+	 *
+	 * Used when PRO re-opens the checkout wizard after replacing Lite.
+	 *
+	 * @param array $answers Stored answers.
+	 *
+	 * @return string
+	 */
+	public static function get_resume_step_slug( $answers ) {
+		// Bail to about_store when store questions are incomplete
+		if ( ! self::has_required_about_store_answers( $answers ) ) {
+			return 'about_store';
+		}
+
+		// Bail to product_types when catalog answers are incomplete
+		if ( ! self::has_required_product_types_answers( $answers ) ) {
+			return 'product_types';
+		}
+
+		return 'recommended_setup';
+	}
+
 }

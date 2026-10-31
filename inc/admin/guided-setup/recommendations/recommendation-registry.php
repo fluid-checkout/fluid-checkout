@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
  * Checkout layout (`fc_checkout_layout`) is always the first recommendation and ignores
  * score for inclusion: the filter winner is used when present, otherwise the settings
  * default. The recommendation id is the option_key. Lite rows that match are included.
- * Up to 3 matching PRO rows are included.
+ * Up to 3 matching PRO rows are included on Lite; PRO includes all matching PRO rows.
  *
  * File order: Lite, then PRO. Within each group, rows are sorted by relatedness.
  *
