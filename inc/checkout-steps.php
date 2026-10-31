@@ -42,6 +42,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	private $cached_values = array();
 
+	/**
+	 * Whether the shipping address backup was restored in the current request.
+	 */
+	private $is_shipping_address_backup_restored = false;
+
 
 
 	/**
@@ -167,6 +172,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// billing address is displayed after shipping address.
 		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
+
+		// Shipping address backup while shipping is not needed
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_restore_shipping_address_backup' ), 4 ); // Before the PRO address book sets the selected address entry data at priority 5
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_save_shipping_address_backup' ), 9 ); // Before the billing address is copied to the shipping address at priority 10
 
 		// Billing phone
 		add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
@@ -578,6 +587,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// billing address is displayed after shipping address.
 		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
 		remove_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
+
+		// Shipping address backup while shipping is not needed
+		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_restore_shipping_address_backup' ), 4 );
+		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_save_shipping_address_backup' ), 9 );
 
 		// Billing phone
 		remove_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
@@ -4590,6 +4603,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Output substep visibility state hidden field
 		echo '<input class="fc-substep-visible-state" type="hidden" value="' . esc_attr( $visibility[ 'shipping_address' ] ) . '" />';
+
+		// Maybe expand the substep when shipping is needed again, but the address is still incomplete
+		if ( $this->is_shipping_address_backup_restored && ! $this->is_substep_complete_shipping_address() ) {
+			echo '<input class="fc-substep-expanded-state" type="hidden" value="yes" />';
+		}
 	}
 
 	/**
@@ -8162,6 +8180,67 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Maybe save a backup of the shipping address when the cart stops needing shipping, to restore it when shipping is needed again.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_save_shipping_address_backup( $posted_data ) {
+		// Bail if cart needs shipping
+		if ( WC()->cart->needs_shipping() ) { return $posted_data; }
+
+		// Bail if a backup was already saved, as the shipping fields are only posted before the cart stops needing shipping
+		if ( null !== $this->get_checkout_field_value_from_session( 'shipping_address_backup' ) ) { return $posted_data; }
+
+		// Get posted shipping address values, including the "same as billing" checkbox
+		$backup_field_keys = array_merge( $this->get_address_field_keys( 'shipping' ), array( 'shipping_same_as_billing' ) );
+		$shipping_address = array_intersect_key( $posted_data, array_flip( $backup_field_keys ) );
+
+		// Save the backup, even when empty, to know when shipping is needed again
+		$this->set_checkout_field_value_to_session( 'shipping_address_backup', $shipping_address );
+
+		return $posted_data;
+	}
+
+	/**
+	 * Maybe restore the shipping address backup when the cart needs shipping again.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_restore_shipping_address_backup( $posted_data ) {
+		// Bail if cart does not need shipping
+		if ( ! WC()->cart->needs_shipping() ) { return $posted_data; }
+
+		// Get shipping address backup
+		$shipping_address = $this->get_checkout_field_value_from_session( 'shipping_address_backup' );
+
+		// Bail if there is no backup
+		if ( ! is_array( $shipping_address ) ) { return $posted_data; }
+
+		// Maybe copy the billing address when it is forced to be the same, as the billing fields hold the latest address
+		if ( $this->is_billing_forced_same_as_shipping() ) {
+			$posted_data = $this->copy_posted_data_billing_address_to_shipping( $posted_data );
+		}
+		// Otherwise, restore the backup values, as the shipping fields were not on the page to be posted
+		else {
+			// Iterate shipping address backup fields
+			foreach ( $shipping_address as $field_key => $field_value ) {
+				$posted_data[ $field_key ] = $field_value;
+				$_POST[ $field_key ] = $field_value;
+			}
+		}
+
+		// Clear the backup
+		$this->set_checkout_field_value_to_session( 'shipping_address_backup', null );
+
+		// Set as restored, to expand the substep when the address is still incomplete
+		$this->is_shipping_address_backup_restored = true;
+
+		return $posted_data;
+	}
+
+
+
+	/**
 	 * Add the billing phone to the list of fields to display on the contact step.
 	 *
 	 * @param   array  $display_fields  List of fields to display on the contact step.
@@ -9679,6 +9758,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'order_comments',
 			'billing_same_as_shipping',
 			'shipping_same_as_billing',
+			'shipping_address_backup',
 		);
 
 		// Maybe set shipping fields to be cleared
