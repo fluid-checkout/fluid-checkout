@@ -706,6 +706,8 @@ class FluidCheckout_Guided_Setup_Recommendations {
 		/**
 		 * Filters whether PRO recommendation option keys are applied on finish.
 		 *
+		 * @since 5.0.0
+		 *
 		 * @param bool $apply Default false on Lite.
 		 */
 		return (bool) apply_filters( 'fc_guided_setup_apply_pro_recommendation_options', false );
@@ -726,6 +728,8 @@ class FluidCheckout_Guided_Setup_Recommendations {
 		 * Filters the max number of PRO recommendation rows.
 		 *
 		 * Return null for no cap.
+		 *
+		 * @since 5.0.0
 		 *
 		 * @param int|null $limit Default 3 on Lite.
 		 */

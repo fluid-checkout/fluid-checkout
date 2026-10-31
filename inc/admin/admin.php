@@ -333,28 +333,6 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 
 	/**
-	 * Get the legacy "Upgrade to PRO" settings description.
-	 *
-	 * @deprecated 5.0.0 Use `get_pro_feature_badge_html()` for new settings UI. Will be removed in version 6.0.0.
-	 *
-	 * @param  bool  $newline  Whether to prefix the link with a line break.
-	 */
-	public function get_upgrade_pro_html( $newline = true ) {
-		// Bail if PRO is already activated
-		if ( FluidCheckout::instance()->is_pro_activated() ) { return ''; }
-
-		// translators: %s: Upgrade link.
-		$html = wp_kses_post( sprintf( __( '<a target="_blank" href="%s">Upgrade to PRO</a> to unlock more options.', 'fluid-checkout' ), 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=plugin-settings&mtm_source=lite-plugin' ) );
-
-		// Maybe add a line break before the link
-		if ( $newline ) {
-			$html = ' <br>' . $html;
-		}
-
-		return $html;
-	}
-
-	/**
 	 * Get HTML for the PRO feature promo pill badge.
 	 *
 	 * @param  string       $section_slug  Section slug used in tracking as `mtm_kwd=pro-badge-{slug}` when `$mtm_kwd` is omitted.

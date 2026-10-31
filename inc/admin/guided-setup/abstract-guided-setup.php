@@ -753,7 +753,7 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			),
 		);
 
-		return apply_filters( 'fc_guided_setup_script_settings', $settings, $this->get_config_value( 'guided_setup_id' ) );
+		return $settings;
 	}
 
 
@@ -1092,13 +1092,7 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 	 * @return  string
 	 */
 	public function get_step_image_preview_url( $url ) {
-		$full_url = $this->get_step_image_full_url( $url );
-		$size     = apply_filters(
-			'fc_guided_setup_step_image_preview_size',
-			'medium',
-			$this->get_config_value( 'guided_setup_id' )
-		);
-
+		$full_url      = $this->get_step_image_full_url( $url );
 		$attachment_id = attachment_url_to_postid( $full_url );
 
 		// Bail if the image is not in the media library
@@ -1106,7 +1100,7 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			return $full_url;
 		}
 
-		$src = wp_get_attachment_image_src( $attachment_id, $size );
+		$src = wp_get_attachment_image_src( $attachment_id, 'medium' );
 
 		// Bail if attachment size URL is not available
 		if ( empty( $src[0] ) ) {
@@ -1130,13 +1124,7 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			'height' => '',
 		);
 
-		$full_url = $this->get_step_image_full_url( $url );
-		$size     = apply_filters(
-			'fc_guided_setup_step_image_preview_size',
-			'medium',
-			$this->get_config_value( 'guided_setup_id' )
-		);
-
+		$full_url      = $this->get_step_image_full_url( $url );
 		$attachment_id = attachment_url_to_postid( $full_url );
 
 		// Bail if the image is not in the media library
@@ -1144,7 +1132,7 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			return $dimensions;
 		}
 
-		$src = wp_get_attachment_image_src( $attachment_id, $size );
+		$src = wp_get_attachment_image_src( $attachment_id, 'medium' );
 
 		// Bail if attachment size dimensions are not available
 		if ( empty( $src ) ) {
@@ -1772,11 +1760,7 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 	 * @return  array
 	 */
 	public function get_sub_steps( $step_slug = null ) {
-		$sub_steps = apply_filters(
-			'fc_guided_setup_sub_steps',
-			$this->get_sub_step_definitions(),
-			$this->get_config_value( 'guided_setup_id' )
-		);
+		$sub_steps = $this->get_sub_step_definitions();
 
 		if ( null === $step_slug ) {
 			return $sub_steps;

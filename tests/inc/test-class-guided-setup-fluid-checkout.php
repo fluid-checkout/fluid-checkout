@@ -100,7 +100,7 @@ class FluidCheckout_Guided_Setup_FluidCheckout_Test extends TestCase {
 
 
 	/**
-	 * Test: telemetry sanitizer removes email when newsletter is off.
+	 * Test: telemetry sanitizer never includes the merchant email.
 	 */
 	public function test_sanitize_guided_setup_progress_for_telemetry_omits_email() {
 		$progress = array(
@@ -130,9 +130,9 @@ class FluidCheckout_Guided_Setup_FluidCheckout_Test extends TestCase {
 
 
 	/**
-	 * Test: telemetry sanitizer keeps email when newsletter is on.
+	 * Test: telemetry sanitizer omits email even when newsletter is opted in.
 	 */
-	public function test_sanitize_guided_setup_progress_for_telemetry_keeps_email_when_opted_in() {
+	public function test_sanitize_guided_setup_progress_for_telemetry_omits_email_when_newsletter_opted_in() {
 		$progress = array(
 			'answers' => array(
 				'newsletter_opt_in' => true,
@@ -142,7 +142,62 @@ class FluidCheckout_Guided_Setup_FluidCheckout_Test extends TestCase {
 
 		$sanitized = $this->wizard->sanitize_guided_setup_progress_for_telemetry( $progress, 'fc_checkout' );
 
-		$this->assertSame( 'merchant@example.com', $sanitized['answers']['email'] );
+		$this->assertArrayNotHasKey( 'email', $sanitized['answers'] );
+		$this->assertTrue( $sanitized['answers']['newsletter_opt_in'] );
+	}
+
+
+
+	/**
+	 * Test: newsletter signup posts to the public fc-licenses API, not via telemetry.
+	 */
+	public function test_newsletter_signup_posts_to_licenses_api() {
+		$captured = null;
+
+		add_filter(
+			'pre_http_request',
+			function( $preempt, $args, $url ) use ( &$captured ) {
+				$captured = array(
+					'url'  => $url,
+					'args' => $args,
+				);
+
+				return array(
+					'headers'  => array(),
+					'body'     => wp_json_encode( array( 'data' => array( 'ok' => true ) ) ),
+					'response' => array(
+						'code'    => 200,
+						'message' => 'OK',
+					),
+					'cookies'  => array(),
+					'filename' => null,
+				);
+			},
+			10,
+			3
+		);
+
+		FluidCheckout_Admin_GuidedSetup::set_progress_for_slug(
+			'fc_checkout',
+			array(
+				'answers' => array(
+					'newsletter_opt_in' => true,
+					'email'             => 'merchant@example.com',
+				),
+			)
+		);
+
+		$method = new ReflectionMethod( FluidCheckout_Admin_GuidedSetup_FluidCheckout::class, 'maybe_subscribe_newsletter' );
+		$method->setAccessible( true );
+		$method->invoke( $this->wizard );
+
+		$this->assertIsArray( $captured );
+		$this->assertSame( 'https://fluidcheckout.com/wp-json/fc-licenses/v1/newsletter/subscribe', $captured['url'] );
+
+		$body = json_decode( $captured['args']['body'], true );
+		$this->assertIsArray( $body );
+		$this->assertSame( 'merchant@example.com', $body['email'] );
+		$this->assertSame( 'guided_setup', $body['source'] );
 	}
 
 

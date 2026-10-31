@@ -754,6 +754,8 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		/**
 		 * Filters whether PRO recommendation toggles start checked.
 		 *
+		 * @since 5.0.0
+		 *
 		 * @param bool $checked Default false on Lite.
 		 */
 		return (bool) apply_filters( 'fc_guided_setup_pro_recommendations_checked_by_default', false );
@@ -772,6 +774,8 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 	protected function should_hide_already_applied_recommendations() {
 		/**
 		 * Filters whether already-applied recommendations are hidden until expanded.
+		 *
+		 * @since 5.0.0
 		 *
 		 * @param bool $hide Default false on Lite.
 		 */
@@ -1010,6 +1014,8 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 				/**
 				 * Fires after the wrap-up intro copy, before the support link.
 				 *
+				 * @since 5.0.0
+				 *
 				 * @param FluidCheckout_Admin_GuidedSetup_FluidCheckout $wizard Checkout guided setup instance.
 				 */
 				do_action( 'fc_guided_setup_wrap_up_content', $this );
@@ -1032,6 +1038,8 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 						<?php
 						/**
 						 * Fires in the wrap-up submit area after Start over and before Finish.
+						 *
+						 * @since 5.0.0
 						 *
 						 * @param FluidCheckout_Admin_GuidedSetup_FluidCheckout $wizard Checkout guided setup instance.
 						 */
@@ -1364,22 +1372,132 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
-	 * Newsletter subscribe hook on finish.
+	 * Subscribe the merchant to the Fluid Checkout newsletter on finish when opted in.
+	 *
+	 * Sends a separate server-side request to the public fc-licenses newsletter endpoint.
+	 * Email is never included in telemetry.
 	 */
 	protected function maybe_subscribe_newsletter() {
 		$answers = $this->get_stored_answers();
 
+		// Bail if newsletter was not opted in or email is missing
 		if ( empty( $answers['newsletter_opt_in'] ) || empty( $answers['email'] ) ) {
+			return;
+		}
+
+		$email = sanitize_email( $answers['email'] );
+
+		// Bail if email is invalid
+		if ( empty( $email ) || ! is_email( $email ) ) {
 			return;
 		}
 
 		/**
 		 * Fires when the merchant finishes guided setup with newsletter opt-in.
 		 *
+		 * Runs before the newsletter signup HTTP request so custom handlers can react first.
+		 *
+		 * @since 5.0.0
+		 *
 		 * @param string $email   Email address.
 		 * @param array  $answers Guided setup answers.
 		 */
-		do_action( 'fc_guided_setup_subscribe_newsletter', sanitize_email( $answers['email'] ), $answers );
+		do_action( 'fc_guided_setup_subscribe_newsletter', $email, $answers );
+
+		$this->send_newsletter_signup_request( $email, $answers );
+	}
+
+
+
+	/**
+	 * Get the public newsletter signup API URL.
+	 *
+	 * Uses the same API host as telemetry.
+	 */
+	protected function get_newsletter_signup_url() {
+		$api_base = class_exists( 'FluidCheckout' ) ? FluidCheckout::get_telemetry_api_url() : 'https://fluidcheckout.com';
+		$api_base = untrailingslashit( (string) $api_base );
+
+		// Bail if the API base URL is empty
+		if ( '' === $api_base ) {
+			return '';
+		}
+
+		$url = $api_base . '/wp-json/fc-licenses/v1/newsletter/subscribe';
+
+		/**
+		 * Filters the public newsletter signup API URL for guided setup.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param string $url Public REST URL. Empty string disables the remote request.
+		 */
+		return (string) apply_filters( 'fc_guided_setup_newsletter_signup_url', $url );
+	}
+
+
+
+	/**
+	 * POST the opted-in email to the public newsletter signup API on fluidcheckout.com.
+	 *
+	 * @param string $email   Sanitized email address.
+	 * @param array  $answers Guided setup answers.
+	 */
+	protected function send_newsletter_signup_request( $email, $answers ) {
+		$url = $this->get_newsletter_signup_url();
+
+		// Bail if the signup URL is not configured
+		if ( '' === $url ) {
+			return;
+		}
+
+		$body = array(
+			'email'  => $email,
+			'source' => 'guided_setup',
+		);
+
+		// Maybe add the current admin user's name for the CRM contact record
+		$user = wp_get_current_user();
+		if ( $user instanceof WP_User && $user->exists() ) {
+			// Maybe set first name
+			if ( ! empty( $user->first_name ) ) {
+				$body['first_name'] = $user->first_name;
+			}
+
+			// Maybe set last name
+			if ( ! empty( $user->last_name ) ) {
+				$body['last_name'] = $user->last_name;
+			}
+		}
+
+		/**
+		 * Filters the newsletter signup payload for guided setup.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param array  $body    Request body (JSON-encoded before send).
+		 * @param string $email   Sanitized email address.
+		 * @param array  $answers Guided setup answers.
+		 */
+		$body = apply_filters( 'fc_guided_setup_newsletter_signup_payload', $body, $email, $answers );
+
+		// Bail if the filtered payload is invalid
+		if ( ! is_array( $body ) || empty( $body['email'] ) ) {
+			return;
+		}
+
+		wp_remote_post(
+			$url,
+			array(
+				'timeout'   => 15,
+				'sslverify' => true,
+				'headers'   => array(
+					'Content-Type' => 'application/json',
+					'Accept'       => 'application/json',
+				),
+				'body'      => wp_json_encode( $body ),
+			)
+		);
 	}
 
 
@@ -1398,7 +1516,9 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		$progress        = self::get_progress_for_slug( $guided_setup_id );
 
 		/**
-		 * Sanitize guided setup progress before telemetry HTTP send.
+		 * Filters guided setup progress before telemetry HTTP send.
+		 *
+		 * @since 5.0.0
 		 *
 		 * @param array  $progress        Progress document for the slug.
 		 * @param string $guided_setup_id Guided setup identifier.
@@ -1435,7 +1555,9 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
-	 * Default telemetry sanitizer: omit email when newsletter is off.
+	 * Default telemetry sanitizer: never include the merchant email.
+	 *
+	 * Newsletter signup uses a separate request. Email must not ride along in telemetry.
 	 *
 	 * @param array  $progress        Progress document.
 	 * @param string $guided_setup_id Guided setup identifier.
@@ -1451,9 +1573,8 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 			return $progress;
 		}
 
-		if ( empty( $progress['answers']['newsletter_opt_in'] ) ) {
-			unset( $progress['answers']['email'] );
-		}
+		// Ensure email is not included in telemetry
+		unset( $progress['answers']['email'] );
 
 		return $progress;
 	}
