@@ -1392,19 +1392,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 			return;
 		}
 
-		/**
-		 * Fires when the merchant finishes guided setup with newsletter opt-in.
-		 *
-		 * Runs before the newsletter signup HTTP request so custom handlers can react first.
-		 *
-		 * @since 5.0.0
-		 *
-		 * @param string $email   Email address.
-		 * @param array  $answers Guided setup answers.
-		 */
-		do_action( 'fc_guided_setup_subscribe_newsletter', $email, $answers );
-
-		$this->send_newsletter_signup_request( $email, $answers );
+		$this->send_newsletter_signup_request( $email );
 	}
 
 
@@ -1423,16 +1411,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 			return '';
 		}
 
-		$url = $api_base . '/wp-json/fc-licenses/v1/newsletter/subscribe';
-
-		/**
-		 * Filters the public newsletter signup API URL for guided setup.
-		 *
-		 * @since 5.0.0
-		 *
-		 * @param string $url Public REST URL. Empty string disables the remote request.
-		 */
-		return (string) apply_filters( 'fc_guided_setup_newsletter_signup_url', $url );
+		return $api_base . '/wp-json/fc-licenses/v1/newsletter/subscribe';
 	}
 
 
@@ -1440,10 +1419,9 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 	/**
 	 * POST the opted-in email to the public newsletter signup API on fluidcheckout.com.
 	 *
-	 * @param string $email   Sanitized email address.
-	 * @param array  $answers Guided setup answers.
+	 * @param string $email Sanitized email address.
 	 */
-	protected function send_newsletter_signup_request( $email, $answers ) {
+	protected function send_newsletter_signup_request( $email ) {
 		$url = $this->get_newsletter_signup_url();
 
 		// Bail if the signup URL is not configured
@@ -1456,7 +1434,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 			'source' => 'guided_setup',
 		);
 
-		// Maybe add the current admin user's name for the CRM contact record
+		// Maybe add the current admin user's name for the contact record
 		$user = wp_get_current_user();
 		if ( $user instanceof WP_User && $user->exists() ) {
 			// Maybe set first name
@@ -1468,22 +1446,6 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 			if ( ! empty( $user->last_name ) ) {
 				$body['last_name'] = $user->last_name;
 			}
-		}
-
-		/**
-		 * Filters the newsletter signup payload for guided setup.
-		 *
-		 * @since 5.0.0
-		 *
-		 * @param array  $body    Request body (JSON-encoded before send).
-		 * @param string $email   Sanitized email address.
-		 * @param array  $answers Guided setup answers.
-		 */
-		$body = apply_filters( 'fc_guided_setup_newsletter_signup_payload', $body, $email, $answers );
-
-		// Bail if the filtered payload is invalid
-		if ( ! is_array( $body ) || empty( $body['email'] ) ) {
-			return;
 		}
 
 		wp_remote_post(
