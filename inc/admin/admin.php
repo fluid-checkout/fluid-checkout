@@ -137,6 +137,9 @@ class FluidCheckout_Admin extends FluidCheckout {
 	public function load_guided_setup() {
 		require_once self::$directory_path . 'inc/admin/guided-setup/abstract-guided-setup.php';
 		require_once self::$directory_path . 'inc/admin/guided-setup/class-guided-setup-checkout-data.php';
+		require_once self::$directory_path . 'inc/admin/guided-setup/recommendations/class-guided-setup-recommendation-loader.php';
+		require_once self::$directory_path . 'inc/admin/guided-setup/recommendations/class-guided-setup-recommendation-filters.php';
+		require_once self::$directory_path . 'inc/admin/guided-setup/class-guided-setup-recommendations.php';
 		require_once self::$directory_path . 'inc/admin/guided-setup/guided-setup-fluid-checkout.php';
 	}
 
@@ -354,15 +357,23 @@ class FluidCheckout_Admin extends FluidCheckout {
 	/**
 	 * Get HTML for the PRO feature promo pill badge.
 	 *
-	 * @param  string       $section_slug  Section slug used in tracking as `mtm_kwd=pro-badge-{slug}`.
+	 * @param  string       $section_slug  Section slug used in tracking as `mtm_kwd=pro-badge-{slug}` when `$mtm_kwd` is omitted.
 	 * @param  string|null  $label         Optional badge label. Defaults to "PRO feature".
+	 * @param  string|null  $mtm_kwd       Optional full Matomo keyword override (for example `guided-setup-edit-cart`).
 	 */
-	public function get_pro_feature_badge_html( $section_slug = '', $label = null ) {
+	public function get_pro_feature_badge_html( $section_slug = '', $label = null, $mtm_kwd = null ) {
 		// Bail if PRO is already activated
 		if ( FluidCheckout::instance()->is_pro_activated() ) { return ''; }
 
 		$section_slug = sanitize_title( $section_slug );
-		$mtm_kwd = ! empty( $section_slug ) ? 'pro-badge-' . $section_slug : 'pro-badge';
+
+		// Use the explicit keyword when provided, otherwise the default pro-badge prefix
+		if ( null !== $mtm_kwd && '' !== (string) $mtm_kwd ) {
+			$mtm_kwd = sanitize_title( (string) $mtm_kwd );
+		} else {
+			$mtm_kwd = ! empty( $section_slug ) ? 'pro-badge-' . $section_slug : 'pro-badge';
+		}
+
 		$label = null !== $label ? $label : __( 'PRO feature', 'fluid-checkout' );
 
 		$url = add_query_arg(

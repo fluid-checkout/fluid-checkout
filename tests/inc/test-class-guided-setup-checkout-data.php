@@ -5,6 +5,7 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
  * Unit test: checkout guided setup answer helpers.
  */
 class FluidCheckout_Guided_Setup_Checkout_Data_Test extends TestCase {
+	use TransactionalTestClassTrait;
 
 	/**
 	 * Test: product types step requires at least one type.
@@ -67,9 +68,10 @@ class FluidCheckout_Guided_Setup_Checkout_Data_Test extends TestCase {
 		$result = FluidCheckout_Guided_Setup_Checkout_Data::sanitize_step_form_data(
 			'about_store',
 			array(
-				'business_industry' => 'food-drink',
-				'customer_audience' => 'dtc',
-				'email'             => 'merchant@example.com',
+				'business_industry'  => 'food-drink',
+				'customer_audience'  => 'dtc',
+				'customer_location'  => 'domestic',
+				'email'              => 'merchant@example.com',
 			),
 			array()
 		);
@@ -92,6 +94,18 @@ class FluidCheckout_Guided_Setup_Checkout_Data_Test extends TestCase {
 
 
 	/**
+	 * Test: default answers include a valid customer location prefill.
+	 */
+	public function test_default_answers_customer_location_is_valid() {
+		$defaults = FluidCheckout_Guided_Setup_Checkout_Data::get_default_answers();
+		$options  = FluidCheckout_Guided_Setup_Checkout_Data::get_customer_location_options();
+
+		$this->assertArrayHasKey( $defaults['customer_location'], $options );
+	}
+
+
+
+	/**
 	 * Test: about store requires customer audience.
 	 */
 	public function test_about_store_requires_customer_audience() {
@@ -109,20 +123,85 @@ class FluidCheckout_Guided_Setup_Checkout_Data_Test extends TestCase {
 
 
 	/**
-	 * Test: about store saves customer audience.
+	 * Test: about store requires customer location.
 	 */
-	public function test_about_store_saves_customer_audience() {
+	public function test_about_store_requires_customer_location() {
+		$result = FluidCheckout_Guided_Setup_Checkout_Data::sanitize_step_form_data(
+			'about_store',
+			array(
+				'business_industry' => 'food-drink',
+				'customer_audience' => 'dtc',
+			),
+			array()
+		);
+
+		$this->assertInstanceOf( 'WP_Error', $result );
+	}
+
+
+
+	/**
+	 * Test: about store saves customer audience and location.
+	 */
+	public function test_about_store_saves_customer_audience_and_location() {
 		$result = FluidCheckout_Guided_Setup_Checkout_Data::sanitize_step_form_data(
 			'about_store',
 			array(
 				'business_industry' => 'food-drink',
 				'customer_audience' => 'b2b',
+				'customer_location' => 'international',
 			),
 			array()
 		);
 
 		$this->assertIsArray( $result );
 		$this->assertSame( 'b2b', $result['customer_audience'] );
+		$this->assertSame( 'international', $result['customer_location'] );
+	}
+
+
+
+	/**
+	 * Test: customer location prefill is domestic when selling only to the store country.
+	 */
+	public function test_prefill_customer_location_domestic_for_single_store_country() {
+		$store_country = FluidCheckout_Guided_Setup_Checkout_Data::get_store_country_code();
+
+		// Bail-style skip when WooCommerce has no store country in this environment
+		if ( '' === $store_country ) {
+			$this->markTestSkipped( 'Store country is unavailable.' );
+		}
+
+		$this->set_woocommerce_selling_locations( 'specific', array( $store_country ) );
+
+		$this->assertSame( 'domestic', FluidCheckout_Guided_Setup_Checkout_Data::get_prefill_customer_location() );
+	}
+
+
+
+	/**
+	 * Test: customer location prefill is international when selling to all countries.
+	 */
+	public function test_prefill_customer_location_international_for_all_countries() {
+		$this->set_woocommerce_selling_locations( 'all', array() );
+
+		$this->assertSame( 'international', FluidCheckout_Guided_Setup_Checkout_Data::get_prefill_customer_location() );
+	}
+
+
+
+	/**
+	 * Set WooCommerce selling location options and clear the options object cache.
+	 *
+	 * @param string   $mode    `woocommerce_allowed_countries` value.
+	 * @param string[] $specific Specific country codes when mode is `specific`.
+	 */
+	private function set_woocommerce_selling_locations( $mode, $specific = array() ) {
+		update_option( 'woocommerce_allowed_countries', $mode );
+		update_option( 'woocommerce_specific_allowed_countries', $specific );
+		wp_cache_delete( 'woocommerce_allowed_countries', 'options' );
+		wp_cache_delete( 'woocommerce_specific_allowed_countries', 'options' );
+		wp_cache_delete( 'alloptions', 'options' );
 	}
 
 }

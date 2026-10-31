@@ -14,11 +14,11 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 	public static function get_product_types() {
 		return array(
 			'physical'      => __( 'Physical products', 'fluid-checkout' ),
-			'downloads'     => __( 'Downloads', 'fluid-checkout' ),
+			'downloads'     => __( 'Downloads & Digital products', 'fluid-checkout' ),
 			'services'      => __( 'Services', 'fluid-checkout' ),
+			'bookings'      => __( 'Bookings', 'fluid-checkout' ),
 			'subscriptions' => __( 'Subscriptions', 'fluid-checkout' ),
 			'memberships'   => __( 'Memberships', 'fluid-checkout' ),
-			'bookings'      => __( 'Bookings', 'fluid-checkout' ),
 		);
 	}
 
@@ -55,6 +55,63 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 
 
 	/**
+	 * Customer location slugs for the about_store step (where customers are located).
+	 *
+	 * @return array<string, string> Slug => label.
+	 */
+	public static function get_customer_location_options() {
+		$country = self::get_store_country_display_name();
+
+		// Fallback label fragment when the store country name is unavailable
+		if ( '' === $country ) {
+			$country = __( 'your country', 'fluid-checkout' );
+		}
+
+		return array(
+			/* translators: %s: store country name from WooCommerce settings */
+			'domestic'      => sprintf( __( 'Only in %s', 'fluid-checkout' ), $country ),
+			'international' => __( 'Multiple countries', 'fluid-checkout' ),
+		);
+	}
+
+
+
+	/**
+	 * Pre-fill customer location from WooCommerce selling location settings.
+	 *
+	 * @return string `domestic` or `international`.
+	 */
+	public static function get_prefill_customer_location() {
+		$location = self::get_store_location_answers();
+		$mode     = isset( $location['selling_to_mode'] ) ? (string) $location['selling_to_mode'] : '';
+		$store    = isset( $location['store_country'] ) ? (string) $location['store_country'] : '';
+		$codes    = isset( $location['selling_to_country_codes'] ) && is_array( $location['selling_to_country_codes'] ) ? array_values( array_unique( array_map( 'strval', $location['selling_to_country_codes'] ) ) ) : array();
+
+		// Sell to all countries (or all except a list) means international customers
+		if ( in_array( $mode, array( 'all', 'all_except' ), true ) ) {
+			return 'international';
+		}
+
+		// Sell to a specific list: domestic only when that list is exactly the store country
+		if ( 'specific' === $mode ) {
+			if ( 1 === count( $codes ) && '' !== $store && $store === $codes[0] ) {
+				return 'domestic';
+			}
+
+			return 'international';
+		}
+
+		// Unknown selling mode: prefer domestic when a store country is configured
+		if ( '' !== $store ) {
+			return 'domestic';
+		}
+
+		return 'international';
+	}
+
+
+
+	/**
 	 * WooCommerce onboarding product type slug => FC slug.
 	 *
 	 * @return array<string, string>
@@ -74,7 +131,7 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 	/**
 	 * Industry options (WooCommerce slugs when available, FC labels).
 	 *
-	 * @return array<string, array{label:string,use_description:bool}>
+	 * @return array<string, array{label:string}>
 	 */
 	public static function get_industries() {
 		if ( class_exists( '\Automattic\WooCommerce\Internal\Admin\Onboarding\OnboardingIndustries' ) ) {
@@ -83,49 +140,31 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 
 		return array(
 			'fashion-apparel-accessories' => array(
-				'label'             => __( 'Fashion, apparel, and accessories', 'fluid-checkout' ),
-				'use_description'   => false,
-				'description_label' => '',
+				'label' => __( 'Fashion, apparel, and accessories', 'fluid-checkout' ),
 			),
 			'health-beauty'               => array(
-				'label'             => __( 'Health and beauty', 'fluid-checkout' ),
-				'use_description'   => false,
-				'description_label' => '',
+				'label' => __( 'Health and beauty', 'fluid-checkout' ),
 			),
 			'electronics-computers'       => array(
-				'label'             => __( 'Electronics and computers', 'fluid-checkout' ),
-				'use_description'   => false,
-				'description_label' => '',
+				'label' => __( 'Electronics and computers', 'fluid-checkout' ),
 			),
 			'food-drink'                  => array(
-				'label'             => __( 'Food and drink', 'fluid-checkout' ),
-				'use_description'   => false,
-				'description_label' => '',
+				'label' => __( 'Food and drink', 'fluid-checkout' ),
 			),
 			'home-furniture-garden'       => array(
-				'label'             => __( 'Home, furniture, and garden', 'fluid-checkout' ),
-				'use_description'   => false,
-				'description_label' => '',
+				'label' => __( 'Home, furniture, and garden', 'fluid-checkout' ),
 			),
 			'education-and-learning'      => array(
-				'label'             => __( 'Education and learning', 'fluid-checkout' ),
-				'use_description'   => false,
-				'description_label' => '',
+				'label' => __( 'Education and learning', 'fluid-checkout' ),
 			),
 			'sports-and-recreation'       => array(
-				'label'             => __( 'Sports and recreation', 'fluid-checkout' ),
-				'use_description'   => false,
-				'description_label' => '',
+				'label' => __( 'Sports and recreation', 'fluid-checkout' ),
 			),
 			'arts-and-crafts'             => array(
-				'label'             => __( 'Arts and crafts', 'fluid-checkout' ),
-				'use_description'   => false,
-				'description_label' => '',
+				'label' => __( 'Arts and crafts', 'fluid-checkout' ),
 			),
 			'other'                       => array(
-				'label'             => __( 'Other', 'fluid-checkout' ),
-				'use_description'   => true,
-				'description_label' => __( 'Description', 'fluid-checkout' ),
+				'label' => __( 'Other', 'fluid-checkout' ),
 			),
 		);
 	}
@@ -144,6 +183,7 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 			'business_industry'              => '',
 			'business_industry_other'        => '',
 			'customer_audience'              => 'dtc',
+			'customer_location'              => self::get_prefill_customer_location(),
 			'store_country'                  => self::get_store_country_code(),
 			'selling_to_mode'                => '',
 			'selling_to_country_codes'       => array(),
@@ -165,6 +205,10 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 
 		if ( empty( $merged['customer_audience'] ) || ! array_key_exists( $merged['customer_audience'], self::get_customer_audience_options() ) ) {
 			$merged['customer_audience'] = 'dtc';
+		}
+
+		if ( empty( $merged['customer_location'] ) || ! array_key_exists( $merged['customer_location'], self::get_customer_location_options() ) ) {
+			$merged['customer_location'] = self::get_prefill_customer_location();
 		}
 
 		return $merged;
@@ -255,6 +299,15 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 
 			$answers['customer_audience'] = $customer_audience;
 
+			$customer_location = isset( $form_data['customer_location'] ) ? sanitize_text_field( wp_unslash( $form_data['customer_location'] ) ) : '';
+			$location_options  = self::get_customer_location_options();
+
+			if ( empty( $customer_location ) || ! array_key_exists( $customer_location, $location_options ) ) {
+				return new WP_Error( 'fc_guided_setup_invalid_customer_location', __( 'Please select where your customers are located.', 'fluid-checkout' ) );
+			}
+
+			$answers['customer_location'] = $customer_location;
+
 			$answers = array_merge( $answers, self::get_store_location_answers() );
 
 			$answers['newsletter_opt_in'] = self::normalize_bool( isset( $form_data['newsletter_opt_in'] ) ? $form_data['newsletter_opt_in'] : false );
@@ -303,7 +356,7 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 
 
 	/**
-	 * Sanitize debounced partial save (product types step fields only).
+	 * Sanitize debounced partial save for recommendation-relevant answer fields.
 	 *
 	 * @param array $form_data Form data.
 	 * @param array $existing  Existing answers.
@@ -313,6 +366,33 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 	public static function sanitize_debounced_form_data( $form_data, $existing = array() ) {
 		$answers = self::get_default_answers( $existing );
 		$form_data = is_array( $form_data ) ? $form_data : array();
+
+		if ( isset( $form_data['business_industry'] ) ) {
+			$industry = sanitize_text_field( wp_unslash( $form_data['business_industry'] ) );
+
+			// Keep the existing industry when the posted value is invalid
+			if ( array_key_exists( $industry, self::get_industries() ) ) {
+				$answers['business_industry'] = $industry;
+			}
+		}
+
+		if ( isset( $form_data['customer_audience'] ) ) {
+			$customer_audience = sanitize_text_field( wp_unslash( $form_data['customer_audience'] ) );
+
+			// Keep the existing audience when the posted value is invalid
+			if ( array_key_exists( $customer_audience, self::get_customer_audience_options() ) ) {
+				$answers['customer_audience'] = $customer_audience;
+			}
+		}
+
+		if ( isset( $form_data['customer_location'] ) ) {
+			$customer_location = sanitize_text_field( wp_unslash( $form_data['customer_location'] ) );
+
+			// Keep the existing location when the posted value is invalid
+			if ( array_key_exists( $customer_location, self::get_customer_location_options() ) ) {
+				$answers['customer_location'] = $customer_location;
+			}
+		}
 
 		if ( isset( $form_data['product_types'] ) ) {
 			$answers['product_types'] = self::sanitize_slug_list( $form_data['product_types'], array_keys( self::get_product_types() ) );

@@ -229,7 +229,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
-	 * Finish guided setup: newsletter, completed_at, telemetry snapshot (no recommendation preset apply in Phase 1).
+	 * Finish guided setup: apply recommendations, newsletter, completed_at, telemetry.
 	 */
 	public function process_finish_guided_setup() {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -241,6 +241,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 			return;
 		}
 
+		$this->maybe_apply_recommendations_on_finish();
 		$this->maybe_subscribe_newsletter();
 		$this->set_completed_at();
 		$this->maybe_send_guided_setup_telemetry( true );
@@ -299,13 +300,16 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
-	 * AJAX: recommended_setup placeholder step (shell only; no recommendation engine yet).
+	 * AJAX: recommended_setup step (persist overrides, apply settings, then continue).
 	 */
 	public function ajax_process_step_recommended_setup() {
 		if ( ! $this->verify_ajax_request() ) {
 			wp_die( 0 );
 		}
 
+		$form_data = $this->get_form_data_from_request();
+		$this->save_recommended_setup_user_overrides( $form_data );
+		$this->maybe_apply_recommendations_on_finish();
 		$this->advance_step( 'wrap_up' );
 		$this->maybe_send_guided_setup_telemetry( false );
 
@@ -315,7 +319,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
-	 * AJAX: debounced partial save for product types / delivery toggles.
+	 * AJAX: debounced partial save for recommendation-relevant answers.
 	 */
 	public function ajax_save_checkout_answers() {
 		if ( ! $this->verify_ajax_request() ) {
@@ -327,8 +331,13 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		$answers   = FluidCheckout_Guided_Setup_Checkout_Data::sanitize_debounced_form_data( $form_data, $existing );
 
 		$this->persist_answers( $answers );
+		$this->recompute_and_store_recommendations( $answers );
 
-		wp_send_json_success();
+		wp_send_json_success(
+			array(
+				'recommendationsHtml' => $this->get_recommended_setup_settings_html(),
+			)
+		);
 	}
 
 
@@ -365,11 +374,12 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		$settings['i18n']                    = array_merge(
 			isset( $settings['i18n'] ) ? $settings['i18n'] : array(),
 			array(
-				'industryRequired'          => __( 'Please select what type of products or services you sell.', 'fluid-checkout' ),
-				'customerAudienceRequired'  => __( 'Please select who you sell to.', 'fluid-checkout' ),
-				'emailRequired'          => __( 'Please enter a valid email address for the newsletter.', 'fluid-checkout' ),
-				'productTypesRequired'   => __( 'Please select at least one product type.', 'fluid-checkout' ),
-				'deliveryMethodsRequired' => __( 'Please select at least one delivery method for physical products.', 'fluid-checkout' ),
+				'industryRequired'           => __( 'Please select what type of products or services you sell.', 'fluid-checkout' ),
+				'customerAudienceRequired'   => __( 'Please select who you sell to.', 'fluid-checkout' ),
+				'customerLocationRequired'   => __( 'Please select where your customers are located.', 'fluid-checkout' ),
+				'emailRequired'              => __( 'Please enter a valid email address for the newsletter.', 'fluid-checkout' ),
+				'productTypesRequired'       => __( 'Please select at least one product type.', 'fluid-checkout' ),
+				'deliveryMethodsRequired'    => __( 'Please select at least one delivery method for physical products.', 'fluid-checkout' ),
 			)
 		);
 
@@ -451,11 +461,13 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 	 * @param array $answers Stored answers.
 	 */
 	protected function output_step_about_store( $answers ) {
-		$industries           = FluidCheckout_Guided_Setup_Checkout_Data::get_industries();
-		$selected_industry       = ! empty( $answers['business_industry'] ) ? $answers['business_industry'] : FluidCheckout_Guided_Setup_Checkout_Data::get_prefill_industry();
-		$customer_audience_opts  = FluidCheckout_Guided_Setup_Checkout_Data::get_customer_audience_options();
+		$industries                 = FluidCheckout_Guided_Setup_Checkout_Data::get_industries();
+		$selected_industry          = ! empty( $answers['business_industry'] ) ? $answers['business_industry'] : FluidCheckout_Guided_Setup_Checkout_Data::get_prefill_industry();
+		$customer_audience_opts     = FluidCheckout_Guided_Setup_Checkout_Data::get_customer_audience_options();
 		$selected_customer_audience = ! empty( $answers['customer_audience'] ) ? $answers['customer_audience'] : 'dtc';
-		$user_email           = ! empty( $answers['email'] ) ? $answers['email'] : wp_get_current_user()->user_email;
+		$customer_location_opts     = FluidCheckout_Guided_Setup_Checkout_Data::get_customer_location_options();
+		$selected_customer_location = ! empty( $answers['customer_location'] ) ? $answers['customer_location'] : FluidCheckout_Guided_Setup_Checkout_Data::get_prefill_customer_location();
+		$user_email                 = ! empty( $answers['email'] ) ? $answers['email'] : wp_get_current_user()->user_email;
 		$newsletter_checked   = ! empty( $answers['newsletter_opt_in'] );
 		$telemetry_checked    = class_exists( 'FC_Telemetry_Client' ) && FC_Telemetry_Client::is_telemetry_enabled();
 		if ( ! $telemetry_checked && ! empty( $answers['telemetry_opt_in'] ) ) {
@@ -465,9 +477,9 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		?>
 		<div class="fc-setup-card <?php echo esc_attr( $this->get_step_card_visibility_class( 'about_store' ) ); ?>" data-fc-setup-step="about_store">
 			<div class="fc-setup-card__inner">
-				<form>
+				<form data-fc-setup-autosave="1">
 					<h2><?php echo esc_html__( 'Welcome to Fluid Checkout!', 'fluid-checkout' ); ?></h2>
-					<p class="fc-setup-intro"><?php echo esc_html__( 'It is great to have you here with us! We will be guiding you through the setup process – your answers to a few questions will help us recommend checkout settings for your store. Applying those recommendations to your store is coming soon.', 'fluid-checkout' ); ?></p>
+					<p class="fc-setup-intro"><?php echo esc_html__( 'It is great to have you here with us! We will be guiding you through the setup process – your answers to a few questions will help us recommend checkout settings for your store.', 'fluid-checkout' ); ?></p>
 
 					<h2 class="fc-setup-section-title"><?php echo esc_html__( 'About your store', 'fluid-checkout' ); ?></h2>
 
@@ -489,13 +501,29 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 					<div class="fc-settings-field fc-settings-field--inline fc-settings-field--radio">
 						<div class="fc-settings-field__label">
-							<span class="fc-settings-field__title"><?php echo esc_html__( 'Who do you sell to?', 'fluid-checkout' ); ?></span>
+							<span class="fc-settings-field__title"><?php echo esc_html__( 'Who do you predominantly sell to?', 'fluid-checkout' ); ?></span>
 						</div>
 						<div class="fc-settings-field__control">
-							<div class="fc-settings-radio-options" role="radiogroup" aria-label="<?php echo esc_attr__( 'Who do you sell to?', 'fluid-checkout' ); ?>">
+							<div class="fc-settings-radio-options" role="radiogroup" aria-label="<?php echo esc_attr__( 'Who do you predominantly sell to?', 'fluid-checkout' ); ?>">
 								<?php foreach ( $customer_audience_opts as $slug => $label ) : ?>
 									<label class="fc-settings-radio-option">
 										<input type="radio" name="customer_audience" value="<?php echo esc_attr( $slug ); ?>" <?php checked( $selected_customer_audience, $slug ); ?> required />
+										<span class="fc-settings-radio-option__label"><?php echo esc_html( $label ); ?></span>
+									</label>
+								<?php endforeach; ?>
+							</div>
+						</div>
+					</div>
+
+					<div class="fc-settings-field fc-settings-field--inline fc-settings-field--radio">
+						<div class="fc-settings-field__label">
+							<span class="fc-settings-field__title"><?php echo esc_html__( 'Where are your customers located?', 'fluid-checkout' ); ?></span>
+						</div>
+						<div class="fc-settings-field__control">
+							<div class="fc-settings-radio-options" role="radiogroup" aria-label="<?php echo esc_attr__( 'Where are your customers located?', 'fluid-checkout' ); ?>">
+								<?php foreach ( $customer_location_opts as $slug => $label ) : ?>
+									<label class="fc-settings-radio-option">
+										<input type="radio" name="customer_location" value="<?php echo esc_attr( $slug ); ?>" <?php checked( $selected_customer_location, $slug ); ?> required />
 										<span class="fc-settings-radio-option__label"><?php echo esc_html( $label ); ?></span>
 									</label>
 								<?php endforeach; ?>
@@ -640,74 +668,72 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
-	 * Preview recommendation rows for the recommended_setup step (styling / IA only).
+	 * Get recommended rows for the recommended_setup step (from progress cache).
 	 *
 	 * @return array<int, array<string, mixed>>
 	 */
-	protected function get_recommended_setup_preview_settings() {
-		return array(
-			array(
-				'id'          => 'multi_step_checkout',
-				'title'       => __( 'Multi-step checkout', 'fluid-checkout' ),
-				'description' => __( 'Split checkout into clear steps so customers know where they are in the flow.', 'fluid-checkout' ),
-				'checked'     => true,
-				'is_pro'      => false,
-			),
-			array(
-				'id'          => 'shipping_before_billing',
-				'title'       => __( 'Shipping before billing', 'fluid-checkout' ),
-				'description' => __( 'Collect the shipping address first, then copy it to billing when both are the same.', 'fluid-checkout' ),
-				'checked'     => true,
-				'is_pro'      => false,
-			),
-			array(
-				'id'          => 'hide_optional_fields',
-				'title'       => __( 'Hide optional fields by default', 'fluid-checkout' ),
-				'description' => __( 'Keep company, address line 2, and order notes behind an Add link until they are needed.', 'fluid-checkout' ),
-				'checked'     => true,
-				'is_pro'      => false,
-			),
-			array(
-				'id'          => 'google_address_autocomplete',
-				'title'       => __( 'Google address autocomplete', 'fluid-checkout' ),
-				'description' => __( 'Suggest verified addresses as customers type to reduce typos and failed deliveries.', 'fluid-checkout' ),
-				'checked'     => false,
-				'is_pro'      => true,
-			),
-			array(
-				'id'          => 'address_book',
-				'title'       => __( 'Address book at checkout', 'fluid-checkout' ),
-				'description' => __( 'Let logged-in customers pick a saved address instead of retyping it every time.', 'fluid-checkout' ),
-				'checked'     => false,
-				'is_pro'      => true,
-			),
-		);
+	protected function get_recommended_setup_settings() {
+		$recommendations = $this->get_recommendations_progress();
+		$rows            = isset( $recommendations['recommended'] ) && is_array( $recommendations['recommended'] ) ? $recommendations['recommended'] : array();
+		$excluded_keys   = array();
+
+		if ( class_exists( 'FluidCheckout_Guided_Setup_Recommendations' ) ) {
+			$excluded_keys = FluidCheckout_Guided_Setup_Recommendations::instance()->normalize_excluded_option_keys(
+				isset( $recommendations['user_overrides'] ) ? $recommendations['user_overrides'] : array()
+			);
+		}
+
+		$pro_recommendations_checked = $this->is_pro_recommendations_checked_by_default();
+
+		// Iterate rows to apply checked state from overrides and Lite/PRO context
+		foreach ( $rows as $index => $row ) {
+			// PRO rows are unchecked on Lite, checked when PRO guided setup can apply them
+			if ( ! empty( $row['is_pro'] ) ) {
+				$rows[ $index ]['checked'] = $pro_recommendations_checked;
+				continue;
+			}
+
+			$option_key = isset( $row['option_key'] ) ? (string) $row['option_key'] : '';
+			$checked    = '' === $option_key || ! in_array( $option_key, $excluded_keys, true );
+
+			$rows[ $index ]['checked'] = $checked;
+		}
+
+		return $rows;
 	}
 
 
 
 	/**
-	 * Output preview recommendation toggles (not connected to real settings yet).
+	 * Whether PRO recommendation toggles start checked.
+	 *
+	 * Lite shows PRO rows unchecked (promo only). PRO guided setup starts them checked
+	 * so they can be applied with the rest of the recommendations.
+	 *
+	 * @return bool
 	 */
-	protected function output_recommended_setup_preview_settings() {
-		$settings = $this->get_recommended_setup_preview_settings();
+	protected function is_pro_recommendations_checked_by_default() {
+		return class_exists( 'FluidCheckout' ) && FluidCheckout::instance()->is_pro_activated();
+	}
 
-		if ( empty( $settings ) ) {
-			return;
-		}
 
-		$pro_badge_html = '';
 
-		if ( class_exists( 'FluidCheckout_Admin' ) ) {
-			$pro_badge_html = FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'guided-setup-recommendations' );
-		}
+	/**
+	 * Output recommendation toggles for the recommended_setup step.
+	 */
+	protected function output_recommended_setup_settings() {
+		$settings          = $this->get_recommended_setup_settings();
+		$show_pro_badges   = class_exists( 'FluidCheckout' ) && ! FluidCheckout::instance()->is_pro_activated();
 		?>
 		<div class="fc-setup-recommendation-options" role="group" aria-label="<?php echo esc_attr__( 'Recommended checkout settings', 'fluid-checkout' ); ?>">
 			<?php foreach ( $settings as $setting ) : ?>
 				<?php
-				$input_id     = 'fc_setup_recommendation_preview_' . $setting['id'];
-				$is_disabled  = ! empty( $setting['is_pro'] ) && ! empty( $pro_badge_html );
-				$option_class = 'fc-setup-recommendation-option';
+				$option_key      = isset( $setting['option_key'] ) ? (string) $setting['option_key'] : ( isset( $setting['id'] ) ? (string) $setting['id'] : '' );
+				$input_id        = 'fc_setup_recommendation_' . sanitize_html_class( $option_key );
+				$is_pro          = ! empty( $setting['is_pro'] );
+				$is_disabled     = $is_pro && $show_pro_badges;
+				$option_class    = 'fc-setup-recommendation-option';
+				$pro_badge_html  = $is_disabled ? $this->get_recommendation_pro_badge_html( $setting ) : '';
 
 				if ( $is_disabled ) {
 					$option_class .= ' is-disabled';
@@ -725,7 +751,10 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 							type="checkbox"
 							class="fc-settings-toggle fc-settings-toggle--round"
 							id="<?php echo esc_attr( $input_id ); ?>"
-							value="1"
+							<?php if ( ! $is_disabled ) : ?>
+								name="recommendation_toggles[]"
+							<?php endif; ?>
+							value="<?php echo esc_attr( $option_key ); ?>"
 							<?php checked( ! empty( $setting['checked'] ) ); ?>
 							<?php disabled( $is_disabled ); ?>
 							aria-labelledby="<?php echo esc_attr( $input_id ); ?>-label"
@@ -737,7 +766,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 						<p class="fc-setup-recommendation-option__description"><?php echo esc_html( $setting['description'] ); ?></p>
 					</div>
 					<div class="fc-setup-recommendation-option__badge">
-						<?php if ( ! empty( $setting['is_pro'] ) && ! empty( $pro_badge_html ) ) : ?>
+						<?php if ( ! empty( $pro_badge_html ) ) : ?>
 							<?php echo $pro_badge_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 						<?php endif; ?>
 					</div>
@@ -750,23 +779,79 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
-	 * Output recommended_setup placeholder step.
+	 * Get the PRO promo badge HTML for one recommendation row.
+	 *
+	 * Uses `mtm_kwd=guided-setup-{feature_slug}` so upgrades can be attributed per feature.
+	 *
+	 * @param array $setting Recommendation row.
+	 *
+	 * @return string
+	 */
+	protected function get_recommendation_pro_badge_html( $setting ) {
+		// Bail if the admin badge helper is unavailable
+		if ( ! class_exists( 'FluidCheckout_Admin' ) ) {
+			return '';
+		}
+
+		$setting      = is_array( $setting ) ? $setting : array();
+		$feature_slug = isset( $setting['feature_slug'] ) ? sanitize_title( (string) $setting['feature_slug'] ) : '';
+
+		// Fall back to a sanitized option key when the registry omits feature_slug
+		if ( '' === $feature_slug ) {
+			$option_key   = isset( $setting['option_key'] ) ? (string) $setting['option_key'] : '';
+			$feature_slug = sanitize_title( preg_replace( '/^fc_pro_|^fc_/', '', $option_key ) );
+		}
+
+		// Bail if no feature slug could be resolved
+		if ( '' === $feature_slug ) {
+			$feature_slug = 'recommendations';
+		}
+
+		return FluidCheckout_Admin::instance()->get_pro_feature_badge_html(
+			$feature_slug,
+			null,
+			'guided-setup-' . $feature_slug
+		);
+	}
+
+
+
+	/**
+	 * Get recommendation toggles markup for AJAX refresh.
+	 *
+	 * @return string
+	 */
+	protected function get_recommended_setup_settings_html() {
+		ob_start();
+		$this->output_recommended_setup_settings();
+
+		return (string) ob_get_clean();
+	}
+
+
+
+	/**
+	 * Output recommended_setup step.
 	 */
 	protected function output_step_recommended_setup() {
+		$this->maybe_refresh_recommendations_cache();
 		?>
 		<div class="fc-setup-card <?php echo esc_attr( $this->get_step_card_visibility_class( 'recommended_setup' ) ); ?>" data-fc-setup-step="recommended_setup">
 			<div class="fc-setup-card__inner">
 				<form>
 					<h2><?php echo esc_html__( 'Recommended setup', 'fluid-checkout' ); ?></h2>
-					<p class="fc-setup-intro"><?php echo esc_html__( 'Based on what you told us, these checkout options are a good starting point. Preview how recommendations will look—nothing here is saved to your store settings yet.', 'fluid-checkout' ); ?></p>
-					<?php $this->output_recommended_setup_preview_settings(); ?>
+					<p class="fc-setup-intro"><?php echo esc_html__( 'Based on what you told us, these checkout options are a good starting point. You can turn recommended options off before applying them and the general default value will be used instead.', 'fluid-checkout' ); ?></p>
+					<p class="fc-setup-intro"><?php echo esc_html__( 'You can change any of these settings later in the Fluid Checkout settings.', 'fluid-checkout' ); ?></p>
+					<div data-fc-setup-recommendations>
+						<?php $this->output_recommended_setup_settings(); ?>
+					</div>
 				</form>
 			</div>
 			<div class="fc-setup-card__footer">
 				<div class="fc-setup-step-actions">
 					<?php $this->output_step_actions_start( 'recommended_setup' ); ?>
 					<div class="fc-setup-submit">
-						<a href="#" class="button button-primary" data-step="recommended_setup"><span class="spinner"></span><span class="fc-setup-continue-label"><?php echo esc_html( $this->get_proceed_to_next_step_button_label( 'recommended_setup' ) ); ?></span></a>
+						<a href="#" class="button button-primary" data-step="recommended_setup"><span class="spinner"></span><span class="fc-setup-continue-label"><?php echo esc_html__( 'Apply settings & finish setup', 'fluid-checkout' ); ?></span></a>
 					</div>
 				</div>
 			</div>
@@ -785,13 +870,24 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 			<div class="fc-setup-card__inner">
 				<form>
 					<h2><?php echo esc_html__( 'All set', 'fluid-checkout' ); ?></h2>
-					<p class="fc-setup-intro"><?php echo esc_html__( 'Thanks for sharing details about your store. Finish to return to Fluid Checkout settings. Your answers are saved for future recommendations; checkout options are not applied automatically yet.', 'fluid-checkout' ); ?></p>
+					<p class="fc-setup-intro"><?php echo esc_html__( 'Your recommended setup options have been applied.', 'fluid-checkout' ) ; ?></p>
+					<p class="fc-setup-intro"><?php echo esc_html__( 'Test your checkout process and return to Fluid Checkout settings to adjust any settings if needed.', 'fluid-checkout' ) . ' ' . esc_html__( 'You can use the built-in live preview in settings to see how settings changes affect your checkout before saving them.', 'fluid-checkout' ); ?></p>
+					<p class="fc-setup-intro"><?php
+						echo wp_kses_post(
+							sprintf(
+								/* translators: %s: support page URL */
+								__( 'If you need help, <a href="%s" target="_blank" rel="noopener noreferrer">contact our support team</a>.', 'fluid-checkout' ),
+								esc_url( 'https://fluidcheckout.com/support/?mtm_campaign=guided-setup&mtm_kwd=support&mtm_source=lite-plugin' )
+							)
+						);
+					?></p>
 				</form>
 			</div>
 			<div class="fc-setup-card__footer">
 				<div class="fc-setup-step-actions">
 					<?php $this->output_step_actions_start( 'wrap_up' ); ?>
 					<div class="fc-setup-submit">
+						<a href="<?php echo esc_url( $this->get_start_over_guided_setup_url() ); ?>" class="button button-secondary fc-setup-start-over" aria-label="<?php echo esc_attr__( 'Start over and return to the first guided setup step', 'fluid-checkout' ); ?>"><?php echo esc_html__( 'Start over', 'fluid-checkout' ); ?></a>
 						<a href="<?php echo esc_url( $this->get_finish_url() ); ?>" class="button button-primary"><?php echo esc_html__( 'Finish & go to settings', 'fluid-checkout' ); ?></a>
 					</div>
 				</div>
@@ -865,11 +961,21 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 	 * JSON success payload after a step is processed and progress is advanced.
 	 */
 	protected function send_step_ajax_success() {
-		wp_send_json_success(
-			array(
-				'currentStep'         => $this->get_max_reached_step(),
-				'maxReachedStepIndex' => $this->get_max_reached_step_index(),
-			)
+		wp_send_json_success( $this->get_step_ajax_success_data() );
+	}
+
+
+
+	/**
+	 * Shared AJAX success data for step continue and answer autosave.
+	 *
+	 * @return array{currentStep:string,maxReachedStepIndex:int,recommendationsHtml:string}
+	 */
+	protected function get_step_ajax_success_data() {
+		return array(
+			'currentStep'         => $this->get_max_reached_step(),
+			'maxReachedStepIndex' => $this->get_max_reached_step_index(),
+			'recommendationsHtml' => $this->get_recommended_setup_settings_html(),
 		);
 	}
 
@@ -893,6 +999,11 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 		$this->persist_answers( $answers );
 
+		// Recompute recommendations after about_store or product_types
+		if ( in_array( $step_slug, array( 'about_store', 'product_types' ), true ) ) {
+			$this->recompute_and_store_recommendations( $answers );
+		}
+
 		return $answers;
 	}
 
@@ -912,6 +1023,126 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 				'answers' => $answers,
 			)
 		);
+	}
+
+
+
+	/**
+	 * Get cached recommendations from progress.
+	 *
+	 * @return array
+	 */
+	protected function get_recommendations_progress() {
+		$progress = self::get_progress_for_slug( $this->get_guided_setup_id() );
+
+		return isset( $progress['recommendations'] ) && is_array( $progress['recommendations'] ) ? $progress['recommendations'] : array();
+	}
+
+
+
+	/**
+	 * Recompute recommendations and store under progress.
+	 *
+	 * @param array $answers Wizard answers.
+	 */
+	protected function recompute_and_store_recommendations( $answers ) {
+		// Bail if the recommendations engine is unavailable
+		if ( ! class_exists( 'FluidCheckout_Guided_Setup_Recommendations' ) ) {
+			return;
+		}
+
+		$engine        = FluidCheckout_Guided_Setup_Recommendations::instance();
+		$engine_result = $engine->get_recommendation( $answers );
+		$existing      = $this->get_recommendations_progress();
+		$payload       = $engine->build_progress_recommendations( $engine_result, $existing );
+
+		self::set_progress_for_slug(
+			$this->get_guided_setup_id(),
+			array(
+				'recommendations' => $payload,
+			)
+		);
+	}
+
+
+
+	/**
+	 * Refresh recommendations when the answers hash is missing or stale.
+	 */
+	protected function maybe_refresh_recommendations_cache() {
+		$answers         = $this->get_stored_answers();
+		$recommendations = $this->get_recommendations_progress();
+
+		// Bail if the recommendations engine is unavailable
+		if ( ! class_exists( 'FluidCheckout_Guided_Setup_Recommendations' ) ) {
+			return;
+		}
+
+		$new_hash = FluidCheckout_Guided_Setup_Recommendations::instance()->get_answers_hash( $answers );
+		$old_hash = isset( $recommendations['answers_hash'] ) ? (string) $recommendations['answers_hash'] : '';
+
+		// Bail if the cache already matches the current answers
+		if ( $new_hash === $old_hash && ! empty( $recommendations['recommended'] ) ) {
+			return;
+		}
+
+		$this->recompute_and_store_recommendations( $answers );
+	}
+
+
+
+	/**
+	 * Persist Lite toggle overrides from the recommended_setup step.
+	 *
+	 * @param array $form_data Form data.
+	 */
+	protected function save_recommended_setup_user_overrides( $form_data ) {
+		// Bail if the recommendations engine is unavailable
+		if ( ! class_exists( 'FluidCheckout_Guided_Setup_Recommendations' ) ) {
+			return;
+		}
+
+		$this->maybe_refresh_recommendations_cache();
+
+		$recommendations = $this->get_recommendations_progress();
+		$recommended     = isset( $recommendations['recommended'] ) && is_array( $recommendations['recommended'] ) ? $recommendations['recommended'] : array();
+		$overrides       = FluidCheckout_Guided_Setup_Recommendations::instance()->build_user_overrides_from_form( $recommended, $form_data );
+
+		$recommendations['user_overrides'] = $overrides;
+
+		self::set_progress_for_slug(
+			$this->get_guided_setup_id(),
+			array(
+				'recommendations' => $recommendations,
+			)
+		);
+	}
+
+
+
+	/**
+	 * Apply merged recommendation profile values to the active settings profile.
+	 *
+	 * Called when leaving recommended_setup ("Apply settings & finish setup") and again
+	 * on the final finish action as a safety net.
+	 */
+	protected function maybe_apply_recommendations_on_finish() {
+		// Bail if the recommendations engine is unavailable
+		if ( ! class_exists( 'FluidCheckout_Guided_Setup_Recommendations' ) || ! class_exists( 'FluidCheckout_Settings' ) ) {
+			return;
+		}
+
+		$this->maybe_refresh_recommendations_cache();
+
+		$recommendations = $this->get_recommendations_progress();
+		$values          = FluidCheckout_Guided_Setup_Recommendations::instance()->get_values_to_apply( $recommendations );
+
+		// Bail if there is nothing to apply
+		if ( empty( $values ) ) {
+			return;
+		}
+
+		FluidCheckout_Settings::instance()->update_active_profile_values( $values );
 	}
 
 

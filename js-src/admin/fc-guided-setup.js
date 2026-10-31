@@ -1013,6 +1013,29 @@
 
 
 	/**
+	 * Update the `current_step` query parameter so a page refresh stays on the same step.
+	 *
+	 * @param   string  stepSlug  Step slug.
+	 */
+	var updateCurrentStepUrl = function( stepSlug ) {
+		// Bail if step slug is empty or History API is unavailable
+		if ( ! stepSlug || ! window.history || 'function' !== typeof window.history.replaceState ) {
+			return;
+		}
+
+		try {
+			var url = new URL( window.location.href );
+			url.searchParams.set( 'current_step', stepSlug );
+			window.history.replaceState( null, '', url.toString() );
+		}
+		catch ( _error ) {
+			// Ignore URL update failures (unsupported URL API, etc.)
+		}
+	};
+
+
+
+	/**
 	 * Navigate to a guided setup step without reloading the page.
 	 *
 	 * @param   string  stepSlug  Step slug.
@@ -1044,8 +1067,9 @@
 		setCardOffset( targetCard, '0' );
 		targetCard.style.top = '0';
 
-		// Track current step slug
+		// Track current step slug and keep the URL in sync for refresh
 		_currentStepSlug = stepSlug;
+		updateCurrentStepUrl( stepSlug );
 
 		// Update progress bar and sub-step UI for the target card
 		updateStepProgress( stepSlug );
@@ -1398,6 +1422,7 @@
 			// Update max reached step and current step slug
 			setMaxReachedStepIndex( getStepIndex( nextStepSlug ) );
 			_currentStepSlug = nextStepSlug;
+			updateCurrentStepUrl( nextStepSlug );
 
 			// Update progress after card transition completes
 			window.setTimeout( function() {

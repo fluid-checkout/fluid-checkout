@@ -21,14 +21,18 @@
 	var _hasInitialized = false;
 	var _autosaveTimer = null;
 	var _settings = {
-		containerSelector:           '.fc-guided-setup',
-		newsletterOptInSelector:     '[data-fc-setup-newsletter-opt-in]',
-		newsletterEmailSelector:     '[data-fc-setup-newsletter-email]',
-		productTypeSelector:         '[data-fc-setup-product-type]',
-		deliverySectionSelector:     '[data-fc-setup-delivery-section]',
-		deliveryMethodSelector:      '[data-fc-setup-delivery-method]',
-		autosaveFormSelector:        '[data-fc-setup-autosave="1"]',
-		debounceMs:                  400,
+		containerSelector:              '.fc-guided-setup',
+		newsletterOptInSelector:        '[data-fc-setup-newsletter-opt-in]',
+		newsletterEmailSelector:        '[data-fc-setup-newsletter-email]',
+		industrySelector:               'input[name="business_industry"]',
+		customerAudienceSelector:       'input[name="customer_audience"]',
+		customerLocationSelector:       'input[name="customer_location"]',
+		productTypeSelector:            '[data-fc-setup-product-type]',
+		deliverySectionSelector:        '[data-fc-setup-delivery-section]',
+		deliveryMethodSelector:         '[data-fc-setup-delivery-method]',
+		autosaveFormSelector:           '[data-fc-setup-autosave="1"]',
+		recommendationsMountSelector:   '[data-fc-setup-recommendations]',
+		debounceMs:                     400,
 	};
 
 	var _guidedSetupSettings = null;
@@ -138,6 +142,11 @@
 			return false;
 		}
 
+		if ( ! formData.customer_location ) {
+			window.alert( getI18n( 'customerLocationRequired', 'Please select where your customers are located.' ) );
+			return false;
+		}
+
 		if ( formData.newsletter_opt_in && ! isValidEmail( formData.email ) ) {
 			window.alert( getI18n( 'emailRequired', 'Please enter a valid email address for the newsletter.' ) );
 			return false;
@@ -213,6 +222,10 @@
 			}
 
 			if ( ! formData.customer_audience ) {
+				return false;
+			}
+
+			if ( ! formData.customer_location ) {
 				return false;
 			}
 
@@ -310,6 +323,47 @@
 
 
 
+	/**
+	 * Whether the changed field should trigger a debounced answers autosave.
+	 *
+	 * @param   Element  target  Changed form control.
+	 * @return  boolean
+	 */
+	var shouldAutosaveField = function( target ) {
+		return target.matches( _settings.industrySelector )
+			|| target.matches( _settings.customerAudienceSelector )
+			|| target.matches( _settings.customerLocationSelector )
+			|| target.matches( _settings.productTypeSelector )
+			|| target.matches( _settings.deliveryMethodSelector );
+	};
+
+
+
+	/**
+	 * Replace the recommended_setup toggles markup from an AJAX response.
+	 *
+	 * @param   Object|null  response  Parsed JSON response.
+	 */
+	var updateRecommendationsFromResponse = function( response ) {
+		var container = getContainer();
+		var mount = container ? container.querySelector( _settings.recommendationsMountSelector ) : null;
+		var html = response && response.data ? response.data.recommendationsHtml : null;
+
+		// Bail if the recommendations mount or HTML payload is missing
+		if ( ! mount || 'string' !== typeof html ) {
+			return;
+		}
+
+		mount.innerHTML = html;
+	};
+
+
+
+	/**
+	 * Schedule a debounced answers autosave for the given form.
+	 *
+	 * @param   Element  form  Autosave-enabled step form.
+	 */
 	var scheduleAutosave = function( form ) {
 		var guidedSetupSettings = getGuidedSetupSettings();
 
@@ -328,6 +382,12 @@
 
 
 
+	/**
+	 * Persist step answers via AJAX and refresh recommendations markup.
+	 *
+	 * @param   Element  form                 Autosave-enabled step form.
+	 * @param   Object   guidedSetupSettings  Guided setup script settings.
+	 */
 	var sendAutosave = function( form, guidedSetupSettings ) {
 		var formData = serializeFormData( form );
 		var params = new URLSearchParams();
@@ -357,7 +417,21 @@
 				'Content-Type': 'application/x-www-form-urlencoded',
 			},
 			body: params.toString(),
-		} );
+		} )
+			.then( function( response ) {
+				return response.json();
+			} )
+			.then( function( response ) {
+				// Bail if the autosave failed
+				if ( ! response || ! response.success ) {
+					return;
+				}
+
+				updateRecommendationsFromResponse( response );
+			} )
+			.catch( function() {
+				// Ignore autosave network errors; continue still saves answers
+			} );
 	};
 
 
@@ -406,7 +480,8 @@
 
 			var autosaveForm = target.closest( _settings.autosaveFormSelector );
 
-			if ( autosaveForm && ( target.matches( _settings.productTypeSelector ) || target.matches( _settings.deliveryMethodSelector ) ) ) {
+			// Maybe autosave recommendation-relevant answers
+			if ( autosaveForm && shouldAutosaveField( target ) ) {
 				scheduleAutosave( autosaveForm );
 			}
 		} );
@@ -443,6 +518,9 @@
 
 		guidedSetupSettings.isContinueButtonEnabled = isContinueEnabled;
 		guidedSetupSettings.onBeforeContinue = handleBeforeContinue;
+		guidedSetupSettings.onStepProcessSuccess = function( _step, _formData, response ) {
+			updateRecommendationsFromResponse( response );
+		};
 		guidedSetupSettings.onStepVisible = function( stepSlug, card ) {
 			syncContinueButtonForCard( card );
 		};

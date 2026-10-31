@@ -495,9 +495,20 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 	/**
 	 * Get the guided setup page URL.
 	 *
+	 * Opens the first step while keeping any saved answers. The browser URL
+	 * is updated with `current_step` as the merchant moves between steps.
+	 *
 	 * @return  string
 	 */
 	public function get_guided_setup_url() {
+		$steps      = $this->get_steps();
+		$first_step = (string) key( $steps );
+
+		// Open on the first step when step definitions are available
+		if ( '' !== $first_step ) {
+			return $this->get_guided_setup_step_url( $first_step );
+		}
+
 		return add_query_arg(
 			array(
 				'page' => $this->page_slug,
@@ -1535,9 +1546,29 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 	/**
 	 * Advance the guided setup to the next step.
 	 *
+	 * Only moves the max-reached step forward so replaying earlier steps
+	 * (for example after opening from the first step again) keeps later
+	 * steps reachable without clearing answers.
+	 *
 	 * @param   string  $next_step  Next step slug.
 	 */
 	public function advance_step( $next_step ) {
+		$steps      = $this->get_steps();
+		$step_keys  = array_keys( $steps );
+		$next_index = array_search( $next_step, $step_keys, true );
+
+		// Bail if the next step slug is invalid
+		if ( false === $next_index ) {
+			return;
+		}
+
+		$max_reached_step = $this->get_max_reached_step();
+
+		// Bail when the next step is not further than the max already reached
+		if ( ! empty( $max_reached_step ) && (int) $next_index <= $this->get_max_reached_step_index( $max_reached_step ) ) {
+			return;
+		}
+
 		$guided_setup_id = $this->get_guided_setup_id();
 
 		// Save the next step as the max reached step in the slug progress store
