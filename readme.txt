@@ -407,6 +407,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 = Unreleased =
 
 * Added: Checkout guided setup Phase 1 — about your store, products and delivery, recommended setup placeholder, and finish flow with saved progress and optional usage tracking during setup.
+* Improved: Checkout guided setup about your store step collects who you sell to (direct to consumer or businesses).
 * Bump tested up to WooCommerce 11.3
 * Added: Compatibility with theme Purple.
 * Added: New settings pages, with guided setup and live preview of checkout pages.

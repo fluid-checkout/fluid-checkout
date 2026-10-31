@@ -133,6 +133,11 @@
 			return false;
 		}
 
+		if ( ! formData.customer_audience ) {
+			window.alert( getI18n( 'customerAudienceRequired', 'Please select who you sell to.' ) );
+			return false;
+		}
+
 		if ( formData.newsletter_opt_in && ! isValidEmail( formData.email ) ) {
 			window.alert( getI18n( 'emailRequired', 'Please enter a valid email address for the newsletter.' ) );
 			return false;
@@ -204,6 +209,10 @@
 
 		if ( 'about_store' === stepSlug ) {
 			if ( ! formData.business_industry ) {
+				return false;
+			}
+
+			if ( ! formData.customer_audience ) {
 				return false;
 			}
 

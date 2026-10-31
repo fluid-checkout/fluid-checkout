@@ -12,10 +12,12 @@
 }
 
 .fc-guided-setup .fc-setup-recommendation-option {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	gap: 12px;
+	display: grid;
+	grid-template-columns: auto minmax( 0, 1fr ) auto;
+	grid-template-rows: auto auto;
+	column-gap: 12px;
+	row-gap: 4px;
+	align-items: center;
 	width: 100%;
 	max-width: none;
 	margin: 0;
@@ -44,25 +46,31 @@
 }
 
 .fc-guided-setup .fc-setup-recommendation-option__switch {
-	flex: 0 0 auto;
-	margin: 2px 0 0;
+	grid-column: 1;
+	grid-row: 1;
+	margin: 0;
+	align-self: center;
 }
 
 .fc-guided-setup .fc-setup-recommendation-option__content {
-	flex: 1 1 auto;
-	min-width: 0;
+	display: contents;
 }
 
 .fc-guided-setup .fc-setup-recommendation-option__title {
+	grid-column: 2;
+	grid-row: 1;
 	display: block;
-	margin: 0 0 4px;
-	font-size: 12px;
+	margin: 0;
+	font-size: $fc-settings-field-label-font-size;
 	font-weight: 600;
-	line-height: 1.35;
+	line-height: 1.4;
 	color: $fc-settings-text-color;
+	align-self: center;
 }
 
 .fc-guided-setup .fc-setup-recommendation-option__description {
+	grid-column: 2;
+	grid-row: 2;
 	margin: 0;
 	padding: 0;
 	font-size: 12px;
@@ -77,6 +85,8 @@
 }
 
 .fc-guided-setup .fc-setup-recommendation-option__badge {
-	flex: 0 0 auto;
-	margin-top: 0;
+	grid-column: 3;
+	grid-row: 1;
+	align-self: center;
+	margin: 0;
 }

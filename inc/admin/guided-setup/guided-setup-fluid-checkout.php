@@ -365,7 +365,8 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		$settings['i18n']                    = array_merge(
 			isset( $settings['i18n'] ) ? $settings['i18n'] : array(),
 			array(
-				'industryRequired'       => __( 'Please select what type of products or services you sell.', 'fluid-checkout' ),
+				'industryRequired'          => __( 'Please select what type of products or services you sell.', 'fluid-checkout' ),
+				'customerAudienceRequired'  => __( 'Please select who you sell to.', 'fluid-checkout' ),
 				'emailRequired'          => __( 'Please enter a valid email address for the newsletter.', 'fluid-checkout' ),
 				'productTypesRequired'   => __( 'Please select at least one product type.', 'fluid-checkout' ),
 				'deliveryMethodsRequired' => __( 'Please select at least one delivery method for physical products.', 'fluid-checkout' ),
@@ -451,7 +452,9 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 	 */
 	protected function output_step_about_store( $answers ) {
 		$industries           = FluidCheckout_Guided_Setup_Checkout_Data::get_industries();
-		$selected_industry    = ! empty( $answers['business_industry'] ) ? $answers['business_industry'] : FluidCheckout_Guided_Setup_Checkout_Data::get_prefill_industry();
+		$selected_industry       = ! empty( $answers['business_industry'] ) ? $answers['business_industry'] : FluidCheckout_Guided_Setup_Checkout_Data::get_prefill_industry();
+		$customer_audience_opts  = FluidCheckout_Guided_Setup_Checkout_Data::get_customer_audience_options();
+		$selected_customer_audience = ! empty( $answers['customer_audience'] ) ? $answers['customer_audience'] : 'dtc';
 		$user_email           = ! empty( $answers['email'] ) ? $answers['email'] : wp_get_current_user()->user_email;
 		$newsletter_checked   = ! empty( $answers['newsletter_opt_in'] );
 		$telemetry_checked    = class_exists( 'FC_Telemetry_Client' ) && FC_Telemetry_Client::is_telemetry_enabled();
@@ -478,6 +481,22 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 									<label class="fc-settings-radio-option">
 										<input type="radio" name="business_industry" value="<?php echo esc_attr( $slug ); ?>" <?php checked( $selected_industry, $slug ); ?> required />
 										<span class="fc-settings-radio-option__label"><?php echo esc_html( $industry['label'] ); ?></span>
+									</label>
+								<?php endforeach; ?>
+							</div>
+						</div>
+					</div>
+
+					<div class="fc-settings-field fc-settings-field--inline fc-settings-field--radio">
+						<div class="fc-settings-field__label">
+							<span class="fc-settings-field__title"><?php echo esc_html__( 'Who do you sell to?', 'fluid-checkout' ); ?></span>
+						</div>
+						<div class="fc-settings-field__control">
+							<div class="fc-settings-radio-options" role="radiogroup" aria-label="<?php echo esc_attr__( 'Who do you sell to?', 'fluid-checkout' ); ?>">
+								<?php foreach ( $customer_audience_opts as $slug => $label ) : ?>
+									<label class="fc-settings-radio-option">
+										<input type="radio" name="customer_audience" value="<?php echo esc_attr( $slug ); ?>" <?php checked( $selected_customer_audience, $slug ); ?> required />
+										<span class="fc-settings-radio-option__label"><?php echo esc_html( $label ); ?></span>
 									</label>
 								<?php endforeach; ?>
 							</div>

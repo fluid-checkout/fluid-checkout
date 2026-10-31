@@ -41,6 +41,20 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 
 
 	/**
+	 * Customer audience slugs for the about_store step (who the merchant sells to).
+	 *
+	 * @return array<string, string> Slug => label.
+	 */
+	public static function get_customer_audience_options() {
+		return array(
+			'dtc' => __( 'DTC - Direct to consumer', 'fluid-checkout' ),
+			'b2b' => __( 'B2B - To businesses', 'fluid-checkout' ),
+		);
+	}
+
+
+
+	/**
 	 * WooCommerce onboarding product type slug => FC slug.
 	 *
 	 * @return array<string, string>
@@ -129,6 +143,7 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 		$defaults = array(
 			'business_industry'              => '',
 			'business_industry_other'        => '',
+			'customer_audience'              => 'dtc',
 			'store_country'                  => self::get_store_country_code(),
 			'selling_to_mode'                => '',
 			'selling_to_country_codes'       => array(),
@@ -147,6 +162,10 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 		$merged['delivery_methods']  = self::sanitize_slug_list( $merged['delivery_methods'], array_keys( self::get_delivery_methods() ) );
 		$merged['newsletter_opt_in'] = self::normalize_bool( $merged['newsletter_opt_in'] );
 		$merged['telemetry_opt_in']  = self::normalize_bool( $merged['telemetry_opt_in'] );
+
+		if ( empty( $merged['customer_audience'] ) || ! array_key_exists( $merged['customer_audience'], self::get_customer_audience_options() ) ) {
+			$merged['customer_audience'] = 'dtc';
+		}
 
 		return $merged;
 	}
@@ -226,6 +245,15 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 
 			$answers['business_industry']         = $industry;
 			$answers['business_industry_other'] = '';
+
+			$customer_audience = isset( $form_data['customer_audience'] ) ? sanitize_text_field( wp_unslash( $form_data['customer_audience'] ) ) : '';
+			$audience_options  = self::get_customer_audience_options();
+
+			if ( empty( $customer_audience ) || ! array_key_exists( $customer_audience, $audience_options ) ) {
+				return new WP_Error( 'fc_guided_setup_invalid_customer_audience', __( 'Please select who you sell to.', 'fluid-checkout' ) );
+			}
+
+			$answers['customer_audience'] = $customer_audience;
 
 			$answers = array_merge( $answers, self::get_store_location_answers() );
 

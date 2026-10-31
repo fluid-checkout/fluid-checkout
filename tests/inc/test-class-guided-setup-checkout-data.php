@@ -68,6 +68,7 @@ class FluidCheckout_Guided_Setup_Checkout_Data_Test extends TestCase {
 			'about_store',
 			array(
 				'business_industry' => 'food-drink',
+				'customer_audience' => 'dtc',
 				'email'             => 'merchant@example.com',
 			),
 			array()
@@ -75,6 +76,53 @@ class FluidCheckout_Guided_Setup_Checkout_Data_Test extends TestCase {
 
 		$this->assertIsArray( $result );
 		$this->assertSame( '', $result['email'] );
+	}
+
+
+
+	/**
+	 * Test: default answers pre-select DTC customer audience.
+	 */
+	public function test_default_answers_customer_audience_is_dtc() {
+		$defaults = FluidCheckout_Guided_Setup_Checkout_Data::get_default_answers();
+
+		$this->assertSame( 'dtc', $defaults['customer_audience'] );
+	}
+
+
+
+	/**
+	 * Test: about store requires customer audience.
+	 */
+	public function test_about_store_requires_customer_audience() {
+		$result = FluidCheckout_Guided_Setup_Checkout_Data::sanitize_step_form_data(
+			'about_store',
+			array(
+				'business_industry' => 'food-drink',
+			),
+			array()
+		);
+
+		$this->assertInstanceOf( 'WP_Error', $result );
+	}
+
+
+
+	/**
+	 * Test: about store saves customer audience.
+	 */
+	public function test_about_store_saves_customer_audience() {
+		$result = FluidCheckout_Guided_Setup_Checkout_Data::sanitize_step_form_data(
+			'about_store',
+			array(
+				'business_industry' => 'food-drink',
+				'customer_audience' => 'b2b',
+			),
+			array()
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertSame( 'b2b', $result['customer_audience'] );
 	}
 
 }

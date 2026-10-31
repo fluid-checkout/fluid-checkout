@@ -65,10 +65,15 @@ body.fc-guided-setup:not( .fc-guided-setup--wide-content ) .fc-setup-card .fc-se
 // Option boxes (same as settings layout options; inputs styled under .fc-settings-wrap there).
 .fc-guided-setup .fc-settings-radio-option {
 	align-items: center;
+	font-size: $fc-settings-field-label-font-size;
+	font-weight: 400;
+	line-height: 1.4;
 }
 
 .fc-guided-setup .fc-settings-radio-option__label {
 	align-self: center;
+	font-size: inherit;
+	line-height: inherit;
 }
 
 .fc-guided-setup .fc-settings-radio-option input[type="radio"],
