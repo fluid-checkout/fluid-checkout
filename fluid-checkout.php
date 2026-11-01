@@ -5,7 +5,7 @@ Plugin URI: https://fluidcheckout.com/
 Description: The free one-page or multi-step checkout plugin for WooCommerce that helps more shoppers finish their order: easy for new buyers, faster for repeat orders.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 5.0.0-alpha-5
+Version: 5.0.0-alpha-6
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 6.5
