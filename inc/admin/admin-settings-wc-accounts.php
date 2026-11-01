@@ -31,7 +31,7 @@ class FluidCheckout_Settings_WCAccounts {
 	 * Option IDs managed on the Fluid Checkout Customer accounts settings page.
 	 */
 	public static function get_managed_option_ids() {
-		return array(
+		$option_ids = array(
 			'woocommerce_enable_guest_checkout',
 			'woocommerce_enable_checkout_login_reminder',
 			'woocommerce_enable_signup_and_login_from_checkout',
@@ -40,6 +40,15 @@ class FluidCheckout_Settings_WCAccounts {
 			'woocommerce_registration_generate_username',
 			'woocommerce_registration_generate_password',
 		);
+
+		/**
+		 * Filters WooCommerce Accounts option IDs managed in Fluid Checkout settings.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param string[] $option_ids Option names.
+		 */
+		return apply_filters( 'fc_wc_accounts_managed_option_ids', $option_ids );
 	}
 
 	/**

@@ -411,7 +411,6 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Bump tested up to WooCommerce 11.3
 * Added: Compatibility with theme Purple.
 * Added: New settings pages, with guided setup and live preview of checkout pages.
-* Added: Guided setup recommends guest checkout for direct-to-consumer stores.
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
 * Added: Setting to choose a background color for the Split design secondary column (PRO feature).
@@ -427,9 +426,6 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Improved: Show settings that are locked by a compatible plugin or theme as disabled, with a note explaining why the value cannot be changed.
 * Improved: Upgraded Sass build tooling to the latest version.
 * Improved: Filter `fc_shipping_method_display_package_destination_substep_text_lines` now also receives the shipping method and the package index.
-* Fixed: Guided setup usage tracking toggle now mirrors the Tools → Usage tracking setting, and is no longer stored or sent as a guided setup answer.
-* Fixed: Guided setup newsletter signup is sent when continuing from the first step, and newsletter opt-in is not included in usage tracking data.
-* Fixed: Guided setup newsletter signup and `FluidCheckout::get_telemetry_api_url()` use the same `fc_telemetry_api_url` host override as usage tracking requests.
 * Fixed: Compatibility with plugin Brevo for WooCommerce (formerly Sendinblue). Prevent duplicate newsletter opt-in checkbox when it is moved to the contact step.
 * Fixed: Compatibility with plugin Colissimo. Hide dependent international phone number settings when the feature is disabled.
 * Fixed: Compatibility with plugin Hungarian Pickup Points & Shipping Labels for WooCommerce. Fix required shipping address field errors when placing an order with the plugin's pickup point shipping method. Fix pickup point map not listing points for the shipping country.
