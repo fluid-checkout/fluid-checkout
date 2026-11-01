@@ -9,7 +9,8 @@ defined( 'ABSPATH' ) || exit;
  * last in the recommended_setup UI.
  */
 return array(
-	'fc_pro_enable_cart_page'       => 'yes',
-	'fc_pro_enable_order_received'  => 'yes',
-	'fc_pro_enable_order_pay'       => 'yes',
+	'woocommerce_enable_order_comments' => 'no',
+	'fc_pro_enable_cart_page'           => 'yes',
+	'fc_pro_enable_order_received'      => 'yes',
+	'fc_pro_enable_order_pay'           => 'yes',
 );

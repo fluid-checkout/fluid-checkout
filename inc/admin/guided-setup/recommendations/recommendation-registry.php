@@ -17,8 +17,8 @@ defined( 'ABSPATH' ) || exit;
  * default. The recommendation id is the option_key. Lite and matching PRO rows are included.
  * On Lite, the recommended_setup UI shows 3 PRO rows and hides the rest behind
  * "Show more recommendations"; PRO shows all matching PRO rows.
- * Always-on page features (cart, thank you, order pay) are voted by `filters/base/always.php`
- * at the lowest filter specificity and use a low score so they sort last in the UI.
+ * Always-on recommendations (hide order notes; enable cart, thank you, order pay) are voted by
+ * `filters/base/always.php` at the lowest filter specificity and use a low score so they sort last in the UI.
  *
  * File order follows Fluid Checkout settings tabs and section order within each tab
  * (Checkout → Cart → Thank you → Order pay → Address autocomplete → Address book → Customer accounts →
@@ -187,6 +187,16 @@ return array(
 			$audience = isset( $answers['customer_audience'] ) ? (string) $answers['customer_audience'] : 'dtc';
 
 			return 'b2b' === $audience ? 85 : 0;
+		},
+	),
+	array(
+		'option_key'  => 'woocommerce_enable_order_comments',
+		'value'       => 'no',
+		'title'       => __( 'Hide additional order notes', 'fluid-checkout' ),
+		'description' => __( 'Hide the additional order notes field to keep checkout shorter. Customers rarely need it for most orders.', 'fluid-checkout' ),
+		'score'       => function ( $answers, $filtered_values = array() ) {
+			// Always-on base recommendation: keep near the end of the list
+			return 5;
 		},
 	),
 
