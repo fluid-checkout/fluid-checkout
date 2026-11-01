@@ -78,8 +78,11 @@ body.fc-guided-setup:not( .fc-guided-setup--wide-content ) .fc-setup-card .fc-se
 
 .fc-guided-setup .fc-settings-radio-option input[type="radio"],
 .fc-guided-setup .fc-settings-radio-option input[type="checkbox"] {
+	display: inline-flex;
 	flex: 0 0 auto;
 	align-self: center;
+	align-items: center;
+	justify-content: center;
 	margin: 0 !important; // Override WP admin checkbox/radio offsets in option boxes.
 	width: $fc-settings-radio-size;
 	min-width: $fc-settings-radio-size;
@@ -89,10 +92,14 @@ body.fc-guided-setup:not( .fc-guided-setup--wide-content ) .fc-setup-card .fc-se
 	box-shadow: none;
 }
 
+// Keep the checked radio dot centered; WP shares float/inline-block with checkboxes.
 .fc-guided-setup .fc-settings-radio-option input[type="radio"]:checked::before {
+	float: none;
+	display: block;
 	width: $fc-settings-radio-dot-size;
 	height: $fc-settings-radio-dot-size;
-	margin: auto;
+	margin: 0;
+	line-height: 0;
 }
 
 .fc-guided-setup .fc-settings-radio-option input[type="radio"]:focus,

@@ -502,7 +502,9 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 	 */
 	protected function output_step_about_store( $answers ) {
 		$industries                 = FluidCheckout_Guided_Setup_Checkout_Data::get_industries();
-		$selected_industry          = ! empty( $answers['business_industry'] ) ? $answers['business_industry'] : FluidCheckout_Guided_Setup_Checkout_Data::get_prefill_industry();
+		$selected_industry          = ( ! empty( $answers['business_industry'] ) && array_key_exists( $answers['business_industry'], $industries ) )
+			? $answers['business_industry']
+			: FluidCheckout_Guided_Setup_Checkout_Data::get_prefill_industry();
 		$customer_audience_opts     = FluidCheckout_Guided_Setup_Checkout_Data::get_customer_audience_options();
 		$selected_customer_audience = ! empty( $answers['customer_audience'] ) ? $answers['customer_audience'] : 'dtc';
 		$customer_location_opts     = FluidCheckout_Guided_Setup_Checkout_Data::get_customer_location_options();

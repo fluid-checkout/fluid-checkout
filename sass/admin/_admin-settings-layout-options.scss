@@ -49,7 +49,10 @@
 }
 
 .fc-settings-wrap .fc-settings-radio-option input[type="radio"] {
+	display: inline-flex;
 	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
 	margin: 0;
 	width: $fc-settings-radio-size;
 	min-width: $fc-settings-radio-size;
@@ -59,11 +62,15 @@
 	box-shadow: none;
 }
 
-// Keep desktop-sized radios on small screens; WP admin enlarges them below 782px
+// Keep the checked dot centered; WP shares float/inline-block with checkboxes
+// and uses fixed margins below 782px, which displaces the dot on some sites.
 .fc-settings-wrap .fc-settings-radio-option input[type="radio"]:checked::before {
+	float: none;
+	display: block;
 	width: $fc-settings-radio-dot-size;
 	height: $fc-settings-radio-dot-size;
-	margin: auto;
+	margin: 0;
+	line-height: 0;
 }
 
 .fc-settings-wrap .fc-settings-radio-option input[type="radio"]:focus,

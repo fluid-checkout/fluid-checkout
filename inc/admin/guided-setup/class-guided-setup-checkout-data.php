@@ -513,26 +513,32 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 	/**
 	 * Pre-fill industry from WooCommerce onboarding profile.
 	 *
+	 * Falls back to `other` when the wizard has no industry, or the saved slug
+	 * is not in the allowed industries list.
+	 *
 	 * @return string
 	 */
 	public static function get_prefill_industry() {
-		$profile = get_option( 'woocommerce_onboarding_profile', array() );
+		$industries = self::get_industries();
+		$profile    = get_option( 'woocommerce_onboarding_profile', array() );
+		$slug       = '';
 
-		if ( empty( $profile['industry'] ) || ! is_array( $profile['industry'] ) ) {
-			return '';
+		if ( ! empty( $profile['industry'] ) && is_array( $profile['industry'] ) ) {
+			$first = reset( $profile['industry'] );
+
+			if ( is_array( $first ) && ! empty( $first['slug'] ) ) {
+				$slug = sanitize_text_field( (string) $first['slug'] );
+			} elseif ( is_string( $first ) ) {
+				$slug = sanitize_text_field( $first );
+			}
 		}
 
-		$first = reset( $profile['industry'] );
-
-		if ( is_array( $first ) && ! empty( $first['slug'] ) ) {
-			return sanitize_text_field( (string) $first['slug'] );
+		// Use the WooCommerce wizard industry when it matches an allowed option
+		if ( '' !== $slug && array_key_exists( $slug, $industries ) ) {
+			return $slug;
 		}
 
-		if ( is_string( $first ) ) {
-			return sanitize_text_field( $first );
-		}
-
-		return '';
+		return 'other';
 	}
 
 

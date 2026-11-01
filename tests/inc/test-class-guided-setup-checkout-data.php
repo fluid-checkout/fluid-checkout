@@ -106,6 +106,53 @@ class FluidCheckout_Guided_Setup_Checkout_Data_Test extends TestCase {
 
 
 	/**
+	 * Test: industry prefill falls back to other without a valid WooCommerce wizard value.
+	 */
+	public function test_prefill_industry_falls_back_to_other() {
+		$filter_empty = function () {
+			return array();
+		};
+		$filter_invalid = function () {
+			return array(
+				'industry' => array( 'not-a-real-industry' ),
+			);
+		};
+
+		add_filter( 'pre_option_woocommerce_onboarding_profile', $filter_empty );
+		$this->assertSame( 'other', FluidCheckout_Guided_Setup_Checkout_Data::get_prefill_industry() );
+		remove_filter( 'pre_option_woocommerce_onboarding_profile', $filter_empty );
+
+		add_filter( 'pre_option_woocommerce_onboarding_profile', $filter_invalid );
+		$this->assertSame( 'other', FluidCheckout_Guided_Setup_Checkout_Data::get_prefill_industry() );
+		remove_filter( 'pre_option_woocommerce_onboarding_profile', $filter_invalid );
+	}
+
+
+
+	/**
+	 * Test: industry prefill uses a valid WooCommerce wizard industry slug.
+	 */
+	public function test_prefill_industry_uses_woocommerce_wizard_value() {
+		$industries = FluidCheckout_Guided_Setup_Checkout_Data::get_industries();
+		$slug       = array_key_exists( 'food-drink', $industries ) ? 'food-drink' : (string) array_key_first( $industries );
+
+		// Bail if no industries are available to prefill from
+		$this->assertNotSame( '', $slug );
+
+		$filter = function () use ( $slug ) {
+			return array(
+				'industry' => array( $slug ),
+			);
+		};
+
+		add_filter( 'pre_option_woocommerce_onboarding_profile', $filter );
+		$this->assertSame( $slug, FluidCheckout_Guided_Setup_Checkout_Data::get_prefill_industry() );
+		remove_filter( 'pre_option_woocommerce_onboarding_profile', $filter );
+	}
+
+
+
+	/**
 	 * Test: about store requires customer audience.
 	 */
 	public function test_about_store_requires_customer_audience() {
