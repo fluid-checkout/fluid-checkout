@@ -53,6 +53,7 @@
 
 		ajaxUrl:                              '',
 		nonce:                                '',
+		settingsSavedEvent:                   'fcSettingsSaved',
 		i18n: {
 			loading:                          'Loading preview...',
 			loadError:                        'Could not load the preview. Try again.',
@@ -521,8 +522,33 @@
 		}
 
 		_isEnabled = !! enabled;
+		_settings.isEnabledSaved = _isEnabled;
 		updateSendButton( _isEnabled );
 		updateInlineSendButtonState( _isEnabled );
+	};
+
+
+
+	/**
+	 * Sync Send now controls from the enable checkbox after settings are saved.
+	 */
+	var syncEnabledStateFromForm = function() {
+		var formState = getFormState();
+		var enabled = _settings.enabledYesValue === formState.enabled;
+
+		_isEnabled = enabled;
+		_settings.isEnabledSaved = enabled;
+		updateSendButton( _isEnabled );
+		updateInlineSendButtonState( _isEnabled );
+	};
+
+
+
+	/**
+	 * Handle settings saved on the Fluid Checkout settings page.
+	 */
+	var handleSettingsSaved = function() {
+		syncEnabledStateFromForm();
 	};
 
 
@@ -754,6 +780,7 @@
 		// Add event listeners
 		window.addEventListener( 'click', handleClick, true );
 		document.addEventListener( 'keydown', handleKeyDown, true );
+		document.addEventListener( _settings.settingsSavedEvent, handleSettingsSaved );
 
 		// Enable Send now only when reporting is already saved as enabled
 		_isEnabled = true === _settings.isEnabledSaved || _settings.enabledYesValue === _settings.isEnabledSaved;

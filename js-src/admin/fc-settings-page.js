@@ -1103,6 +1103,14 @@
 						FCAdminSettingsSetupChecklist.applyCompletionState( response.data.checklist_state );
 					}
 
+					// Notify other admin scripts that settings were saved (e.g. telemetry Send now)
+					document.dispatchEvent( new CustomEvent( 'fcSettingsSaved', {
+						detail: {
+							tab:      activeTab,
+							response: response,
+						},
+					} ) );
+
 					return;
 				}
 
