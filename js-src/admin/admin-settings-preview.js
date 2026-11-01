@@ -642,9 +642,10 @@
 	/**
 	 * Sync preview visibility and page from a settings tab change.
 	 *
-	 * @param  {string}  tab  Settings tab slug.
+	 * @param  {string}  tab          Settings tab slug.
+	 * @param  {string}  previewPage  Optional preview page slug to keep instead of the tab default.
 	 */
-	var syncFromSettingsTab = function( tab ) {
+	var syncFromSettingsTab = function( tab, previewPage ) {
 		setPreviewVisibilityForTab( tab );
 
 		// Bail if preview is hidden for this tab
@@ -652,8 +653,8 @@
 
 		maybeApplyPreviewModeForTab( tab );
 
-		// Show the preview page of the settings tab
-		setPreviewPage( getPreviewPageForTab( tab ) );
+		// Show the requested preview page, or the default for the settings tab
+		setPreviewPage( previewPage || getPreviewPageForTab( tab ) );
 	};
 
 
@@ -1398,11 +1399,12 @@
 	 */
 	var handleSettingsTabActivated = function( e ) {
 		var tab = e && e.detail ? e.detail.tab : '';
+		var previewPage = e && e.detail ? e.detail.previewPage : '';
 
 		// Bail if tab slug is missing
 		if ( ! tab ) { return; }
 
-		syncFromSettingsTab( tab );
+		syncFromSettingsTab( tab, previewPage || '' );
 	};
 
 

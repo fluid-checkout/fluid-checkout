@@ -92,13 +92,13 @@ class FluidCheckout_Settings_Tools {
 						array(
 							'title' => __( 'Usage tracking', 'fluid-checkout' ),
 							'type'  => 'title',
-							'desc'  => __( 'Optional, and OFF by default. It helps us improve compatibility and provide you with faster support. You can preview the exact data before it is sent, and turn it off at any time. No customer or user data is ever sent.', 'fluid-checkout' ),
+							'desc'  => __( 'Optional, and off by default. It helps us improve compatibility and provide you with faster support. You can preview the exact data before it is sent, and turn it off at any time. No customer or user data is ever sent.', 'fluid-checkout' ),
 							'id'    => 'fc_checkout_telemetry_options',
 						),
 
 						array(
 							'title'           => __( 'Usage tracking', 'fluid-checkout' ),
-							'desc'            => __( 'Turn ON usage tracking', 'fluid-checkout' ),
+							'desc'            => __( 'Turn on usage tracking', 'fluid-checkout' ),
 							'desc_tip'        => __( 'Nothing is sent right away unless you choose to send it. After that, usage data is sent about once a week, or about every 4 weeks if nothing has changed.', 'fluid-checkout' ),
 							'id'              => 'fc_telemetry_enabled',
 							'type'            => 'fc_telemetry_enable',

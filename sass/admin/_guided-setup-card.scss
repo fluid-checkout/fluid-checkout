@@ -14,7 +14,7 @@
 	box-shadow: 0 2px 5px rgba( 0, 0, 0, 0.05 );
 	display: none;
 	#{$alignment-left}: 0; // Guided setup script slides the card on this side.
-	margin: $fc-settings-card-margin-bottom 0 0;
+	margin: 0;
 	max-width: 100%;
 	opacity: 0;
 	position: relative;
@@ -34,10 +34,10 @@
 }
 
 .fc-guided-setup .fc-setup-card .fc-setup-card__inner {
-	padding: $fc-settings-card-padding;
+	padding: 32px 28px;
 
 	@media ( max-width: $admin-breakpoint-mobile ) {
-		padding: $fc-settings-card-padding-mobile;
+		padding: 24px 20px;
 	}
 }
 
@@ -68,7 +68,7 @@
 
 .fc-guided-setup .fc-setup-card .fc-setup-card__inner p.fc-setup-intro {
 	color: $fc-settings-text-color;
-	font-size: $fc-settings-field-label-font-size;
+	font-size: $fc-settings-card-title-font-size;
 	line-height: 1.5;
 }
 

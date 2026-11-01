@@ -231,7 +231,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 			),
 		);
 		?>
-		<div class="fc-settings-card" <?php echo ! empty( $card_id ) ? 'id="' . esc_attr( $card_id ) . '"' : ''; ?>>
+		<div class="fc-settings-card" <?php echo ! empty( $card_id ) ? 'id="' . esc_attr( $card_id ) . '"' : ''; ?> <?php echo $this->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 			<?php if ( $has_header ) : ?>
 				<div class="fc-settings-card__header">
 					<?php if ( ! empty( $value[ 'title' ] ) ) : ?>

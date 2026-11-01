@@ -518,6 +518,8 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 	 * @param array $addon PRO bundle catalog item.
 	 */
 	private function output_pro_promo_section( $addon ) {
+		$plugin_file  = isset( $addon['plugin_file'] ) ? $addon['plugin_file'] : '';
+		$is_activated = ! empty( $plugin_file ) && FluidCheckout::instance()->is_plugin_activated( $plugin_file );
 		$features     = ! empty( $addon['features'] ) && is_array( $addon['features'] ) ? $addon['features'] : array();
 		$actions_html = $this->get_plugin_addon_actions_html( $addon );
 		$has_footer   = ! empty( $actions_html );
@@ -554,7 +556,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 					</div>
 				</div>
 
-				<?php if ( ! empty( $features ) ) : ?>
+				<?php if ( ! empty( $features ) && ! $is_activated ) : ?>
 					<ul class="fc-addons__item-features-list fc-addons__item-features-list--columns fc-settings-promo__features-list">
 						<?php foreach ( $features as $feature ) : ?>
 							<li><?php echo esc_html( $feature ); ?></li>
@@ -617,8 +619,9 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				$has_description = ! empty( $addon['description'] );
 				$has_value_note  = ! empty( $addon['value_note'] );
 				$has_features    = ! empty( $addon['features'] ) && is_array( $addon['features'] );
+				$show_features   = $has_features && ! $is_activated;
 				?>
-				<?php if ( $has_description || $has_value_note || $has_features ) : ?>
+				<?php if ( $has_description || $has_value_note || $show_features ) : ?>
 					<div class="fc-addons__item-description">
 						<?php if ( $has_description ) : ?>
 							<p><?php echo wp_kses_post( $addon['description'] ); ?></p>
@@ -626,7 +629,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 						<?php if ( $has_value_note ) : ?>
 							<p><strong><?php echo esc_html( $addon['value_note'] ); ?></strong></p>
 						<?php endif; ?>
-						<?php if ( $has_features ) : ?>
+						<?php if ( $show_features ) : ?>
 							<ul class="fc-addons__item-features-list fc-addons__item-features-list--columns">
 								<?php foreach ( $addon['features'] as $feature ) : ?>
 									<li><?php echo esc_html( $feature ); ?></li>

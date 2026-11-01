@@ -119,6 +119,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 		// Scripts
 		wp_register_script( 'fc-guided-setup', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-guided-setup' ), array( 'fc-utils', 'fc-collapsible-block' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-guided-setup-fluid-checkout', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-guided-setup-fluid-checkout' ), array( 'fc-guided-setup' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 
@@ -135,6 +136,10 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 */
 	public function load_guided_setup() {
 		require_once self::$directory_path . 'inc/admin/guided-setup/abstract-guided-setup.php';
+		require_once self::$directory_path . 'inc/admin/guided-setup/class-guided-setup-checkout-data.php';
+		require_once self::$directory_path . 'inc/admin/guided-setup/recommendations/class-guided-setup-recommendation-loader.php';
+		require_once self::$directory_path . 'inc/admin/guided-setup/recommendations/class-guided-setup-recommendation-filters.php';
+		require_once self::$directory_path . 'inc/admin/guided-setup/class-guided-setup-recommendations.php';
 		require_once self::$directory_path . 'inc/admin/guided-setup/guided-setup-fluid-checkout.php';
 	}
 
@@ -328,39 +333,25 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 
 	/**
-	 * Get the legacy "Upgrade to PRO" settings description.
-	 *
-	 * @deprecated 5.0.0 Use `get_pro_feature_badge_html()` for new settings UI. Will be removed in version 6.0.0.
-	 *
-	 * @param  bool  $newline  Whether to prefix the link with a line break.
-	 */
-	public function get_upgrade_pro_html( $newline = true ) {
-		// Bail if PRO is already activated
-		if ( FluidCheckout::instance()->is_pro_activated() ) { return ''; }
-
-		// translators: %s: Upgrade link.
-		$html = wp_kses_post( sprintf( __( '<a target="_blank" href="%s">Upgrade to PRO</a> to unlock more options.', 'fluid-checkout' ), 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=plugin-settings&mtm_source=lite-plugin' ) );
-
-		// Maybe add a line break before the link
-		if ( $newline ) {
-			$html = ' <br>' . $html;
-		}
-
-		return $html;
-	}
-
-	/**
 	 * Get HTML for the PRO feature promo pill badge.
 	 *
-	 * @param  string       $section_slug  Section slug used in tracking as `mtm_kwd=pro-badge-{slug}`.
+	 * @param  string       $section_slug  Section slug used in tracking as `mtm_kwd=pro-badge-{slug}` when `$mtm_kwd` is omitted.
 	 * @param  string|null  $label         Optional badge label. Defaults to "PRO feature".
+	 * @param  string|null  $mtm_kwd       Optional full Matomo keyword override (for example `guided-setup-edit-cart`).
 	 */
-	public function get_pro_feature_badge_html( $section_slug = '', $label = null ) {
+	public function get_pro_feature_badge_html( $section_slug = '', $label = null, $mtm_kwd = null ) {
 		// Bail if PRO is already activated
 		if ( FluidCheckout::instance()->is_pro_activated() ) { return ''; }
 
 		$section_slug = sanitize_title( $section_slug );
-		$mtm_kwd = ! empty( $section_slug ) ? 'pro-badge-' . $section_slug : 'pro-badge';
+
+		// Use the explicit keyword when provided, otherwise the default pro-badge prefix
+		if ( null !== $mtm_kwd && '' !== (string) $mtm_kwd ) {
+			$mtm_kwd = sanitize_title( (string) $mtm_kwd );
+		} else {
+			$mtm_kwd = ! empty( $section_slug ) ? 'pro-badge-' . $section_slug : 'pro-badge';
+		}
+
 		$label = null !== $label ? $label : __( 'PRO feature', 'fluid-checkout' );
 
 		$url = add_query_arg(

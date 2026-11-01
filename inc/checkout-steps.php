@@ -8806,9 +8806,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get the product name of a cart item, including selected "Any" attribute values of variations.
 	 *
-	 * Uses the `WC_Cart::get_item_product_name()` method when available (WooCommerce 11.2.0+),
-	 * and falls back to the product name for older versions of WooCommerce.
-	 *
 	 * @since 5.0.0
 	 *
 	 * @param   array       $cart_item      Cart item object.
@@ -8817,12 +8814,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  string                      The product name.
 	 */
 	public function get_cart_item_product_name( $cart_item, $product ) {
-		// Use the WooCommerce API for the cart item product name when available
+		// Use the `WC_Cart::get_item_product_name()` method when available (WooCommerce 11.2.0+)
 		if ( WC()->cart && method_exists( WC()->cart, 'get_item_product_name' ) ) {
 			return WC()->cart->get_item_product_name( $cart_item, $product );
 		}
 
-		// Fallback for WooCommerce versions before 11.2.0
+		// Fallback to the product name for older versions of WooCommerce
 		return $product instanceof WC_Product ? $product->get_name() : '';
 	}
 
