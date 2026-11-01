@@ -418,6 +418,8 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 				'deliveryMethodsRequired'    => __( 'Please select at least one delivery method for physical products.', 'fluid-checkout' ),
 				'showAlreadyApplied'         => __( 'Show already applied', 'fluid-checkout' ),
 				'hideAlreadyApplied'         => __( 'Hide already applied', 'fluid-checkout' ),
+				'showMoreRecommendations'    => __( 'Show more recommendations', 'fluid-checkout' ),
+				'showFewerRecommendations'   => __( 'Show fewer recommendations', 'fluid-checkout' ),
 			)
 		);
 
@@ -881,22 +883,84 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
+	 * Split pending recommendation rows into visible and overflow PRO promo groups on Lite.
+	 *
+	 * @param array $pending Pending recommendation rows.
+	 *
+	 * @return array{visible:array,pro_more:array}
+	 */
+	protected function partition_pending_recommendations_for_display( $pending ) {
+		$pending   = is_array( $pending ) ? $pending : array();
+		$pro_limit = class_exists( 'FluidCheckout_Guided_Setup_Recommendations' )
+			? FluidCheckout_Guided_Setup_Recommendations::instance()->get_pro_recommendation_row_limit()
+			: null;
+
+		// PRO (or no cap): show every pending row
+		if ( null === $pro_limit ) {
+			return array(
+				'visible'  => $pending,
+				'pro_more' => array(),
+			);
+		}
+
+		$visible      = array();
+		$pro_visible  = array();
+		$pro_more     = array();
+		$pro_limit    = (int) $pro_limit;
+
+		// Iterate pending rows, keeping Lite first and capping visible PRO promo rows
+		foreach ( $pending as $setting ) {
+			if ( ! empty( $setting['is_pro'] ) ) {
+				if ( count( $pro_visible ) < $pro_limit ) {
+					$pro_visible[] = $setting;
+				} else {
+					$pro_more[] = $setting;
+				}
+				continue;
+			}
+
+			$visible[] = $setting;
+		}
+
+		return array(
+			'visible'  => array_merge( $visible, $pro_visible ),
+			'pro_more' => $pro_more,
+		);
+	}
+
+
+
+	/**
 	 * Output recommendation toggles for the recommended_setup step.
 	 */
 	protected function output_recommended_setup_settings() {
-		$settings   = $this->get_recommended_setup_settings();
-		$partition  = $this->partition_recommended_setup_settings( $settings );
-		$pending    = $partition['pending'];
-		$applied    = $partition['applied'];
+		$settings     = $this->get_recommended_setup_settings();
+		$partition    = $this->partition_recommended_setup_settings( $settings );
+		$pending      = $partition['pending'];
+		$applied      = $partition['applied'];
 		$hide_applied = $this->should_hide_already_applied_recommendations();
+		$display      = $this->partition_pending_recommendations_for_display( $pending );
+		$visible      = $display['visible'];
+		$pro_more     = $display['pro_more'];
 		?>
 		<div class="fc-setup-recommendation-options" role="group" aria-label="<?php echo esc_attr__( 'Recommended checkout settings', 'fluid-checkout' ); ?>">
-			<?php if ( empty( $pending ) && $hide_applied ) : ?>
+			<?php if ( empty( $visible ) && empty( $pro_more ) && $hide_applied ) : ?>
 				<p class="fc-setup-recommendation-empty"><?php echo esc_html__( 'No more recommendations to apply', 'fluid-checkout' ); ?></p>
 			<?php else : ?>
-				<?php foreach ( $pending as $setting ) : ?>
+				<?php foreach ( $visible as $setting ) : ?>
 					<?php $this->output_recommended_setup_setting_row( $setting, true ); ?>
 				<?php endforeach; ?>
+			<?php endif; ?>
+
+			<?php if ( ! empty( $pro_more ) ) : ?>
+				<p class="fc-setup-recommendation-more-toggle">
+					<a href="#" class="button button-link" data-fc-setup-show-more-recommendations aria-expanded="false"><?php echo esc_html__( 'Show more recommendations', 'fluid-checkout' ); ?></a>
+				</p>
+				<div class="fc-setup-recommendation-more is-collapsed" data-fc-setup-more-recommendations hidden>
+					<?php foreach ( $pro_more as $setting ) : ?>
+						<?php $this->output_recommended_setup_setting_row( $setting, true ); ?>
+					<?php endforeach; ?>
+				</div>
 			<?php endif; ?>
 
 			<?php if ( $hide_applied && ! empty( $applied ) ) : ?>

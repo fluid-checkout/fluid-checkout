@@ -34,10 +34,14 @@
 		recommendationsMountSelector:   '[data-fc-setup-recommendations]',
 		showAppliedSelector:            '[data-fc-setup-show-applied-recommendations]',
 		appliedRecommendationsSelector: '[data-fc-setup-applied-recommendations]',
+		showMoreSelector:               '[data-fc-setup-show-more-recommendations]',
+		moreRecommendationsSelector:    '[data-fc-setup-more-recommendations]',
 		debounceMs:                     400,
 		i18n: {
 			showAlreadyApplied: 'Show already applied',
 			hideAlreadyApplied: 'Hide already applied',
+			showMoreRecommendations: 'Show more recommendations',
+			showFewerRecommendations: 'Show fewer recommendations',
 		},
 	};
 
@@ -371,20 +375,25 @@
 
 
 	/**
-	 * Toggle visibility of already-applied recommendation rows on PRO.
+	 * Toggle a collapsed recommendation list behind a show/hide link.
 	 *
-	 * @param   Event    e       Click event.
-	 * @param   Element  button  Toggle link.
+	 * @param   Event    e              Click event.
+	 * @param   Element  button         Toggle link.
+	 * @param   string   listSelector   Selector for the collapsed list inside the mount.
+	 * @param   string   showLabelKey   i18n key for the collapsed label.
+	 * @param   string   hideLabelKey   i18n key for the expanded label.
+	 * @param   string   showFallback   Fallback label when collapsed.
+	 * @param   string   hideFallback   Fallback label when expanded.
 	 */
-	var handleShowAppliedRecommendationsClick = function( e, button ) {
+	var toggleCollapsedRecommendationsList = function( e, button, listSelector, showLabelKey, hideLabelKey, showFallback, hideFallback ) {
 		var mount = button.closest( _settings.recommendationsMountSelector );
-		var applied = mount ? mount.querySelector( _settings.appliedRecommendationsSelector ) : null;
+		var list = mount ? mount.querySelector( listSelector ) : null;
 		var expanded;
 
 		e.preventDefault();
 
-		// Bail if the applied list is missing
-		if ( ! applied ) {
+		// Bail if the list is missing
+		if ( ! list ) {
 			return;
 		}
 
@@ -392,16 +401,52 @@
 
 		if ( expanded ) {
 			button.setAttribute( 'aria-expanded', 'false' );
-			button.textContent = ( _settings.i18n && _settings.i18n.showAlreadyApplied ) ? _settings.i18n.showAlreadyApplied : 'Show already applied';
-			applied.setAttribute( 'hidden', '' );
-			applied.classList.add( 'is-collapsed' );
+			button.textContent = ( _settings.i18n && _settings.i18n[ showLabelKey ] ) ? _settings.i18n[ showLabelKey ] : showFallback;
+			list.setAttribute( 'hidden', '' );
+			list.classList.add( 'is-collapsed' );
 		}
 		else {
 			button.setAttribute( 'aria-expanded', 'true' );
-			button.textContent = ( _settings.i18n && _settings.i18n.hideAlreadyApplied ) ? _settings.i18n.hideAlreadyApplied : 'Hide already applied';
-			applied.removeAttribute( 'hidden' );
-			applied.classList.remove( 'is-collapsed' );
+			button.textContent = ( _settings.i18n && _settings.i18n[ hideLabelKey ] ) ? _settings.i18n[ hideLabelKey ] : hideFallback;
+			list.removeAttribute( 'hidden' );
+			list.classList.remove( 'is-collapsed' );
 		}
+	};
+
+	/**
+	 * Toggle visibility of already-applied recommendation rows on PRO.
+	 *
+	 * @param   Event    e       Click event.
+	 * @param   Element  button  Toggle link.
+	 */
+	var handleShowAppliedRecommendationsClick = function( e, button ) {
+		toggleCollapsedRecommendationsList(
+			e,
+			button,
+			_settings.appliedRecommendationsSelector,
+			'showAlreadyApplied',
+			'hideAlreadyApplied',
+			'Show already applied',
+			'Hide already applied'
+		);
+	};
+
+	/**
+	 * Toggle visibility of overflow PRO recommendation rows on Lite.
+	 *
+	 * @param   Event    e       Click event.
+	 * @param   Element  button  Toggle link.
+	 */
+	var handleShowMoreRecommendationsClick = function( e, button ) {
+		toggleCollapsedRecommendationsList(
+			e,
+			button,
+			_settings.moreRecommendationsSelector,
+			'showMoreRecommendations',
+			'showFewerRecommendations',
+			'Show more recommendations',
+			'Show fewer recommendations'
+		);
 	};
 
 
@@ -543,11 +588,18 @@
 		} );
 
 		container.addEventListener( 'click', function( e ) {
-			var button = e.target.closest( _settings.showAppliedSelector );
+			var appliedButton = e.target.closest( _settings.showAppliedSelector );
+			var moreButton = e.target.closest( _settings.showMoreSelector );
 
 			// SHOW ALREADY APPLIED
-			if ( button ) {
-				handleShowAppliedRecommendationsClick( e, button );
+			if ( appliedButton ) {
+				handleShowAppliedRecommendationsClick( e, appliedButton );
+				return;
+			}
+
+			// SHOW MORE PRO RECOMMENDATIONS
+			if ( moreButton ) {
+				handleShowMoreRecommendationsClick( e, moreButton );
 			}
 		} );
 	};

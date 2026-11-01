@@ -716,24 +716,26 @@ class FluidCheckout_Guided_Setup_Recommendations {
 
 
 	/**
-	 * Max PRO recommendation rows to include.
+	 * Max PRO recommendation rows shown before the "Show more" control on Lite.
 	 *
-	 * Lite default: 3 promo rows. PRO removes the cap via
+	 * Lite default: limit to show on Lite.
+	 * 
+	 * "Show more recommendations"). PRO removes the cap via
 	 * `fc_guided_setup_pro_recommendation_row_limit` (return null).
 	 *
-	 * @return int|null Null means no cap.
+	 * @return int|null Null means no cap / no overflow UI.
 	 */
 	public function get_pro_recommendation_row_limit() {
 		/**
-		 * Filters the max number of PRO recommendation rows.
+		 * Filters how many PRO recommendation rows are visible before "Show more" on Lite.
 		 *
-		 * Return null for no cap.
+		 * Return null for no cap (all PRO rows visible; used by PRO).
 		 *
 		 * @since 5.0.0
 		 *
-		 * @param int|null $limit Default 3 on Lite.
+		 * @param int|null $limit Default limit to show on Lite.
 		 */
-		$limit = apply_filters( 'fc_guided_setup_pro_recommendation_row_limit', 3 );
+		$limit = apply_filters( 'fc_guided_setup_pro_recommendation_row_limit', 2 );
 
 		if ( null === $limit ) {
 			return null;
@@ -776,7 +778,7 @@ class FluidCheckout_Guided_Setup_Recommendations {
 	 * Build recommended step rows (Lite + PRO), all checked.
 	 *
 	 * Checkout layout is always first. Other rows are sorted by score.
-	 * Lite caps PRO promo rows; PRO does not.
+	 * All matching PRO rows are included; Lite UI may collapse overflow.
 	 *
 	 * @param array $answers             Wizard answers.
 	 * @param array $profile_values      Merged profile values.
@@ -793,7 +795,6 @@ class FluidCheckout_Guided_Setup_Recommendations {
 		$scored              = $this->get_scored_recommendation_rows( $answers, $profile_values, $suppressed_keys );
 		$lite_rows           = array();
 		$pro_rows            = array();
-		$pro_limit           = $this->get_pro_recommendation_row_limit();
 
 		// Iterate scored registry rows
 		foreach ( $scored as $item ) {
@@ -831,11 +832,8 @@ class FluidCheckout_Guided_Setup_Recommendations {
 			$rows[] = $this->normalize_recommended_row( $definition );
 		}
 
-		// Maybe cap PRO promo rows on Lite
-		$pro_definitions = null === $pro_limit ? $pro_rows : array_slice( $pro_rows, 0, (int) $pro_limit );
-
-		// Iterate PRO rows
-		foreach ( $pro_definitions as $definition ) {
+		// Iterate all matching PRO rows (Lite UI may collapse overflow behind "Show more")
+		foreach ( $pro_rows as $definition ) {
 			$rows[] = $this->normalize_recommended_row( $definition );
 		}
 

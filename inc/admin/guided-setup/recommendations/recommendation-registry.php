@@ -14,17 +14,20 @@ defined( 'ABSPATH' ) || exit;
  * excluded. Filter maps may set `__omit` to suppress a key (after filter-type specificity).
  * Checkout layout (`fc_checkout_layout`) is always the first recommendation and ignores
  * score for inclusion: the filter winner is used when present, otherwise the settings
- * default. The recommendation id is the option_key. Lite rows that match are included.
- * Up to 3 matching PRO rows are included on Lite; PRO includes all matching PRO rows.
+ * default. The recommendation id is the option_key. Lite and matching PRO rows are included.
+ * On Lite, the recommended_setup UI shows 3 PRO rows and hides the rest behind
+ * "Show more recommendations"; PRO shows all matching PRO rows.
  *
- * File order: Lite, then PRO. Within each group, rows are sorted by relatedness.
+ * File order follows Fluid Checkout settings tabs and section order within each tab
+ * (Checkout → Cart → Thank you → Order pay → Address autocomplete → Address book → Customer accounts →
+ * Local pickup → Phone fields). Lite and PRO rows for the same tab stay together.
  *
  * @return array<int, array<string, mixed>>
  */
 return array(
 
 	// ----------------------------------------
-	// Lite — checkout layout
+	// Checkout — layout
 	// ----------------------------------------
 
 	array(
@@ -63,9 +66,65 @@ return array(
 
 
 	// ----------------------------------------
-	// Lite — shipping
+	// Checkout — page templates
 	// ----------------------------------------
 
+	array(
+		'option_key'  => 'fc_hide_site_header_footer_at_checkout',
+		'value'       => 'no',
+		'title'       => __( 'Keep theme header and footer', 'fluid-checkout' ),
+		'description' => __( 'Show the store header and footer at checkout instead of the distraction-free layout. Useful for B2B stores that need site navigation during checkout.', 'fluid-checkout' ),
+		'score'       => function ( $answers, $filtered_values = array() ) {
+			$audience = isset( $answers['customer_audience'] ) ? (string) $answers['customer_audience'] : 'dtc';
+
+			return 'b2b' === $audience ? 80 : 0;
+		},
+	),
+
+
+
+	// ----------------------------------------
+	// Checkout — cart items
+	// ----------------------------------------
+
+	array(
+		'is_pro'       => true,
+		'feature_slug' => 'edit-cart',
+		'option_key'   => 'fc_pro_enable_checkout_edit_cart',
+		'value'        => 'yes',
+		'title'        => __( 'Edit cart at checkout', 'fluid-checkout' ),
+		'description'  => __( 'Let customers change quantities and remove items without leaving checkout.', 'fluid-checkout' ),
+		'score'        => function ( $answers, $filtered_values = array() ) {
+			$types = isset( $answers['product_types'] ) && is_array( $answers['product_types'] ) ? $answers['product_types'] : array();
+			$score = 10;
+
+			if ( in_array( 'physical', $types, true ) ) {
+				$score += 25;
+			}
+
+			return $score;
+		},
+	),
+
+
+
+	// ----------------------------------------
+	// Checkout — checkout fields
+	// ----------------------------------------
+
+	array(
+		'is_pro'       => true,
+		'feature_slug' => 'billing-before-shipping',
+		'option_key'   => 'fc_pro_checkout_billing_address_position',
+		'value'        => 'step_before_shipping',
+		'title'        => __( 'Billing before shipping', 'fluid-checkout' ),
+		'description'  => __( 'Collect the billing address as a step before shipping so business buyers can enter invoice details first.', 'fluid-checkout' ),
+		'score'        => function ( $answers, $filtered_values = array() ) {
+			$audience = isset( $answers['customer_audience'] ) ? (string) $answers['customer_audience'] : 'dtc';
+
+			return 'b2b' === $audience ? 90 : 0;
+		},
+	),
 	array(
 		'option_key'  => 'fc_shipping_methods_substep_position',
 		'value'       => 'before_shipping_address',
@@ -118,6 +177,183 @@ return array(
 		},
 	),
 	array(
+		'option_key'  => 'woocommerce_checkout_company_field',
+		'value'       => 'required',
+		'title'       => __( 'Require billing company', 'fluid-checkout' ),
+		'description' => __( 'Make the billing company field required so invoices include a company name for business orders.', 'fluid-checkout' ),
+		'score'       => function ( $answers, $filtered_values = array() ) {
+			$audience = isset( $answers['customer_audience'] ) ? (string) $answers['customer_audience'] : 'dtc';
+
+			return 'b2b' === $audience ? 85 : 0;
+		},
+	),
+
+
+
+	// ----------------------------------------
+	// Cart
+	// ----------------------------------------
+
+	array(
+		'is_pro'       => true,
+		'feature_slug' => 'cart-page',
+		'option_key'   => 'fc_pro_enable_cart_page',
+		'value'        => 'yes',
+		'title'        => __( 'Enable optimized cart page', 'fluid-checkout' ),
+		'description'  => __( 'Enable the optimized cart page to improve cart conversion rates.', 'fluid-checkout' ),
+		'score'        => function ( $answers, $filtered_values = array() ) {
+			return 80;
+		},
+	),
+
+
+
+	// ----------------------------------------
+	// Address autocomplete
+	// ----------------------------------------
+
+	array(
+		'is_pro'       => true,
+		'feature_slug' => 'address-autocomplete',
+		'option_key'   => 'fc_gaa_enabled',
+		'value'        => 'yes',
+		'title'        => __( 'Google address autocomplete', 'fluid-checkout' ),
+		'description'  => __( 'Suggest verified addresses as customers type to reduce typos and failed deliveries.', 'fluid-checkout' ),
+		'score'        => function ( $answers, $filtered_values = array() ) {
+			$types    = isset( $answers['product_types'] ) && is_array( $answers['product_types'] ) ? $answers['product_types'] : array();
+			$delivery = isset( $answers['delivery_methods'] ) && is_array( $answers['delivery_methods'] ) ? $answers['delivery_methods'] : array();
+			$score    = 0;
+
+			// Prefer GAA when shipping physical goods
+			if ( in_array( 'physical', $types, true ) ) {
+				$score += 55;
+			}
+
+			if ( array_intersect( array( 'ship_to_address', 'ship_to_pickup_point', 'local_delivery' ), $delivery ) ) {
+				$score += 45;
+			}
+
+			return min( 100, $score );
+		},
+	),
+
+
+
+	// ----------------------------------------
+	// Address book
+	// ----------------------------------------
+
+	array(
+		'is_pro'       => true,
+		'feature_slug' => 'address-book',
+		'option_key'   => 'fc_pro_enable_address_book',
+		'value'        => 'yes',
+		'title'        => __( 'Address book at checkout', 'fluid-checkout' ),
+		'description'  => __( 'Let logged-in customers pick a saved address instead of retyping it every time.', 'fluid-checkout' ),
+		'score'        => function ( $answers, $filtered_values = array() ) {
+			$types    = isset( $answers['product_types'] ) && is_array( $answers['product_types'] ) ? $answers['product_types'] : array();
+			$audience = isset( $answers['customer_audience'] ) ? (string) $answers['customer_audience'] : 'dtc';
+			$score    = 20;
+
+			// Boost for subscriptions and B2B (repeat / multi-address buyers)
+			if ( in_array( 'subscriptions', $types, true ) || in_array( 'memberships', $types, true ) ) {
+				$score += 35;
+			}
+
+			if ( 'b2b' === $audience ) {
+				$score += 30;
+			}
+
+			if ( in_array( 'physical', $types, true ) ) {
+				$score += 15;
+			}
+
+			return min( 100, $score );
+		},
+	),
+
+
+
+	// ----------------------------------------
+	// Customer accounts
+	// ----------------------------------------
+
+	array(
+		'option_key'  => 'woocommerce_enable_guest_checkout',
+		'value'       => 'no',
+		'title'       => __( 'Require account to checkout', 'fluid-checkout' ),
+		'description' => __( 'Turn off guest checkout so customers must log in or create an account before placing an order.', 'fluid-checkout' ),
+		'score'       => function ( $answers, $filtered_values = array() ) {
+			$audience = isset( $answers['customer_audience'] ) ? (string) $answers['customer_audience'] : 'dtc';
+
+			return 'b2b' === $audience ? 90 : 0;
+		},
+	),
+	array(
+		'option_key'  => 'woocommerce_enable_checkout_login_reminder',
+		'value'       => 'yes',
+		'title'       => __( 'Login reminder at checkout', 'fluid-checkout' ),
+		'description' => __( 'Offer a login link at checkout so returning customers can reuse saved details faster.', 'fluid-checkout' ),
+		'score'       => function ( $answers, $filtered_values = array() ) {
+			return 85;
+		},
+	),
+	array(
+		'is_pro'       => true,
+		'feature_slug' => 'account-matching',
+		'option_key'   => 'fc_pro_enable_account_matching',
+		'value'        => 'yes',
+		'title'        => __( 'Account matching at checkout', 'fluid-checkout' ),
+		'description'  => __( 'Detect when the email already belongs to an account and prompt the customer to log in instead of creating a duplicate.', 'fluid-checkout' ),
+		'score'        => function ( $answers, $filtered_values = array() ) {
+			$audience = isset( $answers['customer_audience'] ) ? (string) $answers['customer_audience'] : 'dtc';
+			$score    = 45;
+
+			if ( 'b2b' === $audience ) {
+				$score += 35;
+			}
+
+			return min( 100, $score );
+		},
+	),
+
+
+
+	// ----------------------------------------
+	// Local pickup
+	// ----------------------------------------
+
+	array(
+		'is_pro'       => true,
+		'feature_slug' => 'local-pickup',
+		'option_key'   => 'fc_enable_checkout_local_pickup',
+		'value'        => 'yes',
+		'title'        => __( 'Local pickup or in-store collection', 'fluid-checkout' ),
+		'description'  => __( 'Let customers choose at checkout where to pick up their order.', 'fluid-checkout' ),
+		'score'        => function ( $answers, $filtered_values = array() ) {
+			$types    = isset( $answers['product_types'] ) && is_array( $answers['product_types'] ) ? $answers['product_types'] : array();
+			$delivery = isset( $answers['delivery_methods'] ) && is_array( $answers['delivery_methods'] ) ? $answers['delivery_methods'] : array();
+
+			// Bail if physical products are not selected
+			if ( ! in_array( 'physical', $types, true ) ) {
+				return 0;
+			}
+
+			if ( in_array( 'local_pickup', $delivery, true ) ) {
+				return 90;
+			}
+
+			return 0;
+		},
+	),
+
+
+
+	// ----------------------------------------
+	// Phone fields
+	// ----------------------------------------
+
+	array(
 		'option_key'  => 'fc_shipping_phone_field_visibility',
 		'value'       => 'optional',
 		'title'       => __( 'Optional shipping phone', 'fluid-checkout' ),
@@ -156,207 +392,6 @@ return array(
 
 			if ( in_array( 'local_delivery', $delivery, true ) ) {
 				$score += 20;
-			}
-
-			return min( 100, $score );
-		},
-	),
-
-
-
-	// ----------------------------------------
-	// Lite — account access
-	// ----------------------------------------
-
-	array(
-		'option_key'  => 'woocommerce_enable_checkout_login_reminder',
-		'value'       => 'yes',
-		'title'       => __( 'Login reminder at checkout', 'fluid-checkout' ),
-		'description' => __( 'Offer a login link at checkout so returning customers can reuse saved details faster.', 'fluid-checkout' ),
-		'score'       => function ( $answers, $filtered_values = array() ) {
-			return 85;
-		},
-	),
-	array(
-		'option_key'  => 'woocommerce_enable_guest_checkout',
-		'value'       => 'no',
-		'title'       => __( 'Require account to checkout', 'fluid-checkout' ),
-		'description' => __( 'Turn off guest checkout so customers must log in or create an account before placing an order.', 'fluid-checkout' ),
-		'score'       => function ( $answers, $filtered_values = array() ) {
-			$audience = isset( $answers['customer_audience'] ) ? (string) $answers['customer_audience'] : 'dtc';
-
-			return 'b2b' === $audience ? 90 : 0;
-		},
-	),
-
-
-
-	// ----------------------------------------
-	// Lite — B2B billing and layout chrome
-	// ----------------------------------------
-
-	array(
-		'option_key'  => 'woocommerce_checkout_company_field',
-		'value'       => 'required',
-		'title'       => __( 'Require billing company', 'fluid-checkout' ),
-		'description' => __( 'Make the billing company field required so invoices include a company name for business orders.', 'fluid-checkout' ),
-		'score'       => function ( $answers, $filtered_values = array() ) {
-			$audience = isset( $answers['customer_audience'] ) ? (string) $answers['customer_audience'] : 'dtc';
-
-			return 'b2b' === $audience ? 85 : 0;
-		},
-	),
-	array(
-		'option_key'  => 'fc_hide_site_header_footer_at_checkout',
-		'value'       => 'no',
-		'title'       => __( 'Keep theme header and footer', 'fluid-checkout' ),
-		'description' => __( 'Show the store header and footer at checkout instead of the distraction-free layout. Useful for B2B stores that need site navigation during checkout.', 'fluid-checkout' ),
-		'score'       => function ( $answers, $filtered_values = array() ) {
-			$audience = isset( $answers['customer_audience'] ) ? (string) $answers['customer_audience'] : 'dtc';
-
-			return 'b2b' === $audience ? 80 : 0;
-		},
-	),
-
-
-
-	// ----------------------------------------
-	// PRO — cart
-	// ----------------------------------------
-
-	array(
-		'is_pro'       => true,
-		'feature_slug' => 'edit-cart',
-		'option_key'   => 'fc_pro_enable_checkout_edit_cart',
-		'value'        => 'yes',
-		'title'        => __( 'Edit cart at checkout', 'fluid-checkout' ),
-		'description'  => __( 'Let customers change quantities and remove items without leaving checkout.', 'fluid-checkout' ),
-		'score'        => function ( $answers, $filtered_values = array() ) {
-			$types = isset( $answers['product_types'] ) && is_array( $answers['product_types'] ) ? $answers['product_types'] : array();
-			$score = 10;
-
-			if ( in_array( 'physical', $types, true ) ) {
-				$score += 25;
-			}
-
-			return $score;
-		},
-	),
-
-
-
-	// ----------------------------------------
-	// PRO — delivery and addresses
-	// ----------------------------------------
-
-	array(
-		'is_pro'       => true,
-		'feature_slug' => 'local-pickup',
-		'option_key'   => 'fc_enable_checkout_local_pickup',
-		'value'        => 'yes',
-		'title'        => __( 'Local pickup or in-store collection', 'fluid-checkout' ),
-		'description'  => __( 'Let customers choose at checkout where to pick up their order.', 'fluid-checkout' ),
-		'score'        => function ( $answers, $filtered_values = array() ) {
-			$types    = isset( $answers['product_types'] ) && is_array( $answers['product_types'] ) ? $answers['product_types'] : array();
-			$delivery = isset( $answers['delivery_methods'] ) && is_array( $answers['delivery_methods'] ) ? $answers['delivery_methods'] : array();
-
-			// Bail if physical products are not selected
-			if ( ! in_array( 'physical', $types, true ) ) {
-				return 0;
-			}
-
-			if ( in_array( 'local_pickup', $delivery, true ) ) {
-				return 90;
-			}
-
-			return 0;
-		},
-	),
-	array(
-		'is_pro'       => true,
-		'feature_slug' => 'address-autocomplete',
-		'option_key'   => 'fc_gaa_enabled',
-		'value'        => 'yes',
-		'title'        => __( 'Google address autocomplete', 'fluid-checkout' ),
-		'description'  => __( 'Suggest verified addresses as customers type to reduce typos and failed deliveries.', 'fluid-checkout' ),
-		'score'        => function ( $answers, $filtered_values = array() ) {
-			$types    = isset( $answers['product_types'] ) && is_array( $answers['product_types'] ) ? $answers['product_types'] : array();
-			$delivery = isset( $answers['delivery_methods'] ) && is_array( $answers['delivery_methods'] ) ? $answers['delivery_methods'] : array();
-			$score    = 0;
-
-			// Prefer GAA when shipping physical goods
-			if ( in_array( 'physical', $types, true ) ) {
-				$score += 55;
-			}
-
-			if ( array_intersect( array( 'ship_to_address', 'ship_to_pickup_point', 'local_delivery' ), $delivery ) ) {
-				$score += 45;
-			}
-
-			return min( 100, $score );
-		},
-	),
-	array(
-		'is_pro'       => true,
-		'feature_slug' => 'address-book',
-		'option_key'   => 'fc_pro_enable_address_book',
-		'value'        => 'yes',
-		'title'        => __( 'Address book at checkout', 'fluid-checkout' ),
-		'description'  => __( 'Let logged-in customers pick a saved address instead of retyping it every time.', 'fluid-checkout' ),
-		'score'        => function ( $answers, $filtered_values = array() ) {
-			$types    = isset( $answers['product_types'] ) && is_array( $answers['product_types'] ) ? $answers['product_types'] : array();
-			$audience = isset( $answers['customer_audience'] ) ? (string) $answers['customer_audience'] : 'dtc';
-			$score    = 20;
-
-			// Boost for subscriptions and B2B (repeat / multi-address buyers)
-			if ( in_array( 'subscriptions', $types, true ) || in_array( 'memberships', $types, true ) ) {
-				$score += 35;
-			}
-
-			if ( 'b2b' === $audience ) {
-				$score += 30;
-			}
-
-			if ( in_array( 'physical', $types, true ) ) {
-				$score += 15;
-			}
-
-			return min( 100, $score );
-		},
-	),
-	array(
-		'is_pro'       => true,
-		'feature_slug' => 'billing-before-shipping',
-		'option_key'   => 'fc_pro_checkout_billing_address_position',
-		'value'        => 'step_before_shipping',
-		'title'        => __( 'Billing before shipping', 'fluid-checkout' ),
-		'description'  => __( 'Collect the billing address as a step before shipping so business buyers can enter invoice details first.', 'fluid-checkout' ),
-		'score'        => function ( $answers, $filtered_values = array() ) {
-			$audience = isset( $answers['customer_audience'] ) ? (string) $answers['customer_audience'] : 'dtc';
-
-			return 'b2b' === $audience ? 90 : 0;
-		},
-	),
-
-
-
-	// ----------------------------------------
-	// PRO — account and phone
-	// ----------------------------------------
-
-	array(
-		'is_pro'       => true,
-		'feature_slug' => 'account-matching',
-		'option_key'   => 'fc_pro_enable_account_matching',
-		'value'        => 'yes',
-		'title'        => __( 'Account matching at checkout', 'fluid-checkout' ),
-		'description'  => __( 'Detect when the email already belongs to an account and prompt the customer to log in instead of creating a duplicate.', 'fluid-checkout' ),
-		'score'        => function ( $answers, $filtered_values = array() ) {
-			$audience = isset( $answers['customer_audience'] ) ? (string) $answers['customer_audience'] : 'dtc';
-			$score    = 45;
-
-			if ( 'b2b' === $audience ) {
-				$score += 35;
 			}
 
 			return min( 100, $score );

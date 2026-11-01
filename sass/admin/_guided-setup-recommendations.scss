@@ -96,11 +96,13 @@
 	color: $admin-text-color-muted;
 }
 
-.fc-guided-setup .fc-setup-recommendation-applied-toggle {
+.fc-guided-setup .fc-setup-recommendation-applied-toggle,
+.fc-guided-setup .fc-setup-recommendation-more-toggle {
 	margin: 16px 0 0;
 }
 
-.fc-guided-setup .fc-setup-recommendation-applied {
+.fc-guided-setup .fc-setup-recommendation-applied,
+.fc-guided-setup .fc-setup-recommendation-more {
 	display: grid;
 	grid-template-columns: minmax( 0, 1fr );
 	gap: 8px;
@@ -108,6 +110,8 @@
 }
 
 .fc-guided-setup .fc-setup-recommendation-applied.is-collapsed,
-.fc-guided-setup .fc-setup-recommendation-applied[hidden] {
+.fc-guided-setup .fc-setup-recommendation-applied[hidden],
+.fc-guided-setup .fc-setup-recommendation-more.is-collapsed,
+.fc-guided-setup .fc-setup-recommendation-more[hidden] {
 	display: none;
 }
