@@ -279,11 +279,25 @@ class FluidCheckout_Settings_Checkout {
 					),
 
 					array(
+						'type'              => 'fc_paragraph',
+						'desc'              => __( 'Change the checkout layout to multi-step to see these options.', 'fluid-checkout' ),
+						'id'                => 'fc_checkout_progress_bar_layout_notice',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_checkout_layout',
+							'data-conditional-value' => 'single-step',
+						),
+					),
+
+					array(
 						'title'                 => __( 'Progress bar', 'fluid-checkout' ),
-						'desc'                  => __( 'Display the checkout progress bar when using multi-step checkout layout', 'fluid-checkout' ),
+						'desc'                  => __( 'Display the checkout progress bar', 'fluid-checkout' ),
 						'id'                    => 'fc_enable_checkout_progress_bar',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_progress_bar' ),
 						'type'                  => 'checkbox',
+						'custom_attributes'     => array(
+							'data-conditional-id'    => 'fc_checkout_layout',
+							'data-conditional-value' => 'multi-step',
+						),
 						'autoload'              => false,
 					),
 					array(
@@ -292,9 +306,9 @@ class FluidCheckout_Settings_Checkout {
 						'id'                    => 'fc_enable_checkout_sticky_progress_bar',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_sticky_progress_bar' ),
 						'type'                  => 'checkbox',
-						'custom_attributes' => array(
-							'data-conditional-id'    => 'fc_enable_checkout_progress_bar',
-							'data-conditional-value' => 'yes',
+						'custom_attributes'     => array(
+							'data-conditional-id'    => 'fc_checkout_layout,fc_enable_checkout_progress_bar',
+							'data-conditional-value' => 'multi-step,yes',
 						),
 						'autoload'              => false,
 					),
@@ -312,8 +326,8 @@ class FluidCheckout_Settings_Checkout {
 						),
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_progress_bar_style' ),
 						'custom_attributes'     => array(
-							'data-conditional-id'    => 'fc_enable_checkout_progress_bar',
-							'data-conditional-value' => 'yes',
+							'data-conditional-id'    => 'fc_checkout_layout,fc_enable_checkout_progress_bar',
+							'data-conditional-value' => 'multi-step,yes',
 						),
 						'autoload'              => false,
 					),

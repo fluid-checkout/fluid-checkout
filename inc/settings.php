@@ -214,10 +214,6 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 			'fc_pro_checkout_coupon_codes_position'                         => 'substep_before_payment',
 			'fc_pro_checkout_coupon_code_message_button_style'              => 'add_link_button',
 
-			// =============================== ACCOUNT ===============================
-			'fc_pro_enable_account_matching'                                => 'no',
-			'fc_pro_account_matching_display_account_exists_message'        => 'yes',
-
 			// =============================== ORDER SUMMARY ===============================
 			'fc_pro_checkout_edit_cart_replace_edit_cart_link'              => 'edit_cart_link',
 			'fc_pro_checkout_order_summary_position_mobile'                 => 'site_header',
@@ -247,8 +243,8 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 			'fc_pro_address_book_display_layout'                            => 'cards',
 			'fc_pro_address_book_saved_addresses_search_min_count'          => 5,
 
-			// =============================== CART (NEW PAGE) ===============================
-			'fc_pro_enable_cart_page'                                       => 'no',
+			// =============================== CART PAGE ===============================
+			'fc_pro_enable_cart_page'                                       => 'yes',
 			'fc_pro_enable_cart_sticky_order_summary'                       => 'yes',
 			'fc_pro_hide_site_header_footer_at_cart'                        => 'no',
 			'fc_pro_enable_cart_cross_sells'                                => 'yes',
@@ -259,35 +255,50 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 			'fc_pro_enable_cart_widget_areas'                               => 'yes',
 
 			// =============================== ORDER RECEIVED (THANK YOU) ===============================
-			'fc_pro_enable_order_received'                                  => 'no',
+			'fc_pro_enable_order_received'                                  => 'yes',
 			'fc_pro_enable_order_details_email_customizations'              => 'yes',
 			'fc_pro_enable_order_page_block_based_template'                 => 'no',
 			'fc_pro_enable_order_details_wide_layout'                       => 'no',
 			'fc_pro_order_details_order_actions_position'                   => 'inside_order_overview',
-			'fc_pro_enable_order_details_order_status_progress_bar'         => 'no',
+			'fc_pro_enable_order_details_order_status_progress_bar'         => 'yes',
 			'fc_pro_order_details_order_summary_position'                   => 'inside_order_items',
 			'fc_pro_order_details_order_downloads_position'                 => 'inside_order_items',
 			'fc_pro_order_details_gift_message_position'                    => 'before_order_items',
 			'fc_pro_order_details_order_notes_position'                     => 'inside_order_items',
 			'fc_pro_enable_order_received_widget_areas'                     => 'no',
-			'fc_pro_enable_delayed_account_creation'                        => 'no',
+
+			// =============================== ORDER PAY ===============================
+			'fc_pro_enable_order_pay'                                       => 'yes',
+			'fc_pro_enable_order_pay_widget_areas'                          => 'yes',
+
+			// =============================== ACCOUNT ===============================
+			'fc_pro_enable_account_matching'                                => 'no',
+			'fc_pro_account_matching_display_account_exists_message'        => 'yes',
+			// Delayed account creation enabled/disable feature tied to WooCommerce setting `woocommerce_enable_delayed_account_creation`.
 			'fc_pro_delayed_account_creation_section_position'              => 'after_order_overview',
 			'fc_pro_delayed_account_creation_benefits'                      => '',
 
-			// =============================== ORDER PAY ===============================
-			'fc_pro_enable_order_pay'                                       => 'no',
-			'fc_pro_enable_order_pay_widget_areas'                          => 'yes',
+			// =============================== WOOCOMMERCE SETTINGS (FOR OVERRIDES) ===============================
+			'woocommerce_enable_guest_checkout'                             => 'yes',
+			'woocommerce_enable_delayed_account_creation'                   => 'no',
+			'woocommerce_enable_signup_and_login_from_checkout'             => 'no',
+			'woocommerce_enable_myaccount_registration'                     => 'no',
+			'woocommerce_registration_generate_username'                    => 'yes',
+			'woocommerce_registration_generate_password'                    => 'yes',
+			'woocommerce_enable_shipping_calc'                              => 'yes',
+			'woocommerce_shipping_cost_requires_address'                    => 'no',
+			'woocommerce_enable_checkout_login_reminder'                    => 'no',
 
 			// =============================== GOOGLE ADDRESS AUTOCOMPLETE ===============================
 			'fc_gaa_enabled'                                                => 'no',
 			// `fc_gaa_google_places_api_key` and `fc_gaa_google_places_api_key_validated_hash` are site-wide wp_options (not profile-managed).
 			'fc_gaa_google_places_api_version'                              => 'current',
 			'fc_gaa_google_places_api_language'                             => '',
-			'fc_gaa_search_results_types'                                   => 'address',
-			'fc_gaa_search_results_types_address'                           => array(),
+			'fc_gaa_search_results_types'                                   => 'address', // Legacy API
+			'fc_gaa_search_results_types_address'                           => array(), // New API
 			'fc_gaa_company_autocomplete_value_enabled'                     => 'no',
 			'fc_gaa_company_autocomplete_input_enabled'                     => 'no',
-			'fc_gaa_search_results_types_company'                           => array( 'establishment' ),
+			'fc_gaa_search_results_types_company'                           => array( 'establishment' ), // New API
 			'fc_gaa_show_powered_by_google'                                 => 'yes',
 			'fc_gaa_enabled_brasil_api'                                     => 'no',
 			'fc_gaa_brasil_api_version'                                     => 'v1',
@@ -338,24 +349,6 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 			'fc_pro_integration_dibs_easy_express_checkout_button_enabled'  => 'yes',
 			'fc_pro_integration_svea_checkout_express_checkout_button_enabled' => 'yes',
 			'fc_pro_integration_woo_all_products_for_subscriptions_show_options_on_checkout' => 'yes',
-
-			// ----------------------- Other plugin or theme compatibility -----------------------
-			'gm_order_review_checkboxes_before_order_review'                => 'off',
-			'hezarfen_checkout_fields_auto_sort'                            => 'no',
-			'hezarfen_hide_checkout_postcode_fields'                        => 'no',
-			'sg_enable_picker'                                              => 'enable',
-			'woocommerce_gzd_display_checkout_back_to_cart_button'          => 'no',
-			'woocommerce_gzd_display_checkout_table_color'                  => '#eeeeee',
-
-			// =============================== WOOCOMMERCE SETTINGS (FOR OVERRIDES) ===============================
-			'woocommerce_enable_guest_checkout'                             => 'yes',
-			'woocommerce_enable_signup_and_login_from_checkout'             => 'no',
-			'woocommerce_enable_myaccount_registration'                     => 'no',
-			'woocommerce_registration_generate_username'                    => 'yes',
-			'woocommerce_registration_generate_password'                    => 'yes',
-			'woocommerce_enable_shipping_calc'                              => 'yes',
-			'woocommerce_shipping_cost_requires_address'                    => 'no',
-			'woocommerce_enable_checkout_login_reminder'                    => 'no',
 
 			// =============================== THEME COMPATIBILITY ===============================
 			'fc_compat_theme_atomion_display_order_progress'                => 'no',
@@ -445,14 +438,17 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 	}
 
 	/**
-	 * Get the value for a specific option. Returns default if option value is not set.
+	 * Whether an option key belongs to Fluid Checkout.
 	 *
-	 * Effective value: context profile overlay → active profile → code default (managed)
-	 * or WP option (unmanaged, unless present in a loaded profile payload).
+	 * Requires the `fc_` prefix and a matching entry in the settings defaults map,
+	 * so third-party options that also use `fc_` (for example FluentCRM) are excluded.
 	 *
-	 * @param  string  $option   Option name.
-	 * @param  mixed   $default  The fallback value to return if the option does not exist.
+	 * @param  string  $option  Option name.
 	 */
+	public function is_fluid_checkout_option_key( $option ) {
+		return is_string( $option ) && 0 === strpos( $option, 'fc_' ) && $this->is_managed_option( $option );
+	}
+
 	/**
 	 * Whether an option key is site-wide (never stored in settings profiles).
 	 *
@@ -462,6 +458,15 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 		return is_string( $option ) && in_array( $option, self::SITE_WIDE_OPTION_KEYS, true );
 	}
 
+	/**
+	 * Get the value for a specific option. Returns default if option value is not set.
+	 *
+	 * Effective value: context profile overlay → active profile → code default (`fc_*`)
+	 * or raw wp_options for non-`fc_*` keys (preserve other plugins) / unmanaged keys.
+	 *
+	 * @param  string  $option   Option name.
+	 * @param  mixed   $default  The fallback value to return if the option does not exist.
+	 */
 	public function get_option( $option, $default = null ) {
 		// Maybe get default from the default values array.
 		if ( null === $default ) {
@@ -480,11 +485,11 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 		if ( is_array( $effective ) && array_key_exists( $option, $effective ) ) {
 			$value = $effective[ $option ];
 		}
-		// Managed keys without a stored value use the code default
-		elseif ( $this->is_managed_option( $option ) ) {
+		// Fluid Checkout keys without a stored value use the code default
+		elseif ( $this->is_fluid_checkout_option_key( $option ) ) {
 			$value = $default;
 		}
-		// Unmanaged keys fall through to WordPress
+		// Non-`fc_*` and unmanaged keys fall through to WordPress / other plugins
 		else {
 			$value = $this->get_raw_option( $option, $default );
 		}
@@ -648,25 +653,35 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 
 		$defaults = $this->get_default_option_values();
 		$payload = array();
+		$fc_defaults = array();
 		$had_legacy_fc_options = false;
+
+		// Sentinel distinguishes "option missing from wp_options" from a stored empty/false value
+		$missing = new stdClass();
 
 		// Iterate managed keys and copy existing individual option values
 		foreach ( $defaults as $key => $default ) {
-			$raw = $this->get_raw_option( $key, null );
+			// Collect Fluid Checkout code defaults to seed a complete `fc_*` profile
+			if ( $this->is_fluid_checkout_option_key( $key ) ) {
+				$fc_defaults[ $key ] = $default;
+			}
 
-			// Skip keys that were never stored
-			if ( null === $raw ) { continue; }
+			$raw = $this->get_raw_option( $key, $missing );
+
+			// Skip keys that were never stored (ignore plugin `default_option_*` fallbacks)
+			if ( $raw === $missing ) { continue; }
 
 			$payload[ $key ] = $raw;
 
 			// Remember real plugin rows so fresh installs do not ask to delete leftovers
-			if ( 0 === strpos( $key, 'fc_' ) ) {
+			if ( $this->is_fluid_checkout_option_key( $key ) ) {
 				$had_legacy_fc_options = true;
 			}
 		}
 
-		// Merge code defaults under stored values so the active profile is complete
-		$payload = array_merge( $defaults, $payload );
+		// Seed `fc_*` defaults under stored values. Non-`fc_*` keys keep only existing
+		// wp_options values from WooCommerce and other plugins (never FC code defaults).
+		$payload = array_merge( $fc_defaults, $payload );
 
 		$slug = 'default';
 		$saved = $this->save_profile_values( $slug, $payload );
@@ -794,7 +809,12 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 			return $this->maybe_force_lite_option_value( $option, $effective[ $option ] );
 		}
 
-		// Managed keys missing from the map use code defaults
+		// Non-`fc_*` managed keys missing from the map keep values from other plugins
+		if ( ! $this->is_fluid_checkout_option_key( $option ) ) {
+			return $pre_option;
+		}
+
+		// Fluid Checkout keys missing from the map use code defaults
 		$code_default = $this->get_option_default( $option );
 		$value = null !== $code_default ? $code_default : $default;
 
@@ -1175,12 +1195,21 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 			return $effective[ $option ];
 		}
 
+		// Non-`fc_*` keys keep the value from WooCommerce / other plugins
+		if ( ! $this->is_fluid_checkout_option_key( $option ) ) {
+			return $this->get_raw_option( $option, $this->get_option_default( $option ) );
+		}
+
 		return $this->get_option_default( $option );
 	}
 
 	/**
-	 * Copy the active profile back to individual options.
-	 * Used on deactivation, when `get_option()` no longer reads the profile.
+	 * Copy non-Fluid Checkout profile values back to individual wp_options rows.
+	 *
+	 * Used on deactivation when `get_option()` no longer reads the profile. Managed
+	 * `fc_*` keys stay in the settings profile only; WooCommerce and other override
+	 * keys (for example `woocommerce_enable_guest_checkout`) are synced so the store
+	 * keeps working without Fluid Checkout.
 	 */
 	public function sync_active_profile_to_raw_options() {
 		$slug = $this->get_active_profile_slug();
@@ -1193,10 +1222,13 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 		// Bail if the profile payload is missing
 		if ( ! is_array( $values ) || empty( $values ) ) { return; }
 
-		// Iterate stored values and write them to the options table
+		// Iterate stored values and write non-FC keys to the options table
 		foreach ( $values as $key => $value ) {
 			// Skip invalid keys
 			if ( ! is_string( $key ) || '' === $key ) { continue; }
+
+			// Skip Fluid Checkout keys that belong in the profile only
+			if ( $this->is_fluid_checkout_option_key( $key ) ) { continue; }
 
 			// Keep the existing autoload flag when the row is already present
 			$this->update_raw_option( $key, $value, null );

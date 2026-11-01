@@ -5,7 +5,7 @@ Plugin URI: https://fluidcheckout.com/
 Description: The free one-page or multi-step checkout plugin for WooCommerce that helps more shoppers finish their order: easy for new buyers, faster for repeat orders.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 5.0.0-alpha-5
+Version: 5.0.0-alpha-6
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 6.5
@@ -217,10 +217,21 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 
 		/**
 		 * Get the primary telemetry API URL for this plugin.
+		 *
+		 * Returns the remote host used for HTTP requests, including the
+		 * `fc_telemetry_api_url` override when `FC_Telemetry_Client` is available.
+		 * Config registration still uses the canonical `TELEMETRY_SETTINGS` keys.
 		 */
 		public static function get_telemetry_api_url() {
 			foreach ( array_keys( self::TELEMETRY_SETTINGS ) as $api_url ) {
-				return untrailingslashit( (string) $api_url );
+				$canonical = untrailingslashit( (string) $api_url );
+
+				// Bail early if the telemetry client is unavailable
+				if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
+					return $canonical;
+				}
+
+				return untrailingslashit( (string) FC_Telemetry_Client::get_remote_api_url( $canonical, self::$plugin_slug ) );
 			}
 
 			return '';

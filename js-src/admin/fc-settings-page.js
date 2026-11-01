@@ -34,6 +34,8 @@
 		settingsRowSelector:                   '.fc-settings-field, tr',
 		settingsCardSelector:                  '.fc-settings-card',
 		settingsTabSelector:                   '[data-fc-settings-tab]',
+		fieldsetSelector:                      'fieldset',
+		tableRowSelector:                      'tr',
 		layoutOptionsSelector:                 '.fc-settings-sectioned-buttons, .fc-settings-radio-options',
 		layoutOptionSelector:                  '.fc-settings-sectioned-buttons__option, .fc-settings-radio-option',
 		isSelectedClass:                       'is-selected',
@@ -239,10 +241,18 @@
 		if ( settingsField ) { return settingsField; }
 
 		// Fall back to a nested fieldset then a table row for WC embeds
-		var fieldset = element.closest( 'fieldset' );
+		var fieldset = element.closest( _settings.fieldsetSelector );
 		if ( fieldset ) { return fieldset; }
 
-		return element.closest( 'tr' );
+		var tableRow = element.closest( _settings.tableRowSelector );
+		if ( tableRow ) { return tableRow; }
+
+		// Section title cards can carry conditionals on the card root
+		if ( element.matches && element.matches( _settings.settingsCardSelector ) ) {
+			return element;
+		}
+
+		return element.closest( _settings.settingsCardSelector );
 	};
 
 
@@ -1226,6 +1236,14 @@
 					if ( typeof FCAdminSettingsSetupChecklist !== 'undefined' && typeof FCAdminSettingsSetupChecklist.applyCompletionState === 'function' && response.data && response.data.checklist_state ) {
 						FCAdminSettingsSetupChecklist.applyCompletionState( response.data.checklist_state );
 					}
+
+					// Notify other admin scripts that settings were saved (e.g. telemetry Send now)
+					document.dispatchEvent( new CustomEvent( 'fcSettingsSaved', {
+						detail: {
+							tab:      activeTab,
+							response: response,
+						},
+					} ) );
 
 					return;
 				}

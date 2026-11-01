@@ -75,7 +75,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		add_filter( 'admin_body_class', array( $this, 'add_admin_body_class' ), 10 );
 
 		// Admin page header
-		add_action( 'admin_notices', array( $this, 'maybe_output_admin_header' ), 1 ); // Before other admin notices, so the page header comes first
+		add_action( 'admin_notices', array( $this, 'output_admin_header' ), 1 ); // Before other admin notices, so the page header comes first
 
 		// Remove WooCommerce Help tabs on this page
 		add_action( 'admin_head', array( $this, 'maybe_remove_help_tabs' ), 10 );
@@ -284,13 +284,60 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	/**
 	 * Output the Fluid Checkout admin page header.
 	 *
-	 * @param  bool  $can_save  Whether the save button should be enabled.
+	 * @param  bool|null  $can_save  Whether the save button should be enabled. Null derives it from the current settings tab.
 	 */
-	public function output_admin_header( $can_save ) {
-		$logo_url = FluidCheckout::$directory_url . 'images/admin/fluid-checkout-checkmark-logo.svg';
-		$home_url = 'https://fluidcheckout.com/?mtm_campaign=admin-header&mtm_kwd=logo&mtm_source=settings-header';
+	public function output_admin_header( $can_save = null ) {
+		if ( null === $can_save ) {
+			// Bail if not on the settings page
+			if ( ! $this->is_settings_page() ) {
+				return;
+			}
+
+			$tabs        = $this->get_tabs();
+			$current_tab = $this->get_current_tab();
+			$can_save    = ! empty( $tabs[ $current_tab ]['show_save_button'] );
+		}
+
+		$this->render_fc_admin_header(
+			function () use ( $can_save ) {
+				$this->output_settings_header_action_buttons( $can_save );
+			}
+		);
+	}
+
+
+
+	/**
+	 * Output the shared admin header on a guided setup screen.
+	 *
+	 * @param FluidCheckout_Admin_GuidedSetup $guided_setup Guided setup instance.
+	 */
+	public function output_admin_header_for_guided_setup( $guided_setup ) {
+		if ( ! is_object( $guided_setup ) || ! method_exists( $guided_setup, 'is_guided_setup_page' ) || ! $guided_setup->is_guided_setup_page() ) {
+			return;
+		}
+
+		$this->render_fc_admin_header(
+			function () use ( $guided_setup ) {
+				$guided_setup->output_guided_setup_header_action_links();
+			},
+			false
+		);
+	}
+
+
+
+	/**
+	 * Render the Fluid Checkout admin header shell and trailing action controls.
+	 *
+	 * @param callable $output_action_buttons     Callback that echoes header action markup.
+	 * @param bool     $show_support_and_docs     Whether to output Support and Docs links.
+	 */
+	private function render_fc_admin_header( callable $output_action_buttons, $show_support_and_docs = true ) {
+		$logo_url    = FluidCheckout::$directory_url . 'images/admin/fluid-checkout-checkmark-logo.svg';
+		$home_url    = 'https://fluidcheckout.com/?mtm_campaign=admin-header&mtm_kwd=logo&mtm_source=settings-header';
 		$support_url = 'https://fluidcheckout.com/support/?mtm_campaign=admin-header&mtm_kwd=support&mtm_source=settings-header';
-		$docs_url = 'https://fluidcheckout.com/docs/?mtm_campaign=admin-header&mtm_kwd=docs&mtm_source=settings-header';
+		$docs_url    = 'https://fluidcheckout.com/docs/?mtm_campaign=admin-header&mtm_kwd=docs&mtm_source=settings-header';
 		?>
 		<div id="fc-header">
 			<div class="fc-header__notices" data-fc-settings-notices aria-live="polite"></div>
@@ -318,30 +365,19 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 				?>
 			</div>
 
-			<a class="fc-header__button" href="<?php echo esc_url( $support_url ); ?>" target="_blank" rel="noopener noreferrer">
-				<span class="dashicons dashicons-email-alt" aria-hidden="true"></span><?php echo esc_html( __( 'Support', 'fluid-checkout' ) ); ?>
-			</a>
-			<a class="fc-header__button" href="<?php echo esc_url( $docs_url ); ?>" target="_blank" rel="noopener noreferrer">
-				<span class="dashicons dashicons-book" aria-hidden="true"></span><?php echo esc_html( __( 'Docs', 'fluid-checkout' ) ); ?>
-			</a>
-			<?php $this->output_settings_header_action_buttons( $can_save ); ?>
+			<?php if ( $show_support_and_docs ) : ?>
+				<a class="fc-header__button" href="<?php echo esc_url( $support_url ); ?>" target="_blank" rel="noopener noreferrer">
+					<span class="dashicons dashicons-email-alt" aria-hidden="true"></span><?php echo esc_html( __( 'Support', 'fluid-checkout' ) ); ?>
+				</a>
+				<a class="fc-header__button" href="<?php echo esc_url( $docs_url ); ?>" target="_blank" rel="noopener noreferrer">
+					<span class="dashicons dashicons-book" aria-hidden="true"></span><?php echo esc_html( __( 'Docs', 'fluid-checkout' ) ); ?>
+				</a>
+			<?php endif; ?>
+			<?php
+			$output_action_buttons();
+			?>
 		</div>
 		<?php
-	}
-
-	/**
-	 * Maybe output the Fluid Checkout admin page header on the settings page.
-	 */
-	public function maybe_output_admin_header() {
-		// Bail if not on the settings page
-		if ( ! $this->is_settings_page() ) { return; }
-
-		// Get whether the current tab can be saved
-		$tabs = $this->get_tabs();
-		$current_tab = $this->get_current_tab();
-		$can_save = ! empty( $tabs[ $current_tab ][ 'show_save_button' ] );
-
-		$this->output_admin_header( $can_save );
 	}
 
 

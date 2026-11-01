@@ -23,6 +23,29 @@ class FluidCheckout_Telemetry_Disable_Constant_Test extends TestCase {
 		$this->assertStringContainsString( 'FC_DISABLE_TELEMETRY', FC_Telemetry_Client::get_disabled_by_constant_message() );
 	}
 
+
+
+	/**
+	 * Test: get_telemetry_api_url follows fc_telemetry_api_url and still resolves config.
+	 */
+	public function test_get_telemetry_api_url_resolves_remote_host_override() {
+		$this->skip_if_constant_already_defined();
+
+		add_filter(
+			'fc_telemetry_api_url',
+			static function() {
+				return 'https://telemetry.example.test';
+			}
+		);
+
+		$api_url = FluidCheckout::get_telemetry_api_url();
+		$config  = FC_Telemetry_Client::get_telemetry_config( $api_url );
+
+		$this->assertSame( 'https://telemetry.example.test', $api_url );
+		$this->assertSame( 'fc_telemetry_enabled', $config['enable_option'] );
+		$this->assertSame( 'FC_DISABLE_TELEMETRY', $config['disable_constant'] );
+	}
+
 	/**
 	 * Test: a schedule can be created while the constant is unset.
 	 */

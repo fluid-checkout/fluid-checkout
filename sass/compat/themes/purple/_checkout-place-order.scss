@@ -1,0 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body#{ $body-theme-selector } .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-privacy-policy-text > p:first-child {
+	margin-top: 0;
+}
