@@ -19,23 +19,3 @@ body#{ $body-template-selector } div.woocommerce .fc-wrapper #order_review table
 	padding-bottom: math.div( $order-summary-cell-padding-vertical, 2 ) !important; // Needed to override theme styles
 }
 
-
-
-body#{ $body-template-selector }.has-fc-coupon-code--before-order-totals div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table > tfoot > tr.coupon-code-form > td {
-	padding-bottom: math.div( $order-summary-cell-padding-vertical, 2 ) + $global-spacing-extra-small !important; // Needed to override theme styles
-}
-
-
-
-
-
-body#{ $body-template-selector } .fc-wrapper .fc-checkout-order-review-collapsible-wrapper {
-	margin-bottom: $global-spacing-extra-small;
-	box-shadow: $checkout-step-box-shadow;
-
-	@media (#{$bp-larger-than-tablet}) {
-		margin-bottom: $global-spacing-small;
-		box-shadow: $checkout-step-box-shadow--large-screen;
-	}
-}
-

@@ -38,8 +38,4 @@ $body-template-selector: null !default;
 	--fluidcheckout--option-box--label-border-color--hover: #{ $grey };
 
 	--fluidcheckout--option-box--label-border-color--checked: #{ $black };
-
-	--fluidcheckout--order-details--section-border-width--alt: #{ remsize( .1rem ) }; // Need to use same unit type otherwise CSS `calc()` might not work.
-
-	--fc-adb--address-entry--border-radius: #{ $global-radius };
 }
