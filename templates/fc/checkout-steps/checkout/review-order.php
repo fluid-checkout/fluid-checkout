@@ -58,7 +58,7 @@ defined( 'ABSPATH' ) || exit;
 
 			if ( $_product instanceof WC_Product && $_product->exists() && $cart_item['quantity'] > 0 && $visible ) {
 				// CHANGE: Keep cart item name filters for plugin compatibility; default markup is output via fc_order_summary_cart_item_details hooks
-				$cart_item_name = WC()->cart->get_item_product_name( $cart_item, $_product );
+				$cart_item_name = FluidCheckout_Steps::instance()->get_cart_item_product_name( $cart_item, $_product );
 				/**
 				 * This filter is documented in woocommerce/templates/cart/cart.php.
 				 *
