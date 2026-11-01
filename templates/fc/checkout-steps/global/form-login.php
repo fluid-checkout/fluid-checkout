@@ -90,7 +90,8 @@ $unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 		<button type="submit" class="woocommerce-form-login__submit <?php
 			echo esc_attr(
 				apply_filters( 'fc_checkout_login_button_classes', 'woocommerce-button button' )
-				. ( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' )
+				// CHANGE: Check if function introduced in WooCommerce 7.1 is available before trying to use it
+				. ( function_exists( 'wc_wp_theme_get_element_class_name' ) && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' )
 			);
 		?>" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>">
 			<?php echo esc_html( apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) ) ); ?>
