@@ -358,14 +358,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_integration_svea_checkout_express_checkout_button_enabled' => 'yes',
 			'fc_pro_integration_woo_all_products_for_subscriptions_show_options_on_checkout' => 'yes',
 
-			// =============================== OTHER PLUGIN OR THEME COMPATIBILITY ===============================
-			'gm_order_review_checkboxes_before_order_review'                => 'off',
-			'hezarfen_checkout_fields_auto_sort'                            => 'no',
-			'hezarfen_hide_checkout_postcode_fields'                        => 'no',
-			'sg_enable_picker'                                              => 'enable',
-			'woocommerce_gzd_display_checkout_back_to_cart_button'          => 'no',
-			'woocommerce_gzd_display_checkout_table_color'                  => '#eeeeee',
-
 			// =============================== THEME COMPATIBILITY ===============================
 			'fc_compat_theme_atomion_display_order_progress'                => 'no',
 			'fc_compat_theme_atomion_display_field_labels'                  => 'yes',
@@ -1501,8 +1493,12 @@ class FluidCheckout_Settings extends FluidCheckout {
 	}
 
 	/**
-	 * Copy the active profile back to individual options.
-	 * Used on deactivation, when `get_option()` no longer reads the profile.
+	 * Copy non-Fluid Checkout profile values back to individual wp_options rows.
+	 *
+	 * Used on deactivation when `get_option()` no longer reads the profile. Managed
+	 * `fc_*` keys stay in the settings profile only; WooCommerce and other override
+	 * keys (for example `woocommerce_enable_guest_checkout`) are synced so the store
+	 * keeps working without Fluid Checkout.
 	 */
 	public function sync_active_profile_to_raw_options() {
 		$slug = $this->get_active_profile_slug();
@@ -1515,10 +1511,13 @@ class FluidCheckout_Settings extends FluidCheckout {
 		// Bail if the profile payload is missing
 		if ( ! is_array( $values ) || empty( $values ) ) { return; }
 
-		// Iterate stored values and write them to the options table
+		// Iterate stored values and write non-FC keys to the options table
 		foreach ( $values as $key => $value ) {
 			// Skip invalid keys
 			if ( ! is_string( $key ) || '' === $key ) { continue; }
+
+			// Skip Fluid Checkout keys that belong in the profile only
+			if ( $this->is_fluid_checkout_option_key( $key ) ) { continue; }
 
 			// Keep the existing autoload flag when the row is already present
 			$this->update_raw_option( $key, $value, null );

@@ -411,6 +411,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Bump tested up to WooCommerce 11.3
 * Added: Compatibility with theme Purple.
 * Added: New settings pages, with guided setup and live preview of checkout pages.
+* Added: Guided setup recommends guest checkout for direct-to-consumer stores.
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
 * Added: Setting to choose a background color for the Split design secondary column (PRO feature).
@@ -443,6 +444,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Fixed: JavaScript error in collapsible blocks when a child element fires `transitionend` (for example on the view-order account page).
 * Fixed: JavaScript error when focusing a shipping method after checkout update if that method is no longer available in the refreshed fragment.
 * Fixed: Settings page header missing after third-party admin notices are stripped on Fluid Checkout settings screens.
+* Fixed: Plugin deactivation syncs only non-Fluid Checkout settings from the active profile to wp_options. Managed `fc_*` values stay in the profile.
 * Deprecated: Filter `fc_next_step_button_label` now shows a deprecation notice, use `fc_proceed_to_next_step_button_label` instead.
 * Deprecated: Filter `fc_shipping_methods_disable_auto_select`, use `fc_prevent_shipping_method_autoselect` instead. Note that the new filter has inverted logic: return `true` to prevent auto-selecting a shipping method.
 * Deprecated: Filter `fc_skip_add_pickup_point_info_as_review_text_lines`. Returning true from this filter still skips pickup point details from the shipping method review text. Use `fc_add_pickup_point_info_as_review_text_lines` instead.

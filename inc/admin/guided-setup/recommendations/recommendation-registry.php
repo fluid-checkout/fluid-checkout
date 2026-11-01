@@ -331,6 +331,17 @@ return array(
 
 	array(
 		'option_key'  => 'woocommerce_enable_guest_checkout',
+		'value'       => 'yes',
+		'title'       => __( 'Guest checkout', 'fluid-checkout' ),
+		'description' => __( 'Let customers place orders without creating an account first.', 'fluid-checkout' ),
+		'score'       => function ( $answers, $filtered_values = array() ) {
+			$audience = isset( $answers['customer_audience'] ) ? (string) $answers['customer_audience'] : 'dtc';
+
+			return 'b2b' === $audience ? 0 : 90;
+		},
+	),
+	array(
+		'option_key'  => 'woocommerce_enable_guest_checkout',
 		'value'       => 'no',
 		'title'       => __( 'Require account to checkout', 'fluid-checkout' ),
 		'description' => __( 'Turn off guest checkout so customers must log in or create an account before placing an order.', 'fluid-checkout' ),

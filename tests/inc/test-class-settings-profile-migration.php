@@ -37,6 +37,37 @@ class FluidCheckout_Settings_Profile_Migration_Test extends TestCase {
 		$this->assertSame( 'no', get_option( $option ) );
 	}
 
+	/**
+	 * Test: deactivation sync writes WooCommerce overrides only, not managed `fc_*` keys.
+	 */
+	public function test_deactivation_sync_skips_fc_managed_option_keys() {
+		$settings = FluidCheckout_Settings::instance();
+		$woo_key  = 'woocommerce_enable_guest_checkout';
+		$fc_key   = 'fc_design_template';
+
+		$this->reset_settings_profiles_migration_state( $settings );
+
+		$this->delete_raw_option_row( $woo_key );
+		$this->set_raw_option_row( $fc_key, 'boxed' );
+
+		$this->assertTrue(
+			$settings->save_profile_values(
+				'default',
+				array(
+					$woo_key => 'yes',
+					$fc_key  => 'split',
+				)
+			)
+		);
+		$settings->update_raw_option( FluidCheckout_Settings::ACTIVE_PROFILE_OPTION, 'default', false );
+		$settings->invalidate_cache();
+
+		$settings->sync_active_profile_to_raw_options();
+
+		$this->assertSame( 'yes', $settings->get_raw_option( $woo_key, null ) );
+		$this->assertSame( 'boxed', $settings->get_raw_option( $fc_key, null ) );
+	}
+
 
 
 	/**
