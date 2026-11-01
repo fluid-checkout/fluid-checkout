@@ -77,11 +77,25 @@ class FluidCheckout_Guided_Setup_Recommendation_Filters {
 	 * Register the default Lite checkout filter types.
 	 */
 	public function register_default_checkout_filters() {
+		$this->register_filter( 'base', 5, array( $this, 'resolve_base_values' ) );
 		$this->register_filter( 'business_industry', 10, array( $this, 'resolve_business_industry_values' ) );
 		$this->register_filter( 'customer_audience', 20, array( $this, 'resolve_customer_audience_values' ) );
 		$this->register_filter( 'customer_location', 25, array( $this, 'resolve_customer_location_values' ) );
 		$this->register_filter( 'product_types', 30, array( $this, 'resolve_product_types_values' ) );
 		$this->register_filter( 'delivery_methods', 40, array( $this, 'resolve_delivery_methods_values' ) );
+	}
+
+
+
+	/**
+	 * Resolve the always-on base filter file slug.
+	 *
+	 * @param array $answers Wizard answers (unused).
+	 *
+	 * @return string[]
+	 */
+	public function resolve_base_values( $answers ) {
+		return array( 'always' );
 	}
 
 

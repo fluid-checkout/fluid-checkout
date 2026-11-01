@@ -17,6 +17,8 @@ defined( 'ABSPATH' ) || exit;
  * default. The recommendation id is the option_key. Lite and matching PRO rows are included.
  * On Lite, the recommended_setup UI shows 3 PRO rows and hides the rest behind
  * "Show more recommendations"; PRO shows all matching PRO rows.
+ * Always-on page features (cart, thank you, order pay) are voted by `filters/base/always.php`
+ * at the lowest filter specificity and use a low score so they sort last in the UI.
  *
  * File order follows Fluid Checkout settings tabs and section order within each tab
  * (Checkout → Cart → Thank you → Order pay → Address autocomplete → Address book → Customer accounts →
@@ -202,7 +204,8 @@ return array(
 		'title'        => __( 'Enable optimized cart page', 'fluid-checkout' ),
 		'description'  => __( 'Improved cart page to reduce cart abandonment rates and give customers a consistent experience.', 'fluid-checkout' ),
 		'score'        => function ( $answers, $filtered_values = array() ) {
-			return 80;
+			// Always-on base recommendation: keep near the end of the list
+			return 5;
 		},
 	),
 
@@ -215,12 +218,13 @@ return array(
 	array(
 		'is_pro'       => true,
 		'feature_slug' => 'thank-you-page',
-		'option_key'   => 'fc_pro_enable_thank_you_page',
+		'option_key'   => 'fc_pro_enable_order_received',
 		'value'        => 'yes',
 		'title'        => __( 'Enable optimized thank you page', 'fluid-checkout' ),
 		'description'  => __( 'Improved thank you page to give customers a consistent experience.', 'fluid-checkout' ),
 		'score'        => function ( $answers, $filtered_values = array() ) {
-			return 80;
+			// Always-on base recommendation: keep near the end of the list
+			return 5;
 		},
 	),
 
@@ -233,12 +237,13 @@ return array(
 	array(
 		'is_pro'       => true,
 		'feature_slug' => 'order-pay-page',
-		'option_key'   => 'fc_pro_enable_order_pay_page',
+		'option_key'   => 'fc_pro_enable_order_pay',
 		'value'        => 'yes',
 		'title'        => __( 'Enable optimized order pay page', 'fluid-checkout' ),
 		'description'  => __( 'Improved order pay page to give customers a consistent experience.', 'fluid-checkout' ),
 		'score'        => function ( $answers, $filtered_values = array() ) {
-			return 80;
+			// Always-on base recommendation: keep near the end of the list
+			return 5;
 		},
 	),
 

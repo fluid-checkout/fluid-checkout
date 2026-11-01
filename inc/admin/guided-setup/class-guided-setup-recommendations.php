@@ -190,6 +190,7 @@ class FluidCheckout_Guided_Setup_Recommendations {
 			'customer_location'  => 25,
 			'customer_audience'  => 20,
 			'business_industry'  => 10,
+			'base'               => 5,
 		);
 	}
 
