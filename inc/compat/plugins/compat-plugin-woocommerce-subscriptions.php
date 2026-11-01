@@ -7,6 +7,13 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 	/**
+	 * Option key for subscription checkout account creation (WooCommerce Subscriptions).
+	 */
+	const SUBSCRIPTION_CHECKOUT_ACCOUNT_OPTION = 'woocommerce_enable_signup_from_checkout_for_subscriptions';
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct( ) {
@@ -41,13 +48,6 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 	}
-
-
-
-	/**
-	 * Option key for subscription checkout account creation (WooCommerce Subscriptions).
-	 */
-	const SUBSCRIPTION_CHECKOUT_ACCOUNT_OPTION = 'woocommerce_enable_signup_from_checkout_for_subscriptions';
 
 
 

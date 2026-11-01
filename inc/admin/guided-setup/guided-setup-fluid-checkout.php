@@ -16,6 +16,40 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
+	 * Initialize hooks.
+	 */
+	public function hooks() {
+		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
+		add_action( 'admin_menu', array( $this, 'register_admin_page' ), 99 );
+		add_filter( 'admin_body_class', array( $this, 'add_admin_body_class' ), 10 );
+
+		add_action( 'admin_init', array( $this, 'maybe_process_admin_action' ), 10 );
+		add_action( 'admin_init', array( $this, 'maybe_redirect_after_plugin_activation' ), 20 );
+
+		add_action( $this->get_config_value( 'admin_action_hook_prefix' ) . 'skip_guided_setup', array( $this, 'process_skip_guided_setup' ), 10 );
+		add_action( $this->get_config_value( 'admin_action_hook_prefix' ) . 'finish_guided_setup', array( $this, 'process_finish_guided_setup' ), 10 );
+		add_action( $this->get_config_value( 'admin_action_hook_prefix' ) . 'start_over_guided_setup', array( $this, 'process_start_over_guided_setup' ), 10 );
+
+		add_action( 'wp_ajax_' . $this->get_config_value( 'ajax_step_action_prefix' ) . 'about_store', array( $this, 'ajax_process_step_about_store' ), 10 );
+		add_action( 'wp_ajax_' . $this->get_config_value( 'ajax_step_action_prefix' ) . 'product_types', array( $this, 'ajax_process_step_product_types' ), 10 );
+		add_action( 'wp_ajax_' . $this->get_config_value( 'ajax_step_action_prefix' ) . 'recommended_setup', array( $this, 'ajax_process_step_recommended_setup' ), 10 );
+		add_action( 'wp_ajax_' . $this->get_config_value( 'ajax_sub_step_action' ), array( $this, 'ajax_save_sub_step_progress' ), 10 );
+		add_action( 'wp_ajax_' . $this->get_config_value( 'ajax_save_answers_action' ), array( $this, 'ajax_save_checkout_answers' ), 10 );
+
+		add_filter( $this->get_config_value( 'js_settings_filter' ), array( $this, 'add_js_settings' ), 10 );
+
+		add_action( 'admin_head', array( $this, 'maybe_output_settings_inline_script' ), 5 );
+
+		add_filter( 'admin_footer_text', array( $this, 'clear_guided_setup_admin_footer' ), 11 );
+		add_filter( 'update_footer', array( $this, 'clear_guided_setup_admin_footer' ), 11 );
+
+		add_filter( 'fc_telemetry_guided_setup_progress', array( $this, 'sanitize_guided_setup_progress_for_telemetry' ), 10, 2 );
+	}
+
+
+
+	/**
 	 * Get guided setup configuration values.
 	 *
 	 * @return array
@@ -48,40 +82,6 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 			'js_settings_filter'               => 'fc_js_settings_admin',
 			'script_init_settings_key'         => 'guidedSetup',
 		);
-	}
-
-
-
-	/**
-	 * Initialize hooks.
-	 */
-	public function hooks() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
-
-		add_action( 'admin_menu', array( $this, 'register_admin_page' ), 99 );
-		add_filter( 'admin_body_class', array( $this, 'add_admin_body_class' ), 10 );
-
-		add_action( 'admin_init', array( $this, 'maybe_process_admin_action' ), 10 );
-		add_action( 'admin_init', array( $this, 'maybe_redirect_after_plugin_activation' ), 20 );
-
-		add_action( $this->get_config_value( 'admin_action_hook_prefix' ) . 'skip_guided_setup', array( $this, 'process_skip_guided_setup' ), 10 );
-		add_action( $this->get_config_value( 'admin_action_hook_prefix' ) . 'finish_guided_setup', array( $this, 'process_finish_guided_setup' ), 10 );
-		add_action( $this->get_config_value( 'admin_action_hook_prefix' ) . 'start_over_guided_setup', array( $this, 'process_start_over_guided_setup' ), 10 );
-
-		add_action( 'wp_ajax_' . $this->get_config_value( 'ajax_step_action_prefix' ) . 'about_store', array( $this, 'ajax_process_step_about_store' ), 10 );
-		add_action( 'wp_ajax_' . $this->get_config_value( 'ajax_step_action_prefix' ) . 'product_types', array( $this, 'ajax_process_step_product_types' ), 10 );
-		add_action( 'wp_ajax_' . $this->get_config_value( 'ajax_step_action_prefix' ) . 'recommended_setup', array( $this, 'ajax_process_step_recommended_setup' ), 10 );
-		add_action( 'wp_ajax_' . $this->get_config_value( 'ajax_sub_step_action' ), array( $this, 'ajax_save_sub_step_progress' ), 10 );
-		add_action( 'wp_ajax_' . $this->get_config_value( 'ajax_save_answers_action' ), array( $this, 'ajax_save_checkout_answers' ), 10 );
-
-		add_filter( $this->get_config_value( 'js_settings_filter' ), array( $this, 'add_js_settings' ), 10 );
-
-		add_action( 'admin_head', array( $this, 'maybe_output_settings_inline_script' ), 5 );
-
-		add_filter( 'admin_footer_text', array( $this, 'clear_guided_setup_admin_footer' ), 11 );
-		add_filter( 'update_footer', array( $this, 'clear_guided_setup_admin_footer' ), 11 );
-
-		add_filter( 'fc_telemetry_guided_setup_progress', array( $this, 'sanitize_guided_setup_progress_for_telemetry' ), 10, 2 );
 	}
 
 

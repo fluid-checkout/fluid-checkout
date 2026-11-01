@@ -111,7 +111,7 @@ body.fc-guided-setup:not( .fc-guided-setup--wide-content ) .fc-setup-card .fc-se
 	float: none;
 	position: absolute;
 	top: 50%;
-	left: 45%;
+	left: 45%; // Intentionally using literal `left` as using RTL aware values would break the layout
 	display: block;
 	width: $fc-settings-checkbox-check-size;
 	height: $fc-settings-checkbox-check-size;
