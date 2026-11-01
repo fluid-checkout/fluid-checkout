@@ -349,8 +349,15 @@ class FluidCheckout_Guided_Setup_FluidCheckout_Test extends TestCase {
 
 		$progress = FluidCheckout_Admin_GuidedSetup::get_progress_for_slug( 'fc_checkout' );
 
+		$expected_overrides = array( 'fc_show_shipping_section_highlighted' );
+
+		// PRO rows are skipped on Lite promos, but join user_overrides when PRO can apply them
+		if ( $engine->should_apply_pro_recommendation_options() ) {
+			$expected_overrides[] = 'fc_gaa_enabled';
+		}
+
 		$this->assertSame(
-			array( 'fc_show_shipping_section_highlighted' ),
+			$expected_overrides,
 			$progress['recommendations']['user_overrides']
 		);
 
