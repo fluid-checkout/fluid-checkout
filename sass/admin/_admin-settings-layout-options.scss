@@ -48,7 +48,8 @@
 	cursor: pointer;
 }
 
-.fc-settings-wrap .fc-settings-radio-option input[type="radio"] {
+.fc-settings-wrap .fc-settings-radio-option input[type="radio"],
+.fc-settings-wrap .fc-settings-radio-option input[type="checkbox"] {
 	display: inline-flex;
 	flex: 0 0 auto;
 	align-items: center;
@@ -62,8 +63,12 @@
 	box-shadow: none;
 }
 
-// Keep the checked dot centered; WP shares float/inline-block with checkboxes
-// and uses fixed margins below 782px, which displaces the dot on some sites.
+.fc-settings-wrap .fc-settings-radio-option input[type="checkbox"] {
+	position: relative;
+}
+
+// Keep checked indicators centered; WP uses float/negative margins (and larger
+// mobile sizes below 782px) which displace the mark on some sites.
 .fc-settings-wrap .fc-settings-radio-option input[type="radio"]:checked::before {
 	float: none;
 	display: block;
@@ -73,8 +78,24 @@
 	line-height: 0;
 }
 
+// Absolute-center the WP check SVG; content:url() does not flex-align reliably.
+.fc-settings-wrap .fc-settings-radio-option input[type="checkbox"]:checked::before {
+	float: none;
+	position: absolute;
+	top: 50%;
+	left: 45%;
+	display: block;
+	width: $fc-settings-checkbox-check-size;
+	height: $fc-settings-checkbox-check-size;
+	margin: 0;
+	line-height: 0;
+	transform: translate( -50%, -50% );
+}
+
 .fc-settings-wrap .fc-settings-radio-option input[type="radio"]:focus,
-.fc-settings-wrap .fc-settings-radio-option input[type="radio"]:focus-visible {
+.fc-settings-wrap .fc-settings-radio-option input[type="radio"]:focus-visible,
+.fc-settings-wrap .fc-settings-radio-option input[type="checkbox"]:focus,
+.fc-settings-wrap .fc-settings-radio-option input[type="checkbox"]:focus-visible {
 	outline: none;
 	box-shadow: none;
 }

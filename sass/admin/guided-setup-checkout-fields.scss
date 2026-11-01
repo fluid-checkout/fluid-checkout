@@ -92,7 +92,11 @@ body.fc-guided-setup:not( .fc-guided-setup--wide-content ) .fc-setup-card .fc-se
 	box-shadow: none;
 }
 
-// Keep the checked radio dot centered; WP shares float/inline-block with checkboxes.
+.fc-guided-setup .fc-settings-radio-option input[type="checkbox"] {
+	position: relative;
+}
+
+// Keep checked indicators centered; WP uses float/negative margins which displace them.
 .fc-guided-setup .fc-settings-radio-option input[type="radio"]:checked::before {
 	float: none;
 	display: block;
@@ -100,6 +104,20 @@ body.fc-guided-setup:not( .fc-guided-setup--wide-content ) .fc-setup-card .fc-se
 	height: $fc-settings-radio-dot-size;
 	margin: 0;
 	line-height: 0;
+}
+
+// Absolute-center the WP check SVG; content:url() does not flex-align reliably.
+.fc-guided-setup .fc-settings-radio-option input[type="checkbox"]:checked::before {
+	float: none;
+	position: absolute;
+	top: 50%;
+	left: 45%;
+	display: block;
+	width: $fc-settings-checkbox-check-size;
+	height: $fc-settings-checkbox-check-size;
+	margin: 0;
+	line-height: 0;
+	transform: translate( -50%, -50% );
 }
 
 .fc-guided-setup .fc-settings-radio-option input[type="radio"]:focus,

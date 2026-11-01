@@ -291,6 +291,7 @@ $fc-settings-input-box-shadow:              0 0 0 0 rgba( 0, 0, 0, 0 ), 0 0 0 0 
 $fc-settings-input-group-gap:               10px !default;
 $fc-settings-radio-size:                    1rem !default;
 $fc-settings-radio-dot-size:                0.5rem !default;
+$fc-settings-checkbox-check-size:           1.3125rem !default; // Matches WP admin checked checkbox ::before
 $fc-settings-select-caret-size:             16px !default;
 $fc-settings-select-caret-padding-right:    36px !default;
 $fc-settings-select-caret-offset-x:         10px !default;
