@@ -191,7 +191,6 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 			'shipping_to_country_codes'      => array(),
 			'newsletter_opt_in'              => false,
 			'email'                          => '',
-			'telemetry_opt_in'               => false,
 			'product_types'                  => self::get_default_product_types(),
 			'delivery_methods'               => self::get_default_delivery_methods(),
 		);
@@ -201,7 +200,6 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 		$merged['product_types']     = self::sanitize_slug_list( $merged['product_types'], array_keys( self::get_product_types() ) );
 		$merged['delivery_methods']  = self::sanitize_slug_list( $merged['delivery_methods'], array_keys( self::get_delivery_methods() ) );
 		$merged['newsletter_opt_in'] = self::normalize_bool( $merged['newsletter_opt_in'] );
-		$merged['telemetry_opt_in']  = self::normalize_bool( $merged['telemetry_opt_in'] );
 
 		if ( empty( $merged['customer_audience'] ) || ! array_key_exists( $merged['customer_audience'], self::get_customer_audience_options() ) ) {
 			$merged['customer_audience'] = 'dtc';
@@ -210,6 +208,9 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 		if ( empty( $merged['customer_location'] ) || ! array_key_exists( $merged['customer_location'], self::get_customer_location_options() ) ) {
 			$merged['customer_location'] = self::get_prefill_customer_location();
 		}
+
+		// Usage tracking is the `fc_telemetry_enabled` setting, not a guided setup answer
+		unset( $merged['telemetry_opt_in'] );
 
 		return $merged;
 	}
@@ -311,7 +312,9 @@ class FluidCheckout_Guided_Setup_Checkout_Data {
 			$answers = array_merge( $answers, self::get_store_location_answers() );
 
 			$answers['newsletter_opt_in'] = self::normalize_bool( isset( $form_data['newsletter_opt_in'] ) ? $form_data['newsletter_opt_in'] : false );
-			$answers['telemetry_opt_in']  = self::normalize_bool( isset( $form_data['telemetry_opt_in'] ) ? $form_data['telemetry_opt_in'] : false );
+
+			// Usage tracking is saved to settings separately, not as an answer
+			unset( $answers['telemetry_opt_in'] );
 
 			if ( $answers['newsletter_opt_in'] ) {
 				$email = isset( $form_data['email'] ) ? sanitize_email( wp_unslash( $form_data['email'] ) ) : '';

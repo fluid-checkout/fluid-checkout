@@ -100,19 +100,22 @@ class FluidCheckout_Guided_Setup_FluidCheckout_Test extends TestCase {
 
 
 	/**
-	 * Test: telemetry sanitizer never includes the merchant email.
+	 * Test: telemetry sanitizer never includes email, newsletter opt-in, or usage-tracking opt-in.
 	 */
 	public function test_sanitize_guided_setup_progress_for_telemetry_omits_email() {
 		$progress = array(
 			'answers' => array(
 				'newsletter_opt_in' => false,
 				'email'             => 'merchant@example.com',
+				'telemetry_opt_in'  => true,
 			),
 		);
 
 		$sanitized = $this->wizard->sanitize_guided_setup_progress_for_telemetry( $progress, 'fc_checkout' );
 
 		$this->assertArrayNotHasKey( 'email', $sanitized['answers'] );
+		$this->assertArrayNotHasKey( 'newsletter_opt_in', $sanitized['answers'] );
+		$this->assertArrayNotHasKey( 'telemetry_opt_in', $sanitized['answers'] );
 	}
 
 
@@ -130,20 +133,24 @@ class FluidCheckout_Guided_Setup_FluidCheckout_Test extends TestCase {
 
 
 	/**
-	 * Test: telemetry sanitizer omits email even when newsletter is opted in.
+	 * Test: telemetry sanitizer omits newsletter fields even when newsletter is opted in.
 	 */
 	public function test_sanitize_guided_setup_progress_for_telemetry_omits_email_when_newsletter_opted_in() {
 		$progress = array(
 			'answers' => array(
 				'newsletter_opt_in' => true,
 				'email'             => 'merchant@example.com',
+				'telemetry_opt_in'  => true,
+				'business_industry' => 'food-drink',
 			),
 		);
 
 		$sanitized = $this->wizard->sanitize_guided_setup_progress_for_telemetry( $progress, 'fc_checkout' );
 
 		$this->assertArrayNotHasKey( 'email', $sanitized['answers'] );
-		$this->assertTrue( $sanitized['answers']['newsletter_opt_in'] );
+		$this->assertArrayNotHasKey( 'newsletter_opt_in', $sanitized['answers'] );
+		$this->assertArrayNotHasKey( 'telemetry_opt_in', $sanitized['answers'] );
+		$this->assertSame( 'food-drink', $sanitized['answers']['business_industry'] );
 	}
 
 

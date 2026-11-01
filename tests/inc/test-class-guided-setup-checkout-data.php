@@ -162,6 +162,44 @@ class FluidCheckout_Guided_Setup_Checkout_Data_Test extends TestCase {
 
 
 	/**
+	 * Test: about store does not store usage tracking as an answer.
+	 */
+	public function test_about_store_does_not_store_telemetry_opt_in_answer() {
+		$result = FluidCheckout_Guided_Setup_Checkout_Data::sanitize_step_form_data(
+			'about_store',
+			array(
+				'business_industry' => 'food-drink',
+				'customer_audience' => 'dtc',
+				'customer_location' => 'domestic',
+				'telemetry_opt_in'  => '1',
+			),
+			array(
+				'telemetry_opt_in' => true,
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertArrayNotHasKey( 'telemetry_opt_in', $result );
+	}
+
+
+
+	/**
+	 * Test: default answers never include usage tracking opt-in.
+	 */
+	public function test_default_answers_omit_telemetry_opt_in() {
+		$defaults = FluidCheckout_Guided_Setup_Checkout_Data::get_default_answers(
+			array(
+				'telemetry_opt_in' => true,
+			)
+		);
+
+		$this->assertArrayNotHasKey( 'telemetry_opt_in', $defaults );
+	}
+
+
+
+	/**
 	 * Test: customer location prefill is domestic when selling only to the store country.
 	 */
 	public function test_prefill_customer_location_domestic_for_single_store_country() {

@@ -265,7 +265,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
-	 * Finish guided setup: apply recommendations, newsletter, completed_at, telemetry.
+	 * Finish guided setup: apply recommendations, completed_at, telemetry.
 	 */
 	public function process_finish_guided_setup() {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -278,7 +278,6 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		}
 
 		$this->maybe_apply_recommendations_on_finish();
-		$this->maybe_subscribe_newsletter();
 		$this->set_completed_at();
 		$this->maybe_send_guided_setup_telemetry( true );
 
@@ -303,7 +302,8 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 			wp_send_json_error( array( 'message' => $result->get_error_message() ) );
 		}
 
-		$this->maybe_save_telemetry_opt_in( $result );
+		$this->maybe_save_telemetry_opt_in( $form_data );
+		$this->maybe_subscribe_newsletter();
 		$this->advance_step( 'product_types' );
 		$this->maybe_send_guided_setup_telemetry( false );
 
@@ -507,10 +507,8 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		$selected_customer_location = ! empty( $answers['customer_location'] ) ? $answers['customer_location'] : FluidCheckout_Guided_Setup_Checkout_Data::get_prefill_customer_location();
 		$user_email                 = ! empty( $answers['email'] ) ? $answers['email'] : wp_get_current_user()->user_email;
 		$newsletter_checked   = ! empty( $answers['newsletter_opt_in'] );
+		// Usage tracking mirrors Tools → Usage tracking (`fc_telemetry_enabled`), not guided setup answers
 		$telemetry_checked    = class_exists( 'FC_Telemetry_Client' ) && FC_Telemetry_Client::is_telemetry_enabled();
-		if ( ! $telemetry_checked && ! empty( $answers['telemetry_opt_in'] ) ) {
-			$telemetry_checked = true;
-		}
 		$telemetry_hidden     = class_exists( 'FC_Telemetry_Client' ) && FC_Telemetry_Client::is_disabled_by_constant();
 		?>
 		<div class="fc-setup-card <?php echo esc_attr( $this->get_step_card_visibility_class( 'about_store' ) ); ?>" data-fc-setup-step="about_store">
@@ -1174,6 +1172,11 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 	protected function persist_answers( $answers ) {
 		$this->ensure_started_at();
 
+		// Usage tracking lives in settings, never in guided setup answers
+		if ( is_array( $answers ) ) {
+			unset( $answers['telemetry_opt_in'] );
+		}
+
 		self::set_progress_for_slug(
 			$this->get_guided_setup_id(),
 			array(
@@ -1348,34 +1351,45 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
-	 * Persist telemetry opt-in from step 1.
+	 * Persist usage tracking from the about_store form into plugin settings.
 	 *
-	 * @param array $answers Answers.
+	 * Writes `fc_telemetry_enabled` through the settings profile (same as Tools).
+	 * Does not store a guided setup answer for telemetry.
+	 *
+	 * @param array $form_data Posted form data from about_store.
 	 */
-	protected function maybe_save_telemetry_opt_in( $answers ) {
-		if ( ! class_exists( 'FluidCheckout_Settings' ) ) {
+	protected function maybe_save_telemetry_opt_in( $form_data ) {
+		// Bail if usage tracking is turned off by PHP constant
+		if ( class_exists( 'FC_Telemetry_Client' ) && FC_Telemetry_Client::is_disabled_by_constant() ) {
 			return;
 		}
 
-		$enabled = ! empty( $answers['telemetry_opt_in'] ) ? 'yes' : 'no';
-		FluidCheckout_Settings::instance()->update_raw_option( 'fc_telemetry_enabled', $enabled, false );
+		$form_data = is_array( $form_data ) ? $form_data : array();
+		$enabled   = ! empty( $form_data['telemetry_opt_in'] ) ? 'yes' : 'no';
 
-		if ( class_exists( 'FC_Telemetry_Client' ) ) {
-			if ( 'yes' === $enabled ) {
-				FC_Telemetry_Client::schedule_telemetry_cron( FluidCheckout::get_telemetry_api_url() );
-			} else {
-				FC_Telemetry_Client::unschedule_telemetry_cron( FluidCheckout::get_telemetry_api_url() );
-			}
+		// Save through settings profiles (do not use update_raw_option)
+		update_option( 'fc_telemetry_enabled', $enabled );
+
+		// Bail if telemetry client is unavailable
+		if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
+			return;
+		}
+
+		// Maybe schedule or unschedule the weekly report
+		if ( 'yes' === $enabled ) {
+			FC_Telemetry_Client::schedule_telemetry_cron( FluidCheckout::get_telemetry_api_url() );
+		} else {
+			FC_Telemetry_Client::unschedule_telemetry_cron( FluidCheckout::get_telemetry_api_url() );
 		}
 	}
 
 
 
 	/**
-	 * Subscribe the merchant to the Fluid Checkout newsletter on finish when opted in.
+	 * Subscribe the merchant to the Fluid Checkout newsletter when opted in on about_store.
 	 *
-	 * Sends a separate server-side request to the public fc-licenses newsletter endpoint.
-	 * Email is never included in telemetry.
+	 * Sends a separate server-side request to the public fc-licenses newsletter endpoint
+	 * as soon as the merchant continues to the next step. Email is never included in telemetry.
 	 */
 	protected function maybe_subscribe_newsletter() {
 		$answers = $this->get_stored_answers();
@@ -1517,9 +1531,11 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 
 
 	/**
-	 * Default telemetry sanitizer: never include the merchant email.
+	 * Default telemetry sanitizer for guided setup progress.
 	 *
-	 * Newsletter signup uses a separate request. Email must not ride along in telemetry.
+	 * Strips merchant email, newsletter opt-in, and usage-tracking opt-in.
+	 * Newsletter signup is a separate request; usage tracking is the
+	 * `fc_telemetry_enabled` setting.
 	 *
 	 * @param array  $progress        Progress document.
 	 * @param string $guided_setup_id Guided setup identifier.
@@ -1535,8 +1551,12 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 			return $progress;
 		}
 
-		// Ensure email is not included in telemetry
-		unset( $progress['answers']['email'] );
+		// Ensure email, newsletter opt-in, and usage-tracking opt-in are not included in telemetry answers
+		unset(
+			$progress['answers']['email'],
+			$progress['answers']['newsletter_opt_in'],
+			$progress['answers']['telemetry_opt_in']
+		);
 
 		return $progress;
 	}
