@@ -57,18 +57,24 @@ defined( 'ABSPATH' ) || exit;
 			$visible = apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key );
 
 			if ( $_product instanceof WC_Product && $_product->exists() && $cart_item['quantity'] > 0 && $visible ) {
+				// CHANGE: Keep cart item name filters for plugin compatibility; default markup is output via fc_order_summary_cart_item_details hooks
+				$cart_item_name = WC()->cart->get_item_product_name( $cart_item, $_product );
+				/**
+				 * This filter is documented in woocommerce/templates/cart/cart.php.
+				 *
+				 * @since 2.1.0
+				 */
+				$product_name = apply_filters( 'woocommerce_cart_item_name', $cart_item_name, $cart_item, $cart_item_key );
+				// CHANGE: Remove wp_kses_post product name, checkout_cart_item_quantity, and wc_get_formatted_cart_item_data output
+				// CHANGE: END - Keep cart item name filters for plugin compatibility; default markup is output via fc_order_summary_cart_item_details hooks
 				?>
-				<?php // CHANGE: Add alternative class `cart-item` to allow for better compatibility with styles between different pages, and add product ID to the data attributes ?>
+				<?php // CHANGE: Replace default review order product row with FC order summary layout ?>
 				<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item cart-item', $cart_item, $cart_item_key ) ); ?>" data-cart_item_key="<?php echo esc_attr( $cart_item_key ); ?>" data-product_id="<?php echo esc_attr( $product_id ); ?>">
-					<?php // CHANGE: Use `div` as columns to allow better control over the columns sizing ?>
 					<td colspan="2" role="none">
 						<div class="product-name" role="cell">
 
-							<?php // CHANGE: Add product images ?>
 							<?php echo apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
-							<?php // CHANGE: Add product details wrapper and move all details content to output via hooks ?>
-							<?php // CHANGE: Removed inline get_item_product_name / cart_item_name / product_name echo (moved to fc_order_summary_cart_item_details hooks) ?>
 							<div class="product-details">
 								<?php
 									/**
@@ -117,7 +123,7 @@ defined( 'ABSPATH' ) || exit;
 							?>
 						</div>
 					</td>
-					<?php // CHANGE: END - Use `div` as columns to allow better control over the columns sizing ?>
+					<?php // CHANGE: END - Replace default review order product row with FC order summary layout ?>
 				</tr>
 				<?php
 			}
