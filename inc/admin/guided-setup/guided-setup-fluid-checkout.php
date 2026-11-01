@@ -1377,6 +1377,32 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		}
 
 		FluidCheckout_Settings::instance()->update_active_profile_values( $values );
+
+		$this->maybe_mark_getting_started_checkout_step_from_layout( $values );
+	}
+
+
+
+	/**
+	 * Mark the Getting started "checkout" checklist step when layout is applied.
+	 *
+	 * @param array $values Applied recommendation option values.
+	 */
+	protected function maybe_mark_getting_started_checkout_step_from_layout( $values ) {
+		$values = is_array( $values ) ? $values : array();
+		$layout = isset( $values['fc_checkout_layout'] ) ? (string) $values['fc_checkout_layout'] : '';
+
+		// Bail if guided setup did not apply a multi-step or single-step layout
+		if ( ! in_array( $layout, array( 'multi-step', 'single-step' ), true ) ) {
+			return;
+		}
+
+		// Bail if the Getting started checklist handler is unavailable
+		if ( ! class_exists( 'FluidCheckout_Admin_SettingType_Setup' ) ) {
+			return;
+		}
+
+		FluidCheckout_Admin_SettingType_Setup::instance()->mark_step_completed( 'checkout' );
 	}
 
 
