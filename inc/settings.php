@@ -1239,7 +1239,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 	}
 
 	/**
-	 * Force the option value for design template when only Lite plugin is activated.
+	 * Force a design template available in Lite when only Lite plugin is activated.
 	 *
 	 * @param  mixed   $pre_option   The value to return instead of the option value.
 	 * @param  string  $option       Option name.
@@ -1248,6 +1248,14 @@ class FluidCheckout_Settings extends FluidCheckout {
 	public function set_option_lite_design_template( $pre_option, $option, $default ) {
 		// Bail while reading the stored row for migration
 		if ( $this->bypass_pre_option ) { return $pre_option; }
+
+		// Get the stored design template, as the `pre_option_` filter runs before the profile value is read
+		$design_template = false !== $pre_option ? $pre_option : $this->get_stored_option_value( 'fc_design_template' );
+
+		// Return the design template when it is available in Lite
+		if ( in_array( $design_template, array( 'classic', 'boxed' ), true ) ) {
+			return $design_template;
+		}
 
 		return $this->get_option_default( 'fc_design_template' );
 	}
@@ -1392,12 +1400,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 				continue;
 			}
 
-			// Skip options Lite is forcing, so a save while PRO is inactive does not replace the stored PRO value
-			$stored_value = $this->get_stored_option_value( $option[ 'id' ] );
-			if ( $this->maybe_force_lite_option_value( $option[ 'id' ], $stored_value ) !== $stored_value ) {
-				continue;
-			}
-
 			$option_name = $option[ 'field_name' ] ?? $option[ 'id' ];
 
 			// Get posted value (supports nested option names)
@@ -1416,6 +1418,15 @@ class FluidCheckout_Settings extends FluidCheckout {
 
 			// Skip null values (e.g. passwords left blank)
 			if ( null === $value ) {
+				continue;
+			}
+
+			// Get the stored value and the value Lite forces from it
+			$stored_value = $this->get_stored_option_value( $option[ 'id' ] );
+			$forced_value = $this->maybe_force_lite_option_value( $option[ 'id' ], $stored_value );
+
+			// Skip unchanged values Lite is forcing, so a save while PRO is inactive keeps the stored PRO value
+			if ( $forced_value !== $stored_value && $value === $forced_value ) {
 				continue;
 			}
 
