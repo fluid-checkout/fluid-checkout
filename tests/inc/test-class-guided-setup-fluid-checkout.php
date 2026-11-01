@@ -369,4 +369,50 @@ class FluidCheckout_Guided_Setup_FluidCheckout_Test extends TestCase {
 		$this->assertSame( 'no', $settings->get_option( 'fc_gaa_enabled' ) );
 	}
 
+	/**
+	 * Test: applying guest checkout from recommendations marks the customer accounts checklist step.
+	 */
+	public function test_apply_recommendations_marks_customer_accounts_checklist_step_for_guest_checkout() {
+		$engine = FluidCheckout_Guided_Setup_Recommendations::instance();
+		$setup  = FluidCheckout_Admin_SettingType_Setup::instance();
+
+		delete_option( FluidCheckout_Admin_SettingType_Setup::CHECKLIST_OPTION );
+
+		$answers = FluidCheckout_Guided_Setup_Checkout_Data::get_default_answers(
+			array(
+				'customer_audience' => 'dtc',
+			)
+		);
+
+		FluidCheckout_Admin_GuidedSetup::set_progress_for_slug(
+			'fc_checkout',
+			array(
+				'answers'         => $answers,
+				'recommendations' => array(
+					'answers_hash'   => $engine->get_answers_hash( $answers ),
+					'profile_values' => array(
+						'woocommerce_enable_guest_checkout' => 'yes',
+					),
+					'recommended'    => array(
+						array(
+							'option_key'  => 'woocommerce_enable_guest_checkout',
+							'value'       => 'yes',
+							'checked'     => true,
+							'is_pro'      => false,
+							'title'       => 'Guest checkout',
+							'description' => '',
+						),
+					),
+					'user_overrides' => array(),
+				),
+			)
+		);
+
+		$apply = ( new ReflectionClass( $this->wizard ) )->getMethod( 'maybe_apply_recommendations_on_finish' );
+		$apply->setAccessible( true );
+		$apply->invoke( $this->wizard );
+
+		$this->assertTrue( $setup->is_step_completed( 'customer_accounts' ) );
+	}
+
 }

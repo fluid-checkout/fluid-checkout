@@ -1379,6 +1379,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		FluidCheckout_Settings::instance()->update_active_profile_values( $values );
 
 		$this->maybe_mark_getting_started_checkout_step_from_layout( $values );
+		$this->maybe_mark_getting_started_customer_accounts_step_from_guest_checkout( $values );
 	}
 
 
@@ -1403,6 +1404,31 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		}
 
 		FluidCheckout_Admin_SettingType_Setup::instance()->mark_step_completed( 'checkout' );
+	}
+
+
+
+	/**
+	 * Mark the Getting started "customer accounts" checklist step when guest checkout is applied.
+	 *
+	 * Applies when recommendations enable or disable guest checkout (`yes` or `no`).
+	 *
+	 * @param array $values Applied recommendation option values.
+	 */
+	protected function maybe_mark_getting_started_customer_accounts_step_from_guest_checkout( $values ) {
+		$values = is_array( $values ) ? $values : array();
+
+		// Bail if guided setup did not apply guest checkout
+		if ( ! array_key_exists( 'woocommerce_enable_guest_checkout', $values ) ) {
+			return;
+		}
+
+		// Bail if the Getting started checklist handler is unavailable
+		if ( ! class_exists( 'FluidCheckout_Admin_SettingType_Setup' ) ) {
+			return;
+		}
+
+		FluidCheckout_Admin_SettingType_Setup::instance()->mark_step_completed( 'customer_accounts' );
 	}
 
 
