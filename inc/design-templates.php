@@ -22,6 +22,13 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		// General
 		add_filter( 'body_class', array( $this, 'maybe_add_body_class' ), 10 );
 
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_checkout' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_add_payment_method' ), 10 );
+
 		// CSS variables
 		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5, 2 );
 		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 100, 2 );
@@ -42,6 +49,13 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	public function undo_hooks() {
 		// General
 		remove_filter( 'body_class', array( $this, 'maybe_add_body_class' ), 10 );
+
+		// Register assets
+		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_checkout' ), 10 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_add_payment_method' ), 10 );
 
 		// CSS variables
 		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
@@ -103,6 +117,59 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		) { return $classes; }
 
 		return $this->add_body_class( $classes );
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Styles
+		wp_register_style( 'fc-design-template--boxed', FluidCheckout_Enqueue::instance()->get_style_url( 'css/design-templates/design-template-boxed' ), array( 'fc-checkout-layout', 'fc-checkout-steps' ), NULL );
+		wp_register_style( 'fc-design-template-boxed-add-payment-method', FluidCheckout_Enqueue::instance()->get_style_url( 'css/design-templates/design-template-boxed-add-payment-method' ), array( 'fc-add-payment-method-page' ), NULL );
+	}
+
+	/**
+	 * Enqueue assets for the checkout page.
+	 */
+	public function enqueue_assets_checkout() {
+		// Styles
+		wp_enqueue_style( 'fc-design-template--boxed' );
+	}
+
+	/**
+	 * Maybe enqueue assets for the checkout page.
+	 */
+	public function maybe_enqueue_assets_checkout() {
+		// Bail if not at checkout
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Bail if the design template is not Boxed
+		if ( 'boxed' !== FluidCheckout_Settings::instance()->get_option( 'fc_design_template' ) ) { return; }
+
+		$this->enqueue_assets_checkout();
+	}
+
+	/**
+	 * Enqueue assets for the add payment method page.
+	 */
+	public function enqueue_assets_add_payment_method() {
+		// Styles
+		wp_enqueue_style( 'fc-design-template-boxed-add-payment-method' );
+	}
+
+	/**
+	 * Maybe enqueue assets for the add payment method page.
+	 */
+	public function maybe_enqueue_assets_add_payment_method() {
+		// Bail if not on the add payment method page
+		if ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'add-payment-method' ) ) { return; }
+
+		// Bail if the design template is not Boxed
+		if ( 'boxed' !== FluidCheckout_Settings::instance()->get_option( 'fc_design_template' ) ) { return; }
+
+		$this->enqueue_assets_add_payment_method();
 	}
 
 
