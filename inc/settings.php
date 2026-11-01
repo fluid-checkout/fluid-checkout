@@ -454,14 +454,17 @@ class FluidCheckout_Settings extends FluidCheckout {
 	}
 
 	/**
-	 * Get the value for a specific option. Returns default if option value is not set.
+	 * Whether an option key belongs to Fluid Checkout.
 	 *
-	 * Effective value: context profile overlay → active profile → code default (managed)
-	 * or WP option (unmanaged, unless present in a loaded profile payload).
+	 * Requires the `fc_` prefix and a matching entry in the settings defaults map,
+	 * so third-party options that also use `fc_` (for example FluentCRM) are excluded.
 	 *
-	 * @param  string  $option   Option name.
-	 * @param  mixed   $default  The fallback value to return if the option does not exist.
+	 * @param  string  $option  Option name.
 	 */
+	public function is_fluid_checkout_option_key( $option ) {
+		return is_string( $option ) && 0 === strpos( $option, 'fc_' ) && $this->is_managed_option( $option );
+	}
+
 	/**
 	 * Whether an option key is site-wide (never stored in settings profiles).
 	 *
@@ -471,6 +474,15 @@ class FluidCheckout_Settings extends FluidCheckout {
 		return is_string( $option ) && in_array( $option, self::SITE_WIDE_OPTION_KEYS, true );
 	}
 
+	/**
+	 * Get the value for a specific option. Returns default if option value is not set.
+	 *
+	 * Effective value: context profile overlay → active profile → code default (`fc_*`)
+	 * or raw wp_options for non-`fc_*` keys (preserve other plugins) / unmanaged keys.
+	 *
+	 * @param  string  $option   Option name.
+	 * @param  mixed   $default  The fallback value to return if the option does not exist.
+	 */
 	public function get_option( $option, $default = null ) {
 		// Maybe get default from the default values array.
 		if ( null === $default ) {
@@ -489,11 +501,11 @@ class FluidCheckout_Settings extends FluidCheckout {
 		if ( is_array( $effective ) && array_key_exists( $option, $effective ) ) {
 			$value = $effective[ $option ];
 		}
-		// Managed keys without a stored value use the code default
-		elseif ( $this->is_managed_option( $option ) ) {
+		// Fluid Checkout keys without a stored value use the code default
+		elseif ( $this->is_fluid_checkout_option_key( $option ) ) {
 			$value = $default;
 		}
-		// Unmanaged keys fall through to WordPress
+		// Non-`fc_*` and unmanaged keys fall through to WordPress / other plugins
 		else {
 			$value = $this->get_raw_option( $option, $default );
 		}
@@ -670,6 +682,14 @@ class FluidCheckout_Settings extends FluidCheckout {
 		$post_id = $this->get_profile_post_id_by_slug( $slug );
 		$post_content = serialize( $values ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize -- Intentional for CPT post_content payload.
 
+		// Discard stale cached IDs that no longer resolve to a profile post
+		if ( null !== $post_id ) {
+			$post = get_post( $post_id );
+			if ( ! $post || self::PROFILE_POST_TYPE !== $post->post_type ) {
+				$post_id = null;
+			}
+		}
+
 		// Create the profile post without the payload. `wp_insert_post()` runs `content_save_pre`, which kses and slashes would corrupt a serialized map.
 		if ( null === $post_id ) {
 			$post_id = wp_insert_post(
@@ -762,7 +782,16 @@ class FluidCheckout_Settings extends FluidCheckout {
 		}
 
 		$defaults = $this->get_default_option_values();
-		$effective = is_array( $defaults ) ? $defaults : array();
+		$defaults = is_array( $defaults ) ? $defaults : array();
+		$effective = array();
+
+		// Seed only Fluid Checkout keys; non-`fc_*` values come from the profile or wp_options
+		foreach ( $defaults as $key => $default ) {
+			// Skip keys owned by other plugins until they are stored in a profile
+			if ( ! $this->is_fluid_checkout_option_key( $key ) ) { continue; }
+
+			$effective[ $key ] = $default;
+		}
 
 		// Overlay active profile when available
 		if ( '' !== $active_slug ) {
@@ -840,25 +869,35 @@ class FluidCheckout_Settings extends FluidCheckout {
 
 		$defaults = $this->get_default_option_values();
 		$payload = array();
+		$fc_defaults = array();
 		$had_legacy_fc_options = false;
+
+		// Sentinel distinguishes "option missing from wp_options" from a stored empty/false value
+		$missing = new stdClass();
 
 		// Iterate managed keys and copy existing individual option values
 		foreach ( $defaults as $key => $default ) {
-			$raw = $this->get_raw_option( $key, null );
+			// Collect Fluid Checkout code defaults to seed a complete `fc_*` profile
+			if ( $this->is_fluid_checkout_option_key( $key ) ) {
+				$fc_defaults[ $key ] = $default;
+			}
 
-			// Skip keys that were never stored
-			if ( null === $raw ) { continue; }
+			$raw = $this->get_raw_option( $key, $missing );
+
+			// Skip keys that were never stored (ignore plugin `default_option_*` fallbacks)
+			if ( $raw === $missing ) { continue; }
 
 			$payload[ $key ] = $raw;
 
 			// Remember real plugin rows so fresh installs do not ask to delete leftovers
-			if ( 0 === strpos( $key, 'fc_' ) ) {
+			if ( $this->is_fluid_checkout_option_key( $key ) ) {
 				$had_legacy_fc_options = true;
 			}
 		}
 
-		// Merge code defaults under stored values so the active profile is complete
-		$payload = array_merge( $defaults, $payload );
+		// Seed `fc_*` defaults under stored values. Non-`fc_*` keys keep only existing
+		// wp_options values from WooCommerce and other plugins (never FC code defaults).
+		$payload = array_merge( $fc_defaults, $payload );
 
 		$slug = 'default';
 		$saved = $this->save_profile_values( $slug, $payload );
@@ -987,7 +1026,12 @@ class FluidCheckout_Settings extends FluidCheckout {
 			return $this->maybe_force_lite_option_value( $option, $effective[ $option ] );
 		}
 
-		// Managed keys missing from the map use code defaults
+		// Non-`fc_*` managed keys missing from the map keep values from other plugins
+		if ( ! $this->is_fluid_checkout_option_key( $option ) ) {
+			return $pre_option;
+		}
+
+		// Fluid Checkout keys missing from the map use code defaults
 		$code_default = $this->get_option_default( $option );
 		$value = null !== $code_default ? $code_default : $default;
 
@@ -1076,6 +1120,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 				'posts_per_page'   => 1,
 				'fields'           => 'ids',
 				'suppress_filters' => true,
+				'cache_results'    => false,
 			)
 		);
 
@@ -1083,7 +1128,15 @@ class FluidCheckout_Settings extends FluidCheckout {
 			return null;
 		}
 
-		return (int) $posts[0];
+		$post_id = (int) $posts[0];
+		$post = get_post( $post_id );
+
+		// Bail if the ID is stale and no longer resolves to a profile post
+		if ( ! $post || self::PROFILE_POST_TYPE !== $post->post_type ) {
+			return null;
+		}
+
+		return $post_id;
 	}
 
 
@@ -1437,6 +1490,11 @@ class FluidCheckout_Settings extends FluidCheckout {
 		// Use the profile value when the key has been stored or seeded from defaults
 		if ( is_array( $effective ) && array_key_exists( $option, $effective ) ) {
 			return $effective[ $option ];
+		}
+
+		// Non-`fc_*` keys keep the value from WooCommerce / other plugins
+		if ( ! $this->is_fluid_checkout_option_key( $option ) ) {
+			return $this->get_raw_option( $option, $this->get_option_default( $option ) );
 		}
 
 		return $this->get_option_default( $option );
