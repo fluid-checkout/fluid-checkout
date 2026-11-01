@@ -230,7 +230,7 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 
 			if ( ! $is_pro_installed ) :
 				// PRO not installed: Upgrade to PRO + optional “Get only this add-on”
-				$pro_price        = ! empty( $value[ 'pro_purchase_price' ] ) ? (string) $value[ 'pro_purchase_price' ] : '129 EUR';
+				$pro_price        = ! empty( $value[ 'pro_purchase_price' ] ) ? (string) $value[ 'pro_purchase_price' ] : $admin->get_pro_purchase_price();
 				$pro_purchase_url = ! empty( $value[ 'pro_purchase_url' ] )
 					? (string) $value[ 'pro_purchase_url' ]
 					: add_query_arg(

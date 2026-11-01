@@ -149,16 +149,17 @@ class FluidCheckout_Admin_DesignEditorPromo extends FluidCheckout {
 				'promo'                => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'design-editor-promo' ),
 				'tagline'              => __( 'Make your checkout pages match your brand, without custom CSS.', 'fluid-checkout' ),
 				'features'             => array(
-					__( 'Change the style of the header, footer, steps, sections, order summary, cart items, coupons, buttons and form fields.', 'fluid-checkout' ),
+					__( 'Change the style of the header, footer, steps, sections, order summary, cart items and coupons.', 'fluid-checkout' ),
+					__( 'Change the style of buttons and form fields.', 'fluid-checkout' ),
+					__( 'Preview your changes on checkout, cart, thank you, and order pay pages before saving them.', 'fluid-checkout' ),
 					__( 'Set separate colors for light and dark mode.', 'fluid-checkout' ),
-					__( 'Preview your changes on the checkout, cart, thank you and order pay pages before saving.', 'fluid-checkout' ),
 				),
 				'learn_more_url'       => 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=design-editor-promo-learn-more&mtm_source=lite-plugin',
 				'learn_more_label'     => __( 'Learn more', 'fluid-checkout' ),
 				'plugin_file'          => 'fluid-checkout-pro/fluid-checkout-pro.php',
 				'plugin_slug'          => 'fluid-checkout-pro',
 				'purchase_url'         => 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=design-editor-promo-purchase&mtm_source=lite-plugin',
-				'purchase_price'       => '129 EUR',
+				'purchase_price'       => FluidCheckout_Admin::instance()->get_pro_purchase_price(),
 			),
 		);
 	}

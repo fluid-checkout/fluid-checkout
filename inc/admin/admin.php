@@ -436,11 +436,22 @@ class FluidCheckout_Admin extends FluidCheckout {
 	}
 
 	/**
+	 * Get the purchase price for Fluid Checkout PRO.
+	 *
+	 * @return string  Formatted price including currency, e.g. `129 EUR`.
+	 */
+	public function get_pro_purchase_price() {
+		return _x( '129 EUR', 'PRO purchase price', 'fluid-checkout' );
+	}
+
+	/**
 	 * Get the upgrade button label for Fluid Checkout PRO.
 	 *
 	 * @param  string  $price  Formatted price including currency, e.g. `129 EUR`.
 	 */
-	public function get_pro_upgrade_button_label( $price = '129 EUR' ) {
+	public function get_pro_upgrade_button_label( $price = null ) {
+		$price = $price ?? $this->get_pro_purchase_price();
+
 		/* translators: %s: formatted price including currency, e.g. "129 EUR" */
 		return sprintf( __( 'Upgrade to PRO &mdash; %s', 'fluid-checkout' ), $price );
 	}
