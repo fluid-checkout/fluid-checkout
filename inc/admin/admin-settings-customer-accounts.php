@@ -100,7 +100,7 @@ class FluidCheckout_Settings_AccountMatching {
 				array(
 					'title'                 => __( 'Account creation', 'fluid-checkout' ),
 					'desc'                  => __( 'Allow customers to create an account during checkout', 'fluid-checkout' ),
-					'desc_tip'              => __( 'Customers can create an account before placing their order.', 'fluid-checkout' ),
+					'desc_tip'              => __( 'Customers can create an account from checkout while placing their order.', 'fluid-checkout' ),
 					'id'                    => 'woocommerce_enable_signup_and_login_from_checkout',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'woocommerce_enable_signup_and_login_from_checkout' ),
