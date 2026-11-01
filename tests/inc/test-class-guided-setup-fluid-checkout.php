@@ -210,6 +210,58 @@ class FluidCheckout_Guided_Setup_FluidCheckout_Test extends TestCase {
 
 
 	/**
+	 * Test: newsletter signup follows the `fc_telemetry_api_url` host override.
+	 */
+	public function test_newsletter_signup_follows_telemetry_api_url_filter() {
+		$captured = null;
+
+		add_filter(
+			'fc_telemetry_api_url',
+			static function() {
+				return 'https://telemetry.example.test';
+			}
+		);
+
+		add_filter(
+			'pre_http_request',
+			function( $preempt, $args, $url ) use ( &$captured ) {
+				$captured = $url;
+
+				return array(
+					'headers'  => array(),
+					'body'     => wp_json_encode( array( 'data' => array( 'ok' => true ) ) ),
+					'response' => array(
+						'code'    => 200,
+						'message' => 'OK',
+					),
+					'cookies'  => array(),
+					'filename' => null,
+				);
+			},
+			10,
+			3
+		);
+
+		FluidCheckout_Admin_GuidedSetup::set_progress_for_slug(
+			'fc_checkout',
+			array(
+				'answers' => array(
+					'newsletter_opt_in' => true,
+					'email'             => 'merchant@example.com',
+				),
+			)
+		);
+
+		$method = new ReflectionMethod( FluidCheckout_Admin_GuidedSetup_FluidCheckout::class, 'maybe_subscribe_newsletter' );
+		$method->setAccessible( true );
+		$method->invoke( $this->wizard );
+
+		$this->assertSame( 'https://telemetry.example.test/wp-json/fc-licenses/v1/newsletter/subscribe', $captured );
+	}
+
+
+
+	/**
 	 * Test: recommended_setup persists Lite exclusions and applies remaining profile values.
 	 *
 	 * Unchecked Lite toggles are stored as user_overrides and skipped on apply.

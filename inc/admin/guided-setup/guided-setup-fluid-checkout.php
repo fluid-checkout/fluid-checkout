@@ -1414,7 +1414,8 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 	/**
 	 * Get the public newsletter signup API URL.
 	 *
-	 * Uses the same API host as telemetry.
+	 * Uses `FluidCheckout::get_telemetry_api_url()`, which already applies the
+	 * `fc_telemetry_api_url` remote host override.
 	 */
 	protected function get_newsletter_signup_url() {
 		$api_base = class_exists( 'FluidCheckout' ) ? FluidCheckout::get_telemetry_api_url() : 'https://fluidcheckout.com';
