@@ -101,16 +101,17 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				'subtitle'      => __( 'All PRO features + all add-ons, one price. Design templates, optimized cart and order received pages, account matching, and much more.', 'fluid-checkout' ),
 				'features'      => array(
 					__( 'More design templates', 'fluid-checkout' ),
+					__( 'Design customizations without code', 'fluid-checkout' ),
 					__( 'Optimized cart page', 'fluid-checkout' ),
 					__( 'Optimized order received / thank you page', 'fluid-checkout' ),
 					__( 'Optimized order pay page', 'fluid-checkout' ),
-					__( 'Express checkout buttons from supported payment methods', 'fluid-checkout' ),
 					__( 'Edit cart contents at checkout page', 'fluid-checkout' ),
 					__( 'Local pickup and in-store collection', 'fluid-checkout' ),
 					__( 'Account matching / user matching', 'fluid-checkout' ),
 					__( 'Delayed account creation', 'fluid-checkout' ),
 					__( 'Address autocomplete with Google Maps APIs', 'fluid-checkout' ),
 					__( 'Multiple saved addresses with the address book', 'fluid-checkout' ),
+					__( 'Express checkout from supported payment methods', 'fluid-checkout' ),
 					__( 'Trust symbols on the cart and thank you pages', 'fluid-checkout' ),
 					__( 'More positions for the coupon code on the checkout page', 'fluid-checkout' ),
 					__( 'International phone numbers', 'fluid-checkout' ),
@@ -557,7 +558,14 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				</div>
 
 				<?php if ( ! empty( $features ) && ! $is_activated ) : ?>
-					<ul class="fc-addons__item-features-list fc-addons__item-features-list--columns fc-settings-promo__features-list">
+					<?php
+					$feature_row_count = (int) ceil( count( $features ) / 2 );
+					$features_list_style = sprintf( '--fc-promo-features-rows: %d;', $feature_row_count );
+					?>
+					<ul
+						class="fc-addons__item-features-list fc-addons__item-features-list--columns fc-settings-promo__features-list"
+						style="<?php echo esc_attr( $features_list_style ); ?>"
+					>
 						<?php foreach ( $features as $feature ) : ?>
 							<li><?php echo esc_html( $feature ); ?></li>
 						<?php endforeach; ?>
