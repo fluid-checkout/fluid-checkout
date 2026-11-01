@@ -211,6 +211,31 @@ class FluidCheckout_Settings_OrderReceived {
 
 
 					array(
+						'title' => __( 'Account creation', 'fluid-checkout' ),
+						'type'  => 'title',
+						'desc'  => __( 'Help guests finish checkout faster and create an account after they buy. Account matching associates guest orders with existing accounts, and delayed account creation lets customers register from the thank you page.', 'fluid-checkout' ),
+						'id'    => 'fc_pro_order_received_account_creation_options',
+						'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'order-received-account-creation' ),
+					),
+
+					array(
+						'type' => 'fc_paragraph',
+						'desc' => sprintf(
+							'<a href="%1$s" data-fc-settings-nav-link="customer_accounts" data-fc-settings-preview-keep-page="order_received">%2$s</a>',
+							esc_url( class_exists( 'FluidCheckout_Admin_Settings_Page' ) ? FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'customer_accounts' ) : '' ),
+							esc_html__( 'Configure customer account options', 'fluid-checkout' )
+						),
+						'id'   => 'fc_pro_order_received_account_creation_link',
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'fc_pro_order_received_account_creation_options',
+					),
+
+
+
+					array(
 						'title' => __( 'Order details layout', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',

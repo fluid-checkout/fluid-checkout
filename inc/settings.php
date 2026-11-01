@@ -222,10 +222,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_checkout_coupon_codes_position'                         => 'substep_before_payment',
 			'fc_pro_checkout_coupon_code_message_button_style'              => 'add_link_button',
 
-			// =============================== ACCOUNT ===============================
-			'fc_pro_enable_account_matching'                                => 'no',
-			'fc_pro_account_matching_display_account_exists_message'        => 'yes',
-
 			// =============================== ORDER SUMMARY ===============================
 			'fc_pro_checkout_edit_cart_replace_edit_cart_link'              => 'edit_cart_link',
 			'fc_pro_checkout_order_summary_position_mobile'                 => 'site_header',
@@ -255,8 +251,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_address_book_display_layout'                            => 'cards',
 			'fc_pro_address_book_saved_addresses_search_min_count'          => 5,
 
-			// =============================== CART (NEW PAGE) ===============================
-			'fc_pro_enable_cart_page'                                       => 'no',
+			// =============================== CART PAGE ===============================
+			'fc_pro_enable_cart_page'                                       => 'yes',
 			'fc_pro_enable_cart_sticky_order_summary'                       => 'yes',
 			'fc_pro_hide_site_header_footer_at_cart'                        => 'no',
 			'fc_pro_enable_cart_cross_sells'                                => 'yes',
@@ -267,35 +263,50 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_enable_cart_widget_areas'                               => 'yes',
 
 			// =============================== ORDER RECEIVED (THANK YOU) ===============================
-			'fc_pro_enable_order_received'                                  => 'no',
+			'fc_pro_enable_order_received'                                  => 'yes',
 			'fc_pro_enable_order_details_email_customizations'              => 'yes',
 			'fc_pro_enable_order_page_block_based_template'                 => 'no',
 			'fc_pro_enable_order_details_wide_layout'                       => 'no',
 			'fc_pro_order_details_order_actions_position'                   => 'inside_order_overview',
-			'fc_pro_enable_order_details_order_status_progress_bar'         => 'no',
+			'fc_pro_enable_order_details_order_status_progress_bar'         => 'yes',
 			'fc_pro_order_details_order_summary_position'                   => 'inside_order_items',
 			'fc_pro_order_details_order_downloads_position'                 => 'inside_order_items',
 			'fc_pro_order_details_gift_message_position'                    => 'before_order_items',
 			'fc_pro_order_details_order_notes_position'                     => 'inside_order_items',
 			'fc_pro_enable_order_received_widget_areas'                     => 'no',
-			'fc_pro_enable_delayed_account_creation'                        => 'no',
+
+			// =============================== ORDER PAY ===============================
+			'fc_pro_enable_order_pay'                                       => 'yes',
+			'fc_pro_enable_order_pay_widget_areas'                          => 'yes',
+
+			// =============================== ACCOUNT ===============================
+			'fc_pro_enable_account_matching'                                => 'no',
+			'fc_pro_account_matching_display_account_exists_message'        => 'yes',
+			// Delayed account creation enabled/disable feature tied to WooCommerce setting `woocommerce_enable_delayed_account_creation`.
 			'fc_pro_delayed_account_creation_section_position'              => 'after_order_overview',
 			'fc_pro_delayed_account_creation_benefits'                      => '',
 
-			// =============================== ORDER PAY ===============================
-			'fc_pro_enable_order_pay'                                       => 'no',
-			'fc_pro_enable_order_pay_widget_areas'                          => 'yes',
+			// =============================== WOOCOMMERCE SETTINGS (FOR OVERRIDES) ===============================
+			'woocommerce_enable_guest_checkout'                             => 'yes',
+			'woocommerce_enable_delayed_account_creation'                   => 'no',
+			'woocommerce_enable_signup_and_login_from_checkout'             => 'no',
+			'woocommerce_enable_myaccount_registration'                     => 'no',
+			'woocommerce_registration_generate_username'                    => 'yes',
+			'woocommerce_registration_generate_password'                    => 'yes',
+			'woocommerce_enable_shipping_calc'                              => 'yes',
+			'woocommerce_shipping_cost_requires_address'                    => 'no',
+			'woocommerce_enable_checkout_login_reminder'                    => 'no',
 
 			// =============================== GOOGLE ADDRESS AUTOCOMPLETE ===============================
 			'fc_gaa_enabled'                                                => 'no',
 			// `fc_gaa_google_places_api_key` and `fc_gaa_google_places_api_key_validated_hash` are site-wide wp_options (not profile-managed).
 			'fc_gaa_google_places_api_version'                              => 'current',
 			'fc_gaa_google_places_api_language'                             => '',
-			'fc_gaa_search_results_types'                                   => 'address',
-			'fc_gaa_search_results_types_address'                           => array(),
+			'fc_gaa_search_results_types'                                   => 'address', // Legacy API
+			'fc_gaa_search_results_types_address'                           => array(), // New API
 			'fc_gaa_company_autocomplete_value_enabled'                     => 'no',
 			'fc_gaa_company_autocomplete_input_enabled'                     => 'no',
-			'fc_gaa_search_results_types_company'                           => array( 'establishment' ),
+			'fc_gaa_search_results_types_company'                           => array( 'establishment' ), // New API
 			'fc_gaa_show_powered_by_google'                                 => 'yes',
 			'fc_gaa_enabled_brasil_api'                                     => 'no',
 			'fc_gaa_brasil_api_version'                                     => 'v1',
@@ -347,23 +358,13 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_integration_svea_checkout_express_checkout_button_enabled' => 'yes',
 			'fc_pro_integration_woo_all_products_for_subscriptions_show_options_on_checkout' => 'yes',
 
-			// ----------------------- Other plugin or theme compatibility -----------------------
+			// =============================== OTHER PLUGIN OR THEME COMPATIBILITY ===============================
 			'gm_order_review_checkboxes_before_order_review'                => 'off',
 			'hezarfen_checkout_fields_auto_sort'                            => 'no',
 			'hezarfen_hide_checkout_postcode_fields'                        => 'no',
 			'sg_enable_picker'                                              => 'enable',
 			'woocommerce_gzd_display_checkout_back_to_cart_button'          => 'no',
 			'woocommerce_gzd_display_checkout_table_color'                  => '#eeeeee',
-
-			// =============================== WOOCOMMERCE SETTINGS (FOR OVERRIDES) ===============================
-			'woocommerce_enable_guest_checkout'                             => 'yes',
-			'woocommerce_enable_signup_and_login_from_checkout'             => 'no',
-			'woocommerce_enable_myaccount_registration'                     => 'no',
-			'woocommerce_registration_generate_username'                    => 'yes',
-			'woocommerce_registration_generate_password'                    => 'yes',
-			'woocommerce_enable_shipping_calc'                              => 'yes',
-			'woocommerce_shipping_cost_requires_address'                    => 'no',
-			'woocommerce_enable_checkout_login_reminder'                    => 'no',
 
 			// =============================== THEME COMPATIBILITY ===============================
 			'fc_compat_theme_atomion_display_order_progress'                => 'no',

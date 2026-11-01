@@ -56,7 +56,7 @@ class FluidCheckout_Settings_AccountMatching {
 		// Define conditionals for the username and password fields
 		$account_fields_conditional_id = 'woocommerce_enable_signup_and_login_from_checkout|woocommerce_enable_myaccount_registration';
 		if ( class_exists( 'FluidCheckout_Admin_Settings_Access' ) && FluidCheckout_Admin_Settings_Access::instance()->is_unlocked( 'pro' ) ) {
-			$account_fields_conditional_id .= '|fc_pro_enable_delayed_account_creation';
+			$account_fields_conditional_id .= '|woocommerce_enable_delayed_account_creation';
 		}
 
 		/**
@@ -222,9 +222,9 @@ class FluidCheckout_Settings_AccountMatching {
 					'title'                 => __( 'Account creation', 'fluid-checkout' ),
 					'desc'                  => __( 'Enable delayed account creation', 'fluid-checkout' ),
 					'desc_tip'              => __( 'Enable delayed account creation when both guest checkout and account matching are enabled.', 'fluid-checkout' ),
-					'id'                    => 'fc_pro_enable_delayed_account_creation',
+					'id'                    => 'woocommerce_enable_delayed_account_creation',
 					'type'                  => 'checkbox',
-					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_delayed_account_creation' ),
+					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'woocommerce_enable_delayed_account_creation' ),
 					'custom_attributes'     => array(
 						'data-conditional-id'    => 'woocommerce_enable_guest_checkout,fc_pro_enable_account_matching',
 						'data-conditional-value' => 'yes,yes',
@@ -247,7 +247,7 @@ class FluidCheckout_Settings_AccountMatching {
 					),
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_delayed_account_creation_section_position' ),
 					'custom_attributes'     => array(
-						'data-conditional-id'    => 'fc_pro_enable_delayed_account_creation',
+						'data-conditional-id'    => 'woocommerce_enable_delayed_account_creation',
 						'data-conditional-value' => 'yes',
 					),
 					'autoload'              => false,
@@ -264,7 +264,7 @@ class FluidCheckout_Settings_AccountMatching {
 					'placeholder'           => _x( "✔ Checkout faster next time\n✔ Manage your payment preferences\n✔ View order status and history", 'Delayed account creation benefits placeholder text', 'fluid-checkout' ),
 					'css'                   => 'width:100%; min-height: 80px;',
 					'custom_attributes'     => array(
-						'data-conditional-id'    => 'fc_pro_enable_delayed_account_creation',
+						'data-conditional-id'    => 'woocommerce_enable_delayed_account_creation',
 						'data-conditional-value' => 'yes',
 					),
 					'autoload'              => false,

@@ -41,6 +41,7 @@
 		showSaveAttribute:      'data-fc-settings-show-save',
 		navItemAttribute:       'data-fc-settings-nav-item',
 		navLinkAttribute:       'data-fc-settings-nav-link',
+		previewKeepPageAttribute: 'data-fc-settings-preview-keep-page',
 		labelOpenAttribute:     'data-label-open',
 		labelCloseAttribute:    'data-label-close',
 		settingsLinkSelector:   'a',
@@ -301,9 +302,10 @@
 	 * @param   {string}   tab          Tab slug.
 	 * @param   {boolean}  updateUrl    Whether to update the browser history.
 	 * @param   {boolean}  replaceState Whether to replace the current history entry.
+	 * @param   {string}   previewPage  Optional preview page slug to keep when switching tabs.
 	 * @return  {boolean}               True when the tab was activated.
 	 */
-	var activateTab = function( tab, updateUrl, replaceState ) {
+	var activateTab = function( tab, updateUrl, replaceState, previewPage ) {
 		var tabPanel = document.querySelector( '[' + _settings.tabAttribute + '="' + tab + '"]' );
 		var navItems = document.querySelectorAll( _settings.navItemSelector );
 		var form = document.querySelector( _settings.formSelector );
@@ -316,6 +318,8 @@
 
 		// Bail if tab panel is not available
 		if ( ! tabPanel ) { return false; }
+
+		previewPage = previewPage || '';
 
 		tabPanels = document.querySelectorAll( _settings.tabSelector );
 
@@ -362,7 +366,7 @@
 		}
 
 		// Notify listeners that a settings tab became active (SPA navigation)
-		window.dispatchEvent( new CustomEvent( 'fcSettingsTabActivated', { detail: { tab: tab } } ) );
+		window.dispatchEvent( new CustomEvent( 'fcSettingsTabActivated', { detail: { tab: tab, previewPage: previewPage } } ) );
 
 		syncSetupChecklistForTab( tab );
 
@@ -377,6 +381,7 @@
 	var handleNavClick = function( e ) {
 		var link = e.target.closest( _settings.settingsLinkSelector );
 		var tab;
+		var previewPage;
 		var activePanel;
 
 		// Bail if click was not on a link
@@ -390,6 +395,7 @@
 		// Bail if the link does not target a settings tab
 		if ( ! tab ) { return; }
 
+		previewPage = link.getAttribute( _settings.previewKeepPageAttribute ) || '';
 		activePanel = getActiveTabPanel();
 
 		// Already on this tab: close the compact menu and stay put
@@ -401,7 +407,7 @@
 		}
 
 		// Bail if tab cannot be activated (fall through to full navigation)
-		if ( ! activateTab( tab, true, false ) ) { return; }
+		if ( ! activateTab( tab, true, false, previewPage ) ) { return; }
 
 		// Close the preview and compact menu after choosing a tab
 		collapsePreviewDrawer();
