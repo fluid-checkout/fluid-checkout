@@ -200,7 +200,43 @@ return array(
 		'option_key'   => 'fc_pro_enable_cart_page',
 		'value'        => 'yes',
 		'title'        => __( 'Enable optimized cart page', 'fluid-checkout' ),
-		'description'  => __( 'Enable the optimized cart page to improve cart conversion rates.', 'fluid-checkout' ),
+		'description'  => __( 'Improved cart page to reduce cart abandonment rates and give customers a consistent experience.', 'fluid-checkout' ),
+		'score'        => function ( $answers, $filtered_values = array() ) {
+			return 80;
+		},
+	),
+
+
+
+	// ----------------------------------------
+	// Thank you
+	// ----------------------------------------
+
+	array(
+		'is_pro'       => true,
+		'feature_slug' => 'thank-you-page',
+		'option_key'   => 'fc_pro_enable_thank_you_page',
+		'value'        => 'yes',
+		'title'        => __( 'Enable optimized thank you page', 'fluid-checkout' ),
+		'description'  => __( 'Improved thank you page to give customers a consistent experience.', 'fluid-checkout' ),
+		'score'        => function ( $answers, $filtered_values = array() ) {
+			return 80;
+		},
+	),
+
+
+
+	// ----------------------------------------
+	// Order pay
+	// ----------------------------------------
+
+	array(
+		'is_pro'       => true,
+		'feature_slug' => 'order-pay-page',
+		'option_key'   => 'fc_pro_enable_order_pay_page',
+		'value'        => 'yes',
+		'title'        => __( 'Enable optimized order pay page', 'fluid-checkout' ),
+		'description'  => __( 'Improved order pay page to give customers a consistent experience.', 'fluid-checkout' ),
 		'score'        => function ( $answers, $filtered_values = array() ) {
 			return 80;
 		},

@@ -416,8 +416,8 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 				'emailRequired'              => __( 'Please enter a valid email address for the newsletter.', 'fluid-checkout' ),
 				'productTypesRequired'       => __( 'Please select at least one product type.', 'fluid-checkout' ),
 				'deliveryMethodsRequired'    => __( 'Please select at least one delivery method for physical products.', 'fluid-checkout' ),
-				'showAlreadyApplied'         => __( 'Show already applied', 'fluid-checkout' ),
-				'hideAlreadyApplied'         => __( 'Hide already applied', 'fluid-checkout' ),
+				'showAlreadyApplied'         => __( 'Show recommendations already applied', 'fluid-checkout' ),
+				'hideAlreadyApplied'         => __( 'Hide recommendations already applied', 'fluid-checkout' ),
 				'showMoreRecommendations'    => __( 'Show more recommendations', 'fluid-checkout' ),
 				'showFewerRecommendations'   => __( 'Show fewer recommendations', 'fluid-checkout' ),
 			)
@@ -945,7 +945,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 		?>
 		<div class="fc-setup-recommendation-options" role="group" aria-label="<?php echo esc_attr__( 'Recommended checkout settings', 'fluid-checkout' ); ?>">
 			<?php if ( empty( $visible ) && empty( $pro_more ) && $hide_applied ) : ?>
-				<p class="fc-setup-recommendation-empty"><?php echo esc_html__( 'No more recommendations to apply', 'fluid-checkout' ); ?></p>
+				<p class="fc-setup-recommendation-empty"><?php echo esc_html__( 'No more recommendations to apply.', 'fluid-checkout' ); ?></p>
 			<?php else : ?>
 				<?php foreach ( $visible as $setting ) : ?>
 					<?php $this->output_recommended_setup_setting_row( $setting, true ); ?>
