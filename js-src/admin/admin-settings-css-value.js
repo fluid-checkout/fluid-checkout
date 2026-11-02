@@ -27,6 +27,7 @@
 		clearSelector:            '[data-fc-settings-css-value-clear]',
 		errorSelector:            '[data-fc-settings-css-value-error]',
 		propertyAttribute:        'data-fc-settings-css-value-property',
+		colorFormatAttribute:     'data-fc-settings-css-value-color-format',
 		isInvalidClass:           'is-invalid',
 		swatchDefaultColor:       '#ffffff',
 	};
@@ -67,6 +68,175 @@
 		return '#' + channels.slice( 0, 3 ).map( function( channel ) {
 			return ( '0' + Math.round( parseFloat( channel ) ).toString( 16 ) ).slice( -2 );
 		} ).join( '' );
+	};
+
+	/**
+	 * Detect the syntax of a CSS color value in the text field.
+	 *
+	 * @param   {string}  value  CSS color value.
+	 * @return  {string}          `hex`, `rgb`, `rgba`, `hsl`, `hsla`, or `hex` as the default for other colors.
+	 */
+	var getColorValueFormat = function( value ) {
+		var trimmed = ( value || '' ).trim();
+
+		if ( /^#[0-9a-f]{3}$/i.test( trimmed ) || /^#[0-9a-f]{6}$/i.test( trimmed ) ) {
+			return 'hex';
+		}
+
+		if ( /^rgba\(/i.test( trimmed ) ) {
+			return 'rgba';
+		}
+
+		if ( /^rgb\(/i.test( trimmed ) ) {
+			return 'rgb';
+		}
+
+		if ( /^hsla\(/i.test( trimmed ) ) {
+			return 'hsla';
+		}
+
+		if ( /^hsl\(/i.test( trimmed ) ) {
+			return 'hsl';
+		}
+
+		return 'hex';
+	};
+
+	/**
+	 * Parse an alpha channel from an `rgba()` or `hsla()` value.
+	 *
+	 * @param   {string}  value   CSS color value.
+	 * @param   {string}  format  `rgba` or `hsla`.
+	 * @return  {number|null}       Alpha between 0 and 1, or null when missing.
+	 */
+	var getAlphaFromColorValue = function( value, format ) {
+		var match;
+
+		if ( 'rgba' === format ) {
+			match = value.trim().match( /^rgba\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*,\s*([\d.]+)\s*\)$/i );
+		}
+		else if ( 'hsla' === format ) {
+			match = value.trim().match( /^hsla\(\s*[\d.]+\s*,\s*[\d.]+%?\s*,\s*[\d.]+%?\s*,\s*([\d.]+)\s*\)$/i );
+		}
+
+		return match ? parseFloat( match[ 1 ] ) : null;
+	};
+
+	/**
+	 * Convert RGB channels to HSL components used in CSS `hsl()` / `hsla()` values.
+	 *
+	 * @param   {number}  red    Red channel 0–255.
+	 * @param   {number}  green  Green channel 0–255.
+	 * @param   {number}  blue   Blue channel 0–255.
+	 * @return  {Array}           `[ hue, saturation, lightness ]`.
+	 */
+	var rgbToHsl = function( red, green, blue ) {
+		var r = red / 255;
+		var g = green / 255;
+		var b = blue / 255;
+		var max = Math.max( r, g, b );
+		var min = Math.min( r, g, b );
+		var hue = 0;
+		var saturation = 0;
+		var lightness = ( max + min ) / 2;
+		var delta;
+
+		if ( max !== min ) {
+			delta = max - min;
+			saturation = lightness > 0.5 ? delta / ( 2 - max - min ) : delta / ( max + min );
+
+			switch ( max ) {
+				case r:
+					hue = ( g - b ) / delta + ( g < b ? 6 : 0 );
+					break;
+				case g:
+					hue = ( b - r ) / delta + 2;
+					break;
+				default:
+					hue = ( r - g ) / delta + 4;
+					break;
+			}
+
+			hue *= 60;
+		}
+
+		return [
+			Math.round( hue ),
+			Math.round( saturation * 100 ),
+			Math.round( lightness * 100 ),
+		];
+	};
+
+	/**
+	 * Format a hex color picked in the native swatch using the syntax of the text field.
+	 *
+	 * @param   {string}  hex            Hex color from the swatch (`#rrggbb`).
+	 * @param   {string}  format         Target syntax.
+	 * @param   {string}  previousValue  Previous text field value, used to preserve alpha.
+	 * @return  {string}                 CSS color in the requested syntax.
+	 */
+	var formatColorFromHex = function( hex, format, previousValue ) {
+		var channels;
+		var red;
+		var green;
+		var blue;
+		var hsl;
+		var alpha;
+
+		channels = getHexColor( hex ).replace( '#', '' );
+
+		// Bail if the hex color is invalid
+		if ( 6 !== channels.length ) {
+			return hex;
+		}
+
+		red = parseInt( channels.slice( 0, 2 ), 16 );
+		green = parseInt( channels.slice( 2, 4 ), 16 );
+		blue = parseInt( channels.slice( 4, 6 ), 16 );
+
+		if ( 'rgb' === format ) {
+			return 'rgb(' + red + ', ' + green + ', ' + blue + ')';
+		}
+
+		if ( 'rgba' === format ) {
+			alpha = getAlphaFromColorValue( previousValue, 'rgba' );
+			if ( null === alpha ) {
+				alpha = 1;
+			}
+			return 'rgba(' + red + ', ' + green + ', ' + blue + ', ' + alpha + ')';
+		}
+
+		if ( 'hsl' === format || 'hsla' === format ) {
+			hsl = rgbToHsl( red, green, blue );
+
+			if ( 'hsla' === format ) {
+				alpha = getAlphaFromColorValue( previousValue, 'hsla' );
+				if ( null === alpha ) {
+					alpha = 1;
+				}
+				return 'hsla(' + hsl[ 0 ] + ', ' + hsl[ 1 ] + '%, ' + hsl[ 2 ] + '%, ' + alpha + ')';
+			}
+
+			return 'hsl(' + hsl[ 0 ] + ', ' + hsl[ 1 ] + '%, ' + hsl[ 2 ] + '%)';
+		}
+
+		return hex;
+	};
+
+	/**
+	 * Remember the color syntax used in the text field so swatch picks match it.
+	 *
+	 * @param  {Element}  field  CSS value field element.
+	 */
+	var syncColorFormat = function( field ) {
+		var input = field.querySelector( _settings.inputSelector );
+		var format;
+
+		// Bail if the field has no swatch
+		if ( ! field.querySelector( _settings.swatchSelector ) || ! input ) { return; }
+
+		format = getColorValueFormat( input.value.trim() || input.placeholder );
+		field.setAttribute( _settings.colorFormatAttribute, format );
 	};
 
 	/**
@@ -147,16 +317,24 @@
 	var handleInput = function( e ) {
 		// Get the CSS value field of the event
 		var field = e.target.closest( _settings.fieldSelector );
+		var input;
+		var format;
+		var previousValue;
 
 		// Bail if the event is not from a CSS value field
 		if ( ! field ) { return; }
 
 		// SWATCH
 		if ( e.target.matches( _settings.swatchSelector ) ) {
-			setFieldValue( field.querySelector( _settings.inputSelector ), e.target.value );
+			input = field.querySelector( _settings.inputSelector );
+			format = field.getAttribute( _settings.colorFormatAttribute ) || getColorValueFormat( input.value.trim() );
+			previousValue = input.value.trim();
+			setFieldValue( input, formatColorFromHex( e.target.value, format, previousValue ) );
+			syncColorFormat( field );
 		}
 		// VALUE
 		else if ( e.target.matches( _settings.inputSelector ) ) {
+			syncColorFormat( field );
 			syncSwatch( field );
 			syncError( field );
 		}
@@ -217,6 +395,7 @@
 
 		// Iterate CSS value fields
 		for ( i = 0; i < fields.length; i++ ) {
+			syncColorFormat( fields[ i ] );
 			syncSwatch( fields[ i ] );
 		}
 	};

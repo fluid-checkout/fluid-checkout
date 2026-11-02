@@ -51,8 +51,6 @@ class FluidCheckout_Admin_SettingType_CssValue extends FluidCheckout {
 		return 'color' === $type;
 	}
 
-
-
 	/**
 	 * Output the setting field.
 	 *
