@@ -2594,6 +2594,46 @@ msgstr ""
 "શકાય તેની ખાતરી કરવા માટે આ જરૂરી છે, અન્યથા ગ્રાહક ચેકઆઉટ ફોર્મ પૂર્ણ કરી "
 "શકશે નહીં."
 
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level.php:3
+msgid "Top Level"
+msgstr "ટોચનું સ્તર"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/template-top-level-post-types-child.php:3
+msgid "Top Level In A Child Theme"
+msgstr "ચાઇલ્ડ થીમમાં ટોચનું સ્તર"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/no-trailing-period-post-types.php:3
+msgid "No Trailing Period"
+msgstr "કોઈ ટ્રેઇલિંગ પીરિયડ નથી"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/tilde-post-types.php:3
+msgid "Tilde in Post Type."
+msgstr "પોસ્ટ પ્રકારમાં ટિલ્ડ."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-comma-post-types.php:3
+msgid "Trailing Comma,"
+msgstr "પાછળનો અલ્પવિરામ,"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-post-types.php:3
+msgid "Trailing Period."
+msgstr "પાછળનો સમયગાળો."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-whitespace-post-types.php:3
+msgid "Trailing Period, White Space."
+msgstr "પાછળનો સમયગાળો, સફેદ જગ્યા."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-whitespace-period-post-types.php:3
+msgid "Trailing White Space, Period."
+msgstr "ટ્રેઇલિંગ વ્હાઇટ સ્પેસ, પીરિયડ."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir.php:3
+msgid "Sub Dir"
+msgstr "સબ ડાયરેક્ટર"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/subdir/template-sub-dir-post-types-child.php:3
+msgid "Sub Dir In A Child Theme"
+msgstr "બાળ થીમમાં સબ દિર"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

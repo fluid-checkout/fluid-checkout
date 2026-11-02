@@ -2641,6 +2641,46 @@ msgstr ""
 "biləcəyini təmin etmək üçün lazımdır, əks halda müştəri ödəmə formasını "
 "doldura bilməyəcək."
 
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level.php:3
+msgid "Top Level"
+msgstr "Ən Yüksək Səviyyə"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/template-top-level-post-types-child.php:3
+msgid "Top Level In A Child Theme"
+msgstr "Uşaq mövzusunda ən yüksək səviyyə"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/no-trailing-period-post-types.php:3
+msgid "No Trailing Period"
+msgstr "Arxada qalan period yoxdur"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/tilde-post-types.php:3
+msgid "Tilde in Post Type."
+msgstr "Post Type-də Tilde."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-comma-post-types.php:3
+msgid "Trailing Comma,"
+msgstr "Vergülün arxasınca,"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-post-types.php:3
+msgid "Trailing Period."
+msgstr "Arxada qalan dövr."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-whitespace-post-types.php:3
+msgid "Trailing Period, White Space."
+msgstr "Arxada qalan nöqtə, Boşluq."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-whitespace-period-post-types.php:3
+msgid "Trailing White Space, Period."
+msgstr "Arxada qalan Ağ Boşluq, Nöqtə."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir.php:3
+msgid "Sub Dir"
+msgstr "Alt Direktor"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/subdir/template-sub-dir-post-types-child.php:3
+msgid "Sub Dir In A Child Theme"
+msgstr "Uşaq mövzusunda alt direktor"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

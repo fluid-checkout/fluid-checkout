@@ -2857,6 +2857,46 @@ msgstr ""
 "η σχετική επιλογή, διαφορετικά ο πελάτης ενδέχεται να μην μπορεί να "
 "ολοκληρώσει τη φόρμα ολοκλήρωσης της παραγγελίας."
 
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level.php:3
+msgid "Top Level"
+msgstr "Κορυφαίο επίπεδο"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/template-top-level-post-types-child.php:3
+msgid "Top Level In A Child Theme"
+msgstr "Ανώτατο επίπεδο σε ένα παιδικό θέμα"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/no-trailing-period-post-types.php:3
+msgid "No Trailing Period"
+msgstr "Χωρίς περίοδο παρακολούθησης"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/tilde-post-types.php:3
+msgid "Tilde in Post Type."
+msgstr "Τίλδα στον τύπο ανάρτησης."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-comma-post-types.php:3
+msgid "Trailing Comma,"
+msgstr "Κόμμα στο τέλος,"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-post-types.php:3
+msgid "Trailing Period."
+msgstr "Περίοδος παρακολούθησης."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-whitespace-post-types.php:3
+msgid "Trailing Period, White Space."
+msgstr "Περίοδος παρακολούθησης, κενό διάστημα."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-whitespace-period-post-types.php:3
+msgid "Trailing White Space, Period."
+msgstr "Κενό στο τέλος, τελεία."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir.php:3
+msgid "Sub Dir"
+msgstr "Υποφάκελος"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/subdir/template-sub-dir-post-types-child.php:3
+msgid "Sub Dir In A Child Theme"
+msgstr "Υποφάκελος σε ένα υποθεματικό"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

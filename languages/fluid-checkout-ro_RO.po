@@ -2681,6 +2681,46 @@ msgstr ""
 "opțiune este bifată; în caz contrar, clientul ar putea să nu poată finaliza "
 "formularul de finalizare a comenzii."
 
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level.php:3
+msgid "Top Level"
+msgstr "Nivel superior"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/template-top-level-post-types-child.php:3
+msgid "Top Level In A Child Theme"
+msgstr "Nivelul superior într-o temă secundară"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/no-trailing-period-post-types.php:3
+msgid "No Trailing Period"
+msgstr "Fără perioadă de urmărire"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/tilde-post-types.php:3
+msgid "Tilde in Post Type."
+msgstr "Tilde în tipul de postare."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-comma-post-types.php:3
+msgid "Trailing Comma,"
+msgstr "Virgulă de separare,"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-post-types.php:3
+msgid "Trailing Period."
+msgstr "Perioada de referință."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-whitespace-post-types.php:3
+msgid "Trailing Period, White Space."
+msgstr "Perioadă de urmărire, spațiu alb."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-whitespace-period-post-types.php:3
+msgid "Trailing White Space, Period."
+msgstr "Spațiu alb la sfârșit, punct."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir.php:3
+msgid "Sub Dir"
+msgstr "Subdirector"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/subdir/template-sub-dir-post-types-child.php:3
+msgid "Sub Dir In A Child Theme"
+msgstr "Subdirector într-o temă secundară"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

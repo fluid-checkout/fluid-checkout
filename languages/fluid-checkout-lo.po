@@ -2603,6 +2603,46 @@ msgstr ""
 "ກເກັບເງິນໄດ້ເມື່ອເລືອກຕົວເລືອກນັ້ນ, "
 "ຖ້າບໍ່ດັ່ງນັ້ນລູກຄ້າອາດຈະບໍ່ສາມາດຕື່ມແບບຟອມຊຳລະເງິນໄດ້."
 
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level.php:3
+msgid "Top Level"
+msgstr "ລະດັບສູງສຸດ"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/template-top-level-post-types-child.php:3
+msgid "Top Level In A Child Theme"
+msgstr "ລະດັບສູງສຸດໃນຫົວຂໍ້ເດັກ"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/no-trailing-period-post-types.php:3
+msgid "No Trailing Period"
+msgstr "ບໍ່ມີໄລຍະເວລາຕິດຕາມ"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/tilde-post-types.php:3
+msgid "Tilde in Post Type."
+msgstr "ເຄື່ອງໝາຍ Tilde ໃນປະເພດໂພສ."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-comma-post-types.php:3
+msgid "Trailing Comma,"
+msgstr "ເຄື່ອງໝາຍຈຸດຕໍ່ທ້າຍ,"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-post-types.php:3
+msgid "Trailing Period."
+msgstr "ໄລຍະເວລາຕິດຕາມ."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-whitespace-post-types.php:3
+msgid "Trailing Period, White Space."
+msgstr "ໄລຍະເວລາຕໍ່ທ້າຍ, ຊ່ອງຫວ່າງສີຂາວ."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-whitespace-period-post-types.php:3
+msgid "Trailing White Space, Period."
+msgstr "ຊ່ອງວ່າງສີຂາວຕາມຮອຍ, ຈຸດ."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir.php:3
+msgid "Sub Dir"
+msgstr "ຜູ້ອໍານວຍການຍ່ອຍ"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/subdir/template-sub-dir-post-types-child.php:3
+msgid "Sub Dir In A Child Theme"
+msgstr "ໄດຣເວີຍ່ອຍໃນຫົວຂໍ້ລູກ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

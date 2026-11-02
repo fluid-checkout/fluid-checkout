@@ -2630,6 +2630,46 @@ msgstr ""
 "ನಕಲಿಸಬಹುದೆಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಲು ಇದು ಅಗತ್ಯವಾಗಿರುತ್ತದೆ, ಇಲ್ಲದಿದ್ದರೆ ಗ್ರಾಹಕರು "
 "ಚೆಕ್ಔಟ್ ಫಾರ್ಮ್ ಅನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗದಿರಬಹುದು."
 
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level.php:3
+msgid "Top Level"
+msgstr "ಉನ್ನತ ಮಟ್ಟ"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/template-top-level-post-types-child.php:3
+msgid "Top Level In A Child Theme"
+msgstr "ಮಕ್ಕಳ ಥೀಮ್‌ನಲ್ಲಿ ಉನ್ನತ ಹಂತ"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/no-trailing-period-post-types.php:3
+msgid "No Trailing Period"
+msgstr "ಟ್ರೇಲಿಂಗ್ ಅವಧಿ ಇಲ್ಲ"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/tilde-post-types.php:3
+msgid "Tilde in Post Type."
+msgstr "ಪೋಸ್ಟ್ ಪ್ರಕಾರದಲ್ಲಿ ಟಿಲ್ಡ್."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-comma-post-types.php:3
+msgid "Trailing Comma,"
+msgstr "ಟ್ರೇಲಿಂಗ್ ಅಲ್ಪವಿರಾಮ,"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-post-types.php:3
+msgid "Trailing Period."
+msgstr "ಹಿಂದುಳಿದ ಅವಧಿ."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-whitespace-post-types.php:3
+msgid "Trailing Period, White Space."
+msgstr "ಟ್ರೇಲಿಂಗ್ ಪಿರಿಯಡ್, ವೈಟ್ ಸ್ಪೇಸ್."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-whitespace-period-post-types.php:3
+msgid "Trailing White Space, Period."
+msgstr "ಟ್ರೇಲಿಂಗ್ ವೈಟ್ ಸ್ಪೇಸ್, ಪಿರಿಯಡ್."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir.php:3
+msgid "Sub Dir"
+msgstr "ಸಬ್ ಡಿರ್"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/subdir/template-sub-dir-post-types-child.php:3
+msgid "Sub Dir In A Child Theme"
+msgstr "ಮಕ್ಕಳ ಥೀಮ್‌ನಲ್ಲಿ ಸಬ್ ಡೈರೆಕ್ಟರ್"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

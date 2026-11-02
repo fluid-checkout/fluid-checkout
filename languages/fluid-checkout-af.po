@@ -2692,6 +2692,7 @@ msgid ""
 "button and legal checkboxes to be displayed below the order summary."
 msgstr ""
 
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

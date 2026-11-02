@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 7.1
-Stable tag: 4.2.7
+Stable tag: 4.2.8
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -377,6 +377,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin Svea Checkout for WooCommerce. Fix checkout page reloading indefinitely, style issues and missing shipping options with versions 3.0.0+, and checkout fields being cleared when switching to other payment methods.
 * Fixed: Checkout step names appearing partially visible inside the progress bar with some themes.
 * Fixed: Checkout error on the order summary when using WooCommerce versions before 11.2.0, caused by a WooCommerce cart method only available since 11.2.0.
+
+= 4.2.8 - 2026-10-26 =
+
+* Added checks whether the plugin is active before loading it, preparing for the upcoming release of Lite and PRO 5.0.
 
 = 4.2.7 - 2026-08-19 =
 

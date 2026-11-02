@@ -2681,6 +2681,46 @@ msgstr ""
 "വിലാസത്തിലേക്ക് പകർത്താൻ കഴിയുമെന്ന് ഉറപ്പാക്കാൻ ഇത് ആവശ്യമാണ്, "
 "അല്ലാത്തപക്ഷം ഉപഭോക്താവിന് ചെക്ക്ഔട്ട് ഫോം പൂർത്തിയാക്കാൻ കഴിഞ്ഞേക്കില്ല."
 
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level.php:3
+msgid "Top Level"
+msgstr "ഉയർന്ന നില"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/template-top-level-post-types-child.php:3
+msgid "Top Level In A Child Theme"
+msgstr "ഒരു കുട്ടി തീമിലെ ഉയർന്ന ലെവൽ"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/no-trailing-period-post-types.php:3
+msgid "No Trailing Period"
+msgstr "ട്രെയിലിംഗ് കാലയളവ് ഇല്ല"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/tilde-post-types.php:3
+msgid "Tilde in Post Type."
+msgstr "പോസ്റ്റ് തരത്തിൽ ടിൽഡ്."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-comma-post-types.php:3
+msgid "Trailing Comma,"
+msgstr "ട്രെയിലിംഗ് കോമ,"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-post-types.php:3
+msgid "Trailing Period."
+msgstr "ട്രെയിലിംഗ് പിരീഡ്."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-whitespace-post-types.php:3
+msgid "Trailing Period, White Space."
+msgstr "ട്രെയിലിംഗ് പിരീഡ്, വൈറ്റ് സ്പേസ്."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-whitespace-period-post-types.php:3
+msgid "Trailing White Space, Period."
+msgstr "ട്രെയിലിംഗ് വൈറ്റ് സ്പേസ്, പിരീഡ്."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir.php:3
+msgid "Sub Dir"
+msgstr "സബ് ഡയറക്ടർ"
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/subdir/template-sub-dir-post-types-child.php:3
+msgid "Sub Dir In A Child Theme"
+msgstr "ഒരു കുട്ടി തീമിലെ സബ് ഡയറക്ടർ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
