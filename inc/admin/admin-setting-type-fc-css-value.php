@@ -26,6 +26,34 @@ class FluidCheckout_Admin_SettingType_CssValue extends FluidCheckout {
 
 
 	/**
+	 * Get the CSS property used to validate a design profile value type.
+	 *
+	 * @param  string  $type  Design profile value type.
+	 */
+	public function get_css_property_for_value_type( $type ) {
+		$css_properties = array(
+			'color'               => 'color',
+			'length'              => 'margin',
+			'font_weight'         => 'font-weight',
+			'border_style'        => 'border-style',
+			'shadow'              => 'box-shadow',
+		);
+
+		return array_key_exists( $type, $css_properties ) ? $css_properties[ $type ] : '';
+	}
+
+	/**
+	 * Whether a design profile value type uses the color swatch control.
+	 *
+	 * @param  string  $type  Design profile value type.
+	 */
+	public function uses_color_swatch_for_value_type( $type ) {
+		return 'color' === $type;
+	}
+
+
+
+	/**
 	 * Output the setting field.
 	 *
 	 * @param   array  $value  Admin settings argument values, with the optional `swatch` and `css_property` arguments.

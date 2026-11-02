@@ -716,34 +716,16 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	}
 
 	/**
-	 * Output a color field.
+	 * Output a color field (same control as design editor CSS value fields with swatch).
 	 *
 	 * @param  array  $value  Settings field arguments.
 	 */
 	public function output_field_color( $value ) {
-		$field_description = $this->get_field_description( $value );
+		$value[ 'type' ]          = 'fc_css_value';
+		$value[ 'swatch' ]        = true;
+		$value[ 'css_property' ]  = 'color';
 
-		$this->output_field_start( $value );
-		?>
-		<?php
-		$color_preview_background = '' !== trim( (string) $value[ 'value' ] ) ? $value[ 'value' ] : 'transparent';
-		?>
-		<span class="colorpickpreview" style="background: <?php echo esc_attr( $color_preview_background ); ?>">&nbsp;</span>
-		<input
-			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-			id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"
-			type="text"
-			dir="ltr"
-			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
-			value="<?php echo esc_attr( $value[ 'value' ] ); ?>"
-			class="<?php echo esc_attr( $value[ 'class' ] ); ?> colorpick"
-			placeholder="<?php echo esc_attr( $value[ 'placeholder' ] ); ?>"
-			autocomplete="off"
-			<?php echo $this->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-			<?php disabled( $this->is_field_disabled( $value ) ); ?>
-			/>&lrm; <?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-		<?php
-		$this->output_field_end( $value );
+		FluidCheckout_Admin_SettingType_CssValue::instance()->output_field( $value );
 	}
 
 	/**

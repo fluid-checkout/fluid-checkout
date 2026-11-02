@@ -1129,8 +1129,6 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		wp_add_inline_script( 'fc-admin-settings-tooltips', '(function(){var i=function(){FCAdminSettingsTooltips.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-nav', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-nav' ), array( 'fc-utils', 'fc-admin-settings-setup-checklist' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-nav', '(function(){var i=function(){FCAdminSettingsNav.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
-		wp_register_script( 'fc-admin-settings-colorpicker', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-colorpicker' ), array( 'fc-utils', 'jquery', 'iris' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-admin-settings-colorpicker', '(function(){var i=function(){FCAdminSettingsColorPicker.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-enhanced-select', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-enhanced-select' ), array( 'tomselect' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-enhanced-select', 'window.addEventListener("load",function(){FCAdminSettingsEnhancedSelect.init();});' );
 		wp_register_script( 'fc-admin-settings-css-value', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-css-value' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -1145,15 +1143,12 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		wp_enqueue_style( 'fc-admin-options' );
 		wp_enqueue_style( 'fc-admin-settings' );
 		wp_enqueue_style( 'fc-admin-dashboard' );
-		wp_enqueue_style( 'wp-color-picker' );
 
 		// Scripts
-		wp_enqueue_script( 'iris' );
 		wp_enqueue_script( 'fc-admin-settings-setup-checklist' );
 		wp_enqueue_script( 'fc-settings-page' );
 		wp_enqueue_script( 'fc-admin-settings-tooltips' );
 		wp_enqueue_script( 'fc-admin-settings-nav' );
-		wp_enqueue_script( 'fc-admin-settings-colorpicker' );
 		wp_enqueue_script( 'fc-admin-settings-enhanced-select' );
 		wp_enqueue_script( 'fc-admin-settings-css-value' );
 	}

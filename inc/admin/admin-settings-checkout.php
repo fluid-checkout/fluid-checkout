@@ -139,10 +139,11 @@ class FluidCheckout_Settings_Checkout {
 						'desc'                  => '',
 						'desc_tip'              => __( 'Choose a background color for the Split design secondary column. Leave empty to use the order summary background color.', 'fluid-checkout' ) . '<br>' . __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
 						'id'                    => 'fc_checkout_secondary_column_background_color',
-						'type'                  => 'text',
+						'type'                  => 'fc_css_value',
+						'swatch'                => true,
+						'css_property'          => 'color',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_secondary_column_background_color' ),
 						'autoload'              => false,
-						'class'                 => 'colorpick',
 						'custom_attributes'     => array(
 							'data-conditional-id'    => 'fc_design_template',
 							'data-conditional-value' => 'split',
@@ -231,7 +232,6 @@ class FluidCheckout_Settings_Checkout {
 							'data-conditional-value' => 'yes',
 						),
 						'autoload'              => false,
-						'css'                   => 'max-width: 8rem;',
 					),
 
 					array(
@@ -246,7 +246,6 @@ class FluidCheckout_Settings_Checkout {
 							'data-conditional-value' => 'yes',
 						),
 						'autoload'              => false,
-						'css'                   => 'max-width: 8rem;',
 					),
 
 					array(
@@ -261,7 +260,6 @@ class FluidCheckout_Settings_Checkout {
 							'data-conditional-value' => 'yes',
 						),
 						'autoload'              => false,
-						'css'                   => 'max-width: 8rem;',
 					),
 
 					array(
@@ -372,7 +370,6 @@ class FluidCheckout_Settings_Checkout {
 						'type'                  => 'color',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_order_review_highlight_color' ),
 						'autoload'              => false,
-						'css'                   => 'max-width: 8rem;',
 					),
 
 					array(
