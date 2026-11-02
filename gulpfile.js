@@ -237,7 +237,7 @@ gulp.task( 'update-ver-release', gulp.series(
 			gulp.src( _gulpSettings.changelogFile )
 			// See http://mdn.io/string.replace#Specifying_a_string_as_a_parameter
 			.pipe(replace(/Stable tag: (.)*/g, 'Stable tag: ' + _package.version ))
-			.pipe(replace(/= Unreleased (.)*/g, '= ' + _package.version + ' - ' + today.toISOString().slice(0, 10) + ' =' ))
+			.pipe(replace(/^=+\s*Unreleased\s.*$/gm, '= ' + _package.version + ' - ' + today.toISOString().slice(0, 10) + ' =' ))
 			.pipe(gulp.dest('./'));
 		}
 
