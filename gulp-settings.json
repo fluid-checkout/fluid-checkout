@@ -68,6 +68,9 @@
 		"main": [
 			"./sass/*.scss"
 		],
+		"designTemplates": [
+			"./sass/design-templates/*.scss"
+		],
 		"themeCompat": [
 			"./sass/compat/themes/*.scss"
 		],
