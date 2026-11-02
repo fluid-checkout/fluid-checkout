@@ -623,28 +623,3 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Fixed: State field losing selected value when update checkout is triggered while still processing State fields options update from selected country.
 
 [See complete changelog](https://fluidcheckout.com/docs/changelog-fluid-checkout/)
-
-
-== Upgrade Notice ==
-
-= 4.0 =
-* BREAKING CHANGES - Changes to how substeps are added to the checkout page can break functionality of Fluid Checkout PRO and other add-ons until they are also updated to the latest versions.
-
-= 2.3 =
-* POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause customizations to those files to stop working. See details in the changelog section.
-
-= 2.0 =
-* BREAKING CHANGES - Some features where moved to the PRO version.
-
-= 1.6 =
-* Changes to order summary and sidebar action hooks can cause issues if your website has customizations using them. See details in the changelog section.
-
-= 1.5 =
-* Lays the foundations for the PRO version. Change the way field values are persisted between requests. Remove hook `fc_general_settings` and renamed hook `fc_adress_field_keys_skip_list` to `fc_address_field_keys_skip_list` can break customizations that use those hooks.
-
-= 1.4 =
-* Changes to "Proceed to <next_step>" button labels, custom translations will need to be updated. Changes the way customer session data is cleared. Renamed hook `fc_customer_persisted_data_clear_fields` to `fc_customer_persisted_data_clear_fields_order_processed` can break customizations that use this hook.
-
-= 1.3 =
-* Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
-
