@@ -410,6 +410,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Added: Compatibility with theme Purple.
 * Added: New settings pages, with guided setup and live preview of checkout pages.
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
+* Added: Boxed design template, now available without PRO and used by default on new installs.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
 * Added: Setting to choose a background color for the Split design secondary column (PRO feature).
 * Added: Filter `fc_local_pickup_shipping_zone_fields_options` for the local pickup shipping zone fields setting (PRO feature).
