@@ -96,7 +96,7 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 			$steps[] = array(
 				'id'    => 'tracking',
 				/* translators: %s: Tools settings URL. */
-				'label' => sprintf( __( 'Get faster support and help us improve compatibility and measure impact. Usage tracking is optional and OFF by default. <a href="%s">Review usage tracking</a> in the tools settings. You can preview the data and turn it off at any time.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'tools' ) ) ),
+				'label' => sprintf( __( 'Get faster support and help us improve compatibility and measure impact. Usage tracking is optional and off by default. <a href="%s">Review usage tracking</a> in the tools settings. You can preview the data and turn it off at any time.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'tools' ) ) ),
 			);
 		}
 
@@ -483,7 +483,7 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 		$steps            = $this->get_checklist_steps();
 		$guided_setup_url = class_exists( 'FluidCheckout_Admin_GuidedSetup_FluidCheckout' )
 			? FluidCheckout_Admin_GuidedSetup_FluidCheckout::instance()->get_guided_setup_url()
-			: FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'dashboard' );
+			: FluidCheckout_Admin_Settings_Page::instance()->get_dashboard_url();
 		?>
 		<div class="fc-settings-card fc-settings-card--setup">
 			<div class="fc-settings-card__header">

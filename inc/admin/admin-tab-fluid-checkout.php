@@ -63,7 +63,7 @@ class FluidCheckout_Settings_WC_FluidCheckoutTab extends WC_Settings_Page {
 
 		update_option( self::HIDE_TAB_OPTION, 'yes', false );
 
-		wp_safe_redirect( FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'dashboard' ) );
+		wp_safe_redirect( FluidCheckout_Admin_Settings_Page::instance()->get_dashboard_url() );
 		exit;
 	}
 

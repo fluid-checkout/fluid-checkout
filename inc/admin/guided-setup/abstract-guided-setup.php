@@ -230,6 +230,8 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 
 		// Hide all admin notices (FC and third-party) on guided setup screens
 		add_action( 'load-' . $this->page_hook_suffix, array( $this, 'maybe_strip_admin_notices_on_guided_setup' ), 20 );
+
+		add_filter( 'fc_settings_header_logo_after_title', array( $this, 'filter_settings_header_guided_setup_badge' ), 10 );
 	}
 
 	/**
@@ -237,9 +239,30 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 	 */
 	public function maybe_strip_admin_notices_on_guided_setup() {
 		// Bail if Fluid Checkout admin helpers are unavailable
-		if ( ! class_exists( 'FluidCheckout_Admin' ) ) { return; }
+		if ( ! class_exists( 'FluidCheckout_Admin' ) ) {
+			return;
+		}
 
 		FluidCheckout_Admin::strip_non_fc_admin_notices_on_load( false );
+
+		add_action( 'admin_notices', array( $this, 'output_guided_setup_admin_header' ), 1 );
+	}
+
+
+
+	/**
+	 * Output the shared Fluid Checkout admin header on the guided setup screen.
+	 */
+	public function output_guided_setup_admin_header() {
+		if ( ! $this->is_guided_setup_page() ) {
+			return;
+		}
+
+		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) ) {
+			return;
+		}
+
+		FluidCheckout_Admin_Settings_Page::instance()->output_admin_header_for_guided_setup( $this );
 	}
 
 
@@ -472,9 +495,20 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 	/**
 	 * Get the guided setup page URL.
 	 *
+	 * Opens the first step while keeping any saved answers. The browser URL
+	 * is updated with `current_step` as the merchant moves between steps.
+	 *
 	 * @return  string
 	 */
 	public function get_guided_setup_url() {
+		$steps      = $this->get_steps();
+		$first_step = (string) key( $steps );
+
+		// Open on the first step when step definitions are available
+		if ( '' !== $first_step ) {
+			return $this->get_guided_setup_step_url( $first_step );
+		}
+
 		return add_query_arg(
 			array(
 				'page' => $this->page_slug,
@@ -563,7 +597,7 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 
 
 	/**
-	 * Output the left side of guided setup step actions (back, start over, skip to settings).
+	 * Output the left side of guided setup step actions (back to previous step).
 	 *
 	 * @param   string  $step_slug  Step slug.
 	 */
@@ -571,12 +605,57 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 		?>
 		<div class="fc-setup-step-actions__start">
 			<?php $this->output_back_to_previous_step_button( $step_slug ); ?>
-			<div class="fc-setup-step-actions__links">
-				<?php $this->output_start_over_link(); ?>
-				<?php $this->output_skip_to_settings_link(); ?>
-			</div>
 		</div>
 		<?php
+	}
+
+
+
+	/**
+	 * Output start over and skip to settings links in the admin header.
+	 */
+	public function output_guided_setup_header_action_links() {
+		?>
+		<a href="<?php echo esc_url( $this->get_start_over_guided_setup_url() ); ?>" class="fc-header__button fc-setup-start-over" aria-label="<?php echo esc_attr__( 'Start over and return to the first guided setup step', 'fluid-checkout' ); ?>"><?php echo esc_html__( 'Start over', 'fluid-checkout' ); ?></a>
+		<a href="<?php echo esc_url( $this->get_skip_guided_setup_url() ); ?>" class="fc-header__button fc-setup-skip-to-settings" aria-label="<?php echo esc_attr__( 'Skip to settings', 'fluid-checkout' ); ?>"><?php echo esc_html__( 'Skip to settings', 'fluid-checkout' ); ?></a>
+		<?php
+	}
+
+
+
+	/**
+	 * Badge label beside the admin header logo on the guided setup screen.
+	 *
+	 * @return string Empty when no badge should be shown.
+	 */
+	protected function get_guided_setup_header_badge_label() {
+		return '';
+	}
+
+
+
+	/**
+	 * Append the guided setup badge beside the admin header logo.
+	 *
+	 * @param string $html Markup after the header logo title.
+	 *
+	 * @return string
+	 */
+	public function filter_settings_header_guided_setup_badge( $html ) {
+		if ( ! $this->is_guided_setup_page() ) {
+			return $html;
+		}
+
+		$label = $this->get_guided_setup_header_badge_label();
+
+		if ( '' === $label ) {
+			return $html;
+		}
+
+		return $html . sprintf(
+			'<span class="fc-header__guided-setup-badge fc-settings-badge">%s</span>',
+			esc_html( $label )
+		);
 	}
 
 
@@ -674,7 +753,7 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			),
 		);
 
-		return apply_filters( 'fc_guided_setup_script_settings', $settings, $this->get_config_value( 'guided_setup_id' ) );
+		return $settings;
 	}
 
 
@@ -1013,13 +1092,7 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 	 * @return  string
 	 */
 	public function get_step_image_preview_url( $url ) {
-		$full_url = $this->get_step_image_full_url( $url );
-		$size     = apply_filters(
-			'fc_guided_setup_step_image_preview_size',
-			'medium',
-			$this->get_config_value( 'guided_setup_id' )
-		);
-
+		$full_url      = $this->get_step_image_full_url( $url );
 		$attachment_id = attachment_url_to_postid( $full_url );
 
 		// Bail if the image is not in the media library
@@ -1027,7 +1100,7 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			return $full_url;
 		}
 
-		$src = wp_get_attachment_image_src( $attachment_id, $size );
+		$src = wp_get_attachment_image_src( $attachment_id, 'medium' );
 
 		// Bail if attachment size URL is not available
 		if ( empty( $src[0] ) ) {
@@ -1051,13 +1124,7 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			'height' => '',
 		);
 
-		$full_url = $this->get_step_image_full_url( $url );
-		$size     = apply_filters(
-			'fc_guided_setup_step_image_preview_size',
-			'medium',
-			$this->get_config_value( 'guided_setup_id' )
-		);
-
+		$full_url      = $this->get_step_image_full_url( $url );
 		$attachment_id = attachment_url_to_postid( $full_url );
 
 		// Bail if the image is not in the media library
@@ -1065,7 +1132,7 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			return $dimensions;
 		}
 
-		$src = wp_get_attachment_image_src( $attachment_id, $size );
+		$src = wp_get_attachment_image_src( $attachment_id, 'medium' );
 
 		// Bail if attachment size dimensions are not available
 		if ( empty( $src ) ) {
@@ -1467,9 +1534,29 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 	/**
 	 * Advance the guided setup to the next step.
 	 *
+	 * Only moves the max-reached step forward so replaying earlier steps
+	 * (for example after opening from the first step again) keeps later
+	 * steps reachable without clearing answers.
+	 *
 	 * @param   string  $next_step  Next step slug.
 	 */
 	public function advance_step( $next_step ) {
+		$steps      = $this->get_steps();
+		$step_keys  = array_keys( $steps );
+		$next_index = array_search( $next_step, $step_keys, true );
+
+		// Bail if the next step slug is invalid
+		if ( false === $next_index ) {
+			return;
+		}
+
+		$max_reached_step = $this->get_max_reached_step();
+
+		// Bail when the next step is not further than the max already reached
+		if ( ! empty( $max_reached_step ) && (int) $next_index <= $this->get_max_reached_step_index( $max_reached_step ) ) {
+			return;
+		}
+
 		$guided_setup_id = $this->get_guided_setup_id();
 
 		// Save the next step as the max reached step in the slug progress store
@@ -1576,6 +1663,40 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 
 
 	/**
+	 * Clear the WordPress admin footer on the guided setup page.
+	 *
+	 * @param   string  $text  Footer text.
+	 *
+	 * @return  string
+	 */
+	public function clear_guided_setup_admin_footer( $text ) {
+		if ( ! $this->is_guided_setup_page() ) {
+			return $text;
+		}
+
+		return '';
+	}
+
+
+
+	/**
+	 * Maybe output the fcSettingsAdmin inline script on the guided setup page.
+	 */
+	public function maybe_output_settings_inline_script() {
+		if ( ! $this->is_guided_setup_page() ) {
+			return;
+		}
+
+		if ( ! class_exists( 'FluidCheckout_Enqueue' ) ) {
+			return;
+		}
+
+		FluidCheckout_Enqueue::instance()->output_settings_inline_script_admin();
+	}
+
+
+
+	/**
 	 * Add admin body class on the guided setup page.
 	 *
 	 * @param   string  $classes  Admin body classes.
@@ -1589,7 +1710,13 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			return $classes;
 		}
 
-		return $classes . ' ' . $this->get_config_value( 'body_class' );
+		$classes .= ' fc-settings-page ' . $this->get_config_value( 'body_class' );
+
+		if ( 'wide' === $this->get_config_value( 'content_layout' ) ) {
+			$classes .= ' fc-guided-setup--wide-content';
+		}
+
+		return $classes;
 	}
 
 
@@ -1633,11 +1760,7 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 	 * @return  array
 	 */
 	public function get_sub_steps( $step_slug = null ) {
-		$sub_steps = apply_filters(
-			'fc_guided_setup_sub_steps',
-			$this->get_sub_step_definitions(),
-			$this->get_config_value( 'guided_setup_id' )
-		);
+		$sub_steps = $this->get_sub_step_definitions();
 
 		if ( null === $step_slug ) {
 			return $sub_steps;
@@ -1694,6 +1817,8 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			return array(
 				'current_step'      => '',
 				'sub_step_progress' => array(),
+				'answers'           => array(),
+				'started_at'        => '',
 				'completed_at'      => '',
 			);
 		}
@@ -1708,6 +1833,8 @@ abstract class FluidCheckout_Admin_GuidedSetup {
 			array(
 				'current_step'      => '',
 				'sub_step_progress' => array(),
+				'answers'           => array(),
+				'started_at'        => '',
 				'completed_at'      => '',
 			)
 		);

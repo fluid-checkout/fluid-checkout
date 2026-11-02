@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Dummy customer, product and order data for the admin preview, which exists in memory only.
+ * Dummy customer, product, coupon and order data for the admin preview, which exists in memory only.
  */
 class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 
@@ -20,6 +20,11 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 	 * First product ID used for dummy products, high enough to never belong to a real product.
 	 */
 	const PRODUCT_ID_START = 2147483600;
+
+	/**
+	 * Code of the dummy coupon applied to the preview cart, in lowercase as WooCommerce formats coupon codes.
+	 */
+	const COUPON_CODE = 'preview10';
 
 	/**
 	 * Order ID of the dummy paid order shown on the order received page, high enough to never belong to a real order.
@@ -360,6 +365,20 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 			'catalog_visibility'     => 'hidden',
 			'price'                  => $price,
 		), $props );
+	}
+
+
+
+	/**
+	 * Get the properties of the dummy coupon applied to the preview cart.
+	 *
+	 * @return  array  Coupon properties as accepted by the `woocommerce_get_shop_coupon_data` filter.
+	 */
+	public function get_coupon_props() {
+		return array(
+			'discount_type'       => 'percent',
+			'amount'              => 10,
+		);
 	}
 
 

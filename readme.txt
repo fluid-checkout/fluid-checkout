@@ -368,6 +368,8 @@ You choose which of these to share. Before anything is sent, you can preview the
 
 Agencies and developers can turn usage tracking off for a site by adding the FC_DISABLE_TELEMETRY constant, set to true, to that site's wp-config.php. It has to be added on each site. While the constant is set, nothing is sent, the usage tracking settings stay hidden in the admin, and the saved choice is kept.
 
+**Newsletter (guided setup):** If you opt in to the Fluid Checkout newsletter during guided setup, your email and name are sent in a separate request to our website's newsletter API so we can add you to the list. That signup is independent from usage tracking.
+
 = Is Fluid Checkout compatible with WCAG 2.2 Level AA accessibility requirements? Will it make my webshop compliant? =
 
 Fluid Checkout is built to follow WCAG 2.2 Level AA on the checkout page, but we can't promise that your webshop is compliant. Compliance depends on your whole website, including your theme, your content and the other plugins you use. On the checkout page, Fluid Checkout supports:
@@ -408,13 +410,14 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 * Bump tested up to WooCommerce 11.3
 * Added: Compatibility with theme Purple.
+* Added: Design accordion in the settings sidebar (Lite) linking to the Design editor PRO feature page.
 * Added: New settings pages, with guided setup and live preview of checkout pages.
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
-* Added: Setting to choose a background color for the Split design secondary column (PRO feature).
 * Added: Filter `fc_local_pickup_shipping_zone_fields_options` for the local pickup shipping zone fields setting (PRO feature).
 * Added: Filter `fc_available_shipping_methods` to change the shipping methods shown for a package.
 * Added: Filter `fc_prevent_shipping_method_autoselect` to prevent automatic selection of the first shipping method. Return `true` to prevent auto-selecting a shipping method.
+* Added: Account creation section on Thank you settings with a link to Customer accounts settings for account matching and delayed account creation.
 * Added: Boxed design template, now available without PRO and used by default on new installs.
 * Improved: Layout of WooCommerce address autocomplete suggestions and search icon on checkout and account edit-address form fields.
 * Improved: Updated replaced files for WooCommerce `address-i18n.js` and EU/UK VAT for WooCommerce to match latest upstream versions.
@@ -438,6 +441,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Fixed: JavaScript error in collapsible blocks when a child element fires `transitionend` (for example on the view-order account page).
 * Fixed: JavaScript error when focusing a shipping method after checkout update if that method is no longer available in the refreshed fragment.
 * Fixed: Settings page header missing after third-party admin notices are stripped on Fluid Checkout settings screens.
+* Fixed: Plugin deactivation syncs only non-Fluid Checkout settings from the active profile to wp_options. Managed `fc_*` values stay in the profile.
 * Deprecated: Filter `fc_next_step_button_label` now shows a deprecation notice, use `fc_proceed_to_next_step_button_label` instead.
 * Deprecated: Filter `fc_shipping_methods_disable_auto_select`, use `fc_prevent_shipping_method_autoselect` instead. Note that the new filter has inverted logic: return `true` to prevent auto-selecting a shipping method.
 * Deprecated: Filter `fc_skip_add_pickup_point_info_as_review_text_lines`. Returning true from this filter still skips pickup point details from the shipping method review text. Use `fc_add_pickup_point_info_as_review_text_lines` instead.
