@@ -9,7 +9,7 @@ class FluidCheckout_Admin_DesignEditorPromo extends FluidCheckout {
 	/**
 	 * Design editor page slug, the same as the Design editor page of PRO, so the page opens the Design editor once PRO is active.
 	 */
-	const PAGE_SLUG = 'fluid-checkout-design-editor';
+	const PAGE_SLUG = FluidCheckout_Admin_Settings_Page::DESIGN_EDITOR_PAGE_SLUG;
 
 	/**
 	 * Slug of the only tab of the page.
@@ -60,7 +60,27 @@ class FluidCheckout_Admin_DesignEditorPromo extends FluidCheckout {
 	 * Register the Design editor item in the Fluid Checkout admin menu, after the Settings item.
 	 */
 	public function register_menu() {
-		$this->page_hook_suffix = add_submenu_page( FluidCheckout_Admin_Settings_Page::PAGE_SLUG, __( 'Design editor', 'fluid-checkout' ), __( 'Design editor', 'fluid-checkout' ), FluidCheckout_Admin_Settings_Page::CAPABILITY, self::PAGE_SLUG, array( $this, 'output_page' ) );
+		$this->page_hook_suffix = add_submenu_page( FluidCheckout_Admin_Settings_Page::DASHBOARD_PAGE_SLUG, __( 'Design', 'fluid-checkout' ), __( 'Design', 'fluid-checkout' ), FluidCheckout_Admin_Settings_Page::CAPABILITY, self::PAGE_SLUG, array( $this, 'output_page' ) );
+
+		add_action( 'load-' . $this->page_hook_suffix, array( $this, 'handle_load_design_editor_page' ), 10 );
+	}
+
+
+
+	/**
+	 * Allow only Fluid Checkout admin notices on this screen (strip WooCommerce and other plugins).
+	 */
+	public function handle_load_design_editor_page() {
+		// Bail if admin helper is unavailable
+		if ( ! class_exists( 'FluidCheckout_Admin' ) ) { return; }
+
+		FluidCheckout_Admin::strip_non_fc_admin_notices_on_load( false );
+
+		add_action( 'admin_notices', array( $this, 'maybe_output_admin_header' ), 1 );
+
+		if ( class_exists( 'FluidCheckout_AdminNotices' ) ) {
+			add_action( 'admin_notices', array( FluidCheckout_AdminNotices::instance(), 'display_notices' ), 10 );
+		}
 	}
 
 
@@ -69,13 +89,7 @@ class FluidCheckout_Admin_DesignEditorPromo extends FluidCheckout {
 	 * Check whether the current request is for the Design editor page.
 	 */
 	public function is_design_editor_page() {
-		// Bail if not in the admin
-		if ( ! is_admin() ) { return false; }
-
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$page = isset( $_GET[ 'page' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'page' ] ) ) : '';
-
-		return self::PAGE_SLUG === $page;
+		return FluidCheckout_Admin_Settings_Page::instance()->is_design_editor_page();
 	}
 
 	/**
@@ -176,9 +190,10 @@ class FluidCheckout_Admin_DesignEditorPromo extends FluidCheckout {
 		// Output the page in the settings page layout
 		FluidCheckout_Admin_Settings_Page::instance()->output_layout( array(
 			'title'                    => __( 'Settings', 'fluid-checkout' ),
+			'screen_reader_title'      => __( 'Design', 'fluid-checkout' ),
 			'form_url'                 => add_query_arg( 'page', self::PAGE_SLUG, admin_url( 'admin.php' ) ),
 			'tabs'                     => array(
-				self::TAB    => array( 'type' => 'tab', 'label' => __( 'Design editor', 'fluid-checkout' ), 'show_save_button' => false ),
+				self::TAB    => array( 'type' => 'tab', 'label' => __( 'Design', 'fluid-checkout' ), 'show_save_button' => false ),
 			),
 			'current_tab'              => self::TAB,
 			'nav_callback'             => array( $this, 'output_sidebar_nav' ),
@@ -189,8 +204,8 @@ class FluidCheckout_Admin_DesignEditorPromo extends FluidCheckout {
 	/**
 	 * Output the navigation of the settings page in the sidebar, so the settings tabs are a click away.
 	 */
-	public function output_sidebar_nav() {
-		FluidCheckout_Admin_Settings_Page::instance()->output_sidebar_nav( FluidCheckout_Admin_Settings_Page::instance()->get_tabs(), self::TAB );
+	public function output_sidebar_nav( $_tabs, $_current_tab, $sidebar_title = '' ) {
+		FluidCheckout_Admin_Settings_Page::instance()->output_sidebar_nav( FluidCheckout_Admin_Settings_Page::instance()->get_tabs(), self::TAB, $sidebar_title );
 	}
 
 	/**

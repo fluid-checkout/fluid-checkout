@@ -196,7 +196,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 	 * @return string
 	 */
 	public function get_settings_url() {
-		return FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'dashboard' );
+		return FluidCheckout_Admin_Settings_Page::instance()->get_dashboard_url();
 	}
 
 

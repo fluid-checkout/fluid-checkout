@@ -44,7 +44,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 	 */
 	public function enqueue_scripts() {
 		// Bail if not on the Dashboard tab of the settings page
-		if ( ! FluidCheckout_Admin_Settings_Page::instance()->is_settings_page( 'dashboard' ) ) { return; }
+		if ( ! FluidCheckout_Admin_Settings_Page::instance()->is_dashboard_page() ) { return; }
 
 		// Enqueue dashboard add-ons script
 		wp_enqueue_script( 'fc-admin-dashboard-addons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-dashboard-addons' ), array( 'fc-utils' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -58,7 +58,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 	 */
 	public function add_js_settings_admin( $settings ) {
 		// Bail if not on the Dashboard tab of the settings page
-		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) || ! FluidCheckout_Admin_Settings_Page::instance()->is_settings_page( 'dashboard' ) ) { return $settings; }
+		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) || ! FluidCheckout_Admin_Settings_Page::instance()->is_dashboard_page() ) { return $settings; }
 
 		$settings[ 'dashboardAddons' ] = $this->get_dashboard_addons_script_settings();
 
@@ -264,7 +264,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 		update_option( self::HIDE_DASHBOARD_PRO_PROMO_OPTION, 'yes', false );
 
-		wp_safe_redirect( FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'dashboard' ) );
+		wp_safe_redirect( FluidCheckout_Admin_Settings_Page::instance()->get_dashboard_url() );
 		exit;
 	}
 
@@ -281,7 +281,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				array(
 					'fc_hide_dashboard_pro_promo' => '1',
 				),
-				FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'dashboard' )
+				FluidCheckout_Admin_Settings_Page::instance()->get_dashboard_url()
 			),
 			'fc_hide_dashboard_pro_promo'
 		);

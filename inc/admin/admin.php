@@ -83,7 +83,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * Strip third-party WordPress admin notices on FC admin screens.
 	 *
 	 * Guided setup: remove all `admin_notices` / `all_admin_notices` callbacks.
-	 * Settings: remove all, then re-register the settings header and Fluid Checkout notices only.
+	 * Settings and Design editor (Lite promo): remove all, then re-register the screen header and Fluid Checkout notices only.
 	 *
 	 * @param   bool  $re_register_fc_notices  Whether to re-attach FC header and notice display callbacks.
 	 */
@@ -96,7 +96,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 		// Re-attach settings page header (hooked on `admin_notices` at priority 1)
 		if ( class_exists( 'FluidCheckout_Admin_Settings_Page' ) ) {
-			add_action( 'admin_notices', array( FluidCheckout_Admin_Settings_Page::instance(), 'output_admin_header' ), 1 );
+			add_action( 'admin_notices', array( FluidCheckout_Admin_Settings_Page::instance(), 'maybe_output_admin_header' ), 1 );
 		}
 
 		// Re-attach Fluid Checkout notices (Lite renderer; PRO notices register on `fc_admin_notices`)
@@ -333,7 +333,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	public function add_plugin_settings_link( $links = array() ) {
 		// Add links before existing ones
 		$new_links = array(
-			sprintf( '<a href="%s">%s</a>', esc_url( admin_url( 'admin.php?page=fluid-checkout&tab=checkout' ) ), esc_html( __( 'Settings', 'fluid-checkout' ) ) ),
+			sprintf( '<a href="%s">%s</a>', esc_url( FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'checkout' ) ), esc_html( __( 'Settings', 'fluid-checkout' ) ) ),
 			sprintf( '<a href="%s" target="_blank">%s</a>', 'https://fluidcheckout.com/support/', esc_html( __( 'Support', 'fluid-checkout' ) ) ),
 		);
 
@@ -419,10 +419,10 @@ class FluidCheckout_Admin extends FluidCheckout {
 	/**
 	 * Get the purchase button label for an add-on.
 	 *
-	 * @param  string  $price  Formatted price including currency, e.g. `29 EUR`.
+	 * @param  string  $price  Formatted price including currency, e.g. `129 EUR`.
 	 */
 	public function get_addon_purchase_button_label( $price ) {
-		/* translators: %s: formatted price including currency, e.g. "29 EUR" */
+		/* translators: %s: formatted price including currency, e.g. "129 EUR" */
 		return sprintf( __( 'Get only this add-on &mdash; %s', 'fluid-checkout' ), $price );
 	}
 

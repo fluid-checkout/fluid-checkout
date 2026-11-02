@@ -12,6 +12,16 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	const PAGE_SLUG = 'fluid-checkout';
 
 	/**
+	 * Dashboard admin page slug.
+	 */
+	const DASHBOARD_PAGE_SLUG = 'fluid-checkout-dashboard';
+
+	/**
+	 * Design editor admin page slug (Lite promo page; same slug as PRO Design editor).
+	 */
+	const DESIGN_EDITOR_PAGE_SLUG = 'fluid-checkout-design-editor';
+
+	/**
 	 * Capability required to access the settings page.
 	 */
 	const CAPABILITY = 'manage_woocommerce';
@@ -39,6 +49,13 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	private $page_hook_suffix = '';
 
 	/**
+	 * Dashboard page hook suffix, set when registering the admin menu.
+	 *
+	 * @var string
+	 */
+	private $dashboard_page_hook_suffix = '';
+
+	/**
 	 * Settings tabs, cached after first retrieval.
 	 *
 	 * @var array|null
@@ -62,7 +79,12 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	public function hooks() {
 		// Admin menu
 		add_action( 'admin_menu', array( $this, 'register_menu' ), 10 );
+		add_action( 'admin_menu', array( $this, 'normalize_admin_submenu' ), 999 );
+		add_action( 'admin_init', array( $this, 'maybe_redirect_legacy_dashboard_tab' ), 1 );
+		add_action( 'admin_init', array( $this, 'maybe_handle_load_dashboard_page' ), 5 );
+		add_action( 'admin_init', array( $this, 'maybe_handle_load_settings_page' ), 5 );
 		add_filter( 'submenu_file', array( $this, 'maybe_set_current_submenu' ), 10, 2 );
+		add_filter( 'fc_is_admin_settings_layout_page', array( $this, 'filter_is_settings_layout_page' ), 10 );
 
 		// Save settings
 		add_action( 'admin_init', array( $this, 'maybe_save_settings' ), 10 );
@@ -75,7 +97,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		add_filter( 'admin_body_class', array( $this, 'add_admin_body_class' ), 10 );
 
 		// Admin page header
-		add_action( 'admin_notices', array( $this, 'output_admin_header' ), 1 ); // Before other admin notices, so the page header comes first
+		add_action( 'admin_notices', array( $this, 'maybe_output_admin_header' ), 1 ); // Before other admin notices, so the page header comes first
 
 		// Remove WooCommerce Help tabs on this page
 		add_action( 'admin_head', array( $this, 'maybe_remove_help_tabs' ), 10 );
@@ -98,30 +120,98 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 	/**
 	 * Register the Fluid Checkout admin menu.
-	 * The Dashboard and Settings submenu items are links to tabs of the same settings page.
+	 * Dashboard and Settings are separate admin pages under the same top-level menu.
 	 */
 	public function register_menu() {
-		$this->page_hook_suffix = add_menu_page(
+		$this->dashboard_page_hook_suffix = add_menu_page(
 			__( 'Fluid Checkout', 'fluid-checkout' ),
 			__( 'Fluid Checkout', 'fluid-checkout' ),
 			self::CAPABILITY,
-			self::PAGE_SLUG,
-			array( $this, 'output_page' ),
+			self::DASHBOARD_PAGE_SLUG,
+			array( $this, 'output_dashboard_page' ),
 			$this->get_menu_icon_url(),
 			56
 		);
 
-		add_submenu_page( self::PAGE_SLUG, __( 'Dashboard', 'fluid-checkout' ), __( 'Dashboard', 'fluid-checkout' ), self::CAPABILITY, $this->get_settings_menu_slug( 'dashboard' ) );
-		add_submenu_page( self::PAGE_SLUG, __( 'Settings', 'fluid-checkout' ), __( 'Settings', 'fluid-checkout' ), self::CAPABILITY, $this->get_settings_menu_slug( self::DEFAULT_TAB ) );
+		add_submenu_page( self::DASHBOARD_PAGE_SLUG, __( 'Settings', 'fluid-checkout' ), __( 'Settings', 'fluid-checkout' ), self::CAPABILITY, self::PAGE_SLUG, array( $this, 'output_page' ) );
+	}
 
-		// Remove the submenu item automatically added for the top-level page,
-		// so the top-level menu links to the Dashboard tab
-		remove_submenu_page( self::PAGE_SLUG, self::PAGE_SLUG );
+	/**
+	 * Rename the auto-added Fluid Checkout submenu entry to Dashboard and drop duplicate slugs.
+	 */
+	public function normalize_admin_submenu() {
+		global $submenu;
 
-		add_action( 'load-' . $this->page_hook_suffix, array( $this, 'handle_load_settings_page' ), 10 );
+		// Bail if the Fluid Checkout submenu is not registered
+		if ( empty( $submenu[ self::DASHBOARD_PAGE_SLUG ] ) || ! is_array( $submenu[ self::DASHBOARD_PAGE_SLUG ] ) ) {
+			return;
+		}
+
+		$items = &$submenu[ self::DASHBOARD_PAGE_SLUG ];
+		$dashboard_label = __( 'Dashboard', 'fluid-checkout' );
+		$seen_dashboard_slug = false;
+
+		// Iterate submenu entries
+		foreach ( $items as $index => $item ) {
+			// Skip malformed entries
+			if ( ! is_array( $item ) || empty( $item[2] ) ) {
+				continue;
+			}
+
+			// Rename the top-level duplicate entry to Dashboard
+			if ( self::DASHBOARD_PAGE_SLUG === $item[2] ) {
+				if ( $seen_dashboard_slug ) {
+					unset( $items[ $index ] );
+					continue;
+				}
+
+				$items[ $index ][0] = $dashboard_label;
+				$seen_dashboard_slug = true;
+			}
+		}
+
+		$submenu[ self::DASHBOARD_PAGE_SLUG ] = array_values( $items );
 	}
 
 
+
+	/**
+	 * Run Dashboard page load tasks once per request.
+	 */
+	public function maybe_handle_load_dashboard_page() {
+		// Bail if not on the Dashboard page
+		if ( ! $this->is_dashboard_page() ) { return; }
+
+		$this->handle_load_dashboard_page();
+	}
+
+	/**
+	 * Run settings page load tasks once per request.
+	 */
+	public function maybe_handle_load_settings_page() {
+		// Bail if not on the settings page
+		if ( ! $this->is_settings_page() ) { return; }
+
+		$this->handle_load_settings_page();
+	}
+
+	/**
+	 * Mark getting-started checklist steps when loading the Dashboard page.
+	 */
+	public function handle_load_dashboard_page() {
+		// Allow only Fluid Checkout admin notices on this screen (strip WooCommerce and other plugins)
+		if ( class_exists( 'FluidCheckout_Admin' ) ) {
+			FluidCheckout_Admin::strip_non_fc_admin_notices_on_load( true );
+		}
+
+		// Bail if user cannot manage settings
+		if ( ! current_user_can( self::CAPABILITY ) ) { return; }
+
+		// Bail if setup checklist handler is unavailable
+		if ( ! class_exists( 'FluidCheckout_Admin_SettingType_Setup' ) ) { return; }
+
+		FluidCheckout_Admin_SettingType_Setup::instance()->maybe_mark_checklist_step_from_tab( 'dashboard' );
+	}
 
 	/**
 	 * Mark getting-started checklist steps when loading a mapped settings tab.
@@ -173,23 +263,68 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
-	 * Highlight the submenu item that matches the current settings tab.
+	 * Get the URL for the Dashboard admin page.
+	 */
+	public function get_dashboard_url() {
+		return add_query_arg( array( 'page' => self::DASHBOARD_PAGE_SLUG ), admin_url( 'admin.php' ) );
+	}
+
+	/**
+	 * Get the admin menu slug for the Dashboard page.
+	 */
+	public function get_dashboard_menu_slug() {
+		return 'admin.php?page=' . self::DASHBOARD_PAGE_SLUG;
+	}
+
+	/**
+	 * Redirect legacy Dashboard tab URLs on the settings page to the Dashboard page.
+	 */
+	public function maybe_redirect_legacy_dashboard_tab() {
+		// Bail if not in the admin
+		if ( ! is_admin() ) { return; }
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$page = isset( $_GET[ 'page' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'page' ] ) ) : '';
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$tab = isset( $_GET[ 'tab' ] ) ? sanitize_key( wp_unslash( $_GET[ 'tab' ] ) ) : '';
+
+		// Bail if not the legacy Dashboard tab on the settings page
+		if ( self::PAGE_SLUG !== $page || 'dashboard' !== $tab ) { return; }
+
+		wp_safe_redirect( $this->get_dashboard_url() );
+		exit;
+	}
+
+	/**
+	 * Highlight the submenu item that matches the current admin page.
 	 *
 	 * @param  string|null  $submenu_file  The submenu file.
 	 * @param  string       $parent_file   The parent file.
 	 */
 	public function maybe_set_current_submenu( $submenu_file, $parent_file ) {
-		// Bail if not on the settings page
-		if ( ! $this->is_settings_page() ) { return $submenu_file; }
-
-		$current_tab = $this->get_current_tab();
-
-		// Highlight the Dashboard submenu item
-		if ( 'dashboard' === $current_tab ) {
-			return $this->get_settings_menu_slug( 'dashboard' );
+		// Highlight the Design editor submenu item
+		if ( $this->is_design_editor_page() ) {
+			return self::DESIGN_EDITOR_PAGE_SLUG;
 		}
 
-		return $this->get_settings_menu_slug( self::DEFAULT_TAB );
+		// Bail if not on a Fluid Checkout settings layout page
+		if ( ! $this->is_dashboard_page() && ! $this->is_settings_page() ) { return $submenu_file; }
+
+		// Highlight the Dashboard submenu item
+		if ( $this->is_dashboard_page() ) {
+			return self::DASHBOARD_PAGE_SLUG;
+		}
+
+		return self::PAGE_SLUG;
+	}
+
+	/**
+	 * Include the Dashboard page in the settings layout filter.
+	 *
+	 * @param  bool  $is_settings_layout_page  Whether the current request uses the settings layout.
+	 */
+	public function filter_is_settings_layout_page( $is_settings_layout_page ) {
+		return $is_settings_layout_page || $this->is_dashboard_page();
 	}
 
 
@@ -216,6 +351,46 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
+	 * Check whether the current request is for the Dashboard admin page.
+	 */
+	public function is_dashboard_page() {
+		// Bail if not in the admin
+		if ( ! is_admin() ) { return false; }
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$page = isset( $_GET[ 'page' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'page' ] ) ) : '';
+
+		return self::DASHBOARD_PAGE_SLUG === $page;
+	}
+
+	/**
+	 * Check whether the current request is for the Design editor admin page.
+	 */
+	public function is_design_editor_page() {
+		// Bail if not in the admin
+		if ( ! is_admin() ) { return false; }
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$page = isset( $_GET[ 'page' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'page' ] ) ) : '';
+
+		return self::DESIGN_EDITOR_PAGE_SLUG === $page;
+	}
+
+	/**
+	 * Whether the settings sidebar should show the Design accordion (Lite without PRO).
+	 */
+	public function should_show_design_editor_sidebar_accordion() {
+		return ! FluidCheckout::instance()->is_pro_activated();
+	}
+
+	/**
+	 * Admin URL for the Design editor page.
+	 */
+	public function get_design_editor_url() {
+		return add_query_arg( array( 'page' => self::DESIGN_EDITOR_PAGE_SLUG ), admin_url( 'admin.php' ) );
+	}
+
+	/**
 	 * Check whether the current request is for an admin page with the settings page layout.
 	 */
 	public function is_settings_layout_page() {
@@ -233,8 +408,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	 * @param  string  $classes  Space-separated list of admin body classes.
 	 */
 	public function add_admin_body_class( $classes ) {
-		// Bail if not on the settings page
-		if ( ! $this->is_settings_page() ) { return $classes; }
+		// Bail if not on the settings or Dashboard page
+		if ( ! $this->is_settings_page() && ! $this->is_dashboard_page() ) { return $classes; }
 
 		$classes .= ' fc-settings-page';
 
@@ -245,8 +420,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	 * Remove WooCommerce Help tabs from the settings page.
 	 */
 	public function maybe_remove_help_tabs() {
-		// Bail if not on the settings page
-		if ( ! $this->is_settings_page() ) { return; }
+		// Bail if not on the settings or Dashboard page
+		if ( ! $this->is_settings_page() && ! $this->is_dashboard_page() ) { return; }
 
 		$screen = get_current_screen();
 
@@ -282,20 +457,40 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
+	 * Maybe output the Fluid Checkout admin page header on the settings page.
+	 */
+	public function maybe_output_admin_header() {
+		$this->output_admin_header();
+	}
+
+
+
+	/**
 	 * Output the Fluid Checkout admin page header.
 	 *
 	 * @param  bool|null  $can_save  Whether the save button should be enabled. Null derives it from the current settings tab.
 	 */
 	public function output_admin_header( $can_save = null ) {
+		// Bail if not on a Fluid Checkout admin screen that uses this header (settings, Design editor, etc.)
+		if ( ! $this->is_settings_layout_page() ) {
+			return;
+		}
+
 		if ( null === $can_save ) {
-			// Bail if not on the settings page
-			if ( ! $this->is_settings_page() ) {
+			// Bail if not on the settings or Dashboard page
+			if ( ! $this->is_settings_page() && ! $this->is_dashboard_page() ) {
 				return;
 			}
 
-			$tabs        = $this->get_tabs();
-			$current_tab = $this->get_current_tab();
-			$can_save    = ! empty( $tabs[ $current_tab ]['show_save_button'] );
+			// Dashboard is read-only in the layout
+			if ( $this->is_dashboard_page() ) {
+				$can_save = false;
+			}
+			else {
+				$tabs        = $this->get_tabs();
+				$current_tab = $this->get_current_tab();
+				$can_save    = ! empty( $tabs[ $current_tab ]['show_save_button'] );
+			}
 		}
 
 		$this->render_fc_admin_header(
@@ -391,7 +586,6 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		if ( null !== $this->tabs ) { return $this->tabs; }
 
 		$tabs = array(
-			'dashboard'                => array( 'label' => __( 'Dashboard', 'fluid-checkout' ), 'section' => '' ),
 			'checkout'                 => array( 'label' => __( 'Checkout', 'fluid-checkout' ), 'section' => 'checkout' ),
 			'cart'                     => array( 'label' => __( 'Cart', 'fluid-checkout' ), 'section' => 'cart' ),
 			'order_received'           => array( 'label' => __( 'Thank you', 'fluid-checkout' ), 'section' => 'order_received' ),
@@ -424,7 +618,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		$sections = is_array( $sections ) ? $sections : array();
 
 		// Collect section slugs already claimed by the fixed tabs (skip separators)
-		$known_sections = array();
+		$known_sections = array( '' );
 		foreach ( array_merge( $tabs, $tabs_after ) as $tab_args ) {
 			// Skip separators and tabs without a section key
 			if ( ! is_array( $tab_args ) || ! array_key_exists( 'section', $tab_args ) ) { continue; }
@@ -439,7 +633,12 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			// Skip sections which already have a tab
 			if ( in_array( $section, $known_sections, true ) ) { continue; }
 
-			$tabs[ sanitize_key( $section ) ] = array( 'label' => $label, 'section' => $section );
+			$tab_slug = sanitize_key( $section );
+
+			// Skip the Dashboard section, it has its own admin page and accordion
+			if ( '' === $tab_slug || 'dashboard' === $tab_slug ) { continue; }
+
+			$tabs[ $tab_slug ] = array( 'label' => $label, 'section' => $section );
 		}
 
 		$tabs = array_merge( $tabs, $tabs_after );
@@ -502,6 +701,27 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
+	 * Tab arguments for the Dashboard admin page panel.
+	 */
+	public function get_dashboard_tab() {
+		return array(
+			'type'             => 'tab',
+			'label'            => __( 'Dashboard', 'fluid-checkout' ),
+			'section'          => '',
+			'show_save_button' => false,
+		);
+	}
+
+	/**
+	 * Check whether a tab slug is the Dashboard panel on the Dashboard admin page.
+	 *
+	 * @param  string  $tab  Tab slug.
+	 */
+	public function is_dashboard_tab( $tab ) {
+		return 'dashboard' === $tab;
+	}
+
+	/**
 	 * Get the current settings tab slug. Falls back to the Checkout tab when missing or invalid.
 	 */
 	public function get_current_tab() {
@@ -547,10 +767,18 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	 * @param  string  $tab  Settings tab slug.
 	 */
 	public function get_tab_settings( $tab ) {
-		$tabs = $this->get_tabs();
+		$section = '';
 
+		// Get the Dashboard section when rendering the Dashboard page panel
+		if ( $this->is_dashboard_tab( $tab ) ) {
+			$section = $this->get_dashboard_tab()[ 'section' ];
+		}
 		// Bail if tab is not valid
-		if ( ! $this->is_valid_tab( $tab ) ) { return array(); }
+		elseif ( ! $this->is_valid_tab( $tab ) ) { return array(); }
+		else {
+			$tabs = $this->get_tabs();
+			$section = $tabs[ $tab ][ 'section' ];
+		}
 
 		/**
 		 * Filters the settings fields for one tab of the Fluid Checkout settings page.
@@ -559,7 +787,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		 *
 		 * @param  string  $section  Settings section slug. An empty string is the dashboard section.
 		 */
-		$settings = apply_filters( 'fc_admin_settings', array(), $tabs[ $tab ][ 'section' ] );
+		$settings = apply_filters( 'fc_admin_settings', array(), $section );
 
 		// Bail if settings are not valid
 		if ( ! is_array( $settings ) ) { return array(); }
@@ -879,9 +1107,9 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	 *
 	 * @param  string  $hook_suffix  Hook suffix for the current admin page.
 	 */
-	public function maybe_enqueue_assets( $hook_suffix ) {
-		// Bail if not on the settings page
-		if ( $this->page_hook_suffix !== $hook_suffix ) { return; }
+	public function maybe_enqueue_assets( $_hook_suffix ) {
+		// Bail if not on the settings or Dashboard page
+		if ( ! $this->is_settings_page() && ! $this->is_dashboard_page() ) { return; }
 
 		$this->enqueue_assets();
 	}
@@ -895,8 +1123,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		// Bail if not on an admin page with the settings page layout
 		if ( ! $this->is_settings_layout_page() ) { return $settings; }
 
-		// Maybe add the setup checklist settings, only on the settings page
-		if ( $this->is_settings_page() ) {
+		// Maybe add the setup checklist settings on the settings and Dashboard pages
+		if ( $this->is_settings_page() || $this->is_dashboard_page() ) {
 			$settings[ 'setupChecklist' ] = array(
 				'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
 				'syncTabAction'      => 'fc_setup_checklist_mark_tab',
@@ -943,9 +1171,9 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	 *
 	 * @param  string  $hook_suffix  Hook suffix for the current admin page.
 	 */
-	public function maybe_register_license_key_assets( $hook_suffix ) {
+	public function maybe_register_license_key_assets( $_hook_suffix ) {
 		// Bail if not on the settings page
-		if ( $this->page_hook_suffix !== $hook_suffix ) { return; }
+		if ( ! $this->is_settings_page() ) { return; }
 
 		// Bail if the license key field type is not available
 		if ( ! class_exists( 'FluidCheckout_Admin_SettingType_LicenseKey' ) ) { return; }
@@ -954,6 +1182,27 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 
+
+	/**
+	 * Output the Dashboard admin page.
+	 */
+	public function output_dashboard_page() {
+		// Bail if user does not have enough permissions
+		if ( ! current_user_can( self::CAPABILITY ) ) { return; }
+
+		$current_tab = 'dashboard';
+
+		$this->output_layout( array(
+			'title'               => __( 'Settings', 'fluid-checkout' ),
+			'screen_reader_title' => __( 'Dashboard', 'fluid-checkout' ),
+			'form_url'            => $this->get_dashboard_url(),
+			'tabs'                => array(
+				'dashboard' => $this->get_dashboard_tab(),
+			),
+			'nav_tabs'            => $this->get_tabs(),
+			'current_tab'         => $current_tab,
+		) );
+	}
 
 	/**
 	 * Output the settings page.
@@ -968,10 +1217,11 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 		// Output the settings page layout
 		$this->output_layout( array(
-			'title'          => __( 'Settings', 'fluid-checkout' ),
-			'form_url'       => $this->get_settings_url( $current_tab ),
-			'tabs'           => $this->get_tabs(),
-			'current_tab'    => $current_tab,
+			'title'               => __( 'Settings', 'fluid-checkout' ),
+			'screen_reader_title' => __( 'Settings', 'fluid-checkout' ),
+			'form_url'            => $this->get_settings_url( $current_tab ),
+			'tabs'                => $this->get_tabs(),
+			'current_tab'         => $current_tab,
 		) );
 	}
 
@@ -984,8 +1234,10 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		// Get layout arguments
 		$args = wp_parse_args( $args, array(
 			'title'                    => '',
+			'screen_reader_title'      => '',
 			'form_url'                 => '',
 			'tabs'                     => array(),
+			'nav_tabs'                 => array(),
 			'current_tab'              => '',
 			'nav_callback'             => array( $this, 'output_sidebar_nav' ),
 			'tab_content_callback'     => array( $this, 'output_tab_content' ),
@@ -993,13 +1245,16 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 		// Get tabs, and whether the current tab can be saved and has the page preview
 		$tabs = $args[ 'tabs' ];
+		$nav_tabs = ! empty( $args[ 'nav_tabs' ] ) ? $args[ 'nav_tabs' ] : $tabs;
 		$current_tab = $args[ 'current_tab' ];
+		$screen_reader_title = ! empty( $args[ 'screen_reader_title' ] ) ? $args[ 'screen_reader_title' ] : $args[ 'title' ];
 		$can_save = ! empty( $tabs[ $current_tab ][ 'show_save_button' ] );
 		$has_preview = class_exists( 'FluidCheckout_Admin_Settings_Preview' ) && FluidCheckout_Admin_Settings_Preview::instance()->is_preview_visible_for_tab( $current_tab );
 		$layout_class = 'fc-settings-layout';
 		$layout_class .= $has_preview ? ' has-preview' : '';
 		?>
 		<div class="wrap woocommerce fc-wrap fc-settings-wrap">
+			<h1 class="fc-settings-page-title screen-reader-text"><?php echo esc_html( $screen_reader_title ); ?></h1>
 			<?php // Stop browsers from restoring unsaved values when going back to the page, as the page scripts start from the saved settings ?>
 			<form method="post" action="<?php echo esc_url( $args[ 'form_url' ] ); ?>" id="mainform" class="fc-settings-form" enctype="multipart/form-data" autocomplete="off" data-fc-settings-form>
 				<div class="<?php echo esc_attr( $layout_class ); ?>" data-fc-settings-layout>
@@ -1035,12 +1290,11 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 										<path stroke-linecap="round" stroke-linejoin="round" d="M18 6L6 18"/>
 									</svg>
 								</button>
-								<h1 class="fc-settings-sidebar-header__title"><?php echo esc_html( $args[ 'title' ] ); ?></h1>
 								<div class="fc-settings-sidebar-header__actions">
 									<?php $this->output_settings_header_action_buttons( $can_save ); ?>
 								</div>
 							</div>
-							<?php call_user_func( $args[ 'nav_callback' ], $tabs, $current_tab ); ?>
+							<?php call_user_func( $args[ 'nav_callback' ], $nav_tabs, $current_tab, $args[ 'title' ] ); ?>
 						</div>
 					</div>
 
@@ -1136,28 +1390,121 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
-	 * Output the sidebar navigation.
-	 *
-	 * @param  array   $tabs         Settings tabs.
-	 * @param  string  $current_tab  Current settings tab slug.
+	 * Markup for the settings sidebar nav link chevron icon.
 	 */
-	public function output_sidebar_nav( $tabs, $current_tab ) {
+	public function get_settings_nav_link_chevron_markup() {
+		return '<svg class="fc-settings-nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>';
+	}
+
+	/**
+	 * Output the sidebar navigation as accordion groups.
+	 *
+	 * @param  array   $tabs           Settings tabs.
+	 * @param  string  $current_tab    Current settings tab slug.
+	 * @param  string  $sidebar_title  Title for the settings accordion group.
+	 */
+	public function output_sidebar_nav( $tabs, $current_tab, $sidebar_title = '' ) {
+		$show_design_accordion = $this->should_show_design_editor_sidebar_accordion();
+		$is_design_editor_active = $this->is_design_editor_page();
+		$dashboard_accordion_open = $this->is_dashboard_page();
+		$design_accordion_open = $show_design_accordion && $is_design_editor_active;
+		$settings_accordion_open = $this->is_settings_page();
+		$is_getting_started_active = $this->is_dashboard_page();
+		$dashboard_label = __( 'Dashboard', 'fluid-checkout' );
+		$design_accordion_label = __( 'Design', 'fluid-checkout' );
+		$design_nav_item_label = __( 'PRO feature', 'fluid-checkout' );
+
+		if ( '' === $sidebar_title ) {
+			$sidebar_title = __( 'Settings', 'fluid-checkout' );
+		}
 		?>
-		<ul class="fc-settings-nav" id="fc-settings-nav" data-fc-settings-nav>
-			<?php foreach ( $tabs as $slug => $tab ) : ?>
-				<?php if ( 'separator' === $tab[ 'type' ] ) : ?>
-					<li class="fc-settings-nav__separator" role="separator" aria-hidden="true"></li>
-				<?php else : ?>
-					<?php $is_active = $slug === $current_tab; ?>
-					<li class="fc-settings-nav__item fc-settings-nav__item--<?php echo esc_attr( $slug ); ?> <?php echo $is_active ? 'is-active' : ''; ?>" data-fc-settings-nav-item="<?php echo esc_attr( $slug ); ?>">
-						<a class="fc-settings-nav__link" href="<?php echo esc_url( $this->get_settings_url( $slug ) ); ?>" data-fc-settings-nav-link="<?php echo esc_attr( $slug ); ?>" <?php echo $is_active ? 'aria-current="page"' : ''; ?>>
-							<span class="fc-settings-nav__marker" aria-hidden="true">&#8985;</span>
-							<span class="fc-settings-nav__label"><?php echo esc_html( $tab[ 'label' ] ); ?></span>
-						</a>
-					</li>
-				<?php endif; ?>
-			<?php endforeach; ?>
-		</ul>
+		<nav class="fc-settings-nav-accordions" id="fc-settings-nav" data-fc-settings-nav aria-label="<?php echo esc_attr( __( 'Settings navigation', 'fluid-checkout' ) ); ?>">
+			<div class="fc-settings-nav-accordion <?php echo $dashboard_accordion_open ? 'is-open' : ''; ?>" data-fc-settings-nav-accordion="dashboard">
+				<a
+					class="fc-settings-nav-accordion__toggle"
+					href="<?php echo esc_url( $this->get_dashboard_url() ); ?>"
+					aria-expanded="<?php echo $dashboard_accordion_open ? 'true' : 'false'; ?>"
+					aria-controls="fc-settings-nav-dashboard-body"
+				>
+					<span class="fc-settings-nav-accordion__title"><?php echo esc_html( $dashboard_label ); ?></span>
+					<svg class="fc-settings-nav-accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+					</svg>
+				</a>
+				<div class="fc-settings-nav-accordion__body" id="fc-settings-nav-dashboard-body">
+					<ul class="fc-settings-nav">
+						<li class="fc-settings-nav__item fc-settings-nav__item--dashboard <?php echo $is_getting_started_active ? 'is-active' : ''; ?>" data-fc-settings-nav-item="dashboard">
+							<a class="fc-settings-nav__link" href="<?php echo esc_url( $this->get_dashboard_url() ); ?>" <?php echo $is_getting_started_active ? 'aria-current="page"' : ''; ?>>
+								<span class="fc-settings-nav__marker" aria-hidden="true">&#8985;</span>
+								<span class="fc-settings-nav__label"><?php echo esc_html( __( 'Getting started', 'fluid-checkout' ) ); ?></span>
+								<?php echo $this->get_settings_nav_link_chevron_markup(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static SVG markup. ?>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="fc-settings-nav-accordion <?php echo $settings_accordion_open ? 'is-open' : ''; ?>" data-fc-settings-nav-accordion="settings">
+				<a
+					class="fc-settings-nav-accordion__toggle"
+					href="<?php echo esc_url( $this->get_settings_url( self::DEFAULT_TAB ) ); ?>"
+					aria-expanded="<?php echo $settings_accordion_open ? 'true' : 'false'; ?>"
+					aria-controls="fc-settings-nav-settings-body"
+				>
+					<span class="fc-settings-nav-accordion__title"><?php echo esc_html( $sidebar_title ); ?></span>
+					<svg class="fc-settings-nav-accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+					</svg>
+				</a>
+				<div class="fc-settings-nav-accordion__body" id="fc-settings-nav-settings-body">
+					<ul class="fc-settings-nav">
+						<?php foreach ( $tabs as $slug => $tab ) : ?>
+							<?php if ( 'dashboard' === $slug || '' === $slug ) { continue; } ?>
+
+							<?php if ( 'separator' === $tab[ 'type' ] ) : ?>
+								<li class="fc-settings-nav__separator" role="separator" aria-hidden="true"></li>
+							<?php else : ?>
+								<?php $is_active = $slug === $current_tab; ?>
+								<li class="fc-settings-nav__item fc-settings-nav__item--<?php echo esc_attr( $slug ); ?> <?php echo $is_active ? 'is-active' : ''; ?>" data-fc-settings-nav-item="<?php echo esc_attr( $slug ); ?>">
+									<a class="fc-settings-nav__link" href="<?php echo esc_url( $this->get_settings_url( $slug ) ); ?>" data-fc-settings-nav-link="<?php echo esc_attr( $slug ); ?>" <?php echo $is_active ? 'aria-current="page"' : ''; ?>>
+										<span class="fc-settings-nav__marker" aria-hidden="true">&#8985;</span>
+										<span class="fc-settings-nav__label"><?php echo esc_html( $tab[ 'label' ] ); ?></span>
+										<?php echo $this->get_settings_nav_link_chevron_markup(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static SVG markup. ?>
+									</a>
+								</li>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+			</div>
+
+			<?php if ( $show_design_accordion ) : ?>
+			<div class="fc-settings-nav-accordion <?php echo $design_accordion_open ? 'is-open' : ''; ?>" data-fc-settings-nav-accordion="design">
+				<a
+					class="fc-settings-nav-accordion__toggle"
+					href="<?php echo esc_url( $this->get_design_editor_url() ); ?>"
+					aria-expanded="<?php echo $design_accordion_open ? 'true' : 'false'; ?>"
+					aria-controls="fc-settings-nav-design-body"
+				>
+					<span class="fc-settings-nav-accordion__title"><?php echo esc_html( $design_accordion_label ); ?></span>
+					<svg class="fc-settings-nav-accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+					</svg>
+				</a>
+				<div class="fc-settings-nav-accordion__body" id="fc-settings-nav-design-body">
+					<ul class="fc-settings-nav">
+						<li class="fc-settings-nav__item fc-settings-nav__item--design-editor <?php echo $is_design_editor_active ? 'is-active' : ''; ?>" data-fc-settings-nav-item="design_editor">
+							<a class="fc-settings-nav__link" href="<?php echo esc_url( $this->get_design_editor_url() ); ?>" data-fc-settings-nav-link="design_editor" <?php echo $is_design_editor_active ? 'aria-current="page"' : ''; ?>>
+								<span class="fc-settings-nav__marker" aria-hidden="true">&#8985;</span>
+								<span class="fc-settings-nav__label"><?php echo esc_html( $design_nav_item_label ); ?></span>
+								<?php echo $this->get_settings_nav_link_chevron_markup(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static SVG markup. ?>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<?php endif; ?>
+		</nav>
 		<?php
 	}
 

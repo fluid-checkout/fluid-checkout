@@ -28,10 +28,15 @@
 		formSelector:           '[data-fc-settings-form]',
 		sidebarSelector:        '[data-fc-settings-sidebar]',
 		sidebarHeaderSelector:  '.fc-settings-sidebar-header',
-		navSelector:            '[data-fc-settings-nav]',
-		navItemSelector:        '[data-fc-settings-nav-item]',
-		navLinkSelector:        '[data-fc-settings-nav-link]',
-		navToggleSelector:      '[data-fc-settings-nav-toggle]',
+		navSelector:                    '[data-fc-settings-nav]',
+		navAccordionSelector:           '[data-fc-settings-nav-accordion]',
+		dashboardPageSlug:              'fluid-checkout-dashboard',
+		designEditorPageSlug:           'fluid-checkout-design-editor',
+		settingsPageSlug:               'fluid-checkout',
+		navAccordionToggleSelector:     '.fc-settings-nav-accordion__toggle',
+		navItemSelector:                '[data-fc-settings-nav-item]',
+		navLinkSelector:                '[data-fc-settings-nav-link]',
+		navToggleSelector:              '[data-fc-settings-nav-toggle]',
 		tabSelector:            '[data-fc-settings-tab]',
 		settingsFieldSelector:  '.fc-settings-field',
 		submitSelector:         '[data-fc-settings-submit]',
@@ -66,9 +71,16 @@
 	 */
 	var getTabFromUrl = function( url ) {
 		var parsed;
+		var page;
 
 		try {
 			parsed = new URL( url, window.location.origin );
+			page = parsed.searchParams.get( 'page' ) || '';
+
+			if ( _settings.designEditorPageSlug === page ) {
+				return 'design_editor';
+			}
+
 			return parsed.searchParams.get( 'tab' ) || '';
 		}
 		// Bail when the URL cannot be parsed
@@ -125,8 +137,13 @@
 		// Bail if the link leaves this admin origin
 		if ( parsed.origin !== window.location.origin ) { return ''; }
 
+		// Design editor admin page
+		if ( _settings.designEditorPageSlug === parsed.searchParams.get( 'page' ) ) {
+			return 'design_editor';
+		}
+
 		// Bail if the link is not a Fluid Checkout settings URL
-		if ( 'fluid-checkout' !== parsed.searchParams.get( 'page' ) ) { return ''; }
+		if ( _settings.settingsPageSlug !== parsed.searchParams.get( 'page' ) ) { return ''; }
 
 		// Bail if the URL carries a nonce (admin notice / action links need a full reload)
 		if ( parsed.searchParams.has( '_wpnonce' ) ) { return ''; }
@@ -258,6 +275,67 @@
 	};
 
 	/**
+	 * Expand one sidebar accordion group and collapse the others.
+	 *
+	 * @param  {string}  accordionId  Accordion slug (`dashboard`, `settings`, or `design`).
+	 */
+	var setNavAccordionOpen = function( accordionId ) {
+		var accordions = document.querySelectorAll( _settings.navAccordionSelector );
+		var i;
+		var accordion;
+		var toggle;
+		var isOpen;
+
+		// Iterate sidebar accordion groups
+		for ( i = 0; i < accordions.length; i++ ) {
+			accordion = accordions[ i ];
+			isOpen = accordionId === accordion.getAttribute( 'data-fc-settings-nav-accordion' );
+			accordion.classList.toggle( _settings.activeClass, isOpen );
+
+			toggle = accordion.querySelector( _settings.navAccordionToggleSelector );
+			if ( toggle ) {
+				toggle.setAttribute( 'aria-expanded', isOpen ? 'true' : 'false' );
+			}
+		}
+	};
+
+	/**
+	 * Open the accordion group that contains the active settings tab.
+	 *
+	 * @param  {string}  _tab  Unused settings tab slug kept for call sites.
+	 */
+	var syncNavAccordionsForTab = function( _tab ) {
+		// Bail if accordion navigation is not in use
+		if ( ! document.querySelector( _settings.navAccordionSelector ) ) { return; }
+
+		if ( _settings.dashboardPageSlug === getAdminPageSlugFromUrl() ) {
+			setNavAccordionOpen( 'dashboard' );
+		}
+		else if ( _settings.designEditorPageSlug === getAdminPageSlugFromUrl() ) {
+			setNavAccordionOpen( 'design' );
+		}
+		// Otherwise expand the settings tab group
+		else {
+			setNavAccordionOpen( 'settings' );
+		}
+	};
+
+	/**
+	 * Get the `page` query argument from the current admin URL.
+	 *
+	 * @return  {string}
+	 */
+	var getAdminPageSlugFromUrl = function() {
+		try {
+			return new URL( window.location.href ).searchParams.get( 'page' ) || '';
+		}
+		// Bail when the URL cannot be parsed
+		catch ( err ) {
+			return '';
+		}
+	};
+
+	/**
 	 * Sync getting-started checklist state when a settings tab becomes active.
 	 *
 	 * @param   {string}  tab  Settings tab slug.
@@ -369,6 +447,7 @@
 		// Notify listeners that a settings tab became active (SPA navigation)
 		window.dispatchEvent( new CustomEvent( 'fcSettingsTabActivated', { detail: { tab: tab, previewPage: previewPage } } ) );
 
+		syncNavAccordionsForTab( tab );
 		syncSetupChecklistForTab( tab );
 
 		return true;
