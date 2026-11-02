@@ -409,16 +409,14 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 = Unreleased =
 
 * Bump tested up to WooCommerce 11.3
-* Added: Compatibility with theme Purple.
-* Added: Design accordion in the settings sidebar (Lite) linking to the Design editor PRO feature page.
 * Added: New settings pages, with guided setup and live preview of checkout pages.
-* Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
+* Added: Boxed design template, now available without PRO and used by default on new installs.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
+* Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
+* Added: Compatibility with theme Purple.
 * Added: Filter `fc_local_pickup_shipping_zone_fields_options` for the local pickup shipping zone fields setting (PRO feature).
 * Added: Filter `fc_available_shipping_methods` to change the shipping methods shown for a package.
 * Added: Filter `fc_prevent_shipping_method_autoselect` to prevent automatic selection of the first shipping method. Return `true` to prevent auto-selecting a shipping method.
-* Added: Account creation section on Thank you settings with a link to Customer accounts settings for account matching and delayed account creation.
-* Added: Boxed design template, now available without PRO and used by default on new installs.
 * Improved: Layout of WooCommerce address autocomplete suggestions and search icon on checkout and account edit-address form fields.
 * Improved: Updated replaced files for WooCommerce `address-i18n.js` and EU/UK VAT for WooCommerce to match latest upstream versions.
 * Improved: Updated replaced checkout templates `form-shipping.php` and `review-order.php` for WooCommerce 11.2.0 compatibility.
