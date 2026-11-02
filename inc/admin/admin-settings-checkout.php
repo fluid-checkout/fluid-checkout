@@ -110,7 +110,7 @@ class FluidCheckout_Settings_Checkout {
 					array(
 						'title' => __( 'Design template', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => __( 'General styles for the checkout steps, order summary and other sections. Applies to the checkout and add payment method pages. With PRO, also applies to the cart, thank you (order received) and view order pages.', 'fluid-checkout' ),
+						'desc'  => __( 'General styles for the checkout steps, order summary and other sections. Applies to the checkout and add payment method pages. With PRO, also applies to the cart, order pay, thank you (order received) and view order pages.', 'fluid-checkout' ),
 						'id'    => 'fc_design_template_options',
 						'docs'  => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/feature-design-templates/' ),
 					),

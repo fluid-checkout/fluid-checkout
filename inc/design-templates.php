@@ -79,7 +79,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	public function add_body_class( $classes ) {
 		// Add design template class
 		$add_classes = array(
-			'has-fc-design-template--' . FluidCheckout_Settings::instance()->get_option( 'fc_design_template' ),
+			'has-fc-design-template--' . $this->get_selected_design_template(),
 		);
 
 		// Add dark mode class
@@ -146,7 +146,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
 		// Bail if the design template is not Boxed
-		if ( 'boxed' !== FluidCheckout_Settings::instance()->get_option( 'fc_design_template' ) ) { return; }
+		if ( 'boxed' !== $this->get_selected_design_template() ) { return; }
 
 		$this->enqueue_assets_checkout();
 	}
@@ -167,7 +167,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		if ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'add-payment-method' ) ) { return; }
 
 		// Bail if the design template is not Boxed
-		if ( 'boxed' !== FluidCheckout_Settings::instance()->get_option( 'fc_design_template' ) ) { return; }
+		if ( 'boxed' !== $this->get_selected_design_template() ) { return; }
 
 		$this->enqueue_assets_add_payment_method();
 	}
@@ -181,6 +181,23 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function get_allowed_design_templates() {
 		return array( 'classic', 'boxed', 'minimalist', 'split' );
+	}
+
+
+
+	/**
+	 * Get the selected design template, or the code default when the saved value is not an allowed design template.
+	 */
+	public function get_selected_design_template() {
+		// Get the design template
+		$design_template = FluidCheckout_Settings::instance()->get_option( 'fc_design_template' );
+
+		// Fall back to the code default when the design template is not allowed
+		if ( ! in_array( $design_template, $this->get_allowed_design_templates(), true ) ) {
+			return FluidCheckout_Settings::instance()->get_option_default( 'fc_design_template' );
+		}
+
+		return $design_template;
 	}
 
 
