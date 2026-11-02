@@ -364,6 +364,18 @@ $checkout-logo-height--large-screen:        remsize( 4rem ) !default;
 
 
 // ----------------------------------------
+// CHECKOUT PAGE
+
+$checkout-page-background-color:            var( --fluidcheckout--page--background-color ) !default;
+
+// END - CHECKOUT PAGE
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
 // CHECKOUT FOOTER
 
 $checkout-footer-background-color:          var( --fluidcheckout--footer--background-color, $white ) !default;

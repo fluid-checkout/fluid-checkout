@@ -309,25 +309,28 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	public function output_field( $value ) {
 		$field_type = $value[ 'type' ];
 
-		// Output field types registered for the Fluid Checkout settings page
-		if ( has_action( 'fc_admin_settings_render_field_' . $field_type ) ) {
+		// Maybe output the message of a field moved to another page in place of the field, on the settings page it moved from
+		if ( FluidCheckout_Admin_Settings_Page::instance()->is_settings_field_moved( $value ) && FluidCheckout_Admin_Settings_Page::instance()->is_settings_page() ) {
+			// Maybe output the message, unless it was dismissed
+			if ( ! FluidCheckout_Admin_Settings_Page::instance()->is_moved_setting_message_dismissed( $value[ 'id' ] ) ) {
+				$this->output_field_moved_message( $value );
+			}
+		}
+		// Otherwise, maybe output field types registered for the Fluid Checkout settings page
+		elseif ( has_action( 'fc_admin_settings_render_field_' . $field_type ) ) {
 			/**
 			 * Output a settings field of a specific type on the Fluid Checkout settings page.
 			 *
 			 * @param  array  $value  Settings field arguments.
 			 */
 			do_action( 'fc_admin_settings_render_field_' . $field_type, $value );
-			return;
 		}
-
-		// Maybe output field types only registered for the WooCommerce settings pages
-		if ( has_action( 'woocommerce_admin_field_' . $field_type ) ) {
+		// Otherwise, maybe output field types only registered for the WooCommerce settings pages
+		elseif ( has_action( 'woocommerce_admin_field_' . $field_type ) ) {
 			$this->output_field_legacy( $value );
-			return;
 		}
-
-		// Maybe output locked fields of types provided by plugins that are not active
-		if ( $this->is_field_disabled( $value ) ) {
+		// Otherwise, maybe output locked fields of types provided by plugins that are not active
+		elseif ( $this->is_field_disabled( $value ) ) {
 			$this->output_field_locked_placeholder( $value );
 		}
 	}
@@ -360,6 +363,58 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 			</table>
 		</div>
 		<?php
+	}
+
+
+
+	/**
+	 * Output the message of a settings field moved to another page, with a link to its new place.
+	 *
+	 * @param  array  $value  Settings field arguments.
+	 */
+	public function output_field_moved_message( $value ) {
+		// Get the texts of the message, or the default texts
+		/* translators: %s: Link to the new place of the setting. */
+		$text = ! empty( $value[ 'moved' ][ 'text' ] ) ? $value[ 'moved' ][ 'text' ] : __( 'This setting has moved to %s.', 'fluid-checkout' );
+		$link_text = ! empty( $value[ 'moved' ][ 'link_text' ] ) ? $value[ 'moved' ][ 'link_text' ] : __( 'another page', 'fluid-checkout' );
+
+		// Get the message, with the link to the new place of the setting
+		$message_html = sprintf( esc_html( $text ), '<a href="' . esc_url( $value[ 'moved' ][ 'url' ] ) . '">' . esc_html( $link_text ) . '</a>' );
+
+		// Get the accessible name of the dismiss button
+		/* translators: %s: Settings field title. */
+		$dismiss_label = sprintf( __( 'Dismiss the message of %s', 'fluid-checkout' ), $value[ 'title' ] );
+
+		// Output the message in place of the field
+		$this->output_field_start( $value, array( 'label_for' => false, 'tooltip' => false ) );
+		?>
+		<?php // Keep the custom attributes of the field, such as its conditions, so the message shows where the field would ?>
+		<div
+			class="fc-settings-moved-message"
+			data-fc-settings-moved-message="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+			<?php echo $this->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		>
+			<div class="fc-settings-moved-message__content" data-fc-settings-moved-message-content>
+				<p class="fc-settings-moved-message__text"><?php echo $message_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+				<button
+					type="button"
+					class="fc-settings-moved-message__dismiss"
+					aria-label="<?php echo esc_attr( $dismiss_label ); ?>"
+					title="<?php echo esc_attr( __( 'Dismiss', 'fluid-checkout' ) ); ?>"
+					data-fc-settings-moved-message-dismiss
+				><span class="dashicons dashicons-no-alt" aria-hidden="true"></span></button>
+			</div>
+			<p class="fc-settings-moved-message__confirmation" role="status" data-fc-settings-moved-message-confirmation hidden>
+				<?php echo esc_html( __( 'Dismissed.', 'fluid-checkout' ) ); ?>
+				<button
+					type="button"
+					class="button-link fc-settings-moved-message__undo"
+					data-fc-settings-moved-message-undo
+				><?php echo esc_html( __( 'Undo?', 'fluid-checkout' ) ); ?></button>
+			</p>
+		</div>
+		<?php
+		$this->output_field_end( $value );
 	}
 
 
@@ -422,14 +477,14 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	 * Whether the current settings page uses custom info tip icons for field descriptions.
 	 */
 	public function uses_info_tooltips() {
-		return class_exists( 'FluidCheckout_Admin_Settings_Page' ) && FluidCheckout_Admin_Settings_Page::instance()->is_settings_page();
+		return class_exists( 'FluidCheckout_Admin_Settings_Page' ) && FluidCheckout_Admin_Settings_Page::instance()->is_settings_layout_page();
 	}
 
 	/**
 	 * Whether the current settings page renders checkboxes as toggle switches.
 	 */
 	public function uses_toggle_checkboxes() {
-		return class_exists( 'FluidCheckout_Admin_Settings_Page' ) && FluidCheckout_Admin_Settings_Page::instance()->is_settings_page();
+		return class_exists( 'FluidCheckout_Admin_Settings_Page' ) && FluidCheckout_Admin_Settings_Page::instance()->is_settings_layout_page();
 	}
 
 	/**
@@ -661,34 +716,16 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	}
 
 	/**
-	 * Output a color field.
+	 * Output a color field (same control as design editor CSS value fields with swatch).
 	 *
 	 * @param  array  $value  Settings field arguments.
 	 */
 	public function output_field_color( $value ) {
-		$field_description = $this->get_field_description( $value );
+		$value[ 'type' ]          = 'fc_css_value';
+		$value[ 'swatch' ]        = true;
+		$value[ 'css_property' ]  = 'color';
 
-		$this->output_field_start( $value );
-		?>
-		<?php
-		$color_preview_background = '' !== trim( (string) $value[ 'value' ] ) ? $value[ 'value' ] : 'transparent';
-		?>
-		<span class="colorpickpreview" style="background: <?php echo esc_attr( $color_preview_background ); ?>">&nbsp;</span>
-		<input
-			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-			id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"
-			type="text"
-			dir="ltr"
-			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
-			value="<?php echo esc_attr( $value[ 'value' ] ); ?>"
-			class="<?php echo esc_attr( $value[ 'class' ] ); ?> colorpick"
-			placeholder="<?php echo esc_attr( $value[ 'placeholder' ] ); ?>"
-			autocomplete="off"
-			<?php echo $this->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-			<?php disabled( $this->is_field_disabled( $value ) ); ?>
-			/>&lrm; <?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-		<?php
-		$this->output_field_end( $value );
+		FluidCheckout_Admin_SettingType_CssValue::instance()->output_field( $value );
 	}
 
 	/**

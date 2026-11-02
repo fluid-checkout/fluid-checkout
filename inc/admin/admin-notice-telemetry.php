@@ -96,15 +96,6 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 
 
 	/**
-	 * Get the Fluid Checkout Tools settings URL.
-	 */
-	public function get_tools_settings_url() {
-		return admin_url( 'admin.php?page=fluid-checkout&tab=tools' );
-	}
-
-
-
-	/**
 	 * Get the URL to enable site report telemetry.
 	 */
 	public function get_enable_url() {
@@ -145,7 +136,7 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 			'actions'         => array(
 				sprintf(
 					'<a href="%s" class="button button-secondary">%s</a>',
-					esc_url( $this->get_tools_settings_url() ),
+					esc_url( FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'tools' ) ),
 					esc_html__( 'Review usage tracking', 'fluid-checkout' )
 				),
 				sprintf(
@@ -211,7 +202,7 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 		$redirect_url = wp_get_referer();
 
 		if ( empty( $redirect_url ) ) {
-			$redirect_url = admin_url( 'admin.php?page=fluid-checkout&tab=dashboard' );
+			$redirect_url = FluidCheckout_Admin_Settings_Page::instance()->get_dashboard_url();
 		}
 
 		wp_safe_redirect( $redirect_url );

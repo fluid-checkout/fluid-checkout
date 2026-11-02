@@ -1,8 +1,5 @@
 {
-	"browserSyncOptions": {
-		"proxy": "fluidcheckout.local",
-		"notify": false
-	},
+	"localDevSite": "fluidcheckout.local",
 
 	"pluginZipPath": "/Users/your-username/Downloads",
 

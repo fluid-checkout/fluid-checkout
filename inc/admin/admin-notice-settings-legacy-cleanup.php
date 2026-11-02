@@ -67,7 +67,7 @@ class FluidCheckout_AdminNotices_SettingsLegacyCleanup extends FluidCheckout {
 		return wp_nonce_url(
 			add_query_arg(
 				array( 'fc_settings_legacy_cleanup' => '1' ),
-				admin_url( 'admin.php?page=fluid-checkout&tab=tools' )
+				FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'tools' )
 			),
 			'fc_settings_legacy_cleanup'
 		);
@@ -107,7 +107,7 @@ class FluidCheckout_AdminNotices_SettingsLegacyCleanup extends FluidCheckout {
 
 		$cleanup_url = self::get_cleanup_url();
 		$dismiss_url = wp_nonce_url(
-			add_query_arg( array( 'fc_settings_legacy_cleanup' => 'dismiss' ), admin_url( 'admin.php?page=fluid-checkout&tab=tools' ) ),
+			add_query_arg( array( 'fc_settings_legacy_cleanup' => 'dismiss' ), FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'tools' ) ),
 			'fc_settings_legacy_cleanup'
 		);
 
