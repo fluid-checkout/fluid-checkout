@@ -17,15 +17,6 @@ class FluidCheckout_Admin_DesignEditorPromo extends FluidCheckout {
 	const TAB = 'design_editor';
 
 	/**
-	 * Design editor page hook suffix, set when registering the admin menu.
-	 *
-	 * @var string
-	 */
-	private $page_hook_suffix = '';
-
-
-
-	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -38,49 +29,14 @@ class FluidCheckout_Admin_DesignEditorPromo extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Admin menu
-		add_action( 'admin_menu', array( $this, 'register_menu' ), 20 ); // After the Fluid Checkout menu, so the item comes after Settings
-
 		// Admin body class
 		add_filter( 'admin_body_class', array( $this, 'add_admin_body_class' ), 10 );
-
-		// Admin page header
-		add_action( 'admin_notices', array( $this, 'maybe_output_admin_header' ), 1 ); // Before other admin notices, so the page header comes first
 
 		// Settings page layout
 		add_filter( 'fc_is_admin_settings_layout_page', array( $this, 'maybe_set_is_settings_layout_page' ), 10 );
 
 		// Enqueue assets after shared library scripts are registered
 		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 20 );
-	}
-
-
-
-	/**
-	 * Register the Design editor item in the Fluid Checkout admin menu, after the Settings item.
-	 */
-	public function register_menu() {
-		$this->page_hook_suffix = add_submenu_page( FluidCheckout_Admin_Settings_Page::DASHBOARD_PAGE_SLUG, __( 'Design', 'fluid-checkout' ), __( 'Design', 'fluid-checkout' ), FluidCheckout_Admin_Settings_Page::CAPABILITY, self::PAGE_SLUG, array( $this, 'output_page' ) );
-
-		add_action( 'load-' . $this->page_hook_suffix, array( $this, 'handle_load_design_editor_page' ), 10 );
-	}
-
-
-
-	/**
-	 * Allow only Fluid Checkout admin notices on this screen (strip WooCommerce and other plugins).
-	 */
-	public function handle_load_design_editor_page() {
-		// Bail if admin helper is unavailable
-		if ( ! class_exists( 'FluidCheckout_Admin' ) ) { return; }
-
-		FluidCheckout_Admin::strip_non_fc_admin_notices_on_load( false );
-
-		add_action( 'admin_notices', array( $this, 'maybe_output_admin_header' ), 1 );
-
-		if ( class_exists( 'FluidCheckout_AdminNotices' ) ) {
-			add_action( 'admin_notices', array( FluidCheckout_AdminNotices::instance(), 'display_notices' ), 10 );
-		}
 	}
 
 
@@ -142,8 +98,8 @@ class FluidCheckout_Admin_DesignEditorPromo extends FluidCheckout {
 	 * @param  string  $hook_suffix  Hook suffix for the current admin page.
 	 */
 	public function maybe_enqueue_assets( $hook_suffix ) {
-		// Bail if not on the Design editor page
-		if ( $this->page_hook_suffix !== $hook_suffix ) { return; }
+		// Bail if not on the Design editor promo page
+		if ( ! $this->is_design_editor_page() || FluidCheckout::instance()->is_pro_activated() ) { return; }
 
 		$this->enqueue_assets();
 	}

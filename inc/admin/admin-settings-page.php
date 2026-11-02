@@ -56,6 +56,13 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	private $dashboard_page_hook_suffix = '';
 
 	/**
+	 * Design editor page hook suffix, set when registering the admin menu.
+	 *
+	 * @var string
+	 */
+	private $design_editor_page_hook_suffix = '';
+
+	/**
 	 * Settings tabs, cached after first retrieval.
 	 *
 	 * @var array|null
@@ -134,6 +141,10 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		);
 
 		add_submenu_page( self::DASHBOARD_PAGE_SLUG, __( 'Settings', 'fluid-checkout' ), __( 'Settings', 'fluid-checkout' ), self::CAPABILITY, self::PAGE_SLUG, array( $this, 'output_page' ) );
+
+		$this->design_editor_page_hook_suffix = add_submenu_page( self::DASHBOARD_PAGE_SLUG, __( 'Design', 'fluid-checkout' ), __( 'Design', 'fluid-checkout' ), self::CAPABILITY, self::DESIGN_EDITOR_PAGE_SLUG, array( $this, 'output_design_editor_page' ) );
+
+		add_action( 'load-' . $this->design_editor_page_hook_suffix, array( $this, 'handle_load_design_editor_page' ), 10 );
 	}
 
 	/**
@@ -380,14 +391,45 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	 * Whether the settings sidebar should show the Design accordion (Lite without PRO).
 	 */
 	public function should_show_design_editor_sidebar_accordion() {
-		return ! FluidCheckout::instance()->is_pro_activated();
+		return true;
 	}
 
 	/**
 	 * Admin URL for the Design editor page.
+	 *
+	 * @param  string  $tab  Optional. Design editor group slug, or `design_editor` for the Lite promo tab.
 	 */
-	public function get_design_editor_url() {
-		return add_query_arg( array( 'page' => self::DESIGN_EDITOR_PAGE_SLUG ), admin_url( 'admin.php' ) );
+	public function get_design_editor_url( $tab = '' ) {
+		$args = array( 'page' => self::DESIGN_EDITOR_PAGE_SLUG );
+
+		if ( '' !== $tab && 'design_editor' !== $tab ) {
+			$args[ 'tab' ] = $tab;
+		}
+
+		return add_query_arg( $args, admin_url( 'admin.php' ) );
+	}
+
+	/**
+	 * Output the Design admin page (PRO Design editor or Lite promo).
+	 */
+	public function output_design_editor_page() {
+		if ( FluidCheckout::instance()->is_pro_activated() && class_exists( 'FluidCheckout_PRO_Admin_DesignEditor' ) ) {
+			FluidCheckout_PRO_Admin_DesignEditor::instance()->output_page();
+			return;
+		}
+
+		if ( class_exists( 'FluidCheckout_Admin_DesignEditorPromo' ) ) {
+			FluidCheckout_Admin_DesignEditorPromo::instance()->output_page();
+		}
+	}
+
+	/**
+	 * Allow only Fluid Checkout admin notices on the Design page (strip WooCommerce and other plugins).
+	 */
+	public function handle_load_design_editor_page() {
+		if ( ! class_exists( 'FluidCheckout_Admin' ) ) { return; }
+
+		FluidCheckout_Admin::strip_non_fc_admin_notices_on_load( true );
 	}
 
 	/**
@@ -457,9 +499,23 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
-	 * Maybe output the Fluid Checkout admin page header on the settings page.
+	 * Maybe output the Fluid Checkout admin page header on FC settings layout screens.
 	 */
 	public function maybe_output_admin_header() {
+		if ( $this->is_design_editor_page() ) {
+			$can_save = false;
+
+			if ( FluidCheckout::instance()->is_pro_activated() && class_exists( 'FluidCheckout_PRO_Admin_DesignEditor' ) ) {
+				$design_editor = FluidCheckout_PRO_Admin_DesignEditor::instance();
+				$tabs          = $design_editor->get_tabs();
+				$current_tab   = $design_editor->get_current_tab();
+				$can_save      = ! empty( $tabs[ $current_tab ]['show_save_button'] );
+			}
+
+			$this->output_admin_header( $can_save );
+			return;
+		}
+
 		$this->output_admin_header();
 	}
 
@@ -1405,14 +1461,29 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	 */
 	public function output_sidebar_nav( $tabs, $current_tab, $sidebar_title = '' ) {
 		$show_design_accordion = $this->should_show_design_editor_sidebar_accordion();
-		$is_design_editor_active = $this->is_design_editor_page();
+		$is_on_design_editor_page = $this->is_design_editor_page();
+		$is_pro_design_editor = FluidCheckout::instance()->is_pro_activated() && class_exists( 'FluidCheckout_PRO_Admin_DesignEditor' );
 		$dashboard_accordion_open = $this->is_dashboard_page();
-		$design_accordion_open = $show_design_accordion && $is_design_editor_active;
+		$design_accordion_open = $show_design_accordion && $is_on_design_editor_page;
 		$settings_accordion_open = $this->is_settings_page();
 		$is_getting_started_active = $this->is_dashboard_page();
 		$dashboard_label = __( 'Dashboard', 'fluid-checkout' );
 		$design_accordion_label = __( 'Design', 'fluid-checkout' );
 		$design_nav_item_label = __( 'PRO feature', 'fluid-checkout' );
+		$design_accordion_url = $this->get_design_editor_url();
+		$design_editor_current_tab = '';
+
+		if ( $is_pro_design_editor ) {
+			$pro_design_editor = FluidCheckout_PRO_Admin_DesignEditor::instance();
+			$design_accordion_url = $pro_design_editor->get_design_editor_url( FluidCheckout_PRO_Admin_DesignEditor::DEFAULT_TAB );
+
+			if ( $is_on_design_editor_page ) {
+				$design_editor_current_tab = $pro_design_editor->get_current_tab();
+			}
+		}
+		elseif ( $is_on_design_editor_page ) {
+			$design_editor_current_tab = 'design_editor';
+		}
 
 		if ( '' === $sidebar_title ) {
 			$sidebar_title = __( 'Settings', 'fluid-checkout' );
@@ -1482,7 +1553,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			<div class="fc-settings-nav-accordion <?php echo $design_accordion_open ? 'is-open' : ''; ?>" data-fc-settings-nav-accordion="design">
 				<a
 					class="fc-settings-nav-accordion__toggle"
-					href="<?php echo esc_url( $this->get_design_editor_url() ); ?>"
+					href="<?php echo esc_url( $design_accordion_url ); ?>"
 					aria-expanded="<?php echo $design_accordion_open ? 'true' : 'false'; ?>"
 					aria-controls="fc-settings-nav-design-body"
 				>
@@ -1492,15 +1563,19 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 					</svg>
 				</a>
 				<div class="fc-settings-nav-accordion__body" id="fc-settings-nav-design-body">
+					<?php if ( $is_pro_design_editor ) : ?>
+						<?php FluidCheckout_PRO_Admin_DesignEditor::instance()->output_sidebar_design_accordion_body( $design_editor_current_tab ); ?>
+					<?php else : ?>
 					<ul class="fc-settings-nav">
-						<li class="fc-settings-nav__item fc-settings-nav__item--design-editor <?php echo $is_design_editor_active ? 'is-active' : ''; ?>" data-fc-settings-nav-item="design_editor">
-							<a class="fc-settings-nav__link" href="<?php echo esc_url( $this->get_design_editor_url() ); ?>" data-fc-settings-nav-link="design_editor" <?php echo $is_design_editor_active ? 'aria-current="page"' : ''; ?>>
+						<li class="fc-settings-nav__item fc-settings-nav__item--design-editor <?php echo $is_on_design_editor_page ? 'is-active' : ''; ?>" data-fc-settings-nav-item="design_editor">
+							<a class="fc-settings-nav__link" href="<?php echo esc_url( $this->get_design_editor_url() ); ?>" data-fc-settings-nav-link="design_editor" <?php echo $is_on_design_editor_page ? 'aria-current="page"' : ''; ?>>
 								<span class="fc-settings-nav__marker" aria-hidden="true">&#8985;</span>
 								<span class="fc-settings-nav__label"><?php echo esc_html( $design_nav_item_label ); ?></span>
 								<?php echo $this->get_settings_nav_link_chevron_markup(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static SVG markup. ?>
 							</a>
 						</li>
 					</ul>
+					<?php endif; ?>
 				</div>
 			</div>
 			<?php endif; ?>

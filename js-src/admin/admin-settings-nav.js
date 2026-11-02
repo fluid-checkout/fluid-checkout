@@ -78,7 +78,7 @@
 			page = parsed.searchParams.get( 'page' ) || '';
 
 			if ( _settings.designEditorPageSlug === page ) {
-				return 'design_editor';
+				return parsed.searchParams.get( 'tab' ) || _settings.designEditorDefaultTab || 'design_editor';
 			}
 
 			return parsed.searchParams.get( 'tab' ) || '';
@@ -139,7 +139,7 @@
 
 		// Design editor admin page
 		if ( _settings.designEditorPageSlug === parsed.searchParams.get( 'page' ) ) {
-			return 'design_editor';
+			return link.getAttribute( _settings.navLinkAttribute ) || parsed.searchParams.get( 'tab' ) || _settings.designEditorDefaultTab || 'design_editor';
 		}
 
 		// Bail if the link is not a Fluid Checkout settings URL
