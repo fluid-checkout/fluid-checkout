@@ -34,7 +34,7 @@ Try the checkout yourself before you install:
 
 * **Help reduce abandoned carts**: A clear, guided checkout with fewer open fields and instant feedback helps more buyers finish their order.
 * **Faster for repeat customers**: Saved details and skipped steps take returning buyers to payment sooner, and guest checkout stays simple.
-* **Keeps your store's look**: Works with your theme and payment gateways out of the box.
+* **Keeps your store's look**: Works with your theme and payment gateways out of the box, and you can customize without code.
 * **Easy to install**: Activate the plugin and the guided setup helps you configure your checkout, with a live preview of your checkout pages.
 
 <blockquote>
@@ -108,6 +108,8 @@ Fluid Checkout PRO is a single plugin with everything for your checkout: all fea
 * **Optimized cart page and edit cart at checkout**: Cart contents and totals update automatically, with no "Update cart" button. Mobile friendly quantity buttons, inline stock messages, cross sells and a layout that matches your checkout. Customers can also change quantities or remove products right on the checkout page, so you might even skip the cart page.
 
 * **Design templates and layouts**: Choose the Classic, Boxed, Split or Minimalist design. Use a 1 column or 2 column layout, show the order summary at the top on mobile, and switch to a breadcrumbs style progress bar that shows each step name.
+
+* **Checkout design customization without code**: Use the Design editor to change colors, styles for buttons and form fields and more from the settings page, with a live preview. No custom CSS or theme code required.
 
 * **Express checkout buttons in one place**: Groups the express buttons added by compatible payment plugins, such as Google Pay, Apple Pay and Amazon Pay, together at the top of the checkout. PRO does not add these buttons itself. They come from your payment plugin.
 
