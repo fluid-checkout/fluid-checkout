@@ -26,6 +26,8 @@
 			"replacements.config.json",
 			"README-DEV.md",
 			"package.json",
+			"composer.json",
+			"phpunit.xml.dist",
 			"gulpfile.js",
 			"gulp-settings.json",
 			"gulp-settings.local.example.json",
