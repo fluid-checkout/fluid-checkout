@@ -151,7 +151,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_fix_zoom_in_form_fields_mobile_devices'                     => 'yes',
 
 			// =============================== DESIGN ===============================
-			'fc_design_template'                                            => 'classic',
+			'fc_design_template'                                            => 'boxed',
 			'fc_enable_dark_mode_styles'                                    => 'no',
 			'fc_checkout_logo_image'                                        => '',
 			'fc_checkout_header_background_color'                           => null,
@@ -854,6 +854,11 @@ class FluidCheckout_Settings extends FluidCheckout {
 			if ( 0 === strpos( $key, 'fc_' ) ) {
 				$had_legacy_fc_options = true;
 			}
+		}
+
+		// Maybe keep Classic for stores installed before Boxed became the default, when no design template was stored
+		if ( ! array_key_exists( 'fc_design_template', $payload ) && (int) $this->get_raw_option( 'fc_plugin_activation_time', 0 ) < strtotime( '2026-11-09 00:00:00 UTC' ) ) {
+			$payload[ 'fc_design_template' ] = 'classic';
 		}
 
 		// Merge code defaults under stored values so the active profile is complete
