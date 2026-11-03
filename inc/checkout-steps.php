@@ -42,6 +42,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	private $cached_values = array();
 
+	/**
+	 * Whether the shipping address backup was restored in the current request.
+	 */
+	private $is_shipping_address_backup_restored = false;
+
 
 
 	/**
@@ -131,6 +136,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
+		add_action( 'fc_checkout_after_step_shipping_fields_inside', array( $this, 'output_substep_state_hidden_fields_shipping_address' ), 10 );
+		add_filter( 'fc_substep_shipping_address_attributes', array( $this, 'change_substep_attributes_shipping_address' ), 20, 2 ); // After PRO local pickup at priority 10
 		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 ); // Set priority to 7 to ensure it runs after the phone data is set (priority 5) in the PRO plugin
 
 		// Shipping method
@@ -141,6 +148,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10, 3 );
 		add_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10, 2 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
+		add_filter( 'fc_substep_shipping_method_attributes', array( $this, 'change_substep_attributes_shipping_method' ), 20, 2 ); // Match shipping address visibility filter priority
 
 		// Billing address
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
@@ -164,6 +172,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// billing address is displayed after shipping address.
 		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
+
+		// Shipping address backup while shipping is not needed
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_restore_shipping_address_backup' ), 4 ); // Before the PRO address book sets the selected address entry data at priority 5
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_save_shipping_address_backup' ), 9 ); // Before the billing address is copied to the shipping address at priority 10
 
 		// Billing phone
 		add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
@@ -536,6 +548,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_fields_fragment' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
+		remove_action( 'fc_checkout_after_step_shipping_fields_inside', array( $this, 'output_substep_state_hidden_fields_shipping_address' ), 10 );
+		remove_filter( 'fc_substep_shipping_address_attributes', array( $this, 'change_substep_attributes_shipping_address' ), 20 );
 		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 );
 
 		// Shipping method
@@ -546,6 +560,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10 );
 		remove_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10 );
 		remove_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
+		remove_filter( 'fc_substep_shipping_method_attributes', array( $this, 'change_substep_attributes_shipping_method' ), 20 );
 
 		// Order notes
 		remove_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
@@ -572,6 +587,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// billing address is displayed after shipping address.
 		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
 		remove_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
+
+		// Shipping address backup while shipping is not needed
+		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_restore_shipping_address_backup' ), 4 );
+		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_save_shipping_address_backup' ), 9 );
 
 		// Billing phone
 		remove_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
@@ -1969,6 +1988,40 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $has_visible_substeps;
 	}
 
+	/**
+	 * Get the ids of currently visible substeps for a checkout step.
+	 *
+	 * @param   string  $step_id   Id of the checkout step.
+	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
+	 *
+	 * @return  array               List of visible substep ids in render order.
+	 */
+	public function get_visible_substep_ids_for_output( $step_id, $context = 'checkout' ) {
+		// Get substeps for this step
+		$substeps = $this->get_checkout_substeps( $step_id, $context );
+
+		// Bail if no substeps are registered
+		if ( ! is_array( $substeps ) || count( $substeps ) < 1 ) { return array(); }
+
+		// Initialize variables
+		$visible_substep_ids = array();
+
+		// Iterate substeps
+		foreach ( $substeps as $substep_args ) {
+			// Skip if render fields callback is not callable
+			$render_fields_callback = array_key_exists( 'render_fields_callback', $substep_args ) ? $substep_args[ 'render_fields_callback' ] : null;
+			if ( ! $render_fields_callback || ! is_callable( $render_fields_callback ) ) { continue; }
+
+			// Skip if substep is not visible
+			if ( ! $this->is_substep_visible( $substep_args, $context ) ) { continue; }
+
+			// Add substep id to the list
+			$visible_substep_ids[] = $substep_args[ 'substep_id' ];
+		}
+
+		return $visible_substep_ids;
+	}
+
 
 
 	/**
@@ -2765,15 +2818,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		) );
 
 		// SHIPPING
+		// Always register and render the shipping step so AJAX cart updates can show or hide it
+		// via `data-step-visible` / `data-substep-visible` without a full page reload.
 		$step_id_shipping = 'shipping';
 		$this->register_checkout_step( array(
 			'step_id' => $step_id_shipping,
 			'step_title' => _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ),
 			'proceed_to_step_button_label' => __( 'Proceed to shipping', 'fluid-checkout' ),
 			'priority' => 20,
-			// Need to set condition as an anonymous function that returns checks if shipping is needed directly,
-			// because if the step is registered before the object `WC()->cart` is available, the condition will always return false.
-			'render_condition_callback' => function() { return WC()->cart && WC()->cart->needs_shipping(); },
 		) );
 
 		// BILLING
@@ -2948,6 +3000,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Output the step start tag
 			$this->output_step_start_tag( $step_args, $step_index, $context );
 
+			// Get first and last visible substep ids for this step
+			$visible_substep_ids = $this->get_visible_substep_ids_for_output( $step_id, $context );
+			$first_visible_substep_id = count( $visible_substep_ids ) > 0 ? $visible_substep_ids[ 0 ] : null;
+			$last_visible_substep_id = count( $visible_substep_ids ) > 0 ? $visible_substep_ids[ count( $visible_substep_ids ) - 1 ] : null;
+
 			// Iterate substeps
 			foreach ( $substeps as $substep_index => $substep_args ) {
 				// Maybe skip if render fields callback is not callable
@@ -2960,6 +3017,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 				// Get substep variables
 				$substep_id = $substep_args[ 'substep_id' ];
 				$additional_attributes = array_key_exists( 'additional_attributes', $substep_args ) ? $substep_args[ 'additional_attributes' ] : array();
+
+				// Maybe add attribute for first visible substep
+				if ( $substep_id === $first_visible_substep_id ) {
+					$additional_attributes[ 'data-substep-first' ] = true;
+				}
+
+				// Maybe add attribute for last visible substep
+				if ( $substep_id === $last_visible_substep_id ) {
+					$additional_attributes[ 'data-substep-last' ] = true;
+				}
 
 				// Output the substep start tag
 				$this->output_substep_start_tag( $step_id, $substep_id, $additional_attributes, $context );
@@ -4527,6 +4594,45 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $fragments;
 	}
 
+	/**
+	 * Output substep state hidden fields for the shipping address.
+	 */
+	public function output_substep_state_hidden_fields_shipping_address() {
+		// Get computed visibility for the shipping address substep
+		$visibility = $this->get_shipping_step_substep_visibility();
+
+		// Output substep visibility state hidden field
+		echo '<input class="fc-substep-visible-state" type="hidden" value="' . esc_attr( $visibility[ 'shipping_address' ] ) . '" />';
+
+		// Maybe expand the substep when shipping is needed again, but the address is still incomplete
+		if ( $this->is_shipping_address_backup_restored && ! $this->is_substep_complete_shipping_address() ) {
+			echo '<input class="fc-substep-expanded-state" type="hidden" value="yes" />';
+		}
+	}
+
+	/**
+	 * Change the shipping address substep attributes from the shipping visibility map.
+	 *
+	 * @param   array   $substep_attributes  HTML attributes for the substep element.
+	 * @param   string  $context             Context in which the substep is being output for.
+	 */
+	public function change_substep_attributes_shipping_address( $substep_attributes, $context = 'checkout' ) {
+		// Bail if not on checkout context
+		if ( 'checkout' !== $context ) { return $substep_attributes; }
+
+		// Get computed visibility for the shipping address substep
+		$visibility = $this->get_shipping_step_substep_visibility();
+
+		// Get current visibility from other plugins
+		$current_visible = array_key_exists( 'data-substep-visible', $substep_attributes ) ? $substep_attributes[ 'data-substep-visible' ] : 'yes';
+
+		// Prefer hidden when either the visibility map or another plugin requires it
+		// Matches the JS "any no wins" rule for `.fc-substep-visible-state` fields
+		$substep_attributes[ 'data-substep-visible' ] = ( 'no' === $visibility[ 'shipping_address' ] || 'no' === $current_visible ) ? 'no' : 'yes';
+
+		return $substep_attributes;
+	}
+
 
 
 	/**
@@ -5913,9 +6019,70 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the visibility state for each shipping step substep.
+	 *
+	 * @return  array  Associative array of `substep_id => 'yes'|'no'` visibility values.
+	 */
+	public function get_shipping_step_substep_visibility() {
+		// Define default visibility, all shipping substeps visible
+		$visibility = array(
+			'shipping_address'    => 'yes',
+			'shipping_method'     => 'yes',
+		);
+
+		// Maybe hide shipping substeps when the cart does not need shipping
+		if ( WC()->cart && ! WC()->cart->needs_shipping() ) {
+			// Hide the shipping method substep
+			$visibility[ 'shipping_method' ] = 'no';
+
+			// Hide the shipping address so virtual-only carts show billing alone
+			$visibility[ 'shipping_address' ] = 'no';
+		}
+
+		/**
+		 * Filter the visibility of the shipping step substeps, as `yes` or `no` for each substep ID.
+		 */
+		return apply_filters( 'fc_shipping_step_substep_visibility', $visibility );
+	}
+
+
+
+	/**
+	 * Change the shipping method substep attributes from the shipping visibility map.
+	 *
+	 * @param   array   $substep_attributes  HTML attributes for the substep element.
+	 * @param   string  $context             Context in which the substep is being output for.
+	 */
+	public function change_substep_attributes_shipping_method( $substep_attributes, $context = 'checkout' ) {
+		// Bail if not on checkout context
+		if ( 'checkout' !== $context ) { return $substep_attributes; }
+
+		// Get computed visibility for the shipping method substep
+		$visibility = $this->get_shipping_step_substep_visibility();
+
+		// Get current visibility from other plugins
+		$current_visible = array_key_exists( 'data-substep-visible', $substep_attributes ) ? $substep_attributes[ 'data-substep-visible' ] : 'yes';
+
+		// Prefer hidden when either the visibility map or another plugin requires it
+		// Matches the JS "any no wins" rule for `.fc-substep-visible-state` fields
+		$substep_attributes[ 'data-substep-visible' ] = ( 'no' === $visibility[ 'shipping_method' ] || 'no' === $current_visible ) ? 'no' : 'yes';
+
+		return $substep_attributes;
+	}
+
+	/**
 	 * Output substep state hidden fields for shipping methods.
 	 */
 	public function output_substep_state_hidden_fields_shipping_methods() {
+		// Get computed visibility for the shipping method substep
+		$visibility = $this->get_shipping_step_substep_visibility();
+
+		// Output substep visibility state hidden field
+		echo '<input class="fc-substep-visible-state" type="hidden" value="' . esc_attr( $visibility[ 'shipping_method' ] ) . '" />';
+
+		// Bail if shipping method substep should be hidden
+		if ( 'no' === $visibility[ 'shipping_method' ] ) { return; }
+
 		// Get shipping packages
 		$packages = WC()->shipping()->get_packages();
 
@@ -8013,6 +8180,67 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Maybe save a backup of the shipping address when the cart stops needing shipping, to restore it when shipping is needed again.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_save_shipping_address_backup( $posted_data ) {
+		// Bail if cart needs shipping
+		if ( WC()->cart->needs_shipping() ) { return $posted_data; }
+
+		// Bail if a backup was already saved, as the shipping fields are only posted before the cart stops needing shipping
+		if ( null !== $this->get_checkout_field_value_from_session( 'shipping_address_backup' ) ) { return $posted_data; }
+
+		// Get posted shipping address values, including the "same as billing" checkbox
+		$backup_field_keys = array_merge( $this->get_address_field_keys( 'shipping' ), array( 'shipping_same_as_billing' ) );
+		$shipping_address = array_intersect_key( $posted_data, array_flip( $backup_field_keys ) );
+
+		// Save the backup, even when empty, to know when shipping is needed again
+		$this->set_checkout_field_value_to_session( 'shipping_address_backup', $shipping_address );
+
+		return $posted_data;
+	}
+
+	/**
+	 * Maybe restore the shipping address backup when the cart needs shipping again.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_restore_shipping_address_backup( $posted_data ) {
+		// Bail if cart does not need shipping
+		if ( ! WC()->cart->needs_shipping() ) { return $posted_data; }
+
+		// Get shipping address backup
+		$shipping_address = $this->get_checkout_field_value_from_session( 'shipping_address_backup' );
+
+		// Bail if there is no backup
+		if ( ! is_array( $shipping_address ) ) { return $posted_data; }
+
+		// Maybe copy the billing address when it is forced to be the same, as the billing fields hold the latest address
+		if ( $this->is_billing_forced_same_as_shipping() ) {
+			$posted_data = $this->copy_posted_data_billing_address_to_shipping( $posted_data );
+		}
+		// Otherwise, restore the backup values, as the shipping fields were not on the page to be posted
+		else {
+			// Iterate shipping address backup fields
+			foreach ( $shipping_address as $field_key => $field_value ) {
+				$posted_data[ $field_key ] = $field_value;
+				$_POST[ $field_key ] = $field_value;
+			}
+		}
+
+		// Clear the backup
+		$this->set_checkout_field_value_to_session( 'shipping_address_backup', null );
+
+		// Set as restored, to expand the substep when the address is still incomplete
+		$this->is_shipping_address_backup_restored = true;
+
+		return $posted_data;
+	}
+
+
+
+	/**
 	 * Add the billing phone to the list of fields to display on the contact step.
 	 *
 	 * @param   array  $display_fields  List of fields to display on the contact step.
@@ -9527,6 +9755,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'order_comments',
 			'billing_same_as_shipping',
 			'shipping_same_as_billing',
+			'shipping_address_backup',
 		);
 
 		// Maybe set shipping fields to be cleared

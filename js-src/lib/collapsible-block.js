@@ -618,6 +618,18 @@
 
 
 	/**
+	 * Cancel the pending frame and timeout that finish the previous state change.
+	 *
+	 * @param   Object  manager  Collapsible block `manager` instance.
+	 */
+	var cancelPendingStateChange = function( manager ) {
+		cancelAnimationFrame( manager.stateChangeFrame );
+		clearTimeout( manager.stateChangeTimeout );
+	}
+
+
+
+	/**
 	 * Get collapsible-block manager instance from the main or content element.
 	 *
 	 * @param   HTMLElement  element  Collapsible block main element or content element.
@@ -653,6 +665,9 @@
 		// Set default value for withTransition
 		withTransition = withTransition === false ? false : true;
 
+		// Cancel the pending finish of the previous state change, so it does not interrupt this one
+		cancelPendingStateChange( manager );
+
 		// Set element as transitioning
 		manager.element.classList.add( _settings.isTransitioningClass );
 
@@ -686,6 +701,13 @@
 		if ( ! withTransition ) {
 			finishCollapse( manager.contentElement );
 		}
+		// Otherwise, also finish the "collapse" state change after the expected duration of the height transition,
+		// as the browser does not dispatch `transitionend` when the element is hidden or its height does not change.
+		else {
+			manager.stateChangeTimeout = setTimeout( function() {
+				finishCollapse( manager.contentElement );
+			}, getHeightTransitionDuration( manager.contentElement ) + 50 );
+		}
 	}
 
 
@@ -712,6 +734,9 @@
 		// Set flag `withFocus` to the element manager
 		manager.withFocus = withFocus;
 
+		// Cancel the pending finish of the previous state change, so it does not interrupt this one
+		cancelPendingStateChange( manager );
+
 		// Show the element again on the screen and add it back to the accessibility tree
 		manager.contentElement.style.display = '';
 
@@ -735,7 +760,7 @@
 		manager.element.classList.add( manager.settings.isTransitioningClass );
 
 		// Expand element to its content height
-		requestAnimationFrame( function() {
+		manager.stateChangeFrame = requestAnimationFrame( function() {
 			var computedHeight = getComputedHeight( manager.contentElement );
 
 			// Trigger a reflow, flushing the CSS changes
@@ -755,7 +780,7 @@
 
 			// Make sure to finish the "expand" state change after the expected duration of the height transition,
 			// so we don't need to rely completely on the browser's transitionend event.
-			setTimeout( function() {
+			manager.stateChangeTimeout = setTimeout( function() {
 				finishExpand( manager.contentElement );
 			}, heightTransitionDuration + 50 );
 		} );

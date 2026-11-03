@@ -435,6 +435,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Fixed: Compatibility with plugin Astra Pro modern input animation when Select2 country or state fields update during checkout.
 * Fixed: Compatibility with plugin Svea Checkout for WooCommerce. Fix checkout page reloading indefinitely, style issues and missing shipping options with versions 3.0.0+, and checkout fields being cleared when switching to other payment methods.
 * Fixed: Checkout step names appearing partially visible inside the progress bar with some themes.
+* Fixed: Shipping step and substep visibility when the cart starts or stops needing shipping during checkout AJAX updates.
 * Fixed: Progress bar not showing the correct step when a hidden checkout step becomes visible again while incomplete.
 * Fixed: Proceed button being displayed instead of the edit and save buttons for an incomplete checkout step the user already passed.
 * Fixed: "Same as billing address" behavior on the cart shipping calculator.
