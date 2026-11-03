@@ -60,7 +60,8 @@ if ( $available_gateways ) : ?>
 				<?php
 				// CHANGE: Add filter for custom add-payment-method button classes
 				$fc_add_payment_method_button_classes = implode( ' ', apply_filters( 'fc_add_payment_method_button_classes', array() ) );
-				$fc_add_payment_method_theme_button_class = wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '';
+				// CHANGE: Check if function introduced in WooCommerce 7.1 is available before trying to use it
+				$fc_add_payment_method_theme_button_class = function_exists( 'wc_wp_theme_get_element_class_name' ) && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '';
 				?>
 				<button type="submit" class="woocommerce-Button woocommerce-Button--alt button alt<?php echo esc_attr( $fc_add_payment_method_theme_button_class ); ?> <?php echo esc_attr( $fc_add_payment_method_button_classes ); ?>" id="place_order" value="<?php esc_attr_e( 'Add payment method', 'woocommerce' ); ?>"><?php esc_html_e( 'Add payment method', 'woocommerce' ); ?></button>
 				<?php // CHANGE: END - Add filter for custom add-payment-method button classes ?>

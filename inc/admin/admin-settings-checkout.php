@@ -110,7 +110,7 @@ class FluidCheckout_Settings_Checkout {
 					array(
 						'title' => __( 'Design template', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => __( 'General styles for the checkout steps, order summary and other sections. Applies to other checkout, cart, thank you (order received), and view order pages.', 'fluid-checkout' ),
+						'desc'  => __( 'General styles for the checkout steps, order summary and other sections. Applies to the checkout and add payment method pages. With PRO, also applies to the cart, order pay, thank you (order received) and view order pages.', 'fluid-checkout' ),
 						'id'    => 'fc_design_template_options',
 						'docs'  => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/feature-design-templates/' ),
 					),
@@ -124,7 +124,7 @@ class FluidCheckout_Settings_Checkout {
 						'type'                  => 'fc_template_selector',
 						'options'               => array(
 							'classic'          => array( 'label' => __( 'Classic', 'fluid-checkout' ) ),
-							'boxed'            => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Boxed', 'fluid-checkout' ), 'disabled' => true ),
+							'boxed'            => array( 'label' => __( 'Boxed', 'fluid-checkout' ) ),
 							'minimalist'       => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Minimalist', 'fluid-checkout' ), 'disabled' => true ),
 							'split'            => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Split', 'fluid-checkout' ), 'disabled' => true ),
 						),
@@ -139,10 +139,11 @@ class FluidCheckout_Settings_Checkout {
 						'desc'                  => '',
 						'desc_tip'              => __( 'Choose a background color for the Split design secondary column. Leave empty to use the order summary background color.', 'fluid-checkout' ) . '<br>' . __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
 						'id'                    => 'fc_checkout_secondary_column_background_color',
-						'type'                  => 'text',
+						'type'                  => 'fc_css_value',
+						'swatch'                => true,
+						'css_property'          => 'color',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_secondary_column_background_color' ),
 						'autoload'              => false,
-						'class'                 => 'colorpick',
 						'custom_attributes'     => array(
 							'data-conditional-id'    => 'fc_design_template',
 							'data-conditional-value' => 'split',
@@ -153,8 +154,27 @@ class FluidCheckout_Settings_Checkout {
 						'title'                 => __( 'Dark mode', 'fluid-checkout' ),
 						'desc'                  => __( 'Enable dark mode', 'fluid-checkout' ),
 						'id'                    => 'fc_enable_dark_mode_styles',
+						'requires'              => 'pro',
+						'locked_only'           => true, // Replaced by the Color scheme setting with PRO
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_dark_mode_styles' ),
 						'type'                  => 'checkbox',
+						'autoload'              => false,
+					),
+
+					array(
+						'title'                 => __( 'Color scheme', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'              => __( 'Use the light or dark colors on the checkout pages, or use the dark colors only when the theme is in dark mode.', 'fluid-checkout' ),
+						'id'                    => 'fc_pro_color_scheme',
+						'requires'              => 'pro',
+						'unlocked_only'         => true,
+						'type'                  => 'fc_layout_selector',
+						'options'               => array(
+							'theme'    => array( 'label' => __( 'Theme', 'fluid-checkout' ) ),
+							'light'    => array( 'label' => __( 'Light', 'fluid-checkout' ) ),
+							'dark'     => array( 'label' => __( 'Dark', 'fluid-checkout' ) ),
+						),
+						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_color_scheme' ),
 						'autoload'              => false,
 					),
 
@@ -212,7 +232,6 @@ class FluidCheckout_Settings_Checkout {
 							'data-conditional-value' => 'yes',
 						),
 						'autoload'              => false,
-						'css'                   => 'max-width: 8rem;',
 					),
 
 					array(
@@ -227,7 +246,6 @@ class FluidCheckout_Settings_Checkout {
 							'data-conditional-value' => 'yes',
 						),
 						'autoload'              => false,
-						'css'                   => 'max-width: 8rem;',
 					),
 
 					array(
@@ -242,7 +260,6 @@ class FluidCheckout_Settings_Checkout {
 							'data-conditional-value' => 'yes',
 						),
 						'autoload'              => false,
-						'css'                   => 'max-width: 8rem;',
 					),
 
 					array(
@@ -260,11 +277,25 @@ class FluidCheckout_Settings_Checkout {
 					),
 
 					array(
+						'type'              => 'fc_paragraph',
+						'desc'              => __( 'Change the checkout layout to multi-step to see these options.', 'fluid-checkout' ),
+						'id'                => 'fc_checkout_progress_bar_layout_notice',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_checkout_layout',
+							'data-conditional-value' => 'single-step',
+						),
+					),
+
+					array(
 						'title'                 => __( 'Progress bar', 'fluid-checkout' ),
-						'desc'                  => __( 'Display the checkout progress bar when using multi-step checkout layout', 'fluid-checkout' ),
+						'desc'                  => __( 'Display the checkout progress bar', 'fluid-checkout' ),
 						'id'                    => 'fc_enable_checkout_progress_bar',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_progress_bar' ),
 						'type'                  => 'checkbox',
+						'custom_attributes'     => array(
+							'data-conditional-id'    => 'fc_checkout_layout',
+							'data-conditional-value' => 'multi-step',
+						),
 						'autoload'              => false,
 					),
 					array(
@@ -273,9 +304,9 @@ class FluidCheckout_Settings_Checkout {
 						'id'                    => 'fc_enable_checkout_sticky_progress_bar',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_sticky_progress_bar' ),
 						'type'                  => 'checkbox',
-						'custom_attributes' => array(
-							'data-conditional-id'    => 'fc_enable_checkout_progress_bar',
-							'data-conditional-value' => 'yes',
+						'custom_attributes'     => array(
+							'data-conditional-id'    => 'fc_checkout_layout,fc_enable_checkout_progress_bar',
+							'data-conditional-value' => 'multi-step,yes',
 						),
 						'autoload'              => false,
 					),
@@ -293,8 +324,8 @@ class FluidCheckout_Settings_Checkout {
 						),
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_progress_bar_style' ),
 						'custom_attributes'     => array(
-							'data-conditional-id'    => 'fc_enable_checkout_progress_bar',
-							'data-conditional-value' => 'yes',
+							'data-conditional-id'    => 'fc_checkout_layout,fc_enable_checkout_progress_bar',
+							'data-conditional-value' => 'multi-step,yes',
 						),
 						'autoload'              => false,
 					),
@@ -339,7 +370,6 @@ class FluidCheckout_Settings_Checkout {
 						'type'                  => 'color',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_order_review_highlight_color' ),
 						'autoload'              => false,
-						'css'                   => 'max-width: 8rem;',
 					),
 
 					array(

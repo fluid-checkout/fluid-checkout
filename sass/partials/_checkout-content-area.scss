@@ -17,6 +17,13 @@ body#{ $body-page-selector } {
 
 
 
+// Apply the page background color only with its body class, as a variable without a value would replace the theme background
+body#{ $body-page-selector }.has-fc-page-background-color {
+	background-color: $checkout-page-background-color !important; // Needed to override theme styles
+}
+
+
+
 // Remove the `alignwide` class styles from the classic shortcode block.
 body#{ $body-page-selector } div[data-block-name="woocommerce/classic-shortcode"].alignwide {
 	left: 0 !important; // Needed to override theme styles for the class `.alignwide`

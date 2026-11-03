@@ -83,6 +83,9 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 		/**
 		 * Get filtered telemetry config for an API URL.
 		 *
+		 * Accepts the canonical registered URL or the host returned by
+		 * `get_remote_api_url()` / `fc_telemetry_api_url` for that registration.
+		 *
 		 * @param string $api_url Remote API base URL.
 		 */
 		public static function get_telemetry_config( $api_url ) {
@@ -92,7 +95,17 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 				$config = self::$configs[ $api_url ];
 			}
 			else {
-				$config = self::parse_telemetry_config( array() );
+				// Maybe map a filtered remote URL back to its registered config key
+				$canonical = self::get_registered_api_url_for_remote( $api_url );
+
+				if ( null !== $canonical ) {
+					$config  = self::$configs[ $canonical ];
+					$api_url = $canonical;
+				}
+				// Otherwise use empty defaults when the URL is unknown
+				else {
+					$config = self::parse_telemetry_config( array() );
+				}
 			}
 
 			/**
@@ -102,6 +115,36 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			 * @param string $api_url Remote API base URL.
 			 */
 			return apply_filters( 'fc_telemetry_client_config', $config, $api_url );
+		}
+
+
+
+		/**
+		 * Find the registered config key for a remote API URL.
+		 *
+		 * @param string $api_url Canonical or filtered remote API base URL.
+		 */
+		private static function get_registered_api_url_for_remote( $api_url ) {
+			$api_url = self::normalize_api_url( $api_url );
+
+			// Bail if the URL is already a registered config key
+			if ( isset( self::$configs[ $api_url ] ) ) {
+				return $api_url;
+			}
+
+			// Iterate registered URLs and match their filtered remote host
+			foreach ( array_keys( self::$configs ) as $canonical ) {
+				$resolved = self::normalize_api_url( self::get_remote_api_url( $canonical ) );
+
+				// Skip when the filtered host does not match
+				if ( $resolved !== $api_url ) {
+					continue;
+				}
+
+				return $canonical;
+			}
+
+			return null;
 		}
 
 
@@ -1013,7 +1056,14 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 				}
 			}
 
-			return $payload;
+			/**
+			 * Filters the telemetry payload before it is sent or previewed.
+			 *
+			 * @param array       $payload Telemetry payload.
+			 * @param array       $groups  Data groups included in the payload.
+			 * @param string|null $api_url Telemetry API base URL.
+			 */
+			return apply_filters( 'fc_telemetry_payload', $payload, $groups, $api_url );
 		}
 
 

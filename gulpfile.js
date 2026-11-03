@@ -4,7 +4,7 @@
  * Canonical source: fluid-checkout-standards/shared/root/gulpfile.js
  * Synced to plugin repositories as `gulpfile.js` via `sync-shared-files.js`
  * (manifest id `gulpfile`). Keep plugin-specific options in `gulp-settings.json`
- * and secrets in `gulp-settings.local.json` (API keys, BrowserSync, zip path).
+ * and secrets in `gulp-settings.local.json` (API keys, zip path).
  *
  * Auto-translation skips DeepL/Google when keys are missing, empty, or
  * placeholders (`*****`) and does not fail the package build.
@@ -22,7 +22,8 @@
  * - build-js             Production JS (uglify)
  * - build-js-dev         Development JS (no uglify; no clean)
  * - npm-run-build        Run `npm run build` for WordPress block assets when present
- * - build                Parallel build-js, build-css, and npm-run-build
+ * - build                set-assets-version, clean, then dev (unminified) JS/CSS compile
+ * - build-prod           update-ver, clean, minified JS/CSS, and npm-run-build when present
  * - copy-plugin-files    Copy committed plugin files into the export folder
  * - pack-plugin-zip      Zip the export folder into an installable package
  * - generate-pot         Generate the POT translation catalog
@@ -30,10 +31,7 @@
  * - update-translations  translate-po, then rebuild .mo and .l10n.php
  * - translate            generate-pot then update-translations
  *                        (pre-release alpha/beta/dev/rc: skipped only during `npm version`)
- * - browser-sync         Start BrowserSync from local settings
- * - browser-sync-reload  Reload BrowserSync clients
  * - watch                Watch sources and rebuild on change (dev asset tasks)
- * - watch-reload         Build once with dev tasks, then watch with BrowserSync reload
  */
 
 // Defining requirements
@@ -48,7 +46,6 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var replace = require('gulp-replace');
 var loadJsonFile = require('load-json-file');
-var browserSync = require('browser-sync').create();
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var del = require('del');
@@ -64,6 +61,44 @@ var readline = require('readline');
 var glob = require('glob');
 var minimatchModule = require('minimatch');
 var minimatch = typeof minimatchModule === 'function' ? minimatchModule : minimatchModule.minimatch;
+var gulplog = require( 'gulplog' );
+var fancyLog = require( 'fancy-log' );
+
+/**
+ * Hide undertaker sub-steps that have no displayName (shown as <anonymous>).
+ * Keeps named tasks such as build-css and compile-css:main in the terminal trace.
+ */
+( function filterAnonymousGulpTaskLogs() {
+	var anonymousTaskTrace = /<anonymous>/;
+
+	function shouldSuppressTaskTrace( args ) {
+		var i;
+		var combined = '';
+
+		for ( i = 0; i < args.length; i++ ) {
+			combined += String( args[ i ] );
+		}
+
+		if ( ! anonymousTaskTrace.test( combined ) ) {
+			return false;
+		}
+
+		return combined.indexOf( 'Starting' ) !== -1 ||
+			combined.indexOf( 'Finished' ) !== -1 ||
+			combined.indexOf( 'errored after' ) !== -1;
+	}
+
+	function filteredGulpInfoLog() {
+		if ( shouldSuppressTaskTrace( arguments ) ) {
+			return;
+		}
+
+		fancyLog.apply( null, arguments );
+	}
+
+	gulplog.removeListener( 'info', fancyLog );
+	gulplog.on( 'info', filteredGulpInfoLog );
+} )();
 
 
 
@@ -168,7 +203,7 @@ function shouldSkipPreReleaseTranslations() {
 
 // gulp update-ver
 // Update the project version
-gulp.task( 'update-ver', gulp.series( function( done ) {
+function updateVer( done ) {
 	// Define assets version
 	_assetsVersion = '-' + _package.version.replace( /\./gi, '' );
 
@@ -178,7 +213,8 @@ gulp.task( 'update-ver', gulp.series( function( done ) {
 	.pipe(gulp.dest('./'));
 
 	done();
-} ) );
+}
+gulp.task( 'update-ver', updateVer );
 
 // Run:
 // gulp update-ver-release
@@ -201,7 +237,7 @@ gulp.task( 'update-ver-release', gulp.series(
 			gulp.src( _gulpSettings.changelogFile )
 			// See http://mdn.io/string.replace#Specifying_a_string_as_a_parameter
 			.pipe(replace(/Stable tag: (.)*/g, 'Stable tag: ' + _package.version ))
-			.pipe(replace(/= Unreleased (.)*/g, '= ' + _package.version + ' - ' + today.toISOString().slice(0, 10) + ' =' ))
+			.pipe(replace(/^=+\s*Unreleased\s.*$/gm, '= ' + _package.version + ' - ' + today.toISOString().slice(0, 10) + ' =' ))
 			.pipe(gulp.dest('./'));
 		}
 
@@ -353,7 +389,8 @@ function getSassParallelBatchSize() {
 }
 
 /**
- * Run gulp task functions in parallel batches to limit peak memory.
+ * Run stream factories in parallel batches to limit peak memory.
+ * Does not register undertaker subtasks (avoids hundreds of <anonymous> log lines).
  */
 function runTasksInBatches( taskFns, batchSize, done ) {
 	var index = 0;
@@ -365,6 +402,8 @@ function runTasksInBatches( taskFns, batchSize, done ) {
 
 	function runNextBatch() {
 		var batch;
+		var promises = [];
+		var i;
 
 		if ( index >= taskFns.length ) {
 			done();
@@ -374,12 +413,14 @@ function runTasksInBatches( taskFns, batchSize, done ) {
 		batch = taskFns.slice( index, index + batchSize );
 		index += batchSize;
 
-		gulp.parallel( batch )( function( err ) {
-			if ( err ) {
-				done( err );
-				return;
-			}
+		for ( i = 0; i < batch.length; i++ ) {
+			promises.push( streamToPromise( batch[ i ]() ) );
+		}
+
+		Promise.all( promises ).then( function() {
 			runNextBatch();
+		} ).catch( function( err ) {
+			done( err );
 		} );
 	}
 
@@ -416,8 +457,7 @@ function processCssDev( src, dest ) {
 		.pipe(gulp.dest( dest )) // save .css
 		.pipe(rename({ suffix: '.min' })) // Files are not minified on dev build but file name needs the .min suffix
 		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest( dest )) // save .min.css
-		.pipe(browserSync.stream());
+		.pipe(gulp.dest( dest )); // save .min.css
 }
 
 /**
@@ -438,9 +478,24 @@ function whenStreamDone( stream, done ) {
 	stream.on( 'finish', function() {
 		finish();
 	} );
-	// Some pipelines (e.g. with browserSync.stream) emit end without finish
+	// Some pipelines emit end without finish
 	stream.on( 'end', function() {
 		finish();
+	} );
+}
+
+/**
+ * Resolve when a gulp pipeline stream completes (Promise wrapper for whenStreamDone).
+ */
+function streamToPromise( stream ) {
+	return new Promise( function( resolve, reject ) {
+		whenStreamDone( stream, function( err ) {
+			if ( err ) {
+				reject( err );
+				return;
+			}
+			resolve();
+		} );
 	} );
 }
 
@@ -449,10 +504,9 @@ function whenStreamDone( stream, done ) {
  *
  * Full builds use one gulp.src pipeline per source key (same as classic gulpfile;
  * keys still run in parallel via buildCss / buildCssDev). Per-entry parallel
- * streams hang with browserSync.stream() and add overhead — use expandEntryFiles
- * + processCssDev(singleFile) only from the watch handler (Phase 3).
+ * use expandEntryFiles + processCssDev(singleFile) only from the watch handler.
  *
- * Optional parallel per-entry for production-only pipelines (no browserSync) when
+ * Optional parallel per-entry for production-only pipelines when
  * sassParallelBatchSize is set and the group is large — see processCssEntriesParallel.
  */
 function processCssEntries( src, dest, processorFn, done ) {
@@ -468,8 +522,7 @@ function processCssEntries( src, dest, processorFn, done ) {
 		return;
 	}
 
-	// Parallelize large production groups only (processCss has no browserSync.stream).
-	// Dev CSS stays one stream per key — browserSync.stream hangs under many parallel pipes.
+	// Parallelize large production groups only. Dev CSS stays one stream per source key.
 	useParallel = files.length >= parallelThreshold && processorFn === processCss;
 
 	if ( ! useParallel ) {
@@ -637,8 +690,7 @@ function processJsDev( src, dest ) {
 		.pipe(gulp.dest( dest )) // save .js
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(sourcemaps.write( 'maps' ))
-		.pipe(gulp.dest( dest )) // save .min.js
-		.pipe(browserSync.stream());
+		.pipe(gulp.dest( dest )); // save .min.js
 }
 
 // Build all JS for production
@@ -674,7 +726,7 @@ gulp.task( 'build-js-dev', gulp.series( 'set-assets-version', buildJSDev ) );
 // Run:
 // gulp npm-run-build
 // Run the command `npm run build` to build the project assets for WordPress blocks.
-gulp.task( 'npm-run-build', gulp.series( function( done ) {
+function npmRunBuild( done ) {
 	// Bail if the `blocks` folder does not exist
 	if ( ! fs.existsSync( './blocks' ) ) { return done(); }
 
@@ -689,14 +741,28 @@ gulp.task( 'npm-run-build', gulp.series( function( done ) {
 
 		done();
 	} );
-} ) );
+}
+gulp.task( 'npm-run-build', npmRunBuild );
 
 
 
 // Run:
 // gulp build
-// Build css and js assets
-gulp.task( 'build', gulp.series( gulp.parallel( 'build-js', 'build-css', 'npm-run-build' ) ) );
+// Dev assets: version suffix in memory, unminified JS/CSS (cleans css/ and js/ first).
+gulp.task( 'build', gulp.series(
+	'set-assets-version',
+	gulp.parallel( 'clean-js', 'clean-css' ),
+	gulp.parallel( buildJSDev, buildCssDev )
+) );
+
+// Run:
+// gulp build-prod
+// Production assets for release zips (update-ver, minify, block build when present).
+gulp.task( 'build-prod', gulp.series(
+	'update-ver',
+	gulp.parallel( 'clean-js', 'clean-css' ),
+	gulp.parallel( buildJS, buildCss, 'npm-run-build' )
+) );
 
 
 
@@ -1016,7 +1082,7 @@ function runBundledSourceBuild( entry, absoluteSourceDir, done ) {
 		return;
 	}
 
-	var buildTask = entry.buildTask || 'build';
+	var buildTask = entry.buildTask || 'build-prod';
 	console.log( 'Building bundled source: ' + absoluteSourceDir + ' (gulp ' + buildTask + ')' );
 
 	exec(
@@ -2030,27 +2096,6 @@ gulp.task( 'translate', function( done ) {
 
 
 
-// Run:
-// gulp browser-sync
-// Starts browser-sync task for starting the server.
-gulp.task( 'browser-sync', gulp.series( function( done ) {
-	if ( _gulpSettings.browserSyncWatch && _gulpSettingsLocal && _gulpSettingsLocal.browserSyncOptions ) {
-		browserSync.init( _gulpSettings.browserSyncWatch, _gulpSettingsLocal.browserSyncOptions );
-	}
-
-	done();
-} ) );
-
-// Run:
-// gulp browser-sync
-// Starts browser-sync task for starting the server.
-gulp.task( 'browser-sync-reload', function( done ) {
-	browserSync.reload();
-	done();
-} );
-
-
-
 /**
  * Derive watch globs from a source src list.
  *
@@ -2317,13 +2362,6 @@ gulp.task( 'watch', gulp.series( function( done ) {
 
 	done();
 } ) );
-
-
-
-// Run:
-// gulp watch-reload
-// Starts watcher with browser-sync. Browser-sync reloads page automatically on your browser
-gulp.task( 'watch-reload', gulp.series( gulp.parallel( 'build-js-dev', 'build-css-dev' ), gulp.series( 'watch', 'browser-sync' ) ) );
 
 
 

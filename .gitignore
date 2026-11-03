@@ -50,7 +50,8 @@ bundled/*
 !bundled/fluid-checkout
 
 # Hook docs workflow workspace. Generated on CI; not part of the plugin.
-data/
+# Leading slash: plugin root only (unanchored `data/` would omit Composer vendor metadata dirs).
+/data/
 wp-hooks-generator/
 fluid-checkout-docs/
 

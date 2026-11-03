@@ -118,6 +118,9 @@
 		control.value = ids;
 		preview.textContent = '';
 		preview.appendChild( list );
+
+		// Trigger the change of the control, which setting its value does not trigger
+		control.dispatchEvent( new Event( 'change', { bubbles: true } ) );
 	};
 
 
@@ -179,6 +182,9 @@
 		control.value = '';
 		preview.textContent = '';
 		preview.appendChild( document.createTextNode( message ) );
+
+		// Trigger the change of the control, which setting its value does not trigger
+		control.dispatchEvent( new Event( 'change', { bubbles: true } ) );
 	};
 
 

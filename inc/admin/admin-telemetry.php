@@ -71,7 +71,7 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 				'sendError'          => __( 'Could not send the usage data. Try again.', 'fluid-checkout' ),
 				'sendSuccess'        => __( 'Usage data sent.', 'fluid-checkout' ),
 				'sendNow'            => __( 'Send now', 'fluid-checkout' ),
-				'enableAndSendNow'   => __( 'Turn ON and send now', 'fluid-checkout' ),
+				'enableAndSendNow'   => __( 'Turn on and send now', 'fluid-checkout' ),
 				'close'              => __( 'Close', 'fluid-checkout' ),
 				'inProgress'         => __( 'Usage data is already being sent. Try again in a moment.', 'fluid-checkout' ),
 				'disabled'           => __( 'Usage tracking is turned off.', 'fluid-checkout' ),
@@ -182,7 +182,7 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 		$groups = $this->get_request_data_groups();
 
 		// Admin send-now always enables reporting when currently disabled, then sends.
-		// Covers "Turn ON and send now" and an unsaved checked enable checkbox.
+		// Covers "Turn on and send now" and an unsaved checked enable checkbox.
 		$enable_if_disabled = true;
 
 		// Bail if telemetry client class is not available or does not support sending site reports

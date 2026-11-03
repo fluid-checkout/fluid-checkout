@@ -53,13 +53,14 @@
 
 		ajaxUrl:                              '',
 		nonce:                                '',
+		settingsSavedEvent:                   'fcSettingsSaved',
 		i18n: {
 			loading:                          'Loading preview...',
 			loadError:                        'Could not load the preview. Try again.',
 			sendError:                        'Could not send the usage data. Try again.',
 			sendSuccess:                      'Usage data sent.',
 			sendNow:                          'Send now',
-			enableAndSendNow:                 'Turn ON and send now',
+			enableAndSendNow:                 'Turn on and send now',
 			inProgress:                       'Usage data is already being sent. Try again in a moment.',
 			disabled:                         'Usage tracking is turned off.',
 			emptyPayload:                     'There is no usage data to send.',
@@ -338,7 +339,7 @@
 	var updateSendButton = function( enabled ) {
 		var label = enabled
 			? ( _settings.i18n.sendNow || 'Send now' )
-			: ( _settings.i18n.enableAndSendNow || 'Turn ON and send now' );
+			: ( _settings.i18n.enableAndSendNow || 'Turn on and send now' );
 
 		// Bail if usage tracking is turned off in PHP constant
 		if ( true === _settings.isDisabledByConstant ) {
@@ -521,8 +522,33 @@
 		}
 
 		_isEnabled = !! enabled;
+		_settings.isEnabledSaved = _isEnabled;
 		updateSendButton( _isEnabled );
 		updateInlineSendButtonState( _isEnabled );
+	};
+
+
+
+	/**
+	 * Sync Send now controls from the enable checkbox after settings are saved.
+	 */
+	var syncEnabledStateFromForm = function() {
+		var formState = getFormState();
+		var enabled = _settings.enabledYesValue === formState.enabled;
+
+		_isEnabled = enabled;
+		_settings.isEnabledSaved = enabled;
+		updateSendButton( _isEnabled );
+		updateInlineSendButtonState( _isEnabled );
+	};
+
+
+
+	/**
+	 * Handle settings saved on the Fluid Checkout settings page.
+	 */
+	var handleSettingsSaved = function() {
+		syncEnabledStateFromForm();
 	};
 
 
@@ -754,6 +780,7 @@
 		// Add event listeners
 		window.addEventListener( 'click', handleClick, true );
 		document.addEventListener( 'keydown', handleKeyDown, true );
+		document.addEventListener( _settings.settingsSavedEvent, handleSettingsSaved );
 
 		// Enable Send now only when reporting is already saved as enabled
 		_isEnabled = true === _settings.isEnabledSaved || _settings.enabledYesValue === _settings.isEnabledSaved;

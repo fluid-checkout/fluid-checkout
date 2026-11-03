@@ -1,0 +1,10 @@
+// ------------------------------------
+// LOAD STYLES
+// ------------------------------------
+@use "scope-add-payment-method" as scope;
+@forward "__css-variables" hide $body-template-selector with (
+	$body-template-selector: scope.$body-template-selector
+);
+@forward "../shared/checkout-payment-methods" hide $body-template-selector with (
+	$body-template-selector: scope.$body-template-selector
+);

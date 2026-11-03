@@ -44,7 +44,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 	 */
 	public function enqueue_scripts() {
 		// Bail if not on the Dashboard tab of the settings page
-		if ( ! FluidCheckout_Admin_Settings_Page::instance()->is_settings_page( 'dashboard' ) ) { return; }
+		if ( ! FluidCheckout_Admin_Settings_Page::instance()->is_dashboard_page() ) { return; }
 
 		// Enqueue dashboard add-ons script
 		wp_enqueue_script( 'fc-admin-dashboard-addons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-dashboard-addons' ), array( 'fc-utils' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -58,7 +58,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 	 */
 	public function add_js_settings_admin( $settings ) {
 		// Bail if not on the Dashboard tab of the settings page
-		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) || ! FluidCheckout_Admin_Settings_Page::instance()->is_settings_page( 'dashboard' ) ) { return $settings; }
+		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) || ! FluidCheckout_Admin_Settings_Page::instance()->is_dashboard_page() ) { return $settings; }
 
 		$settings[ 'dashboardAddons' ] = $this->get_dashboard_addons_script_settings();
 
@@ -101,16 +101,17 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				'subtitle'      => __( 'All PRO features + all add-ons, one price. Design templates, optimized cart and order received pages, account matching, and much more.', 'fluid-checkout' ),
 				'features'      => array(
 					__( 'More design templates', 'fluid-checkout' ),
+					__( 'Design customizations without code', 'fluid-checkout' ),
 					__( 'Optimized cart page', 'fluid-checkout' ),
 					__( 'Optimized order received / thank you page', 'fluid-checkout' ),
 					__( 'Optimized order pay page', 'fluid-checkout' ),
-					__( 'Express checkout buttons from supported payment methods', 'fluid-checkout' ),
 					__( 'Edit cart contents at checkout page', 'fluid-checkout' ),
 					__( 'Local pickup and in-store collection', 'fluid-checkout' ),
 					__( 'Account matching / user matching', 'fluid-checkout' ),
 					__( 'Delayed account creation', 'fluid-checkout' ),
 					__( 'Address autocomplete with Google Maps APIs', 'fluid-checkout' ),
 					__( 'Multiple saved addresses with the address book', 'fluid-checkout' ),
+					__( 'Express checkout from supported payment methods', 'fluid-checkout' ),
 					__( 'Trust symbols on the cart and thank you pages', 'fluid-checkout' ),
 					__( 'More positions for the coupon code on the checkout page', 'fluid-checkout' ),
 					__( 'International phone numbers', 'fluid-checkout' ),
@@ -263,7 +264,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 		update_option( self::HIDE_DASHBOARD_PRO_PROMO_OPTION, 'yes', false );
 
-		wp_safe_redirect( FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'dashboard' ) );
+		wp_safe_redirect( FluidCheckout_Admin_Settings_Page::instance()->get_dashboard_url() );
 		exit;
 	}
 
@@ -280,7 +281,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				array(
 					'fc_hide_dashboard_pro_promo' => '1',
 				),
-				FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'dashboard' )
+				FluidCheckout_Admin_Settings_Page::instance()->get_dashboard_url()
 			),
 			'fc_hide_dashboard_pro_promo'
 		);
@@ -518,6 +519,8 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 	 * @param array $addon PRO bundle catalog item.
 	 */
 	private function output_pro_promo_section( $addon ) {
+		$plugin_file  = isset( $addon['plugin_file'] ) ? $addon['plugin_file'] : '';
+		$is_activated = ! empty( $plugin_file ) && FluidCheckout::instance()->is_plugin_activated( $plugin_file );
 		$features     = ! empty( $addon['features'] ) && is_array( $addon['features'] ) ? $addon['features'] : array();
 		$actions_html = $this->get_plugin_addon_actions_html( $addon );
 		$has_footer   = ! empty( $actions_html );
@@ -554,8 +557,15 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 					</div>
 				</div>
 
-				<?php if ( ! empty( $features ) ) : ?>
-					<ul class="fc-addons__item-features-list fc-addons__item-features-list--columns fc-settings-promo__features-list">
+				<?php if ( ! empty( $features ) && ! $is_activated ) : ?>
+					<?php
+					$feature_row_count = (int) ceil( count( $features ) / 2 );
+					$features_list_style = sprintf( '--fc-promo-features-rows: %d;', $feature_row_count );
+					?>
+					<ul
+						class="fc-addons__item-features-list fc-addons__item-features-list--columns fc-settings-promo__features-list"
+						style="<?php echo esc_attr( $features_list_style ); ?>"
+					>
 						<?php foreach ( $features as $feature ) : ?>
 							<li><?php echo esc_html( $feature ); ?></li>
 						<?php endforeach; ?>
@@ -617,8 +627,9 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				$has_description = ! empty( $addon['description'] );
 				$has_value_note  = ! empty( $addon['value_note'] );
 				$has_features    = ! empty( $addon['features'] ) && is_array( $addon['features'] );
+				$show_features   = $has_features && ! $is_activated;
 				?>
-				<?php if ( $has_description || $has_value_note || $has_features ) : ?>
+				<?php if ( $has_description || $has_value_note || $show_features ) : ?>
 					<div class="fc-addons__item-description">
 						<?php if ( $has_description ) : ?>
 							<p><?php echo wp_kses_post( $addon['description'] ); ?></p>
@@ -626,7 +637,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 						<?php if ( $has_value_note ) : ?>
 							<p><strong><?php echo esc_html( $addon['value_note'] ); ?></strong></p>
 						<?php endif; ?>
-						<?php if ( $has_features ) : ?>
+						<?php if ( $show_features ) : ?>
 							<ul class="fc-addons__item-features-list fc-addons__item-features-list--columns">
 								<?php foreach ( $addon['features'] as $feature ) : ?>
 									<li><?php echo esc_html( $feature ); ?></li>
