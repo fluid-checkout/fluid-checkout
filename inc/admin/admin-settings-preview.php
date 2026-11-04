@@ -103,6 +103,11 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 				'enable_setting'    => 'fc_pro_enable_cart_page',
 				'url'               => wc_get_cart_url(),
 			),
+			'side_cart'      => array(
+				'label'             => __( 'Side cart', 'fluid-checkout' ),
+				'requires_pro'      => false,
+				'url'               => $this->get_side_cart_preview_url(),
+			),
 			'order_received' => array(
 				'label'             => __( 'Thank you', 'fluid-checkout' ),
 				'requires_pro'      => ! $is_pro_activated,
@@ -169,6 +174,62 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 
 		// Keep the default values that filters removed
 		return wp_parse_args( $config, $defaults );
+	}
+
+	/**
+	 * Get the frontend URL used to preview the side cart drawer.
+	 * Prefers a product page for a quieter canvas, and falls back to the shop page.
+	 *
+	 * @return string
+	 */
+	public function get_side_cart_preview_url() {
+		// Bail if WooCommerce product queries are unavailable
+		if ( ! function_exists( 'wc_get_products' ) ) {
+			return function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : '';
+		}
+
+		$product_ids = wc_get_products( array(
+			'status'       => 'publish',
+			'type'         => array( 'simple', 'variable' ),
+			'stock_status' => 'instock',
+			'limit'        => 10,
+			'orderby'      => 'date',
+			'order'        => 'DESC',
+			'return'       => 'ids',
+		) );
+
+		$fallback_url = '';
+
+		// Prefer a simple product page, quieter than variable products that show attribute selectors
+		foreach ( $product_ids as $product_id ) {
+			$product = wc_get_product( $product_id );
+
+			// Skip products that cannot be shown on the storefront
+			if ( ! $product || ! $product->is_visible() ) { continue; }
+
+			$url = $product->get_permalink();
+
+			// Skip products without a permalink
+			if ( empty( $url ) ) { continue; }
+
+			// Prefer simple products for a quieter product page
+			if ( $product->is_type( 'simple' ) ) {
+				return $url;
+			}
+
+			// Remember the first visible product as fallback before the shop page
+			if ( '' === $fallback_url ) {
+				$fallback_url = $url;
+			}
+		}
+
+		// Maybe use a variable or other visible product when no simple product was found
+		if ( '' !== $fallback_url ) {
+			return $fallback_url;
+		}
+
+		// Fall back to the shop page when the catalog has no visible products
+		return wc_get_page_permalink( 'shop' );
 	}
 
 	/**

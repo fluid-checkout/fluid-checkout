@@ -265,17 +265,21 @@ class FluidCheckout_Settings_Cart {
 
 
 					array(
-						'title' => __( 'Side cart', 'fluid-checkout' ),
-						'type'  => 'title',
-						'desc'  => '',
-						'id'    => 'fc_pro_side_cart_options',
-						'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'side-cart' ),
+						'title'             => __( 'Side cart', 'fluid-checkout' ),
+						'type'              => 'title',
+						'desc'              => '',
+						'id'                => 'fc_pro_side_cart_options',
+						'promo'             => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'side-cart' ),
+						'custom_attributes' => array(
+							// Switch the settings preview to the side cart page when editing these fields
+							'data-fc-settings-preview-switch-page' => 'side_cart',
+						),
 					),
 
 					array(
 						'title'             => __( 'Side cart', 'fluid-checkout' ),
 						'desc'              => __( 'Enable the side cart drawer', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Replaces the mini cart from WooCommerce and from the currently active theme with a drawer that slides in from the side of the screen. Does not apply to the cart and checkout pages.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Replaces the mini cart from WooCommerce and from the currently active theme with a drawer that slides in from the side of the screen. Does not apply to the cart, checkout, thank you, or order pay pages.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_side_cart',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_side_cart' ),
 						'type'              => 'checkbox',

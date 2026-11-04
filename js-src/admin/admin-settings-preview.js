@@ -82,6 +82,8 @@
 		isActiveClass:               'is-active',
 		isBusyClass:                 'is-busy',
 		pageAttribute:               'data-fc-settings-preview-page',
+		// On settings fields or cards: switch the preview to this page when the field is focused or changed
+		pageSwitchAttribute:         'data-fc-settings-preview-switch-page',
 		urlAttribute:                'data-fc-settings-preview-url',
 		enableSettingAttribute:      'data-fc-settings-preview-enable-setting',
 		enabledAttribute:            'data-fc-settings-preview-enabled',
@@ -694,6 +696,50 @@
 	 */
 	var getActivePageTab = function() {
 		return document.querySelector( _settings.pageTabSelector + '.' + _settings.isActiveClass );
+	};
+
+	/**
+	 * Get the active preview page slug.
+	 *
+	 * @return  {string}
+	 */
+	var getActivePreviewPage = function() {
+		var pageTab = getActivePageTab();
+		return pageTab ? pageTab.getAttribute( _settings.pageAttribute ) : '';
+	};
+
+	/**
+	 * Switch the preview page when a settings field or card requests one.
+	 *
+	 * @param  {Element}  target  Event target inside the settings form.
+	 */
+	var maybeSwitchPreviewPageForField = function( target ) {
+		var field;
+		var page;
+		var pageTab;
+
+		// Bail if there is no target element
+		if ( ! target || ! target.closest ) { return; }
+
+		// Bail if the target is not a settings field, such as for the preview controls
+		if ( ! target.closest( _settings.formSelector ) || target.closest( _settings.previewSelector ) ) { return; }
+
+		// Find the field or card that requests a preview page
+		field = target.closest( '[' + _settings.pageSwitchAttribute + ']' );
+
+		// Bail if the field or card does not request a preview page
+		if ( ! field ) { return; }
+
+		page = field.getAttribute( _settings.pageSwitchAttribute );
+
+		// Bail if page slug is missing or already active
+		if ( ! page || page === getActivePreviewPage() ) { return; }
+
+		// Bail if there is no matching preview page tab
+		pageTab = document.querySelector( '[' + _settings.pageAttribute + '="' + CSS.escape( page ) + '"]' );
+		if ( ! pageTab ) { return; }
+
+		setPreviewPage( page );
 	};
 
 	/**
@@ -1381,6 +1427,9 @@
 		// Bail if the preview ignores the field, as another script shows its changes in the page preview
 		if ( e.target.closest( _settings.ignoredFieldSelector ) ) { return; }
 
+		// Maybe switch the preview page for fields that request one, such as side cart settings to the side cart page
+		maybeSwitchPreviewPageForField( e.target );
+
 		// Bail if the current user has no preview token
 		if ( ! _settings.previewToken ) { return; }
 
@@ -1393,6 +1442,15 @@
 		_hasUnsavedDraft = true;
 		_saveDraftDebounced();
 		updatePreviewBusyState();
+	};
+
+	/**
+	 * Handle focus inside settings fields that request a preview page.
+	 *
+	 * @param  {FocusEvent}  e  Focus in event.
+	 */
+	var handleSettingsFocusIn = function( e ) {
+		maybeSwitchPreviewPageForField( e.target );
 	};
 
 	/**
@@ -1693,6 +1751,7 @@
 		document.addEventListener( 'keydown', handleWidthKeyDown, true );
 		document.addEventListener( 'keydown', handlePreviewExpandKeydown, true );
 		document.addEventListener( 'change', handleModeChange, true );
+		document.addEventListener( 'focusin', handleSettingsFocusIn );
 		window.addEventListener( 'message', handleMessage );
 		document.addEventListener( 'load', handleFrameLoad, true ); // Load events do not bubble, but reach the document in the capture phase
 		window.addEventListener( 'fcSettingsTabActivated', handleSettingsTabActivated );
