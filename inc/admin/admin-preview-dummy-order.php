@@ -15,31 +15,43 @@ class FluidCheckout_Admin_Preview_Dummy_Order extends WC_Order {
 		// Initialize order data, without reading an order from the database
 		parent::__construct( 0 );
 
+		self::initialize_order_with_dummy_data( $this, $order );
+	}
+
+	/**
+	 * Set dummy order properties, items and totals on an order object instead of reading from the database.
+	 *
+	 * @param   WC_Order  $order     Order object.
+	 * @param   int       $order_id  Dummy order ID.
+	 */
+	public static function initialize_order_with_dummy_data( WC_Order $order, $order_id ) {
 		// Mark the order as not read yet, so the dummy order data is set as its data instead of as changes
-		$this->set_object_read( false );
+		$order->set_object_read( false );
 
 		// Iterate order item types, keeping their groups empty so items are not read from the database for the dummy order ID
-		foreach ( array( 'line_item', 'tax', 'shipping', 'fee', 'coupon' ) as $item_type ) {
-			$this->items[ $this->type_to_group( $item_type ) ] = array();
+		if ( $order instanceof self ) {
+			foreach ( array( 'line_item', 'tax', 'shipping', 'fee', 'coupon' ) as $item_type ) {
+				$order->items[ $order->type_to_group( $item_type ) ] = array();
+			}
+
+			// Keep meta data empty, so it is not read from the database for the dummy order ID
+			$order->meta_data = array();
 		}
 
-		// Keep meta data empty, so it is not read from the database for the dummy order ID
-		$this->meta_data = array();
-
 		// Set dummy order properties
-		$this->set_id( $order );
-		$this->set_props( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_props( $this->get_id() ) );
+		$order->set_id( $order_id );
+		$order->set_props( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_props( $order->get_id() ) );
 
 		// Iterate dummy order meta data, such as fields added by plugins
 		foreach ( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_meta() as $meta_key => $meta_value ) {
-			$this->add_meta_data( $meta_key, $meta_value, true );
+			$order->add_meta_data( $meta_key, $meta_value, true );
 		}
 
 		// Set the items and totals of the preview cart, like checkout does when it creates an order
-		WC()->checkout()->set_data_from_cart( $this );
+		WC()->checkout()->set_data_from_cart( $order );
 
 		// Mark the order as read, so later changes are tracked as changes
-		$this->set_object_read( true );
+		$order->set_object_read( true );
 	}
 
 

@@ -314,6 +314,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 		// Dummy orders
 		add_action( 'woocommerce_init', array( $this, 'use_preview_order_factory' ), 10 ); // After WooCommerce creates its order factory
+		add_filter( 'woocommerce_order_data_store', array( $this, 'wrap_order_data_store' ), 10 );
 
 		// Dummy order meta
 		add_filter( 'add_post_metadata', array( $this, 'maybe_skip_dummy_order_meta_write' ), 10, 2 );
@@ -1345,6 +1346,17 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	public function use_preview_order_factory() {
 		// Replace the WooCommerce order factory
 		WC()->order_factory = new FluidCheckout_Admin_Preview_Order_Factory();
+	}
+
+	/**
+	 * Wrap the order data store so dummy orders are hydrated in memory when plugins load orders by ID.
+	 *
+	 * @param   object|string  $store  Data store instance or class name.
+	 *
+	 * @return  FluidCheckout_Admin_Preview_Order_Data_Store
+	 */
+	public function wrap_order_data_store( $store ) {
+		return new FluidCheckout_Admin_Preview_Order_Data_Store( $store );
 	}
 
 	/**
