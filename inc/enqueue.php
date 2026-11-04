@@ -150,7 +150,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 */
 	public function maybe_replace_woocommerce_scripts() {
 		// Bail if not on checkout page or address edit page
-		if ( is_admin() || ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_wc_endpoint_url( 'edit-address' ) ) ) { return; }
+		if ( is_admin() || ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_wc_endpoint_url( 'edit-address' ) ) || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		$this->pre_register_woocommerce_scripts();
 	}

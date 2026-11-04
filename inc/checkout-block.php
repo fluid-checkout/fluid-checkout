@@ -75,6 +75,11 @@ class FluidCheckout_CheckoutBlock extends FluidCheckout {
 	 * Maybe set the current request as a checkout page or fragment when the checkout block is present.
 	 */
 	public function maybe_set_is_checkout_page_or_fragment( $is_checkout_page_or_fragment ) {
+		// Bail if on order received or order pay pages
+		if ( ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) || ( function_exists( 'is_checkout_pay_page' ) && is_checkout_pay_page() ) ) {
+			return $is_checkout_page_or_fragment;
+		}
+
 		// Get values from cache
 		$cache_handle = 'is_checkout_page';
 		$return_value = $is_checkout_page_or_fragment;
