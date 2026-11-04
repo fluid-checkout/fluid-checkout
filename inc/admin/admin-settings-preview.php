@@ -183,53 +183,62 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	 * @return string
 	 */
 	public function get_side_cart_preview_url() {
-		// Bail if WooCommerce product queries are unavailable
-		if ( ! function_exists( 'wc_get_products' ) ) {
-			return function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : '';
-		}
+		$url = '';
 
-		$product_ids = wc_get_products( array(
-			'status'       => 'publish',
-			'type'         => array( 'simple', 'variable' ),
-			'stock_status' => 'instock',
-			'limit'        => 10,
-			'orderby'      => 'date',
-			'order'        => 'DESC',
-			'return'       => 'ids',
-		) );
+		// Prefer a product page when WooCommerce product queries are available
+		if ( function_exists( 'wc_get_products' ) ) {
+			$product_ids = wc_get_products( array(
+				'status'       => 'publish',
+				'type'         => array( 'simple', 'variable' ),
+				'stock_status' => 'instock',
+				'limit'        => 10,
+				'orderby'      => 'date',
+				'order'        => 'DESC',
+				'return'       => 'ids',
+			) );
 
-		$fallback_url = '';
+			$fallback_url = '';
 
-		// Prefer a simple product page, quieter than variable products that show attribute selectors
-		foreach ( $product_ids as $product_id ) {
-			$product = wc_get_product( $product_id );
+			// Prefer a simple product page, quieter than variable products that show attribute selectors
+			foreach ( $product_ids as $product_id ) {
+				$product = wc_get_product( $product_id );
 
-			// Skip products that cannot be shown on the storefront
-			if ( ! $product || ! $product->is_visible() ) { continue; }
+				// Skip products that cannot be shown on the storefront
+				if ( ! $product || ! $product->is_visible() ) { continue; }
 
-			$url = $product->get_permalink();
+				$product_url = $product->get_permalink();
 
-			// Skip products without a permalink
-			if ( empty( $url ) ) { continue; }
+				// Skip products without a permalink
+				if ( empty( $product_url ) ) { continue; }
 
-			// Prefer simple products for a quieter product page
-			if ( $product->is_type( 'simple' ) ) {
-				return $url;
+				// Prefer simple products for a quieter product page
+				if ( $product->is_type( 'simple' ) ) {
+					$url = $product_url;
+					break;
+				}
+
+				// Remember the first visible product as fallback before the shop page
+				if ( '' === $fallback_url ) {
+					$fallback_url = $product_url;
+				}
 			}
 
-			// Remember the first visible product as fallback before the shop page
-			if ( '' === $fallback_url ) {
-				$fallback_url = $url;
+			// Maybe use a variable or other visible product when no simple product was found
+			if ( '' === $url && '' !== $fallback_url ) {
+				$url = $fallback_url;
 			}
-		}
-
-		// Maybe use a variable or other visible product when no simple product was found
-		if ( '' !== $fallback_url ) {
-			return $fallback_url;
 		}
 
 		// Fall back to the shop page when the catalog has no visible products
-		return wc_get_page_permalink( 'shop' );
+		if ( '' === $url ) {
+			$url = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : '';
+		}
+
+		// Bail if there is no frontend page to preview
+		if ( empty( $url ) ) { return ''; }
+
+		// Mark the URL as the side cart settings surface, so the preview cart can stay smaller before the main query runs
+		return add_query_arg( FluidCheckout_Admin_Preview::SURFACE_QUERY_ARG, FluidCheckout_Admin_Preview::SURFACE_SIDE_CART, $url );
 	}
 
 	/**
