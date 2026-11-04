@@ -50,8 +50,47 @@ class FluidCheckout_Admin_Preview_Dummy_Order extends WC_Order {
 		// Set the items and totals of the preview cart, like checkout does when it creates an order
 		WC()->checkout()->set_data_from_cart( $order );
 
+		// Assign temporary item and meta IDs so variation line items work with legacy array access on PHP 8.5+
+		self::assign_temporary_preview_order_item_ids( $order );
+
 		// Mark the order as read, so later changes are tracked as changes
 		$order->set_object_read( true );
+	}
+
+	/**
+	 * Assign temporary IDs to in-memory order items and their meta data.
+	 *
+	 * Variation products build permalinks from `$item['item_meta_array']`, which uses meta IDs as array keys.
+	 * Unsaved preview line items have no IDs yet, which triggers PHP 8.5 deprecations for null array offsets.
+	 *
+	 * @param   WC_Order  $order  Dummy order.
+	 */
+	public static function assign_temporary_preview_order_item_ids( WC_Order $order ) {
+		$item_id = 1;
+		$meta_id = 1;
+
+		// Iterate order items
+		foreach ( $order->get_items() as $item ) {
+			// Skip invalid items
+			if ( ! $item instanceof WC_Order_Item ) { continue; }
+
+			// Maybe assign a temporary item ID
+			if ( ! $item->get_id() ) {
+				$item->set_id( $item_id );
+			}
+
+			$item_id++;
+
+			// Iterate item meta data
+			foreach ( $item->get_meta_data() as $meta ) {
+				// Maybe assign a temporary meta ID
+				if ( empty( $meta->id ) ) {
+					$meta->id = $meta_id;
+				}
+
+				$meta_id++;
+			}
+		}
 	}
 
 
