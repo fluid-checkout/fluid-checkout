@@ -20,7 +20,6 @@
 	var _publicMethods = {};
 	var _settings = {
 		adminOrigin:                  '',
-		tokenQueryArg:                'fc_preview',
 		previewArgs:                  {},
 		shippingMethodsQueryArg:      'fc_preview_shipping_methods',
 		sessionFieldsQueryArg:        'fc_preview_session_fields',
@@ -93,7 +92,7 @@
 
 
 	/**
-	 * Get a request URL with the preview token and mode, and the shipping methods and session field values in the page, when the request is sent to the frontend.
+	 * Get a request URL with the preview arguments, and the shipping methods and session field values in the page, when the request is sent to the frontend.
 	 *
 	 * @param {string}  requestUrl  Request URL, which can be relative to the preview page.
 	 *
@@ -119,12 +118,13 @@
 		// Bail if the request is sent to another origin, which must not receive the preview token
 		if ( root.location.origin !== url.origin ) { return requestUrl; }
 
-		// Maybe add the preview arguments, unless the URL already has them, such as WooCommerce AJAX URLs
-		if ( ! url.searchParams.has( _settings.tokenQueryArg ) ) {
-			// Iterate preview arguments
-			for ( name in _settings.previewArgs ) {
-				addedArgs.set( name, _settings.previewArgs[ name ] );
-			}
+		// Iterate preview arguments
+		for ( name in _settings.previewArgs ) {
+			// Skip arguments the URL already has, such as on WooCommerce AJAX URLs
+			if ( url.searchParams.has( name ) ) { continue; }
+
+			// Add preview argument
+			addedArgs.set( name, _settings.previewArgs[ name ] );
 		}
 
 		// Iterate shipping methods chosen in the page, as preview requests do not keep them for the next requests

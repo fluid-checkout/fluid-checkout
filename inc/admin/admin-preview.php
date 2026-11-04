@@ -338,14 +338,22 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 
 	/**
-	 * Add the preview body classes, with the header and footer hidden until the admin page shows them.
+	 * Add the preview body classes, with the header and footer of admin page previews hidden until the admin page shows them.
 	 *
 	 * @param   array  $classes  Body classes.
 	 *
 	 * @return  array  Body classes.
 	 */
 	public function add_body_class( $classes ) {
-		return array_merge( $classes, array( 'fc-admin-preview', 'fc-admin-preview--hide-header-footer' ) );
+		// Add preview class
+		$classes[] = 'fc-admin-preview';
+
+		// Maybe hide the header and footer on previews with a preview token, as only the admin page shows them again
+		if ( '' !== $this->get_request_token() ) {
+			$classes[] = 'fc-admin-preview--hide-header-footer';
+		}
+
+		return $classes;
 	}
 
 	/**
@@ -357,7 +365,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		wp_register_script( 'fc-admin-preview-frame', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin-preview-frame' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-preview-frame', 'FCAdminPreviewFrame.init(' . wp_json_encode( $this->get_frame_script_settings() ) . ');' );
 
-		// Add the preview token and mode to REST requests sent through `wp.apiFetch`, also before the deferred frame script runs, such as Store API requests from blocks
+		// Add the preview arguments to REST requests sent through `wp.apiFetch`, also before the deferred frame script runs, such as Store API requests from blocks
 		// Uses a middleware, as filtering the REST URL would break how `wp.apiFetch` appends request paths to it
 		wp_add_inline_script( 'wp-api-fetch', 'wp.apiFetch.use(function(options,next){return next(options.path?Object.assign({},options,{path:wp.url.addQueryArgs(options.path,' . wp_json_encode( $this->get_preview_args() ) . ')}):options);});' );
 
@@ -424,7 +432,6 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		 */
 		return apply_filters( 'fc_admin_preview_frame_script_settings', array(
 			'adminOrigin'                 => $this->get_admin_origin(),
-			'tokenQueryArg'               => self::TOKEN_QUERY_ARG,
 			'previewArgs'                 => $this->get_preview_args(),
 			'shippingMethodsQueryArg'     => self::SHIPPING_METHODS_QUERY_ARG,
 			'sessionFieldsQueryArg'       => self::SESSION_FIELDS_QUERY_ARG,
@@ -531,14 +538,23 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	}
 
 	/**
-	 * Check whether the current request carries a valid preview token.
+	 * Check whether the current request is a preview request, with a valid preview token or marked through a filter.
 	 *
 	 * @return  bool
 	 */
 	public function is_preview_request() {
-		// Maybe validate the request token, only once per request, ignoring admin page loads but not AJAX requests sent from preview pages
+		// Maybe check the request, only once per request, ignoring admin page loads but not AJAX requests sent from preview pages
 		if ( null === $this->is_preview_request ) {
-			$this->is_preview_request = ( ! is_admin() || wp_doing_ajax() ) && 0 < $this->get_token_user_id( $this->get_request_token() );
+			/**
+			 * Filter whether the current request is a preview request.
+			 *
+			 * @since  5.0.0
+			 *
+			 * @param  bool  $is_preview_request  Whether the current request is a preview request.
+			 *
+			 * @return bool  Whether the current request is a preview request.
+			 */
+			$this->is_preview_request = ( ! is_admin() || wp_doing_ajax() ) && ( 0 < $this->get_token_user_id( $this->get_request_token() ) || true === apply_filters( 'fc_is_admin_preview_request', false ) );
 		}
 
 		return $this->is_preview_request;
@@ -570,7 +586,16 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 			$preview_args[ self::MODE_QUERY_ARG ] = self::MODE_LOGGED_IN;
 		}
 
-		return $preview_args;
+		/**
+		 * Filter the query arguments that make requests preview requests, which must stay the same for all requests of a page.
+		 *
+		 * @since  5.0.0
+		 *
+		 * @param  array  $preview_args  Query argument values by argument name.
+		 *
+		 * @return array  Query argument values by argument name.
+		 */
+		return apply_filters( 'fc_admin_preview_args', $preview_args );
 	}
 
 
@@ -682,7 +707,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	}
 
 	/**
-	 * Add the preview token and mode to a URL, so requests to it are also preview requests.
+	 * Add the preview arguments to a URL, so requests to it are also preview requests.
 	 *
 	 * @param   string  $url  URL, such as the WooCommerce AJAX endpoint URL.
 	 *
@@ -692,8 +717,11 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		// Get URL query arguments
 		parse_str( (string) wp_parse_url( $url, PHP_URL_QUERY ), $query_args );
 
-		// Bail if the URL already has the preview token
-		if ( array_key_exists( self::TOKEN_QUERY_ARG, $query_args ) ) { return $url; }
+		// Get the preview arguments the URL does not have yet
+		$missing_args = array_diff_key( $this->get_preview_args(), $query_args );
+
+		// Bail if the URL already has the preview arguments
+		if ( empty( $missing_args ) ) { return $url; }
 
 		// Split off the fragment, so the arguments go into the query string
 		$url_parts = explode( '#', $url, 2 );
@@ -702,13 +730,13 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		$separator = false === strpos( $url_parts[ 0 ], '?' ) ? '?' : '&';
 
 		// Append the arguments directly, as `add_query_arg()` would encode the `%%endpoint%%` placeholder replaced by scripts
-		$preview_query = $separator . http_build_query( $this->get_preview_args(), '', '&', PHP_QUERY_RFC3986 );
+		$preview_query = $separator . http_build_query( $missing_args, '', '&', PHP_QUERY_RFC3986 );
 
 		return $url_parts[ 0 ] . $preview_query . ( isset( $url_parts[ 1 ] ) ? '#' . $url_parts[ 1 ] : '' );
 	}
 
 	/**
-	 * Add the preview token and mode to redirects within the frontend, so the frame stays in the preview, like the WordPress Customizer does.
+	 * Add the preview arguments to redirects within the frontend, so the frame stays in the preview, like the WordPress Customizer does.
 	 *
 	 * @param   string  $location  Redirect URL.
 	 *
@@ -969,8 +997,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 			return (string) FluidCheckout_Admin_Preview_Dummy_Data::CUSTOMER_ID;
 		}
 
-		// Derive the guest ID from the token, so it stays the same across requests and nonces keep working
-		return 't_' . substr( md5( $this->get_request_token() ), 0, 30 );
+		// Derive the guest ID from the preview arguments, so it stays the same across requests and nonces keep working
+		return 't_' . substr( md5( wp_json_encode( $this->get_preview_args() ) ), 0, 30 );
 	}
 
 	/**

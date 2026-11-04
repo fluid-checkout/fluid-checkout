@@ -629,7 +629,16 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 				}
 			}
 
-			return false;
+			/**
+			 * Filter whether to load the admin preview for the current request.
+			 *
+			 * @since  5.0.0
+			 *
+			 * @param  bool  $should_load  Whether to load the admin preview.
+			 *
+			 * @return bool  Whether to load the admin preview.
+			 */
+			return true === apply_filters( 'fc_should_load_admin_preview', false );
 		}
 
 		/**
