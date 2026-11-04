@@ -69,7 +69,7 @@ class FluidCheckout_Settings_OrderReceived {
 				'plugin_file'      => 'fluid-checkout-pro/fluid-checkout-pro.php',
 				'plugin_slug'      => 'fluid-checkout-pro',
 				'purchase_url'     => 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=order-received-promo-purchase&mtm_source=lite-plugin',
-				'purchase_price'   => '129 EUR',
+				'purchase_price'   => FluidCheckout_Admin::instance()->get_pro_purchase_price(),
 			),
 		);
 	}
@@ -206,6 +206,31 @@ class FluidCheckout_Settings_OrderReceived {
 					array(
 						'type' => 'sectionend',
 						'id'   => 'fc_pro_order_received_page_options',
+					),
+
+
+
+					array(
+						'title' => __( 'Account creation', 'fluid-checkout' ),
+						'type'  => 'title',
+						'desc'  => __( 'Help guests finish checkout faster and create an account after they buy. Account matching associates guest orders with existing accounts, and delayed account creation lets customers register from the thank you page.', 'fluid-checkout' ),
+						'id'    => 'fc_pro_order_received_account_creation_options',
+						'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'order-received-account-creation' ),
+					),
+
+					array(
+						'type' => 'fc_paragraph',
+						'desc' => sprintf(
+							'<a href="%1$s" data-fc-settings-nav-link="customer_accounts" data-fc-settings-preview-keep-page="order_received">%2$s</a>',
+							esc_url( class_exists( 'FluidCheckout_Admin_Settings_Page' ) ? FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'customer_accounts' ) : '' ),
+							esc_html__( 'Configure customer account options', 'fluid-checkout' )
+						),
+						'id'   => 'fc_pro_order_received_account_creation_link',
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'fc_pro_order_received_account_creation_options',
 					),
 
 

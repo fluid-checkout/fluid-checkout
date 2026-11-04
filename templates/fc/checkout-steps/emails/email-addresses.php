@@ -76,7 +76,8 @@ $billing_address_label = apply_filters( 'fc_pro_order_details_customer_billing_a
  */
 $shipping_address_label = apply_filters( 'fc_pro_order_details_customer_shipping_address_label', FluidCheckout_Steps::instance()->get_substep_title( 'shipping_address' ), $order );
 
-$email_improvements_enabled = FeaturesUtil::feature_is_enabled( 'email_improvements' );
+// CHANGE: Guard FeaturesUtil for WooCommerce versions before the features API existed
+$email_improvements_enabled = class_exists( FeaturesUtil::class ) && FeaturesUtil::feature_is_enabled( 'email_improvements' );
 
 /**
  * Filter whether to display the section divider in the email body.
@@ -131,8 +132,9 @@ $display_section_divider = (bool) apply_filters( 'woocommerce_email_body_display
 				<?php if ( $order->get_billing_phone() && false === strpos( $billing_address_formatted, $order->get_billing_phone() ) ) : ?>
 					<br/><?php echo wc_make_phone_clickable( $order->get_billing_phone() ); ?>
 				<?php endif; ?>
+				<?php // CHANGE: Output billing email in its own element (WC 11.3) ?>
 				<?php if ( $order->get_billing_email() ) : ?>
-					<br/><?php echo esc_html( $order->get_billing_email() ); ?>
+					<div class="address-email"><?php echo esc_html( $order->get_billing_email() ); ?></div>
 				<?php endif; ?>
 				<?php
 				/**

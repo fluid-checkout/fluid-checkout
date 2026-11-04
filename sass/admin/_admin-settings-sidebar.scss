@@ -76,27 +76,16 @@
 	border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
 	background-color: $fc-settings-sidebar-background-color;
 
+	@media ( min-width: $fc-settings-nav-compact-breakpoint + 1px ) {
+		display: none;
+	}
+
 	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
 		z-index: 2; // Above the sliding nav drawer within the sidebar stacking context
 		padding: $fc-settings-sidebar-header-padding-compact;
 		width: 100%;
 		box-sizing: border-box;
 	}
-}
-
-.fc-settings-wrap .fc-settings-sidebar-header__title {
-	flex: 1 1 auto;
-	min-width: 0;
-	margin: 0;
-	padding: 0;
-	border: none;
-	font-size: $fc-settings-sidebar-title-font-size;
-	font-weight: $fc-settings-sidebar-title-font-weight;
-	line-height: $fc-settings-sidebar-title-line-height;
-	color: $fc-settings-text-color;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 }
 
 
@@ -190,7 +179,7 @@
 		border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
 	}
 
-	.fc-settings-sidebar .fc-settings-nav {
+	.fc-settings-sidebar .fc-settings-nav-accordions {
 		display: block;
 		position: fixed;
 		// Fallback before JS pins `top` to the live title-bar bottom
@@ -227,32 +216,32 @@
 		z-index: $fc-settings-nav-drawer-z-index; // Above the expanded preview drawer
 	}
 
-	.fc-settings-sidebar.is-nav-expanded .fc-settings-nav {
+	.fc-settings-sidebar.is-nav-expanded .fc-settings-nav-accordions {
 		transform: none;
 		opacity: 1;
 		pointer-events: auto;
 	}
 
-	body.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav {
+	body.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav-accordions {
 		left: $admin-wp-menu-width-folded;
 	}
 
-	body.rtl.fc-settings-page .fc-settings-sidebar .fc-settings-nav {
+	body.rtl.fc-settings-page .fc-settings-sidebar .fc-settings-nav-accordions {
 		left: 0;
 		right: $admin-wp-menu-width;
 	}
 
-	body.rtl.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav {
+	body.rtl.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav-accordions {
 		right: $admin-wp-menu-width-folded;
 	}
 }
 
 @media screen and ( max-width: $admin-breakpoint-auto-fold ) {
-	body.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav {
+	body.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav-accordions {
 		left: $admin-wp-menu-width-folded;
 	}
 
-	body.rtl.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav {
+	body.rtl.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav-accordions {
 		right: $admin-wp-menu-width-folded;
 		left: 0;
 	}
@@ -267,17 +256,17 @@
 
 	// WP admin menu is not a left column on small screens — span the full viewport width.
 	// Match auto-fold / folded specificity so those rules do not keep a menu-width inset.
-	.fc-settings-sidebar .fc-settings-nav,
-	body.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav,
-	body.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav {
+	.fc-settings-sidebar .fc-settings-nav-accordions,
+	body.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav-accordions,
+	body.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav-accordions {
 		top: $fc-settings-sticky-offset-mobile;
 		left: 0;
 		right: 0;
 	}
 
-	body.rtl.fc-settings-page .fc-settings-sidebar .fc-settings-nav,
-	body.rtl.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav,
-	body.rtl.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav {
+	body.rtl.fc-settings-page .fc-settings-sidebar .fc-settings-nav-accordions,
+	body.rtl.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav-accordions,
+	body.rtl.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav-accordions {
 		left: 0;
 		right: 0;
 	}

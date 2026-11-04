@@ -563,7 +563,7 @@ button.fc-settings-preview__width-button {
 	min-width: 0;
 	min-height: 0;
 	width: 100%;
-	padding: 12px $fc-settings-preview-toolbar-padding-x 16px;
+	padding: $fc-settings-preview-toolbar-padding-y $fc-settings-preview-toolbar-padding-x;
 	overflow: hidden;
 	box-sizing: border-box;
 }

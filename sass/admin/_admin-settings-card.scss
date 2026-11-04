@@ -323,6 +323,13 @@
 	margin-bottom: 0;
 }
 
+.fc-settings-promo__features-list.fc-addons__item-features-list--columns {
+	@media ( min-width: 600px ) {
+		grid-auto-flow: column;
+		grid-template-rows: repeat(var(--fc-promo-features-rows, 1), auto);
+	}
+}
+
 .fc-settings-promo__features {
 	margin: 0;
 	padding: 0;

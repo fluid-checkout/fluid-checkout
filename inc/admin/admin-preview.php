@@ -299,6 +299,10 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 		// Shipping methods
 		add_action( 'woocommerce_load_cart_from_session', array( $this, 'maybe_set_preview_shipping_methods' ), 10 );
+
+		// Coupons
+		add_filter( 'woocommerce_get_shop_coupon_data', array( $this, 'maybe_get_dummy_coupon_props' ), 10, 2 );
+		add_action( 'woocommerce_load_cart_from_session', array( $this, 'maybe_set_preview_applied_coupons' ), 10 );
 	}
 
 	/**
@@ -1166,6 +1170,21 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		return 'FluidCheckout_Admin_Preview_Dummy_Product';
 	}
 
+	/**
+	 * Get the properties of the dummy coupon, which loads it from memory instead of the database.
+	 *
+	 * @param   array|bool  $coupon_props  Coupon properties, or `false` to read the coupon from the database.
+	 * @param   mixed       $code          Coupon code.
+	 *
+	 * @return  array|bool  Coupon properties, or `false` to read the coupon from the database.
+	 */
+	public function maybe_get_dummy_coupon_props( $coupon_props, $code ) {
+		// Bail if not the dummy coupon
+		if ( ! is_string( $code ) || FluidCheckout_Admin_Preview_Dummy_Data::COUPON_CODE !== wc_format_coupon_code( $code ) ) { return $coupon_props; }
+
+		return FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_coupon_props();
+	}
+
 
 
 	/**
@@ -1304,6 +1323,20 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		WC()->session->set( 'chosen_shipping_methods', wc_clean( wp_unslash( $_GET[ self::SHIPPING_METHODS_QUERY_ARG ] ) ) );
 	}
 
+	/**
+	 * Set the dummy coupon as applied in the session, before WooCommerce loads the cart from it, so coupon styles can be previewed.
+	 */
+	public function maybe_set_preview_applied_coupons() {
+		// Bail if coupons are disabled
+		if ( ! wc_coupons_enabled() ) { return; }
+
+		// Bail if the session already has applied coupons
+		if ( null !== WC()->session->get( 'applied_coupons', null ) ) { return; }
+
+		// Set the dummy coupon as applied
+		WC()->session->set( 'applied_coupons', array( FluidCheckout_Admin_Preview_Dummy_Data::COUPON_CODE ) );
+	}
+
 
 
 	/**
@@ -1369,7 +1402,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	}
 
 	/**
-	 * Save the unsaved settings posted from the settings page for a preview token, so its preview requests show them.
+	 * Save the unsaved settings posted from an admin page with the preview for a preview token, so its preview requests show them.
 	 */
 	public function ajax_save_draft() {
 		// Bail if the request nonce is not valid
@@ -1396,6 +1429,9 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 			// Add settings fields of the tab
 			$settings = array_merge( $settings, $settings_page->get_saveable_settings( $settings_page->get_tab_settings( $tab ) ) );
 		}
+
+		// Keep only the settings of the fields in the form that sent the unsaved settings
+		$settings = $settings_page->get_settings_in_form( $settings, $settings_page->get_posted_field_names( $_POST ) );
 
 		// Keep the posted values, sanitized like when saving the settings, until the token expires
 		set_transient( $this->get_draft_transient_name( $token ), FluidCheckout_Settings::instance()->get_sanitized_settings_values( $settings ), self::TOKEN_LIFETIME );

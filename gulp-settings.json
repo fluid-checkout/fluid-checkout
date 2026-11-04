@@ -26,6 +26,8 @@
 			"replacements.config.json",
 			"README-DEV.md",
 			"package.json",
+			"composer.json",
+			"phpunit.xml.dist",
 			"gulpfile.js",
 			"gulp-settings.json",
 			"gulp-settings.local.example.json",
@@ -63,15 +65,13 @@
 			]
 		]
 	],
-	"browserSyncWatch": [
-		"./css/**/*.min.css",
-		"./js/**/*.min.js",
-		"./**/*.php"
-	],
 	"changelogFile": "./readme.txt",
 	"sassSources": {
 		"main": [
 			"./sass/*.scss"
+		],
+		"designTemplates": [
+			"./sass/design-templates/*.scss"
 		],
 		"themeCompat": [
 			"./sass/compat/themes/*.scss"

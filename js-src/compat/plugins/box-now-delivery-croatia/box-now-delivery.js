@@ -152,7 +152,7 @@
     function attachButtonClickListener() {
         // CHANGE: Use event delegation so the handler survives Fluid Checkout shipping method fragment refreshes.
         $( document )
-            .off( 'click.boxNowDelivery', '#box_now_delivery_button' )
+            .off( 'click.boxNowDelivery', '#box_now_delivery_button' ) // safety - remove any old ones
             .on( 'click.boxNowDelivery', '#box_now_delivery_button', function ( event ) {
                 event.preventDefault();
                 createPopupMap();
@@ -549,9 +549,11 @@
 
         toggleExpressCheckoutForBoxNow();
 
+        // CHANGE: Close popup when locker selection completes in popup display mode
         if (options.closePopup && boxNowDeliverySettings.displayMode === "popup") {
             closeBoxNowPopup();
         }
+        // CHANGE: END - Close popup when locker selection completes in popup display mode
 
         // CHANGE: Trigger update checkout only when the selected locker changed.
         if ( String( previous_locker_id ) !== String( locker_id ) ) {

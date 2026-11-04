@@ -7,6 +7,13 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 	/**
+	 * Option key for subscription checkout account creation (WooCommerce Subscriptions).
+	 */
+	const SUBSCRIPTION_CHECKOUT_ACCOUNT_OPTION = 'woocommerce_enable_signup_from_checkout_for_subscriptions';
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct( ) {
@@ -19,6 +26,11 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Customer accounts settings
+		add_filter( 'fc_wc_accounts_managed_option_ids', array( $this, 'add_managed_wc_account_option_ids' ), 10 );
+		add_filter( 'fc_default_option_values', array( $this, 'add_default_option_values' ), 10 );
+		add_filter( 'fc_customer_accounts_settings', array( $this, 'add_customer_accounts_settings' ), 10 );
+
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
@@ -35,6 +47,134 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
+	}
+
+
+
+	/**
+	 * Register the subscription checkout account option as managed on WooCommerce Accounts settings.
+	 *
+	 * @param  string[]  $option_ids  Managed WooCommerce account option names.
+	 * @return string[]
+	 */
+	public function add_managed_wc_account_option_ids( $option_ids ) {
+		$option_ids   = is_array( $option_ids ) ? $option_ids : array();
+		$option_ids[] = self::SUBSCRIPTION_CHECKOUT_ACCOUNT_OPTION;
+
+		return array_values( array_unique( $option_ids ) );
+	}
+
+
+
+	/**
+	 * Add the subscription checkout account option default for settings profiles.
+	 *
+	 * @param  array  $defaults  Fluid Checkout default option values.
+	 * @return array
+	 */
+	public function add_default_option_values( $defaults ) {
+		$defaults = is_array( $defaults ) ? $defaults : array();
+
+		$defaults[ self::SUBSCRIPTION_CHECKOUT_ACCOUNT_OPTION ] = 'yes';
+
+		return $defaults;
+	}
+
+
+
+	/**
+	 * Add subscription checkout account creation to Customer accounts settings.
+	 *
+	 * @param  array  $settings  Customer accounts settings fields.
+	 * @return array
+	 */
+	public function add_customer_accounts_settings( $settings ) {
+		$settings = is_array( $settings ) ? $settings : array();
+
+		$subscription_account_field = array(
+			'title'                 => __( 'Subscription account creation', 'fluid-checkout' ),
+			'desc'                  => __( 'Allow subscription customers to create an account during checkout', 'fluid-checkout' ),
+			'desc_tip'              => __( 'Enable account creation at checkout for subscription purchases when account creation for other orders is disabled.', 'fluid-checkout' ),
+			'id'                    => self::SUBSCRIPTION_CHECKOUT_ACCOUNT_OPTION,
+			'type'                  => 'checkbox',
+			'default'               => FluidCheckout_Settings::instance()->get_option_default( self::SUBSCRIPTION_CHECKOUT_ACCOUNT_OPTION ),
+			'custom_attributes'     => array(
+				'data-conditional-id'    => 'woocommerce_enable_signup_and_login_from_checkout',
+				'data-conditional-value' => 'no',
+			),
+			'autoload'              => false,
+		);
+
+		$settings = $this->insert_settings_after( $settings, 'woocommerce_enable_myaccount_registration', $subscription_account_field );
+		$settings = $this->maybe_extend_registration_fields_conditional_triggers( $settings );
+
+		return $settings;
+	}
+
+
+
+	/**
+	 * Extend username and password field conditionals so subscription-only signup enables them.
+	 *
+	 * @param  array  $settings  Customer accounts settings fields.
+	 * @return array
+	 */
+	public function maybe_extend_registration_fields_conditional_triggers( $settings ) {
+		$registration_field_ids = array(
+			'woocommerce_registration_generate_username',
+			'woocommerce_registration_generate_password',
+		);
+
+		$conditional_triggers = 'woocommerce_enable_signup_and_login_from_checkout|woocommerce_enable_myaccount_registration|' . self::SUBSCRIPTION_CHECKOUT_ACCOUNT_OPTION;
+		if ( class_exists( 'FluidCheckout_Admin_Settings_Access' ) && FluidCheckout_Admin_Settings_Access::instance()->is_unlocked( 'pro' ) ) {
+			$conditional_triggers .= '|woocommerce_enable_delayed_account_creation';
+		}
+
+		foreach ( $settings as $index => $setting ) {
+			// Skip entries without a field id
+			if ( ! isset( $setting['id'] ) || ! in_array( $setting['id'], $registration_field_ids, true ) ) {
+				continue;
+			}
+
+			if ( ! isset( $setting['custom_attributes'] ) || ! is_array( $setting['custom_attributes'] ) ) {
+				$setting['custom_attributes'] = array();
+			}
+
+			$setting['custom_attributes']['data-conditional-id'] = $conditional_triggers;
+			$settings[ $index ] = $setting;
+		}
+
+		return $settings;
+	}
+
+
+
+	/**
+	 * Insert one or more settings rows immediately after a field id.
+	 *
+	 * @param  array         $settings   Settings field list.
+	 * @param  string        $after_id   Field id to insert after.
+	 * @param  array|array[] $new_rows   One settings row or a list of rows.
+	 * @return array
+	 */
+	public function insert_settings_after( $settings, $after_id, $new_rows ) {
+		$new_rows = isset( $new_rows[0] ) && is_array( $new_rows[0] ) ? $new_rows : array( $new_rows );
+		$result   = array();
+		$inserted = false;
+
+		foreach ( $settings as $setting ) {
+			$result[] = $setting;
+
+			// Insert new rows after the target field id
+			if ( ! $inserted && isset( $setting['id'] ) && $after_id === $setting['id'] ) {
+				foreach ( $new_rows as $new_row ) {
+					$result[] = $new_row;
+				}
+				$inserted = true;
+			}
+		}
+
+		return $result;
 	}
 
 

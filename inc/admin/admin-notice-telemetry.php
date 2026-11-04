@@ -96,15 +96,6 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 
 
 	/**
-	 * Get the Fluid Checkout Tools settings URL.
-	 */
-	public function get_tools_settings_url() {
-		return admin_url( 'admin.php?page=fluid-checkout&tab=tools' );
-	}
-
-
-
-	/**
 	 * Get the URL to enable site report telemetry.
 	 */
 	public function get_enable_url() {
@@ -133,7 +124,7 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 		// Bail on Fluid Checkout settings screens (usage tracking is available under Tools / Getting started)
 		if ( $this->is_fc_settings_screen() ) { return $notices; }
 
-		$description  = '<p>' . esc_html( __( 'Usage tracking is optional and OFF by default. It helps us improve compatibility and support. You can preview the exact data before it is sent, and turn it off at any time.', 'fluid-checkout' ) ) . '</p>';
+		$description  = '<p>' . esc_html( __( 'Usage tracking is optional and off by default. It helps us improve compatibility and support. You can preview the exact data before it is sent, and turn it off at any time.', 'fluid-checkout' ) ) . '</p>';
 		$description .= '<p>' . esc_html( __( 'When you turn it on, Fluid Checkout receives your site domain and basic environment details: WordPress, PHP and WooCommerce versions, language, store country, currency and timezone, your active theme, and your installed plugins and their versions. You can also choose to include monthly order counts and sales totals. No customer or user data is ever sent.', 'fluid-checkout' ) ) . '</p>';
 
 		$notices[] = array(
@@ -145,13 +136,13 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 			'actions'         => array(
 				sprintf(
 					'<a href="%s" class="button button-secondary">%s</a>',
-					esc_url( $this->get_tools_settings_url() ),
+					esc_url( FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'tools' ) ),
 					esc_html__( 'Review usage tracking', 'fluid-checkout' )
 				),
 				sprintf(
 					'<a href="%s" class="button button-secondary">%s</a>',
 					esc_url( $this->get_enable_url() ),
-					esc_html__( 'Turn ON usage tracking', 'fluid-checkout' )
+					esc_html__( 'Turn on usage tracking', 'fluid-checkout' )
 				),
 			),
 		);
@@ -211,7 +202,7 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 		$redirect_url = wp_get_referer();
 
 		if ( empty( $redirect_url ) ) {
-			$redirect_url = admin_url( 'admin.php?page=fluid-checkout&tab=dashboard' );
+			$redirect_url = FluidCheckout_Admin_Settings_Page::instance()->get_dashboard_url();
 		}
 
 		wp_safe_redirect( $redirect_url );

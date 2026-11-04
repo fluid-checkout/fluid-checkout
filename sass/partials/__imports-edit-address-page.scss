@@ -26,6 +26,9 @@
 @forward "woocommerce-form-fields-font-size" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
 	$body-page-selector: scope.$body-page-selector
 );
+@forward "woocommerce-form-fields-custom-styles" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
 @forward "woocommerce-address-autocomplete" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
 	$body-page-selector: scope.$body-page-selector
 );
