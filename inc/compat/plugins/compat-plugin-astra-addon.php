@@ -124,7 +124,7 @@ class FluidCheckout_AstraAddon extends FluidCheckout {
 						if ( empty( $fields[ $type ][ $key ]['placeholder'] ) ) {
 							$fields[ $type ][ $key ]['placeholder'] = $fields[ $type ][ $key ]['label'];
 
-							// CHANGED: Add `*` for required fields.
+							// CHANGE: Add `*` for required fields.
 							if ( isset( $fields[ $type ][ $key ]['required'] ) && $fields[ $type ][ $key ]['required'] ) {
 								$fields[ $type ][ $key ]['placeholder'] .= ' *';
 							}
