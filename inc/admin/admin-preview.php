@@ -1240,22 +1240,14 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 
 	/**
-	 * Whether the current preview request is the side cart settings canvas (product page, or shop as fallback).
+	 * Whether the current preview request is the side cart settings canvas.
 	 */
 	public function is_side_cart_preview_page() {
 		// Bail if not a preview request
 		if ( ! $this->is_preview_request() ) { return false; }
 
-		// Prefer the surface query arg, available before the main query runs when the preview cart is built
-		if ( isset( $_GET[ self::SURFACE_QUERY_ARG ] ) && self::SURFACE_SIDE_CART === sanitize_text_field( wp_unslash( $_GET[ self::SURFACE_QUERY_ARG ] ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			return true;
-		}
-
-		// Otherwise detect from the main query when it is available
-		if ( function_exists( 'is_product' ) && is_product() ) { return true; }
-		if ( function_exists( 'is_shop' ) && is_shop() ) { return true; }
-
-		return false;
+		// Surface query arg is set on the preview URL and kept on AJAX and follow-up requests
+		return isset( $_GET[ self::SURFACE_QUERY_ARG ] ) && self::SURFACE_SIDE_CART === sanitize_text_field( wp_unslash( $_GET[ self::SURFACE_QUERY_ARG ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	}
 
 	/**
