@@ -412,60 +412,6 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 * Bump tested up to WooCommerce 11.3
 * Added: New settings pages, with guided setup and live preview of checkout pages.
-* Added: Side cart settings fields on the Cart settings page (PRO feature).
-* Improved: Upgraded Sass build tooling to the latest version.
-* Added: Shared REST API base for `fluid-checkout/v1` (namespace, route registration, user-scoped permissions) and `fc_api_*` error helpers.
-* Improved: Update the sticky-states library to version 1.0.9.
-* Fixed: Show the Tom Select preview mode dropdown above the preview panel and keep Guest and Logged in in sync on the settings page.
-* Improved: Expand the desktop admin page preview to the available width, with a 1000px minimum layout size.
-* Improved: Load the admin page preview only on Fluid Checkout settings pages and during preview requests.
-* Improved: Define Address Autocomplete settings fields in Lite (locked until the add-on is active).
-* Improved: Use the same lighter divider color between Getting started checklist steps as on the Google address autocomplete guided setup.
-* Improved: Sharpen the Fluid Checkout checkmark logo and header text on the settings page with shared Dashicons font-smoothing styles.
-* Improved: Use Tom Select for all dropdown fields on the Fluid Checkout settings page.
-* Improved: Open settings dropdowns upward when there is not enough room below, so the full list stays visible above the save bar.
-* Added: Save Fluid Checkout settings with Ctrl+S or Cmd+S on the settings page.
-* Improved: Save Fluid Checkout settings without reloading the page, with dismissible success and error messages shown in the settings header.
-* Improved: PRO feature badges on the Getting started checklist link to pricing again, matching other settings badges.
-* Improved: Google address autocomplete is enabled by default.
-* Removed: Site key checks from add-on promo cards. Those cards link to upgrade or purchase pages.
-* Removed: Action hook `fc_dashboard_addons_before_list` from the Dashboard add-ons settings card.
-* Removed: Option to disable the integrated coupon code section. It is always enabled when WooCommerce coupons are available.
-* Removed: "Upgrade to PRO to unlock more options" links from settings field descriptions.
-* Improved: Keep locked settings visible for discovery, and hide dependent settings only after PRO or add-ons unlock them.
-* Improved: Show usage tracking data groups as individual settings toggles instead of a checkbox group.
-* Removed: Checkbox group field nesting from the Fluid Checkout settings page. Each option uses its own toggle row.
-* Improved: Show the option to display trust badge widgets only at the last step on mobile when checkout widget areas are enabled and the multi-step layout is selected.
-* Improved: Show logo image and header, page, and footer background colors only when the distraction free checkout template is selected.
-* Improved: Move documentation links for Design template, Cart items, and theme integrations to the section title info icon, and add tracking parameters to settings documentation links.
-* Added: Documentation info icon on the Address book, Google Address Autocomplete, and EU-VAT settings sections.
-* Improved: Split checkout Cart items and Place order into their own settings sections, and rename the edit cart items option label.
-* Improved: Show a focus outline on settings page buttons.
-* Improved: Rename add-on purchase buttons to Install add-on.
-* Improved: Rename add-on activate buttons to Activate add-on.
-* Improved: Links between Fluid Checkout settings tabs switch pages without a full reload.
-* Improved: Dashboard add-on cards hide purchase prices, show Learn more when only Lite is active, and keep Learn more beside Install when PRO is active but the add-on is not installed yet.
-* Improved: Disable Activate add-on when the add-on is installed but Fluid Checkout PRO is not activated.
-* Improved: Show Learn more beside Activate add-on when the add-on is installed but not activated.
-* Removed: Site key section from the License keys settings page.
-* Improved: Getting started checklist promotes PRO page optimizations, address autocomplete from Google Maps, and address book, completable only while PRO is active.
-* Improved: Address autocomplete checklist step completes when Google Maps is enabled with a tested API key, or when Brasil API is enabled.
-* Improved: Address autocomplete settings placeholders include legacy API, company result types, and Powered by Google fields for the add-on.
-* Improved: Show the settings page preview column from 1280px viewport width.
-* Improved: Show Checkout layout before Design template on the Checkout settings page.
-* Improved: Getting started card on the Dashboard uses a numbered checklist that marks steps as complete when visited or when usage tracking is enabled.
-* Improved: Settings section headers show only the PRO badge, not the Add-on badge.
-* Improved: Use sentence case for settings menu items, page titles, section titles, and field labels.
-* Added: Guest checkout, login, and account creation options on the Customer accounts settings page, so they can use different values per settings profile.
-* Improved: Disable guest checkout, login, and account creation options on the WooCommerce Accounts settings page when Fluid Checkout is active, and point merchants to Customer accounts settings.
-* Improved: Rename the International Phone Numbers settings page to Phone fields, and move shipping and billing phone field options there.
-* Improved: Move Trust badges settings to their own settings page, with one section per front-end page.
-* Improved: Move the Google Maps scripts troubleshooting option into Tools > Troubleshooting.
-* Improved: Settings navigation becomes an expandable menu on smaller screens.
-* Improved: On small screens, the Upgrade and Save settings buttons move into the settings title bar.
-* Added: Live preview in the plugin settings, showing setting changes before they are saved.
-* Improved: Limit settings content sections to a 600px max width for easier scanning.
-* Improved: Split design template and checkout layout into separate settings sections with larger option cards.
 * Added: Boxed design template, now available without PRO and used by default on new installs.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
@@ -473,6 +419,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Added: Filter `fc_local_pickup_shipping_zone_fields_options` for the local pickup shipping zone fields setting (PRO feature).
 * Added: Filter `fc_available_shipping_methods` to change the shipping methods shown for a package.
 * Added: Filter `fc_prevent_shipping_method_autoselect` to prevent automatic selection of the first shipping method. Return `true` to prevent auto-selecting a shipping method.
+* Added: Side cart drawer (PRO feature).
 * Improved: Layout of WooCommerce address autocomplete suggestions and search icon on checkout and account edit-address form fields.
 * Improved: Updated replaced files for WooCommerce `address-i18n.js` and EU/UK VAT for WooCommerce to match latest upstream versions.
 * Improved: Updated replaced checkout templates `form-shipping.php` and `review-order.php` for WooCommerce 11.2.0 compatibility.
