@@ -1300,6 +1300,37 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	}
 
 	/**
+	 * Get the cart item of a product, in the same shape WooCommerce saves to the session.
+	 *
+	 * @param   WC_Product  $product   Product or variation.
+	 * @param   int         $quantity  Quantity of the product. Defaults to `1`.
+	 *
+	 * @return  array  Cart item.
+	 */
+	public function get_session_cart_item( $product, $quantity = 1 ) {
+		// Maybe use the parent product ID and the attributes of variations
+		if ( $product->is_type( 'variation' ) ) {
+			$product_id = $product->get_parent_id();
+			$variation_id = $product->get_id();
+			$variation = $product->get_variation_attributes();
+		}
+		// Otherwise, use the product ID without variation
+		else {
+			$product_id = $product->get_id();
+			$variation_id = 0;
+			$variation = array();
+		}
+
+		return array(
+			'key'            => WC()->cart->generate_cart_id( $product_id, $variation_id, $variation ),
+			'product_id'     => $product_id,
+			'variation_id'   => $variation_id,
+			'variation'      => $variation,
+			'quantity'       => $quantity,
+		);
+	}
+
+	/**
 	 * Set the preview cart items in the session, before WooCommerce loads the cart from it.
 	 * Uses the session instead of `add_to_cart()`, so add-to-cart events are not sent to analytics and marketing plugins.
 	 */
@@ -1312,28 +1343,9 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 		// Iterate preview cart products
 		foreach ( $this->get_preview_cart_products() as $product ) {
-			// Maybe use the parent product ID and the attributes of variations
-			if ( $product->is_type( 'variation' ) ) {
-				$product_id = $product->get_parent_id();
-				$variation_id = $product->get_id();
-				$variation = $product->get_variation_attributes();
-			}
-			// Otherwise, use the product ID without variation
-			else {
-				$product_id = $product->get_id();
-				$variation_id = 0;
-				$variation = array();
-			}
-
-			// Add cart item, in the same shape WooCommerce saves to the session
-			$cart_item_key = WC()->cart->generate_cart_id( $product_id, $variation_id, $variation );
-			$cart_items[ $cart_item_key ] = array(
-				'key'               => $cart_item_key,
-				'product_id'        => $product_id,
-				'variation_id'      => $variation_id,
-				'variation'         => $variation,
-				'quantity'          => 1,
-			);
+			// Add cart item by its key
+			$cart_item = $this->get_session_cart_item( $product );
+			$cart_items[ $cart_item[ 'key' ] ] = $cart_item;
 		}
 
 		// Set cart items to the session
