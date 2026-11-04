@@ -11,9 +11,15 @@ class FluidCheckout_Admin_Preview_Session_Handler extends WC_Session_Handler {
 	 * Initialize hooks and session data.
 	 */
 	public function init() {
-		// Add session hooks, and set the preview session instead of reading the session cookie
-		$this->init_hooks();
-		$this->init_session_cookie();
+		// Maybe add session hooks and set the preview session, skipping the parent method that reads the session cookie on WooCommerce 10.0+
+		if ( method_exists( $this, 'init_hooks' ) ) {
+			$this->init_hooks();
+			$this->init_session_cookie();
+		}
+		// Otherwise, use the parent method, which adds the same hooks and sets the session through `init_session_cookie()` on older versions
+		else {
+			parent::init();
+		}
 	}
 
 	/**

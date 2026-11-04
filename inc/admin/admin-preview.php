@@ -303,6 +303,11 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		// Coupons
 		add_filter( 'woocommerce_get_shop_coupon_data', array( $this, 'maybe_get_dummy_coupon_props' ), 10, 2 );
 		add_action( 'woocommerce_load_cart_from_session', array( $this, 'maybe_set_preview_applied_coupons' ), 10 );
+
+		// Maybe calculate cart totals, as WooCommerce 10.1.0+ already calculates them after loading the cart
+		if ( version_compare( WC_VERSION, '10.1.0', '<' ) ) {
+			add_action( 'woocommerce_cart_loaded_from_session', array( $this, 'calculate_preview_cart_totals' ), PHP_INT_MAX ); // Last, so the totals include changes other plugins make to the loaded cart
+		}
 	}
 
 	/**
@@ -1335,6 +1340,17 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 		// Set the dummy coupon as applied
 		WC()->session->set( 'applied_coupons', array( FluidCheckout_Admin_Preview_Dummy_Data::COUPON_CODE ) );
+	}
+
+	/**
+	 * Calculate the preview cart totals after the cart is loaded from the session.
+	 * WooCommerce versions before 10.1.0 save the cart session as the cart loads, so they skip the totals of preview cart items set without them.
+	 *
+	 * @param   WC_Cart  $cart  The cart object.
+	 */
+	public function calculate_preview_cart_totals( $cart ) {
+		// Calculate totals for the preview cart items
+		$cart->calculate_totals();
 	}
 
 
