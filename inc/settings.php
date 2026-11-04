@@ -258,7 +258,7 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 			'fc_pro_enable_side_cart'                                       => 'no',
 			'fc_pro_side_cart_position'                                     => 'right',
 			'fc_pro_side_cart_open_after_add_to_cart'                       => 'yes',
-			'fc_pro_side_cart_floating_button_position'                      => 'none',
+			'fc_pro_side_cart_floating_button_position'                     => 'none',
 			'fc_pro_side_cart_section_position_coupon_code'                 => 'footer',
 			'fc_pro_side_cart_section_position_cross_sells'                 => 'after_cart_items',
 
