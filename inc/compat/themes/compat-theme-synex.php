@@ -64,12 +64,13 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 				// Form field styles
 				// Theme sets global `input { color: var(--white) }`, which makes field text unreadable on light backgrounds.
 				'--fluidcheckout--field--text-color' => 'var( --header, #15171A )',
-				// Match Select2 height/padding to text inputs (theme body font otherwise makes Select2 taller).
+				// Match Select2/TomSelect height, padding and font-size to text inputs (theme body is 18px).
 				'--fluidcheckout--field--height' => '42px',
 				'--fluidcheckout--field--padding-left' => '9px',
-				// Match WooCommerce form fields (`--wc-form-border-radius`).
+				'--fluidcheckout--field--font-size' => '18px',
+				// Match WooCommerce form fields.
 				'--fluidcheckout--field--border-radius' => 'var( --wc-form-border-radius, 4px )',
-				'--fluidcheckout--field--border-color' => 'rgba(21, 23, 26, 0.15)',
+				'--fluidcheckout--field--border-color' => 'var( --wc-form-border-color, rgba(32, 7, 7, 0.8) )',
 				'--fluidcheckout--field--background-color--accent' => 'var( --theme, #007BFF )',
 
 				// Button design styles

@@ -1,0 +1,19 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
+// ------------------------------------
+// TOM SELECT CONTROL
+// ------------------------------------
+
+// WooCommerce `.shop_table tfoot td` sets `font-weight: 700`, which inherits into TomSelect
+// in the cart shipping calculator. Native inputs reset their own font-weight.
+body#{ $body-theme-selector } .ts-wrapper.single .ts-control,
+body#{ $body-theme-selector } .ts-wrapper.single .ts-control > [data-ts-item] {
+	font-weight: 400 !important; // Needed to override WooCommerce shop_table bold inheritance
+	font-size: inherit !important; // Needed to match text inputs (theme body 18px; TomSelect defaults to 16px)
+}

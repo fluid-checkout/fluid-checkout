@@ -37,6 +37,8 @@ body#{ $body-theme-selector } div.woocommerce form .form-row input[type="passwor
 
 
 body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered,
-body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered,
+body#{ $body-theme-selector } div.woocommerce form .form-row .ts-control,
+body#{ $body-theme-selector } div.woocommerce form .form-row .ts-control > [data-ts-item] {
 	color: var( --fluidcheckout--field--text-color, #15171A ) !important; // Needed to override theme styles
 }
