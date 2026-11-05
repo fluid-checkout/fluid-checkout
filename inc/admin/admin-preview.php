@@ -314,7 +314,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 		// Dummy orders
 		add_action( 'woocommerce_init', array( $this, 'use_preview_order_factory' ), 10 ); // After WooCommerce creates its order factory
-		add_filter( 'woocommerce_order_data_store', array( $this, 'wrap_order_data_store' ), 10 );
+		// After WooCommerce HPOS replaces the order datastore at priority 999.
+		add_filter( 'woocommerce_order_data_store', array( $this, 'wrap_order_data_store' ), 1000 );
 
 		// Dummy order meta
 		add_filter( 'add_post_metadata', array( $this, 'maybe_skip_dummy_order_meta_write' ), 10, 2 );
@@ -1356,6 +1357,11 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * @return  FluidCheckout_Admin_Preview_Order_Data_Store
 	 */
 	public function wrap_order_data_store( $store ) {
+		// Bail if already wrapped, as this filter runs once per WC_Data_Store load.
+		if ( $store instanceof FluidCheckout_Admin_Preview_Order_Data_Store ) {
+			return $store;
+		}
+
 		return new FluidCheckout_Admin_Preview_Order_Data_Store( $store );
 	}
 

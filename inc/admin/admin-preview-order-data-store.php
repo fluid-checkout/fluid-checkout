@@ -172,4 +172,20 @@ class FluidCheckout_Admin_Preview_Order_Data_Store implements WC_Object_Data_Sto
 		}
 	}
 
+	/**
+	 * Forward datastore helper methods to the delegate (for example HPOS-only methods).
+	 *
+	 * @param   string  $method      Method name.
+	 * @param   array   $parameters  Method parameters.
+	 *
+	 * @return  mixed
+	 */
+	public function __call( $method, $parameters ) {
+		if ( ! is_callable( array( $this->delegate, $method ) ) ) {
+			return null;
+		}
+
+		return $this->delegate->$method( ...$parameters );
+	}
+
 }

@@ -11,6 +11,13 @@ class FluidCheckout_CheckoutBlock extends FluidCheckout {
 	 */
 	private $cached_values = array();
 
+	/**
+	 * Whether `maybe_set_is_checkout_page_or_fragment` is running, to avoid re-entering `woocommerce_is_checkout`.
+	 *
+	 * @var bool
+	 */
+	private static $is_resolving_checkout_page_or_fragment = false;
+
 
 
 	/**
@@ -75,10 +82,19 @@ class FluidCheckout_CheckoutBlock extends FluidCheckout {
 	 * Maybe set the current request as a checkout page or fragment when the checkout block is present.
 	 */
 	public function maybe_set_is_checkout_page_or_fragment( $is_checkout_page_or_fragment ) {
-		// Bail if on order received or order pay pages
-		if ( ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) || ( function_exists( 'is_checkout_pay_page' ) && is_checkout_pay_page() ) ) {
+		global $wp;
+
+		// Use query vars only. `is_checkout_pay_page()` and `is_order_received_page()` call `is_checkout()`, which re-applies this filter and causes infinite recursion.
+		if ( ! empty( $wp->query_vars['order-received'] ) || ! empty( $wp->query_vars['order-pay'] ) ) {
 			return $is_checkout_page_or_fragment;
 		}
+
+		// Bail if already resolving checkout context for this request.
+		if ( self::$is_resolving_checkout_page_or_fragment ) {
+			return $is_checkout_page_or_fragment;
+		}
+
+		self::$is_resolving_checkout_page_or_fragment = true;
 
 		// Get values from cache
 		$cache_handle = 'is_checkout_page';
@@ -87,7 +103,7 @@ class FluidCheckout_CheckoutBlock extends FluidCheckout {
 		// Try to return value from cache
 		if ( array_key_exists( $cache_handle, $this->cached_values ) ) {
 			// Return value from cache
-			return $this->cached_values[ $cache_handle ];
+			$return_value = $this->cached_values[ $cache_handle ];
 		}
 		// Check whether page has the checkout block in the contents
 		else if ( function_exists( 'has_block' ) && has_block( 'woocommerce/checkout' ) ) {
@@ -97,6 +113,8 @@ class FluidCheckout_CheckoutBlock extends FluidCheckout {
 			// once detected a request to the checkout page.
 			$this->cached_values[ $cache_handle ] = $return_value;
 		}
+
+		self::$is_resolving_checkout_page_or_fragment = false;
 
 		return $return_value;
 	}
