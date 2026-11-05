@@ -1,6 +1,3 @@
-$body-page-selector: null !default;
-$order-review-selector: null !default;
-
 $body-theme-selector: null !default;
 
 
@@ -12,8 +9,10 @@ $body-theme-selector: null !default;
 
 body#{ $body-theme-selector } div.woocommerce form .form-row .fl-wrap label.fl-label,
 body#{ $body-theme-selector } div.woocommerce form #billing_address_2_field .fl-wrap > label.fl-label,
-body#{ $body-theme-selector } div.woocommerce form #shipping_address_2_field .fl-wrap > label.fl-label {
+body#{ $body-theme-selector } div.woocommerce form #shipping_address_2_field .fl-wrap > label.fl-label,
+body#{ $body-theme-selector }.fl-labels div.woocommerce form .form-row .fl-wrap label[for]:first-child {
 	z-index: z( 'default' ) + 5;
+	pointer-events: none !important; // Needed to override theme styles
 }
 
 body#{ $body-theme-selector } div.woocommerce form select {

@@ -34,6 +34,12 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	public function hooks() {
 		// Replace WooCommerce scripts, need to run before WooCommerce registers and enqueues its scripts, priority has to be less than 10
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_replace_woocommerce_scripts' ), 5 );
+		// Re-apply FC script URLs after WooCommerce registers its scripts (priority 10), without deregistering (which drops enqueued handles and localized data).
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_reregister_woocommerce_checkout_scripts' ), 11 );
+		// Re-enqueue checkout scripts after block types dequeue them (priority 20).
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_checkout_scripts' ), 25 );
+		// Re-enqueue after themes such as Flatsome deregister selectWoo (priority 100).
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_checkout_scripts' ), 105 );
 
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
@@ -63,6 +69,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	public function undo_hooks() {
 		// Replace WooCommerce scripts, need to run before WooCommerce registers and enqueues its scripts, priority has to be less than 10
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_replace_woocommerce_scripts' ), 5 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_reregister_woocommerce_checkout_scripts' ), 11 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_checkout_scripts' ), 25 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_checkout_scripts' ), 105 );
 
 		// Register assets
 		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
@@ -110,6 +119,15 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Deregsiter WooCommerce scripts if already registered
 		$this->deregister_woocommerce_scripts();
 
+		$this->register_woocommerce_checkout_scripts();
+	}
+
+
+
+	/**
+	 * Register FC replacements for WooCommerce checkout scripts without deregistering first.
+	 */
+	public function register_woocommerce_checkout_scripts() {
 		// Get WooCommerce version
 		$woocommerce_version = defined( 'WC_VERSION' ) ? WC_VERSION : '0.0.0';
 
@@ -126,12 +144,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Register WooCommerce scripts with modified version
 		wp_register_script( 'woocommerce', $this->get_script_url( 'js/woocommerce' ), $woocommerce_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
-		$country_select_deps = array( 'jquery', 'fc-utils' );
-		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
-			$country_select_deps[] = 'selectWoo';
-		}
-
-		wp_register_script( 'wc-country-select', $this->get_script_url( 'js/country-select' ), $country_select_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'wc-country-select', $this->get_script_url( 'js/country-select' ), $this->get_country_select_script_deps(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-address-i18n', $this->get_script_url( 'js/address-i18n' ), array( 'jquery', 'wc-country-select' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-checkout', $this->get_script_url( 'js/checkout' ), $checkout_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-password-strength-meter', $this->get_script_url( 'js/password-strength-meter' ), array( 'jquery', 'password-strength-meter' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -145,6 +158,39 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		}
 	}
 
+
+
+	/**
+	 * Get script dependencies for the country/state select script.
+	 *
+	 * @return array
+	 */
+	public function get_country_select_script_deps() {
+		$country_select_deps = array( 'jquery', 'fc-utils' );
+
+		// Only depend on SelectWoo when it is registered (themes such as Flatsome may deregister it on checkout).
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) && wp_script_is( 'selectWoo', 'registered' ) ) {
+			$country_select_deps[] = 'selectWoo';
+		}
+
+		return $country_select_deps;
+	}
+
+
+
+	/**
+	 * Ensure FC checkout scripts are registered without resetting localized script data.
+	 */
+	public function ensure_checkout_scripts_registered() {
+		if ( ! wp_script_is( 'wc-checkout', 'registered' ) ) {
+			$this->pre_register_woocommerce_scripts();
+			return;
+		}
+
+		// Update country/state script dependencies when SelectWoo was removed late in the queue.
+		wp_register_script( 'wc-country-select', $this->get_script_url( 'js/country-select' ), $this->get_country_select_script_deps(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	}
+
 	/**
 	 * Replace WooCommerce scripts with modified version.
 	 */
@@ -153,6 +199,63 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		if ( is_admin() || ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_wc_endpoint_url( 'edit-address' ) ) || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		$this->pre_register_woocommerce_scripts();
+	}
+
+
+
+	/**
+	 * Re-register FC checkout script URLs after WooCommerce registers scripts, without deregistering.
+	 */
+	public function maybe_reregister_woocommerce_checkout_scripts() {
+		// Bail if not on checkout page or address edit page
+		if ( is_admin() || ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_wc_endpoint_url( 'edit-address' ) ) || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		$this->register_woocommerce_checkout_scripts();
+	}
+
+
+
+	/**
+	 * Enqueue checkout scripts after other plugins or blocks dequeue them.
+	 */
+	public function maybe_enqueue_checkout_scripts() {
+		// Bail if not on checkout page
+		if ( is_admin() || ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		// Ensure WooCommerce checkout script dependencies are registered.
+		if ( class_exists( 'WC_Frontend_Scripts' ) && ! wp_script_is( 'wc-custom-place-order-button', 'registered' ) ) {
+			WC_Frontend_Scripts::load_scripts();
+		}
+
+		// Ensure FC checkout scripts are registered (may have been deregistered by blocks or other plugins).
+		$this->ensure_checkout_scripts_registered();
+
+		wp_enqueue_script( 'woocommerce' );
+		wp_enqueue_script( 'fc-utils' );
+		wp_enqueue_script( 'wc-country-select' );
+		wp_enqueue_script( 'wc-address-i18n' );
+
+		if ( wp_script_is( 'wc-custom-place-order-button', 'registered' ) ) {
+			wp_enqueue_script( 'wc-custom-place-order-button' );
+		}
+
+		wp_enqueue_script( 'wc-checkout' );
+
+		$this->maybe_localize_checkout_script_params();
+	}
+
+
+
+	/**
+	 * Attach WooCommerce checkout script params after late enqueues (frontend and admin preview).
+	 */
+	public function maybe_localize_checkout_script_params() {
+		// Bail if not on checkout page
+		if ( is_admin() || ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		if ( ! class_exists( 'WC_Frontend_Scripts' ) ) { return; }
+
+		WC_Frontend_Scripts::localize_printed_scripts();
 	}
 
 

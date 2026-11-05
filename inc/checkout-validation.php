@@ -43,6 +43,8 @@ class FluidCheckout_Validation extends FluidCheckout {
 		// Enqueue assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+		// After FluidCheckout_Enqueue::maybe_enqueue_checkout_scripts (105) restores the `wc-checkout` chain.
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 110 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_mailcheck_assets' ), 10 );
 
 		// JS settings object
@@ -74,6 +76,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		// Enqueue assets
 		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 110 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_mailcheck_assets' ), 10 );
 
 		// JS settings object
