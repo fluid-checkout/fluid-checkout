@@ -19,6 +19,9 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
@@ -33,6 +36,31 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// Theme breadcrumb / page heading
+		$this->maybe_remove_theme_breadcrumb();
+	}
+
+
+
+	/**
+	 * Maybe remove the theme breadcrumb and page heading section.
+	 */
+	public function maybe_remove_theme_breadcrumb() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+
+		remove_action( 'synex_before_main_content', 'synex_breadcrumb_func' );
+		remove_action( 'creatim_before_main_content', 'synex_breadcrumb_func' );
+		remove_action( 'hfe_header', 'synex_breadcrumb_func', 20 );
 	}
 
 
