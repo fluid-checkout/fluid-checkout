@@ -79,8 +79,9 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 				'--fluidcheckout--button--primary--background-color' => 'var( --theme, #007BFF )',
 				'--fluidcheckout--button--primary--border-color' => 'var( --theme, #007BFF )',
 				'--fluidcheckout--button--primary--text-color' => '#fff',
-				'--fluidcheckout--button--primary--background-color--hover' => 'var( --theme, #007BFF )',
-				'--fluidcheckout--button--primary--border-color--hover' => 'var( --theme, #007BFF )',
+				// Match theme `.theme-btn-main:hover .theme-btn { background-color: var(--header) }`.
+				'--fluidcheckout--button--primary--background-color--hover' => 'var( --header, #15171A )',
+				'--fluidcheckout--button--primary--border-color--hover' => 'var( --header, #15171A )',
 				'--fluidcheckout--button--primary--text-color--hover' => '#fff',
 			),
 		);
