@@ -17,7 +17,7 @@ class FluidCheckout_Admin_Preview_Session_Handler extends WC_Session_Handler {
 			$this->init_session_cookie();
 		}
 		// Otherwise, use the parent method, which adds the same hooks and sets the session through `init_session_cookie()` on older versions
-		else {
+		else if ( method_exists( get_parent_class( $this ), 'init' ) ) {
 			parent::init();
 		}
 	}
