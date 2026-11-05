@@ -254,6 +254,14 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 			'fc_pro_cart_cross_sells_display_items_limit'                   => 2,
 			'fc_pro_enable_cart_widget_areas'                               => 'yes',
 
+			// =============================== CART (SIDE CART) ===============================
+			'fc_pro_enable_side_cart'                                       => 'no',
+			'fc_pro_side_cart_position'                                     => 'right',
+			'fc_pro_side_cart_open_after_add_to_cart'                       => 'yes',
+			'fc_pro_side_cart_floating_button_position'                     => 'none',
+			'fc_pro_side_cart_section_position_coupon_code'                 => 'footer',
+			'fc_pro_side_cart_section_position_cross_sells'                 => 'after_cart_items',
+
 			// =============================== ORDER RECEIVED (THANK YOU) ===============================
 			'fc_pro_enable_order_received'                                  => 'yes',
 			'fc_pro_enable_order_details_email_customizations'              => 'yes',

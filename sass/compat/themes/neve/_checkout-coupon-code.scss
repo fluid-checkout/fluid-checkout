@@ -3,9 +3,40 @@ $order-review-selector: null !default;
 
 $body-theme-selector: null !default;
 
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT COUPON CODE
 // ------------------------------------
 body#{ $body-theme-selector } .fc-wrapper .fc-expansible-form-section__content--coupon_code .fc-coupon-code__apply {
 	line-height: 1;
+}
+
+// Neve styles WooCommerce notices as flex banners with a tall `::before` icon and
+// reorders the Dismiss link. FC coupon messages zero padding and expect a compact
+// inline dismiss, so Neve's rules clip the text and push the icon into the field below.
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-error,
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-message {
+	display: block !important; // Needed to override Neve notice flex layout
+	flex-direction: unset;
+	align-items: unset;
+	padding: $global-spacing-extra-small !important; // Needed to override FC zero padding + Neve icon gutter
+	text-align: #{ $alignment-left };
+}
+
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-error::before,
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-message::before {
+	content: none !important; // Needed to override Neve notice icon
+	display: none !important; // Needed to override Neve notice icon
+}
+
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-error a,
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-message a,
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .fc-coupon-code-message-dismiss {
+	order: unset;
+	width: auto !important; // Needed to override Neve full-width notice links
+	margin: 0 !important; // Needed to override Neve notice link spacing
+	margin-top: 0 !important; // Needed to override Neve notice link spacing
+	text-align: #{ $alignment-left };
 }

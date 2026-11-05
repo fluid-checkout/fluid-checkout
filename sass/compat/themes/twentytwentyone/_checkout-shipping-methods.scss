@@ -1,0 +1,26 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
+// ------------------------------------
+// CHECKOUT SHIPPING METHODS
+// ------------------------------------
+// WooCommerce TT1 sets `width: 14px !important` + `transform` on
+// `.woocommerce-checkout-review-order-table … shipping_method + label::before`,
+// which stretches FC option-box radios into ovals on the cart order summary.
+
+body#{ $body-theme-selector } input[type="radio"].shipping_method + label::before {
+	display: block;
+	margin: 0;
+	width: $option-box-radio-size !important; // Needed to override WooCommerce TT1 theme styles
+	height: $option-box-radio-size !important; // Needed to override WooCommerce TT1 theme styles
+	transform: none;
+}
+
+body#{ $body-theme-selector } input[type="radio"].shipping_method:checked + label::before {
+	background: inherit;
+}

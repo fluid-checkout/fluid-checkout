@@ -103,6 +103,12 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 				'enable_setting'    => 'fc_pro_enable_cart_page',
 				'url'               => wc_get_cart_url(),
 			),
+			'side_cart'      => array(
+				'label'             => __( 'Side cart', 'fluid-checkout' ),
+				'requires_pro'      => ! $is_pro_activated,
+				'enable_setting'    => 'fc_pro_enable_side_cart',
+				'url'               => $this->get_side_cart_preview_url(),
+			),
 			'order_received' => array(
 				'label'             => __( 'Thank you', 'fluid-checkout' ),
 				'requires_pro'      => ! $is_pro_activated,
@@ -169,6 +175,22 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 
 		// Keep the default values that filters removed
 		return wp_parse_args( $config, $defaults );
+	}
+
+	/**
+	 * Get the frontend URL used to preview the side cart drawer.
+	 * Uses the shop page as a quiet canvas outside cart and checkout.
+	 *
+	 * @return string
+	 */
+	public function get_side_cart_preview_url() {
+		$url = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : '';
+
+		// Bail if there is no frontend page to preview
+		if ( empty( $url ) ) { return ''; }
+
+		// Mark the URL as the side cart settings surface, so the preview cart can stay smaller before the main query runs
+		return add_query_arg( FluidCheckout_Admin_Preview::SURFACE_QUERY_ARG, FluidCheckout_Admin_Preview::SURFACE_SIDE_CART, $url );
 	}
 
 	/**

@@ -150,7 +150,16 @@ body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__a
 	display: block;
 	margin: 0 !important; // Needed to override theme styles
 	margin-bottom: $global-spacing-extra-small !important; // Needed to override theme styles
-	padding: 0 !important; // Needed to override theme styles
+	padding: $global-spacing-extra-small !important; // Needed to override WooCommerce notice padding (icon gutter)
+}
+
+// WooCommerce core (and many themes) draw a tall notice icon via `::before` with left padding for
+// that icon. FC coupon messages use an inline Dismiss instead, so zeroing/shrinking padding without
+// removing the icon lets it sit on top of the text.
+.fc-wrapper .fc-coupon-code-messages .woocommerce-error::before,
+.fc-wrapper .fc-coupon-code-messages .woocommerce-message::before {
+	content: none !important; // Needed to override WooCommerce / theme notice icon
+	display: none !important; // Needed to override WooCommerce / theme notice icon
 }
 
 .fc-wrapper .fc-coupon-code-messages .woocommerce-error li {
@@ -161,6 +170,29 @@ body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__a
 	position: absolute;
 	top: 0;
 	#{ $alignment-right }: 0;
+
+	&:focus {
+		outline: $focus-outline-link !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-link !important; // Needed to override theme styles
+	}
+}
+
+// Block themes (eg. Twenty Twenty-Five) print coupon errors as notice banners. Tone the banner down
+// to match the classic coupon message spacing, and keep Dismiss in the same corner as classic.
+.fc-wrapper .fc-coupon-code-messages .wc-block-components-notice-banner {
+	position: relative;
+	align-items: flex-start;
+	gap: $global-spacing-extra-small;
+	margin: 0 0 $global-spacing-extra-small !important; // Needed to override block notice styles
+	padding: $global-spacing-extra-small !important; // Needed to override block notice styles
+	padding-#{ $alignment-right }: $global-spacing-large !important; // Needed to override block notice styles
+	font-size: $font-size-small;
+}
+
+.fc-wrapper .fc-coupon-code-messages .wc-block-components-notice-banner .fc-coupon-code-message-dismiss {
+	position: absolute;
+	top: $global-spacing-extra-small;
+	#{ $alignment-right }: $global-spacing-extra-small;
 
 	&:focus {
 		outline: $focus-outline-link !important; // Needed to override theme styles

@@ -6,7 +6,21 @@ $body-theme-selector: null !default;
 // ------------------------------------
 // WOOCOMMERCE FORM FIELDS
 // ------------------------------------
+// TT1 replaces native checkboxes with `appearance: none` and a rotated-border
+// `::after` checkmark. That conflicts with FC checkout/order-pay terms markup.
 
 body#{ $body-theme-selector } div.woocommerce form .form-row input[type="checkbox"] {
 	display: inline-block;
+	position: static;
+	width: auto;
+	height: auto;
+	border: initial;
+	background: initial;
+	appearance: auto;
+	-webkit-appearance: checkbox;
+}
+
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="checkbox"]:after {
+	content: none !important; // Needed to override Twenty Twenty-One theme styles
+	display: none !important; // Needed to override Twenty Twenty-One theme styles
 }

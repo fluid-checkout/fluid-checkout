@@ -1,0 +1,39 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
+// ------------------------------------
+// CHECKOUT COUPON CODE
+// ------------------------------------
+
+// Astra styles WooCommerce notices as flex banners with a tall `::before` icon and
+// left padding for that icon. FC coupon messages zero padding and keep an inline
+// Dismiss, so Astra's rules clip the text and push the icon into the message.
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-error,
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-message {
+	display: block !important; // Needed to override Astra notice flex layout
+	flex-direction: unset;
+	align-items: unset;
+	padding: $global-spacing-extra-small !important; // Needed to override FC zero padding + Astra icon gutter
+	text-align: #{ $alignment-left };
+}
+
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-error::before,
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-message::before {
+	content: none !important; // Needed to override Astra / WooCommerce notice icon
+	display: none !important; // Needed to override Astra / WooCommerce notice icon
+}
+
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-error a,
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-message a,
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .fc-coupon-code-message-dismiss {
+	order: unset;
+	width: auto !important; // Needed to override Astra full-width notice links
+	margin: 0 !important; // Needed to override Astra notice link spacing
+	margin-top: 0 !important; // Needed to override Astra notice link spacing
+	text-align: #{ $alignment-left };
+}

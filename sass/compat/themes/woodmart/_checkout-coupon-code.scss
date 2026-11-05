@@ -10,6 +10,20 @@ $body-theme-selector: null !default;
 // CHECKOUT COUPON CODE
 // ------------------------------------
 
+// Woodmart notice banners use large inline padding and a font-icon `::before`.
+// FC coupon messages zero padding and keep an inline Dismiss, so the icon and text collide.
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-error,
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-message {
+	padding: $global-spacing-extra-small !important; // Needed to override Woodmart notice padding
+	margin-bottom: $global-spacing-extra-small !important; // Needed to override Woodmart notice spacing
+}
+
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-error::before,
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-message::before {
+	content: none !important; // Needed to override Woodmart notice icon
+	display: none !important; // Needed to override Woodmart notice icon
+}
+
 body#{ $body-theme-selector } .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
 	position: relative;
 	margin-#{ $alignment-left }: $global-spacing-tiny;

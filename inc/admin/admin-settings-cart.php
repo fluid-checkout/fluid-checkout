@@ -262,6 +262,150 @@ class FluidCheckout_Settings_Cart {
 						'id'   => 'fc_pro_cart_elements_options',
 					),
 
+
+
+					array(
+						'title'             => __( 'Side cart', 'fluid-checkout' ),
+						'type'              => 'title',
+						'desc'              => '',
+						'id'                => 'fc_pro_side_cart_options',
+						'promo'             => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'side-cart' ),
+						'custom_attributes' => array(
+							// Switch the settings preview to the side cart page when editing these fields
+							'data-fc-settings-preview-switch-page' => 'side_cart',
+						),
+					),
+
+					array(
+						'title'             => __( 'Side cart', 'fluid-checkout' ),
+						'desc'              => __( 'Enable the side cart drawer', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Replaces the mini cart from WooCommerce and from the currently active theme with a drawer that slides in from the side of the screen. Does not apply to the cart, checkout, thank you, or order pay pages.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_enable_side_cart',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_side_cart' ),
+						'type'              => 'checkbox',
+						'autoload'          => false,
+						'disabled'          => true,
+						'requires'          => 'pro',
+					),
+
+					array(
+						'type'              => 'fc_paragraph',
+						'desc'              => __( 'Enable the side cart drawer to see more options', 'fluid-checkout' ),
+						'id'                => 'fc_pro_side_cart_enable_notice',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_side_cart',
+							'data-conditional-value' => 'no',
+						),
+						'requires'          => 'pro',
+						'unlocked_only'     => true,
+					),
+
+					array(
+						'title'             => __( 'Position', 'fluid-checkout' ),
+						'desc'              => '',
+						'desc_tip'          => __( 'Select which side of the screen the side cart drawer slides in from. Automatically reversed when using a right-to-left language.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_side_cart_position',
+						'type'              => 'fc_select',
+						'options'           => array(
+							'right'                    => __( 'Right', 'fluid-checkout' ),
+							'left'                     => __( 'Left', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_side_cart_position' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_side_cart',
+							'data-conditional-value' => 'yes',
+						),
+						'autoload'          => false,
+						'disabled'          => true,
+						'requires'          => 'pro',
+					),
+
+					array(
+						'title'             => __( 'Add to cart', 'fluid-checkout' ),
+						'desc'              => __( 'Open the side cart after adding a product to the cart on desktop devices', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Does not open automatically on mobile devices, where the drawer covers the full screen and would interrupt shopping.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_side_cart_open_after_add_to_cart',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_side_cart_open_after_add_to_cart' ),
+						'type'              => 'checkbox',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_side_cart',
+							'data-conditional-value' => 'yes',
+						),
+						'autoload'          => false,
+						'disabled'          => true,
+						'requires'          => 'pro',
+					),
+
+					array(
+						'title'             => __( 'Floating button', 'fluid-checkout' ),
+						'desc'              => '',
+						'desc_tip'          => __( 'Select where to display a floating button that opens the side cart. Useful when the currently active theme does not display a cart button in its header.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_side_cart_floating_button_position',
+						'type'              => 'fc_select',
+						'options'           => array(
+							'none'                     => __( 'Hidden', 'fluid-checkout' ),
+							'bottom_right'             => __( 'Bottom right', 'fluid-checkout' ),
+							'bottom_left'              => __( 'Bottom left', 'fluid-checkout' ),
+							'top_right'                => __( 'Top right', 'fluid-checkout' ),
+							'top_left'                 => __( 'Top left', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_side_cart_floating_button_position' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_side_cart',
+							'data-conditional-value' => 'yes',
+						),
+						'autoload'          => false,
+						'disabled'          => true,
+						'requires'          => 'pro',
+					),
+
+					array(
+						'title'             => __( 'Coupon codes', 'fluid-checkout' ),
+						'desc'              => '',
+						'desc_tip'          => __( 'Select position where to display the coupon codes section in the side cart. Only applicable if use of coupon codes are enabled in the WooCommerce settings.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_side_cart_section_position_coupon_code',
+						'type'              => 'fc_select',
+						'options'           => array(
+							'none'                     => __( 'Hidden', 'fluid-checkout' ),
+							'after_cart_items'         => __( 'After the cart items', 'fluid-checkout' ),
+							'footer'                   => __( 'In the side cart footer', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_side_cart_section_position_coupon_code' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_side_cart',
+							'data-conditional-value' => 'yes',
+						),
+						'autoload'          => false,
+						'disabled'          => true,
+						'requires'          => 'pro',
+					),
+
+					array(
+						'title'             => __( 'Cross-sells', 'fluid-checkout' ),
+						'desc'              => '',
+						'desc_tip'          => __( 'Select position where to display the cross-sells section in the side cart.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_side_cart_section_position_cross_sells',
+						'type'              => 'fc_select',
+						'options'           => array(
+							'none'                     => __( 'Hidden', 'fluid-checkout' ),
+							'after_cart_items'         => __( 'After the cart items', 'fluid-checkout' ),
+							'footer'                   => __( 'In the side cart footer', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_side_cart_section_position_cross_sells' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_side_cart',
+							'data-conditional-value' => 'yes',
+						),
+						'autoload'          => false,
+						'disabled'          => true,
+						'requires'          => 'pro',
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'fc_pro_side_cart_options',
+					),
+
 					)
 				)
 			);

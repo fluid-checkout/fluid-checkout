@@ -6,3 +6,11 @@
 	$body-page-selector: scope.$body-page-selector,
 	$body-theme-selector: scope.$body-theme-selector
 );
+@forward "checkout-shipping-methods" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
+@forward "checkout-payment-methods" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);

@@ -39,9 +39,21 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	const MODE_LOGGED_IN = 'logged_in';
 
 	/**
-	 * Maximum number of line items in the preview cart.
+	 * Maximum number of line items in the preview cart on cart, checkout, and related pages.
 	 */
 	const CART_ITEMS_LIMIT = 3;
+
+	/**
+	 * Maximum number of line items in the preview cart on the side cart settings preview.
+	 * Kept smaller so the open drawer stays readable.
+	 */
+	const SIDE_CART_ITEMS_LIMIT = 1;
+
+	/**
+	 * Maximum number of cross-sell products to inject when the preview cart has none linked.
+	 * Matches the default of `fc_pro_cart_cross_sells_display_items_limit`.
+	 */
+	const CROSS_SELLS_LIMIT = 2;
 
 	/**
 	 * Query argument that carries the shipping methods chosen in the preview, which the frame script sends with each request.
@@ -52,6 +64,17 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Query argument that carries the values of session fields in the preview page, which the frame script sends with each request.
 	 */
 	const SESSION_FIELDS_QUERY_ARG = 'fc_preview_session_fields';
+
+	/**
+	 * Query argument that marks which settings preview surface the page belongs to.
+	 * Needed before the main query runs, such as when building the preview cart on `wp_loaded`.
+	 */
+	const SURFACE_QUERY_ARG = 'fc_preview_surface';
+
+	/**
+	 * Surface value for the side cart settings preview.
+	 */
+	const SURFACE_SIDE_CART = 'side_cart';
 
 	/**
 	 * Admin AJAX action that saves the unsaved settings shown in the preview.
@@ -293,6 +316,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		// Dummy products
 		add_filter( 'woocommerce_product_type_query', array( $this, 'maybe_get_dummy_product_type' ), PHP_INT_MAX, 2 ); // Last, to override types set by other plugins
 		add_filter( 'woocommerce_product_class', array( $this, 'maybe_get_dummy_product_class' ), PHP_INT_MAX, 4 ); // Last, to override classes set by other plugins, some of which also use `PHP_INT_MAX`
+		add_filter( 'woocommerce_product_is_visible', array( $this, 'maybe_make_dummy_product_visible' ), 10, 2 ); // So dummy products can appear as cross-sells while staying hidden from the real catalog
 
 		// Cart items
 		add_action( 'woocommerce_load_cart_from_session', array( $this, 'maybe_set_preview_cart_items' ), 10 );
@@ -303,6 +327,10 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		// Coupons
 		add_filter( 'woocommerce_get_shop_coupon_data', array( $this, 'maybe_get_dummy_coupon_props' ), 10, 2 );
 		add_action( 'woocommerce_load_cart_from_session', array( $this, 'maybe_set_preview_applied_coupons' ), 10 );
+
+		// Cross-sells
+		add_filter( 'woocommerce_cart_crosssell_ids', array( $this, 'maybe_get_preview_cross_sell_ids' ), 10, 2 );
+		add_filter( 'woocommerce_cross_sells_total', array( $this, 'maybe_limit_side_cart_preview_cross_sells_total' ), 300 );
 	}
 
 	/**
@@ -570,6 +598,16 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		// Maybe add the logged-in mode
 		if ( self::MODE_LOGGED_IN === $this->get_preview_mode() ) {
 			$preview_args[ self::MODE_QUERY_ARG ] = self::MODE_LOGGED_IN;
+		}
+
+		// Maybe keep the settings preview surface on AJAX and follow-up requests, such as side cart fragment updates
+		if ( isset( $_GET[ self::SURFACE_QUERY_ARG ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$surface = sanitize_text_field( wp_unslash( $_GET[ self::SURFACE_QUERY_ARG ] ) );
+
+			// Maybe add a non-empty surface value
+			if ( '' !== $surface ) {
+				$preview_args[ self::SURFACE_QUERY_ARG ] = $surface;
+			}
 		}
 
 		return $preview_args;
@@ -1141,6 +1179,20 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 
 	/**
+	 * Treat dummy products as visible in the preview so they can appear as cross-sells.
+	 * They stay hidden from the real catalog via `catalog_visibility`.
+	 *
+	 * @param  bool  $visible     Whether the product is visible.
+	 * @param  int   $product_id  Product ID.
+	 */
+	public function maybe_make_dummy_product_visible( $visible, $product_id ) {
+		// Bail if not a dummy product
+		if ( ! FluidCheckout_Admin_Preview_Dummy_Data::instance()->is_dummy_product_id( $product_id ) ) { return $visible; }
+
+		return true;
+	}
+
+	/**
 	 * Get the product type of dummy products, which have no database record to read it from.
 	 *
 	 * @param   string|false  $product_type  Product type, or `false` to read it from the database.
@@ -1190,14 +1242,44 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 
 	/**
+	 * Whether the current preview request is the side cart settings canvas.
+	 */
+	public function is_side_cart_preview_page() {
+		// Bail if not a preview request
+		if ( ! $this->is_preview_request() ) { return false; }
+
+		// Surface query arg is set on the preview URL and kept on AJAX and follow-up requests
+		return isset( $_GET[ self::SURFACE_QUERY_ARG ] ) && self::SURFACE_SIDE_CART === sanitize_text_field( wp_unslash( $_GET[ self::SURFACE_QUERY_ARG ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	}
+
+	/**
+	 * Get how many line items the preview cart should have on the current page.
+	 */
+	public function get_preview_cart_items_limit() {
+		// Use a smaller cart on the side cart settings preview so the open drawer stays readable
+		if ( $this->is_side_cart_preview_page() ) {
+			return self::SIDE_CART_ITEMS_LIMIT;
+		}
+
+		return self::CART_ITEMS_LIMIT;
+	}
+
+	/**
 	 * Get the products for the preview cart: recent catalog products, those that need shipping first, topped up with dummy products.
+	 *
+	 * @param   int|null  $limit  Maximum products to return, or `null` to use the limit for the current preview page.
 	 *
 	 * @return  WC_Product[]
 	 */
-	public function get_preview_cart_products() {
+	public function get_preview_cart_products( $limit = null ) {
 		// Define product lists
 		$shippable_products = array();
 		$other_products = array();
+
+		// Use the limit for the current preview page when none was passed
+		if ( null === $limit ) {
+			$limit = $this->get_preview_cart_items_limit();
+		}
 
 		// Define query arguments for recent catalog products, more than needed as some may not be purchasable
 		$query_args = array( 'status' => 'publish', 'type' => array( 'simple', 'variable' ), 'stock_status' => 'instock', 'limit' => 10, 'orderby' => 'date', 'order' => 'DESC', 'return' => 'ids' );
@@ -1208,7 +1290,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		// Iterate catalog product IDs
 		foreach ( $catalog_product_ids as $catalog_product_id ) {
 			// Stop when enough products that need shipping are found
-			if ( count( $shippable_products ) >= self::CART_ITEMS_LIMIT ) { break; }
+			if ( count( $shippable_products ) >= $limit ) { break; }
 
 			// Get product
 			$product = wc_get_product( $catalog_product_id );
@@ -1232,12 +1314,12 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		}
 
 		// Get catalog products up to the cart items limit
-		$products = array_slice( array_merge( $shippable_products, $other_products ), 0, self::CART_ITEMS_LIMIT );
+		$products = array_slice( array_merge( $shippable_products, $other_products ), 0, $limit );
 
 		// Iterate dummy product IDs, to top up the cart
 		foreach ( array_keys( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_products() ) as $dummy_product_id ) {
 			// Stop when the cart items limit is reached
-			if ( count( $products ) >= self::CART_ITEMS_LIMIT ) { break; }
+			if ( count( $products ) >= $limit ) { break; }
 
 			// Get dummy product
 			$product = wc_get_product( $dummy_product_id );
@@ -1276,16 +1358,20 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	/**
 	 * Set the preview cart items in the session, before WooCommerce loads the cart from it.
 	 * Uses the session instead of `add_to_cart()`, so add-to-cart events are not sent to analytics and marketing plugins.
+	 * Rebuilds the cart when switching between the side cart preview (1 item) and other preview pages (full cart).
 	 */
 	public function maybe_set_preview_cart_items() {
-		// Bail if the session already has a cart
-		if ( null !== WC()->session->get( 'cart', null ) ) { return; }
+		$limit = $this->get_preview_cart_items_limit();
+		$session_cart = WC()->session->get( 'cart', null );
+
+		// Bail if the session already has a cart with the right number of items for this preview page
+		if ( null !== $session_cart && count( $session_cart ) === $limit ) { return; }
 
 		// Define cart items
 		$cart_items = array();
 
 		// Iterate preview cart products
-		foreach ( $this->get_preview_cart_products() as $product ) {
+		foreach ( $this->get_preview_cart_products( $limit ) as $product ) {
 			// Maybe use the parent product ID and the attributes of variations
 			if ( $product->is_type( 'variation' ) ) {
 				$product_id = $product->get_parent_id();
@@ -1337,6 +1423,117 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 		// Set the dummy coupon as applied
 		WC()->session->set( 'applied_coupons', array( FluidCheckout_Admin_Preview_Dummy_Data::COUPON_CODE ) );
+	}
+
+	/**
+	 * Ensure the preview cart has cross-sell products so Cart and Side cart settings can show that section.
+	 *
+	 * @param  int[]    $cross_sell_ids  Cross-sell product IDs from cart items.
+	 * @param  WC_Cart  $cart            Cart object.
+	 */
+	public function maybe_get_preview_cross_sell_ids( $cross_sell_ids, $cart ) {
+		// Bail if the cart already has cross-sell products from linked product data
+		if ( ! empty( $cross_sell_ids ) ) { return $cross_sell_ids; }
+
+		return $this->get_preview_cross_sell_product_ids( $cart );
+	}
+
+	/**
+	 * Get product IDs to show as cross-sells in the preview cart.
+	 * Prefers catalog products that are not already in the cart, then tops up with dummy products.
+	 *
+	 * @param  WC_Cart  $cart  Cart object.
+	 *
+	 * @return  int[]
+	 */
+	public function get_preview_cross_sell_product_ids( $cart ) {
+		$limit = $this->get_preview_cross_sells_limit();
+		$exclude_ids = array();
+		$cross_sell_ids = array();
+
+		// Collect product and variation IDs already in the cart, which WooCommerce also excludes from cross-sells
+		if ( $cart && ! $cart->is_empty() ) {
+			// Iterate cart items
+			foreach ( $cart->get_cart() as $cart_item ) {
+				$exclude_ids[] = (int) $cart_item[ 'product_id' ];
+
+				// Maybe also exclude the selected variation
+				if ( ! empty( $cart_item[ 'variation_id' ] ) ) {
+					$exclude_ids[] = (int) $cart_item[ 'variation_id' ];
+				}
+			}
+		}
+
+		$exclude_ids = array_unique( array_filter( $exclude_ids ) );
+
+		// Prefer recent catalog products that are not already in the cart
+		$catalog_product_ids = wc_get_products( array(
+			'status'       => 'publish',
+			'type'         => array( 'simple', 'variable' ),
+			'stock_status' => 'instock',
+			'limit'        => $limit + count( $exclude_ids ) + 5,
+			'orderby'      => 'date',
+			'order'        => 'DESC',
+			'return'       => 'ids',
+			'exclude'      => $exclude_ids,
+		) );
+
+		// Iterate catalog products
+		foreach ( $catalog_product_ids as $product_id ) {
+			// Stop when enough cross-sells are collected
+			if ( count( $cross_sell_ids ) >= $limit ) { break; }
+
+			$product = wc_get_product( $product_id );
+
+			// Skip products that cannot be shown as cross-sells
+			if ( ! $product || ! $product->is_visible() || ! $product->is_purchasable() || ! $product->is_in_stock() ) { continue; }
+
+			$cross_sell_ids[] = (int) $product_id;
+		}
+
+		// Top up with dummy products when the catalog has too few products outside the cart
+		foreach ( array_keys( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_products() ) as $dummy_product_id ) {
+			// Stop when enough cross-sells are collected
+			if ( count( $cross_sell_ids ) >= $limit ) { break; }
+
+			// Skip dummy products already used as cart line items
+			if ( in_array( (int) $dummy_product_id, $exclude_ids, true ) ) { continue; }
+
+			$cross_sell_ids[] = (int) $dummy_product_id;
+		}
+
+		return $cross_sell_ids;
+	}
+
+	/**
+	 * Get how many cross-sell products to inject into the preview cart.
+	 */
+	public function get_preview_cross_sells_limit() {
+		// Keep the side cart settings preview to two cross-sells so the open drawer stays readable
+		if ( $this->is_side_cart_preview_page() ) {
+			return self::CROSS_SELLS_LIMIT;
+		}
+
+		$limit = absint( FluidCheckout_Settings::instance()->get_option( 'fc_pro_cart_cross_sells_display_items_limit' ) );
+
+		// Use the default when the setting is missing or invalid
+		if ( $limit < 1 ) {
+			$limit = self::CROSS_SELLS_LIMIT;
+		}
+
+		return $limit;
+	}
+
+	/**
+	 * Cap cross-sells on the side cart settings preview so the open drawer stays readable.
+	 *
+	 * @param  int  $limit  Cross-sells display limit.
+	 */
+	public function maybe_limit_side_cart_preview_cross_sells_total( $limit ) {
+		// Bail if not the side cart settings preview
+		if ( ! $this->is_side_cart_preview_page() ) { return $limit; }
+
+		return self::CROSS_SELLS_LIMIT;
 	}
 
 

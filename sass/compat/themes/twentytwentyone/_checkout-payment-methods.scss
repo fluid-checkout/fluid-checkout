@@ -1,0 +1,17 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $body-theme-selector } .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"] + label::before {
+	margin: 0;
+	transform: none;
+}
+
+body#{ $body-theme-selector } .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:checked + label::before {
+	background: inherit;
+}
