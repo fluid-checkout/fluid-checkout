@@ -1,0 +1,42 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+// Theme sets global `input { color: var(--white) }` and `input:focus { color: var(--white) }`.
+body#{ $body-theme-selector } div.woocommerce form .form-row textarea,
+body#{ $body-theme-selector } div.woocommerce form .form-row select,
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="email"],
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="number"],
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="date"],
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="search"],
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="text"],
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="tel"],
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="url"],
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="password"],
+body#{ $body-theme-selector } div.woocommerce form .form-row textarea:focus,
+body#{ $body-theme-selector } div.woocommerce form .form-row select:focus,
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="email"]:focus,
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="number"]:focus,
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="date"]:focus,
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="search"]:focus,
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="text"]:focus,
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="tel"]:focus,
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="url"]:focus,
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="password"]:focus {
+	color: var( --fluidcheckout--field--text-color, #15171A ) !important; // Needed to override theme styles
+}
+
+
+
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered,
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+	color: var( --fluidcheckout--field--text-color, #15171A ) !important; // Needed to override theme styles
+}

@@ -1,0 +1,35 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+// Keep Select2 vertical spacing aligned with text inputs on this theme.
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--single,
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple {
+	padding-top: 0;
+	padding-bottom: 0;
+	border-radius: $form-field-border-radius !important; // Needed to match text input border-radius
+}
+
+
+
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered,
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+	border-radius: $form-field-border-radius !important; // Needed to match text input border-radius
+}
+
+
+
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+	padding-top: 0 !important; // Needed to override theme styles
+	padding-bottom: 0 !important; // Needed to override theme styles
+	line-height: $form-field-select2-selection-height--single !important; // Needed to override theme styles
+	font-size: inherit !important; // Needed to match text inputs that inherit the theme body font-size
+}
