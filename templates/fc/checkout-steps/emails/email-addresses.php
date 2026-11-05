@@ -77,7 +77,7 @@ $billing_address_label = apply_filters( 'fc_pro_order_details_customer_billing_a
 $shipping_address_label = apply_filters( 'fc_pro_order_details_customer_shipping_address_label', FluidCheckout_Steps::instance()->get_substep_title( 'shipping_address' ), $order );
 
 // CHANGE: Guard FeaturesUtil for WooCommerce versions before the features API existed
-$email_improvements_enabled = class_exists( FeaturesUtil::class ) && FeaturesUtil::feature_is_enabled( 'email_improvements' );
+$email_improvements_enabled = class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) && FeaturesUtil::feature_is_enabled( 'email_improvements' );
 
 /**
  * Filter whether to display the section divider in the email body.

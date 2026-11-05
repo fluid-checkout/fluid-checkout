@@ -389,7 +389,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function add_checkout_page_custom_styles( $custom_styles ) {
 		// Get header background color
-		$page_background_color = trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_page_background_color', '' ) );
+		$page_background_color = trim( (string) FluidCheckout_Settings::instance()->get_option( 'fc_checkout_page_background_color', '' ) );
 
 		// Bail if color is empty
 		if ( empty( $page_background_color ) ) { return $custom_styles; }
@@ -462,7 +462,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function add_css_variables_header( $css_variables, $context = 'frontend' ) {
 		// Get header background color
-		$header_background_color_esc = esc_attr( trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_header_background_color', '' ) ) );
+		$header_background_color_esc = esc_attr( trim( (string) FluidCheckout_Settings::instance()->get_option( 'fc_checkout_header_background_color', '' ) ) );
 
 		// Bail if color is empty
 		if ( empty( $header_background_color_esc ) ) { return $css_variables; }
@@ -500,7 +500,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function add_css_variables_footer( $css_variables, $context = 'frontend' ) {
 		// Get footer background color
-		$footer_background_color_esc = esc_attr( trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_footer_background_color', '' ) ) );
+		$footer_background_color_esc = esc_attr( trim( (string) FluidCheckout_Settings::instance()->get_option( 'fc_checkout_footer_background_color', '' ) ) );
 
 		// Bail if color is empty
 		if ( empty( $footer_background_color_esc ) ) { return $css_variables; }
@@ -538,7 +538,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function add_css_variables_order_summary( $css_variables, $context = 'frontend' ) {
 		// Get footer background color
-		$color_esc = esc_attr( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_order_review_highlight_color' ) );
+		$color_esc = esc_attr( trim( (string) FluidCheckout_Settings::instance()->get_option( 'fc_checkout_order_review_highlight_color' ) ) );
 
 		// Bail if color is empty
 		if ( empty( $color_esc ) ) { return $css_variables; }

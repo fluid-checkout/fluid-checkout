@@ -77,6 +77,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+		// After FluidCheckout_Enqueue::maybe_enqueue_checkout_scripts (105) restores the `wc-checkout` chain.
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 110 );
 
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
@@ -487,6 +489,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Enqueue
 		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 110 );
 
 		// JS settings object
 		remove_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
@@ -1191,7 +1194,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$chosen_payment_method = WC()->session->get( 'chosen_payment_method' );
 
 		// Set chosen payment method to first one available when the chosen method saved to session is not available.
-		if ( ! $chosen_payment_method || '' === $chosen_payment_method || ! array_key_exists( $chosen_payment_method, $available_gateways ) ) {
+		$chosen_payment_method_is_set = is_string( $chosen_payment_method ) && '' !== $chosen_payment_method;
+		if ( ! $chosen_payment_method_is_set || ! array_key_exists( $chosen_payment_method, $available_gateways ) ) {
 			reset( $available_gateways );
 			$chosen_payment_method = key( $available_gateways );
 		}
@@ -4017,6 +4021,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		 * @param array $value Value to filter. Default empty array.
 		 */
 		$review_text_lines = apply_filters( "fc_substep_{$substep_id}_text_lines", array() );
+
+		// Drop empty lines so placeholders such as an unset email do not bypass the empty-state notice
+		if ( is_array( $review_text_lines ) ) {
+			$review_text_lines = array_values( array_filter( $review_text_lines, function( $text_line ) {
+				return null !== $text_line && false !== $text_line && '' !== $text_line;
+			} ) );
+		}
 
 		// Maybe add notice for empty substep text
 		if ( ! is_array( $review_text_lines ) || count ( $review_text_lines ) == 0 ) {
@@ -8335,12 +8346,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$chosen_payment_method = WC()->session->get( 'chosen_payment_method' );
 
 		// Make sure we have an array of chosen payment methods
-		if ( ! is_array( $chosen_payment_method ) ) { $chosen_payment_method = array( $chosen_payment_method ); }
+		if ( ! is_array( $chosen_payment_method ) ) {
+			$chosen_payment_method = is_string( $chosen_payment_method ) && '' !== $chosen_payment_method ? array( $chosen_payment_method ) : array();
+		}
 
 		// Add a review text line for each chosen method
 		foreach ( $chosen_payment_method as $chosen_method_key ) {
 			// Maybe skip if gateway was not found
-			if ( ! array_key_exists( $chosen_method_key, $available_gateways ) ) { continue; }
+			if ( ! is_string( $chosen_method_key ) || '' === $chosen_method_key || ! array_key_exists( $chosen_method_key, $available_gateways ) ) { continue; }
 
 			// Get gateway
 			$gateway = $available_gateways[ $chosen_method_key ];
