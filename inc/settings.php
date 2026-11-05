@@ -100,17 +100,8 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 		// Keep `update_option()` writes for managed keys on the active profile
 		add_filter( 'pre_update_option', array( $this, 'filter_pre_update_option' ), 10, 3 );
 
-		// Settings values forced when only Lite is active
-		add_filter( 'pre_option_fc_design_template', array( $this, 'set_option_lite_design_template' ), 10, 3 );
-		add_filter( 'pre_option_fc_checkout_column_layout', array( $this, 'set_option_checkout_column_layout' ), 10, 3 );
-		add_filter( 'pre_option_fc_checkout_progress_bar_style', array( $this, 'set_option_progress_bar_style' ), 10, 3 );
-		add_filter( 'pre_option_fc_pro_checkout_edit_cart_replace_edit_cart_link', array( $this, 'set_option_replace_edit_cart_link' ), 10, 3 );
-		add_filter( 'pre_option_fc_pro_checkout_coupon_codes_position', array( $this, 'set_option_coupon_code_position_checkout' ), 10, 3 );
-		add_filter( 'pre_option_fc_pro_checkout_billing_address_position', array( $this, 'set_option_billing_address_position_checkout' ), 10, 3 );
-
-		// Settings values (at later stage)
-		// Intentionally use `option_` instead of `pre_option_` as we need to check the value of the option that was saved the to database before making any changes to it.
-		add_filter( 'option_fc_pro_checkout_order_summary_position_mobile', array( $this, 'set_option_order_summary_position_mobile' ), 10, 2 );
+		// Settings values forced when only Lite is active (PRO removes this filter)
+		add_filter( 'fc_settings_effective_values', array( $this, 'force_lite_option_values' ), 10 );
 
 		// Legacy cleanup notice actions
 		add_action( 'admin_init', array( $this, 'maybe_handle_legacy_cleanup_action' ), 10 );
@@ -475,27 +466,23 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 
 		// Site-wide keys always read from wp_options (one value for the website)
 		if ( $this->is_site_wide_option( $option ) ) {
-			$value = $this->get_raw_option( $option, null !== $default ? $default : '' );
-			return $this->maybe_force_lite_option_value( $option, $value );
+			return $this->get_raw_option( $option, null !== $default ? $default : '' );
 		}
 
 		$effective = $this->get_effective_values();
 
-		// Get overlay / active profile value when present
+		// Get overlay / active profile value when present (includes `fc_settings_effective_values` overlays)
 		if ( is_array( $effective ) && array_key_exists( $option, $effective ) ) {
-			$value = $effective[ $option ];
-		}
-		// Fluid Checkout keys without a stored value use the code default
-		elseif ( $this->is_fluid_checkout_option_key( $option ) ) {
-			$value = $default;
-		}
-		// Non-`fc_*` and unmanaged keys fall through to WordPress / other plugins
-		else {
-			$value = $this->get_raw_option( $option, $default );
+			return $effective[ $option ];
 		}
 
-		// Maybe force Lite-compatible values when PRO is not active
-		return $this->maybe_force_lite_option_value( $option, $value );
+		// Fluid Checkout keys without a stored value use the code default
+		if ( $this->is_fluid_checkout_option_key( $option ) ) {
+			return $default;
+		}
+
+		// Non-`fc_*` and unmanaged keys fall through to WordPress / other plugins
+		return $this->get_raw_option( $option, $default );
 	}
 
 
@@ -811,7 +798,7 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 		$effective = $this->get_effective_values();
 
 		if ( is_array( $effective ) && array_key_exists( $option, $effective ) ) {
-			return $this->maybe_force_lite_option_value( $option, $effective[ $option ] );
+			return $effective[ $option ];
 		}
 
 		// Non-`fc_*` managed keys missing from the map keep values from other plugins
@@ -821,9 +808,7 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 
 		// Fluid Checkout keys missing from the map use code defaults
 		$code_default = $this->get_option_default( $option );
-		$value = null !== $code_default ? $code_default : $default;
-
-		return $this->maybe_force_lite_option_value( $option, $value );
+		return null !== $code_default ? $code_default : $default;
 	}
 
 	/**
@@ -952,163 +937,34 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 
 
 	/**
-	 * Maybe force Lite-compatible option values when PRO is not active.
-	 * Uses the same hooks PRO removes on activation, so behavior stays in sync with `pre_option_*` / `option_*` filters.
+	 * Force Lite-compatible option values when PRO is not active.
+	 * PRO removes this callback so stored PRO values are used as-is.
 	 *
-	 * @param  string  $option  Option name.
-	 * @param  mixed   $value   Resolved option value.
+	 * @param  array  $values  Effective settings values.
 	 */
-	public function maybe_force_lite_option_value( $option, $value ) {
-		switch ( $option ) {
-			case 'fc_design_template':
-				// Bail if PRO removed the Lite force filter
-				if ( ! has_filter( 'pre_option_fc_design_template', array( $this, 'set_option_lite_design_template' ) ) ) { return $value; }
-				return $this->set_option_lite_design_template( $value, $option, null );
+	public function force_lite_option_values( $values ) {
+		$values = is_array( $values ) ? $values : array();
 
-			case 'fc_checkout_column_layout':
-				// Bail if PRO removed the Lite force filter
-				if ( ! has_filter( 'pre_option_fc_checkout_column_layout', array( $this, 'set_option_checkout_column_layout' ) ) ) { return $value; }
-				return $this->set_option_checkout_column_layout( $value, $option, null );
-
-			case 'fc_checkout_progress_bar_style':
-				// Bail if PRO removed the Lite force filter
-				if ( ! has_filter( 'pre_option_fc_checkout_progress_bar_style', array( $this, 'set_option_progress_bar_style' ) ) ) { return $value; }
-				return $this->set_option_progress_bar_style( $value, $option, null );
-
-			case 'fc_pro_checkout_edit_cart_replace_edit_cart_link':
-				// Bail if PRO removed the Lite force filter
-				if ( ! has_filter( 'pre_option_fc_pro_checkout_edit_cart_replace_edit_cart_link', array( $this, 'set_option_replace_edit_cart_link' ) ) ) { return $value; }
-				return $this->set_option_replace_edit_cart_link( $value, $option, null );
-
-			case 'fc_pro_checkout_coupon_codes_position':
-				// Bail if PRO removed the Lite force filter
-				if ( ! has_filter( 'pre_option_fc_pro_checkout_coupon_codes_position', array( $this, 'set_option_coupon_code_position_checkout' ) ) ) { return $value; }
-				return $this->set_option_coupon_code_position_checkout( $value, $option, null );
-
-			case 'fc_pro_checkout_billing_address_position':
-				// Bail if PRO removed the Lite force filter
-				if ( ! has_filter( 'pre_option_fc_pro_checkout_billing_address_position', array( $this, 'set_option_billing_address_position_checkout' ) ) ) { return $value; }
-				return $this->set_option_billing_address_position_checkout( $value, $option, null );
-
-			case 'fc_pro_checkout_order_summary_position_mobile':
-				// Bail if PRO removed the Lite force filter
-				if ( ! has_filter( 'option_fc_pro_checkout_order_summary_position_mobile', array( $this, 'set_option_order_summary_position_mobile' ) ) ) { return $value; }
-				return $this->set_option_order_summary_position_mobile( $value, $option );
-
-			default:
-				return $value;
-		}
-	}
-
-	/**
-	 * Force a design template available in Lite when only Lite plugin is activated.
-	 *
-	 * @param  mixed   $pre_option   The value to return instead of the option value.
-	 * @param  string  $option       Option name.
-	 * @param  mixed   $default      The fallback value to return if the option does not exist.
-	 */
-	public function set_option_lite_design_template( $pre_option, $option, $default ) {
-		// Bail while reading the stored row for migration
-		if ( $this->bypass_pre_option ) { return $pre_option; }
-
-		// Get the stored design template, as the `pre_option_` filter runs before the profile value is read
-		$design_template = false !== $pre_option ? $pre_option : $this->get_stored_option_value( 'fc_design_template' );
-
-		// Return the design template when it is available in Lite
-		if ( in_array( $design_template, array( 'classic', 'boxed' ), true ) ) {
-			return $design_template;
+		// Keep classic/boxed design templates, otherwise fall back to the Lite default
+		$design_template = array_key_exists( 'fc_design_template', $values ) ? $values[ 'fc_design_template' ] : $this->get_option_default( 'fc_design_template' );
+		if ( ! in_array( $design_template, array( 'classic', 'boxed' ), true ) ) {
+			$values[ 'fc_design_template' ] = $this->get_option_default( 'fc_design_template' );
 		}
 
-		return $this->get_option_default( 'fc_design_template' );
-	}
+		// Force Lite defaults for options that only PRO can change
+		$values[ 'fc_checkout_column_layout' ] = $this->get_option_default( 'fc_checkout_column_layout' );
+		$values[ 'fc_checkout_progress_bar_style' ] = $this->get_option_default( 'fc_checkout_progress_bar_style' );
+		$values[ 'fc_pro_checkout_edit_cart_replace_edit_cart_link' ] = $this->get_option_default( 'fc_pro_checkout_edit_cart_replace_edit_cart_link' );
+		$values[ 'fc_pro_checkout_coupon_codes_position' ] = $this->get_option_default( 'fc_pro_checkout_coupon_codes_position' );
+		$values[ 'fc_pro_checkout_billing_address_position' ] = $this->get_option_default( 'fc_pro_checkout_billing_address_position' );
 
-	/**
-	 * Force the option value for checkout column layout when only Lite plugin is activated.
-	 *
-	 * @param  mixed   $pre_option   The value to return instead of the option value.
-	 * @param  string  $option       Option name.
-	 * @param  mixed   $default      The fallback value to return if the option does not exist.
-	 */
-	public function set_option_checkout_column_layout( $pre_option, $option, $default ) {
-		// Bail while reading the stored row for migration
-		if ( $this->bypass_pre_option ) { return $pre_option; }
-
-		return $this->get_option_default( 'fc_checkout_column_layout' );
-	}
-
-	/**
-	 * Force the option value for progress bar style when only Lite plugin is activated.
-	 *
-	 * @param  mixed   $pre_option   The value to return instead of the option value.
-	 * @param  string  $option       Option name.
-	 * @param  mixed   $default      The fallback value to return if the option does not exist.
-	 */
-	public function set_option_progress_bar_style( $pre_option, $option, $default ) {
-		// Bail while reading the stored row for migration
-		if ( $this->bypass_pre_option ) { return $pre_option; }
-
-		return $this->get_option_default( 'fc_checkout_progress_bar_style' );
-	}
-
-	/**
-	 * Force the option value for replacing edit cart link when only Lite plugin is activated.
-	 *
-	 * @param  mixed   $pre_option   The value to return instead of the option value.
-	 * @param  string  $option       Option name.
-	 * @param  mixed   $default      The fallback value to return if the option does not exist.
-	 */
-	public function set_option_replace_edit_cart_link( $pre_option, $option, $default ) {
-		// Bail while reading the stored row for migration
-		if ( $this->bypass_pre_option ) { return $pre_option; }
-
-		return $this->get_option_default( 'fc_pro_checkout_edit_cart_replace_edit_cart_link' );
-	}
-
-	/**
-	 * Force the option value for order summary section position on mobile when only Lite plugin is activated.
-	 *
-	 * @param  string  $value        The value of the option.
-	 * @param  string  $option       Option name.
-	 */
-	public function set_option_order_summary_position_mobile( $value, $option ) {
-		// Bail while reading the stored row for migration
-		if ( $this->bypass_pre_option ) { return $value; }
-
-		// Bail if using accepted Lite options
-		$accepted_values = array( 'hidden', 'site_header' );
-		if ( in_array( $value, $accepted_values ) ) {
-			return $value;
+		// Keep Lite-safe mobile order summary positions, otherwise fall back to the Lite default
+		$order_summary_mobile = array_key_exists( 'fc_pro_checkout_order_summary_position_mobile', $values ) ? $values[ 'fc_pro_checkout_order_summary_position_mobile' ] : $this->get_option_default( 'fc_pro_checkout_order_summary_position_mobile' );
+		if ( ! in_array( $order_summary_mobile, array( 'hidden', 'site_header' ), true ) ) {
+			$values[ 'fc_pro_checkout_order_summary_position_mobile' ] = $this->get_option_default( 'fc_pro_checkout_order_summary_position_mobile' );
 		}
 
-		return $this->get_option_default( 'fc_pro_checkout_order_summary_position_mobile' );
-	}
-
-	/**
-	 * Force the option value for coupon code section position on checkout when only Lite plugin is activated.
-	 *
-	 * @param  mixed   $pre_option   The value to return instead of the option value.
-	 * @param  string  $option       Option name.
-	 * @param  mixed   $default      The fallback value to return if the option does not exist.
-	 */
-	public function set_option_coupon_code_position_checkout( $pre_option, $option, $default ) {
-		// Bail while reading the stored row for migration
-		if ( $this->bypass_pre_option ) { return $pre_option; }
-
-		return $this->get_option_default( 'fc_pro_checkout_coupon_codes_position' );
-	}
-
-	/**
-	 * Force the option value for billing address section position on checkout when only Lite plugin is activated.
-	 *
-	 * @param  mixed   $pre_option   The value to return instead of the option value.
-	 * @param  string  $option       Option name.
-	 * @param  mixed   $default      The fallback value to return if the option does not exist.
-	 */
-	public function set_option_billing_address_position_checkout( $pre_option, $option, $default ) {
-		// Bail while reading the stored row for migration
-		if ( $this->bypass_pre_option ) { return $pre_option; }
-
-		return $this->get_option_default( 'fc_pro_checkout_billing_address_position' );
+		return $values;
 	}
 
 
@@ -1185,7 +1041,13 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 
 			// Get the stored value and the value Lite forces from it
 			$stored_value = $this->get_stored_option_value( $option[ 'id' ] );
-			$forced_value = $this->maybe_force_lite_option_value( $option[ 'id' ], $stored_value );
+			$forced_value = $stored_value;
+
+			// Maybe apply the Lite force callback directly when PRO has not removed it
+			if ( has_filter( 'fc_settings_effective_values', array( $this, 'force_lite_option_values' ) ) ) {
+				$forced_map = $this->force_lite_option_values( array( $option[ 'id' ] => $stored_value ) );
+				$forced_value = array_key_exists( $option[ 'id' ], $forced_map ) ? $forced_map[ $option[ 'id' ] ] : $stored_value;
+			}
 
 			// Skip unchanged values Lite is forcing, so a save while PRO is inactive keeps the stored PRO value
 			if ( $forced_value !== $stored_value && $value === $forced_value ) {
@@ -1199,12 +1061,12 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 	}
 
 	/**
-	 * Get the stored profile value for an option, without Lite force filters.
+	 * Get the stored profile value for an option, without `fc_settings_effective_values` overlays.
 	 *
 	 * @param  string  $option  Option name.
 	 */
 	public function get_stored_option_value( $option ) {
-		$effective = $this->get_effective_values();
+		$effective = $this->get_stored_effective_values();
 
 		// Use the profile value when the key has been stored or seeded from defaults
 		if ( is_array( $effective ) && array_key_exists( $option, $effective ) ) {
