@@ -24,6 +24,7 @@
 		shippingMethodsQueryArg:      'fc_preview_shipping_methods',
 		sessionFieldsQueryArg:        'fc_preview_session_fields',
 		sessionFieldKeys:             [],
+		navigablePaths:               [],
 		messageSource:                'fc-admin-preview',
 		darkModeCssVariables:         {},
 
@@ -609,6 +610,52 @@
 
 
 	/**
+	 * Check whether a link opens a page that may open in the preview, on the same site, without query arguments other than the preview arguments, and with a path that starts with one of the navigable paths.
+	 *
+	 * @param {HTMLAnchorElement}  link  Link element.
+	 *
+	 * @return {boolean}  Whether the link opens a navigable page.
+	 */
+	var isNavigableLink = function( link ) {
+		var argNames = Array.from( new URLSearchParams( link.search ).keys() );
+		var i;
+
+		// Bail if the link opens another site
+		if ( root.location.origin !== link.origin ) { return false; }
+
+		// Bail if the link points to the current page, which only changes the URL fragment or is handled by scripts within the page
+		if ( root.location.pathname === link.pathname && root.location.search === link.search ) { return false; }
+
+		// Iterate query arguments of the link
+		for ( i = 0; i < argNames.length; i++ ) {
+			// Bail if the link has query arguments other than the preview arguments, as those links run actions such as removing cart items
+			if ( ! _settings.previewArgs.hasOwnProperty( argNames[ i ] ) ) { return false; }
+		}
+
+		// Iterate navigable paths
+		for ( i = 0; i < _settings.navigablePaths.length; i++ ) {
+			// Accept the link when its path starts with the navigable path
+			if ( 0 === link.pathname.indexOf( _settings.navigablePaths[ i ] ) ) { return true; }
+		}
+
+		return false;
+	};
+
+	/**
+	 * Open the page of a link in the preview, with the preview arguments.
+	 *
+	 * @param {Event}              e     Click event.
+	 * @param {HTMLAnchorElement}  link  Link element.
+	 */
+	var openLinkInPreview = function( e, link ) {
+		// Stop the default navigation, which would open the page without the preview arguments
+		e.preventDefault();
+
+		// Open the page with the preview arguments
+		root.location.href = getPreviewRequestUrl( link.href );
+	};
+
+	/**
 	 * Maybe stop a link from navigating away from the preview page.
 	 *
 	 * @param {Event}              e     Click or auxiliary click event.
@@ -632,14 +679,19 @@
 
 	/**
 	 * Handle document clicks, including middle clicks, and route to the appropriate handler.
+	 * Navigable links only open on clicks, as middle clicks would open them in other tabs.
 	 *
 	 * @param {Event}  e  Click or auxiliary click event.
 	 */
 	var handleClick = function( e ) {
 		var matchedElement;
 
+		// NAVIGABLE LINKS
+		if ( 'click' === e.type && ( matchedElement = e.target.closest( _settings.linkSelector ) ) && isNavigableLink( matchedElement ) ) {
+			openLinkInPreview( e, matchedElement );
+		}
 		// INERT ACTIONS
-		if ( e.target.closest( _settings.inertActionSelector ) ) {
+		else if ( e.target.closest( _settings.inertActionSelector ) ) {
 			preventAction( e );
 		}
 		// LINKS
