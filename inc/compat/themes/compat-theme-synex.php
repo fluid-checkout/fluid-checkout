@@ -88,7 +88,7 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
-		$attributes['data-sticky-relative-to'] = '.header-section';
+		$attributes[ 'data-sticky-relative-to' ] = '.header-section';
 
 		return $attributes;
 	}
