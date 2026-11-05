@@ -11,7 +11,8 @@ $body-theme-selector: null !default;
 // ------------------------------------
 
 // Theme hides all `br` below 991px, which collapses WooCommerce formatted address
-// lines in substep review text (name, street, city and country run together).
-body#{ $body-theme-selector } .fc-wrapper .fc-step__substep-text-line br {
+// lines and other FC markup that relies on line breaks (substep review text,
+// shipping method descriptions, pickup point details, etc.).
+body#{ $body-theme-selector } .fc-wrapper br {
 	display: unset;
 }
