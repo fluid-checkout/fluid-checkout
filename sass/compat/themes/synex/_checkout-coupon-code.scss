@@ -15,3 +15,12 @@ body#{ $body-theme-selector } .fc-wrapper .fc-coupon_code__collapsible input#cou
 body#{ $body-theme-selector } .fc-wrapper .fc-coupon_code__collapsible input#coupon_code:focus {
 	color: var( --fluidcheckout--field--text-color, #15171A ) !important; // Needed to override theme styles
 }
+
+// WooCommerce notice icons are absolutely positioned. FC coupon messages use
+// zero padding, so the icon overflows onto the coupon field below.
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-error::before,
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-info::before,
+body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-message::before {
+	content: none;
+	display: none;
+}
