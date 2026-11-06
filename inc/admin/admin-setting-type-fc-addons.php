@@ -120,7 +120,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				),
 				'image'         => $directory_url . 'images/admin/fluid-checkout-pro-icon.svg',
 				'purchase_url'  => 'https://fluidcheckout.com/pricing/?mtm_campaign=addons&mtm_kwd=fc-pro&mtm_source=lite-plugin',
-				'purchase_label'=> FluidCheckout_Admin::instance()->get_pro_upgrade_button_label_without_price(),
+				'purchase_label'=> FluidCheckout_Admin::instance()->get_pro_upgrade_button_label(),
 			),
 		);
 
