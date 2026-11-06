@@ -1141,7 +1141,9 @@ class FluidCheckout_Guided_Setup_Recommendations {
 	/**
 	 * Get option values to apply on finish.
 	 *
-	 * Starts from filtered profile_values, then drops:
+	 * Only listed recommended_setup rows are applied. Filtered `profile_values` may
+	 * still contain every settings default for scoring, but those unlisted keys must
+	 * not be written. Then drops:
 	 * - option keys the merchant unchecked on recommended_setup (user_overrides list)
 	 * - option keys belonging to PRO recommended rows when PRO is not active
 	 *
@@ -1155,10 +1157,10 @@ class FluidCheckout_Guided_Setup_Recommendations {
 		$excluded_keys   = $this->normalize_excluded_option_keys( isset( $recommendations['user_overrides'] ) ? $recommendations['user_overrides'] : array() );
 		$recommended     = isset( $recommendations['recommended'] ) && is_array( $recommendations['recommended'] ) ? $recommendations['recommended'] : array();
 		$defaults        = $this->get_settings_defaults();
-		$values          = $this->sanitize_option_map( $profile_values, $defaults );
 		$apply_pro       = $this->should_apply_pro_recommendation_options();
+		$values          = array();
 
-		// Iterate recommended rows
+		// Iterate recommended rows shown on recommended_setup
 		foreach ( $recommended as $row ) {
 			$option_key = isset( $row['option_key'] ) ? (string) $row['option_key'] : ( isset( $row['id'] ) ? (string) $row['id'] : '' );
 
@@ -1167,18 +1169,29 @@ class FluidCheckout_Guided_Setup_Recommendations {
 				continue;
 			}
 
-			// Drop PRO promo option keys from Lite apply
+			// Skip PRO promo option keys on Lite
 			if ( ! empty( $row['is_pro'] ) && ! $apply_pro ) {
-				unset( $values[ $option_key ] );
+				continue;
+			}
+
+			// Skip toggles the merchant unchecked
+			if ( in_array( $option_key, $excluded_keys, true ) ) {
+				continue;
+			}
+
+			// Prefer the filtered profile value from recommendation race sorting when present
+			if ( array_key_exists( $option_key, $profile_values ) ) {
+				$values[ $option_key ] = $profile_values[ $option_key ];
+				continue;
+			}
+
+			// Otherwise use the recommended row value
+			if ( array_key_exists( 'value', $row ) ) {
+				$values[ $option_key ] = $row['value'];
 			}
 		}
 
-		// Iterate excluded toggles
-		foreach ( $excluded_keys as $option_key ) {
-			unset( $values[ $option_key ] );
-		}
-
-		return $values;
+		return $this->sanitize_option_map( $values, $defaults );
 	}
 
 
