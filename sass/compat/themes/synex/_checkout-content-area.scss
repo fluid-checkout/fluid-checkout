@@ -1,0 +1,17 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+// Theme `.header-section` is `position: absolute`. The breadcrumb hero normally
+// clears it; without that section, content starts under the header.
+body#{ $body-theme-selector }:not( .has-checkout-header ) {
+	padding-top: remsize( 12rem );
+}
