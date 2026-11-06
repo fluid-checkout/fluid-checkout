@@ -713,22 +713,27 @@
 	 */
 	var maybeForwardAdminShortcut = function( e ) {
 		var isExpandShortcut;
+		var isHeaderFooterShortcut;
+		var isGuestShortcut;
+		var isLoggedInShortcut;
 		var isSaveShortcut;
+		var isShiftShortcut;
 
 		// Bail if not shown in a frame, or the admin origin is not available
 		if ( root.parent === root || ! _settings.adminOrigin ) { return false; }
 
-		// Bail if FCUtils is not available
-		if ( ! window.FCUtils ) { return false; }
-
-		isExpandShortcut = ( e.metaKey || e.ctrlKey ) && e.shiftKey && ! e.altKey && FCUtils.keyboardKeys.P === e.key.toLowerCase();
-		isSaveShortcut = ( e.metaKey || e.ctrlKey ) && ! e.altKey && ! e.shiftKey && FCUtils.keyboardKeys.S === e.key.toLowerCase();
+		isExpandShortcut = ( e.metaKey || e.ctrlKey ) && e.shiftKey && ! e.altKey && 'p' === e.key.toLowerCase();
+		isHeaderFooterShortcut = ( e.metaKey || e.ctrlKey ) && e.shiftKey && ! e.altKey && 'h' === e.key.toLowerCase();
+		isGuestShortcut = ( e.metaKey || e.ctrlKey ) && e.shiftKey && ! e.altKey && 'g' === e.key.toLowerCase();
+		isLoggedInShortcut = ( e.metaKey || e.ctrlKey ) && e.shiftKey && ! e.altKey && 'l' === e.key.toLowerCase();
+		isSaveShortcut = ( e.metaKey || e.ctrlKey ) && ! e.altKey && ! e.shiftKey && 's' === e.key.toLowerCase();
+		isShiftShortcut = isExpandShortcut || isHeaderFooterShortcut || isGuestShortcut || isLoggedInShortcut;
 
 		// Bail if no admin shortcut was pressed
-		if ( ! isExpandShortcut && ! isSaveShortcut ) { return false; }
+		if ( ! isShiftShortcut && ! isSaveShortcut ) { return false; }
 
-		// Bail if expanding while the user is typing in a field
-		if ( isExpandShortcut && isAdminShortcutBlockedTarget( e.target ) ) { return false; }
+		// Bail if running a preview shortcut while the user is typing in a field
+		if ( isShiftShortcut && isAdminShortcutBlockedTarget( e.target ) ) { return false; }
 
 		// Stop the browser shortcut and keep it inside the settings page flow
 		e.preventDefault();
@@ -737,6 +742,18 @@
 		// EXPAND PREVIEW
 		if ( isExpandShortcut ) {
 			postToAdmin( { type: 'adminShortcut', shortcut: 'expandPreview' } );
+		}
+		// TOGGLE HEADER AND FOOTER
+		else if ( isHeaderFooterShortcut ) {
+			postToAdmin( { type: 'adminShortcut', shortcut: 'toggleHeaderFooter' } );
+		}
+		// GUEST MODE
+		else if ( isGuestShortcut ) {
+			postToAdmin( { type: 'adminShortcut', shortcut: 'previewGuest' } );
+		}
+		// LOGGED-IN MODE
+		else if ( isLoggedInShortcut ) {
+			postToAdmin( { type: 'adminShortcut', shortcut: 'previewLoggedIn' } );
 		}
 		// SAVE SETTINGS
 		else if ( isSaveShortcut ) {

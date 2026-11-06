@@ -523,21 +523,24 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 					</div>
 
 					<div class="fc-settings-preview__frame-options">
-						<button type="button" class="fc-settings-preview__header-footer" data-fc-settings-preview-header-footer aria-pressed="false" aria-label="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>">
+						<button type="button" class="fc-settings-preview__header-footer" data-fc-settings-preview-header-footer data-fc-settings-shortcut="toggle-header-footer" aria-pressed="false" aria-label="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>">
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75h16.5a1.5 1.5 0 011.5 1.5v13.5a1.5 1.5 0 01-1.5 1.5H3.75a1.5 1.5 0 01-1.5-1.5V5.25a1.5 1.5 0 011.5-1.5z"/>
 								<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 15.75h19.5"/>
 							</svg>
+							<span class="fc-settings-shortcut" data-fc-settings-shortcut-label aria-hidden="true"></span>
 						</button>
 
 						<div class="fc-settings-sectioned-buttons fc-settings-preview__mode" role="radiogroup" aria-label="<?php echo esc_attr( __( 'Preview as', 'fluid-checkout' ) ); ?>" data-fc-settings-preview-mode-field>
-							<label class="fc-settings-sectioned-buttons__option" title="<?php echo esc_attr( __( 'Guest', 'fluid-checkout' ) ); ?>">
+							<label class="fc-settings-sectioned-buttons__option" title="<?php echo esc_attr( __( 'Guest', 'fluid-checkout' ) ); ?>" data-fc-settings-shortcut="preview-guest">
 								<input type="radio" name="fc-settings-preview-mode" value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_GUEST ); ?>" data-fc-settings-preview-mode checked>
 								<span><?php echo esc_html( __( 'Guest', 'fluid-checkout' ) ); ?></span>
+								<span class="fc-settings-shortcut" data-fc-settings-shortcut-label aria-hidden="true"></span>
 							</label>
-							<label class="fc-settings-sectioned-buttons__option" title="<?php echo esc_attr( __( 'Logged in', 'fluid-checkout' ) ); ?>">
+							<label class="fc-settings-sectioned-buttons__option" title="<?php echo esc_attr( __( 'Logged in', 'fluid-checkout' ) ); ?>" data-fc-settings-shortcut="preview-logged-in">
 								<input type="radio" name="fc-settings-preview-mode" value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_LOGGED_IN ); ?>" data-fc-settings-preview-mode>
 								<span><?php echo esc_html( __( 'Logged in', 'fluid-checkout' ) ); ?></span>
+								<span class="fc-settings-shortcut" data-fc-settings-shortcut-label aria-hidden="true"></span>
 							</label>
 						</div>
 

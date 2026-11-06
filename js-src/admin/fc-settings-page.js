@@ -87,8 +87,11 @@
 	var _modifierHoldTimer = null;
 	var _isShowingShortcuts = false;
 	var _shortcutLabels = {
-		save:           '',
-		'expand-preview': '',
+		save:                   '',
+		'expand-preview':       '',
+		'toggle-header-footer': '',
+		'preview-guest':        '',
+		'preview-logged-in':    '',
 	};
 
 
@@ -1311,10 +1314,16 @@
 		if ( isMacPlatform() ) {
 			_shortcutLabels.save = '⌘S';
 			_shortcutLabels[ 'expand-preview' ] = '⌘⇧P';
+			_shortcutLabels[ 'toggle-header-footer' ] = '⌘⇧H';
+			_shortcutLabels[ 'preview-guest' ] = '⌘⇧G';
+			_shortcutLabels[ 'preview-logged-in' ] = '⌘⇧L';
 		}
 		else {
 			_shortcutLabels.save = 'Ctrl+S';
 			_shortcutLabels[ 'expand-preview' ] = 'Ctrl+Shift+P';
+			_shortcutLabels[ 'toggle-header-footer' ] = 'Ctrl+Shift+H';
+			_shortcutLabels[ 'preview-guest' ] = 'Ctrl+Shift+G';
+			_shortcutLabels[ 'preview-logged-in' ] = 'Ctrl+Shift+L';
 		}
 
 		labels = document.querySelectorAll( '[data-fc-settings-shortcut]' );
@@ -1496,7 +1505,7 @@
 			}
 		}
 
-		isSaveShortcut = ( event.metaKey || event.ctrlKey ) && ! event.altKey && ! event.shiftKey && FCUtils.keyboardKeys.S === event.key.toLowerCase();
+		isSaveShortcut = ( event.metaKey || event.ctrlKey ) && ! event.altKey && ! event.shiftKey && 's' === event.key.toLowerCase();
 
 		// Bail if the save shortcut was not pressed
 		if ( ! isSaveShortcut ) { return; }
