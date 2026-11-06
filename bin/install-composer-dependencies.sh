@@ -1,4 +1,15 @@
 #!/bin/bash
+set -euo pipefail
+
+if ! command -v composer >/dev/null 2>&1; then
+	echo "Error: composer is not on PATH. Install Composer and retry." >&2
+	exit 1
+fi
+
+if ! command -v jq >/dev/null 2>&1; then
+	echo "Error: jq is not on PATH. Install jq and retry." >&2
+	exit 1
+fi
 
 # Install production dependencies
 echo "Installing production dependencies..."
@@ -12,8 +23,8 @@ jq 'del(.require) | .config["vendor-dir"] = "vendor-dev"' composer.dev.json > co
 
 # Ensure the composer.dev.json file exists before proceeding
 if [ ! -f composer.dev.json ]; then
-    echo "Error: composer.dev.json file was not created."
-    exit 1
+	echo "Error: composer.dev.json file was not created."
+	exit 1
 fi
 
 # Install development dependencies into vendor-dev directory
