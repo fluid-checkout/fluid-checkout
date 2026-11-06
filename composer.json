@@ -12,6 +12,6 @@
 		"yoast/phpunit-polyfills": "^2.0"
 	},
 	"scripts": {
-		"test": "phpunit --configuration phpunit.xml.dist"
+		"test": "./vendor-dev/bin/phpunit --configuration phpunit.xml.dist"
 	}
 }
