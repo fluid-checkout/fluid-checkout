@@ -411,7 +411,17 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 		// Get order fields, with the order notes saved as the customer note
 		$order_fields = $this->get_order_fields();
 
-		return array_merge( $this->get_customer_fields(), array(
+		/**
+		 * Filter the properties of a dummy order in the admin preview.
+		 *
+		 * @since  5.0.0
+		 *
+		 * @param  array  $props     Order properties as accepted by `WC_Order::set_props()`.
+		 * @param  int    $order_id  Dummy order ID.
+		 *
+		 * @return array  Order properties as accepted by `WC_Order::set_props()`.
+		 */
+		return apply_filters( 'fc_admin_preview_dummy_order_props', array_merge( $this->get_customer_fields(), array(
 			'order_key'              => self::ORDER_KEY,
 			'status'                 => self::ORDER_PAY_ID === (int) $order_id ? 'pending' : 'processing',
 			'customer_id'            => FluidCheckout_Admin_Preview::MODE_LOGGED_IN === FluidCheckout_Admin_Preview::instance()->get_preview_mode() ? self::CUSTOMER_ID : 0,
@@ -422,7 +432,7 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 			'customer_note'          => array_key_exists( 'order_comments', $order_fields ) ? $order_fields[ 'order_comments' ] : '',
 			'date_created'           => time(),
 			'date_paid'              => self::ORDER_PAY_ID === (int) $order_id ? null : time(),
-		) );
+		) ), $order_id );
 	}
 
 	/**

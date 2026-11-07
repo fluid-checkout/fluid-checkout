@@ -27,18 +27,25 @@
 		navigablePaths:               [],
 		navigableQueryArgs:           [],
 		isCartEditable:               false,
+		isPlaceOrderEnabled:          false,
 		messageSource:                'fc-admin-preview',
 		darkModeCssVariables:         {},
 
 		hideHeaderFooterClass:        'fc-admin-preview--hide-header-footer',
+		navigableLinksClass:          'fc-admin-preview--navigable-links',
+		editableCartClass:            'fc-admin-preview--editable-cart',
+		placeOrderEnabledClass:       'fc-admin-preview--place-order-enabled',
 		darkModeClass:                'has-fc-dark-mode',
 
 		stylesId:                     'fc-admin-preview-styles',
 		probeId:                      'fc-admin-preview-probe',
 		customStylesId:               'fc-custom-styles',
 
-		inertActionSelector:          '#place_order, .fc-place-order-button, .fc-place-order__custom-buttons, .fc-express-checkout, .checkout-button, .fc-cart-action__proceed-checkout, .add_to_cart_button, .single_add_to_cart_button, .wc-block-components-product-button__button, [name="calc_shipping"], body :has( > iframe )',
+		inertActionSelector:          '.fc-place-order__custom-buttons, .fc-express-checkout, .checkout-button, .fc-cart-action__proceed-checkout, .add_to_cart_button, .single_add_to_cart_button, .wc-block-components-product-button__button, [name="calc_shipping"]',
+		frameContainerSelector:       'body :has( > iframe )',
+		paymentFieldsSelector:        '#payment',
 		cartActionSelector:           '.quantity, .fc-coupon-code__apply',
+		placeOrderActionSelector:     '#place_order, .fc-place-order-button',
 		quantityFieldSelector:        '.quantity input',
 		couponCodeFieldSelector:      'input[name="coupon_code"]',
 		linkSelector:                 'a[href], area[href]',
@@ -695,7 +702,19 @@
 			openLinkInPreview( e, matchedElement );
 		}
 		// INERT ACTIONS
-		else if ( e.target.closest( _settings.inertActionSelector ) || ( ! _settings.isCartEditable && e.target.closest( _settings.cartActionSelector ) ) ) {
+		else if ( e.target.closest( _settings.inertActionSelector ) ) {
+			preventAction( e );
+		}
+		// CART ACTIONS
+		else if ( ! _settings.isCartEditable && e.target.closest( _settings.cartActionSelector ) ) {
+			preventAction( e );
+		}
+		// PLACE ORDER ACTIONS
+		else if ( ! _settings.isPlaceOrderEnabled && e.target.closest( _settings.placeOrderActionSelector ) ) {
+			preventAction( e );
+		}
+		// EMBEDDED FRAMES
+		else if ( e.target.closest( _settings.frameContainerSelector ) && ! ( _settings.isPlaceOrderEnabled && e.target.closest( _settings.paymentFieldsSelector ) ) ) {
 			preventAction( e );
 		}
 		// LINKS
@@ -906,6 +925,19 @@
 	};
 
 	/**
+	 * Handle form submissions, which are stopped as forms must not submit from the preview, except the checkout form when placing orders is enabled.
+	 *
+	 * @param {Event}  e  Submit event.
+	 */
+	var handleSubmit = function( e ) {
+		// Bail if submitting the checkout form while placing orders is enabled, so the checkout scripts place the order
+		if ( _settings.isPlaceOrderEnabled && e.target.matches( _settings.checkoutFormSelector ) ) { return; }
+
+		// Stop the form submission
+		preventAction( e );
+	};
+
+	/**
 	 * Handle messages and route to the appropriate handler.
 	 *
 	 * @param {MessageEvent}  e  Message event.
@@ -981,6 +1013,11 @@
 		// Keep the dark mode class of the page, to restore it when the color scheme is no longer forced
 		_hasDarkModeClass = document.body.classList.contains( _settings.darkModeClass );
 
+		// Mark the page when links open pages in the preview, the cart can be changed or orders can be placed, so their actions do not look inert
+		document.body.classList.toggle( _settings.navigableLinksClass, 0 < _settings.navigablePaths.length );
+		document.body.classList.toggle( _settings.editableCartClass, _settings.isCartEditable );
+		document.body.classList.toggle( _settings.placeOrderEnabledClass, _settings.isPlaceOrderEnabled );
+
 		// Add event listeners
 		window.addEventListener( 'click', handleClick, true );
 		window.addEventListener( 'auxclick', handleClick, true ); // Middle clicks open links in new tabs
@@ -990,7 +1027,7 @@
 		window.addEventListener( 'beforeinput', handleBeforeInput, true );
 		window.addEventListener( 'input', handleChange, true );
 		window.addEventListener( 'change', handleChange, true );
-		window.addEventListener( 'submit', preventAction, true ); // Stops all form submissions, as forms must not submit from the preview
+		window.addEventListener( 'submit', handleSubmit, true );
 		window.addEventListener( 'message', handleMessage, true );
 
 		// Send requests to the frontend with the preview arguments, from jQuery and any other script
