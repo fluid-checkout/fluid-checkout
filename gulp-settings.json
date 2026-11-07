@@ -25,6 +25,8 @@
 			"replacements.json",
 			"replacements.config.json",
 			"README-DEV.md",
+			"docs/",
+			"docs/**",
 			"package.json",
 			"composer.json",
 			"phpunit.xml.dist",
