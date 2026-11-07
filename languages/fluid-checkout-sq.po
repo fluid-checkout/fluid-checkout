@@ -695,12 +695,6 @@ msgstr ""
 msgid "Progress bar"
 msgstr "Shiriti i progresit"
 
-#: inc/admin/admin-settings-checkout.php:196
-msgid "Display the checkout progress bar when using multi-step checkout layout"
-msgstr ""
-"Shfaq shiritin e progresit të arkëtimit kur përdorni paraqitjen e arkëtimit "
-"me shumë hapa"
-
 #: inc/admin/admin-settings-checkout.php:205
 msgid "Make the checkout progress bar stay visible while scrolling"
 msgstr "Bëje shiritin e progresit të arkëtimit të qëndrojë i dukshëm gjatë lëvizjes"
@@ -1404,12 +1398,6 @@ msgstr "Cilësimet"
 #: inc/admin/admin.php:134
 msgid "Support"
 msgstr "Mbështetje"
-
-#: inc/admin/admin.php:159
-msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
-msgstr ""
-"<a target=\"_blank\" href=\"%s\">Përmirësojeni në PRO</a> për të zhbllokuar "
-"më shumë opsione."
 
 #: inc/admin/admin.php:179
 msgid "(PRO)"
@@ -2132,61 +2120,9 @@ msgstr "Plugini u aktivizua."
 msgid "The following changes will be applied:"
 msgstr "Do të zbatohen ndryshimet e mëposhtme:"
 
-#: inc/admin/admin-notice-settings-legacy-cleanup.php:80
-msgid ""
-"Since Fluid Checkout 5.0, settings are saved differently. Legacy options "
-"are still stored in the database to allow downgrades to previous versions "
-"if needed."
-msgstr ""
-"Që nga Fluid Checkout 5.0, cilësimet ruhen ndryshe. Opsionet e trashëguara "
-"ruhen ende në bazën e të dhënave për të lejuar uljet në versionet e "
-"mëparshme nëse është e nevojshme."
-
-#: inc/admin/admin-notice-settings-legacy-cleanup.php:81
-msgid ""
-"Your store has been running for about 2 weeks on the new settings so you "
-"could clean up legacy options stored in the database. Please note that "
-"after cleanup, if you need to downgrade to previous versions of the plugin "
-"it will use default values for all settings."
-msgstr ""
-"Dyqani juaj ka qenë duke funksionuar për rreth 2 javë me cilësimet e reja, "
-"kështu që ju mund të pastroni opsionet e trashëguara të ruajtura në bazën e "
-"të dhënave. Ju lutemi vini re se pas pastrimit, nëse duhet të kaloni në "
-"versionet e mëparshme të plugin-it, ai do të përdorë vlerat fillestare për "
-"të gjitha cilësimet."
-
-#: inc/admin/admin-notice-settings-legacy-cleanup.php:85
-msgid "Fluid Checkout settings cleanup"
-msgstr "Pastrimi i cilësimeve të Fluid Checkout"
-
 #: inc/admin/admin-notice-settings-legacy-cleanup.php:91
 msgid "Delete leftover options"
 msgstr "Fshi opsionet e mbetura"
-
-#: inc/admin/admin-notice-telemetry.php:43
-msgid "Help us improve Fluid Checkout"
-msgstr "Na ndihmoni të përmirësojmë Fluid Checkout"
-
-#: inc/admin/admin-notice-telemetry.php:44
-msgid ""
-"Share anonymous site environment reports with Fluid Checkout to get faster "
-"support and help us improve compatibility and measure impact. No customer, "
-"user, or sensitive data are included. You can choose what is shared anytime "
-"from the Tools settings."
-msgstr ""
-"Ndani raportet anonime të mjedisit të faqes me Fluid Checkout për të marrë "
-"mbështetje më të shpejtë dhe për të na ndihmuar të përmirësojmë "
-"përputhshmërinë dhe të matim ndikimin. Nuk përfshihen të dhëna të "
-"klientëve, përdoruesve ose të dhëna të ndjeshme. Mund të zgjidhni se çfarë "
-"ndahet në çdo kohë nga cilësimet e Mjeteve."
-
-#: inc/admin/admin-notice-telemetry.php:49
-msgid "Enable site environment reports"
-msgstr "Aktivizo raportet e mjedisit të faqes"
-
-#: inc/admin/admin-notice-telemetry.php:54
-msgid "Review settings"
-msgstr "Rishiko cilësimet"
 
 #: inc/admin/admin-preview.php:761
 msgid "This preview has expired. Reload the admin page to start a new preview."
@@ -2242,10 +2178,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-addons.php:106
 msgid "Optimized order pay page"
 msgstr "Faqe e optimizuar për pagesën e porosisë"
-
-#: inc/admin/admin-setting-type-fc-addons.php:107
-msgid "Express checkout buttons from supported payment methods"
-msgstr "Butona për arkëtim të shpejtë nga metodat e mbështetura të pagesës"
 
 #: inc/admin/admin-setting-type-fc-addons.php:111, inc/admin/admin-settings-customer-accounts.php:194
 msgid "Delayed account creation"
@@ -2342,16 +2274,6 @@ msgstr ""
 "Kontrolloni nëse ka ndonjë <a href=\"%s\">opsion integrimi</a> të "
 "disponueshëm për temën ose shtojcat e tjera që keni instaluar."
 
-#: inc/admin/admin-setting-type-fc-setup.php:95
-#. translators: %s: Tools settings URL.
-msgid ""
-"Get faster support and help us improve compatibility and measure impact. <a "
-"href=\"%s\">Enable usage tracking</a> from the tools settings."
-msgstr ""
-"Merrni mbështetje më të shpejtë dhe na ndihmoni të përmirësojmë "
-"përputhshmërinë dhe të matim ndikimin. <a href=\"%s\">Aktivizoni gjurmimin "
-"e përdorimit</a> nga cilësimet e mjeteve."
-
 #: inc/admin/admin-setting-type-fc-setup.php:459
 msgid "Missing settings tab."
 msgstr "Mungon skeda e cilësimeve."
@@ -2371,10 +2293,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-setup.php:512, inc/admin/admin-settings-page.php:710
 msgid "Completed"
 msgstr "Përfunduar"
-
-#: inc/admin/admin-setting-type-fc-telemetry.php:81
-msgid "Preview report data"
-msgstr "Parapamje paraprake e të dhënave të raportit"
 
 #: inc/admin/admin-setting-type-fc-telemetry.php:86, inc/admin/admin-telemetry.php:66, inc/admin/admin-telemetry.php:103
 msgid "Send now"
@@ -3099,16 +3017,6 @@ msgstr ""
 msgid "Columns"
 msgstr "Kolona"
 
-#: inc/admin/admin-settings-checkout.php:113
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Applies to other checkout, cart, thank you (order received), and view order "
-"pages."
-msgstr ""
-"Stile të përgjithshme për hapat e arkëtimit, përmbledhjen e porosisë dhe "
-"seksionet e tjera. Vlen për faqet e tjera të arkëtimit, shportës, "
-"falënderimeve (porosia e marrë) dhe shikimit të porosisë."
-
 #: inc/admin/admin-settings-checkout.php:121
 msgid ""
 "When using the <em>\"1 column\"</em> layout with the <em>\"Split\"</em> "
@@ -3295,10 +3203,6 @@ msgstr "Krijimi i llogarisë"
 #: inc/admin/admin-settings-customer-accounts.php:102
 msgid "Allow customers to create an account during checkout"
 msgstr "Lejoni klientët të krijojnë një llogari gjatë pagesës"
-
-#: inc/admin/admin-settings-customer-accounts.php:103
-msgid "Customers can create an account before placing their order."
-msgstr "Klientët mund të krijojnë një llogari përpara se të bëjnë porosinë e tyre."
 
 #: inc/admin/admin-settings-customer-accounts.php:110
 msgid "Allow customers to create an account from the My account page"
@@ -3811,79 +3715,13 @@ msgstr "Seancë e izoluar · asgjë nuk është ruajtur"
 msgid "Usage tracking"
 msgstr "Gjurmimi i përdorimit"
 
-#: inc/admin/admin-settings-tools.php:89
-msgid ""
-"Send non-sensitive site environment reports to help Fluid Checkout improve "
-"compatibility. Reports are not sent until enabled in the options below."
-msgstr ""
-"Dërgoni raporte jo të ndjeshme të mjedisit të faqes për të ndihmuar Fluid "
-"Checkout të përmirësojë përputhshmërinë. Raportet nuk dërgohen derisa të "
-"aktivizohen në opsionet më poshtë."
-
-#: inc/admin/admin-settings-tools.php:95
-msgid "Send usage tracking reports to Fluid Checkout"
-msgstr "Dërgoni raportet e gjurmimit të përdorimit te Fluid Checkout"
-
-#: inc/admin/admin-settings-tools.php:96
-msgid ""
-"These reports help us improve compatibility and support for your site and "
-"are sent weekly when enabled."
-msgstr ""
-"Këto raporte na ndihmojnë të përmirësojmë përputhshmërinë dhe mbështetjen "
-"për faqen tuaj dhe dërgohen çdo javë kur aktivizohen."
-
-#: inc/admin/admin-settings-tools.php:97
-msgid ""
-"No customer, admin user, or any other sensitive data is included in the "
-"reports."
-msgstr ""
-"Asnjë klient, përdorues administrator ose ndonjë e dhënë tjetër e ndjeshme "
-"nuk përfshihet në raporte."
-
-#: inc/admin/admin-settings-tools.php:105
-msgid "Basic environment info"
-msgstr "Informacion bazë për mjedisin"
-
-#: inc/admin/admin-settings-tools.php:106
-msgid ""
-"WordPress, PHP, WooCommerce, theme, and plugin list data. Always included "
-"when reporting is enabled. Helps us understand the environment your site is "
-"running in."
-msgstr ""
-"Të dhënat e WordPress, PHP, WooCommerce, temave dhe listës së shtojcave. "
-"Përfshihen gjithmonë kur raportimi është i aktivizuar. Na ndihmon të "
-"kuptojmë mjedisin në të cilin po funksionon faqja juaj e internetit."
-
 #: inc/admin/admin-settings-tools.php:119
 msgid "Plugin settings"
 msgstr "Cilësimet e plugin-it"
 
-#: inc/admin/admin-settings-tools.php:120
-msgid ""
-"Sends Fluid Checkout plugin settings to help with support requests and "
-"helps us understand how you are using our plugins."
-msgstr ""
-"Dërgon cilësimet e plugin-it Fluid Checkout për të ndihmuar me kërkesat e "
-"mbështetjes dhe na ndihmon të kuptojmë se si po i përdorni plugin-et tona."
-
 #: inc/admin/admin-settings-tools.php:126
 msgid "Coming soon"
 msgstr "Së shpejti"
-
-#: inc/admin/admin-settings-tools.php:134
-msgid "Sales metrics"
-msgstr "Metrikat e shitjeve"
-
-#: inc/admin/admin-settings-tools.php:135
-msgid ""
-"Monthly order count and total sales for one year prior to installing Fluid "
-"Checkout up to today. Helps us understand if you are making more money with "
-"our plugins installed. No customer or user data is ever sent."
-msgstr ""
-"Numri i porosive mujore dhe shitjet totale për një vit para instalimit të "
-"Fluid Checkout deri më sot. Na ndihmon të kuptojmë nëse po fitoni më shumë "
-"para me plugin-et tona të instaluara. Nuk dërgohen kurrë të dhëna të "
-"klientëve ose përdoruesve."
 
 #: inc/admin/admin-settings-tools.php:151
 msgid "Utilities"
@@ -4272,85 +4110,9 @@ msgstr "Shko te faqja e cilësimeve"
 msgid "Hide this tab permanently"
 msgstr "Fshihe këtë skedë përgjithmonë"
 
-#: inc/admin/admin-telemetry.php:60, inc/admin/admin-telemetry.php:93
-msgid "Site report preview"
-msgstr "Pamje paraprake e raportit të faqes"
-
-#: inc/admin/admin-telemetry.php:61, inc/admin/admin-telemetry.php:97
-msgid ""
-"This is the data that would be included in the next site environment report "
-"based on your current settings."
-msgstr ""
-"Këto janë të dhënat që do të përfshihen në raportin tjetër të mjedisit të "
-"faqes bazuar në cilësimet tuaja aktuale."
-
-#: inc/admin/admin-telemetry.php:62
-msgid "Loading report preview..."
-msgstr "Duke ngarkuar pamjen paraprake të raportit..."
-
-#: inc/admin/admin-telemetry.php:63
-msgid "Could not load the site report preview. Try again."
-msgstr "Nuk mund të ngarkohej pamja paraprake e raportit të faqes. Provo përsëri."
-
-#: inc/admin/admin-telemetry.php:64
-msgid "Could not send the site report. Try again."
-msgstr "Raporti i faqes nuk mund të dërgohej. Provo përsëri."
-
-#: inc/admin/admin-telemetry.php:65, inc/admin/admin-telemetry.php:198
-msgid "Site report sent successfully."
-msgstr "Raporti i faqes u dërgua me sukses."
-
-#: inc/admin/admin-telemetry.php:67
-msgid "Enable and send now"
-msgstr "Aktivizo dhe dërgo tani"
-
 #: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:94, inc/admin/admin-telemetry.php:102
 msgid "Close"
 msgstr "Mbyll"
-
-#: inc/admin/admin-telemetry.php:69, inc/admin/admin-telemetry.php:263
-msgid "A site report request is already in progress. Try again in a moment."
-msgstr ""
-"Një kërkesë për raportimin e faqes është tashmë në proces. Provo përsëri "
-"pas pak."
-
-#: inc/admin/admin-telemetry.php:70, inc/admin/admin-telemetry.php:264
-msgid "Site environment reporting is disabled."
-msgstr "Raportimi i mjedisit të faqes është çaktivizuar."
-
-#: inc/admin/admin-telemetry.php:71, inc/admin/admin-telemetry.php:265
-msgid "No site report data is available to send."
-msgstr "Nuk ka të dhëna raporti të faqes për t&#39;u dërguar."
-
-#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:266
-msgid ""
-"This site domain cannot send environment reports (local or development "
-"domains are excluded)."
-msgstr ""
-"Ky domen i faqes nuk mund të dërgojë raporte mjedisore (përjashtohen "
-"domenet lokale ose të zhvillimit)."
-
-#: inc/admin/admin-telemetry.php:73, inc/admin/admin-telemetry.php:267
-msgid "A site report was sent recently. Try again later."
-msgstr "Një raport për faqen u dërgua së fundmi. Provo përsëri më vonë."
-
-#: inc/admin/admin-telemetry.php:74, inc/admin/admin-telemetry.php:268
-msgid "The site report could not be sent. Try again later."
-msgstr "Raporti i faqes nuk mund të dërgohej. Provo përsëri më vonë."
-
-#: inc/admin/admin-telemetry.php:124, inc/admin/admin-telemetry.php:170
-msgid "Site environment reporting is not available."
-msgstr "Raportimi i mjedisit të faqes nuk është i disponueshëm."
-
-#: inc/admin/admin-telemetry.php:136
-msgid "No site report data is available for the selected settings."
-msgstr ""
-"Nuk ka të dhëna të raportit të faqes në dispozicion për cilësimet e "
-"zgjedhura."
-
-#: inc/admin/admin-telemetry.php:213
-msgid "You are not allowed to manage site reports."
-msgstr "Nuk lejoheni të menaxhoni raportet e faqes."
 
 #: inc/admin/admin.php:309
 msgid "PRO feature"
@@ -4360,19 +4122,9 @@ msgstr "Funksioni PRO"
 msgid "Other plugins"
 msgstr "Plugin-e të tjera"
 
-#: inc/admin/admin.php:363
-#. translators: %s: formatted price including currency, e.g. "29 EUR"
-msgid "Get only this add-on &mdash; %s"
-msgstr "Merr vetëm këtë shtesë — %s"
-
 #: inc/admin/admin.php:372
 msgid "Install add-on"
 msgstr "Instalo shtesën"
-
-#: inc/admin/admin.php:382
-#. translators: %s: formatted price including currency, e.g. "129 EUR"
-msgid "Upgrade to PRO &mdash; %s"
-msgstr "Përmirëso në PRO — %s"
 
 #: inc/admin/admin.php:459
 #. translators: %1$s: Add-on product page URL, %2$s: Add-on name.
@@ -4517,14 +4269,6 @@ msgstr "Mbyll imazhin"
 msgid "Fluid Checkout Guided Setup"
 msgstr "Konfigurimi i Udhëzuar i Kontrollit të Lëngjeve"
 
-#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:80, inc/admin/guided-setup/guided-setup-fluid-checkout.php:391
-msgid "Welcome"
-msgstr "Mirë se vini"
-
-#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:83, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
-msgid "Explore your checkout"
-msgstr "Eksploroni arkëtimin tuaj"
-
 #: inc/admin/guided-setup/guided-setup-fluid-checkout.php:86, inc/admin/guided-setup/guided-setup-fluid-checkout.php:439
 msgid "All set"
 msgstr "Gati"
@@ -4537,42 +4281,6 @@ msgstr "Ju nuk keni leje për të hyrë në këtë faqe."
 #. translators: %1$d: step number, %2$s: step name
 msgid "Go to step %1$d: %2$s"
 msgstr "Shko te hapi %1$d: %2$s"
-
-#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:392
-msgid ""
-"This guided setup helps you get familiar with Fluid Checkout. The steps "
-"below are placeholders for now."
-msgstr ""
-"Ky konfigurim i udhëzuar ju ndihmon të njiheni me Fluid Checkout. Hapat më "
-"poshtë janë zëvendësues për momentin."
-
-#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:393
-msgid "Continue to the next step when you are ready."
-msgstr "Vazhdoni në hapin tjetër kur të jeni gati."
-
-#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
-msgid "Open your store checkout to see Fluid Checkout in action."
-msgstr "Hapni arkën e dyqanit tuaj për të parë Fluid Checkout në veprim."
-
-#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
-msgid "View checkout page"
-msgstr "Shiko faqen e pagesës"
-
-#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:440
-msgid ""
-"You can return to Fluid Checkout settings to continue configuring your "
-"store."
-msgstr ""
-"Mund të ktheheni te cilësimet e Fluid Checkout për të vazhduar konfigurimin "
-"e dyqanit tuaj."
-
-#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:442
-msgid "Review checkout and cart settings"
-msgstr "Rishikoni cilësimet e arkëtimit dhe të shportës"
-
-#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:443
-msgid "Explore add-ons from the dashboard"
-msgstr "Eksploroni shtesat nga paneli"
 
 #: inc/admin/guided-setup/guided-setup-fluid-checkout.php:453
 msgid "Finish & go to settings"
@@ -4651,6 +4359,1014 @@ msgstr ""
 "titullin nga cilësimet e vendndodhjes së marrjes në WooCommerce. Kur "
 "çaktivizohet, etiketa përdor tekstin e përkthyeshëm &quot;Marrje "
 "lokale&quot; nga Fluid Checkout."
+
+#: inc/admin/admin-db-migrations.php:237
+#. translators: %s: migration class name
+msgid "Migration class %s must implement get_migration_steps()."
+msgstr "Klasa e migrimit %s duhet të implementojë get_migration_steps()."
+
+#: inc/admin/admin-db-migrations.php:253
+#. translators: %s: migration class name
+msgid "Migration class %s returned an empty get_migration_steps() list."
+msgstr "Klasa e migrimit %s ktheu një listë get_migration_steps() bosh."
+
+#: inc/admin/admin-design-editor-promo.php:115
+msgid "Checkout design customization"
+msgstr "Personalizimi i dizajnit të arkës"
+
+#: inc/admin/admin-design-editor-promo.php:120
+msgid "Make your checkout pages match your brand, without custom CSS."
+msgstr ""
+"Bëjini faqet e arkëtimit të përputhen me markën tuaj, pa CSS të "
+"personalizuar."
+
+#: inc/admin/admin-design-editor-promo.php:122
+msgid ""
+"Change the style of the header, footer, steps, sections, order summary, "
+"cart items and coupons."
+msgstr ""
+"Ndryshoni stilin e kokës, fundit të faqes, hapave, seksioneve, përmbledhjes "
+"së porosisë, artikujve të shportës dhe kuponëve."
+
+#: inc/admin/admin-design-editor-promo.php:123
+msgid "Change the style of buttons and form fields."
+msgstr "Ndryshoni stilin e butonave dhe fushave të formularit."
+
+#: inc/admin/admin-design-editor-promo.php:124
+msgid ""
+"Preview your changes on checkout, cart, thank you, and order pay pages "
+"before saving them."
+msgstr ""
+"Shikoni paraprakisht ndryshimet tuaja në faqet e arkëtimit, shportës, "
+"falënderimeve dhe pagesës së porosisë përpara se t&#39;i ruani."
+
+#: inc/admin/admin-design-editor-promo.php:125
+msgid "Set separate colors for light and dark mode."
+msgstr "Vendosni ngjyra të ndara për modalitetin e çelët dhe të errët."
+
+#: inc/admin/admin-design-editor-promo.php:148, inc/admin/admin-design-editor-promo.php:151, inc/admin/admin-settings-page.php:145, inc/admin/admin-settings-page.php:145, inc/admin/admin-settings-page.php:1466
+msgid "Design"
+msgstr "Dizajn"
+
+#: inc/admin/admin-notice-db-migrations.php:60
+msgid "Some changes to the database are required."
+msgstr "Disa ndryshime në bazën e të dhënave janë të nevojshme."
+
+#: inc/admin/admin-notice-new-settings-page.php:51
+msgid "New settings page 🎉"
+msgstr "Faqe e re e cilësimeve 🎉"
+
+#: inc/admin/admin-notice-new-settings-page.php:52
+msgid ""
+"Fluid Checkout has a redesigned settings experience with guided setup, live "
+"page previews, and easier navigation. Open settings to explore the new "
+"layout and discover new ways to configure your checkout."
+msgstr ""
+"Fluid Checkout ofron një përvojë cilësimesh të ridizajnuara me konfigurim "
+"të udhëhequr, pamje paraprake të faqeve live dhe navigim më të lehtë. Hap "
+"cilësimet për të eksploruar paraqitjen e re dhe për të zbuluar mënyra të "
+"reja për të konfiguruar arkëtimin tuaj."
+
+#: inc/admin/admin-notice-new-settings-page.php:59
+msgid "Go to settings"
+msgstr "Shko te cilësimet"
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:114
+msgid ""
+"Since Fluid Checkout 5.0, settings are saved differently. Your settings "
+"have been migrated but legacy options are still stored in the database."
+msgstr ""
+"Që nga Fluid Checkout 5.0, cilësimet ruhen ndryshe. Cilësimet tuaja janë "
+"migruar, por opsionet e trashëguara ruhen ende në bazën e të dhënave."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:115
+msgid ""
+"Your store has been running for at least 2 months on the new settings so "
+"these legacy options can now be cleaned from the database. Please note that "
+"after cleanup, if you need to downgrade to previous versions of the plugin "
+"it will use default values for all settings."
+msgstr ""
+"Dyqani juaj ka qenë në funksion për të paktën 2 muaj me cilësimet e reja, "
+"kështu që këto opsione të trashëguara tani mund të pastrohen nga baza e të "
+"dhënave. Ju lutemi vini re se pas pastrimit, nëse duhet të kaloni në "
+"versionet e mëparshme të plugin-it, ai do të përdorë vlerat fillestare për "
+"të gjitha cilësimet."
+
+#: inc/admin/admin-notice-settings-legacy-cleanup.php:119
+msgid "Fluid Checkout legacy settings cleanup"
+msgstr "Pastrimi i cilësimeve të trashëguara të Fluid Checkout"
+
+#: inc/admin/admin-notice-telemetry.php:127
+msgid ""
+"Usage tracking is optional and off by default. It helps us improve "
+"compatibility and support. You can preview the exact data before it is "
+"sent, and turn it off at any time."
+msgstr ""
+"Gjurmimi i përdorimit është opsional dhe i çaktivizuar si parazgjedhje. Na "
+"ndihmon të përmirësojmë përputhshmërinë dhe mbështetjen. Mund të shikoni "
+"paraprakisht të dhënat e sakta përpara se të dërgohen dhe ta çaktivizoni në "
+"çdo kohë."
+
+#: inc/admin/admin-notice-telemetry.php:128
+msgid ""
+"When you turn it on, Fluid Checkout receives your site domain and basic "
+"environment details: WordPress, PHP and WooCommerce versions, language, "
+"store country, currency and timezone, your active theme, and your installed "
+"plugins and their versions. You can also choose to include monthly order "
+"counts and sales totals. No customer or user data is ever sent."
+msgstr ""
+"Kur e aktivizoni, Fluid Checkout merr detajet e domenit të faqes suaj dhe "
+"të mjedisit bazë: versionet e WordPress, PHP dhe WooCommerce, gjuhën, "
+"vendin e dyqanit, monedhën dhe zonën kohore, temën tuaj aktive dhe shtojcat "
+"tuaja të instaluara dhe versionet e tyre. Gjithashtu mund të zgjidhni të "
+"përfshini numrin mujor të porosive dhe totalin e shitjeve. Nuk dërgohen "
+"kurrë të dhëna të klientëve ose përdoruesve."
+
+#: inc/admin/admin-notice-telemetry.php:135
+msgid "Keep it OFF"
+msgstr "Mbajeni të fikur"
+
+#: inc/admin/admin-notice-telemetry.php:140
+msgid "Review usage tracking"
+msgstr "Rishiko gjurmimin e përdorimit"
+
+#: inc/admin/admin-notice-telemetry.php:145, inc/admin/admin-settings-tools.php:101
+msgid "Turn on usage tracking"
+msgstr "Aktivizo gjurmimin e përdorimit"
+
+#: inc/admin/admin-setting-type-fc-addons.php:104
+msgid "Design customizations without code"
+msgstr "Personalizime të dizajnit pa kod"
+
+#: inc/admin/admin-setting-type-fc-addons.php:114
+msgid "Express checkout from supported payment methods"
+msgstr "Arkëtim i shpejtë nga metodat e pagesës së mbështetura"
+
+#: inc/admin/admin-setting-type-fc-css-value.php:82
+#. translators: %s: Settings field title.
+msgid "Choose a color for %s"
+msgstr "Zgjidh një ngjyrë për %s"
+
+#: inc/admin/admin-setting-type-fc-css-value.php:84
+#. translators: %s: Settings field title.
+msgid "Clear %s"
+msgstr "Pastro %s"
+
+#: inc/admin/admin-setting-type-fc-css-value.php:125
+msgid "Clear"
+msgstr "Pastro"
+
+#: inc/admin/admin-setting-type-fc-css-value.php:128
+msgid "Enter a valid CSS value."
+msgstr "Fut një vlerë të vlefshme CSS."
+
+#: inc/admin/admin-setting-type-fc-setup.php:99
+#. translators: %s: Tools settings URL.
+msgid ""
+"Get faster support and help us improve compatibility and measure impact. "
+"Usage tracking is optional and off by default. <a href=\"%s\">Review usage "
+"tracking</a> in the tools settings. You can preview the data and turn it "
+"off at any time."
+msgstr ""
+"Merrni mbështetje më të shpejtë dhe na ndihmoni të përmirësojmë "
+"përputhshmërinë dhe të matim ndikimin. Gjurmimi i përdorimit është opsional "
+"dhe i çaktivizuar si parazgjedhje. <a href=\"%s\">Rishikoni gjurmimin e "
+"përdorimit</a> në cilësimet e mjeteve. Mund të shikoni paraprakisht të "
+"dhënat dhe ta çaktivizoni në çdo kohë."
+
+#: inc/admin/admin-setting-type-fc-telemetry.php:84
+msgid "Preview data"
+msgstr "Parapamje e të dhënave"
+
+#: inc/admin/admin-settings-checkout.php:113
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Applies to the checkout and add payment method pages. With PRO, also "
+"applies to the cart, order pay, thank you (order received) and view order "
+"pages."
+msgstr ""
+"Stile të përgjithshme për hapat e arkëtimit, përmbledhjen e porosisë dhe "
+"seksionet e tjera. Vlen për faqet e arkëtimit dhe shtimin e metodës së "
+"pagesës. Me PRO, vlen edhe për shportën, pagesën e porosisë, falënderimin "
+"(porosia u mor) dhe faqet e shikimit të porosisë."
+
+#: inc/admin/admin-settings-checkout.php:165
+msgid "Color scheme"
+msgstr "Skema e ngjyrave"
+
+#: inc/admin/admin-settings-checkout.php:167
+msgid ""
+"Use the light or dark colors on the checkout pages, or use the dark colors "
+"only when the theme is in dark mode."
+msgstr ""
+"Përdorni ngjyrat e çelëta ose të errëta në faqet e arkëtimit, ose përdorni "
+"ngjyrat e errëta vetëm kur tema është në modalitetin e errët."
+
+#: inc/admin/admin-settings-checkout.php:173
+msgid "Theme"
+msgstr "Tema"
+
+#: inc/admin/admin-settings-checkout.php:174
+msgid "Light"
+msgstr "Dritë"
+
+#: inc/admin/admin-settings-checkout.php:175
+msgid "Dark"
+msgstr "E errët"
+
+#: inc/admin/admin-settings-checkout.php:281
+msgid "Change the checkout layout to multi-step to see these options."
+msgstr "Ndryshoni paraqitjen e arkës në shumëhapësh për të parë këto opsione."
+
+#: inc/admin/admin-settings-checkout.php:291
+msgid "Display the checkout progress bar"
+msgstr "Shfaq shiritin e progresit të arkëtimit"
+
+#: inc/admin/admin-settings-customer-accounts.php:103
+msgid "Customers can create an account from checkout while placing their order."
+msgstr ""
+"Klientët mund të krijojnë një llogari nga arka gjatë kryerjes së porosisë "
+"së tyre."
+
+#: inc/admin/admin-settings-order-received.php:215
+msgid ""
+"Help guests finish checkout faster and create an account after they buy. "
+"Account matching associates guest orders with existing accounts, and "
+"delayed account creation lets customers register from the thank you page."
+msgstr ""
+"Ndihmojini klientët të përfundojnë pagesën më shpejt dhe të krijojnë një "
+"llogari pasi të blejnë. Përputhja e llogarive lidh porositë e klientëve me "
+"llogaritë ekzistuese dhe vonesa në krijimin e llogarisë u lejon klientëve "
+"të regjistrohen nga faqja e falënderimit."
+
+#: inc/admin/admin-settings-order-received.php:225
+msgid "Configure customer account options"
+msgstr "Konfiguro opsionet e llogarisë së klientit"
+
+#: inc/admin/admin-settings-page.php:1201
+msgid "The change could not be saved. Please try again."
+msgstr "Ndryshimi nuk mund të ruhej. Ju lutemi provoni përsëri."
+
+#: inc/admin/admin-settings-page.php:1487
+msgid "Settings navigation"
+msgstr "Navigimi i cilësimeve"
+
+#: inc/admin/admin-settings-renderer.php:378
+#. translators: %s: Link to the new place of the setting.
+msgid "This setting has moved to %s."
+msgstr "Ky cilësim është zhvendosur në %s."
+
+#: inc/admin/admin-settings-renderer.php:379
+msgid "another page"
+msgstr "një faqe tjetër"
+
+#: inc/admin/admin-settings-renderer.php:386
+#. translators: %s: Settings field title.
+msgid "Dismiss the message of %s"
+msgstr "Hiq mesazhin e %s"
+
+#: inc/admin/admin-settings-renderer.php:408
+msgid "Dismissed."
+msgstr "U hodh poshtë."
+
+#: inc/admin/admin-settings-renderer.php:413
+msgid "Undo?"
+msgstr "Të anuloj?"
+
+#: inc/admin/admin-settings-tools.php:95
+msgid ""
+"Optional, and off by default. It helps us improve compatibility and provide "
+"you with faster support. You can preview the exact data before it is sent, "
+"and turn it off at any time. No customer or user data is ever sent."
+msgstr ""
+"Opsionale dhe e çaktivizuar si parazgjedhje. Na ndihmon të përmirësojmë "
+"përputhshmërinë dhe t&#39;ju ofrojmë mbështetje më të shpejtë. Mund të "
+"shikoni paraprakisht të dhënat e sakta përpara se të dërgohen dhe ta "
+"çaktivizoni në çdo kohë. Nuk dërgohen kurrë të dhëna të klientëve ose "
+"përdoruesve."
+
+#: inc/admin/admin-settings-tools.php:102
+msgid ""
+"Nothing is sent right away unless you choose to send it. After that, usage "
+"data is sent about once a week, or about every 4 weeks if nothing has "
+"changed."
+msgstr ""
+"Asgjë nuk dërgohet menjëherë, përveç nëse zgjidhni ta dërgoni vetë. Pas "
+"kësaj, të dhënat e përdorimit dërgohen afërsisht një herë në javë ose "
+"afërsisht çdo 4 javë nëse nuk ka ndryshuar asgjë."
+
+#: inc/admin/admin-settings-tools.php:110
+msgid "Basic environment"
+msgstr "Mjedisi bazë"
+
+#: inc/admin/admin-settings-tools.php:111
+msgid ""
+"Included whenever usage tracking is on. WordPress, PHP and WooCommerce "
+"versions, language, store country, currency and timezone, your active "
+"theme, and your installed plugins and their versions, including whether "
+"each plugin is active. Also your site domain, whether this is a multisite, "
+"and when Fluid Checkout plugins were first activated. A paid Fluid Checkout "
+"plugin can include a hashed license key, not the key itself."
+msgstr ""
+"Përfshihet sa herë që gjurmimi i përdorimit është aktiv. Versionet e "
+"WordPress, PHP dhe WooCommerce, gjuha, vendi i dyqanit, monedha dhe zona "
+"kohore, tema juaj aktive dhe shtojcat tuaja të instaluara dhe versionet e "
+"tyre, duke përfshirë nëse secili shtojcë është aktiv. Gjithashtu domeni i "
+"faqes suaj, nëse kjo është një faqe shumëfaqëshe dhe kur u aktivizuan për "
+"herë të parë shtojcat Fluid Checkout. Një shtojcë me pagesë Fluid Checkout "
+"mund të përfshijë një çelës licence të hashuar, jo vetë çelësin."
+
+#: inc/admin/admin-settings-tools.php:125
+msgid "The active Fluid Checkout settings you have selected."
+msgstr "Cilësimet aktive të Kontrollit të Lëngjeve që keni zgjedhur."
+
+#: inc/admin/admin-settings-tools.php:125
+msgid "These settings are not sent yet."
+msgstr "Këto cilësime nuk janë dërguar ende."
+
+#: inc/admin/admin-settings-tools.php:139
+msgid "Store totals"
+msgstr "Totali i dyqanit"
+
+#: inc/admin/admin-settings-tools.php:140
+msgid ""
+"Monthly order counts and sales totals for processing and completed orders, "
+"for finished months only. The first send can include the 12 months before "
+"you installed Fluid Checkout and each finished month since then. No "
+"customer or order details are included."
+msgstr ""
+"Numri i porosive mujore dhe totali i shitjeve për porositë e përpunuara dhe "
+"të përfunduara, vetëm për muajt e përfunduar. Dërgimi i parë mund të "
+"përfshijë 12 muajt para instalimit të Fluid Checkout dhe çdo muaj të "
+"përfunduar që atëherë. Nuk përfshihen detajet e klientit ose të porosisë."
+
+#: inc/admin/admin-settings-tools.php:247
+msgid "Legacy settings"
+msgstr "Cilësimet e trashëguara"
+
+#: inc/admin/admin-settings-tools.php:249
+msgid ""
+"Since Fluid Checkout 5.0, settings are stored in profiles. Legacy "
+"individual option rows may still exist in the database from older versions "
+"to allow downgrades to a pre-5.0 plugin version."
+msgstr ""
+"Që nga Fluid Checkout 5.0, cilësimet ruhen në profile. Rreshtat e opsioneve "
+"individuale të trashëguara mund të ekzistojnë ende në bazën e të dhënave "
+"nga versionet më të vjetra për të lejuar uljet në një version të plugin-it "
+"para versionit 5.0."
+
+#: inc/admin/admin-settings-tools.php:253
+msgid "Legacy settings cleanup"
+msgstr "Pastrimi i cilësimeve të trashëguara"
+
+#: inc/admin/admin-settings-tools.php:254
+msgid ""
+"Remove leftover individual option rows after you no longer need to "
+"downgrade to a pre-5.0 plugin version."
+msgstr ""
+"Hiqni rreshtat e mbetur të opsioneve individuale pasi të mos keni më nevojë "
+"të kaloni në një version të plugin-it para versionit 5.0."
+
+#: inc/admin/admin-settings-tools.php:257
+msgid "Clean legacy settings"
+msgstr "Pastroni cilësimet e trashëguara"
+
+#: inc/admin/admin-settings-vat-assistant.php:381
+msgid "Address book integration"
+msgstr "Integrimi i librit të adresave"
+
+#: inc/admin/admin-settings-vat-assistant.php:389
+msgid "VAT number"
+msgstr "Numri i TVSH-së"
+
+#: inc/admin/admin-settings-vat-assistant.php:391
+msgid "Define limit of VAT Numbers a customer can save to their account."
+msgstr ""
+"Përcaktoni limitin e Numrave të TVSH-së që një klient mund të ruajë në "
+"llogarinë e tij."
+
+#: inc/admin/admin-settings-vat-assistant.php:395
+msgid "One per account"
+msgstr "Një për llogari"
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per address entry"
+msgstr "Një për çdo hyrje adrese"
+
+#: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
+msgid "Usage data preview"
+msgstr "Pamje paraprake e të dhënave të përdorimit"
+
+#: inc/admin/admin-telemetry.php:68, inc/admin/admin-telemetry.php:108
+msgid "This is the exact usage data that would be sent with your current choices."
+msgstr ""
+"Këto janë të dhënat e sakta të përdorimit që do të dërgoheshin me zgjedhjet "
+"tuaja aktuale."
+
+#: inc/admin/admin-telemetry.php:69
+msgid "Loading preview..."
+msgstr "Duke ngarkuar pamjen paraprake..."
+
+#: inc/admin/admin-telemetry.php:70
+msgid "Could not load the preview. Try again."
+msgstr "Pamja paraprake nuk mund të ngarkohej. Provo përsëri."
+
+#: inc/admin/admin-telemetry.php:71
+msgid "Could not send the usage data. Try again."
+msgstr "Nuk mund të dërgoheshin të dhënat e përdorimit. Provo përsëri."
+
+#: inc/admin/admin-telemetry.php:72, inc/admin/admin-telemetry.php:220
+msgid "Usage data sent."
+msgstr "Të dhënat e përdorimit u dërguan."
+
+#: inc/admin/admin-telemetry.php:74
+msgid "Turn on and send now"
+msgstr "Aktivizo dhe dërgo tani"
+
+#: inc/admin/admin-telemetry.php:76, inc/admin/admin-telemetry.php:285
+msgid "Usage data is already being sent. Try again in a moment."
+msgstr "Të dhënat e përdorimit po dërgohen tashmë. Provo përsëri pas pak."
+
+#: inc/admin/admin-telemetry.php:77, inc/admin/admin-telemetry.php:286
+msgid "Usage tracking is turned off."
+msgstr "Gjurmimi i përdorimit është çaktivizuar."
+
+#: inc/admin/admin-telemetry.php:78, inc/admin/admin-telemetry.php:287
+msgid "There is no usage data to send."
+msgstr "Nuk ka të dhëna përdorimi për t&#39;u dërguar."
+
+#: inc/admin/admin-telemetry.php:79, inc/admin/admin-telemetry.php:288
+msgid "This site cannot send usage data. Local and development sites are excluded."
+msgstr ""
+"Kjo faqe nuk mund të dërgojë të dhëna përdorimi. Faqet lokale dhe të "
+"zhvillimit përjashtohen."
+
+#: inc/admin/admin-telemetry.php:80, inc/admin/admin-telemetry.php:289
+msgid "Usage data was sent recently. Try again later."
+msgstr "Të dhënat e përdorimit u dërguan së fundmi. Provo përsëri më vonë."
+
+#: inc/admin/admin-telemetry.php:81, inc/admin/admin-telemetry.php:290
+msgid "The usage data could not be sent. Try again later."
+msgstr "Të dhënat e përdorimit nuk mund të dërgoheshin. Provo përsëri më vonë."
+
+#: inc/admin/admin-telemetry.php:135, inc/admin/admin-telemetry.php:192
+msgid "Usage tracking is not available."
+msgstr "Gjurmimi i përdorimit nuk është i disponueshëm."
+
+#: inc/admin/admin-telemetry.php:147
+msgid "There is no usage data for these choices."
+msgstr "Nuk ka të dhëna përdorimi për këto zgjedhje."
+
+#: inc/admin/admin-telemetry.php:235
+msgid "You are not allowed to manage usage tracking."
+msgstr "Nuk lejoheni të menaxhoni gjurmimin e përdorimit."
+
+#: inc/admin/admin.php:423
+msgid "Get only this add-on"
+msgstr "Merr vetëm këtë shtesë"
+
+#: inc/admin/fc-telemetry-client.php:489
+#. translators: %s: wp-config.php constant name.
+msgid "Usage tracking is turned off by the %s constant in wp-config.php."
+msgstr "Gjurmimi i përdorimit çaktivizohet nga konstantja %s në wp-config.php."
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:16
+msgid "Physical products"
+msgstr "Produkte fizike"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:17
+msgid "Downloads & Digital products"
+msgstr "Shkarkime dhe produkte dixhitale"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:18
+msgid "Services"
+msgstr "Shërbimet"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:19
+msgid "Bookings"
+msgstr "Rezervime"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:20
+msgid "Subscriptions"
+msgstr "Abonimet"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:21
+msgid "Memberships"
+msgstr "Anëtarësimet"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:34
+msgid "Shipping to address"
+msgstr "Dërgimi në adresë"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:35
+msgid "Pickup in store or at a location"
+msgstr "Marrja në dyqan ose në një vendndodhje"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:36
+msgid "Ship to pickup point"
+msgstr "Dërgo në pikën e marrjes"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:37
+msgid "Local delivery"
+msgstr "Dërgesë lokale"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:50
+msgid "DTC - Direct to consumer"
+msgstr "DTC - Direkt te konsumatori"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:51
+msgid "B2B - To businesses"
+msgstr "B2B - Për bizneset"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:67
+msgid "your country"
+msgstr "vendi juaj"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:72
+#. translators: %s: store country name from WooCommerce settings
+msgid "Only in %s"
+msgstr "Vetëm në %s"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:73
+msgid "Multiple countries"
+msgstr "Vende të shumta"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:143
+msgid "Fashion, apparel, and accessories"
+msgstr "Modë, veshje dhe aksesorë"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:146
+msgid "Health and beauty"
+msgstr "Shëndet dhe bukuri"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:149
+msgid "Electronics and computers"
+msgstr "Elektronikë dhe kompjuterë"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:152
+msgid "Food and drink"
+msgstr "Ushqim dhe pije"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:155
+msgid "Home, furniture, and garden"
+msgstr "Shtëpi, mobilje dhe kopsht"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:158
+msgid "Education and learning"
+msgstr "Arsimi dhe të nxënit"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:161
+msgid "Sports and recreation"
+msgstr "Sporte dhe rekreacion"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:164
+msgid "Arts and crafts"
+msgstr "Arte dhe zanate"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:167
+msgid "Other"
+msgstr "Të tjera"
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:288, inc/admin/guided-setup/guided-setup-fluid-checkout.php:413
+msgid "Please select what type of products or services you sell."
+msgstr "Ju lutemi zgjidhni llojin e produkteve ose shërbimeve që shisni."
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:298, inc/admin/guided-setup/guided-setup-fluid-checkout.php:414
+msgid "Please select who you sell to."
+msgstr "Ju lutem zgjidhni kujt ia shisni."
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:307, inc/admin/guided-setup/guided-setup-fluid-checkout.php:415
+msgid "Please select where your customers are located."
+msgstr "Ju lutemi zgjidhni vendndodhjen e klientëve tuaj."
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:323, inc/admin/guided-setup/guided-setup-fluid-checkout.php:416
+msgid "Please enter a valid email address for the newsletter."
+msgstr "Ju lutemi shkruani një adresë të vlefshme email-i për buletinin."
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:339, inc/admin/guided-setup/guided-setup-fluid-checkout.php:417
+msgid "Please select at least one product type."
+msgstr "Ju lutemi zgjidhni të paktën një lloj produkti."
+
+#: inc/admin/guided-setup/class-guided-setup-checkout-data.php:349, inc/admin/guided-setup/guided-setup-fluid-checkout.php:418
+msgid "Please select at least one delivery method for physical products."
+msgstr "Ju lutemi zgjidhni të paktën një metodë dorëzimi për produktet fizike."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:166, inc/admin/guided-setup/guided-setup-fluid-checkout.php:524
+msgid "About your store"
+msgstr "Rreth dyqanit tuaj"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:169, inc/admin/guided-setup/guided-setup-fluid-checkout.php:645
+msgid "Products & delivery"
+msgstr "Produkte dhe dërgesë"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:172, inc/admin/guided-setup/guided-setup-fluid-checkout.php:1045
+msgid "Recommended setup"
+msgstr "Konfigurimi i rekomanduar"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:419
+msgid "Show recommendations already applied"
+msgstr "Shfaq rekomandimet që janë zbatuar tashmë"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:420
+msgid "Hide recommendations already applied"
+msgstr "Fshih rekomandimet që janë zbatuar tashmë"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:421, inc/admin/guided-setup/guided-setup-fluid-checkout.php:959
+msgid "Show more recommendations"
+msgstr "Shfaq më shumë rekomandime"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:422
+msgid "Show fewer recommendations"
+msgstr "Shfaq më pak rekomandime"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:521
+msgid "Welcome to Fluid Checkout!"
+msgstr "Mirë se vini në Fluid Checkout!"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:522
+msgid ""
+"It is great to have you here with us! We will be guiding you through the "
+"setup process – your answers to a few questions will help us recommend "
+"checkout settings for your store."
+msgstr ""
+"Është kënaqësi t&#39;ju kemi këtu me ne! Do t&#39;ju udhëzojmë gjatë "
+"procesit të konfigurimit - përgjigjet tuaja për disa pyetje do të na "
+"ndihmojnë të rekomandojmë cilësimet e arkëtimit për dyqanin tuaj."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:528, inc/admin/guided-setup/guided-setup-fluid-checkout.php:531
+msgid "What type of products or services do you sell?"
+msgstr "Çfarë lloj produktesh ose shërbimesh shisni?"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:544, inc/admin/guided-setup/guided-setup-fluid-checkout.php:547
+msgid "Who do you predominantly sell to?"
+msgstr "Kujt ia shisni kryesisht?"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:560, inc/admin/guided-setup/guided-setup-fluid-checkout.php:563
+msgid "Where are your customers located?"
+msgstr "Ku ndodhen klientët tuaj?"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:586
+msgid "Help improve Fluid Checkout with optional usage tracking (no customer data)."
+msgstr ""
+"Ndihmoni në përmirësimin e Fluid Checkout me gjurmim opsional të përdorimit "
+"(pa të dhëna të klientit)."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:587
+msgid "You can review and change this anytime under Tools → Usage tracking."
+msgstr ""
+"Mund ta rishikoni dhe ndryshoni këtë në çdo kohë te Mjetet → Gjurmimi i "
+"përdorimit."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:595
+msgid "Email address"
+msgstr "Adresa e email-it"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:605
+msgid "Newsletter opt-in"
+msgstr "Regjistrimi për buletinin informativ"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:610
+msgid ""
+"Opt-in to receive news about new features, tips and recommendations from "
+"the Fluid Checkout team directly in your inbox."
+msgstr ""
+"Regjistrohuni për të marrë lajme rreth veçorive, këshillave dhe "
+"rekomandimeve të reja nga ekipi i Fluid Checkout direkt në kutinë tuaj "
+"postare."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:646
+msgid "What do you sell, and how do you deliver physical products?"
+msgstr "Çfarë shisni dhe si i shpërndani produktet fizike?"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:650, inc/admin/guided-setup/guided-setup-fluid-checkout.php:654, inc/admin/guided-setup/guided-setup-fluid-checkout.php:655
+msgid "What do you sell?"
+msgstr "Çfarë shisni?"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:670, inc/admin/guided-setup/guided-setup-fluid-checkout.php:674, inc/admin/guided-setup/guided-setup-fluid-checkout.php:675
+msgid "How do you handle delivery of your products?"
+msgstr "Si e menaxhoni dërgesën e produkteve tuaja?"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:948
+msgid "Recommended checkout settings"
+msgstr "Cilësimet e rekomanduara të arkëtimit"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:950
+msgid "No more recommendations to apply."
+msgstr "Nuk ka më rekomandime për të aplikuar."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:970
+msgid "Show already applied"
+msgstr "Shfaq tashmë të aplikuar"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:1046
+msgid ""
+"Based on what you told us, these checkout options are a good starting "
+"point. You can turn recommended options off before applying them."
+msgstr ""
+"Bazuar në atë që na thatë, këto opsione për përfundimin e blerjes janë një "
+"pikënisje e mirë. Mund t’i çaktivizoni opsionet e rekomanduara përpara se "
+"t’i aplikoni."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:1047
+msgid "You can change any of these settings later in the Fluid Checkout settings."
+msgstr ""
+"Mund të ndryshoni cilindo nga këto cilësime më vonë në cilësimet e Fluid "
+"Checkout."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:1057
+msgid "Apply settings & finish setup"
+msgstr "Zbato cilësimet dhe përfundo konfigurimin"
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:1075
+msgid "Your recommended setup options have been applied."
+msgstr "Opsionet e rekomanduara të konfigurimit janë zbatuar."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:1076
+msgid ""
+"Test your checkout process and return to Fluid Checkout settings to adjust "
+"any settings if needed."
+msgstr ""
+"Testoni procesin e arkëtimit dhe kthehuni te cilësimet e Fluid Checkout për "
+"të rregulluar çdo cilësim nëse është e nevojshme."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:1076
+msgid ""
+"You can use the built-in live preview in settings to see how settings "
+"changes affect your checkout before saving them."
+msgstr ""
+"Mund të përdorni pamjen paraprake të integruar në cilësime për të parë se "
+"si ndryshimet e cilësimeve ndikojnë në përfundimin e blerjes përpara se "
+"t&#39;i ruani ato."
+
+#: inc/admin/guided-setup/guided-setup-fluid-checkout.php:1091
+#. translators: %s: support page URL
+msgid ""
+"If you need help, <a href=\"%s\" target=\"_blank\" rel=\"noopener "
+"noreferrer\">contact our support team</a>."
+msgstr ""
+"Nëse keni nevojë për ndihmë, <a href=\"%s\" target=\"_blank\" "
+"rel=\"noopener noreferrer\">kontaktoni ekipin tonë të mbështetjes</a> ."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:95
+msgid "Subscription account creation"
+msgstr "Krijimi i një llogarie abonimi"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:96
+msgid "Allow subscription customers to create an account during checkout"
+msgstr "Lejoni klientët e abonimit të krijojnë një llogari gjatë pagesës"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:97
+msgid ""
+"Enable account creation at checkout for subscription purchases when account "
+"creation for other orders is disabled."
+msgstr ""
+"Aktivizoni krijimin e llogarisë në arkë për blerjet me abonim kur krijimi i "
+"llogarisë për porositë e tjera është i çaktivizuar."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:38
+msgid "Multi-step checkout"
+msgstr "Pagesë me shumë hapa"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:39
+msgid ""
+"Clear steps with few fields at a time to guide customers through checkout "
+"and keep them focused."
+msgstr ""
+"Hapa të qartë me pak fusha në të njëjtën kohë për t&#39;i udhëhequr "
+"klientët gjatë procesit të pagesës dhe për t&#39;i mbajtur të përqendruar."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:54
+msgid "Single-step checkout"
+msgstr "Pagesë me një hap të vetëm"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:55
+msgid ""
+"Show all fields at once. Ideal for short checkouts such as digital products "
+"or services that don't require much information."
+msgstr ""
+"Shfaq të gjitha fushat menjëherë. Ideale për pagesa të shkurtra, siç janë "
+"produktet ose shërbimet dixhitale që nuk kërkojnë shumë informacion."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:77
+msgid "Keep theme header and footer"
+msgstr "Mbaj kokën dhe fundin e temës"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:78
+msgid ""
+"Show the store header and footer at checkout instead of the "
+"distraction-free layout. Useful for B2B stores that need site navigation "
+"during checkout."
+msgstr ""
+"Shfaq kokën dhe fundin e dyqanit në arkë në vend të paraqitjes pa "
+"shpërqendrime. E dobishme për dyqanet B2B që kanë nevojë për navigim në "
+"faqe gjatë arkëtimit."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:97
+msgid "Edit cart at checkout"
+msgstr "Modifiko shportën në arkë"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:98
+msgid "Let customers change quantities and remove items without leaving checkout."
+msgstr ""
+"Lejojini klientët të ndryshojnë sasitë dhe të heqin artikujt pa dalë nga "
+"arka."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:122
+msgid "Billing before shipping"
+msgstr "Faturimi para dërgesës"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:123
+msgid ""
+"Collect the billing address as a step before shipping so business buyers "
+"can enter invoice details first."
+msgstr ""
+"Mblidhni adresën e faturimit si hap para dërgesës, në mënyrë që blerësit e "
+"biznesit të mund të fusin së pari detajet e faturës."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:133
+msgid "Shipping methods before address"
+msgstr "Metodat e dërgesës para adresës"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:134
+msgid ""
+"Show shipping methods before the address so customers can see other "
+"delivery options such as local pickup."
+msgstr ""
+"Shfaqni metodat e transportit përpara adresës në mënyrë që klientët të mund "
+"të shohin opsione të tjera të transportit, siç është marrja në dyqanin "
+"lokal."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:161
+msgid "Shipping methods after address"
+msgstr "Metodat e dërgesës pas adresës"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:162
+msgid ""
+"Ask for the shipping address first, then show shipping methods that match "
+"that destination."
+msgstr ""
+"Kërkoni së pari adresën e dërgesës, pastaj tregoni metodat e dërgesës që "
+"përputhen me atë destinacion."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:184
+msgid "Require billing company"
+msgstr "Kërko kompani faturimi"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:185
+msgid ""
+"Make the billing company field required so invoices include a company name "
+"for business orders."
+msgstr ""
+"Bëjeni fushën e kompanisë së faturimit të detyrueshme në mënyrë që faturat "
+"të përfshijnë emrin e kompanisë për porositë e biznesit."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:195
+msgid "Hide additional order notes"
+msgstr "Fshih shënimet shtesë të porosisë"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:196
+msgid ""
+"Hide the additional order notes field to keep checkout shorter. Customers "
+"rarely need it for most orders."
+msgstr ""
+"Fshih fushën e shënimeve shtesë të porosisë për ta bërë arkëtimin më të "
+"shkurtër. Klientët rrallë kanë nevojë për të për shumicën e porosive."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:214
+msgid "Enable optimized cart page"
+msgstr "Aktivizo faqen e optimizuar të shportës"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:215
+msgid ""
+"Improved cart page to reduce cart abandonment rates and give customers a "
+"consistent experience."
+msgstr ""
+"Faqja e shportës është përmirësuar për të ulur shkallën e braktisjes së "
+"shportës dhe për t&#39;u dhënë klientëve një përvojë të qëndrueshme."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:233
+msgid "Enable optimized thank you page"
+msgstr "Aktivizo faqen e falënderimit të optimizuar"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:234
+msgid "Improved thank you page to give customers a consistent experience."
+msgstr ""
+"Faqja e falënderimit është përmirësuar për t&#39;u dhënë klientëve një "
+"përvojë të qëndrueshme."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:252
+msgid "Enable optimized order pay page"
+msgstr "Aktivizo faqen e optimizuar të pagesës së porosisë"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:253
+msgid "Improved order pay page to give customers a consistent experience."
+msgstr ""
+"Faqja e pagesës së porosive është përmirësuar për t&#39;u dhënë klientëve "
+"një përvojë të qëndrueshme."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:272
+msgid ""
+"Suggest verified addresses as customers type to reduce typos and failed "
+"deliveries."
+msgstr ""
+"Sugjeroni adresa të verifikuara ndërsa klientët shkruajnë për të zvogëluar "
+"gabimet drejtshkrimore dhe dërgesat e dështuara."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:302
+msgid "Address book at checkout"
+msgstr "Libri i adresave në arkë"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:303
+msgid ""
+"Let logged-in customers pick a saved address instead of retyping it every "
+"time."
+msgstr ""
+"Lejoni klientët e kyçur të zgjedhin një adresë të ruajtur në vend që ta "
+"shkruajnë përsëri çdo herë."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:336
+msgid "Let customers place orders without creating an account first."
+msgstr "Lejoni klientët të bëjnë porosi pa krijuar më parë një llogari."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:346
+msgid "Require account to checkout"
+msgstr "Kërko llogari për të përfunduar pagesën"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:347
+msgid ""
+"Turn off guest checkout so customers must log in or create an account "
+"before placing an order."
+msgstr ""
+"Çaktivizoni pagesën për mysafirë në mënyrë që klientët të duhet të "
+"identifikohen ose të krijojnë një llogari përpara se të bëjnë një porosi."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:357
+msgid "Login reminder at checkout"
+msgstr "Kujtesë për hyrje në arkë"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:358
+msgid ""
+"Offer a login link at checkout so returning customers can reuse saved "
+"details faster."
+msgstr ""
+"Ofroni një lidhje hyrjeje në arkë në mënyrë që klientët që kthehen të mund "
+"të ripërdorin detajet e ruajtura më shpejt."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:368
+msgid "Account matching at checkout"
+msgstr "Përputhja e llogarisë në arkë"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:369
+msgid ""
+"Detect when the email already belongs to an account and prompt the customer "
+"to log in instead of creating a duplicate."
+msgstr ""
+"Zbuloni kur emaili i përket tashmë një llogarie dhe nxisni klientin të "
+"identifikohet në vend që të krijoni një kopje."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:393
+msgid "Local pickup or in-store collection"
+msgstr "Marrje lokale ose marrje në dyqan"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:394
+msgid "Let customers choose at checkout where to pick up their order."
+msgstr "Lejojini klientët të zgjedhin në arkë se ku ta tërheqin porosinë e tyre."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:421
+msgid "Optional shipping phone"
+msgstr "Telefon opsional për dërgesë"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:422
+msgid ""
+"Show a shipping phone field customers can fill when carriers or delivery "
+"partners need a contact number."
+msgstr ""
+"Trego një fushë telefoni për dërgesa që klientët mund ta plotësojnë kur "
+"transportuesit ose partnerët e dërgesave kanë nevojë për një numër kontakti."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:437
+msgid "Require shipping phone"
+msgstr "Kërkon numrin e telefonit të transportit"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:438
+msgid ""
+"Require a phone number on the shipping address for delivery coordination "
+"and failed-delivery recovery."
+msgstr ""
+"Kërkoni një numër telefoni në adresën e dërgesës për koordinimin e "
+"dorëzimit dhe rikuperimin e dorëzimit të dështuar."
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:467
+msgid "International phone fields"
+msgstr "Fushat telefonike ndërkombëtare"
+
+#: inc/admin/guided-setup/recommendations/recommendation-registry.php:468
+msgid ""
+"Show country-aware phone inputs so customers can enter numbers in the "
+"correct international format."
+msgstr ""
+"Shfaq të dhënat telefonike të njohura për vendin, në mënyrë që klientët të "
+"mund të fusin numrat në formatin e saktë ndërkombëtar."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
