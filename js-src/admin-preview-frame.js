@@ -25,6 +25,8 @@
 		sessionFieldsQueryArg:        'fc_preview_session_fields',
 		sessionFieldKeys:             [],
 		navigablePaths:               [],
+		navigableQueryArgs:           [],
+		isCartEditable:               false,
 		messageSource:                'fc-admin-preview',
 		darkModeCssVariables:         {},
 
@@ -35,11 +37,13 @@
 		probeId:                      'fc-admin-preview-probe',
 		customStylesId:               'fc-custom-styles',
 
-		inertActionSelector:          '#place_order, .fc-place-order-button, .fc-place-order__custom-buttons, .fc-express-checkout, .checkout-button, .fc-cart-action__proceed-checkout, .add_to_cart_button, .single_add_to_cart_button, .wc-block-components-product-button__button, .quantity, .fc-coupon-code__apply, [name="calc_shipping"], body :has( > iframe )',
-		inertFieldSelector:           '.quantity input',
+		inertActionSelector:          '#place_order, .fc-place-order-button, .fc-place-order__custom-buttons, .fc-express-checkout, .checkout-button, .fc-cart-action__proceed-checkout, .add_to_cart_button, .single_add_to_cart_button, .wc-block-components-product-button__button, [name="calc_shipping"], body :has( > iframe )',
+		cartActionSelector:           '.quantity, .fc-coupon-code__apply',
+		quantityFieldSelector:        '.quantity input',
 		couponCodeFieldSelector:      'input[name="coupon_code"]',
 		linkSelector:                 'a[href], area[href]',
 		scriptLinkSelector:           '.woocommerce-terms-and-conditions-link',
+		cartLinkSelector:             'a.remove, a.restore-item, a.woocommerce-remove-coupon',
 		checkoutFormSelector:         'form.checkout',
 		checkoutFieldSelector:        'input[name]:not([type="hidden"]):not([type="password"]):not([type="submit"]):not([type="button"]):not([type="radio"]:not(:checked)), select[name], textarea[name]',
 		checkableFieldSelector:       '[type="checkbox"], [type="radio"]',
@@ -610,7 +614,7 @@
 
 
 	/**
-	 * Check whether a link opens a page that may open in the preview, on the same site, without query arguments other than the preview arguments, and with a path that starts with one of the navigable paths.
+	 * Check whether a link opens a page that may open in the preview, on the same site, without query arguments other than the preview arguments and the navigable query arguments, and with a path that starts with one of the navigable paths.
 	 *
 	 * @param {HTMLAnchorElement}  link  Link element.
 	 *
@@ -628,8 +632,8 @@
 
 		// Iterate query arguments of the link
 		for ( i = 0; i < argNames.length; i++ ) {
-			// Bail if the link has query arguments other than the preview arguments, as those links run actions such as removing cart items
-			if ( ! _settings.previewArgs.hasOwnProperty( argNames[ i ] ) ) { return false; }
+			// Bail if the link has query arguments other than the preview arguments and the navigable query arguments, as those links run actions such as removing cart items
+			if ( ! _settings.previewArgs.hasOwnProperty( argNames[ i ] ) && -1 === _settings.navigableQueryArgs.indexOf( argNames[ i ] ) ) { return false; }
 		}
 
 		// Iterate navigable paths
@@ -665,8 +669,8 @@
 		// Bail if the link points to the current page, which only changes the URL fragment
 		if ( root.location.origin === link.origin && root.location.pathname === link.pathname && root.location.search === link.search ) { return; }
 
-		// Maybe only stop the default action of script links and links that scripts handle within the page, so their scripts still run
-		if ( 'javascript:' === link.protocol || link.matches( _settings.scriptLinkSelector ) ) {
+		// Maybe only stop the default action of script links and links that scripts handle within the page, such as cart links of editable carts, so their scripts still run
+		if ( 'javascript:' === link.protocol || link.matches( _settings.scriptLinkSelector ) || ( _settings.isCartEditable && link.matches( _settings.cartLinkSelector ) ) ) {
 			e.preventDefault();
 		}
 		// Otherwise, stop the link scripts too, such as social login scripts that open other windows
@@ -691,7 +695,7 @@
 			openLinkInPreview( e, matchedElement );
 		}
 		// INERT ACTIONS
-		else if ( e.target.closest( _settings.inertActionSelector ) ) {
+		else if ( e.target.closest( _settings.inertActionSelector ) || ( ! _settings.isCartEditable && e.target.closest( _settings.cartActionSelector ) ) ) {
 			preventAction( e );
 		}
 		// LINKS
@@ -837,7 +841,7 @@
 
 	/**
 	 * Handle document key down events and route to the appropriate handler.
-	 * Quantity changes and coupon codes are inert, as the preview starts again from the dummy cart on each request.
+	 * Quantity changes and coupon codes are inert unless the cart is editable, as the preview starts again from the dummy cart on each request.
 	 *
 	 * @param {Event}  e  Key down event.
 	 */
@@ -849,12 +853,12 @@
 		if ( maybeForwardAdminShortcut( e ) ) {
 			return;
 		}
-		// INERT FIELDS
-		else if ( FCUtils.keyboardKeys.TAB !== e.key && e.target.closest( _settings.inertFieldSelector ) ) {
+		// QUANTITY FIELDS
+		else if ( ! _settings.isCartEditable && FCUtils.keyboardKeys.TAB !== e.key && e.target.closest( _settings.quantityFieldSelector ) ) {
 			preventAction( e );
 		}
 		// COUPON CODE FIELDS
-		else if ( FCUtils.keyboardKeys.ENTER === e.key && e.target.closest( _settings.couponCodeFieldSelector ) ) {
+		else if ( ! _settings.isCartEditable && FCUtils.keyboardKeys.ENTER === e.key && e.target.closest( _settings.couponCodeFieldSelector ) ) {
 			preventAction( e );
 		}
 	};
@@ -875,8 +879,8 @@
 	 * @param {Event}  e  Before input event.
 	 */
 	var handleBeforeInput = function( e ) {
-		// INERT FIELDS
-		if ( e.target.closest( _settings.inertFieldSelector ) ) {
+		// QUANTITY FIELDS
+		if ( ! _settings.isCartEditable && e.target.closest( _settings.quantityFieldSelector ) ) {
 			preventAction( e );
 		}
 	};
