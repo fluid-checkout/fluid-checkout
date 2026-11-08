@@ -24,6 +24,13 @@ $create_account_checked = FluidCheckout_Steps::instance()->is_create_account_che
 $collapsible_initial_state = $create_account_checked ? 'expanded' : 'collapsed';
 
 // CHANGE: Define "optional" label HTML
+/**
+ * Filters whether the account creation section shows an "optional" label.
+ *
+ * @since 3.0.3
+ *
+ * @param bool $label Label text. Default true.
+ */
 $optional_label = apply_filters( 'fc_checkout_display_create_account_optional_label', true ) ? ' (' . esc_html__( 'optional', 'woocommerce' ) . ')' : '';
 ?>
 
@@ -51,14 +58,32 @@ $optional_label = apply_filters( 'fc_checkout_display_create_account_optional_la
 			<div class="create-account fc-field-group <?php echo 'collapsed' === $collapsible_initial_state ? 'is-collapsed' : ''; ?>" <?php echo 'collapsed' === $collapsible_initial_state ? 'data-autofocus' : ''; ?> data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo esc_attr( $collapsible_initial_state ); ?>">
 				<div class="collapsible-content__inner">
 					<?php // CHANGE: Add hook to allow adding content before the account fields ?>
-					<?php do_action( 'fc_checkout_account_before_fields', $checkout ); ?>
+					<?php
+						/**
+						 * Fires before the account creation fields.
+						 *
+						 * @since 4.1.0
+						 *
+						 * @param WC_Checkout $checkout Checkout object.
+						 */
+						do_action( 'fc_checkout_account_before_fields', $checkout );
+					?>
 				
 					<?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
 						<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
 					<?php endforeach; ?>
 
 					<?php // CHANGE: Add hook to allow adding content after the account fields ?>
-					<?php do_action( 'fc_checkout_account_after_fields', $checkout ); ?>
+					<?php
+						/**
+						 * Fires after the account creation fields.
+						 *
+						 * @since 4.1.0
+						 *
+						 * @param WC_Checkout $checkout Checkout object.
+						 */
+						do_action( 'fc_checkout_account_after_fields', $checkout );
+					?>
 
 					<?php // CHANGE: Removed the `clear` div element as clearing is applied via CSS ?>
 				<?php // CHANGE: Close collapsible block inner content element ?>
@@ -70,7 +95,16 @@ $optional_label = apply_filters( 'fc_checkout_display_create_account_optional_la
 			<div class="create-account create-account--empty fc-field-group <?php echo 'collapsed' === $collapsible_initial_state ? 'is-collapsed' : ''; ?>" <?php echo 'collapsed' === $collapsible_initial_state ? 'data-autofocus' : ''; ?> data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo esc_attr( $collapsible_initial_state ); ?>">
 				<div class="collapsible-content__inner">
 					<?php // CHANGE: Add hook to allow adding content before the account fields ?>
-					<?php do_action( 'fc_checkout_account_fields_empty_section', $checkout ); ?>
+					<?php
+						/**
+						 * Fires when the account creation section has no fields to display.
+						 *
+						 * @since 4.1.0
+						 *
+						 * @param WC_Checkout $checkout Checkout object.
+						 */
+						do_action( 'fc_checkout_account_fields_empty_section', $checkout );
+					?>
 				</div>
 			</div>
 		<?php endif; ?>

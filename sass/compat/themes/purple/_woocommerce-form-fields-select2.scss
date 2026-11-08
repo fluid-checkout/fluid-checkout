@@ -1,0 +1,18 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection--single {
+	border-radius: var(--wc-form-border-radius);
+	color: var(--wc-form-color-text, #000);
+	overflow: hidden;
+}
+
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+	line-height: normal;
+}

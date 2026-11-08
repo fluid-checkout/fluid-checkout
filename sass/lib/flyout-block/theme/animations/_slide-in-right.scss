@@ -1,0 +1,12 @@
+@use '../../../../abstract' as *;
+
+.slide-in-right { animation: slide-in-right $sliding-animation-easing $global-animation-duration-fast; }
+@keyframes slide-in-right {
+	from {
+		transform: translate3d(100%, 0, 0);
+	}
+
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}

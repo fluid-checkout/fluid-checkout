@@ -1,3 +1,5 @@
+@use "abstract" as *;
+
 // ------------------------------------
 // CHECKOUT LAYOUT
 // ------------------------------------
@@ -33,3 +35,4 @@ div.woocommerce #kco-iframe {
 		box-sizing: border-box;
 	}
 }
+

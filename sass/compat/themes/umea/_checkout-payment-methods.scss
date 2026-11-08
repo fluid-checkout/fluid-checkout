@@ -1,16 +1,24 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box .woocommerce-SavedPaymentMethods,
-body#{ $_body-theme-selector } #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box .woocommerce-SavedPaymentMethods {
+body#{ $body-theme-selector } .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box .woocommerce-SavedPaymentMethods,
+body#{ $body-theme-selector } #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box .woocommerce-SavedPaymentMethods {
 	list-style: none !important; // Needed to override theme styles
 }
 
 
 
-body#{ $_body-theme-selector } .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box,
-body#{ $_body-theme-selector } #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
+body#{ $body-theme-selector } .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box,
+body#{ $body-theme-selector } #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
 	input[type="checkbox"],
 	input[type="radio"] {
 		margin-#{ $alignment-left }: 0 !important; // Needed to override theme styles
@@ -20,3 +28,4 @@ body#{ $_body-theme-selector } #add_payment_method .fc-wrapper #payment ul.payme
 		vertical-align: middle;
 	}
 }
+

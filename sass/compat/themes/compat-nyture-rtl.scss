@@ -1,10 +1,7 @@
 // ------------------------------------
-// IMPORT ABSTRACT
+// LOAD PUBLIC API
 // ------------------------------------
-@import
-	"../../abstract/_all-early",
-	"../../abstract/_variables-rtl",
-	"../../abstract/_all";
+@use "abstract/index-rtl";
 
 
 
@@ -12,5 +9,4 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"nyture/__imports";
+@use "nyture/__imports";

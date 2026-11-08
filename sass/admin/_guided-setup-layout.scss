@@ -1,0 +1,35 @@
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
+// ------------------------------------
+// GUIDED SETUP LAYOUT
+// ------------------------------------
+
+body.fc-guided-setup .fc-wrap {
+	margin: 0 auto;
+	max-width: 850px;
+	padding: 20px 15px;
+}
+
+body.fc-guided-setup .notice,
+body.fc-guided-setup div.updated,
+body.fc-guided-setup div.error {
+	display: none !important; // Needed to ensure notices are not displayed on the guided setup page
+}
+
+// The thank-you and version text are cleared in PHP. Hide the empty footer bar and the space reserved for it.
+body.fc-guided-setup #wpfooter {
+	display: none;
+}
+
+body.fc-guided-setup #wpbody-content {
+	padding-bottom: 0;
+}
+
+body.fc-guided-setup.auto-fold #wpcontent {
+	padding-left: 0;
+}
+
+body.rtl.fc-guided-setup.auto-fold #wpcontent {
+	padding-right: 0;
+}

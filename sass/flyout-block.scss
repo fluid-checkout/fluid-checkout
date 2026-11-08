@@ -1,19 +1,4 @@
-// ------------------------------------
-// IMPORT ABSTRACT
-// ------------------------------------
-@import
-	"abstract/_all-early",
-	"abstract/_all",
-	"../node_modules/flyout-block/sass/abstract/variables";
-
-
-
-
-	
-// ------------------------------------
-// IMPORT STYLES
-// ------------------------------------
-@import
-	"../node_modules/flyout-block/sass/theme/flyout-block",
-	"../node_modules/flyout-block/sass/theme/animations",
-	"partials/flyout-block";
+@use 'abstract' as *;
+@use "partials/flyout-block" as *;
+@use 'lib/flyout-block' as *;
+@use 'partials/flyout-block-animations' as *;

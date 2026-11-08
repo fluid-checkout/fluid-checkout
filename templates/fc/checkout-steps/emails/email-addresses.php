@@ -12,8 +12,8 @@
  *
  * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates\Emails
- * @version 10.6.0
- * @fc-version 4.2.2
+ * @version 11.3.0
+ * @fc-version 5.0.0
  */
 
 use Automattic\WooCommerce\Utilities\FeaturesUtil;
@@ -23,20 +23,61 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // CHANGE: Replace variables for formatted addresses with filters to allow plugins to change the displayed addresses
+/**
+ * Filters the formatted billing address shown in order details.
+ *
+ * @since 3.2.0
+ *
+ * @param string   $value Value to filter.
+ * @param WC_Order $order Order object.
+ */
 $billing_address_formatted = apply_filters( 'fc_pro_order_details_customer_billing_address_formatted', $order->get_formatted_billing_address( esc_html__( 'N/A', 'woocommerce' ) ), $order );
+/**
+ * Filters the formatted shipping address shown in order details.
+ *
+ * @since 3.2.0
+ *
+ * @param string   $value Value to filter.
+ * @param WC_Order $order Order object.
+ */
 $shipping_address_formatted = apply_filters( 'fc_pro_order_details_customer_shipping_address_formatted', $order->get_formatted_shipping_address( esc_html__( 'N/A', 'woocommerce' ) ), $order );
 
 // CHANGE: Determine if shipping address should be shown
 $show_shipping = ! wc_ship_to_billing_address_only() && $order->needs_shipping_address();
 
 // CHANGE: Add filter to allow plugins to define whether to show shipping address
+/**
+ * Filters whether the shipping address column is shown in order details.
+ *
+ * @since 3.2.0
+ *
+ * @param bool     $show_shipping Show shipping.
+ * @param WC_Order $order         Order object.
+ */
 $show_shipping = apply_filters( 'fc_pro_order_details_customer_information_show_shipping', $show_shipping, $order );
 
 // CHANGE: Define labels for shipping and billing columns
+/**
+ * Filters the billing address label shown in order details.
+ *
+ * @since 3.2.0
+ *
+ * @param mixed    $label Label text.
+ * @param WC_Order $order Order object.
+ */
 $billing_address_label = apply_filters( 'fc_pro_order_details_customer_billing_address_label', FluidCheckout_Steps::instance()->get_substep_title( 'billing_address' ), $order );
+/**
+ * Filters the shipping address label shown in order details.
+ *
+ * @since 3.2.0
+ *
+ * @param mixed    $label Label text.
+ * @param WC_Order $order Order object.
+ */
 $shipping_address_label = apply_filters( 'fc_pro_order_details_customer_shipping_address_label', FluidCheckout_Steps::instance()->get_substep_title( 'shipping_address' ), $order );
 
-$email_improvements_enabled = FeaturesUtil::feature_is_enabled( 'email_improvements' );
+// CHANGE: Guard FeaturesUtil for WooCommerce versions before the features API existed
+$email_improvements_enabled = class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) && FeaturesUtil::feature_is_enabled( 'email_improvements' );
 
 /**
  * Filter whether to display the section divider in the email body.
@@ -55,9 +96,11 @@ $display_section_divider = (bool) apply_filters( 'woocommerce_email_body_display
 	<tr>
 		<th class="font-family text-align-left" style="border:0; padding:0;" valign="top" width="50%">
 			<?php if ( $email_improvements_enabled ) { ?>
-				<b class="address-title"><?php echo esc_html( $billing_address_label ); ?></b>
+				<?php // CHANGE: Use filtered billing label, keep upstream `esc_html_e` fallback ?>
+				<b class="address-title"><?php $billing_address_label ? print( esc_html( $billing_address_label ) ) : esc_html_e( 'Billing address', 'woocommerce' ); ?></b>
 			<?php } else { ?>
-				<h2><?php echo esc_html( $billing_address_label ); ?></h2>
+				<?php // CHANGE: Use filtered billing label, keep upstream `esc_html_e` fallback ?>
+				<h2><?php $billing_address_label ? print( esc_html( $billing_address_label ) ) : esc_html_e( 'Billing address', 'woocommerce' ); ?></h2>
 			<?php } ?>
 		</th>
 
@@ -65,9 +108,11 @@ $display_section_divider = (bool) apply_filters( 'woocommerce_email_body_display
 		<?php if ( $show_shipping ) : ?>
 			<th class="font-family text-align-left" style="border:0; padding:0;" valign="top" width="50%">
 				<?php if ( $email_improvements_enabled ) { ?>
-					<b class="address-title"><?php echo esc_html( $shipping_address_label ); ?></b>
+					<?php // CHANGE: Use filtered shipping label, keep upstream `esc_html_e` fallback ?>
+					<b class="address-title"><?php $shipping_address_label ? print( esc_html( $shipping_address_label ) ) : esc_html_e( 'Shipping address', 'woocommerce' ); ?></b>
 				<?php } else { ?>
-					<h2><?php echo esc_html( $shipping_address_label ); ?></h2>
+					<?php // CHANGE: Use filtered shipping label, keep upstream `esc_html_e` fallback ?>
+					<h2><?php $shipping_address_label ? print( esc_html( $shipping_address_label ) ) : esc_html_e( 'Shipping address', 'woocommerce' ); ?></h2>
 				<?php } ?>
 			</th>
 		<?php endif; ?>
@@ -80,15 +125,16 @@ $display_section_divider = (bool) apply_filters( 'woocommerce_email_body_display
 			<?php // CHANGE: Move addresses titles to a separate row ?>
 
 			<address class="address">
-				<?php // CHANGE: Use filtered billing address to display ?>
-				<?php echo wp_kses_post( $billing_address_formatted ); ?>
+				<?php // CHANGE: Use filtered billing address to display, keep upstream `esc_html__` N/A fallback ?>
+				<?php echo wp_kses_post( $billing_address_formatted ? $billing_address_formatted : esc_html__( 'N/A', 'woocommerce' ) ); ?>
 
 				<?php // CHANGE: Only output the phone number if it is not already included in the formatted address ?>
 				<?php if ( $order->get_billing_phone() && false === strpos( $billing_address_formatted, $order->get_billing_phone() ) ) : ?>
 					<br/><?php echo wc_make_phone_clickable( $order->get_billing_phone() ); ?>
 				<?php endif; ?>
+				<?php // CHANGE: Output billing email in its own element (WC 11.3) ?>
 				<?php if ( $order->get_billing_email() ) : ?>
-					<br/><?php echo esc_html( $order->get_billing_email() ); ?>
+					<div class="address-email"><?php echo esc_html( $order->get_billing_email() ); ?></div>
 				<?php endif; ?>
 				<?php
 				/**

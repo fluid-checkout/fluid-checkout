@@ -18,11 +18,17 @@ class FluidCheckout_Migration_4_2_5 extends FluidCheckout {
 
 
 	/**
-	 * Initialize hooks.
+	 * Get ordered migration steps for this version.
 	 */
-	public function migrate() {
-		// Apply migrations
-		$this->maybe_update_shipping_phone_field_visibility_option();
+	public function get_migration_steps() {
+		return array(
+			array(
+				'id'          => 'update_shipping_phone_visibility',
+				'description' => __( 'Update the shipping phone field visibility option from the legacy value to match WooCommerce conventions.', 'fluid-checkout' ),
+				'risk'        => FluidCheckout_AdminDBMigrations::RISK_LOW,
+				'callback'    => array( $this, 'maybe_update_shipping_phone_field_visibility_option' ),
+			),
+		);
 	}
 
 

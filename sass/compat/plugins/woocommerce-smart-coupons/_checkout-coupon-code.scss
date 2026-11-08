@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // CHECKOUT COUPON CODE
 // ------------------------------------
@@ -21,3 +27,4 @@ div.woocommerce .fc-checkout-notices + .woocommerce-info {
 		width: calc( #{ $checkout-steps-width--large-screen } - #{ $checkout-column-gap--large-screen } );
 	}
 }
+

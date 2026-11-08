@@ -1,0 +1,12 @@
+// ------------------------------------
+// CHECKOUT SHIPPING METHODS
+// ------------------------------------
+
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price:has( .vp-woo-pont-shipping-method-label-price ) {
+	flex-shrink: 0;
+	width: auto;
+}
+
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .vp-woo-pont-shipping-method-label-price .amount {
+	display: inline;
+}

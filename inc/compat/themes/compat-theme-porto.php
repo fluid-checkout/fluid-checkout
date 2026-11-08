@@ -33,7 +33,7 @@ class FluidCheckout_ThemeCompat_Porto extends FluidCheckout {
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 
 		// General CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Checkout steps
 		add_action( 'the_content', array( $this, 'maybe_output_porto_checkout_steps_section' ), 10 );

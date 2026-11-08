@@ -1,0 +1,117 @@
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
+// Recommended setup step — preview recommendation rows (IA / styling shell).
+
+.fc-guided-setup .fc-setup-recommendation-options {
+	display: grid;
+	grid-template-columns: minmax( 0, 1fr );
+	gap: 8px;
+	width: 100%;
+	margin-top: 20px;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option {
+	display: grid;
+	grid-template-columns: auto minmax( 0, 1fr ) auto;
+	grid-template-rows: auto auto;
+	column-gap: 12px;
+	row-gap: 4px;
+	align-items: center;
+	width: 100%;
+	max-width: none;
+	margin: 0;
+	padding: 13px 12px;
+	border: 1px solid $fc-settings-input-border-color;
+	border-radius: $fc-settings-input-border-radius;
+	background: $white;
+	box-shadow: $fc-settings-input-box-shadow;
+	box-sizing: border-box;
+	color: $fc-settings-text-color;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option:hover,
+.fc-guided-setup .fc-setup-recommendation-option:has( .fc-settings-toggle:checked ) {
+	background: $white;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option.is-disabled {
+	background: $fc-settings-input-background-color-disabled;
+	cursor: not-allowed;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option.is-disabled:hover,
+.fc-guided-setup .fc-setup-recommendation-option.is-disabled:has( .fc-settings-toggle:checked ) {
+	background: $fc-settings-input-background-color-disabled;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option__switch {
+	grid-column: 1;
+	grid-row: 1;
+	margin: 0;
+	align-self: center;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option__content {
+	display: contents;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option__title {
+	grid-column: 2;
+	grid-row: 1;
+	display: block;
+	margin: 0;
+	font-size: $fc-settings-field-label-font-size;
+	font-weight: 600;
+	line-height: 1.4;
+	color: $fc-settings-text-color;
+	align-self: center;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option__description {
+	grid-column: 2;
+	grid-row: 2;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.45;
+	color: $admin-text-color-muted;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option.is-disabled .fc-setup-recommendation-option__title,
+.fc-guided-setup .fc-setup-recommendation-option.is-disabled .fc-setup-recommendation-option__description {
+	color: $fc-settings-input-color-disabled;
+}
+
+.fc-guided-setup .fc-setup-recommendation-option__badge {
+	grid-column: 3;
+	grid-row: 1;
+	align-self: center;
+	margin: 0;
+}
+
+.fc-guided-setup .fc-setup-recommendation-empty {
+	margin: 12px 0 0;
+	color: $admin-text-color-muted;
+}
+
+.fc-guided-setup .fc-setup-recommendation-applied-toggle,
+.fc-guided-setup .fc-setup-recommendation-more-toggle {
+	margin: 16px 0 0;
+}
+
+.fc-guided-setup .fc-setup-recommendation-applied,
+.fc-guided-setup .fc-setup-recommendation-more {
+	display: grid;
+	grid-template-columns: minmax( 0, 1fr );
+	gap: 8px;
+	margin-top: 8px;
+}
+
+.fc-guided-setup .fc-setup-recommendation-applied.is-collapsed,
+.fc-guided-setup .fc-setup-recommendation-applied[hidden],
+.fc-guided-setup .fc-setup-recommendation-more.is-collapsed,
+.fc-guided-setup .fc-setup-recommendation-more[hidden] {
+	display: none;
+}

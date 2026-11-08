@@ -31,10 +31,28 @@
 
 
 	/**
-	 * Update the global state of steps.
+	 * Call Astra Pro `addAnimateClass` without breaking Select2-enhanced fields.
+	 *
+	 * @param   Element  field  Checkout form field.
+	 */
+	var callAddAnimateClass = function( field ) {
+		// Bail if required function is not available
+		if ( 'function' !== typeof window.addAnimateClass ) { return; }
+
+		try {
+			addAnimateClass( field );
+		} catch ( error ) {
+			// Astra Pro uses `:selected` with `querySelector`, which is invalid on Select2 fields.
+		}
+	};
+
+
+
+	/**
+	 * Re-run Astra Pro modern input animations after checkout fragments update.
 	 *
 	 * @param   Event  _event  An unused `jQuery.Event` object.
-	 * @param   Array  data   The updated checkout data.
+	 * @param   Array  data    The updated checkout data.
 	 */
 	var triggerInputEvents = function( _event, data ) {
 		// Bail if required function is not available
@@ -44,8 +62,7 @@
 			// Get fields
 			var fields = document.querySelectorAll( _settings.fieldsSelector );
 			for ( var i = 0; i < fields.length; i++ ) {
-				var field = fields[ i ];
-				addAnimateClass( field );
+				callAddAnimateClass( fields[ i ] );
 			}
 		} );
 
@@ -60,9 +77,7 @@
 		// FORM FIELDS
 		if ( e.target.matches( _settings.fieldsSelector ) ) {
 			// Trigger field label handler
-			if ( 'function' === typeof window.addAnimateClass ) {
-				addAnimateClass( e.target );
-			}
+			callAddAnimateClass( e.target );
 		}
 	};
 

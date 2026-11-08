@@ -23,7 +23,7 @@ class FluidCheckout_ThemeCompat_OnAir2 extends FluidCheckout {
 		$this->checkout_template_hooks();
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 

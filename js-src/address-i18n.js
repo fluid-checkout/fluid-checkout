@@ -288,9 +288,9 @@ jQuery( function( $ ) {
 				field.find( '.select2-selection__placeholder' ).text( fieldLocale.label );
 			}
 
-			// Required.
+			// Required. A field the locale hides is not required, as on the server.
 			if ( typeof fieldLocale.required !== 'undefined' ) {
-				field_is_required( field, fieldLocale.required );
+				field_is_required( field, fieldLocale.required && true !== fieldLocale.hidden );
 			} else {
 				field_is_required( field, false );
 			}
@@ -300,13 +300,15 @@ jQuery( function( $ ) {
 				field.data( 'priority', fieldLocale.priority );
 			}
 
-			// Hidden fields. State visibility (show) is managed by
-			// country-select.js, but locale can still hide it.
+			// CHANGE: Replace upstream hidden-field comments (state visibility managed by country-select.js, locale can still hide it)
+			// Hidden fields. country-select.js swaps the State input for a hidden
+			// one when the country has an empty state list; keep that row hidden.
 			if ( true === fieldLocale.hidden ) {
 				field.hide().find( ':input' ).val( '' );
-			} else if ( 'state' !== key ) {
+			} else if ( 'state' !== key || ! field.find( 'input[type="hidden"]' ).length ) {
 				field.show();
 			}
+			// CHANGE: END - hidden fields
 
 			// CHANGE: Handle collapsible fields state
 			var formRow, fieldCollapsibleToggle, fieldCollapsibleContent;

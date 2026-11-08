@@ -1,8 +1,7 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"tom-select-control",
-	"tom-select-control-validation",
-	"tom-select-dropdown",
-	"tom-select-multi";
+@use "tom-select-control";
+@use "tom-select-control-validation";
+@use "tom-select-dropdown";
+@use "tom-select-multi";

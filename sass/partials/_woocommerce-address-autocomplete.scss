@@ -1,0 +1,74 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
+// ------------------------------------
+// WOOCOMMERCE ADDRESS AUTOCOMPLETE
+// ------------------------------------
+
+// WooCommerce moves the address input to the end of the wrapper while suggestions
+// are open (browser autofill workaround). With Fluid Checkout the field description
+// also lives in that wrapper, so without a visual order fix the description can
+// appear above the input and break icon / suggestions positioning.
+//
+// Use flex `order` so the input stays first visually regardless of DOM order.
+// Use :has( #field-id ) so specificity matches WooCommerce core styles that also
+// use :has() with an ID.
+.woocommerce-input-wrapper.autocomplete-available:has( #billing_address_1 ),
+.woocommerce-input-wrapper.autocomplete-available:has( #shipping_address_1 ),
+.woocommerce-input-wrapper.autocomplete-available:has( #address_1 ) {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.woocommerce-input-wrapper.autocomplete-available:has( #billing_address_1 ) > input#billing_address_1,
+.woocommerce-input-wrapper.autocomplete-available:has( #shipping_address_1 ) > input#shipping_address_1,
+.woocommerce-input-wrapper.autocomplete-available:has( #address_1 ) > input#address_1 {
+	order: 1;
+}
+
+.woocommerce-input-wrapper.autocomplete-available:has( #billing_address_1 ) > .description,
+.woocommerce-input-wrapper.autocomplete-available:has( #shipping_address_1 ) > .description,
+.woocommerce-input-wrapper.autocomplete-available:has( #address_1 ) > .description {
+	order: 2;
+}
+
+
+
+// Keep suggestions below the input (not the description) and above following fields.
+// WC sets an inline margin-top based on input height; with FC use top instead.
+.woocommerce-input-wrapper:has( #billing_address_1 ) .woocommerce-address-suggestions,
+.woocommerce-input-wrapper:has( #shipping_address_1 ) .woocommerce-address-suggestions,
+.woocommerce-input-wrapper:has( #address_1 ) .woocommerce-address-suggestions {
+	z-index: z( 'float-element' );
+	top: $form-field-height !important; // Needed to override WooCommerce core styles with equal :has(#id) specificity depending on enqueue order
+	margin-top: 0 !important; // Needed to override inline styles set by WooCommerce JS
+	left: 0;
+	width: 100%;
+}
+
+
+
+// Align the search icon to the input height, not the full wrapper
+// (wrapper includes the FC field description below the input).
+.woocommerce-input-wrapper.autocomplete-available:has( #billing_address_1 ) .address-search-icon,
+.woocommerce-input-wrapper.autocomplete-available:has( #shipping_address_1 ) .address-search-icon,
+.woocommerce-input-wrapper.autocomplete-available:has( #address_1 ) .address-search-icon {
+	top: calc( #{ $form-field-height } / 2 ) !important; // Needed to override WooCommerce `top: 50%` on the full wrapper (input + description)
+	transform: translateY( -50% ) !important; // Needed to keep vertical centering when overriding WooCommerce icon styles
+	#{ $alignment-right }: calc( #{ $checkout-validation-check-horizontal-spacing } + #{ $icon-size } + #{ $checkout-validation-check-horizontal-spacing } );
+	z-index: z( 'above' );
+}
+
+
+
+// Leave room for the search icon and the FC validation check on the right.
+// `remsize( 1.6rem )` matches WooCommerce `.address-search-icon` width/height (16px).
+.woocommerce-input-wrapper.autocomplete-available:has( #billing_address_1 ) > input#billing_address_1,
+.woocommerce-input-wrapper.autocomplete-available:has( #shipping_address_1 ) > input#shipping_address_1,
+.woocommerce-input-wrapper.autocomplete-available:has( #address_1 ) > input#address_1 {
+	padding-#{ $alignment-right }: calc( #{ $checkout-validation-check-horizontal-spacing } + #{ $icon-size } + remsize( 1.6rem ) + #{ $checkout-validation-check-horizontal-spacing } );
+}

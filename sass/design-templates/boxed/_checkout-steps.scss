@@ -1,0 +1,25 @@
+$body-template-selector: null !default;
+
+@use "abstract" as *;
+
+// ------------------------------------
+// CHECKOUT STEPS
+// ------------------------------------
+
+body#{ $body-template-selector } .fc-wrapper .fc-checkout-step {
+	margin: 0 0 $global-spacing-extra-small 0;
+	box-shadow: $checkout-step-box-shadow;
+
+	@media (#{$bp-larger-than-tablet}) {
+		margin: 0 0 $global-spacing-small 0;
+		border-radius: $checkout-substep-border-radius;
+		box-shadow: $checkout-step-box-shadow--large-screen;
+	}
+}
+
+
+
+body#{ $body-template-selector } .fc-wrapper .fc-step__substep {
+	border-width: 0;
+}
+

@@ -1,8 +1,13 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // BUTTONS -- CHECKOUT
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper .fc-step__substep-save,
-body#{ $_body-theme-selector } .fc-wrapper .fc-step__next-step {
+body#{ $body-theme-selector } .fc-wrapper .fc-step__substep-save,
+body#{ $body-theme-selector } .fc-wrapper .fc-step__next-step {
 	text-transform: var(--fluidcheckout--uncode--button--text-transform);
 }

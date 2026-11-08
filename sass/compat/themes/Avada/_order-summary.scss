@@ -1,8 +1,16 @@
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // ORDER SUMMARY
 // ------------------------------------
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } #wrapper div.woocommerce .fc-wrapper .fc-checkout-order-review-title {
+body#{ $body-theme-selector }#{ $body-page-selector } #wrapper div.woocommerce .fc-wrapper .fc-checkout-order-review-title {
 	padding-top: $global-spacing-tiny;
 	font-size: $checkout-substep-title-font-size;
 }
@@ -15,12 +23,13 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } #wrapper div.woocommerce
 // FLYOUT ORDER SUMMARY
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .fc-wrapper #order_review {
+body#{ $body-theme-selector } div.woocommerce form.woocommerce-checkout .fc-wrapper #order_review {
 	display: block !important; // Needed to override theme styles set with `!important`
 }
 
 
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title {
+body#{ $body-theme-selector }#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title {
 	border: 0;
 }
+

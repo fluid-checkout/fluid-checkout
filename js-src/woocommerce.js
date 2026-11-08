@@ -1,4 +1,51 @@
 /* global Cookies */
+
+// CHANGE: Add ajaxPrefilter for wc_form_encoding (WAF-safe form-urlencoded request bodies)
+/**
+ * Encode the body of requests that opt in with the `wc_form_encoding` option
+ * the way a browser form submission would.
+ *
+ * jQuery serializes with encodeURIComponent(), which leaves !'()~ literal,
+ * while a browser's form serializer percent-encodes them, and some WAF rules
+ * reject bodies with the literal characters. jQuery 1.x and 3.x serialize the
+ * data before prefilters run; jQuery 4 runs prefilters first, so plain object
+ * data is serialized here from the copy jQuery already made, which has removed
+ * (undefined) fields dropped. `originalOptions.data` stays the object the
+ * caller passed, and only form-encoded bodies are touched.
+ */
+if ( 'function' === typeof jQuery.ajaxPrefilter ) {
+	jQuery.ajaxPrefilter( function ( options ) {
+		if (
+			! options.wc_form_encoding ||
+			! options.processData ||
+			0 !==
+				( options.contentType || '' ).indexOf(
+					'application/x-www-form-urlencoded'
+				)
+		) {
+			return;
+		}
+		if (
+			jQuery.isPlainObject( options.data ) ||
+			Array.isArray( options.data )
+		) {
+			options.data = jQuery.param( options.data, options.traditional );
+		}
+		if ( 'string' === typeof options.data ) {
+			options.data = options.data.replace(
+				/[!'()~]/g,
+				function ( character ) {
+					return (
+						'%' +
+						character.charCodeAt( 0 ).toString( 16 ).toUpperCase()
+					);
+				}
+			);
+		}
+	} );
+}
+// CHANGE: END - ajaxPrefilter for wc_form_encoding
+
 jQuery( function ( $ ) {
 	// Orderby
 	$( '.woocommerce-ordering' ).on( 'change', 'select.orderby', function () {
@@ -49,7 +96,7 @@ jQuery( function ( $ ) {
 			.on( 'keydown', store_notice_keydown_handler );
 	}
 
-	// CHANGE: Remove "Make form field descriptions toggle on focus."
+	// CHANGE: Remove "Make form field descriptions toggle on focus." including slideUp handlers
 
 	$( '.woocommerce-input-wrapper' ).on( 'click', function( event ) {
 		// CHANGE: Exclude the 'show password' button from the event propagation block.
@@ -104,13 +151,14 @@ jQuery( function ( $ ) {
 			if ( 0 < $( this ).find( '.show-password-input' ).length ) { return; }
 
 			const describedBy = $( this ).find( 'input' ).attr( 'id' );
-			$( this ).append(
-				'<button type="button" class="show-password-input" aria-label="' +
-					woocommerce_params.i18n_password_show +
-					'" aria-describedBy="' +
-					describedBy +
-					'"></button>'
-			);
+			// CHANGE: Build show-password button with jQuery to set aria-describedby like upstream
+			const $button = $( '<button>', {
+				type: 'button',
+				class: 'show-password-input',
+				'aria-label': woocommerce_params.i18n_password_show,
+			} );
+			$button.attr( 'aria-describedby', describedBy );
+			$( this ).append( $button );
 		} );
 		// CHANGE: END - Only wrap password inputs if they aren't already wrapped.
 
@@ -149,7 +197,8 @@ jQuery( function ( $ ) {
 				.prop( 'type', 'password' );
 		}
 
-		$( this ).siblings( 'input' ).focus();
+		// CHANGE: Use trigger( 'focus' ) to match upstream WooCommerce focus handling
+		$( this ).siblings( 'input' ).trigger( 'focus' );
 	}
 	// CHANGE: Handle captured show password click handler button click.
 	$( document.body ).on( 'click', '.show-password-input', handleShowPasswordClick );

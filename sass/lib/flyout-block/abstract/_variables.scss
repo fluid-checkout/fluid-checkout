@@ -1,0 +1,16 @@
+// Flyout-block–specific tokens.
+// Shared breakpoints, z-index, rem helpers, and animation durations come from Lite's abstract after sync.
+
+@use '../../../abstract' as fc;
+
+// ----------------------------------------
+// FLYOUT BLOCK - MODALS
+
+$flyout-background-color:                   #fff !default;
+$flyout-box-shadow:                         0 fc.remsize( .2rem ) fc.remsize( 1.5rem ) rgba( 0, 0, 0, .3 ) !default;
+
+$flyout-overlay-color:                      rgba( 0, 0, 0, .75 ) !default;
+$flyout-overlay-animation-duration:         .15s !default;
+
+// END - FLYOUT BLOCK - MODALS
+// ----------------------------------------

@@ -1,17 +1,2 @@
-// ------------------------------------
-// IMPORT ABSTRACT
-// ------------------------------------
-@import
-	"abstract/_all-early",
-	"abstract/_all";
-@import	"../node_modules/sticky-states/sass/abstract/variables";
-
-
-
-
-	
-// ------------------------------------
-// IMPORT STYLES
-// ------------------------------------
-@import
-	"../node_modules/sticky-states/sass/theme/sticky-states";
+@use 'abstract' as *;
+@use 'lib/sticky-states';

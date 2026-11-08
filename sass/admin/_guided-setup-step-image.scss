@@ -1,0 +1,39 @@
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
+// Guided setup step image. Preview sizing comes from the medium WP image size in PHP.
+
+// ------------------------------------
+// GUIDED SETUP STEP IMAGE
+// ------------------------------------
+
+.fc-setup-step-image {
+	display: inline-block;
+	margin-top: 0.7em;
+}
+
+.fc-setup-step-image__trigger {
+	appearance: none;
+	background: $white;
+	border: 1px solid $admin-separator-color;
+	border-radius: 4px;
+	cursor: zoom-in;
+	display: inline-block;
+	max-width: 100%;
+	overflow: hidden;
+	padding: 0;
+}
+
+.fc-setup-step-image__trigger:focus {
+	box-shadow: 0 0 0 2px $white, 0 0 0 4px $admin-text-color;
+	outline: none;
+}
+
+.fc-setup-step-image__preview {
+	display: block;
+	height: auto;
+	max-height: 150px;
+	max-width: 100%;
+	object-fit: contain;
+	width: auto;
+}

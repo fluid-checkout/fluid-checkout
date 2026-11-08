@@ -93,6 +93,13 @@ class FluidCheckout_FlexibleShipping extends FluidCheckout {
 		$description = $this->get_method_description( $method );
 
 		if ( '' !== $description ) {
+			/**
+			 * Filters the shipping method description HTML element.
+			 *
+			 * @since 1.5.2
+			 *
+			 * @param string $html HTML markup. Default `small`.
+			 */
 			$method_description_element = apply_filters( 'fc_shipping_method_description_html_element', 'small' );
 			echo wp_kses_post( "<{$method_description_element} class=\"shipping-method__option-description shipping-method-description\">{$description}</{$method_description_element}>" );
 		}

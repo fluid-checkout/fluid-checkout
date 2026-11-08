@@ -1,5 +1,2 @@
-@import
-	"_variables",
-	"functions/_all",
-	"mixins/_all",
-	"styles/_all";
+// Legacy @import entry — forwards the public module for backward compatibility.
+@forward "index";
