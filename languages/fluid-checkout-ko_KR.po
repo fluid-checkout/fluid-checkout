@@ -4331,10 +4331,6 @@ msgstr "고객이 자신의 계정에 저장할 수 있는 부가가치세 번�
 msgid "One per account"
 msgstr "계정당 1개"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "주소 항목당 1개"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "사용량 데이터 미리 보기"
@@ -4887,6 +4883,10 @@ msgid ""
 "Show country-aware phone inputs so customers can enter numbers in the "
 "correct international format."
 msgstr "고객이 올바른 국제 형식으로 번호를 입력할 수 있도록 국가별 형식을 지원하는 전화번호 입력란을 표시합니다."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "저장된 주소당 1개"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

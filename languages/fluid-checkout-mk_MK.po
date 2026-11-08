@@ -4730,10 +4730,6 @@ msgstr ""
 msgid "One per account"
 msgstr "Еден по сметка"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Еден запис по адреса"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Преглед на податоците за користење"
@@ -5352,6 +5348,10 @@ msgid ""
 msgstr ""
 "Прикажете ги телефонските внесови што се однесуваат на земјата, за да можат "
 "клиентите да внесуваат броеви во точен меѓународен формат."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Една за секоја зачувана адреса"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

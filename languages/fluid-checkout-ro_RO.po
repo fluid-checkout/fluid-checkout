@@ -4799,10 +4799,6 @@ msgstr ""
 msgid "One per account"
 msgstr "Câte una pe cont"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Câte una pentru fiecare adresă înregistrată"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Previzualizare date de utilizare"
@@ -5442,6 +5438,10 @@ msgstr ""
 "Afișați câmpuri de introducere a numărului de telefon adaptate la țară, "
 "astfel încât clienții să poată introduce numerele în formatul internațional "
 "corect."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Câte una pentru fiecare adresă salvată"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

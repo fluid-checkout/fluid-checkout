@@ -4632,10 +4632,6 @@ msgstr "VAT نمبروں کی حد متعین کریں جو صارف اپنے ا
 msgid "One per account"
 msgstr "ایک فی اکاؤنٹ"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "ایک فی ایڈریس اندراج"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "استعمال کے ڈیٹا کا پیش نظارہ"
@@ -5241,6 +5237,10 @@ msgid ""
 msgstr ""
 "ملک سے آگاہ فون ان پٹ دکھائیں تاکہ گاہک صحیح بین الاقوامی فارمیٹ میں نمبر "
 "درج کر سکیں۔"
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "ایک فی محفوظ کردہ پتہ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

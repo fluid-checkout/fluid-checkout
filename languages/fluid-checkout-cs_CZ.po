@@ -4784,10 +4784,6 @@ msgstr "Nastavte maximální počet DIČ, které si zákazník může uložit ke
 msgid "One per account"
 msgstr "Jeden na jeden účet"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Jeden záznam na jednu adresu"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Náhled údajů o využití"
@@ -5403,6 +5399,10 @@ msgid ""
 msgstr ""
 "Zobrazit telefonní pole s ohledem na danou zemi, aby zákazníci mohli "
 "zadávat čísla ve správném mezinárodním formátu."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Jedna na každou uloženou adresu"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

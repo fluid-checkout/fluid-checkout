@@ -4715,10 +4715,6 @@ msgstr "Tentukan had Nombor VAT yang boleh disimpan oleh pelanggan ke akaun mere
 msgid "One per account"
 msgstr "Satu setiap akaun"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Satu setiap entri alamat"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Pratonton data penggunaan"
@@ -5336,6 +5332,10 @@ msgid ""
 msgstr ""
 "Tunjukkan input telefon yang peka dengan negara supaya pelanggan boleh "
 "memasukkan nombor dalam format antarabangsa yang betul."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Satu bagi setiap alamat yang disimpan"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

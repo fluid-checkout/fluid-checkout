@@ -4757,10 +4757,6 @@ msgstr "Дефинишите ограничење ПДВ бројева које
 msgid "One per account"
 msgstr "Један по налогу"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Један по уносу адресе"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Преглед података о коришћењу"
@@ -5371,6 +5367,10 @@ msgid ""
 msgstr ""
 "Прикажите телефонске уносе који су свесни земље како би корисници могли да "
 "уносе бројеве у исправном међународном формату."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Један по сачуваној адреси"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -4630,10 +4630,6 @@ msgstr "Määrake kindlaks, mitu käibemaksunumbrit klient võib oma kontole sal
 msgid "One per account"
 msgstr "Üks kontolt"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Üks iga aadressi kohta"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Kasutamisandmete eelvaade"
@@ -5245,6 +5241,10 @@ msgid ""
 msgstr ""
 "Näita riigipõhiseid telefoninumbri sisestusvälju, et kliendid saaksid "
 "numbreid sisestada õiges rahvusvahelises vormingus."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Üks iga salvestatud aadressi kohta"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

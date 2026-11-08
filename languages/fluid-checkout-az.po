@@ -4709,10 +4709,6 @@ msgstr ""
 msgid "One per account"
 msgstr "Hər hesab üçün bir"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Hər ünvan girişi üçün bir"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "İstifadə məlumatlarının önizləməsi"
@@ -5324,6 +5320,10 @@ msgid ""
 msgstr ""
 "Müştərilərin nömrələri düzgün beynəlxalq formatda daxil edə bilməsi üçün "
 "ölkəyə uyğun telefon girişlərini göstərin."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Hər yadda saxlanılan ünvan üçün bir"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

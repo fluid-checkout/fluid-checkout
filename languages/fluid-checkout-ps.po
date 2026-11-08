@@ -4612,10 +4612,6 @@ msgstr "د VAT شمېرو حد تعریف کړئ چې یو پیرودونکی ی
 msgid "One per account"
 msgstr "په هر حساب کې یو"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "د هر پتې داخلې لپاره یو"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "د کارونې معلوماتو مخکتنه"
@@ -5219,6 +5215,10 @@ msgid ""
 msgstr ""
 "د هیواد په اړه د تلیفون معلومات وښایاست ترڅو پیرودونکي وکولی شي په سم "
 "نړیوال بڼه کې شمیرې دننه کړي."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "په هر خوندي شوي پته کې یو"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

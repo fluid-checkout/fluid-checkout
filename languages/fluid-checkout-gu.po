@@ -4620,10 +4620,6 @@ msgstr "ગ્રાહક પોતાના ખાતામાં સેવ �
 msgid "One per account"
 msgstr "પ્રતિ એકાઉન્ટ એક"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "સરનામાંની એન્ટ્રી દીઠ એક"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "વપરાશ ડેટા પૂર્વાવલોકન"
@@ -5223,6 +5219,10 @@ msgid ""
 msgstr ""
 "દેશ-જાગૃત ફોન ઇનપુટ્સ બતાવો જેથી ગ્રાહકો યોગ્ય આંતરરાષ્ટ્રીય ફોર્મેટમાં "
 "નંબરો દાખલ કરી શકે."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "દરેક સાચવેલા સરનામાં માટે એક"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

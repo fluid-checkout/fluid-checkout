@@ -4723,10 +4723,6 @@ msgstr "Вызначыць ліміт нумароў ПДВ, якія кліен
 msgid "One per account"
 msgstr "Адзін на рахунак"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Адзін на запіс адраса"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Папярэдні прагляд дадзеных аб выкарыстанні"
@@ -5334,6 +5330,10 @@ msgid ""
 msgstr ""
 "Паказваць нумары для розных краін, каб кліенты маглі ўводзіць іх у "
 "правільным міжнародным фармаце."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Адзін на захаваны адрас"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

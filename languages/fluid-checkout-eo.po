@@ -4637,10 +4637,6 @@ msgstr "Difinu limon de AVI-numeroj, kiujn kliento povas konservi en sia konto."
 msgid "One per account"
 msgstr "Unu por konto"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Unu por ĉiu adresa eniro"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Antaŭrigardo de uzadodatumoj"
@@ -5241,6 +5237,10 @@ msgid ""
 msgstr ""
 "Montru land-konsciajn telefonajn enigojn por ke klientoj povu enigi "
 "numerojn en la ĝusta internacia formato."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Unu por ĉiu konservita adreso"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -4662,10 +4662,6 @@ msgstr ""
 msgid "One per account"
 msgstr "প্রতি অ্যাকাউন্টে একটি"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "প্রতি ঠিকানা এন্ট্রিতে একটি করে"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "ব্যবহারের ডেটার পূর্বরূপ"
@@ -5278,6 +5274,10 @@ msgid ""
 msgstr ""
 "দেশ-ভিত্তিক ফোন নম্বর ইনপুট দেখান, যাতে গ্রাহকরা সঠিক আন্তর্জাতিক ফরম্যাটে "
 "নম্বর প্রবেশ করাতে পারেন।"
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "সংরক্ষিত প্রতিটি ঠিকানার জন্য একটি করে"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

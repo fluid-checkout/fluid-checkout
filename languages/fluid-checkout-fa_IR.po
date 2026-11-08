@@ -4626,10 +4626,6 @@ msgstr ""
 msgid "One per account"
 msgstr "یکی برای هر حساب"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "یکی برای هر ورودی آدرس"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "پیش‌نمایش داده‌های استفاده"
@@ -5232,6 +5228,10 @@ msgid ""
 msgstr ""
 "ورودی‌های تلفن را با توجه به کشور نمایش دهید تا مشتریان بتوانند شماره‌ها را "
 "با فرمت بین‌المللی صحیح وارد کنند."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "یکی به ازای هر آدرس ذخیره شده"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -4706,10 +4706,6 @@ msgstr ""
 msgid "One per account"
 msgstr "ھەر بىر ھېساباتقا بىر"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "ھەر بىر ئادرېس كىرگۈزۈش ئۈچۈن بىردىن"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "ئىشلىتىش سانلىق مەلۇماتلىرىنى ئالدىن كۆرۈش"
@@ -5323,6 +5319,10 @@ msgid ""
 msgstr ""
 "خېرىدارلار نومۇرلارنى توغرا خەلقئارالىق فورماتتا كىرگۈزەلىشى ئۈچۈن، دۆلەتكە "
 "ماس كېلىدىغان تېلېفون كىرگۈزۈشلىرىنى كۆرسىتىڭ."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "ھەر بىر ساقلانغان ئادرېسقا بىردىن"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

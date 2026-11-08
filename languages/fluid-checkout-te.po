@@ -4714,10 +4714,6 @@ msgstr "వినియోగదారుడు తన ఖాతాలో సే
 msgid "One per account"
 msgstr "ఒక్కో ఖాతాకు ఒకటి"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "ప్రతి చిరునామా నమోదుకు ఒకటి"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "వినియోగ డేటా ప్రివ్యూ"
@@ -5331,6 +5327,10 @@ msgid ""
 msgstr ""
 "కస్టమర్‌లు సరైన అంతర్జాతీయ ఫార్మాట్‌లో నంబర్‌లను నమోదు చేసేలా, దేశాన్ని "
 "బట్టి మారే ఫోన్ ఇన్‌పుట్‌లను చూపించండి."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "సేవ్ చేసిన ప్రతి చిరునామాకు ఒకటి"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

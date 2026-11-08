@@ -4671,10 +4671,6 @@ msgstr "Nemtokake watesan Nomer PPN sing bisa disimpen pelanggan menyang akun."
 msgid "One per account"
 msgstr "Siji saben akun"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Siji saben entri alamat"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Pratinjau data panggunaan"
@@ -5283,6 +5279,10 @@ msgid ""
 msgstr ""
 "Tampilake input telpon sing ngerti negara supaya pelanggan bisa ngetik "
 "nomer nganggo format internasional sing bener."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Siji saben alamat sing disimpen"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

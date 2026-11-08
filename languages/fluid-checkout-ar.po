@@ -4560,10 +4560,6 @@ msgstr "حدد الحد الأقصى لأرقام ضريبة القيمة الم
 msgid "One per account"
 msgstr "واحد لكل حساب"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "واحد لكل إدخال عنوان"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "معاينة بيانات الاستخدام"
@@ -5157,6 +5153,10 @@ msgid ""
 msgstr ""
 "اعرض خيارات إدخال أرقام الهواتف التي تراعي البلد حتى يتمكن العملاء من إدخال "
 "الأرقام بالتنسيق الدولي الصحيح."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "واحد لكل عنوان محفوظ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

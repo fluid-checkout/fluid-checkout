@@ -4718,10 +4718,6 @@ msgstr "Diffinio terfyn y Rhifau TAW y gall cwsmer eu cadw i&#39;w gyfrif."
 msgid "One per account"
 msgstr "Un fesul cyfrif"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Un fesul cofnod cyfeiriad"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Rhagolwg data defnydd"
@@ -5331,6 +5327,10 @@ msgid ""
 msgstr ""
 "Dangoswch fewnbynnau ffôn sy&#39;n ymwybodol o wledydd fel y gall "
 "cwsmeriaid nodi rhifau yn y fformat rhyngwladol cywir."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Un fesul cyfeiriad sydd wedi&#39;i gadw"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

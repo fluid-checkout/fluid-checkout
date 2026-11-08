@@ -4864,10 +4864,6 @@ msgstr ""
 msgid "One per account"
 msgstr "По одному на аккаунт"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "По одной записи на каждый адрес"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Предварительный просмотр данных об использовании"
@@ -5494,6 +5490,10 @@ msgid ""
 msgstr ""
 "Отображать поля ввода телефонных номеров с учетом страновых особенностей, "
 "чтобы клиенты могли вводить номера в правильном международном формате."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "По одному на каждый сохраненный адрес"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

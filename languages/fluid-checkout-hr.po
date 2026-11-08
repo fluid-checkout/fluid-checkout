@@ -4671,10 +4671,6 @@ msgstr "Definirajte ograničenje PDV brojeva koje kupac može spremiti na svoj r
 msgid "One per account"
 msgstr "Jedan po računu"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Jedan po unosu adrese"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Pregled podataka o korištenju"
@@ -5285,6 +5281,10 @@ msgid ""
 msgstr ""
 "Prikaži telefonske unose koji su svjesni zemlje kako bi korisnici mogli "
 "unositi brojeve u ispravnom međunarodnom formatu."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Jedan po spremljenoj adresi"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

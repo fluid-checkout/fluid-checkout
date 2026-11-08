@@ -4724,10 +4724,6 @@ msgstr "Кардар өз эсебине сактай турган КНС ном
 msgid "One per account"
 msgstr "Ар бир аккаунт үчүн бирден"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Дарек киргизүү үчүн бирден"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Колдонуу маалыматтарын алдын ала көрүү"
@@ -5346,6 +5342,10 @@ msgid ""
 msgstr ""
 "Кардарлар номерлерди туура эл аралык форматта киргизе алышы үчүн, өлкөгө "
 "тиешелүү телефон киргизүүлөрүн көрсөтүңүз."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Сакталган ар бир дарекке бирден"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

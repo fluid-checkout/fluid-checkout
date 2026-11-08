@@ -4720,10 +4720,6 @@ msgstr ""
 msgid "One per account"
 msgstr "Moja kwa kila akaunti"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Ingizo moja kwa kila anwani"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Onyesho la awali la data ya matumizi"
@@ -5331,6 +5327,10 @@ msgid ""
 msgstr ""
 "Onyesha ingizo za simu zinazozingatia nchi ili wateja waweze kuingiza "
 "nambari katika umbizo sahihi la kimataifa."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Moja kwa kila anwani iliyohifadhiwa"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

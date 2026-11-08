@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, woocommerce checkout, one page checkout, multi-step
 Requires PHP: 7.4
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 4.2.8
+Stable tag: 5.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -408,7 +408,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 == Changelog ==
 
-= Unreleased =
+= 5.0.0 - 2026-11-08 =
 
 * Bump tested up to WooCommerce 11.3
 * Added: New settings pages, with guided setup and live preview of checkout pages.

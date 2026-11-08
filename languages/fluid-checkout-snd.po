@@ -4623,10 +4623,6 @@ msgstr "گراهڪ پنهنجي اڪائونٽ ۾ محفوظ ڪري سگهن ٿ�
 msgid "One per account"
 msgstr "هر اڪائونٽ تي هڪ"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "هر پتي جي داخلا لاءِ هڪ"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "استعمال جي ڊيٽا جو ڏيک"
@@ -5231,6 +5227,10 @@ msgid ""
 msgstr ""
 "ملڪ جي ڄاڻ رکندڙ فون ان پٽ ڏيکاريو ته جيئن گراهڪ صحيح بين الاقوامي فارميٽ ۾ "
 "نمبر داخل ڪري سگهن."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "هر محفوظ ڪيل پتي لاءِ هڪ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -4663,10 +4663,6 @@ msgstr ""
 msgid "One per account"
 msgstr "Einn á hvern reikning"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Einn á hverja heimilisfangsfærslu"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Forskoðun á notkunargögnum"
@@ -5278,6 +5274,10 @@ msgid ""
 msgstr ""
 "Sýna símanúmer sem eru sniðin að hverju landi fyrir sig svo viðskiptavinir "
 "geti slegið inn númer á réttu alþjóðlegu sniði."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Eitt á hvert vistað heimilisfang"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

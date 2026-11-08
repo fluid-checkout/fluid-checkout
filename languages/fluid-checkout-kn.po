@@ -4690,10 +4690,6 @@ msgstr "ಗ್ರಾಹಕರು ತಮ್ಮ ಖಾತೆಗೆ ಉಳಿಸಬ
 msgid "One per account"
 msgstr "ಪ್ರತಿ ಖಾತೆಗೆ ಒಂದು"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "ಪ್ರತಿ ವಿಳಾಸ ನಮೂದುಗೆ ಒಂದು"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "ಬಳಕೆಯ ಡೇಟಾ ಪೂರ್ವವೀಕ್ಷಣೆ"
@@ -5303,6 +5299,10 @@ msgid ""
 msgstr ""
 "ಗ್ರಾಹಕರು ಸರಿಯಾದ ಅಂತರರಾಷ್ಟ್ರೀಯ ಸ್ವರೂಪದಲ್ಲಿ ಸಂಖ್ಯೆಗಳನ್ನು ನಮೂದಿಸಲು "
 "ಸಾಧ್ಯವಾಗುವಂತೆ ದೇಶ-ಜಾಗೃತ ಫೋನ್ ಇನ್‌ಪುಟ್‌ಗಳನ್ನು ತೋರಿಸಿ."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "ಉಳಿಸಿದ ವಿಳಾಸಕ್ಕೆ ಒಂದು"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

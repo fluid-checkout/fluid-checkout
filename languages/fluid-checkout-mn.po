@@ -4710,10 +4710,6 @@ msgstr "Үйлчлүүлэгч дансандаа хадгалж болох НӨ
 msgid "One per account"
 msgstr "Данс бүрт нэг"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Хаягийн оруулга бүрт нэг"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Хэрэглээний өгөгдлийн урьдчилсан тойм"
@@ -5334,6 +5330,10 @@ msgid ""
 msgstr ""
 "Үйлчлүүлэгчид дугааруудыг зөв олон улсын форматаар оруулах боломжтой байхын "
 "тулд улс оронтой холбоотой утасны оролтыг харуулна уу."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Хадгалсан хаяг бүрт нэг"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

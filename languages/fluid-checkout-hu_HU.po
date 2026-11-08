@@ -4847,10 +4847,6 @@ msgstr "Határozza meg, hogy egy ügyfél hány áfa-számot menthet el a fiókj
 msgid "One per account"
 msgstr "Fiókonként egy darab"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Címbejegyzésenként egy"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Használati adatok előnézete"
@@ -5486,6 +5482,10 @@ msgid ""
 msgstr ""
 "Jelenítsen meg országspecifikus telefonszám-beviteli mezőket, hogy az "
 "ügyfelek a számokat a megfelelő nemzetközi formátumban adhassák meg."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Minden mentett címhez egy"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

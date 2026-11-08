@@ -4754,10 +4754,6 @@ msgstr ""
 msgid "One per account"
 msgstr "ഒരു അക്കൗണ്ടിന് ഒന്ന്"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "ഓരോ വിലാസ എൻട്രിയിലും ഒന്ന്"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "ഉപയോഗ ഡാറ്റ പ്രിവ്യൂ"
@@ -5379,6 +5375,10 @@ msgid ""
 msgstr ""
 "ഉപഭോക്താക്കൾക്ക് ശരിയായ അന്താരാഷ്ട്ര ഫോർമാറ്റിൽ നമ്പറുകൾ നൽകാൻ കഴിയുന്ന "
 "തരത്തിൽ രാജ്യത്തെക്കുറിച്ചുള്ള അവബോധമുള്ള ഫോൺ ഇൻപുട്ടുകൾ കാണിക്കുക."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "സംരക്ഷിച്ച വിലാസത്തിന് ഒന്ന്"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

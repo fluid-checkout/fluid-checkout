@@ -4635,10 +4635,6 @@ msgstr "ग्राहकले आफ्नो खातामा बचत �
 msgid "One per account"
 msgstr "प्रति खाता एउटा"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "प्रति ठेगाना प्रविष्टि एउटा"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "प्रयोग डेटा पूर्वावलोकन"
@@ -5241,6 +5237,10 @@ msgid ""
 msgstr ""
 "ग्राहकहरूले सही अन्तर्राष्ट्रिय ढाँचामा नम्बरहरू प्रविष्ट गर्न सकून् भनेर "
 "देश-सचेत फोन इनपुटहरू देखाउनुहोस्।"
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "प्रति सुरक्षित ठेगाना एउटा"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

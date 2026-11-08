@@ -4627,10 +4627,6 @@ msgstr "ගනුදෙනුකරුවෙකුට තම ගිණුමට 
 msgid "One per account"
 msgstr "ගිණුමකට එකක්"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "ලිපින ඇතුළත් කිරීමකට එකක්"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "භාවිත දත්ත පෙරදසුන"
@@ -5234,6 +5230,10 @@ msgid ""
 msgstr ""
 "පාරිභෝගිකයින්ට නිවැරදි ජාත්‍යන්තර ආකෘතියෙන් අංක ඇතුළත් කළ හැකි වන පරිදි රට "
 "දැනුවත් දුරකථන ආදාන පෙන්වන්න."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "සුරකින ලද ලිපිනයකට එකක්"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

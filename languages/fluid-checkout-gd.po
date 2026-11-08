@@ -4831,10 +4831,6 @@ msgstr ""
 msgid "One per account"
 msgstr "Aon gach cunntas"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Aon inntrigeadh gach seòlaidh"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Ro-shealladh dàta cleachdaidh"
@@ -5463,6 +5459,10 @@ msgid ""
 msgstr ""
 "Seall cuir-a-steach fòn a tha mothachail air dùthaich gus an urrainn do "
 "luchd-ceannach àireamhan a chuir a-steach san chruth eadar-nàiseanta cheart."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Aon airson gach seòladh a chaidh a shàbhaladh"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

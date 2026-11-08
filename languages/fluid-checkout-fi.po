@@ -4671,10 +4671,6 @@ msgstr "Määritä, kuinka monta ALV-numeroa asiakas voi tallentaa tililleen."
 msgid "One per account"
 msgstr "Yksi tiliä kohden"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Yksi kutakin osoitetta kohti"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Käyttötietojen esikatselu"
@@ -5289,6 +5285,10 @@ msgid ""
 msgstr ""
 "Näytä maakohtaiset puhelinnumerokentät, jotta asiakkaat voivat syöttää "
 "numerot oikeassa kansainvälisessä muodossa."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Yksi kutakin tallennettua osoitetta kohti"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

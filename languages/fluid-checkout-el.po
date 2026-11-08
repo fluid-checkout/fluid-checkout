@@ -4968,10 +4968,6 @@ msgstr ""
 msgid "One per account"
 msgstr "Ένα ανά λογαριασμό"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Μία ανά καταχώριση διεύθυνσης"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Προεπισκόπηση δεδομένων χρήσης"
@@ -5608,6 +5604,10 @@ msgid ""
 msgstr ""
 "Εμφάνιση πεδίων εισαγωγής αριθμών τηλεφώνου που λαμβάνουν υπόψη τη χώρα, "
 "ώστε οι πελάτες να μπορούν να εισάγουν τους αριθμούς στη σωστή διεθνή μορφή."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Μία ανά αποθηκευμένη διεύθυνση"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

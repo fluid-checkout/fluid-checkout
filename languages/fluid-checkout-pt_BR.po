@@ -4913,10 +4913,6 @@ msgstr "Definir o limite de números de IVA que um cliente pode salvar em sua co
 msgid "One per account"
 msgstr "Um por conta"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Um por registro de endereço"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Visualização dos dados de uso"
@@ -5542,6 +5538,10 @@ msgstr ""
 "Exiba campos de entrada de número de telefone que levem em conta o país, "
 "para que os clientes possam inserir os números no formato internacional "
 "correto."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Um por endereço salvo"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

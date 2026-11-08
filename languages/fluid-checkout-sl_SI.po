@@ -4707,10 +4707,6 @@ msgstr ""
 msgid "One per account"
 msgstr "Ena na račun"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Ena na vsak naslovni vnos"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Predogled podatkov o uporabi"
@@ -5324,6 +5320,10 @@ msgid ""
 msgstr ""
 "Prikaži polja za vnos telefonskih številk, ki upoštevajo državo, da lahko "
 "stranke številke vnašajo v pravilnem mednarodnem formatu."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Ena na shranjeni naslov"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

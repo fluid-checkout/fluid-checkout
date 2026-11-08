@@ -4492,10 +4492,6 @@ msgstr "הגדר את מגבלת מספרי המע&quot;מ שהלקוח יכול
 msgid "One per account"
 msgstr "אחד לכל חשבון"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "אחת לכל ערך כתובת"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "תצוגה מקדימה של נתוני שימוש"
@@ -5080,6 +5076,10 @@ msgid ""
 msgstr ""
 "הצג קלט טלפון תואם למדינה כדי שלקוחות יוכלו להזין מספרים בפורמט הבינלאומי "
 "הנכון."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "אחת לכל כתובת שמורה"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

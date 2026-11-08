@@ -4810,10 +4810,6 @@ msgstr ""
 msgid "One per account"
 msgstr "အကောင့်တစ်ခုလျှင် တစ်ခု"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "လိပ်စာတစ်ခုလျှင် တစ်ခု"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "အသုံးပြုမှုဒေတာ အစမ်းကြည့်ရှုခြင်း"
@@ -5444,6 +5440,10 @@ msgid ""
 msgstr ""
 "ဖောက်သည်များသည် မှန်ကန်သော နိုင်ငံတကာဖော်မတ်ဖြင့် နံပါတ်များကို "
 "ထည့်သွင်းနိုင်စေရန် နိုင်ငံအလိုက် ဖုန်းထည့်သွင်းမှုများကို ပြသပါ။"
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "သိမ်းဆည်းထားသော လိပ်စာတစ်ခုလျှင် တစ်ခု"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

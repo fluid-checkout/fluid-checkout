@@ -4690,10 +4690,6 @@ msgstr "Noteikt, cik daudz PVN numuru klients var saglabāt savā kontā."
 msgid "One per account"
 msgstr "Viens uz vienu kontu"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Viens ieraksts uz katru adresi"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Lietošanas datu priekšskatījums"
@@ -5305,6 +5301,10 @@ msgid ""
 msgstr ""
 "Rādīt tālruņa numuru ievades laukus, kas ņem vērā valsti, lai klienti "
 "varētu ievadīt numurus pareizā starptautiskajā formātā."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Viens uz katru saglabāto adresi"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

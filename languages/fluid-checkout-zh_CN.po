@@ -4247,10 +4247,6 @@ msgstr "设定客户可在其账户中保存的增值税号数量上限。"
 msgid "One per account"
 msgstr "每个账户限购一件"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "每个地址条目限一份"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "使用数据预览"
@@ -4797,6 +4793,10 @@ msgid ""
 "Show country-aware phone inputs so customers can enter numbers in the "
 "correct international format."
 msgstr "显示支持国家/地区设置的电话号码输入框，以便客户能够以正确的国际格式输入号码。"
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "每个已保存的地址限一个"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

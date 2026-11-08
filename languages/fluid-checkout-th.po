@@ -4673,10 +4673,6 @@ msgstr ""
 msgid "One per account"
 msgstr "หนึ่งบัญชีต่อหนึ่งบัญชี"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "หนึ่งรายการต่อหนึ่งรายการที่อยู่"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "ตัวอย่างข้อมูลการใช้งาน"
@@ -5279,6 +5275,10 @@ msgid ""
 msgstr ""
 "แสดงช่องป้อนหมายเลขโทรศัพท์ที่รองรับแต่ละประเทศ "
 "เพื่อให้ลูกค้าสามารถป้อนหมายเลขในรูปแบบสากลที่ถูกต้อง"
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "หนึ่งรายการต่อที่อยู่บันทึกไว้"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

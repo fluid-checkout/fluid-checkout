@@ -4347,10 +4347,6 @@ msgstr "顧客が自分のアカウントに保存できるVAT番号の上限を
 msgid "One per account"
 msgstr "1アカウントにつき1つ"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "1つの住所登録につき1件"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "利用状況データのプレビュー"
@@ -4901,6 +4897,10 @@ msgid ""
 "Show country-aware phone inputs so customers can enter numbers in the "
 "correct international format."
 msgstr "顧客が正しい国際形式で番号を入力できるよう、国別設定に対応した電話番号入力フィールドを表示します。"
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "登録済みの住所ごとに1件"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

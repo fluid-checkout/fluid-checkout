@@ -4799,10 +4799,6 @@ msgstr ""
 msgid "One per account"
 msgstr "Isa bawat account"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Isa bawat entry ng address"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Preview ng datos ng paggamit"
@@ -5429,6 +5425,10 @@ msgstr ""
 "Ipakita ang mga input ng telepono na may kamalayan sa bansa upang "
 "makapaglagay ang mga customer ng mga numero sa tamang internasyonal na "
 "format."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Isa bawat naka-save na address"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

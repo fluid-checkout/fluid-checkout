@@ -4882,10 +4882,6 @@ msgstr ""
 msgid "One per account"
 msgstr "Eén per account"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Eén per adresvermelding"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Voorbeeld van gebruiksgegevens"
@@ -5507,6 +5503,10 @@ msgid ""
 msgstr ""
 "Geef landspecifieke telefooninvoervelden weer, zodat klanten nummers in de "
 "juiste internationale notatie kunnen invoeren."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Eén per opgeslagen adres"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

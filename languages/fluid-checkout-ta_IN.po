@@ -4811,10 +4811,6 @@ msgstr ""
 msgid "One per account"
 msgstr "ஒரு கணக்கிற்கு ஒன்று"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "ஒவ்வொரு முகவரிப் பதிவிற்கும் ஒன்று"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "பயன்பாட்டுத் தரவு முன்னோட்டம்"
@@ -5453,6 +5449,10 @@ msgid ""
 msgstr ""
 "வாடிக்கையாளர்கள் சரியான சர்வதேச வடிவத்தில் எண்களை உள்ளிடுவதற்கு ஏதுவாக, "
 "நாடு வாரியான தொலைபேசி உள்ளீடுகளைக் காண்பிக்கவும்."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "சேமிக்கப்பட்ட ஒவ்வொரு முகவரிக்கும் ஒன்று"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

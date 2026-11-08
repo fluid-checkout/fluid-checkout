@@ -4701,10 +4701,6 @@ msgstr "Fastlæg det maksimale antal momsnumre, som en kunde kan gemme på sin k
 msgid "One per account"
 msgstr "Én pr. konto"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Én pr. adresseoplysning"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Forhåndsvisning af brugsdata"
@@ -5316,6 +5312,10 @@ msgid ""
 msgstr ""
 "Vis landespecifikke telefonindtastningsfelter, så kunderne kan indtaste "
 "numre i det korrekte internationale format."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Én pr. gemt adresse"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

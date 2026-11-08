@@ -4641,10 +4641,6 @@ msgstr ""
 msgid "One per account"
 msgstr "प्रत्येक खात्यासाठी एक"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "प्रत्येक पत्त्याच्या नोंदीसाठी एक"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "वापर डेटा पूर्वावलोकन"
@@ -5247,6 +5243,10 @@ msgid ""
 msgstr ""
 "देशानुसार बदलता येणारे फोन इनपुट दाखवा, जेणेकरून ग्राहक योग्य आंतरराष्ट्रीय "
 "फॉरमॅटमध्ये नंबर टाकू शकतील."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "प्रत्येक सेव्ह केलेल्या पत्त्यासाठी एक"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

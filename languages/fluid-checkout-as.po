@@ -4641,10 +4641,6 @@ msgstr "গ্ৰাহকে তেওঁলোকৰ একাউণ্টত 
 msgid "One per account"
 msgstr "প্ৰতিটো একাউণ্টত এটাকৈ"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "প্ৰতিটো ঠিকনা প্ৰৱেশত এটাকৈ"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "ব্যৱহাৰৰ তথ্যৰ পূৰ্বদৰ্শন"
@@ -5249,6 +5245,10 @@ msgid ""
 msgstr ""
 "দেশ-সচেতন ফোন ইনপুটসমূহ দেখুৱাওক যাতে গ্ৰাহকে সঠিক আন্তঃৰাষ্ট্ৰীয় ফৰ্মেটত "
 "নম্বৰ প্ৰৱেশ কৰিব পাৰে।"
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "প্ৰতিটো সংৰক্ষিত ঠিকনাত এটাকৈ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

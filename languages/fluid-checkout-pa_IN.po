@@ -4636,10 +4636,6 @@ msgstr "ਇੱਕ ਗਾਹਕ ਆਪਣੇ ਖਾਤੇ ਵਿੱਚ ਜਮ੍�
 msgid "One per account"
 msgstr "ਪ੍ਰਤੀ ਖਾਤਾ ਇੱਕ"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "ਪ੍ਰਤੀ ਪਤਾ ਐਂਟਰੀ ਇੱਕ"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "ਵਰਤੋਂ ਡੇਟਾ ਪੂਰਵਦਰਸ਼ਨ"
@@ -5239,6 +5235,10 @@ msgid ""
 msgstr ""
 "ਦੇਸ਼-ਜਾਗਰੂਕ ਫ਼ੋਨ ਇਨਪੁੱਟ ਦਿਖਾਓ ਤਾਂ ਜੋ ਗਾਹਕ ਸਹੀ ਅੰਤਰਰਾਸ਼ਟਰੀ ਫਾਰਮੈਟ ਵਿੱਚ ਨੰਬਰ "
 "ਦਰਜ ਕਰ ਸਕਣ।"
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "ਪ੍ਰਤੀ ਸੁਰੱਖਿਅਤ ਕੀਤੇ ਪਤੇ ਲਈ ਇੱਕ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

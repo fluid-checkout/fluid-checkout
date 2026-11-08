@@ -4727,10 +4727,6 @@ msgstr "Bezero batek bere kontuan gorde ditzakeen BEZ zenbakien muga definitu."
 msgid "One per account"
 msgstr "Kontu bakoitzeko bat"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Helbide sarrera bakoitzeko bat"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Erabilera-datuen aurrebista"
@@ -5337,6 +5333,10 @@ msgid ""
 msgstr ""
 "Erakutsi herrialdearen araberako telefono-sarrerak, bezeroek nazioarteko "
 "formatu egokian zenbakiak sartu ahal izan ditzaten."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Gordetako helbide bakoitzeko bat"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

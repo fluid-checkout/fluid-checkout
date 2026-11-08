@@ -4646,10 +4646,6 @@ msgstr ""
 msgid "One per account"
 msgstr "ໜຶ່ງອັນຕໍ່ບັນຊີ"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "ໜຶ່ງລາຍການຕໍ່ໜຶ່ງລາຍການທີ່ຢູ່"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "ຕົວຢ່າງຂໍ້ມູນການນຳໃຊ້"
@@ -5250,6 +5246,10 @@ msgid ""
 msgstr ""
 "ສະແດງຂໍ້ມູນເບີໂທລະສັບທີ່ຮັບຮູ້ປະເທດ "
 "ເພື່ອໃຫ້ລູກຄ້າສາມາດໃສ່ຕົວເລກໃນຮູບແບບສາກົນທີ່ຖືກຕ້ອງ."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "ໜຶ່ງຕໍ່ທີ່ຢູ່ທີ່ບັນທຶກໄວ້"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

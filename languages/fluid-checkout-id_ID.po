@@ -4723,10 +4723,6 @@ msgstr "Tentukan batas jumlah Nomor PPN yang dapat disimpan pelanggan ke akunnya
 msgid "One per account"
 msgstr "Satu per akun"
 
-#: inc/admin/admin-settings-vat-assistant.php:396
-msgid "One per address entry"
-msgstr "Satu per entri alamat"
-
 #: inc/admin/admin-telemetry.php:67, inc/admin/admin-telemetry.php:104
 msgid "Usage data preview"
 msgstr "Pratinjau data penggunaan"
@@ -5347,6 +5343,10 @@ msgid ""
 msgstr ""
 "Tampilkan kolom input nomor telepon yang mendukung pengaturan negara agar "
 "pelanggan dapat memasukkan nomor dalam format internasional yang benar."
+
+#: inc/admin/admin-settings-vat-assistant.php:396
+msgid "One per saved address"
+msgstr "Satu per alamat yang disimpan"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
