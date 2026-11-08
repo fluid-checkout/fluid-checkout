@@ -609,6 +609,17 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 				return true;
 			}
 
+			// Preview token sent as a request header when query args were dropped from AJAX or fetch
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Presence check only; token is validated after the preview loads.
+			if ( isset( $_SERVER[ 'HTTP_X_FC_PREVIEW' ] ) && '' !== $_SERVER[ 'HTTP_X_FC_PREVIEW' ] ) {
+				return true;
+			}
+
+			// Preview token on the same-site Referer when a subrequest omitted fc_preview from the URL
+			if ( '' !== $this->get_preview_token_from_referer() ) {
+				return true;
+			}
+
 			// Save unsaved settings for the preview from the settings page
 			if ( wp_doing_ajax() ) {
 				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Checked when the preview handles the request.
@@ -630,6 +641,48 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 			}
 
 			return false;
+		}
+
+		/**
+		 * Get the preview token from the same-site HTTP Referer query string.
+		 *
+		 * @return  string  The preview token, or an empty string when the referer has none or is not same-site.
+		 */
+		public function get_preview_token_from_referer() {
+			return $this->get_preview_arg_from_referer( 'fc_preview' );
+		}
+
+		/**
+		 * Get a preview query argument value from the same-site HTTP Referer.
+		 *
+		 * @param   string  $arg  Query argument name.
+		 *
+		 * @return  string  The argument value, or an empty string when missing or not same-site.
+		 */
+		public function get_preview_arg_from_referer( $arg ) {
+			// Bail if the request has no referer
+			if ( empty( $_SERVER[ 'HTTP_REFERER' ] ) ) { return ''; }
+
+			// Get referer URL
+			$referer = esc_url_raw( wp_unslash( $_SERVER[ 'HTTP_REFERER' ] ) );
+
+			// Get hosts to compare
+			$referer_host = wp_parse_url( $referer, PHP_URL_HOST );
+			$home_host = wp_parse_url( home_url(), PHP_URL_HOST );
+
+			// Bail if the referer is not same-site
+			if ( empty( $referer_host ) || empty( $home_host ) || 0 !== strcasecmp( $referer_host, $home_host ) ) { return ''; }
+
+			// Get referer query arguments
+			$query = wp_parse_url( $referer, PHP_URL_QUERY );
+			if ( ! is_string( $query ) || '' === $query ) { return ''; }
+
+			parse_str( $query, $query_args );
+
+			// Bail if the argument is missing
+			if ( empty( $query_args[ $arg ] ) || ! is_string( $query_args[ $arg ] ) ) { return ''; }
+
+			return sanitize_text_field( $query_args[ $arg ] );
 		}
 
 		/**

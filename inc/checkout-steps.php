@@ -9509,6 +9509,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Check whether the current request is an admin settings preview request.
+	 *
+	 * @return  bool
+	 */
+	public function is_admin_preview_request() {
+		return class_exists( 'FluidCheckout_Admin_Preview', false ) && FluidCheckout_Admin_Preview::instance()->is_preview_request();
+	}
+
+	/**
 	 * Update the customer's data to the WC_Customer object.
 	 *
 	 * @param  string  $posted_data  Post data for all checkout fields.
@@ -9551,6 +9560,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 					WC()->customer->{$setter}( $posted_data[ $field_key ] );
 				}
 			}
+		}
+
+		// Bail before session persistence on admin preview requests, preview session is memory-only and seeded separately
+		if ( $this->is_admin_preview_request() ) {
+			return $posted_data;
 		}
 
 		// Save/commit changes to the customer object

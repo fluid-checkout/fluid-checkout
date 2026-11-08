@@ -21,6 +21,7 @@
 	var _settings = {
 		adminOrigin:                  '',
 		tokenQueryArg:                'fc_preview',
+		tokenHeader:                  'X-FC-Preview',
 		previewArgs:                  {},
 		shippingMethodsQueryArg:      'fc_preview_shipping_methods',
 		sessionFieldsQueryArg:        'fc_preview_session_fields',
@@ -154,6 +155,40 @@
 	};
 
 	/**
+	 * Get whether a request URL is same-origin as the preview page.
+	 *
+	 * @param {string}  requestUrl  Request URL, which can be relative to the preview page.
+	 *
+	 * @return {boolean}  Whether the request is same-origin.
+	 */
+	var isSameOriginRequestUrl = function( requestUrl ) {
+		try {
+			return root.location.origin === new URL( requestUrl, root.location.href ).origin;
+		}
+		catch ( error ) {
+			return false;
+		}
+	};
+
+	/**
+	 * Get request headers with the preview token header for same-origin requests.
+	 *
+	 * @param {HeadersInit}  headers  Existing request headers.
+	 *
+	 * @return {Headers}  Headers including the preview token.
+	 */
+	var getHeadersWithPreviewToken = function( headers ) {
+		var nextHeaders = new Headers( headers || undefined );
+
+		// Set the preview token header when available
+		if ( _settings.previewArgs[ _settings.tokenQueryArg ] ) {
+			nextHeaders.set( _settings.tokenHeader, _settings.previewArgs[ _settings.tokenQueryArg ] );
+		}
+
+		return nextHeaders;
+	};
+
+	/**
 	 * Send `fetch` requests with the preview arguments when sent to the frontend.
 	 *
 	 * @param {string|URL|Request}  resource  Request URL or request object.
@@ -162,20 +197,24 @@
 	 * @return {Promise}  The response promise.
 	 */
 	var fetchWithPreviewArgs = function( resource, options ) {
-		// Get the request URL, and the same URL with the preview arguments
 		var requestUrl = resource instanceof Request ? resource.url : String( resource );
 		var previewRequestUrl = getPreviewRequestUrl( requestUrl );
+		var nextOptions;
 
-		// Bail with the original request when its URL does not change, such as requests sent to other origins
-		if ( previewRequestUrl === requestUrl ) { return _originalFetch.call( root, resource, options ); }
+		// Bail with the original request when sent to another origin
+		if ( ! isSameOriginRequestUrl( requestUrl ) ) { return _originalFetch.call( root, resource, options ); }
+
+		// Copy options and set the preview token header
+		nextOptions = options ? FCUtils.extendObject( {}, options ) : {};
+		nextOptions.headers = getHeadersWithPreviewToken( nextOptions.headers || ( resource instanceof Request ? resource.headers : undefined ) );
 
 		// Maybe copy request objects with the new URL, keeping their method, headers and body
 		if ( resource instanceof Request ) {
-			return _originalFetch.call( root, new Request( previewRequestUrl, resource ), options );
+			return _originalFetch.call( root, new Request( previewRequestUrl, resource ), nextOptions );
 		}
 
 		// Send the request to the URL with the preview arguments
-		return _originalFetch.call( root, previewRequestUrl, options );
+		return _originalFetch.call( root, previewRequestUrl, nextOptions );
 	};
 
 	/**
@@ -186,12 +225,25 @@
 	 */
 	var openXhrWithPreviewArgs = function( method, url ) {
 		var args = Array.prototype.slice.call( arguments );
+		var result;
 
 		// Use the request URL with the preview arguments, keeping the other arguments as they are
 		args[ 1 ] = getPreviewRequestUrl( String( url ) );
 
 		// Open the request
-		return _originalXhrOpen.apply( this, args );
+		result = _originalXhrOpen.apply( this, args );
+
+		// Set the preview token header on same-origin requests after `open`, before `send`
+		if ( isSameOriginRequestUrl( String( args[ 1 ] ) ) && _settings.previewArgs[ _settings.tokenQueryArg ] ) {
+			try {
+				this.setRequestHeader( _settings.tokenHeader, _settings.previewArgs[ _settings.tokenQueryArg ] );
+			}
+			catch ( error ) {
+				// Ignore headers the browser rejects for this request state
+			}
+		}
+
+		return result;
 	};
 
 	/**
