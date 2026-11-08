@@ -9784,7 +9784,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( is_user_logged_in() || $this->is_billing_same_as_shipping() ) {
 			$billing_country = WC()->checkout()->get_value( 'billing_country' );
 			$address_fields = WC()->countries->get_address_fields( $billing_country, 'billing_' );
+
+			// Keep the contact email. Other billing fields are cleared for the next checkout.
+			$skip_clear_field_keys = array( 'billing_email' );
+
 			foreach ( $address_fields as $field_key => $field_args ) {
+				// Skip some fields
+				if ( in_array( $field_key, $skip_clear_field_keys, true ) ) { continue; }
+
+				// Add field to be cleared
 				$save_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
 				$clear_field_keys[] = $field_key;
 				$clear_field_keys[] = $save_field_key;
