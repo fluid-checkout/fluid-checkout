@@ -1,7 +1,5 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"loading-indicator",
-
-	"animations";
+@use "loading-indicator";
+@use "animations";

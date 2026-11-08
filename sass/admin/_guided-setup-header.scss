@@ -1,0 +1,22 @@
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
+// Guided setup badge in the shared admin header. Imported from `admin-guided-setup.scss`.
+
+// ------------------------------------
+// GUIDED SETUP HEADER BADGE
+// ------------------------------------
+
+#fc-header .fc-header__branding .fc-header__guided-setup-badge {
+	margin-left: 20px;
+	padding: 2px 8px;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.6;
+	vertical-align: middle;
+}
+
+.rtl #fc-header .fc-header__branding .fc-header__guided-setup-badge {
+	margin-left: 0;
+	margin-right: 20px;
+}

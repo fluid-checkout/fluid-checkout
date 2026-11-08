@@ -1,15 +1,8 @@
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
+// LOAD STYLES
 // ------------------------------------
-$_body-page-selector:                  '.woocommerce-edit-address' !default;
-$_body-theme-selector:                 '.wp-theme-suki' !default;
-
-
-
-
-
-// ------------------------------------
-// IMPORT STYLES
-// ------------------------------------
-@import
-	"edit-address";
+@use "scope-edit-address" as scope;
+@forward "edit-address" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);

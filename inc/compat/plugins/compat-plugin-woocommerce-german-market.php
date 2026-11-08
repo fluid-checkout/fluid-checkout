@@ -35,7 +35,7 @@ class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
 		// Place order position
-		add_filter( 'pre_option_fc_checkout_place_order_position', array( $this, 'change_place_order_position_option' ), 10, 3 );
+		add_filter( 'fc_settings_effective_values', array( $this, 'change_place_order_position_option' ), 10 );
 		add_filter( 'fc_checkout_general_settings', array( $this, 'change_place_order_position_settings_args' ), 20 ); // Priority needs to be higher than that used by the PRO plugin to enable the settings fields (10)
 	}
 
@@ -92,14 +92,14 @@ class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 
 
 	/**
-	 * Change the option for the place order position to always `below_order_summary` when using German Market.
+	 * Force the place order position to `below_order_summary` when using German Market.
 	 *
-	 * @param  mixed   $pre_option   The value to return instead of the option value.
-	 * @param  string  $option       Option name.
-	 * @param  mixed   $default      The fallback value to return if the option does not exist.
+	 * @param  array  $values  Effective settings values.
 	 */
-	public function change_place_order_position_option( $pre_option, $option, $default ) {
-		return 'below_order_summary';
+	public function change_place_order_position_option( $values ) {
+		$values = is_array( $values ) ? $values : array();
+		$values[ 'fc_checkout_place_order_position' ] = 'below_order_summary';
+		return $values;
 	}
 
 	/**

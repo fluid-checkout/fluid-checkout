@@ -51,7 +51,7 @@ class FluidCheckout_ThemeCompat_PressMart extends FluidCheckout {
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'maybe_change_sticky_elements_relative_header' ), 20 );
@@ -180,11 +180,12 @@ class FluidCheckout_ThemeCompat_PressMart extends FluidCheckout {
 				'title' => __( 'Theme Pressmart', 'fluid-checkout' ),
 				'type'  => 'title',
 				'id'    => 'fc_integrations_theme_pressmart_options',
+				'docs'  => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/compat-theme-pressmart/' ),
 			),
 
 			array(
 				'title'           => __( 'Checkout progress', 'fluid-checkout' ),
-				'desc'            => __( 'Output the checkout steps section from the Pressmart theme on the checkout, cart and order received pages.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/compat-theme-pressmart/' ),
+				'desc'            => __( 'Output the checkout steps section from the Pressmart theme on the checkout, cart and order received pages.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_pressmart_output_checkout_steps_section',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_pressmart_output_checkout_steps_section' ),

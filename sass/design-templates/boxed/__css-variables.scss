@@ -1,0 +1,41 @@
+$body-template-selector: null !default;
+
+@use "abstract" as *;
+
+// ------------------------------------
+// CSS VARIABLES
+// ------------------------------------
+:root body.woocommerce-page#{ $body-template-selector } {
+	--fluidcheckout--section--border-color: #{ $light-grey };
+	--fluidcheckout--section--border-radius: #{ $global-radius };
+	--fluidcheckout--section--background-color: #{ $white };
+	--fluidcheckout--section--shadow-color: #{ $light-grey };
+	--fluidcheckout--section--shadow-color--large-screen: #{ $light-grey };
+
+	--fluidcheckout--order-summary--border-color: #{ $black };
+	--fluidcheckout--order-summary--background-color: #{ $white };
+	--fluidcheckout--order-summary--shadow-color: #{ $light-grey };
+	--fluidcheckout--order-summary--shadow-color--large-screen: #{ $light-grey };
+
+	--fluidcheckout--order-summary--cell-border-width: #{ remsize( 0rem ) }; // Need to use same unit type otherwise CSS `calc()` might not work.
+	--fluidcheckout--order-summary--cell-border-width--products-list: #{ remsize( 0rem ) }; // Need to use same unit type otherwise CSS `calc()` might not work.
+	--fluidcheckout--order-summary--cell-border-width--products: #{ remsize( 0rem ) }; // Need to use same unit type otherwise CSS `calc()` might not work.
+	--fluidcheckout--order-summary--cell-border-width--summary: #{ remsize( 0rem ) }; // Need to use same unit type otherwise CSS `calc()` might not work.
+	--fluidcheckout--order-summary--cell-border-width--totals-top: #{ remsize( 0rem ) }; // Need to use same unit type otherwise CSS `calc()` might not work.
+	--fluidcheckout--order-summary--cell-border-width--totals-bottom: #{ remsize( 0rem ) }; // Need to use same unit type otherwise CSS `calc()` might not work.
+
+	--fluidcheckout--order-summary--image-padding: #{ remsize( 0rem ) }; // Need to use same unit type otherwise CSS `calc()` might not work.
+	--fluidcheckout--order-summary--image-border-color: #{ $lighter-grey };
+	--fluidcheckout--order-summary--image-background-color: transparent;
+	--fluidcheckout--order-summary--image-shadow-color: #{ $lighter-grey };
+	--fluidcheckout--order-summary--image-border-radius: #{ remsize( 0rem ) }; // Need to use same unit type otherwise CSS `calc()` might not work.
+
+	--fluidcheckout--option-box--spacing--between-options: #{ $global-spacing-tiny };
+	--fluidcheckout--option-box--border-color: transparent;
+	--fluidcheckout--option-box--border-radius: #{ $global-radius-small };
+
+	--fluidcheckout--option-box--border-color--hover: #{ $grey };
+	--fluidcheckout--option-box--label-border-color--hover: #{ $grey };
+
+	--fluidcheckout--option-box--label-border-color--checked: #{ $black };
+}

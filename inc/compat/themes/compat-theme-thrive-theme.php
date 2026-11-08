@@ -24,7 +24,7 @@ class FluidCheckout_ThemeCompat_ThriveTheme extends FluidCheckout {
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Checkout template hooks
 		$this->checkout_template_hooks();

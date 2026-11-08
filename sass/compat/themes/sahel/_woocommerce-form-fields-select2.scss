@@ -1,10 +1,19 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .ts-wrapper.single .ts-control,
-body#{ $_body-theme-selector } .select2-container--default .select2-selection--single .select2-selection__rendered {
+body#{ $body-theme-selector } .ts-wrapper.single .ts-control,
+body#{ $body-theme-selector } .select2-container--default .select2-selection--single .select2-selection__rendered {
 	letter-spacing: remsize( .3em );
 	border-bottom: remsize( .1rem ) solid var(--theme--first-color);
 	text-transform: uppercase;
 }
+

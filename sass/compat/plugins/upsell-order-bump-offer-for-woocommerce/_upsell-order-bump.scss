@@ -1,3 +1,5 @@
+@use "abstract" as *;
+
 // ------------------------------------
 // UPSELL ORDER BUMP
 // ------------------------------------
@@ -34,3 +36,4 @@
 .fc-wrapper .fc-place-order__section .wrapup_order_bump {
 	margin-bottom: $global-spacing-small !important; // Needed to override plugin styles
 }
+

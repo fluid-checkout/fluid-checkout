@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // TOM SELECT CONTROL
 // ------------------------------------
 
-body#{ $_body-theme-selector } .ts-control {
+body#{ $body-theme-selector } .ts-control {
 	border-width: 0 0 2px 0; // Use `px` as units to match theme styles
 }

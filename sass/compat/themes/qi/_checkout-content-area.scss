@@ -1,10 +1,15 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT CONTENT
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-content.fc-container {
+body#{ $body-theme-selector } .fc-content.fc-container {
 	padding: 0!important; // Needed to override theme values.
 }
-body#{ $_body-theme-selector } .fc-content.fc-container .fc-checkout-notices {
+body#{ $body-theme-selector } .fc-content.fc-container .fc-checkout-notices {
 	width: unset!important; // Needed to override theme values.
 }

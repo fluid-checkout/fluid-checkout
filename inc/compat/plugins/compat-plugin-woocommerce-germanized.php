@@ -35,7 +35,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 1600, 3 ); // Priority needs to be higher than that used by Germanized (1500)
 
 		// Place order position
-		add_filter( 'pre_option_fc_checkout_place_order_position', array( $this, 'change_place_order_position_option' ), 10, 3 );
+		add_filter( 'fc_settings_effective_values', array( $this, 'change_place_order_position_option' ), 10 );
 		add_filter( 'fc_checkout_general_settings', array( $this, 'change_place_order_position_settings_args' ), 20 ); // Priority needs to be higher than that used by the PRO plugin to enable the settings fields (10)
 
 		// Germanized thumbnails
@@ -55,7 +55,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		add_filter( 'fc_shipping_same_as_billing_field_keys', array( $this, 'remove_pickup_location_from_copy_billing_field_keys' ), 10 );
 
 		// Persisted data
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_pickup_location_data_session_value' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_pickup_location_data_session_value' ), 10 );
 
 		// Shipping address review text
 		add_filter( 'fc_shipping_substep_text_address_data', array( $this, 'remove_customer_number_from_text_address_data' ), 10 );
@@ -188,6 +188,16 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 			$_template = $plugin_path . $template_name;
 
 			// Look for template file in the theme
+			/**
+			 * Filters whether a theme template file may replace a plugin template.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param bool   $value         Value to filter. Default false.
+			 * @param string $template      Located template path.
+			 * @param string $template_name Template name.
+			 * @param string $template_path Template path.
+			 */
 			if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
 				$_template_override = locate_template( array(
 					trailingslashit( $template_path ) . $template_name,
@@ -213,14 +223,14 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 
 	/**
-	 * Change the option for the place order position to always `below_order_summary` when using Germanized.
+	 * Force the place order position to `below_order_summary` when using Germanized.
 	 *
-	 * @param  mixed   $pre_option   The value to return instead of the option value.
-	 * @param  string  $option       Option name.
-	 * @param  mixed   $default      The fallback value to return if the option does not exist.
+	 * @param  array  $values  Effective settings values.
 	 */
-	public function change_place_order_position_option( $pre_option, $option, $default ) {
-		return 'below_order_summary';
+	public function change_place_order_position_option( $values ) {
+		$values = is_array( $values ) ? $values : array();
+		$values[ 'fc_checkout_place_order_position' ] = 'below_order_summary';
+		return $values;
 	}
 
 	/**

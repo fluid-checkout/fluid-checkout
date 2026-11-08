@@ -24,6 +24,9 @@ class FluidCheckout_WooCommerceGatewayAmazonPaymentsAdvanced extends FluidChecko
 	public function hooks() {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
+		// Admin preview
+		add_filter( 'fc_admin_preview_allowed_hosts', array( $this, 'add_admin_preview_allowed_hosts' ), 10 );
 	}
 
 	/**
@@ -59,6 +62,20 @@ class FluidCheckout_WooCommerceGatewayAmazonPaymentsAdvanced extends FluidChecko
 
 		}
 
+	}
+
+
+
+	/**
+	 * Add the hosts that Amazon Pay contacts to show its payment messages to the hosts the admin preview may contact.
+	 *
+	 * @param   array  $hosts  Host names.
+	 *
+	 * @return  array  Host names with Amazon Pay hosts added.
+	 */
+	public function add_admin_preview_allowed_hosts( $hosts ) {
+		// Add the Amazon Pay hosts of each region
+		return array_merge( $hosts, array( 'payments.amazon.com', 'payments-eu.amazon.com', 'payments-fe.amazon.com' ) );
 	}
 
 }

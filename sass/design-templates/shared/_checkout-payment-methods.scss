@@ -1,0 +1,56 @@
+$body-template-selector: null !default;
+
+@use "abstract" as *;
+
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $body-template-selector } .woocommerce #payment ul.wc_payment_methods > li.wc_payment_method > label {
+	border: $option-box-label-border;
+	border-radius: $option-box-border-radius;
+}
+body#{ $body-template-selector } .woocommerce .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name="payment_method"]:not( :checked ) ~ label,
+body#{ $body-template-selector } .woocommerce #add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name="payment_method"]:not( :checked ) ~ label {
+	border: $option-box-label-border;
+	border-bottom-width: $option-box-label-border-width;
+}
+
+
+
+body#{ $body-template-selector } .woocommerce #payment ul.wc_payment_methods > li.wc_payment_method > input[name="payment_method"]:checked + label {
+	font-weight: bold;
+	border: $option-box-label-border;
+	border-radius: $option-box-border-radius;
+	border-color: $option-box-label-border-color--checked;
+}
+
+
+
+body#{ $body-template-selector } .woocommerce .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label:hover,
+body#{ $body-template-selector } .woocommerce .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name="payment_method"]:not( :checked ) ~ label:hover,
+body#{ $body-template-selector } .woocommerce #add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name="payment_method"]:not( :checked ) ~ label:hover {
+	border: $option-box-label-border;
+	border-radius: $option-box-border-radius;
+	border-color: $option-box-border-color--hover;
+}
+
+
+
+body#{ $body-template-selector } .woocommerce #payment ul.wc_payment_methods > li.wc_payment_method.has-payment-box > input[name="payment_method"]:checked + label {
+	border-bottom: 0;
+	border-bottom-#{ $alignment-left }-radius: 0;
+	border-bottom-#{ $alignment-right }-radius: 0;
+}
+
+body#{ $body-template-selector } .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name="payment_method"]:checked ~ .payment_box,
+body#{ $body-template-selector } #add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name="payment_method"]:checked ~ .payment_box,
+body#{ $body-template-selector } .fc-wrapper #payment .payment_methods > .wc_payment_method input[name="payment_method"]:checked ~ .payment_box,
+body#{ $body-template-selector } #add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method input[name="payment_method"]:checked ~ .payment_box {
+	border: $option-box-label-border;
+	border-radius: $option-box-border-radius;
+	border-color: $option-box-label-border-color--checked;
+	border-top: 0;
+	border-top-#{ $alignment-left }-radius: 0;
+	border-top-#{ $alignment-right }-radius: 0;
+}

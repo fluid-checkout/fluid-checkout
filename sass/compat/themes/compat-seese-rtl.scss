@@ -1,14 +1,10 @@
 // ------------------------------------
-// IMPORT ABSTRACT
+// LOAD PUBLIC API
 // ------------------------------------
-@import
-	"../../abstract/_all-early",
-	"../../abstract/_variables-rtl",
-	"../../abstract/_all";
+@use "abstract/index-rtl";
 
 
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"seese/__imports";
+@use "seese/__imports";

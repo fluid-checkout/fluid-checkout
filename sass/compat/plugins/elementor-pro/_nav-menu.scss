@@ -1,3 +1,5 @@
+@use "abstract" as *;
+
 // ------------------------------------
 // NAVIGATION MENU WIDGET
 // ------------------------------------
@@ -5,3 +7,4 @@
 body.has-fluid-checkout .elementor-nav-menu {
 	z-index: z( 'header-element' );
 }
+

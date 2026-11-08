@@ -1,0 +1,19 @@
+// ------------------------------------
+// LOAD STYLES
+// ------------------------------------
+@use "scope-boxed" as scope;
+@forward "__css-variables" hide $body-template-selector with (
+	$body-template-selector: scope.$body-template-selector
+);
+@forward "checkout-steps" hide $body-template-selector with (
+	$body-template-selector: scope.$body-template-selector
+);
+@forward "order-summary" hide $body-template-selector with (
+	$body-template-selector: scope.$body-template-selector
+);
+@forward "../shared/checkout-shipping-methods" hide $body-template-selector with (
+	$body-template-selector: scope.$body-template-selector
+);
+@forward "../shared/checkout-payment-methods" hide $body-template-selector with (
+	$body-template-selector: scope.$body-template-selector
+);

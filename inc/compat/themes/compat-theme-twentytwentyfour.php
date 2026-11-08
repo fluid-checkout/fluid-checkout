@@ -20,7 +20,7 @@ class FluidCheckout_ThemeCompat_TwentyTwentyFour extends FluidCheckout {
 	 */
 	public function hooks() {
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Buttons
 		add_filter( 'fc_next_step_button_classes', array( $this, 'add_button_class' ), 10 );

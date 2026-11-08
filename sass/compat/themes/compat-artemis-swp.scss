@@ -1,9 +1,7 @@
 // ------------------------------------
 // IMPORT ABSTRACT
 // ------------------------------------
-@import
-	"../../abstract/_all-early",
-	"../../abstract/_all";
+@use "abstract" as *;
 
 
 
@@ -12,5 +10,4 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"artemis-swp/__imports";
+@use "artemis-swp/__imports";

@@ -1,9 +1,7 @@
 // ------------------------------------
 // IMPORT ABSTRACT
 // ------------------------------------
-@import
-	"../../abstract/_all-early",
-	"../../abstract/_all";
+@use "abstract" as *;
 
 
 
@@ -12,5 +10,4 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"hello-elementor/__imports";
+@use "hello-elementor/__imports";

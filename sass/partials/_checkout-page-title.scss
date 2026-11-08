@@ -1,6 +1,13 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // CHECKOUT PAGE TITLE
 // ------------------------------------
 .fc-checkout__title {
 	margin-top: $global-spacing-small;
 }
+

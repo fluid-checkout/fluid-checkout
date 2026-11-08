@@ -1,12 +1,20 @@
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT LOGIN
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-login-form__wrapper.woocommerce .woocommerce-form-login {
+body#{ $body-theme-selector } .fc-login-form__wrapper.woocommerce .woocommerce-form-login {
 	opacity: inherit;
 }
 
-body#{ $_body-page-selector } .fc-login-form__wrapper.woocommerce .lost_password {
+body#{ $body-page-selector } .fc-login-form__wrapper.woocommerce .lost_password {
 	margin-top: inherit;
 	border-bottom: none; 
 }

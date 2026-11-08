@@ -1,9 +1,7 @@
 // ------------------------------------
-// IMPORT ABSTRACT
+// LOAD PUBLIC API
 // ------------------------------------
-@import
-	"abstract/_all-early",
-	"abstract/_all";
+@use "abstract" as *;
 
 
 
@@ -11,5 +9,4 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"admin/__imports-admin-notices";
+@use "admin/__imports-admin-notices";

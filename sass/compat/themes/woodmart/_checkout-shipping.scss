@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT SHIPPING ADDRESS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .woocommerce-shipping-fields {
+body#{ $body-theme-selector } .woocommerce-shipping-fields {
 	display: block !important; // Needed to override theme styles
 }

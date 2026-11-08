@@ -1,13 +1,21 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT PLACE ORDER
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper .fc-place-order #place_order.fc-place-order-button {
+body#{ $body-theme-selector } .fc-wrapper .fc-place-order #place_order.fc-place-order-button {
 	margin: 0;
 }
 
 // Restore the button lock icon from theme styles
-body#{ $_body-theme-selector } .fc-wrapper .fc-place-order .fc-place-order-button:before {
+body#{ $body-theme-selector } .fc-wrapper .fc-place-order .fc-place-order-button:before {
 	content: "";
 	display: inline-block;
 	margin-#{ $alignment-right }: 8px; // Needed to match theme styles
@@ -19,3 +27,4 @@ body#{ $_body-theme-selector } .fc-wrapper .fc-place-order .fc-place-order-butto
 	mask-size: contain;
 	background-color: #fff; // Needed to match theme styles
 }
+

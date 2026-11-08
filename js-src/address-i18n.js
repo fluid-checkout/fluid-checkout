@@ -300,6 +300,7 @@ jQuery( function( $ ) {
 				field.data( 'priority', fieldLocale.priority );
 			}
 
+			// CHANGE: Replace upstream hidden-field comments (state visibility managed by country-select.js, locale can still hide it)
 			// Hidden fields. country-select.js swaps the State input for a hidden
 			// one when the country has an empty state list; keep that row hidden.
 			if ( true === fieldLocale.hidden ) {
@@ -307,6 +308,7 @@ jQuery( function( $ ) {
 			} else if ( 'state' !== key || ! field.find( 'input[type="hidden"]' ).length ) {
 				field.show();
 			}
+			// CHANGE: END - hidden fields
 
 			// CHANGE: Handle collapsible fields state
 			var formRow, fieldCollapsibleToggle, fieldCollapsibleContent;

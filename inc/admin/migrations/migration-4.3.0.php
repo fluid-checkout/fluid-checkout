@@ -18,22 +18,17 @@ class FluidCheckout_Migration_4_3_0 extends FluidCheckout {
 
 
 	/**
-	 * Get the list of changes applied by this migration.
+	 * Get ordered migration steps for this version.
 	 */
-	public function get_description() {
+	public function get_migration_steps() {
 		return array(
-			__( 'Copy the order summary background color setting to the new Split design secondary column background color option.', 'fluid-checkout' ),
+			array(
+				'id'          => 'copy_order_summary_color',
+				'description' => __( 'Copy the order summary background color setting to the new Split design secondary column background color option.', 'fluid-checkout' ),
+				'risk'        => FluidCheckout_AdminDBMigrations::RISK_LOW,
+				'callback'    => array( $this, 'maybe_copy_order_summary_background_color_to_secondary_column' ),
+			),
 		);
-	}
-
-
-
-	/**
-	 * Initialize hooks.
-	 */
-	public function migrate() {
-		// Apply migrations
-		$this->maybe_copy_order_summary_background_color_to_secondary_column();
 	}
 
 

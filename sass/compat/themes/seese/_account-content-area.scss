@@ -1,18 +1,26 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // MY ACCOUNT CONTENT AREA
 // ------------------------------------
 
-body#{ $_body-theme-selector } .woocommerce-MyAccount-content input[type="radio"]:checked + label::after {
+body#{ $body-theme-selector } .woocommerce-MyAccount-content input[type="radio"]:checked + label::after {
 	background-color: transparent;
 	transform: none;
 	top: 10px !important; // Needed to override theme styles with !important
 }
 
-body#{ $_body-theme-selector } .woocommerce-MyAccount-content li::marker {
+body#{ $body-theme-selector } .woocommerce-MyAccount-content li::marker {
 	content: "";
 }
 
-body#{ $_body-theme-selector } .woocommerce-MyAccount-content .woocommerce-error {
+body#{ $body-theme-selector } .woocommerce-MyAccount-content .woocommerce-error {
 	margin: 0 !important; // Needed to override theme styles with !important
 	text-align: #{ $alignment-left };
 }

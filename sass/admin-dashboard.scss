@@ -1,8 +1,16 @@
 // ------------------------------------
+// LOAD PUBLIC API
+// ------------------------------------
+@use "abstract" as *;
+@use "abstract/variables-admin" as *;
+
+
+
+
+// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"admin/admin-dashboard-sections",
-	"admin/admin-dashboard-docs",
-	"admin/admin-dashboard-addons",
-	"admin/admin-dashboard-disclaimer";
+@use "admin/admin-dashboard-sections";
+@use "admin/admin-dashboard-docs";
+@use "admin/admin-dashboard-addons";
+@use "admin/admin-dashboard-disclaimer";

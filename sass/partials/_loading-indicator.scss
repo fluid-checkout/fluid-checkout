@@ -1,12 +1,18 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+
+$body-theme-selector:                                          '' !default;
+
+
+
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
-
-$_body-theme-selector:                                          '' !default;
-
-
-
-
 
 // ------------------------------------
 // CHECKOUT LOADING INDICATORS
@@ -20,7 +26,7 @@ div.woocommerce form .form-row .woocommerce-input-wrapper {
 }
 
 // FORM ROWS
-body#{ $_body-theme-selector } div.woocommerce .form-row.fc-loading .woocommerce-input-wrapper:after {
+body#{ $body-theme-selector } div.woocommerce .form-row.fc-loading .woocommerce-input-wrapper:after {
 	@include icon( $loader-icon-name );
 	@include icon-size( $icon-size );
 
@@ -43,16 +49,16 @@ body#{ $_body-theme-selector } div.woocommerce .form-row.fc-loading .woocommerce
 
 
 // BUTTONS
-body#{ $_body-theme-selector } div.woocommerce button.fc-loading,
-body#{ $_body-theme-selector } div.woocommerce .button.fc-loading,
-body#{ $_body-theme-selector } div.woocommerce .fc-place-order .fc-place-order-button.fc-loading {
+body#{ $body-theme-selector } div.woocommerce button.fc-loading,
+body#{ $body-theme-selector } div.woocommerce .button.fc-loading,
+body#{ $body-theme-selector } div.woocommerce .fc-place-order .fc-place-order-button.fc-loading {
 	position: relative !important; // Needed to override theme styles
 	color: transparent !important; // Needed to override theme styles
 }
 
-body#{ $_body-theme-selector } div.woocommerce button.fc-loading:after,
-body#{ $_body-theme-selector } div.woocommerce .button.fc-loading:after,
-body#{ $_body-theme-selector } div.woocommerce .fc-place-order .fc-place-order-button.fc-loading:after {
+body#{ $body-theme-selector } div.woocommerce button.fc-loading:after,
+body#{ $body-theme-selector } div.woocommerce .button.fc-loading:after,
+body#{ $body-theme-selector } div.woocommerce .fc-place-order .fc-place-order-button.fc-loading:after {
 	@include icon( $loader-icon-name );
 	@include icon-size( $icon-size );
 
@@ -79,7 +85,7 @@ body#{ $_body-theme-selector } div.woocommerce .fc-place-order .fc-place-order-b
 
 
 // BLOCKUI OVERLAY (verbose indicator)
-body#{ $_body-theme-selector }.has-loading-indicator-verbose div.woocommerce .blockUI.blockOverlay:after {
+body#{ $body-theme-selector }.has-loading-indicator-verbose div.woocommerce .blockUI.blockOverlay:after {
 	@include icon( $loader-icon-name );
 	@include icon-size( $icon-size );
 
@@ -100,10 +106,11 @@ body#{ $_body-theme-selector }.has-loading-indicator-verbose div.woocommerce .bl
 	pointer-events: none;
 }
 
-body#{ $_body-theme-selector }.has-loading-indicator-verbose div.woocommerce form.checkout > .blockUI.blockOverlay:after {
+body#{ $body-theme-selector }.has-loading-indicator-verbose div.woocommerce form.checkout > .blockUI.blockOverlay:after {
 	@include icon-size( $icon-size-large );
 	width: $icon-size-large !important; // Needed to override validation icon styles as both target the same element
 	height: $icon-size-large !important; // Needed to override validation icon styles as both target the same element
 	font-size: $icon-size-large !important; // Needed to override validation icon styles as both target the same element
 	line-height: $icon-size-large !important; // Needed to override validation icon styles as both target the same element
 }
+

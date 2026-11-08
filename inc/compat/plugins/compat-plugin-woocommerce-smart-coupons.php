@@ -239,11 +239,19 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 			),
 		);
 
+		/**
+		 * Filters the Smart Coupons integration settings.
+		 *
+		 * @since 4.1.4
+		 *
+		 * @param array $settings Settings to output.
+		 */
 		$settings_new = array_merge( $settings_new, apply_filters( 'fc_integrations_woocommerce_smart_coupons_settings',
 			array(
 				array(	
 					'title'           => __( 'Position on checkout page', 'fluid-checkout' ),
-					'desc'            => __( 'Choose where to display the available coupons section on the checkout page.', 'fluid-checkout' ),
+					'desc'            => '',
+					'desc_tip'          => __( 'Choose where to display the available coupons section on the checkout page.', 'fluid-checkout' ),
 					'id'              => 'fc_integration_woocommerce_smart_coupons_position_checkout',
 					'type'            => 'select',
 					'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_integration_woocommerce_smart_coupons_position_checkout' ),

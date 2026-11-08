@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // CHECKOUT WIDGET AREAS - HEADER
 // ------------------------------------
@@ -25,3 +31,4 @@
 .fc-main .fc-checkout__below-header-widgets p:last-child {
 	margin-bottom: 0;
 }
+

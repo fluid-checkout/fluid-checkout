@@ -1,7 +1,15 @@
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // WOOCOMMERCE FORM FIELDS FONT SIZE
 // ------------------------------------
-body#{$_body-page-selector}.has-form-field-font-size-fix {
+body#{$body-page-selector}.has-form-field-font-size-fix {
 	textarea,
 	select,
 	input[type="color"],
@@ -22,3 +30,4 @@ body#{$_body-page-selector}.has-form-field-font-size-fix {
 		}
 	}
 }
+

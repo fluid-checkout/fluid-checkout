@@ -1,11 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-content form.woocommerce-checkout {
+body#{ $body-theme-selector } .fc-content form.woocommerce-checkout {
 	padding: 0;
 }
 
-body#{ $_body-theme-selector } .fc-content form.woocommerce-checkout:before {
+body#{ $body-theme-selector } .fc-content form.woocommerce-checkout:before {
 	content: none;
 }

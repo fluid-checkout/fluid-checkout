@@ -1,6 +1,5 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"order-summary",
-	"checkout-place-order";
+@use "order-summary";
+@use "checkout-place-order";

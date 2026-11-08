@@ -20,7 +20,7 @@ class FluidCheckout_ThemeCompat_Listable extends FluidCheckout {
 	 */
 	public function hooks() {
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Remove Listable's custom place order button from shipping section and after customer details
 		remove_action( 'woocommerce_checkout_shipping', 'listable_checkout_place_order_button', 20 );

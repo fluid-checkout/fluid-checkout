@@ -1,8 +1,13 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT PLACE ORDER
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper .fc-place-order .fc-place-order-button {
+body#{ $body-theme-selector } .fc-wrapper .fc-place-order .fc-place-order-button {
 	font-size: 15px; // Use `px` as units to match theme styles
 	font-weight: 700;
 	text-transform: uppercase;

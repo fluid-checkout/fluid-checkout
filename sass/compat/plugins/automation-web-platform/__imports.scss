@@ -1,6 +1,5 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"otp-intl-tel-input-styles",
-	"woocommerce-form-fields";
+@use "otp-intl-tel-input-styles";
+@use "woocommerce-form-fields";

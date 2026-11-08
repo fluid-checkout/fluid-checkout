@@ -23,7 +23,7 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
@@ -50,6 +50,27 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 		// Revert Flatsome changes to the privacy policy placement at the checkout page
 		remove_action( 'woocommerce_checkout_after_order_review', 'wc_checkout_privacy_policy_text', 1 );
 		add_action( 'woocommerce_checkout_terms_and_conditions', 'wc_checkout_privacy_policy_text', 20 );
+
+		// Terms and conditions lightbox
+		add_filter( 'theme_mod_checkout_terms_and_conditions', array( $this, 'maybe_use_tab_for_terms_and_conditions_lightbox' ), 10 );
+		remove_action( 'woocommerce_checkout_terms_and_conditions', 'flatsome_terms_and_conditions_lightbox', 30 );
+	}
+
+
+
+	/**
+	 * Use a new tab for terms and conditions links instead of the lightbox on the checkout page.
+	 *
+	 * @param   string  $value  Terms and conditions link style from the theme.
+	 */
+	public function maybe_use_tab_for_terms_and_conditions_lightbox( $value ) {
+		// Bail if not using the lightbox style
+		if ( 'lightbox' !== $value ) { return $value; }
+
+		// Bail if not at checkout
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $value; }
+
+		return 'tab';
 	}
 
 

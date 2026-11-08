@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // BUTTONS -- EDIT ADDRESS
 // ------------------------------------
@@ -10,3 +16,4 @@ body.has-fc-button-colors .woocommerce-address-fields button[type="submit"] {
 body.has-fc-button-styles .woocommerce-address-fields button[type="submit"] {
 	@extend %button-styles;
 }
+

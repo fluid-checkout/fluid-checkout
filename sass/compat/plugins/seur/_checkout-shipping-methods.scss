@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // CHECKOUT SHIPPING METHODS
 // ------------------------------------
@@ -5,3 +11,4 @@
 .shipping-method__option-label #seur-gmap {
 	margin-top: $global-spacing-extra-small;
 }
+

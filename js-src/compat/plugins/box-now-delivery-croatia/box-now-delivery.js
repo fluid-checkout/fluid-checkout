@@ -60,7 +60,6 @@
         $("#box_now_delivery_overlay").remove();
     }
 
-
     /**
      * Add the BOX NOW Delivery button or embedded map.
      */
@@ -151,16 +150,13 @@
      * Attach click event listener to the BOX NOW Delivery button.
      */
     function attachButtonClickListener() {
-        // CHANGE: Removed direct $("#box_now_delivery_button").off('click') binding from upstream
-        // CHANGE: Use captured event listener, instead of directly attaching it to the button.
-        // Needed so the handler survives Fluid Checkout shipping method fragment refreshes.
+        // CHANGE: Use event delegation so the handler survives Fluid Checkout shipping method fragment refreshes.
         $( document )
-            .off( 'click.boxNowFc', '#box_now_delivery_button' )
-            .on( 'click.boxNowFc', '#box_now_delivery_button', function ( event ) {
+            .off( 'click.boxNowDelivery', '#box_now_delivery_button' ) // safety - remove any old ones
+            .on( 'click.boxNowDelivery', '#box_now_delivery_button', function ( event ) {
                 event.preventDefault();
                 createPopupMap();
             } );
-        // CHANGE: END - Use captured event listener, instead of directly attaching it to the button.
     }
 
     function GetUserCountry() {
@@ -461,6 +457,17 @@
         var locker_name = lockerData.boxnowLockerName;
         // Add more fields as needed
 
+        // CHANGE: Remember previously selected locker id before updating the fields.
+        var previous_locker_id = $( '#_boxnow_locker_id' ).val() || '';
+        if ( ! previous_locker_id && $( '#box_now_selected_locker_input' ).length ) {
+            try {
+                var previous_locker_data = JSON.parse( $( '#box_now_selected_locker_input' ).val() );
+                previous_locker_id = previous_locker_data && previous_locker_data.boxnowLockerId ? previous_locker_data.boxnowLockerId : '';
+            } catch ( e ) {
+                previous_locker_id = '';
+            }
+        }
+
         if (options.persistToSession) {
             localStorage.setItem("box_now_selected_locker", JSON.stringify(lockerData));
         }
@@ -532,18 +539,25 @@
         if (options.persistToSession) {
             sendLockerToServer(locker_id);
 
-            // CHANGE: Sync Fluid Checkout validation field immediately and refresh checkout so session and step validation do not lag behind the selected locker UI.
+            // CHANGE: Sync Fluid Checkout validation field immediately so session and step validation do not lag behind the selected locker UI.
             var terminalField = $("#box_now-terminal");
             if (terminalField.length) {
                 terminalField.val(JSON.stringify(lockerData));
             }
-            $(document.body).trigger("update_checkout");
+            // CHANGE: END - Sync Fluid Checkout validation field immediately so session and step validation do not lag behind the selected locker UI.
         }
-        // CHANGE: END - Sync Fluid Checkout validation field immediately and refresh checkout so session and step validation do not lag behind the selected locker UI.
+
         toggleExpressCheckoutForBoxNow();
 
+        // CHANGE: Close popup when locker selection completes in popup display mode
         if (options.closePopup && boxNowDeliverySettings.displayMode === "popup") {
-            closeBoxNowPopup()
+            closeBoxNowPopup();
+        }
+        // CHANGE: END - Close popup when locker selection completes in popup display mode
+
+        // CHANGE: Trigger update checkout only when the selected locker changed.
+        if ( String( previous_locker_id ) !== String( locker_id ) ) {
+            $( document.body ).trigger( "update_checkout" );
         }
     }
 
@@ -755,7 +769,7 @@
         addButton();
         toggleBoxNowDelivery();
 
-        // CHANGE: Re-bind the button listener on every init, including when addButton() skips creating a new button.
+        // CHANGE: Re-bind the button listener on every init, including when addButton() skips creating a new button, so the handler survives checkout fragment replacements.
         attachButtonClickListener();
 
         if (isBoxNowDeliverySelected()) {

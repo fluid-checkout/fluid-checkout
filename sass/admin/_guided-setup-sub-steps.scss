@@ -1,0 +1,206 @@
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
+// Guided setup sub-steps. Match Lite Dashboard getting-started checklist styles.
+
+// ------------------------------------
+// GUIDED SETUP SUB-STEPS
+// ------------------------------------
+
+$fc-setup-sub-step-marker-size: 28px !default;
+$fc-setup-sub-step-header-gap: 12px !default;
+$fc-setup-sub-step-content-indent: $fc-setup-sub-step-marker-size + $fc-setup-sub-step-header-gap !default;
+$fc-setup-sub-step-title-font-size: $fc-settings-field-label-font-size !default;
+$fc-setup-sub-step-title-line-height: 1.5 !default;
+
+.fc-setup-sub-steps {
+	margin: 16px 0 0;
+	padding: 0;
+}
+
+.fc-setup-collapsible {
+	margin: 0;
+	padding: 0;
+}
+
+// Row spacing matches `.fc-dashboard-checklist__item`; divider color matches `$admin-border-color` on the settings page.
+.fc-setup-sub-steps > .fc-setup-collapsible .fc-setup-collapsible__header {
+	margin: 0;
+	padding: 10px 0;
+}
+
+.fc-setup-sub-steps > .fc-setup-collapsible + .fc-setup-collapsible .fc-setup-collapsible__header {
+	border-top: 1px solid $admin-border-color;
+}
+
+.fc-setup-collapsible__header {
+	align-items: center;
+	display: flex;
+	flex-wrap: nowrap;
+	gap: $fc-setup-sub-step-header-gap;
+}
+
+.fc-setup-sub-step__status {
+	display: block;
+	flex: 0 0 $fc-setup-sub-step-marker-size;
+	height: $fc-setup-sub-step-marker-size;
+	position: relative;
+	width: $fc-setup-sub-step-marker-size;
+}
+
+.fc-setup-sub-step__status-number,
+.fc-setup-sub-step__status-check {
+	align-items: center;
+	border: 2px solid $admin-border-color-strong;
+	border-radius: 50%;
+	box-sizing: border-box;
+	color: $fc-settings-text-color;
+	display: inline-flex;
+	flex-shrink: 0;
+	font-size: 13px;
+	font-weight: 600;
+	height: $fc-setup-sub-step-marker-size;
+	justify-content: center;
+	left: 0;
+	line-height: 1;
+	position: absolute;
+	top: 0;
+	width: $fc-setup-sub-step-marker-size;
+}
+
+.fc-setup-sub-step__status-check {
+	display: none;
+}
+
+.fc-setup-sub-step__status-check.dashicons {
+	font-size: 0;
+	line-height: 1;
+}
+
+.fc-setup-sub-step--complete .fc-setup-sub-step__status-number {
+	display: none;
+}
+
+.fc-setup-sub-step--complete .fc-setup-sub-step__status-check {
+	background: $success-color;
+	border-color: $success-color;
+	color: $white;
+	display: inline-flex;
+}
+
+.fc-setup-sub-step--complete .fc-setup-sub-step__status-check.dashicons::before {
+	@include admin-dashicon-styles();
+	content: "\f147";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	line-height: 1;
+	font-weight: 400;
+	font-style: normal;
+	text-align: center;
+	vertical-align: middle;
+	color: $white;
+}
+
+.fc-setup-sub-step__actions {
+	align-items: center;
+	align-self: center;
+	display: inline-flex;
+	flex: 0 0 auto;
+	gap: 8px;
+	margin-inline-start: auto;
+}
+
+.fc-setup-sub-step__toggle {
+	flex-shrink: 0;
+}
+
+.fc-setup-sub-step__substep-actions {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	justify-content: flex-start;
+	padding-bottom: 16px;
+	padding-top: 12px;
+}
+
+.fc-setup-sub-step__substep-actions .button {
+	text-align: center;
+	white-space: normal;
+}
+
+.fc-setup-sub-step__complete,
+.fc-setup-sub-step__incomplete {
+	flex-shrink: 0;
+}
+
+.fc-guided-setup button.fc-setup-collapsible__handler {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	color: inherit;
+	cursor: pointer;
+	display: block;
+	flex: 1 1 auto;
+	font-family: inherit;
+	font-size: $fc-setup-sub-step-title-font-size;
+	font-weight: normal;
+	line-height: $fc-setup-sub-step-title-line-height;
+	margin: 0;
+	min-height: 0;
+	min-width: 0;
+	padding: 0;
+	text-align: #{$alignment-left};
+	vertical-align: baseline;
+}
+
+.fc-setup-collapsible__handler:focus {
+	box-shadow: none;
+	outline: 2px solid $fc-settings-nav-focus-outline-color;
+	outline-offset: 2px;
+}
+
+.fc-setup-collapsible__title {
+	display: block;
+	font-size: inherit;
+	font-weight: inherit;
+	line-height: inherit;
+	margin: 0;
+}
+
+.fc-setup-collapsible__content {
+	margin-top: 0;
+}
+
+.fc-setup-collapsible__content .collapsible-content__inner {
+	padding-bottom: 10px;
+	padding-#{$alignment-left}: $fc-setup-sub-step-content-indent;
+}
+
+.fc-guided-setup [data-collapsible-handler] {
+	cursor: pointer;
+}
+
+.fc-guided-setup .collapsible-content__inner:after {
+	clear: both;
+	content: "";
+	display: table;
+}
+
+.fc-guided-setup [data-collapsible].is-activated.is-transitioning > .collapsible-content__inner {
+	display: block;
+}
+
+.fc-guided-setup [data-collapsible].is-collapsed:not( .is-transitioning ) > .collapsible-content__inner {
+	display: none;
+}
+
+body:not( .has-collapsible-block ) .fc-guided-setup [data-collapsible].is-collapsed > .collapsible-content__inner {
+	display: none;
+}

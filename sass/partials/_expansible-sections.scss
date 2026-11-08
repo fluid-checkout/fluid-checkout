@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // EXPANSIBLE SECTIONS
 // ------------------------------------
@@ -63,3 +69,4 @@ div.woocommerce form .fc-expansible-form-section.form-row,
 div.woocommerce form .fc-expansible-form-section.form-row + .form-row {
 	clear: left;
 }
+

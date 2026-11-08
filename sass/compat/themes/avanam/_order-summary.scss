@@ -1,12 +1,17 @@
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // ORDER SUMMARY
 // ------------------------------------
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .checkout-order-review {
+body#{ $body-theme-selector }#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .checkout-order-review {
 	width: 100%;
 }
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .checkout-order-review {
+body#{ $body-theme-selector }#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .checkout-order-review {
 	@media (min-width: 1025px) {
 		position: relative; 
 		top: unset;

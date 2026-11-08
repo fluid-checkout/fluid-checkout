@@ -1,17 +1,16 @@
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
+// LOAD STYLES
 // ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-loobek' !default;
-
-
-
-
-
-// ------------------------------------
-// IMPORT STYLES
-// ------------------------------------
-@import
-	"checkout-additional-notes",
-	"checkout-steps",
-	"order-summary";
+@use "scope-loobek" as scope;
+@forward "checkout-additional-notes" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
+@forward "checkout-steps" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
+@forward "order-summary" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
