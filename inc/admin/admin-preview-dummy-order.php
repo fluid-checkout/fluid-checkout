@@ -31,7 +31,7 @@ class FluidCheckout_Admin_Preview_Dummy_Order extends WC_Order {
 		$this->set_props( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_props( $this->get_id() ) );
 
 		// Iterate dummy order meta data, such as fields added by plugins
-		foreach ( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_meta() as $meta_key => $meta_value ) {
+		foreach ( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_meta( $this->get_id() ) as $meta_key => $meta_value ) {
 			$this->add_meta_data( $meta_key, $meta_value, true );
 		}
 

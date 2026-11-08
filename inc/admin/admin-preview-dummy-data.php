@@ -436,11 +436,13 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 	}
 
 	/**
-	 * Get the meta data of the dummy orders, with the fields that have no order property, as checkout saves them.
+	 * Get the meta data of a dummy order, with the fields that have no order property, as checkout saves them.
+	 *
+	 * @param   int  $order_id  Dummy order ID.
 	 *
 	 * @return  array  Meta values by meta key.
 	 */
-	public function get_order_meta() {
+	public function get_order_meta( $order_id ) {
 		// Define meta data
 		$order_meta = array();
 
@@ -462,7 +464,17 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 			$order_meta[ $field_key ] = $value;
 		}
 
-		return $order_meta;
+		/**
+		 * Filter the meta data of a dummy order in the admin preview.
+		 *
+		 * @since  5.0.0
+		 *
+		 * @param  array  $order_meta  Meta values by meta key.
+		 * @param  int    $order_id    Dummy order ID.
+		 *
+		 * @return array  Meta values by meta key.
+		 */
+		return apply_filters( 'fc_admin_preview_dummy_order_meta', $order_meta, $order_id );
 	}
 
 	/**
