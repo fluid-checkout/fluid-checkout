@@ -49,6 +49,8 @@
 			"sass/**",
 			"sass/tests/",
 			"sass/tests/**",
+			"blocks/",
+			"blocks/**",
 			"css/**/*consumer*",
 			"css/**/*.test.css",
 			"js/**/*consumer*",
