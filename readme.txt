@@ -445,6 +445,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Fixed: Plugin deactivation syncs only non-Fluid Checkout settings from the active profile to wp_options. Managed `fc_*` values stay in the profile.
 * Fixed: PHP deprecation notice across the plugin.
 * Fixed: Keep the checkout email after placing an order so the next checkout is not empty.
+* Fixed: Do not allow removing logged-in customer email on checkout, use the registered customer account email when a value is missing for checkout session.
 * Deprecated: Filter `fc_next_step_button_label` now shows a deprecation notice, use `fc_proceed_to_next_step_button_label` instead.
 * Deprecated: Filter `fc_shipping_methods_disable_auto_select`, use `fc_prevent_shipping_method_autoselect` instead. Note that the new filter has inverted logic: return `true` to prevent auto-selecting a shipping method.
 * Deprecated: Filter `fc_skip_add_pickup_point_info_as_review_text_lines`. Returning true from this filter still skips pickup point details from the shipping method review text. Use `fc_add_pickup_point_info_as_review_text_lines` instead.
