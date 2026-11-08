@@ -22,7 +22,7 @@
  * - build-js             Production JS (uglify)
  * - build-js-dev         Development JS (no uglify; no clean)
  * - npm-run-build        Run `npm run build` for WordPress block assets when present
- * - build                set-assets-version, clean, then dev (unminified) JS/CSS compile
+ * - build                set-assets-version, clean, then dev (unminified) JS/CSS compile, and npm-run-build when present
  * - build-prod           update-ver, clean, minified JS/CSS, and npm-run-build when present
  * - copy-plugin-files    Copy committed plugin files into the export folder
  * - pack-plugin-zip      Zip the export folder into an installable package
@@ -748,11 +748,11 @@ gulp.task( 'npm-run-build', npmRunBuild );
 
 // Run:
 // gulp build
-// Dev assets: version suffix in memory, unminified JS/CSS (cleans css/ and js/ first).
+// Dev assets: version suffix in memory, unminified JS/CSS (cleans css/ and js/ first), and block build when present.
 gulp.task( 'build', gulp.series(
 	'set-assets-version',
 	gulp.parallel( 'clean-js', 'clean-css' ),
-	gulp.parallel( buildJSDev, buildCssDev )
+	gulp.parallel( buildJSDev, buildCssDev, 'npm-run-build' )
 ) );
 
 // Run:
