@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT WIDGET AREAS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper .widget::after {
+body#{ $body-theme-selector } .fc-wrapper .widget::after {
 	width: 100%;
 }

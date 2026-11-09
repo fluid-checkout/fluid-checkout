@@ -1,9 +1,17 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // FLYOUT ORDER SUMMARY
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-checkout-order-review .woodmart-table-wrapper,
-body#{ $_body-theme-selector } .fc-checkout-order-review .wd-table-wrapper {
+body#{ $body-theme-selector } .fc-checkout-order-review .woodmart-table-wrapper,
+body#{ $body-theme-selector } .fc-checkout-order-review .wd-table-wrapper {
 	margin: 0;
 	padding: 0;
 	overflow: visible;
@@ -13,6 +21,7 @@ body#{ $_body-theme-selector } .fc-checkout-order-review .wd-table-wrapper {
 
 
 
-body#{ $_body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon {
+body#{ $body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon {
 	margin-#{ $alignment-right }: - $global-spacing-extra-small;
 }
+

@@ -1,16 +1,12 @@
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
+// LOAD STYLES
 // ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-Impreza' !default;
-
-
-
-
-
-// ------------------------------------
-// IMPORT STYLES
-// ------------------------------------
-@import
-	"checkout-content-area",
-	"tom-select-dropdown";
+@use "scope-Impreza" as scope;
+@forward "checkout-content-area" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
+@forward "tom-select-dropdown" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);

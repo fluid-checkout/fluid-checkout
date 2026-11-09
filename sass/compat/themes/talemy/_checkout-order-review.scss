@@ -1,9 +1,14 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT ORDER REVIEW
 // ------------------------------------
 
 // Order review container reset.
-body#{ $_body-theme-selector } .fc-wrapper .wc-order-review {
+body#{ $body-theme-selector } .fc-wrapper .wc-order-review {
 	align-self: auto;
 	background-color: transparent;
 	border: 0;
@@ -14,6 +19,6 @@ body#{ $_body-theme-selector } .fc-wrapper .wc-order-review {
 }
 
 // Quantity input typography.
-body#{ $_body-theme-selector } .fc-wrapper .quantity .qty {
+body#{ $body-theme-selector } .fc-wrapper .quantity .qty {
 	font-weight: 400;
 }

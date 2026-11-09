@@ -1,9 +1,7 @@
 // ------------------------------------
 // IMPORT ABSTRACT
 // ------------------------------------
-@import
-	"../../abstract/_all-early",
-	"../../abstract/_all";
+@use "abstract" as *;
 
 
 
@@ -12,6 +10,5 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	// Intentionally use the same file as the free version
-	"shipping-zones-by-drawing-for-woocommerce/__imports";
+// Intentionally use the same file as the free version.
+@use "shipping-zones-by-drawing-for-woocommerce/__imports";

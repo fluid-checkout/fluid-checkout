@@ -1,8 +1,13 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // EDIT ADDRESS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .woocommerce .woocommerce-MyAccount-content .addresses .title a {
+body#{ $body-theme-selector } .woocommerce .woocommerce-MyAccount-content .addresses .title a {
 	font-size: 16px; // Using px to match the theme's styles
 	font-weight: 400;
 	float: none;

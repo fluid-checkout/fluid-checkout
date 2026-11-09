@@ -170,6 +170,20 @@ jQuery(function ($) {
 					const current = $('#billing_country').val();
 
 						if ('BR' === current) {
+							if ('0' !== bmwPublicParams.person_type) {
+								let personType;
+								if (bmwPublicParams.person_type === '1') {
+									personType = $('#billing_persontype').val();
+								} else {
+									// bwmPublicParams.person_type 2 means individuals, 3 means legal person
+									// offsetting it by one returns what we would expect from #billing_persontype
+									personType = (
+										bmwPublicParams.person_type - 1
+									).toString();
+								}
+								handleFields(personType);
+							}
+							// CHANGE: Keep FC required-field class/label markup for the person-type field when country is BR
 							$('.person-type-field label .required').remove();
 							$('.person-type-field').addClass(
 								'validate-required'

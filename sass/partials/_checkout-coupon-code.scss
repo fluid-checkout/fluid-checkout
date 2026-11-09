@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // CHECKOUT COUPON CODE
 // ------------------------------------
@@ -161,3 +167,4 @@ body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__a
 		outline-offset: $focus-outline-offset-link !important; // Needed to override theme styles
 	}
 }
+

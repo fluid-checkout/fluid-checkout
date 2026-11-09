@@ -1,17 +1,3 @@
-// ------------------------------------
-// IMPORT ABSTRACT
-// ------------------------------------
-@import
-	"abstract/_all-early",
-	"abstract/_all",
-	"abstract/variables-tom-select";
-
-
-
-
-	
-// ------------------------------------
-// IMPORT STYLES
-// ------------------------------------
-@import
-	"partials/__imports-tom-select";
+@use 'abstract' as *;
+@use 'abstract/variables-tom-select' as *;
+@use "partials/__imports-tom-select";

@@ -1,7 +1,6 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"woocommerce-form-fields",
-	"woocommerce-form-fields-select2",
-	"woocommerce-form-fields--edit-address";
+@use "woocommerce-form-fields";
+@use "woocommerce-form-fields-select2";
+@use "woocommerce-form-fields--edit-address";

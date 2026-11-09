@@ -197,7 +197,7 @@ class FluidCheckout_Oxygen extends FluidCheckout {
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Breakdance compat styles for Oxygen 6, the Breakdance plugin slug is not active
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_breakdance_compat_styles_for_oxygen_six' ), 10 );

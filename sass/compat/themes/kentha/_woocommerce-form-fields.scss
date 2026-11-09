@@ -1,40 +1,48 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-body#{ $_body-theme-selector }#qtBody form .form-row {
+body#{ $body-theme-selector }#qtBody form .form-row {
 	padding: 0;
 	line-height: normal;
 }
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row input[type="checkbox"] {
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="checkbox"] {
 	position: initial;
 }
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row [type="radio"]:not(:checked) + label, 
-body#{ $_body-theme-selector } div.woocommerce form .form-row [type="radio"]:checked + label {
+body#{ $body-theme-selector } div.woocommerce form .form-row [type="radio"]:not(:checked) + label, 
+body#{ $body-theme-selector } div.woocommerce form .form-row [type="radio"]:checked + label {
 	height: auto;
 }
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row [type="radio"] + label:before, 
-body#{ $_body-theme-selector } div.woocommerce form .form-row [type="radio"] + label:after {
+body#{ $body-theme-selector } div.woocommerce form .form-row [type="radio"] + label:before, 
+body#{ $body-theme-selector } div.woocommerce form .form-row [type="radio"] + label:after {
 	margin: auto;
 	transition: none;
 }
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row [type="radio"]:checked + label:after, 
-body#{ $_body-theme-selector } div.woocommerce form .form-row .with-gap[type="radio"]:checked + label:before, 
-body#{ $_body-theme-selector } div.woocommerce form .form-row .with-gap[type="radio"]:checked + label:after {
+body#{ $body-theme-selector } div.woocommerce form .form-row [type="radio"]:checked + label:after, 
+body#{ $body-theme-selector } div.woocommerce form .form-row .with-gap[type="radio"]:checked + label:before, 
+body#{ $body-theme-selector } div.woocommerce form .form-row .with-gap[type="radio"]:checked + label:after {
 	border: remsize( .2rem ) solid transparent;
 }
 
-body#{ $_body-theme-selector }#qtBody div.woocommerce form .form-row textarea {
+body#{ $body-theme-selector }#qtBody div.woocommerce form .form-row textarea {
 	min-height: remsize( 10rem );
 	font-size: 1rem; // Use `rem` to match theme styles
 }
 
-body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"],
-body#{ $_body-theme-selector }.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
+body#{ $body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"],
+body#{ $body-theme-selector }.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
 	textarea,
 	select,
 	input[type="email"],
@@ -48,3 +56,4 @@ body#{ $_body-theme-selector }.has-highlighted-billing-section div.woocommerce f
 		padding: 0 $form-field-padding-left;
 	}
 }
+

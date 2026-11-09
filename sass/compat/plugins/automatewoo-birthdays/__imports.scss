@@ -2,6 +2,5 @@
 // IMPORT STYLES
 // ------------------------------------
 
-@import
-	"checkout-create-account",
-	"woocommerce-form-fields";
+@use "checkout-create-account";
+@use "woocommerce-form-fields";

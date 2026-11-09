@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg">
-<metadata>Copyright (C) 2025 by original authors @ fontello.com</metadata>
+<metadata>Copyright (C) 2026 by original authors @ fontello.com</metadata>
 <defs>
 <font id="fluid-checkout-icons" horiz-adv-x="1000" >
 <font-face font-family="fluid-checkout-icons" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
@@ -19,6 +19,8 @@
 <glyph glyph-name="check-small" unicode="&#xe805;" d="M683 505l-239-238-88 87a37 37 0 0 1-53 0 37 37 0 0 1 0-53l114-114a41 41 0 0 1 27-11c7 0 19 4 26 11l267 265a37 37 0 0 1 0 53 37 37 0 0 1-54 0z" horiz-adv-x="1000" />
 
 <glyph glyph-name="check" unicode="&#xe806;" d="M863 536l-459-458c-8-8-16-13-29-13-12 0-21 5-29 13l-208 208c-17 17-17 42 0 59 16 16 41 16 58 0l179-180 429 430c17 16 42 16 59 0 16-17 16-42 0-59z" horiz-adv-x="1000" />
+
+<glyph glyph-name="search" unicode="&#xe807;" d="M925 4l-187 188c45 58 75 137 75 221 0 195-159 354-355 354-195 0-354-159-354-354 0-196 159-355 354-355 84 0 159 30 221 75l188-187c8-9 21-13 29-13 8 0 21 4 29 13 17 16 17 41 0 58z m-737 409c0 150 120 270 270 270 150 0 271-120 271-270 0-75-29-142-79-192l0 0 0 0c-50-50-117-79-192-79-150 0-270 121-270 271z" horiz-adv-x="1042" />
 
 <glyph glyph-name="chevron-down" unicode="&#xe808;" d="M779 453l-250-250c-8-8-16-12-29-12-12 0-21 4-29 12l-250 250c-17 17-17 42 0 59 17 16 42 16 58 0l221-221 221 221c17 16 42 16 58 0 17-17 17-42 0-59z" horiz-adv-x="1000" />
 

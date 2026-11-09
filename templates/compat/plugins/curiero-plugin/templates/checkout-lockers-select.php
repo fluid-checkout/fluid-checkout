@@ -34,10 +34,13 @@
 		</script>
 	</div>
 </div>
+<?php // CHANGE: END - Change table elements with `div` elements ?>
 
-<div class="shipping-pickup-store" <?= ($lockers_map_active == "yes") ? '' : 'style="display: none;"' ?>>
+<?php // CHANGE: Removed empty `<th></th>` from map row ?>
+<?php // CHANGE: Map row uses div wrappers instead of table `tr` / `th` / `td` ?>
+<div class="shipping-pickup-store" <?php echo ( $lockers_map_active == 'yes' ) ? '' : 'style="display: none;"'; ?>>
 	<div>
 		<button type="button" class="button alt sameday_select_locker" style="padding: 10px; font-size: 15px;" id="select_locker_map" ><?php echo __('Arata Harta Easybox', 'curiero-plugin') ?></button>
 	</div>
 </div>
-<?php // CHANGE: END - Change table elements with `div` elements ?>
+<?php // CHANGE: END - Map row uses div wrappers instead of table `tr` / `th` / `td` ?>

@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // CHECKOUT SHIPPING ADDRESS
 // ------------------------------------
@@ -90,3 +96,4 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
 body.woocommerce-checkout.has-billing-address-position--force_single_address div.woocommerce .fc-wrapper .woocommerce-shipping-fields .woocommerce-billing-only-fields__field-wrapper {
 	margin-top: 0;
 }
+

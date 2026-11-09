@@ -1,9 +1,18 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT COLUMNS LAYOUT
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-sidebar__inner {
+body#{ $body-theme-selector } .fc-sidebar__inner {
 	@media (#{$bp-larger-than-desktop}) {
 		padding-top: $global-spacing-tiny;
 	}
 }
+

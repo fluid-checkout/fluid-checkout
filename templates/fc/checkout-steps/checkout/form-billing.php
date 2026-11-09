@@ -21,6 +21,13 @@ defined( 'ABSPATH' ) || exit;
 
 // CHANGE: Get initial state for collapsible-block component
 $collapsible_initial_state = WC()->cart->needs_shipping_address() && FluidCheckout_Steps::instance()->is_shipping_country_allowed_for_billing() === null ? 'expanded' : ( $is_billing_same_as_shipping ? 'collapsed' : 'expanded' );
+/**
+ * Filters the initial expanded or collapsed state of the billing section.
+ *
+ * @since 3.1.0
+ *
+ * @param mixed $collapsible_initial_state Collapsible initial state.
+ */
 $collapsible_initial_state = apply_filters( 'fc_checkout_billing_collapsible_initial_state', $collapsible_initial_state );
 ?>
 
@@ -32,6 +39,7 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_billing_collapsible_ini
 	<?php // CHANGE: Add markup for collapsible-block component ?>
 	<div id="woocommerce-billing-fields__field-wrapper" class="woocommerce-billing-fields__field-wrapper <?php echo 'collapsed' === $collapsible_initial_state ? 'is-collapsed' : ''; ?>" data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo esc_attr( $collapsible_initial_state ); ?>">
 		<div class="collapsible-content__inner">
+			<?php // CHANGE: Remove $fields = get_checkout_fields( 'billing' ) (fields split into same-as-shipping / billing-only lists) ?>
 			<?php // CHANGE: Display billing fields which might be copied from shipping fields ?>
 			<?php
 			foreach ( $billing_same_as_shipping_fields as $key => $field ) {
@@ -40,10 +48,21 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_billing_collapsible_ini
 			?>
 			<?php // CHANGE: Add markup for collapsible-block component ?>
 		</div>
+		<?php // CHANGE: Remove woocommerce_after_checkout_billing_form from this position (moved below after billing-only fields) ?>
 	</div>
+	<?php // CHANGE: Remove create-account / woocommerce-account-fields / createaccount / clear section (handled by FC contact step) ?>
 
 	<?php // CHANGE: Add action hook before the billing only fields ?>
-	<?php do_action( 'fc_before_checkout_billing_only_form', $checkout ); ?>
+	<?php
+		/**
+		 * Fires before the billing-only checkout fields.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param WC_Checkout $checkout Checkout object.
+		 */
+		do_action( 'fc_before_checkout_billing_only_form', $checkout );
+	?>
 
 	<?php // CHANGE: Display billing only fields ?>
 	<?php if ( ( $billing_only_fields && count( $billing_only_fields ) > 0 ) || has_action( 'fc_after_checkout_billing_only_form_inside' ) ) : ?>
@@ -54,15 +73,27 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_billing_collapsible_ini
 		}
 		?>
 
-		<?php do_action( 'fc_after_checkout_billing_only_form_inside', $checkout ); ?>
+		<?php
+			/**
+			 * Fires after the billing-only checkout fields.
+			 *
+			 * @since 3.0.5
+			 *
+			 * @param WC_Checkout $checkout Checkout object.
+			 */
+			do_action( 'fc_after_checkout_billing_only_form_inside', $checkout );
+		?>
 	</div>
-	<?php endif; ?>
+	<?php endif; // CHANGE: Close billing-only fields conditional ?>
 	<?php // CHANGE: END - Display billing only fields ?>
 
 	<?php
 	// CHANGE: Added for compatibility with plugins that use this action hook
 	do_action( 'woocommerce_checkout_billing', $checkout );
+	// CHANGE: END - Added for compatibility with plugins that use this action hook
 	?>
 
+	<?php // CHANGE: Output woocommerce_after_checkout_billing_form after billing-only fields ?>
 	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
 </div>
+<?php // CHANGE: Remove create-account section closing endif ?>

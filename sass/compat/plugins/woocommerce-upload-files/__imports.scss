@@ -1,6 +1,5 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"checkout-shipping",
-	"checkout-billing";
+@use "checkout-shipping";
+@use "checkout-billing";

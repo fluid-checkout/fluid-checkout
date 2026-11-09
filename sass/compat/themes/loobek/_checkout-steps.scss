@@ -1,11 +1,16 @@
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT STEPS
 // ------------------------------------
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout {
+body#{ $body-theme-selector }#{ $body-page-selector } form.woocommerce-checkout {
 	padding-top: 0;
 }
 
-body#{ $_body-theme-selector } .fc-wrapper .woocommerce-billing-fields {
+body#{ $body-theme-selector } .fc-wrapper .woocommerce-billing-fields {
 	overflow: visible;
 }

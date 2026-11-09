@@ -1,16 +1,24 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // WOOCOMMERCE FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row {
+body#{ $body-theme-selector } div.woocommerce form .form-row {
 	padding: 0 !important; // Needed to override theme styles
 }
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row textarea {
+body#{ $body-theme-selector } div.woocommerce form .form-row textarea {
 	padding: $form-field-padding-left;
 }
 
-body#{ $_body-theme-selector } div.woocommerce form {
+body#{ $body-theme-selector } div.woocommerce form {
 	textarea,
 	select,
 	input[type="email"],
@@ -25,7 +33,8 @@ body#{ $_body-theme-selector } div.woocommerce form {
 	}
 }
 
-body#{ $_body-theme-selector } div.woocommerce form label,
-body#{ $_body-theme-selector } div.woocommerce .shipping-method__option-label {
+body#{ $body-theme-selector } div.woocommerce form label,
+body#{ $body-theme-selector } div.woocommerce .shipping-method__option-label {
 	color: var(--fluidcheckout--onair2--text-color);
 }
+

@@ -19,6 +19,13 @@ defined( 'ABSPATH' ) || exit;
 
 // Get custom attributes for the html element
 $html_custom_attributes_esc = '';
+/**
+ * Filters custom attributes added to the checkout root HTML element.
+ *
+ * @since 3.1.9
+ *
+ * @param array $html HTML markup. Default empty array.
+ */
 $html_custom_attributes = apply_filters( 'fc_checkout_html_custom_attributes', array() );
 if ( is_array( $html_custom_attributes ) ) {
 	foreach ( $html_custom_attributes as $attribute => $attribute_value ) {
@@ -28,6 +35,13 @@ if ( is_array( $html_custom_attributes ) ) {
 
 // Get custom attributes for the body element
 $body_custom_attributes_esc = '';
+/**
+ * Filters custom attributes added to the checkout body element.
+ *
+ * @since 3.0.3
+ *
+ * @param array $attributes HTML attributes as an associative array. Default empty array.
+ */
 $body_custom_attributes = apply_filters( 'fc_checkout_body_custom_attributes', array() );
 if ( is_array( $body_custom_attributes ) ) {
 	foreach ( $body_custom_attributes as $attribute => $attribute_value ) {
@@ -54,6 +68,13 @@ if ( is_array( $body_custom_attributes ) ) {
 
 <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'fluid-checkout' ); ?></a>
 
-<?php do_action( 'fc_checkout_header' ); ?>
+<?php
+	/**
+	 * Fires inside the distraction-free checkout header.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'fc_checkout_header' );
+?>
 
 <main id="main" class="content-area fc-main">

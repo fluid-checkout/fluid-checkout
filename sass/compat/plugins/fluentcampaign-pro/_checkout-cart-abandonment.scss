@@ -1,3 +1,5 @@
+@use "abstract" as *;
+
 // ------------------------------------
 // CHECKOUT CART ABANDONMENT
 // ------------------------------------
@@ -24,3 +26,4 @@ div.woocommerce form .form-row.fc-ab-cart-gdpr-message > label {
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-field-description-font-size--large-screen; }
 }
+

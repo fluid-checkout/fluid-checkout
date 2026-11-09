@@ -1,17 +1,25 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row input,
-body#{ $_body-theme-selector } div.woocommerce form .form-row textarea,
-body#{ $_body-theme-selector } div.woocommerce form .form-row select,
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container,
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection {
+body#{ $body-theme-selector } div.woocommerce form .form-row input,
+body#{ $body-theme-selector } div.woocommerce form .form-row textarea,
+body#{ $body-theme-selector } div.woocommerce form .form-row select,
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-container,
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection {
 	margin-bottom: 0 !important; // Needed to override `!important` directive added by the theme.
 }
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row textarea,
-body#{ $_body-theme-selector } div.woocommerce form.checkout #order_comments {
+body#{ $body-theme-selector } div.woocommerce form .form-row textarea,
+body#{ $body-theme-selector } div.woocommerce form.checkout #order_comments {
 	padding: $form-field-padding-left !important; // Needed to override theme styles
 
 	@media (max-width: 480px) { // Needed to use theme's breakpoint
@@ -19,19 +27,19 @@ body#{ $_body-theme-selector } div.woocommerce form.checkout #order_comments {
 	}
 }
 
-body#{ $_body-theme-selector } div.woocommerce form.checkout #order_comments {
+body#{ $body-theme-selector } div.woocommerce form.checkout #order_comments {
 	line-height: normal !important; // Needed to override theme styles
 	min-height: remsize( 10rem );
 }
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row .input-checkbox {
+body#{ $body-theme-selector } div.woocommerce form .form-row .input-checkbox {
 	display: none;
 }
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row label.checkbox {
+body#{ $body-theme-selector } div.woocommerce form .form-row label.checkbox {
 	display: block;
 }
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row .woocommerce-form__input + span {
+body#{ $body-theme-selector } div.woocommerce form .form-row .woocommerce-form__input + span {
 	display: inline;
 }

@@ -13,7 +13,7 @@
  * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 10.9.0
- * @fc-version 4.2.6
+ * @fc-version 5.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -24,7 +24,16 @@ if ( $available_gateways ) : ?>
 	<form id="add_payment_method" method="post">
 
 		<?php // CHANGE: Add wrapper class ?>
-		<div id="fc-wrapper" class="fc-wrapper <?php echo esc_attr( apply_filters( 'fc_wrapper_classes_add_payment_method_page', '' ) ); ?>">
+		<div id="fc-wrapper" class="fc-wrapper <?php
+			/**
+			 * Filters the CSS classes of the wrapper on the add-payment-method page.
+			 *
+			 * @since 2.0.0
+			 *
+			 * @param string $classes CSS classes. Default empty string.
+			 */
+			echo esc_attr( apply_filters( 'fc_wrapper_classes_add_payment_method_page', '' ) );
+		?>">
 
 		<div id="payment" class="woocommerce-Payment">
 			<?php // CHANGE: Add class `wc_payment_methods` ?>
@@ -36,9 +45,11 @@ if ( $available_gateways ) : ?>
 				}
 
 				foreach ( $available_gateways as $gateway ) {
+					// CHANGE: Removed inline payment method list item markup in favor of checkout template
 					// CHANGE: Use template file from checkout to display payment method.
 					wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
 				}
+				// CHANGE: Removed inline payment method closing brace
 				?>
 			</ul>
 
@@ -46,8 +57,14 @@ if ( $available_gateways ) : ?>
 
 			<div class="form-row">
 				<?php wp_nonce_field( 'woocommerce-add-payment-method', 'woocommerce-add-payment-method-nonce' ); ?>
-				<?php // CHANGE: Check if function introduced in WooCommerce 7.1 is available before trying to use it, also add filter for custom button classes ?>
-				<button type="submit" class="woocommerce-Button woocommerce-Button--alt button alt<?php echo esc_attr( function_exists( 'wc_wp_theme_get_element_class_name' ) && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?> <?php echo esc_attr( implode( ' ', apply_filters( 'fc_add_payment_method_button_classes', array() ) ) ); ?>" id="place_order" value="<?php esc_attr_e( 'Add payment method', 'woocommerce' ); ?>"><?php esc_html_e( 'Add payment method', 'woocommerce' ); ?></button>
+				<?php
+				// CHANGE: Add filter for custom add-payment-method button classes
+				$fc_add_payment_method_button_classes = implode( ' ', apply_filters( 'fc_add_payment_method_button_classes', array() ) );
+				// CHANGE: Check if function introduced in WooCommerce 7.1 is available before trying to use it
+				$fc_add_payment_method_theme_button_class = function_exists( 'wc_wp_theme_get_element_class_name' ) && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '';
+				?>
+				<button type="submit" class="woocommerce-Button woocommerce-Button--alt button alt<?php echo esc_attr( $fc_add_payment_method_theme_button_class ); ?> <?php echo esc_attr( $fc_add_payment_method_button_classes ); ?>" id="place_order" value="<?php esc_attr_e( 'Add payment method', 'woocommerce' ); ?>"><?php esc_html_e( 'Add payment method', 'woocommerce' ); ?></button>
+				<?php // CHANGE: END - Add filter for custom add-payment-method button classes ?>
 				<input type="hidden" name="woocommerce_add_payment_method" id="woocommerce_add_payment_method" value="1" />
 			</div>
 		</div>

@@ -85,12 +85,15 @@ jQuery( function( $ ) {
 					$this.off( 'select2:select' );
 					$this.parent().find( '.select2-container' ).remove();
 
+					// CHANGE: Configure selectWoo width and clearable option for enhanced fields
 					var select2_args = $.extend({
 						placeholder: $this.attr( 'data-placeholder' ) || $this.attr( 'placeholder' ) || '',
 						label: $this.attr( 'data-label' ) || null,
 						required: $this.attr( 'aria-required' ) === 'true' || null,
-						width: '100%'
+						width: '100%', // CHANGE: Keep full-width SelectWoo dropdown
+						allowClear: $this.closest( '.fc-enhanced-select--clearable' ).length > 0
 					}, getEnhancedSelectFormatString() );
+					// CHANGE: END - Configure selectWoo width and clearable option for enhanced fields
 
 					$( this )
 						.on( 'select2:select', function() {
@@ -302,7 +305,7 @@ jQuery( function( $ ) {
 			}
 		}
 
-		// Re-focus element
+		// CHANGE: Re-focus element after country/state field type updates
 		FCUtils.maybeRefocusElement( window.fcCurrentFocusedElement, window.fcCurrentFocusedElementValue );
 
 		$( document.body ).trigger( 'country_to_state_changing', [country, $wrapper ] );

@@ -1,3 +1,5 @@
+@use "abstract" as *;
+
 // ------------------------------------
 // SG MAP TO ADDRESS
 // ------------------------------------
@@ -30,3 +32,4 @@
 .sg-overlay {
 	z-index: z( 'sticky-element' ) + 1;
 }
+

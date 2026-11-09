@@ -23,7 +23,8 @@ class FluidCheckout_Biteship extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'replace_enqueue_assets' ), 5 );
 
 		// Enhanced select fields
-		add_filter( 'pre_option_fc_use_enhanced_select_components', array( $this, 'disable_custom_enhanced_select_component' ), 10, 3 );
+		add_filter( 'fc_settings_effective_values', array( $this, 'disable_custom_enhanced_select_component' ), 10 );
+		add_filter( 'fc_tools_settings', array( $this, 'change_enhanced_select_settings_args' ), 10 );
 	}
 
 
@@ -40,14 +41,26 @@ class FluidCheckout_Biteship extends FluidCheckout {
 
 
 	/**
-	 * Change the option for the place order position to always `below_order_summary` when using Germanized.
+	 * Force disable the enhanced select fields feature when using Biteship.
 	 *
-	 * @param  mixed   $pre_option   The value to return instead of the option value.
-	 * @param  string  $option       Option name.
-	 * @param  mixed   $default      The fallback value to return if the option does not exist.
+	 * @param  array  $values  Effective settings values.
 	 */
-	public function disable_custom_enhanced_select_component( $pre_option, $option, $default ) {
-		return 'no';
+	public function disable_custom_enhanced_select_component( $values ) {
+		$values = is_array( $values ) ? $values : array();
+		$values[ 'fc_use_enhanced_select_components' ] = 'no';
+		return $values;
+	}
+
+	/**
+	 * Disable the enhanced select fields setting and explain why it is forced when using Biteship.
+	 *
+	 * @param   array  $settings  Admin settings args values.
+	 */
+	public function change_enhanced_select_settings_args( $settings ) {
+		// Define the settings field description
+		$description = __( 'The enhanced select fields feature is always disabled when using the Biteship plugin.', 'fluid-checkout' );
+
+		return FluidCheckout_Settings::instance()->disable_settings_field( $settings, 'fc_use_enhanced_select_components', $description );
 	}
 
 }

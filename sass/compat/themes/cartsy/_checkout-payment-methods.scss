@@ -1,8 +1,13 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
 
-body#{ $_body-theme-selector } #content .woocommerce .checkout.woocommerce-checkout .woocommerce-checkout-payment,
-body#{ $_body-theme-selector } #content .woocommerce .checkout.woocommerce-checkout .woocommerce-checkout-payment ul.payment_methods {
+body#{ $body-theme-selector } #content .woocommerce .checkout.woocommerce-checkout .woocommerce-checkout-payment,
+body#{ $body-theme-selector } #content .woocommerce .checkout.woocommerce-checkout .woocommerce-checkout-payment ul.payment_methods {
 	border: 0;
 }

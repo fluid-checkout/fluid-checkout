@@ -1,11 +1,9 @@
 @charset "UTF-8";
 
 // ------------------------------------
-// IMPORT ABSTRACT
+// LOAD PUBLIC API
 // ------------------------------------
-@import
-	"abstract/_all-early",
-	"abstract/_all";
+@use "abstract" as *;
 
 
 

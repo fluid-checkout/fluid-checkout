@@ -20,7 +20,7 @@ class FluidCheckout_TemplatemelaPluginAutorapid extends FluidCheckout {
 	 */
 	public function hooks() {
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 30 ); // After Avanam theme
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 30 ); // After Avanam theme
 	}
 
 

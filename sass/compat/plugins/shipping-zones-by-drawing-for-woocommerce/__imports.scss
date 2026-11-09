@@ -1,6 +1,5 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"woocommerce-form-fields",
-	"maps";
+@use "woocommerce-form-fields";
+@use "maps";

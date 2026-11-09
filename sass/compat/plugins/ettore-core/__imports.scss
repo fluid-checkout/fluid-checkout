@@ -1,6 +1,5 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"checkout-columns",
-	"checkout-progress-bar";
+@use "checkout-columns";
+@use "checkout-progress-bar";

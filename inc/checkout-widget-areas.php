@@ -181,8 +181,18 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		if ( ! is_active_sidebar( 'fc_checkout_header' ) && ! has_action( 'fc_checkout_header_widgets_inside_before' ) && ! has_action( 'fc_checkout_header_widgets_inside_after' ) ) { return; }
 
 		echo '<div class="fc-widget-area fc-checkout__header-widgets">';
+		/**
+		 * Fires before the widgets inside the checkout header widget area.
+		 *
+		 * @since 1.4.3
+		 */
 		do_action( 'fc_checkout_header_widgets_inside_before' );
 		dynamic_sidebar( 'fc_checkout_header' );
+		/**
+		 * Fires after the widgets inside the checkout header widget area.
+		 *
+		 * @since 1.4.3
+		 */
 		do_action( 'fc_checkout_header_widgets_inside_after' );
 		echo '</div>';
 	}
@@ -257,8 +267,18 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		// Bail if widget are is not active, or hooks not used
 		if ( ! is_active_sidebar( 'fc_checkout_footer' ) && ! has_action( 'fc_checkout_footer_widgets_inside_before' ) && ! has_action( 'fc_checkout_footer_widgets_inside_after' ) ) { return; }
 
+		/**
+		 * Fires before the widgets inside the checkout footer widget area.
+		 *
+		 * @since 1.6.1
+		 */
 		do_action( 'fc_checkout_footer_widgets_inside_before' );
 		dynamic_sidebar( 'fc_checkout_footer' );
+		/**
+		 * Fires after the widgets inside the checkout footer widget area.
+		 *
+		 * @since 1.6.1
+		 */
 		do_action( 'fc_checkout_footer_widgets_inside_after' );
 	}
 

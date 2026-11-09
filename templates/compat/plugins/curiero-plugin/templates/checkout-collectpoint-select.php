@@ -6,7 +6,8 @@
 	<div style="padding-bottom:0"><b><?= esc_html_e('Alege punct CollectPoint', 'curiero-plugin') ?> <abbr class="required" title="required">*</abbr></b></div>
 </div>
 <div class="wc_shipping_fan_collectpoint shipping" style="display: none">
-	<div>
+	<?php // CHANGE: Use `div` instead of table cell `td colspan="2"` ?>
+	<div colspan="2">
 		<style scoped>
 			.woocommerce-checkout-review-order-table tfoot .wc_shipping_sameday_lockers td {padding-bottom: 25px;}
 		</style>

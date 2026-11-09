@@ -1,8 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 
-body#{ $_body-theme-selector } .page_content_wrap .content_wrap {
+body#{ $body-theme-selector } .page_content_wrap .content_wrap {
 	box-sizing: border-box;
 
 	@media (#{$bp-smaller-than-tablet}) {
@@ -11,3 +19,4 @@ body#{ $_body-theme-selector } .page_content_wrap .content_wrap {
 		width: 100% !important; // Needed to override theme styles
 	}
 }
+

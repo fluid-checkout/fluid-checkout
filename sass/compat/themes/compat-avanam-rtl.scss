@@ -1,10 +1,7 @@
 // ------------------------------------
-// IMPORT ABSTRACT
+// LOAD PUBLIC API
 // ------------------------------------
-@import
-	"../../abstract/_all-early",
-	"../../abstract/_variables-rtl",
-	"../../abstract/_all";
+@use "abstract/index-rtl";
 
 
 
@@ -13,5 +10,4 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"avanam/__imports";
+@use "avanam/__imports";

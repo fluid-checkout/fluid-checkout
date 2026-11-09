@@ -1,11 +1,19 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // MY ACCOUNT CONTENT AREA
 // ------------------------------------
 
-body#{ $_body-theme-selector }#top.woocommerce-page div.woocommerce .woocommerce-MyAccount-content {
+body#{ $body-theme-selector }#top.woocommerce-page div.woocommerce .woocommerce-MyAccount-content {
 	padding: $global-spacing-tiny;
 }
 
-body#{ $_body-theme-selector }#top.woocommerce-page div.woocommerce form .form-row.form-row-first {
+body#{ $body-theme-selector }#top.woocommerce-page div.woocommerce form .form-row.form-row-first {
 	margin-#{ $alignment-right }: 4%;
 }

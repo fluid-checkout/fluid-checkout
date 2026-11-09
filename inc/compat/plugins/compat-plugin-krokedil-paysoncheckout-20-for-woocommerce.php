@@ -51,6 +51,13 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 	 * Get classes to skip undo early hooks.
 	 */
 	public function get_skip_classes_undo_hooks_early_list() {
+		/**
+		 * Filters the classes whose checkout hooks are not restored early when leaving Payson Checkout.
+		 *
+		 * @since 3.0.4
+		 *
+		 * @param array $skip Whether to skip the default behavior.
+		 */
 		$skip_undo_hooks_classes = apply_filters( 'fc_compat_payson_checkout_skip_undo_hooks_early_classes', array( 'FluidCheckout_CheckoutWidgetAreas' ) );
 		return $skip_undo_hooks_classes;
 	}
@@ -59,6 +66,13 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 	 * Get classes to skip undo hooks.
 	 */
 	public function get_skip_classes_undo_hooks_list() {
+		/**
+		 * Filters the classes whose checkout hooks are not restored when leaving Payson Checkout.
+		 *
+		 * @since 3.0.4
+		 *
+		 * @param array $skip Whether to skip the default behavior. Default empty array.
+		 */
 		$skip_undo_hooks_classes = apply_filters( 'fc_compat_payson_checkout_skip_undo_hooks_classes', array() );
 		return $skip_undo_hooks_classes;
 	}

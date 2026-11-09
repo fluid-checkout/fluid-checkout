@@ -1,12 +1,20 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // ACCOUNT PAYMENT METHODS
 // ------------------------------------
 
-body#{ $_body-theme-selector }#top.woocommerce-page .fc-wrapper #payment label {
+body#{ $body-theme-selector }#top.woocommerce-page .fc-wrapper #payment label {
 	display: block;
 }
 
-body#{ $_body-theme-selector }#top.woocommerce-page .fc-wrapper #payment div.payment_box {
+body#{ $body-theme-selector }#top.woocommerce-page .fc-wrapper #payment div.payment_box {
 	width: 100%;
 	#{ $alignment-left }: inherit;
 }

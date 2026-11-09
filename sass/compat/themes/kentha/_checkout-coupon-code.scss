@@ -1,7 +1,15 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT COUPON CODE
 // ------------------------------------
 
-body#{ $_body-theme-selector }#qtBody div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
+body#{ $body-theme-selector }#qtBody div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
 	min-height: remsize( 4.5rem ) !important; // Needed to override theme styles
 }

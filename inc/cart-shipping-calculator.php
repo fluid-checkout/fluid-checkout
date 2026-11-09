@@ -50,9 +50,58 @@ class FluidCheckout_CartShippingCalculator extends FluidCheckout {
 
 
 	/**
+	 * Clear shipping address fields that are not present in the shipping calculator.
+	 */
+	public function clear_shipping_address_fields_not_in_calculator() {
+		// Get customer object
+		$customer = WC()->customer;
+
+		// Bail if customer object is not available
+		if ( ! $customer ) { return; }
+
+		// Get shipping calculator field keys (ie. `shipping_country`) from the calculator post field keys
+		$calc_field_keys = array();
+
+		// Iterate calculator post field keys
+		foreach ( $this->get_calc_shipping_address_field_post_keys() as $post_field_key ) {
+			$calc_field_keys[] = str_replace( 'calc_', '', $post_field_key );
+		}
+
+		// Clear all shipping address fields not entered in the calculator (not only same-as-billing intersection)
+		$field_keys_to_clear = array_diff( FluidCheckout_Steps::instance()->get_address_field_keys( 'shipping' ), $calc_field_keys );
+
+		// Iterate fields to clear from the customer object and the checkout session
+		foreach ( $field_keys_to_clear as $field_key ) {
+			$setter = "set_$field_key";
+
+			// Maybe clear customer property, unsupported fields are only kept in the session
+			if ( is_callable( array( $customer, $setter ) ) ) {
+				$customer->{$setter}( '' );
+			}
+
+			// Clear checkout session value
+			FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( $field_key, '' );
+		}
+	}
+
+
+
+	/**
 	 * Set the customer new shipping address with the values set in the shipping calculator.
 	 */
 	public function set_new_address_data_from_shipping_calculator() {
+		// Get selected address source
+		$address_source = array_key_exists( 'shipping_address_source', $_POST ) ? wc_clean( wp_unslash( $_POST[ 'shipping_address_source' ] ) ) : null; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+
+		// Maybe set the shipping address same as billing
+		if ( array_key_exists( 'shipping_same_as_billing', $_POST ) && '1' === wc_clean( wp_unslash( $_POST[ 'shipping_same_as_billing' ] ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			FluidCheckout_Steps::instance()->set_customer_shipping_address_same_as_billing();
+			return;
+		}
+
+		// Bail if address source is not the shipping calculator (new address)
+		if ( null !== $address_source && 'new' !== $address_source ) { return; }
+
 		// Initialize variables
 		$changed_values = array();
 		
@@ -77,6 +126,12 @@ class FluidCheckout_CartShippingCalculator extends FluidCheckout {
 
 		// Maybe apply changes
 		if ( is_array( $changed_values ) && count( $changed_values ) > 0 ) {
+			// Clear the same as billing session value when applying a calculator destination
+			FluidCheckout_Steps::instance()->set_shipping_same_as_billing_session( false );
+
+			// Clear address fields not present in the calculator
+			$this->clear_shipping_address_fields_not_in_calculator();
+
 			// Iterate changed values and apply changes to the customer data and checkout session
 			foreach ( $changed_values as $field_key => $new_field_value ) {
 				// Update field values

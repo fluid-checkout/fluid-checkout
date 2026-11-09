@@ -1,8 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // TOM SELECT CONTROL
 // ------------------------------------
 
-body#{ $_body-theme-selector } .ts-control{
+body#{ $body-theme-selector } .ts-control{
 	@media (max-width: 480px) { // Needed to use theme's breakpoint
 		padding-#{ $alignment-left }: 8px;
 	}

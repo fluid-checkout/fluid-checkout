@@ -1,9 +1,8 @@
 // ------------------------------------
-// IMPORT ABSTRACT
+// LOAD PUBLIC API
 // ------------------------------------
-@import
-	"abstract/_all-early",
-	"abstract/_all";
+@use "abstract" as *;
+@use "abstract/variables-admin" as *;
 
 
 
@@ -12,8 +11,6 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"admin/admin-image-uploader",
-	"admin/admin-checkout-layout",
-	"admin/admin-design-template",
-	"admin/admin-license-keys";
+@use "admin/admin-image-uploader";
+@use "admin/admin-telemetry";
+@use "admin/admin-settings-layout-options";

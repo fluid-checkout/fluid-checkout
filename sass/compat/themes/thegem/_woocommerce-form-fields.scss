@@ -1,8 +1,13 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row {
+body#{ $body-theme-selector } div.woocommerce form .form-row {
 	width: auto;
 	margin-top: 0;
 	padding: 0;

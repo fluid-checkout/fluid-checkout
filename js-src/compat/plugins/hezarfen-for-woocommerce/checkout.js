@@ -1,6 +1,10 @@
 var wc_hezarfen_checkout = {
     mbgb_plugin_active: typeof wc_hezarfen_mbgb_backend !== 'undefined',
     should_notify_neighborhood_changed: function (type) {
+        if( wc_hezarfen_ajax_object.should_notify_neighborhood_changed ) {
+            return true;
+        }
+
         return this.mbgb_plugin_active && (wc_hezarfen_mbgb_backend.address_source === type || (wc_hezarfen_mbgb_backend.address_source === 'shipping' && !this.ship_to_different_checked()))
     },
     ship_to_different_checked: function () {
@@ -11,27 +15,38 @@ var wc_hezarfen_checkout = {
 jQuery(function ($) {
     // CHANGE: Move initialization function to a named reusable function
     function init() {
-        for (const type of ['billing', 'shipping']) {
-            let wrapper = $('.woocommerce-' + type + '-fields');
-            let mahalle_helper = new hezarfen_mahalle_helper(wrapper, type, 'checkout');
+        $('#hezarfen_tax_number').on('input', function() {
+            var inputValue = $(this).val();
+            if (/[^0-9]/.test(inputValue)) {
+              $(this).val(inputValue.replace(/[^0-9]/g, ''));
+            }
+          });
 
-            let current_country_code = mahalle_helper.get_country_field().val();
+        // Only initialize neighborhood helper if the feature is enabled
+        if (typeof hezarfen_mahalle_helper !== 'undefined') {
+            for (const type of ['billing', 'shipping']) {
+                // CHANGE: Use string concatenation for wrapper selector (compatible with older JS tooling)
+                let wrapper = $('.woocommerce-' + type + '-fields');
+                let mahalle_helper = new hezarfen_mahalle_helper(wrapper, type, 'checkout');
 
-            if (!current_country_code || current_country_code === 'TR') {
-                mahalle_helper.convert_fields_to_selectwoo();
+                let current_country_code = mahalle_helper.get_country_field().val();
+
+                if (!current_country_code || current_country_code === 'TR') {
+                    mahalle_helper.convert_fields_to_selectwoo();
+                }
+
+                if (current_country_code === 'TR') {
+                    mahalle_helper.add_event_handlers();
+                    add_checkout_event_handlers(type, wrapper);
+                }
             }
 
-            if (current_country_code === 'TR') {
-                mahalle_helper.add_event_handlers();
-                add_checkout_event_handlers(type, wrapper);
-            }
+            $(document.body).on('country_to_state_changing', function (event, country_code, wrapper) {
+                let type = wrapper.hasClass('woocommerce-billing-fields') ? 'billing' : 'shipping';
+                new hezarfen_mahalle_helper(wrapper, type, 'checkout').on_country_change(country_code, get_additional_classes(type));
+                country_on_change(type, country_code, wrapper);
+            });
         }
-
-        $(document.body).on('country_to_state_changing', function (event, country_code, wrapper) {
-            let type = wrapper.hasClass('woocommerce-billing-fields') ? 'billing' : 'shipping';
-            new hezarfen_mahalle_helper(wrapper, type, 'checkout').on_country_change(country_code, get_additional_classes(type));
-            country_on_change(type, country_code, wrapper);
-        });
 
         $('#hezarfen_invoice_type').on('change', function () {
             var invoice_type = $(this).val();
@@ -44,6 +59,8 @@ jQuery(function ($) {
                 $('#hezarfen_tax_number_field, #hezarfen_tax_office_field, #billing_company_field').removeClass('hezarfen-hide-form-field');
             }
         });
+
+        $('#hezarfen_TC_number').on('blur', validate);
     }
     // CHANGE: END - Move initialization function to a named reusable function
 
@@ -53,9 +70,11 @@ jQuery(function ($) {
 
     function add_checkout_event_handlers(type, wrapper) {
         // prevent adding event handlers multiple times.
+        // CHANGE: Use select2:select for neighborhood field (FC Select2) instead of change
         $('#' + type + '_address_1').off('select2:select.hezarfen');
         $('#ship-to-different-address input').off('change.hezarfen');
 
+        // CHANGE: Use select2:select for neighborhood field (FC Select2) instead of change
         $('#' + type + '_address_1').on("select2:select.hezarfen", function (e) {
             neighborhood_on_change($(this).val(), type, wrapper);
         });
@@ -73,6 +92,7 @@ jQuery(function ($) {
 
     function neighborhood_on_change(neighborhood, type, checkout_fields_wrapper) {
         if (wc_hezarfen_checkout.should_notify_neighborhood_changed(type)) {
+            // CHANGE: Use string concatenation for field selectors (compatible with older JS tooling)
             let province_plate_number = checkout_fields_wrapper.find('#' + type + '_state').val();
             let district = checkout_fields_wrapper.find('#' + type + '_city').val();
 
@@ -117,5 +137,25 @@ jQuery(function ($) {
             district: type === 'billing' ? wc_hezarfen_ajax_object.billing_district_field_classes : wc_hezarfen_ajax_object.shipping_district_field_classes,
             neighborhood: type === 'billing' ? wc_hezarfen_ajax_object.billing_neighborhood_field_classes : wc_hezarfen_ajax_object.shipping_neighborhood_field_classes
         };
+    }
+
+    function validate() {
+        const $this = $(this);
+        const value = $this.val();
+        const parent = $this.closest('.form-row');
+        let validated = true;
+
+        if ($this.is('#hezarfen_TC_number')) {
+            if (value && value.length !== 11) {
+                validated = false;
+            }
+        }
+
+        if (!validated) {
+            parent.removeClass('woocommerce-validated').addClass('woocommerce-invalid');
+            if ($this.hasClass('validate-required')) {
+                parent.addClass('woocommerce-invalid-required-field');
+            }
+        }
     }
 });
