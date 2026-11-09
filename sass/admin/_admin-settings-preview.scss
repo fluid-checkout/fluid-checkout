@@ -322,7 +322,8 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	box-sizing: border-box;
 }
 
-body.is-showing-settings-shortcuts .fc-settings-preview__expand {
+body.is-showing-settings-shortcuts .fc-settings-preview__expand,
+body.is-showing-settings-shortcuts .fc-settings-preview__header-footer {
 	width: auto;
 	padding: 0 8px;
 }

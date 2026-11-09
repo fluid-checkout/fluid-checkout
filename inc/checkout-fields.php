@@ -655,11 +655,13 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		$custom_attributes         = array();
 		$args['custom_attributes'] = array_filter( (array) $args['custom_attributes'], 'strlen' );
 
-		if ( $args['maxlength'] ) {
+		// CHANGE: Check whether the maxlength attribute is set and not empty and add it to the custom attributes
+		if ( isset( $args['maxlength'] ) && $args['maxlength'] ) {
 			$args['custom_attributes']['maxlength'] = absint( $args['maxlength'] );
 		}
 
-		if ( $args['minlength'] ) {
+		// CHANGE: Check whether the minlength attribute is set and not empty
+		if ( isset( $args['minlength'] ) && $args['minlength'] ) {
 			$args['custom_attributes']['minlength'] = absint( $args['minlength'] );
 		}
 

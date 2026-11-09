@@ -157,7 +157,7 @@
 				openIframePopup(result.payplus_iframe.data.payment_page_link,700)
 			}
 
-			// CHANGED: Need to return `false` here to let Fluid Checkout exit the function at the expected point,
+			// CHANGE: Need to return `false` here to let Fluid Checkout exit the function at the expected point,
 			// as returning `true` means the code should continue running.
 			return false;
 		}

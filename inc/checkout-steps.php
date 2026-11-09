@@ -77,6 +77,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+		// After FluidCheckout_Enqueue::maybe_enqueue_checkout_scripts (105) restores the `wc-checkout` chain.
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 110 );
 
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
@@ -226,6 +228,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_preserve_checkout_update_address_data' ), 1 );
 		add_filter( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
 		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100, 2 );
+		add_filter( 'default_checkout_billing_email', array( $this, 'maybe_use_account_email_for_checkout_billing_email' ), 10, 2 );
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
 		add_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10, 2 );
 		add_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
@@ -487,6 +490,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Enqueue
 		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 110 );
 
 		// JS settings object
 		remove_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
@@ -639,6 +643,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_preserve_checkout_update_address_data' ), 1 );
 		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
 		remove_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100 );
+		remove_filter( 'default_checkout_billing_email', array( $this, 'maybe_use_account_email_for_checkout_billing_email' ), 10 );
 		remove_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
 		remove_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10 );
 		remove_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
@@ -1191,7 +1196,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$chosen_payment_method = WC()->session->get( 'chosen_payment_method' );
 
 		// Set chosen payment method to first one available when the chosen method saved to session is not available.
-		if ( ! $chosen_payment_method || '' === $chosen_payment_method || ! array_key_exists( $chosen_payment_method, $available_gateways ) ) {
+		$chosen_payment_method_is_set = is_string( $chosen_payment_method ) && '' !== $chosen_payment_method;
+		if ( ! $chosen_payment_method_is_set || ! array_key_exists( $chosen_payment_method, $available_gateways ) ) {
 			reset( $available_gateways );
 			$chosen_payment_method = key( $available_gateways );
 		}
@@ -4017,6 +4023,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		 * @param array $value Value to filter. Default empty array.
 		 */
 		$review_text_lines = apply_filters( "fc_substep_{$substep_id}_text_lines", array() );
+
+		// Drop empty lines so placeholders such as an unset email do not bypass the empty-state notice
+		if ( is_array( $review_text_lines ) ) {
+			$review_text_lines = array_values( array_filter( $review_text_lines, function( $text_line ) {
+				return null !== $text_line && false !== $text_line && '' !== $text_line;
+			} ) );
+		}
 
 		// Maybe add notice for empty substep text
 		if ( ! is_array( $review_text_lines ) || count ( $review_text_lines ) == 0 ) {
@@ -8335,12 +8348,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$chosen_payment_method = WC()->session->get( 'chosen_payment_method' );
 
 		// Make sure we have an array of chosen payment methods
-		if ( ! is_array( $chosen_payment_method ) ) { $chosen_payment_method = array( $chosen_payment_method ); }
+		if ( ! is_array( $chosen_payment_method ) ) {
+			$chosen_payment_method = is_string( $chosen_payment_method ) && '' !== $chosen_payment_method ? array( $chosen_payment_method ) : array();
+		}
 
 		// Add a review text line for each chosen method
 		foreach ( $chosen_payment_method as $chosen_method_key ) {
 			// Maybe skip if gateway was not found
-			if ( ! array_key_exists( $chosen_method_key, $available_gateways ) ) { continue; }
+			if ( ! is_string( $chosen_method_key ) || '' === $chosen_method_key || ! array_key_exists( $chosen_method_key, $available_gateways ) ) { continue; }
 
 			// Get gateway
 			$gateway = $available_gateways[ $chosen_method_key ];
@@ -9114,7 +9129,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   WC_Product  $product        The product object.
 	 */
 	public function output_order_summary_cart_item_quantity( $cart_item, $cart_item_key, $product ) {
-		echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', esc_html( $cart_item['quantity'] ) ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 
@@ -9366,6 +9381,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 				// Skip fields in posted data
 				if ( in_array( $field_key, array_keys( $posted_data ) ) ) { continue; }
 
+				// Keep the contact email when a refresh payload omits it
+				if ( 'billing_email' === $field_key ) { continue; }
+
 				// Set session value as empty
 				$this->set_checkout_field_value_to_session( $field_key, '' );
 				$posted_data[ $field_key ] = '';
@@ -9491,6 +9509,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Check whether the current request is an admin settings preview request.
+	 *
+	 * @return  bool
+	 */
+	public function is_admin_preview_request() {
+		return class_exists( 'FluidCheckout_Admin_Preview', false ) && FluidCheckout_Admin_Preview::instance()->is_preview_request();
+	}
+
+	/**
 	 * Update the customer's data to the WC_Customer object.
 	 *
 	 * @param  string  $posted_data  Post data for all checkout fields.
@@ -9535,6 +9562,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
+		// Bail before session persistence on admin preview requests, preview session is memory-only and seeded separately
+		if ( $this->is_admin_preview_request() ) {
+			return $posted_data;
+		}
+
 		// Save/commit changes to the customer object
 		WC()->customer->save();
 
@@ -9545,10 +9577,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach ( $session_field_keys as $field_key ) {
 			// Set property value to the customer object
 			if ( array_key_exists( $field_key, $posted_data ) ) {
+				// Keep a stored contact email when the posted value is empty or invalid
+				if ( 'billing_email' === $field_key && ( '' === $posted_data[ $field_key ] || ! is_email( $posted_data[ $field_key ] ) ) ) { continue; }
+
 				// Set session value
 				$this->set_checkout_field_value_to_session( $field_key, $posted_data[ $field_key ] );
 			}
 			else {
+				// Keep the contact email when the field is missing from the payload
+				if ( 'billing_email' === $field_key ) { continue; }
+
 				// Set session value as empty
 				$this->set_checkout_field_value_to_session( $field_key, null );
 			}
@@ -9670,6 +9708,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Maybe use the WordPress account email when the billing email meta is empty.
+	 *
+	 * @param   mixed   $value  Current checkout field value.
+	 * @param   string  $input  Checkout field key.
+	 */
+	public function maybe_use_account_email_for_checkout_billing_email( $value, $input ) {
+		// Bail if a valid email is already set
+		if ( ! empty( $value ) && is_email( $value ) ) { return $value; }
+
+		// Bail if the customer is not logged in
+		if ( ! is_user_logged_in() ) { return $value; }
+
+		// Get the account email
+		$user = wp_get_current_user();
+		if ( ! $user || ! is_email( $user->user_email ) ) { return $value; }
+
+		return $user->user_email;
+	}
+
+	/**
 	 * Get checkout field value from posted data or from the persisted fields session.
 	 *
 	 * @param   string   $input   Checkout field key (ie. order_comments ).
@@ -9688,13 +9746,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Maybe return field value from posted data
 		$posted_data = $this->get_parsed_posted_data();
-		$preserve_address_field_keys = array( 'shipping_country', 'billing_country', 'shipping_state', 'billing_state' );
+		$preserve_non_empty_field_keys = array( 'shipping_country', 'billing_country', 'shipping_state', 'billing_state', 'billing_email' );
 
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && array_key_exists( $input, $posted_data ) ) {
 			$field_posted_data_value = $posted_data[ $input ];
 
-			// Empty posted country/state should not hide the stored value during a refresh/race
-			if ( '' !== $field_posted_data_value || ! in_array( $input, $preserve_address_field_keys, true ) ) {
+			// Empty posted country/state/email should not hide the stored value during a refresh/race
+			if ( '' !== $field_posted_data_value || ! in_array( $input, $preserve_non_empty_field_keys, true ) ) {
 				return $field_posted_data_value;
 			}
 		}
@@ -9702,11 +9760,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Maybe return field value from session
 		$field_session_value = $this->get_checkout_field_value_from_session( $input );
 		if ( null !== $field_session_value ) {
-			// Empty session values for country/state should not hide the customer value after refresh.
+			// Empty session values for country/state/email should not hide the customer value after refresh.
 			// A raced update can store these as '', which then wins over the selected values still
 			// saved on the customer object and makes the country/state appear to change or clear.
-			$preserve_non_empty_session_field_keys = array( 'shipping_country', 'billing_country', 'shipping_state', 'billing_state' );
-			if ( '' === $field_session_value && in_array( $input, $preserve_non_empty_session_field_keys, true ) ) {
+			if ( '' === $field_session_value && in_array( $input, $preserve_non_empty_field_keys, true ) ) {
 				return null;
 			}
 
@@ -9771,7 +9828,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( is_user_logged_in() || $this->is_billing_same_as_shipping() ) {
 			$billing_country = WC()->checkout()->get_value( 'billing_country' );
 			$address_fields = WC()->countries->get_address_fields( $billing_country, 'billing_' );
+
+			// Keep the contact email. Other billing fields are cleared for the next checkout.
+			$skip_clear_field_keys = array( 'billing_email' );
+
 			foreach ( $address_fields as $field_key => $field_args ) {
+				// Skip some fields
+				if ( in_array( $field_key, $skip_clear_field_keys, true ) ) { continue; }
+
+				// Add field to be cleared
 				$save_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
 				$clear_field_keys[] = $field_key;
 				$clear_field_keys[] = $save_field_key;
@@ -9880,6 +9945,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Maybe skip if the field has not being saved to session yet
 			if ( null === $this->get_checkout_field_value_from_session( $key ) ) { continue; }
 
+			// Keep the contact email when the account form does not post it
+			if ( 'billing_email' === $key && ! isset( $_POST[ $key ] ) ) { continue; } // phpcs:ignore WordPress.Security.NonceVerification.Missing
+
 			// Set default field type
 			if ( ! isset( $field['type'] ) ) {
 				$field['type'] = 'text';
@@ -9891,6 +9959,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			} else {
 				$value = isset( $_POST[ $key ] ) ? wc_clean( wp_unslash( $_POST[ $key ] ?? '' ) ) : '';
 			}
+
+			// Keep a stored contact email when the posted value is empty
+			if ( 'billing_email' === $key && '' === $value ) { continue; }
 
 			// Hook to allow modification of value.
 			$value = apply_filters( 'woocommerce_process_myaccount_field_' . $key, $value );

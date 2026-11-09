@@ -15,31 +15,82 @@ class FluidCheckout_Admin_Preview_Dummy_Order extends WC_Order {
 		// Initialize order data, without reading an order from the database
 		parent::__construct( 0 );
 
+		self::initialize_order_with_dummy_data( $this, $order );
+	}
+
+	/**
+	 * Set dummy order properties, items and totals on an order object instead of reading from the database.
+	 *
+	 * @param   WC_Order  $order     Order object.
+	 * @param   int       $order_id  Dummy order ID.
+	 */
+	public static function initialize_order_with_dummy_data( WC_Order $order, $order_id ) {
 		// Mark the order as not read yet, so the dummy order data is set as its data instead of as changes
-		$this->set_object_read( false );
+		$order->set_object_read( false );
 
 		// Iterate order item types, keeping their groups empty so items are not read from the database for the dummy order ID
-		foreach ( array( 'line_item', 'tax', 'shipping', 'fee', 'coupon' ) as $item_type ) {
-			$this->items[ $this->type_to_group( $item_type ) ] = array();
+		if ( $order instanceof self ) {
+			foreach ( array( 'line_item', 'tax', 'shipping', 'fee', 'coupon' ) as $item_type ) {
+				$order->items[ $order->type_to_group( $item_type ) ] = array();
+			}
+
+			// Keep meta data empty, so it is not read from the database for the dummy order ID
+			$order->meta_data = array();
 		}
 
-		// Keep meta data empty, so it is not read from the database for the dummy order ID
-		$this->meta_data = array();
-
 		// Set dummy order properties
-		$this->set_id( $order );
-		$this->set_props( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_props( $this->get_id() ) );
+		$order->set_id( $order_id );
+		$order->set_props( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_props( $order->get_id() ) );
 
 		// Iterate dummy order meta data, such as fields added by plugins
-		foreach ( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_meta( $this->get_id() ) as $meta_key => $meta_value ) {
-			$this->add_meta_data( $meta_key, $meta_value, true );
+		foreach ( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_meta( $order->get_id() ) as $meta_key => $meta_value ) {
+			$order->add_meta_data( $meta_key, $meta_value, true );
 		}
 
 		// Set the items and totals of the preview cart, like checkout does when it creates an order
-		WC()->checkout()->set_data_from_cart( $this );
+		WC()->checkout()->set_data_from_cart( $order );
+
+		// Assign temporary item and meta IDs so variation line items work with legacy array access on PHP 8.5+
+		self::assign_temporary_preview_order_item_ids( $order );
 
 		// Mark the order as read, so later changes are tracked as changes
-		$this->set_object_read( true );
+		$order->set_object_read( true );
+	}
+
+	/**
+	 * Assign temporary IDs to in-memory order items and their meta data.
+	 *
+	 * Variation products build permalinks from `$item['item_meta_array']`, which uses meta IDs as array keys.
+	 * Unsaved preview line items have no IDs yet, which triggers PHP 8.5 deprecations for null array offsets.
+	 *
+	 * @param   WC_Order  $order  Dummy order.
+	 */
+	public static function assign_temporary_preview_order_item_ids( WC_Order $order ) {
+		$item_id = 1;
+		$meta_id = 1;
+
+		// Iterate order items
+		foreach ( $order->get_items() as $item ) {
+			// Skip invalid items
+			if ( ! $item instanceof WC_Order_Item ) { continue; }
+
+			// Maybe assign a temporary item ID
+			if ( ! $item->get_id() ) {
+				$item->set_id( $item_id );
+			}
+
+			$item_id++;
+
+			// Iterate item meta data
+			foreach ( $item->get_meta_data() as $meta ) {
+				// Maybe assign a temporary meta ID
+				if ( empty( $meta->id ) ) {
+					$meta->id = $meta_id;
+				}
+
+				$meta_id++;
+			}
+		}
 	}
 
 

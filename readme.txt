@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, woocommerce checkout, one page checkout, multi-step
 Requires PHP: 7.4
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 4.2.8
+Stable tag: 5.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -408,7 +408,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 == Changelog ==
 
-= Unreleased =
+= 5.0.0 - 2026-11-08 =
 
 * Bump tested up to WooCommerce 11.3
 * Added: New settings pages, with guided setup and live preview of checkout pages.
@@ -443,6 +443,9 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Fixed: JavaScript error when focusing a shipping method after checkout update if that method is no longer available in the refreshed fragment.
 * Fixed: Settings page header missing after third-party admin notices are stripped on Fluid Checkout settings screens.
 * Fixed: Plugin deactivation syncs only non-Fluid Checkout settings from the active profile to wp_options. Managed `fc_*` values stay in the profile.
+* Fixed: PHP deprecation notice across the plugin.
+* Fixed: Keep the checkout email after placing an order so the next checkout is not empty.
+* Fixed: Do not allow removing logged-in customer email on checkout, use the registered customer account email when a value is missing for checkout session.
 * Deprecated: Filter `fc_next_step_button_label` now shows a deprecation notice, use `fc_proceed_to_next_step_button_label` instead.
 * Deprecated: Filter `fc_shipping_methods_disable_auto_select`, use `fc_prevent_shipping_method_autoselect` instead. Note that the new filter has inverted logic: return `true` to prevent auto-selecting a shipping method.
 * Deprecated: Filter `fc_skip_add_pickup_point_info_as_review_text_lines`. Returning true from this filter still skips pickup point details from the shipping method review text. Use `fc_add_pickup_point_info_as_review_text_lines` instead.

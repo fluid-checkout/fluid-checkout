@@ -19,6 +19,11 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	const TOKEN_QUERY_ARG = 'fc_preview';
 
 	/**
+	 * Request header that carries the preview token when query args were dropped.
+	 */
+	const TOKEN_HEADER = 'X-FC-Preview';
+
+	/**
 	 * Preview token lifetime, in seconds.
 	 */
 	const TOKEN_LIFETIME = DAY_IN_SECONDS;
@@ -170,6 +175,9 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		add_filter( 'woocommerce_cart_hash_key', array( $this, 'change_cart_fragments_storage_key' ), 10 ); // Required as tabs storing different carts refresh each other endlessly
 		add_filter( 'woocommerce_cart_fragment_name', array( $this, 'change_cart_fragments_storage_key' ), 10 );
 
+		// Early request patch, before deferred scripts, so checkout AJAX keeps the preview token
+		add_action( 'wp_head', array( $this, 'print_early_preview_request_patch' ), 1 );
+
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
@@ -267,6 +275,9 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		// Cookies
 		add_filter( 'woocommerce_set_cookie_enabled', '__return_false', 10 ); // Required to keep the visitor's own session cookies unchanged when the preview is on the same domain
 
+		// Skip the customer shutdown save during checkout updates; `update_order_review` still calls `save()` which only hits the in-memory preview session
+		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_skip_customer_shutdown_save_on_update_order_review' ), 0 );
+
 		// Dummy customer meta
 		add_filter( 'get_user_metadata', array( $this, 'maybe_get_dummy_customer_meta' ), 10, 4 );
 		add_filter( 'add_user_metadata', array( $this, 'maybe_skip_dummy_customer_meta_write' ), 10, 2 );
@@ -303,6 +314,11 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		// Coupons
 		add_filter( 'woocommerce_get_shop_coupon_data', array( $this, 'maybe_get_dummy_coupon_props' ), 10, 2 );
 		add_action( 'woocommerce_load_cart_from_session', array( $this, 'maybe_set_preview_applied_coupons' ), 10 );
+
+		// Maybe calculate cart totals, as WooCommerce 10.1.0+ already calculates them after loading the cart
+		if ( version_compare( WC_VERSION, '10.1.0', '<' ) ) {
+			add_action( 'woocommerce_cart_loaded_from_session', array( $this, 'calculate_preview_cart_totals' ), PHP_INT_MAX ); // Last, so the totals include changes other plugins make to the loaded cart
+		}
 	}
 
 	/**
@@ -314,6 +330,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 		// Dummy orders
 		add_action( 'woocommerce_init', array( $this, 'use_preview_order_factory' ), 10 ); // After WooCommerce creates its order factory
+		// After WooCommerce HPOS replaces the order datastore at priority 999.
+		add_filter( 'woocommerce_order_data_store', array( $this, 'wrap_order_data_store' ), 1000 );
 
 		// Dummy order meta
 		add_filter( 'add_post_metadata', array( $this, 'maybe_skip_dummy_order_meta_write' ), 10, 2 );
@@ -354,6 +372,33 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		}
 
 		return $classes;
+	}
+
+	/**
+	 * Print an early inline script that keeps the preview token on same-origin XHR and fetch requests.
+	 *
+	 * Runs in `wp_head` before deferred checkout scripts, mirroring the `wp.apiFetch` middleware registered with the frame assets.
+	 */
+	public function print_early_preview_request_patch() {
+		// Get preview arguments for the current request
+		$preview_args = $this->get_preview_args();
+
+		// Bail if the request has no preview token
+		if ( empty( $preview_args[ self::TOKEN_QUERY_ARG ] ) ) { return; }
+
+		$token_query_arg = self::TOKEN_QUERY_ARG;
+		$token_header = self::TOKEN_HEADER;
+
+		// Build a compact script that only adds the preview token, mode, and header (session fields stay in the deferred frame script)
+		$script = sprintf(
+			'(function(w,d,a,t,h){function u(r){try{var x=new URL(r,w.location.href),n=new URLSearchParams(),k;if(x.origin!==w.location.origin){return r;}if(!x.searchParams.has(t)){for(k in a){n.set(k,a[k]);}}if(!n.toString()){return r;}x.search=(x.search?x.search+"&":"?")+n.toString();return x.href;}catch(e){return r;}}function s(o){try{o.setRequestHeader(h,a[t]);}catch(e){}}var f=w.fetch;w.fetch=function(r,o){var i=r instanceof Request?r.url:String(r),p=u(i),g;if(p===i){return f.call(w,r,o);}o=o?Object.assign({},o):{};g=new Headers(o.headers||(r instanceof Request?r.headers:undefined));g.set(h,a[t]);o.headers=g;return f.call(w,r instanceof Request?new Request(p,r):p,o);};var o=w.XMLHttpRequest.prototype.open;w.XMLHttpRequest.prototype.open=function(){var g=Array.prototype.slice.call(arguments);g[1]=u(String(g[1]));var r=o.apply(this,g);s(this);return r;};})(window,document,%s,%s,%s);',
+			wp_json_encode( $preview_args ),
+			wp_json_encode( $token_query_arg ),
+			wp_json_encode( $token_header )
+		);
+
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON-encoded values only; script is built server-side for preview pages.
+		echo '<script id="fc-admin-preview-early-request-patch">' . $script . '</script>' . "\n";
 	}
 
 	/**
@@ -432,6 +477,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		 */
 		return apply_filters( 'fc_admin_preview_frame_script_settings', array(
 			'adminOrigin'                 => $this->get_admin_origin(),
+			'tokenQueryArg'               => self::TOKEN_QUERY_ARG,
+			'tokenHeader'                 => self::TOKEN_HEADER,
 			'previewArgs'                 => $this->get_preview_args(),
 			'shippingMethodsQueryArg'     => self::SHIPPING_METHODS_QUERY_ARG,
 			'sessionFieldsQueryArg'       => self::SESSION_FIELDS_QUERY_ARG,
@@ -528,13 +575,24 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	/**
 	 * Get the preview token from the current request.
 	 *
+	 * Reads the token from the query string, then the `X-FC-Preview` header, then the same-site Referer.
+	 *
 	 * @return  string  The preview token, or an empty string when the request has none.
 	 */
 	public function get_request_token() {
-		// Bail if request has no preview token
-		if ( ! isset( $_GET[ self::TOKEN_QUERY_ARG ] ) ) { return ''; }
+		// Maybe use the token from the query string
+		if ( isset( $_GET[ self::TOKEN_QUERY_ARG ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Preview token is validated in `get_token_user_id()`.
+			return sanitize_text_field( wp_unslash( $_GET[ self::TOKEN_QUERY_ARG ] ) );
+		}
 
-		return sanitize_text_field( wp_unslash( $_GET[ self::TOKEN_QUERY_ARG ] ) );
+		// Maybe use the token from the request header when AJAX or fetch dropped the query arg
+		$header_key = 'HTTP_' . str_replace( '-', '_', strtoupper( self::TOKEN_HEADER ) );
+		if ( isset( $_SERVER[ $header_key ] ) && '' !== $_SERVER[ $header_key ] ) {
+			return sanitize_text_field( wp_unslash( $_SERVER[ $header_key ] ) );
+		}
+
+		// Maybe use the token from the same-site Referer when a subrequest omitted it from the URL
+		return FluidCheckout::instance()->get_preview_token_from_referer();
 	}
 
 	/**
@@ -566,8 +624,13 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * @return  string  `logged_in` for the dummy logged-in customer, or `guest` otherwise.
 	 */
 	public function get_preview_mode() {
-		// Get requested mode
-		$mode = isset( $_GET[ self::MODE_QUERY_ARG ] ) ? sanitize_text_field( wp_unslash( $_GET[ self::MODE_QUERY_ARG ] ) ) : '';
+		// Maybe use the mode from the query string
+		$mode = isset( $_GET[ self::MODE_QUERY_ARG ] ) ? sanitize_text_field( wp_unslash( $_GET[ self::MODE_QUERY_ARG ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Preview mode only selects dummy guest or logged-in data.
+
+		// Maybe use the mode from the same-site Referer when the query string has none
+		if ( '' === $mode ) {
+			$mode = FluidCheckout::instance()->get_preview_arg_from_referer( self::MODE_QUERY_ARG );
+		}
 
 		return self::MODE_LOGGED_IN === $mode ? self::MODE_LOGGED_IN : self::MODE_GUEST;
 	}
@@ -963,6 +1026,23 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 			// Define constant
 			define( $constant, true );
 		}
+	}
+
+
+
+	/**
+	 * Skip WooCommerce's customer `shutdown` save during `update_order_review` on preview requests.
+	 *
+	 * The AJAX handler still calls `WC()->customer->save()`, which only updates the in-memory preview session.
+	 *
+	 * @param  string  $post_data  Serialized checkout form post data from the AJAX request.
+	 */
+	public function maybe_skip_customer_shutdown_save_on_update_order_review( $post_data ) {
+		// Bail if the customer object is not available
+		if ( ! function_exists( 'WC' ) || ! WC()->customer instanceof WC_Customer ) { return; }
+
+		// Skip the shutdown save registered when WooCommerce initialized the customer
+		remove_action( 'shutdown', array( WC()->customer, 'save' ), 10 );
 	}
 
 
@@ -1377,6 +1457,17 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		WC()->session->set( 'applied_coupons', array( FluidCheckout_Admin_Preview_Dummy_Data::COUPON_CODE ) );
 	}
 
+	/**
+	 * Calculate the preview cart totals after the cart is loaded from the session.
+	 * WooCommerce versions before 10.1.0 save the cart session as the cart loads, so they skip the totals of preview cart items set without them.
+	 *
+	 * @param   WC_Cart  $cart  The cart object.
+	 */
+	public function calculate_preview_cart_totals( $cart ) {
+		// Calculate totals for the preview cart items
+		$cart->calculate_totals();
+	}
+
 
 
 	/**
@@ -1385,6 +1476,22 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	public function use_preview_order_factory() {
 		// Replace the WooCommerce order factory
 		WC()->order_factory = new FluidCheckout_Admin_Preview_Order_Factory();
+	}
+
+	/**
+	 * Wrap the order data store so dummy orders are hydrated in memory when plugins load orders by ID.
+	 *
+	 * @param   object|string  $store  Data store instance or class name.
+	 *
+	 * @return  FluidCheckout_Admin_Preview_Order_Data_Store
+	 */
+	public function wrap_order_data_store( $store ) {
+		// Bail if already wrapped, as this filter runs once per WC_Data_Store load.
+		if ( $store instanceof FluidCheckout_Admin_Preview_Order_Data_Store ) {
+			return $store;
+		}
+
+		return new FluidCheckout_Admin_Preview_Order_Data_Store( $store );
 	}
 
 	/**

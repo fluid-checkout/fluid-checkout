@@ -1,0 +1,19 @@
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
+// ------------------------------------
+// CHECKOUT INTERACTION
+// ------------------------------------
+
+// Magnific Popup backgrounds can stay in the DOM at opacity 0 and still capture clicks.
+body#{ $body-theme-selector }.woocommerce-checkout .mfp-bg:not( .mfp-ready ) {
+	pointer-events: none !important; // Needed to override theme styles
+}
+
+body#{ $body-theme-selector }.woocommerce-checkout .mfp-wrap:not( .mfp-ready ) {
+	pointer-events: none !important; // Needed to override theme styles
+}
+
+

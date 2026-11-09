@@ -393,7 +393,7 @@ class FluidCheckout_Settings_VATAssistant {
 					'type'              => 'select',
 					'options'           => array(
 						'one_per_account'       => __( 'One per account', 'fluid-checkout' ),
-						'one_per_address_entry' => __( 'One per address entry', 'fluid-checkout' ),
+						'one_per_address_entry' => __( 'One per saved address', 'fluid-checkout' ),
 					),
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_per_account_limit' ),
 					'autoload'          => false,

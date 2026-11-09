@@ -1,0 +1,18 @@
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
+// ------------------------------------
+// CHECKOUT STEPS
+// ------------------------------------
+
+body#{ $body-theme-selector } .fc-wrapper .fc-step__substep-edit,
+body#{ $body-theme-selector } .fc-wrapper .fc-step__substep-save {
+	z-index: z( 'default' ) + 1;
+}
+
+body#{ $body-theme-selector } .fc-wrapper .fc-step__actions .fc-step__next-step {
+	position: relative;
+	z-index: z( 'default' ) + 1;
+}

@@ -417,49 +417,25 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 
 	/**
-	 * Get the purchase button label for an add-on.
-	 *
-	 * @param  string  $price  Formatted price including currency, e.g. `129 EUR`.
+	 * Get the purchase button label for an add-on sold separately.
 	 */
-	public function get_addon_purchase_button_label( $price ) {
-		/* translators: %s: formatted price including currency, e.g. "129 EUR" */
-		return sprintf( __( 'Get only this add-on &mdash; %s', 'fluid-checkout' ), $price );
+	public function get_addon_purchase_button_label() {
+		return __( 'Get only this add-on', 'fluid-checkout' );
 	}
 
 	/**
-	 * Get the purchase button label for an add-on without a price.
+	 * Get the install button label for an add-on when PRO is already installed.
 	 *
-	 * Used when PRO is installed so entitled customers are not nudged to pay again.
+	 * Used so entitled customers are not nudged to purchase again.
 	 */
-	public function get_addon_purchase_button_label_without_price() {
+	public function get_addon_install_button_label() {
 		return __( 'Install add-on', 'fluid-checkout' );
 	}
 
 	/**
-	 * Get the purchase price for Fluid Checkout PRO.
-	 *
-	 * @return string  Formatted price including currency, e.g. `129 EUR`.
-	 */
-	public function get_pro_purchase_price() {
-		return _x( '129 EUR', 'PRO purchase price', 'fluid-checkout' );
-	}
-
-	/**
 	 * Get the upgrade button label for Fluid Checkout PRO.
-	 *
-	 * @param  string  $price  Formatted price including currency, e.g. `129 EUR`.
 	 */
-	public function get_pro_upgrade_button_label( $price = null ) {
-		$price = $price ?? $this->get_pro_purchase_price();
-
-		/* translators: %s: formatted price including currency, e.g. "129 EUR" */
-		return sprintf( __( 'Upgrade to PRO &mdash; %s', 'fluid-checkout' ), $price );
-	}
-
-	/**
-	 * Get the upgrade button label for Fluid Checkout PRO without a price.
-	 */
-	public function get_pro_upgrade_button_label_without_price() {
+	public function get_pro_upgrade_button_label() {
 		return __( 'Upgrade to PRO', 'fluid-checkout' );
 	}
 
