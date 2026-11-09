@@ -411,6 +411,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 = Unreleased =
 
 * Fixed: Requests to external services failing in the settings preview.
+* Fixed: WooCommerce feature compatibility declared from an invalid plugin file when Lite runs bundled inside Fluid Checkout PRO.
 
 = 5.0.0 - 2026-11-08 =
 
