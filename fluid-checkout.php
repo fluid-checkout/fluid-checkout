@@ -842,14 +842,41 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 
 
 		/**
+		 * Whether a plugin bootstrap file is registered in the WordPress plugins list.
+		 *
+		 * @param  string  $plugin_file  Main plugin file path, usually `__FILE__`.
+		 *
+		 * @return bool
+		 */
+		public function is_plugin_file_listed_in_wp_plugins( $plugin_file ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+			$plugin_basename = plugin_basename( $plugin_file );
+
+			// Maybe match a normal wp-content/plugins install
+			if ( function_exists( 'get_plugins' ) && array_key_exists( $plugin_basename, get_plugins() ) ) {
+				return true;
+			}
+
+			// Maybe match the current runtime main file (PHPUnit require_once bootstrap)
+			if ( ! empty( self::$plugin_basename ) && self::$plugin_basename === $plugin_basename && file_exists( $plugin_file ) ) {
+				return true;
+			}
+
+			return false;
+		}
+
+
+
+		/**
 		 * Declare compatibility with the WooCommerce features.
 		 */
 		public function declare_woocommerce_features_compatibility() {
-			// Bail if Lite is bundled inside PRO, which declares compatibility from its main plugin file
-			if ( class_exists( 'FluidCheckout_PRO_Bundled_Plugins', false ) && FluidCheckout_PRO_Bundled_Plugins::is_lite_loaded_from_bundled() ) { return; }
-
 			// Bail if class not available
 			if ( ! class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) { return; }
+
+			// Bail if this bootstrap file is not a registered WordPress plugin (e.g. Lite bundled inside PRO)
+			if ( ! $this->is_plugin_file_listed_in_wp_plugins( __FILE__ ) ) { return; }
 
 			// Declare compatibility with WooCommerce HPOS (High Performance Order Storage)
 			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
