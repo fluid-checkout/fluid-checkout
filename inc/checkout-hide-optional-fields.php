@@ -7,6 +7,18 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 
 	/**
+	 * Class for an address field the country locale hides.
+	 *
+	 * `address-i18n.js` adds and removes this class when the customer changes country.
+	 * Keep in sync with `localeHiddenFieldClass` in `js-src/address-i18n.js`.
+	 *
+	 * @since 5.0.1
+	 */
+	public const ADDRESS_LOCALE_HIDDEN_CLASS = 'fc-address-locale-hidden';
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -176,6 +188,172 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 
 
 	/**
+	 * Whether a locale `hidden` flag means the field is hidden.
+	 *
+	 * @param   mixed  $hidden  Locale or field-arg value.
+	 *
+	 * @since 5.0.1
+	 */
+	public function is_locale_hidden_value( $hidden ) {
+		return true === $hidden || 1 === $hidden || '1' === $hidden || 'yes' === $hidden || 'true' === $hidden;
+	}
+
+	/**
+	 * Address group used to resolve the country for a checkout field key.
+	 *
+	 * @param   string  $field_key  Checkout field key.
+	 *
+	 * @return  string  `billing` or `shipping`.
+	 *
+	 * @since 5.0.1
+	 */
+	public function get_address_type_for_field_key( $field_key ) {
+		if ( 0 === strpos( $field_key, 'shipping_' ) ) { return 'shipping'; }
+		if ( 0 === strpos( $field_key, 'billing_' ) ) { return 'billing'; }
+
+		// Unprefixed fields on the account edit-address form follow the address being edited.
+		if ( is_wc_endpoint_url( 'edit-address' ) ) {
+			global $wp;
+
+			if ( isset( $wp->query_vars[ 'edit-address' ] ) ) {
+				$load_address = wc_edit_address_i18n( sanitize_title( $wp->query_vars[ 'edit-address' ] ), true );
+
+				if ( in_array( $load_address, array( 'billing', 'shipping' ), true ) ) {
+					return $load_address;
+				}
+			}
+		}
+
+		return 'billing';
+	}
+
+	/**
+	 * Locale field key for a checkout field key (`billing_postcode` to `postcode`).
+	 *
+	 * @param   string  $field_key  Checkout field key.
+	 *
+	 * @since 5.0.1
+	 */
+	public function get_locale_address_field_key( $field_key ) {
+		if ( 0 === strpos( $field_key, 'shipping_' ) ) { return substr( $field_key, strlen( 'shipping_' ) ); }
+		if ( 0 === strpos( $field_key, 'billing_' ) ) { return substr( $field_key, strlen( 'billing_' ) ); }
+
+		return $field_key;
+	}
+
+	/**
+	 * Country used to read address locale rules for a checkout field.
+	 *
+	 * @param   string  $field_key  Checkout field key.
+	 *
+	 * @since 5.0.1
+	 */
+	public function get_country_for_address_field( $field_key ) {
+		$address_type = $this->get_address_type_for_field_key( $field_key );
+		$country = WC()->checkout()->get_value( $address_type . '_country' );
+
+		if ( ! $country ) {
+			$country = WC()->countries->get_base_country();
+		}
+
+		return $country;
+	}
+
+	/**
+	 * Merged default and country address-locale entry for a checkout field.
+	 *
+	 * @param   string  $field_key  Checkout field key.
+	 *
+	 * @return  array
+	 *
+	 * @since 5.0.1
+	 */
+	public function get_merged_address_locale_field( $field_key ) {
+		$locale_key = $this->get_locale_address_field_key( $field_key );
+		$country = $this->get_country_for_address_field( $field_key );
+		$locale = WC()->countries->get_country_locale();
+		$field_locale = array();
+
+		if ( isset( $locale[ 'default' ][ $locale_key ] ) && is_array( $locale[ 'default' ][ $locale_key ] ) ) {
+			$field_locale = $locale[ 'default' ][ $locale_key ];
+		}
+
+		if ( $country && isset( $locale[ $country ][ $locale_key ] ) && is_array( $locale[ $country ][ $locale_key ] ) ) {
+			$field_locale = array_merge( $field_locale, $locale[ $country ][ $locale_key ] );
+		}
+
+		return $field_locale;
+	}
+
+	/**
+	 * Whether WooCommerce's address locale hides this field for the selected country.
+	 *
+	 * Country locale entries such as postcode for the United Arab Emirates set `hidden` and leave
+	 * the field optional. Field args include `hidden` when WooCommerce copies it onto the field.
+	 * Older WooCommerce only copies locale keys that already exist on the default field, so `hidden`
+	 * is read from the country locale when the arg is absent.
+	 *
+	 * @param   string  $field_key  Checkout field key.
+	 * @param   array   $args       Field arguments.
+	 *
+	 * @since 5.0.1
+	 */
+	public function is_address_locale_field_hidden( $field_key, $args ) {
+		if ( is_array( $args ) && array_key_exists( 'hidden', $args ) ) {
+			return $this->is_locale_hidden_value( $args[ 'hidden' ] );
+		}
+
+		$field_locale = $this->get_merged_address_locale_field( $field_key );
+
+		if ( ! array_key_exists( 'hidden', $field_locale ) ) { return false; }
+
+		return $this->is_locale_hidden_value( $field_locale[ 'hidden' ] );
+	}
+
+	/**
+	 * Add the locale-hidden class to the first form row in a field's markup.
+	 *
+	 * @param   string  $field  Field HTML.
+	 *
+	 * @since 5.0.1
+	 */
+	public function add_address_locale_hidden_class_to_field( $field ) {
+		$class_name = self::ADDRESS_LOCALE_HIDDEN_CLASS;
+
+		if ( false !== strpos( $field, $class_name ) ) { return $field; }
+
+		$needle = 'class="form-row ';
+		$position = strpos( $field, $needle );
+		if ( false !== $position ) {
+			return substr_replace( $field, 'class="form-row ' . $class_name . ' ', $position, strlen( $needle ) );
+		}
+
+		$needle = 'class="form-row"';
+		$position = strpos( $field, $needle );
+		if ( false !== $position ) {
+			return substr_replace( $field, 'class="form-row ' . $class_name . '"', $position, strlen( $needle ) );
+		}
+
+		return $field;
+	}
+
+	/**
+	 * Hide a field row when the address locale hides it and it is not wrapped in an "Add ..." section.
+	 *
+	 * @param   string  $field              Field HTML.
+	 * @param   bool    $is_locale_hidden   Whether the address locale hides the field.
+	 *
+	 * @since 5.0.1
+	 */
+	public function maybe_hide_unwrapped_locale_field( $field, $is_locale_hidden ) {
+		if ( ! $is_locale_hidden ) { return $field; }
+
+		return $this->add_address_locale_hidden_class_to_field( $field );
+	}
+
+
+
+	/**
 	 * Get the checkout fields args.
 	 *
 	 * @param   string  $field  Field html markup to be changed.
@@ -187,12 +365,17 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		// Bail if the current page does not load expansible section assets
 		if ( ! $this->should_hide_optional_fields_on_current_page() ) { return $field; }
 
-		// Bail if field is required
-		// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
-		if ( array_key_exists( 'required', $args ) && true == $args[ 'required' ] ) { return $field; }
+		// Country locale can hide a field while still leaving it optional, which is what creates the "Add ..." link.
+		$is_locale_hidden = $this->is_address_locale_field_hidden( $key, $args );
 
-		// Bail if field is not empty
-		if ( ! empty( $value ) ) { return $field; }
+		// Bail if field is required.
+		// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+		// A locale-hidden field is not required for the selected country, even if the field args still say it is.
+		if ( ! $is_locale_hidden && array_key_exists( 'required', $args ) && true == $args[ 'required' ] ) { return $field; }
+
+		// Bail if the field already has a value. Locale-hidden fields are cleared when the country is applied,
+		// so they stay in an "Add ..." section and the link can come back for a country that shows the field.
+		if ( ! empty( $value ) && ! $is_locale_hidden ) { return $field; }
 
 		// Bail if field has already been hidden
 		// Needed for compatibility with plugins that call `woocommerce_form_field` multiple times for the same field
@@ -206,7 +389,7 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		 *
 		 * @param array $skip Whether to skip the default behavior.
 		 */
-		if ( in_array( $args[ 'type' ], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'state', 'country', 'select', 'checkbox', 'radio', 'hidden' ) ) ) ) { return $field; }
+		if ( in_array( $args[ 'type' ], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'state', 'country', 'select', 'checkbox', 'radio', 'hidden' ) ) ) ) { return $this->maybe_hide_unwrapped_locale_field( $field, $is_locale_hidden ); }
 
 		// Maybe skip optional field by class
 		/**
@@ -220,12 +403,12 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		foreach ( $skip_field_container_classes as $skip_class ) {
 			foreach ( $args[ 'class' ] as $field_class ) {
 				// Skip if field class contains the skip class
-				if ( -1 < strpos( $field_class, $skip_class ) ) { return $field; }
+				if ( -1 < strpos( $field_class, $skip_class ) ) { return $this->maybe_hide_unwrapped_locale_field( $field, $is_locale_hidden ); }
 			}
 		}
 
 		// Maybe skip optional field by id
-		if ( in_array( $key, $this->get_hide_optional_fields_skip_list() ) ) { return $field; }
+		if ( in_array( $key, $this->get_hide_optional_fields_skip_list() ) ) { return $this->maybe_hide_unwrapped_locale_field( $field, $is_locale_hidden ); }
 
 		// Maybe skip optional field by other criteria
 		/**
@@ -238,16 +421,22 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		 * @param array  $args  Field arguments.
 		 * @param mixed  $value Field value. Empty values can be collapsed. Default null.
 		 */
-		if ( apply_filters( 'fc_hide_optional_fields_skip_field', false, $key, $args, $value ) ) { return $field; }
+		if ( apply_filters( 'fc_hide_optional_fields_skip_field', false, $key, $args, $value ) ) { return $this->maybe_hide_unwrapped_locale_field( $field, $is_locale_hidden ); }
 
 		// Set attribute `data-autofocus` to focus on the optional field when expanding the section
 		$field = str_replace( 'name="'. esc_attr( $key ) .'"', 'name="'. esc_attr( $key ) .'" data-autofocus', $field );
 
-		// Move container classes to expansible block
+		// Move container classes to expansible block.
+		// Keep the "Add ..." section in the markup when the locale hides the field so a later country
+		// change can show the link again, and hide the whole section until then.
 		$container_class_esc = esc_attr( implode( ' ', $args['class'] ) );
+		$section_class = 'form-row ' . $container_class_esc;
+		if ( $is_locale_hidden ) {
+			$section_class .= ' ' . self::ADDRESS_LOCALE_HIDDEN_CLASS;
+		}
 		$expansible_section_args = array(
 			'section_attributes' => array(
-				'class' => 'form-row ' . $container_class_esc,
+				'class' => $section_class,
 			),
 		);
 

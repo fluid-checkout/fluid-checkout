@@ -414,6 +414,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Fixed: Requests to external services failing in the settings preview.
 * Fixed: WooCommerce feature compatibility declared from an invalid plugin file when Lite runs bundled inside Fluid Checkout PRO.
 * Fixed: Compatibility with plugin Kustom Checkout for WooCommerce (formerly Klarna Checkout). Prevent a fatal error when Kustom Checkout is the selected payment method on checkout. The same issue is fixed for Svea Checkout, Dintero Checkout, PaysonCheckout, and Nets Easy.
+* Fixed: Optional fields that WooCommerce hides for the selected country, such as postcode in the United Arab Emirates, no longer show an "Add ..." link. Optional fields the country still shows keep that link, and the link updates when the customer changes country.
 
 = 5.0.0 - 2026-11-08 =
 
