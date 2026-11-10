@@ -42,6 +42,7 @@ class FluidCheckout_Admin_Preview_Dummy_Order extends WC_Order {
 			// Read the stored currency without the view filter, which can load this order again
 			$currency = self::$orders_being_initialized[ $order_id ]->get_currency( 'edit' );
 
+			// Maybe copy currency already stored on the in-progress order
 			if ( is_string( $currency ) && '' !== $currency ) {
 				$order->set_currency( $currency );
 			}
@@ -52,6 +53,7 @@ class FluidCheckout_Admin_Preview_Dummy_Order extends WC_Order {
 		// Mark this dummy order as being built before any code that can load it again
 		self::$orders_being_initialized[ $order_id ] = $order;
 
+		// Build the dummy order, clearing the re-entrancy guard even when a nested load throws
 		try {
 			// Mark the order as not read yet, so the dummy order data is set as its data instead of as changes
 			$order->set_object_read( false );
