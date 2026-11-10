@@ -408,17 +408,32 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 		// Get enabled payment methods, as checking which are available on the order pay page would load the dummy order being built
 		$payment_gateways = wp_list_filter( WC()->payment_gateways()->payment_gateways(), array( 'enabled' => 'yes' ) );
 
+		// Store the gateway id and its title. The payment method property is the gateway id, and `reset()` returns the gateway object.
+		$payment_method = '';
+		$payment_method_title = '';
+
+		if ( ! empty( $payment_gateways ) ) {
+			$payment_gateway = reset( $payment_gateways );
+			$payment_method = $payment_gateway->id;
+			$payment_method_title = $payment_gateway->get_title();
+		}
+
 		// Get order fields, with the order notes saved as the customer note
 		$order_fields = $this->get_order_fields();
+
+		// Keep the unfiltered store currency on the order pay dummy order.
+		// `get_woocommerce_currency()` runs `woocommerce_currency`, and on order pay requests Aelia Currency Switcher loads this same order from that filter.
+		$currency = self::ORDER_PAY_ID === (int) $order_id ? get_option( 'woocommerce_currency' ) : get_woocommerce_currency();
 
 		return array_merge( $this->get_customer_fields(), array(
 			'order_key'              => self::ORDER_KEY,
 			'status'                 => self::ORDER_PAY_ID === (int) $order_id ? 'pending' : 'processing',
 			'customer_id'            => FluidCheckout_Admin_Preview::MODE_LOGGED_IN === FluidCheckout_Admin_Preview::instance()->get_preview_mode() ? self::CUSTOMER_ID : 0,
 			'created_via'            => 'checkout',
-			'currency'               => get_woocommerce_currency(),
+			'currency'               => $currency,
 			'prices_include_tax'     => wc_prices_include_tax(),
-			'payment_method'         => empty( $payment_gateways ) ? '' : reset( $payment_gateways ),
+			'payment_method'         => $payment_method,
+			'payment_method_title'   => $payment_method_title,
 			'customer_note'          => array_key_exists( 'order_comments', $order_fields ) ? $order_fields[ 'order_comments' ] : '',
 			'date_created'           => time(),
 			'date_paid'              => self::ORDER_PAY_ID === (int) $order_id ? null : time(),

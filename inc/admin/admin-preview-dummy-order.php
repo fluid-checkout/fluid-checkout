@@ -7,6 +7,15 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_Admin_Preview_Dummy_Order extends WC_Order {
 
 	/**
+	 * Dummy orders currently being built, by dummy order ID, so a nested read of the same order does not build it again.
+	 *
+	 * @var array
+	 */
+	private static $orders_being_initialized = array();
+
+
+
+	/**
 	 * Set the dummy order properties, items and totals instead of reading the order from the database.
 	 *
 	 * @param   int  $order  Dummy order ID.
@@ -25,36 +34,60 @@ class FluidCheckout_Admin_Preview_Dummy_Order extends WC_Order {
 	 * @param   int       $order_id  Dummy order ID.
 	 */
 	public static function initialize_order_with_dummy_data( WC_Order $order, $order_id ) {
-		// Mark the order as not read yet, so the dummy order data is set as its data instead of as changes
-		$order->set_object_read( false );
+		$order_id = (int) $order_id;
 
-		// Iterate order item types, keeping their groups empty so items are not read from the database for the dummy order ID
-		if ( $order instanceof self ) {
-			foreach ( array( 'line_item', 'tax', 'shipping', 'fee', 'coupon' ) as $item_type ) {
-				$order->items[ $order->type_to_group( $item_type ) ] = array();
+		// Bail if this dummy order is already being built, such as when a `woocommerce_currency` callback constructs it directly.
+		// Copy a currency already stored on it. Leave an empty currency alone, as `WC_Abstract_Order::set_currency()` would call `get_woocommerce_currency()` again.
+		if ( array_key_exists( $order_id, self::$orders_being_initialized ) ) {
+			// Read the stored currency without the view filter, which can load this order again
+			$currency = self::$orders_being_initialized[ $order_id ]->get_currency( 'edit' );
+
+			if ( is_string( $currency ) && '' !== $currency ) {
+				$order->set_currency( $currency );
 			}
 
-			// Keep meta data empty, so it is not read from the database for the dummy order ID
-			$order->meta_data = array();
+			return;
 		}
 
-		// Set dummy order properties
-		$order->set_id( $order_id );
-		$order->set_props( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_props( $order->get_id() ) );
+		// Mark this dummy order as being built before any code that can load it again
+		self::$orders_being_initialized[ $order_id ] = $order;
 
-		// Iterate dummy order meta data, such as fields added by plugins
-		foreach ( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_meta() as $meta_key => $meta_value ) {
-			$order->add_meta_data( $meta_key, $meta_value, true );
+		try {
+			// Mark the order as not read yet, so the dummy order data is set as its data instead of as changes
+			$order->set_object_read( false );
+
+			// Iterate order item types, keeping their groups empty so items are not read from the database for the dummy order ID
+			if ( $order instanceof self ) {
+				foreach ( array( 'line_item', 'tax', 'shipping', 'fee', 'coupon' ) as $item_type ) {
+					$order->items[ $order->type_to_group( $item_type ) ] = array();
+				}
+
+				// Keep meta data empty, so it is not read from the database for the dummy order ID
+				$order->meta_data = array();
+			}
+
+			// Set dummy order properties
+			$order->set_id( $order_id );
+			$order->set_props( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_props( $order->get_id() ) );
+
+			// Iterate dummy order meta data, such as fields added by plugins
+			foreach ( FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_meta() as $meta_key => $meta_value ) {
+				$order->add_meta_data( $meta_key, $meta_value, true );
+			}
+
+			// Set the items and totals of the preview cart, like checkout does when it creates an order
+			WC()->checkout()->set_data_from_cart( $order );
+
+			// Assign temporary item and meta IDs so variation line items work with legacy array access on PHP 8.5+
+			self::assign_temporary_preview_order_item_ids( $order );
+
+			// Mark the order as read, so later changes are tracked as changes
+			$order->set_object_read( true );
 		}
-
-		// Set the items and totals of the preview cart, like checkout does when it creates an order
-		WC()->checkout()->set_data_from_cart( $order );
-
-		// Assign temporary item and meta IDs so variation line items work with legacy array access on PHP 8.5+
-		self::assign_temporary_preview_order_item_ids( $order );
-
-		// Mark the order as read, so later changes are tracked as changes
-		$order->set_object_read( true );
+		finally {
+			// Clear the guard when building finishes or throws, so a later read of this dummy order can build it
+			unset( self::$orders_being_initialized[ $order_id ] );
+		}
 	}
 
 	/**
