@@ -412,6 +412,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 * Fixed: Requests to external services failing in the settings preview.
 * Fixed: WooCommerce feature compatibility declared from an invalid plugin file when Lite runs bundled inside Fluid Checkout PRO.
+* Fixed: Compatibility with plugin Kustom Checkout for WooCommerce (formerly Klarna Checkout). Prevent a fatal error when Kustom Checkout is the selected payment method on checkout. The same issue is fixed for Svea Checkout, Dintero Checkout, PaysonCheckout, and Nets Easy.
 
 = 5.0.0 - 2026-11-08 =
 
