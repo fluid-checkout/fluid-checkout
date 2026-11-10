@@ -1,0 +1,14 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+// ------------------------------------
+// ORDER SUMMARY
+// ------------------------------------
+
+body#{ $body-theme-selector } div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody th,
+body#{ $body-theme-selector } div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr:not( .order-total ) th,
+body#{ $body-theme-selector } div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr:not( .order-total ) td {
+	font-weight: 400;
+}
