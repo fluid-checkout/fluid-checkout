@@ -8,7 +8,8 @@ $order-review-selector: null !default;
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-body.breakdance .breakdance-woocommerce .woocommerce-MyAccount-content form .woocommerce-address-fields__field-wrapper {
+body.breakdance .breakdance-woocommerce .woocommerce-MyAccount-content form .woocommerce-address-fields__field-wrapper,
+body.oxygen .breakdance-woocommerce .woocommerce-MyAccount-content form .woocommerce-address-fields__field-wrapper {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
