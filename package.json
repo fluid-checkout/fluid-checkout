@@ -12,7 +12,11 @@
     "install-composer-dependencies": "bash -lc 'PLUGIN_DIR=\"$(pwd)\"; source \"$PLUGIN_DIR/env.local.sh\"; cd \"$PLUGIN_DIR\"; bash bin/install-composer-dependencies.sh'",
     "test": "bash -lc 'PLUGIN_DIR=\"$(pwd)\"; source \"$PLUGIN_DIR/env.local.sh\"; cd \"$PLUGIN_DIR\"; COMPOSER=composer.dev.json composer test'",
     "test:filter": "bash -lc 'PLUGIN_DIR=\"$(pwd)\"; source \"$PLUGIN_DIR/env.local.sh\"; cd \"$PLUGIN_DIR\"; ./vendor-dev/bin/phpunit --configuration ./phpunit.xml.dist --filter \"$1\"' --",
-    "sync:shared": "node fluid-checkout-standards/scripts/sync-shared-files.js"
+    "sync:shared": "node fluid-checkout-standards/scripts/sync-shared-files.js",
+    "version:next:alpha": "node fluid-checkout-standards/scripts/check-release-workflow.js --next alpha",
+    "version:next:beta": "node fluid-checkout-standards/scripts/check-release-workflow.js --next beta",
+    "version:alpha": "node fluid-checkout-standards/scripts/npm-version-prerelease.js alpha --apply",
+    "version:beta": "node fluid-checkout-standards/scripts/npm-version-prerelease.js beta --apply"
   },
   "repository": {},
   "author": "Fluid Checkout",
