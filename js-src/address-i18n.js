@@ -14,6 +14,7 @@ jQuery( function( $ ) {
 		expansibleContentSelector: '.fc-expansible-form-section__content',
 		inputSelector: 'input, select, textarea',
 		countryFieldsSelector: '#billing_country, #shipping_country, #country',
+		localeHiddenFieldClass: 'fc-address-locale-hidden',
 
 		addressFieldGroupSelector: '.woocommerce-billing-fields, .woocommerce-shipping-fields, .woocommerce-address-fields',
 		billingAddressFieldGroupSelector: '.woocommerce-billing-fields',
@@ -96,6 +97,25 @@ jQuery( function( $ ) {
 			}
 		}
 	}
+
+	// CHANGE: Add function to check if the field is hidden by the country locale
+	/**
+	 * Whether the address locale hides this field for the selected country.
+	 *
+	 * WooCommerce sets `hidden: true` (and `required: false`) for fields the country does not use,
+	 * such as postcode in the United Arab Emirates. The field stays optional, so the "Add ..." link
+	 * would otherwise remain visible while only the inner input is hidden.
+	 *
+	 * @param   {object}  fieldLocale  Merged locale entry for one address field.
+	 * @return  {boolean}
+	 */
+	var isAddressLocaleFieldHidden = function( fieldLocale ) {
+		if ( ! fieldLocale || 'undefined' === typeof fieldLocale.hidden ) { return false; }
+
+		var hidden = fieldLocale.hidden;
+		return true === hidden || 1 === hidden || '1' === hidden || 'yes' === hidden || 'true' === hidden;
+	};
+	// CHANGE: END - Add function to check if the field is hidden by the country locale
 
 	// CHANGE: Add function to get list of locale attributes to override for a specific checkout field
 	/**
@@ -265,6 +285,9 @@ jQuery( function( $ ) {
 			}
 			// CHANGE: END - Maybe replace field attributes from locale with attributes from checkout fields
 
+			// CHANGE: Add variable to check if the field is hidden by the country locale
+			var isLocaleHidden = isAddressLocaleFieldHidden( fieldLocale );
+
 			// Labels.
 			if ( typeof fieldLocale.label !== 'undefined' ) {
 				field.find( 'label' ).html( fieldLocale.label );
@@ -290,7 +313,8 @@ jQuery( function( $ ) {
 
 			// Required. A field the locale hides is not required, as on the server.
 			if ( typeof fieldLocale.required !== 'undefined' ) {
-				field_is_required( field, fieldLocale.required && true !== fieldLocale.hidden );
+				// CHANGE: Add condition to check if the field is hidden by the country locale
+				field_is_required( field, fieldLocale.required && ! isLocaleHidden );
 			} else {
 				field_is_required( field, false );
 			}
@@ -303,51 +327,53 @@ jQuery( function( $ ) {
 			// CHANGE: Replace upstream hidden-field comments (state visibility managed by country-select.js, locale can still hide it)
 			// Hidden fields. country-select.js swaps the State input for a hidden
 			// one when the country has an empty state list; keep that row hidden.
-			if ( true === fieldLocale.hidden ) {
+			if ( isLocaleHidden ) {
 				field.hide().find( ':input' ).val( '' );
 			} else if ( 'state' !== key || ! field.find( 'input[type="hidden"]' ).length ) {
 				field.show();
 			}
 			// CHANGE: END - hidden fields
 
-			// CHANGE: Handle collapsible fields state
-			var formRow, fieldCollapsibleToggle, fieldCollapsibleContent;
-			if ( window.CollapsibleBlock && field.length > 0 ) {
-				formRow = field[0].closest( _settings.formRowExpansibleSelector );
-				if ( formRow ) {
-					fieldCollapsibleToggle = formRow.querySelector( _settings.expansibleToggleSelector );
-					fieldCollapsibleContent = formRow.querySelector( _settings.expansibleContentSelector );
-					if ( fieldCollapsibleToggle && fieldCollapsibleContent ) {
-						var expandContent = false;
+			// CHANGE: Hide the whole "Add ..." section while the locale hides the field.
+			// CollapsibleBlock initializes on window load, after this handler, and checkout fragments
+			// rebuild the markup, so collapsing the toggle is not enough to keep the link hidden.
+			var expansibleSection = field.length ? field[ 0 ].closest( _settings.formRowExpansibleSelector ) : null;
+			if ( expansibleSection ) {
+				expansibleSection.classList.toggle( _settings.localeHiddenFieldClass, isLocaleHidden );
+			} else if ( field.length ) {
+				field[ 0 ].classList.toggle( _settings.localeHiddenFieldClass, isLocaleHidden );
+			}
+			// CHANGE: END - Hide the whole "Add ..." section while the locale hides the field.
 
-						// Required fields
-						if ( typeof fieldLocale.required !== 'undefined' && true === fieldLocale.required ) {
+			// CHANGE: Handle collapsible fields state for fields the locale still shows
+			var fieldCollapsibleToggle, fieldCollapsibleContent;
+			if ( ! isLocaleHidden && window.CollapsibleBlock && expansibleSection ) {
+				fieldCollapsibleToggle = expansibleSection.querySelector( _settings.expansibleToggleSelector );
+				fieldCollapsibleContent = expansibleSection.querySelector( _settings.expansibleContentSelector );
+				if ( fieldCollapsibleToggle && fieldCollapsibleContent ) {
+					var expandContent = false;
+
+					// Required fields
+					if ( typeof fieldLocale.required !== 'undefined' && true === fieldLocale.required ) {
+						expandContent = true;
+					}
+					// Optional fields with a value
+					else {
+						var input = field[ 0 ].querySelector( _settings.inputSelector );
+						if ( input && '' !== input.value ) {
 							expandContent = true;
 						}
-						// Optional fields
-						else {
-							var input = field[0].querySelector( _settings.inputSelector );
-							if ( input && '' !== input.value ) {
-								expandContent = true;
-							}
-						}
+					}
 
-						// Optional fields that are also hidden
-						if ( 'state' !== key && true === fieldLocale.hidden && ( typeof fieldLocale.required === 'undefined' || false === fieldLocale.required ) ) {
-							// Should expand field contents to avoid showing the "+ Add" link button when the field is hidden
-							expandContent = true;
-						}
-
-						// Expand content
-						if ( expandContent ) {
-							CollapsibleBlock.collapse( fieldCollapsibleToggle, false ); // Collapse without transitions
-							CollapsibleBlock.expand( fieldCollapsibleContent, false, false ); // Expand without transitions and without setting focus
-						}
-						// Collapse content
-						else {
-							CollapsibleBlock.collapse( fieldCollapsibleContent, false ); // Collapse without transitions
-							CollapsibleBlock.expand( fieldCollapsibleToggle, false, false ); // Expand without transitions and without setting focus
-						}
+					// Expand content
+					if ( expandContent ) {
+						CollapsibleBlock.collapse( fieldCollapsibleToggle, false ); // Collapse without transitions
+						CollapsibleBlock.expand( fieldCollapsibleContent, false, false ); // Expand without transitions and without setting focus
+					}
+					// Collapse content
+					else {
+						CollapsibleBlock.collapse( fieldCollapsibleContent, false ); // Collapse without transitions
+						CollapsibleBlock.expand( fieldCollapsibleToggle, false, false ); // Expand without transitions and without setting focus
 					}
 				}
 			}
