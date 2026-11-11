@@ -14,6 +14,7 @@ jQuery( function( $ ) {
 		expansibleContentSelector: '.fc-expansible-form-section__content',
 		inputSelector: 'input, select, textarea',
 		countryFieldsSelector: '#billing_country, #shipping_country, #country',
+		localeHiddenFieldClass: 'fc-address-locale-hidden',
 
 		addressFieldGroupSelector: '.woocommerce-billing-fields, .woocommerce-shipping-fields, .woocommerce-address-fields',
 		billingAddressFieldGroupSelector: '.woocommerce-billing-fields',
@@ -65,12 +66,6 @@ jQuery( function( $ ) {
 		 * Extensions such as the Address Book add-on may use `fieldKeyFormat: "unprefixed"` and an empty `fieldKeyPrefix`.
 		 */
 		editAddressContext: {},
-
-		/**
-		 * Class for an address field the country locale hides.
-		 * Keep in sync with `FluidCheckout_CheckoutHideOptionalFields::ADDRESS_LOCALE_HIDDEN_CLASS`.
-		 */
-		localeHiddenFieldClass: 'fc-address-locale-hidden',
 	};
 	if ( FCUtils && window.fcSettings && window.fcSettings.addressI18n ) {
 		_settings = FCUtils.extendObject( true, _settings, window.fcSettings.addressI18n );
@@ -103,6 +98,7 @@ jQuery( function( $ ) {
 		}
 	}
 
+	// CHANGE: Add function to check if the field is hidden by the country locale
 	/**
 	 * Whether the address locale hides this field for the selected country.
 	 *
@@ -119,6 +115,7 @@ jQuery( function( $ ) {
 		var hidden = fieldLocale.hidden;
 		return true === hidden || 1 === hidden || '1' === hidden || 'yes' === hidden || 'true' === hidden;
 	};
+	// CHANGE: END - Add function to check if the field is hidden by the country locale
 
 	// CHANGE: Add function to get list of locale attributes to override for a specific checkout field
 	/**
@@ -288,6 +285,7 @@ jQuery( function( $ ) {
 			}
 			// CHANGE: END - Maybe replace field attributes from locale with attributes from checkout fields
 
+			// CHANGE: Add variable to check if the field is hidden by the country locale
 			var isLocaleHidden = isAddressLocaleFieldHidden( fieldLocale );
 
 			// Labels.
@@ -315,6 +313,7 @@ jQuery( function( $ ) {
 
 			// Required. A field the locale hides is not required, as on the server.
 			if ( typeof fieldLocale.required !== 'undefined' ) {
+				// CHANGE: Add condition to check if the field is hidden by the country locale
 				field_is_required( field, fieldLocale.required && ! isLocaleHidden );
 			} else {
 				field_is_required( field, false );
@@ -344,6 +343,7 @@ jQuery( function( $ ) {
 			} else if ( field.length ) {
 				field[ 0 ].classList.toggle( _settings.localeHiddenFieldClass, isLocaleHidden );
 			}
+			// CHANGE: END - Hide the whole "Add ..." section while the locale hides the field.
 
 			// CHANGE: Handle collapsible fields state for fields the locale still shows
 			var fieldCollapsibleToggle, fieldCollapsibleContent;
