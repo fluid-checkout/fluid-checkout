@@ -47,6 +47,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	private $is_shipping_address_backup_restored = false;
 
+	/**
+	 * Whether shipping field keys are being resolved from checkout fields.
+	 *
+	 * Loading checkout fields can run while WooCommerce is still building them,
+	 * for example during cart shipping totals on the Store API. A nested call must
+	 * not load checkout fields again.
+	 */
+	private $is_resolving_shipping_same_billing_fields_keys = false;
+
 
 
 	/**
@@ -7398,45 +7407,89 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Standard shipping address keys used when checkout fields cannot be loaded yet.
+	 *
+	 * @return  array  List of shipping checkout field keys.
+	 */
+	private function get_fallback_shipping_same_billing_fields_keys() {
+		$shipping_field_keys = array(
+			'shipping_first_name',
+			'shipping_last_name',
+			'shipping_company',
+			'shipping_country',
+			'shipping_address_1',
+			'shipping_address_2',
+			'shipping_city',
+			'shipping_state',
+			'shipping_postcode',
+			'shipping_phone',
+		);
+
+		return array_values( array_diff( $shipping_field_keys, $this->get_shipping_address_ignored_shipping_field_ids() ) );
+	}
+
+	/**
 	 * Get list of shipping checkout field keys which values are to be copied from shipping to billing fields.
 	 *
 	 * @return  array  List of checkout field keys.
 	 */
 	public function get_shipping_same_billing_fields_keys() {
-		// Initialize list of supported field keys
-		$shipping_copy_shipping_field_keys = array();
+		$cache_handle = 'shipping_same_billing_fields_keys';
 
-		// Get checkout object and fields
-		$billing_fields = WC()->checkout()->get_checkout_fields( 'billing' );
-		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
-
-		// Get list of billing fields to skip copying from shipping fields
-		$skip_field_keys = $this->get_shipping_same_as_billing_skip_fields();
-
-		// Use the `WC_Customer` object for supported properties
-		foreach ( $shipping_fields as $field_key => $field_args ) {
-
-			// Get billing field key
-			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
-
-			// Maybe add field key to the list of fields to copy
-			if ( ! in_array( $field_key, $skip_field_keys ) && array_key_exists( $billing_field_key, $billing_fields ) ) {
-				$shipping_copy_shipping_field_keys[] = $field_key;
+		// Do not load checkout fields while the outer lookup is still open.
+		if ( $this->is_resolving_shipping_same_billing_fields_keys ) {
+			if ( array_key_exists( $cache_handle, $this->cached_values ) ) {
+				return $this->cached_values[ $cache_handle ];
 			}
 
+			return $this->get_fallback_shipping_same_billing_fields_keys();
 		}
 
-		// Remove ignored shipping fields
-		$shipping_copy_shipping_field_keys = array_diff( $shipping_copy_shipping_field_keys, $this->get_shipping_address_ignored_shipping_field_ids() );
+		$this->is_resolving_shipping_same_billing_fields_keys = true;
 
-		/**
-		 * Filters the shipping same as billing field keys.
-		 *
-		 * @since 1.5.0
-		 *
-		 * @param mixed $shipping_copy_shipping_field_keys Shipping copy shipping field keys.
-		 */
-		return apply_filters( 'fc_shipping_same_as_billing_field_keys', $shipping_copy_shipping_field_keys );
+		try {
+			// Initialize list of supported field keys
+			$shipping_copy_shipping_field_keys = array();
+
+			// Get checkout object and fields
+			$billing_fields = WC()->checkout()->get_checkout_fields( 'billing' );
+			$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
+
+			// Get list of billing fields to skip copying from shipping fields
+			$skip_field_keys = $this->get_shipping_same_as_billing_skip_fields();
+
+			// Use the `WC_Customer` object for supported properties
+			foreach ( $shipping_fields as $field_key => $field_args ) {
+
+				// Get billing field key
+				$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+
+				// Maybe add field key to the list of fields to copy
+				if ( ! in_array( $field_key, $skip_field_keys ) && array_key_exists( $billing_field_key, $billing_fields ) ) {
+					$shipping_copy_shipping_field_keys[] = $field_key;
+				}
+
+			}
+
+			// Remove ignored shipping fields
+			$shipping_copy_shipping_field_keys = array_diff( $shipping_copy_shipping_field_keys, $this->get_shipping_address_ignored_shipping_field_ids() );
+
+			/**
+			 * Filters the shipping same as billing field keys.
+			 *
+			 * @since 1.5.0
+			 *
+			 * @param mixed $shipping_copy_shipping_field_keys Shipping copy shipping field keys.
+			 */
+			$shipping_copy_shipping_field_keys = apply_filters( 'fc_shipping_same_as_billing_field_keys', $shipping_copy_shipping_field_keys );
+
+			$this->cached_values[ $cache_handle ] = $shipping_copy_shipping_field_keys;
+
+			return $shipping_copy_shipping_field_keys;
+		}
+		finally {
+			$this->is_resolving_shipping_same_billing_fields_keys = false;
+		}
 	}
 
 	/**
