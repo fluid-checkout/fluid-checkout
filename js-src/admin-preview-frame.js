@@ -496,7 +496,11 @@
 	var setFieldValuesWhenLoaded = function( values ) {
 		// Maybe wait for the page scripts to set up the fields, such as the country fields that replace the state fields
 		if ( 'complete' !== document.readyState ) {
-			root.addEventListener( 'load', setFieldValues.bind( null, values ), { once: true } );
+			root.addEventListener( 'load', setFieldValuesWhenLoaded.bind( null, values ), { once: true } );
+		}
+		// Maybe wait for the jQuery ready callbacks of the page scripts, which can run after the page loads
+		else if ( root.jQuery ) {
+			root.jQuery( setFieldValues.bind( null, values ) );
 		}
 		// Otherwise, set the values right away
 		else {
