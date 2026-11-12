@@ -415,7 +415,7 @@
 			if ( -1 === changedFields.indexOf( fields[ i ] ) && fieldValuesBefore[ key ] && fieldValuesBefore[ key ].value === fieldValue.value && fieldValuesBefore[ key ].checked === fieldValue.checked ) { continue; }
 
 			// Skip hidden fields that page scripts changed in response to the action, such as billing fields that mirror the shipping fields
-			if ( -1 === changedFields.indexOf( fields[ i ] ) && ! ( fields[ i ].offsetWidth || fields[ i ].offsetHeight || fields[ i ].getClientRects().length ) ) { continue; }
+			if ( -1 === changedFields.indexOf( fields[ i ] ) && ! FCUtils.isElementVisible( fields[ i ] ) ) { continue; }
 
 			// Record the value
 			_enteredFieldValues[ key ] = fieldValue;
@@ -810,6 +810,17 @@
 
 
 	/**
+	 * Check whether a link points to the current page, which only changes the URL fragment or is handled by scripts within the page.
+	 *
+	 * @param {HTMLAnchorElement}  link  Link element.
+	 *
+	 * @return {boolean}  Whether the link points to the current page.
+	 */
+	var isCurrentPageLink = function( link ) {
+		return root.location.origin === link.origin && root.location.pathname === link.pathname && root.location.search === link.search;
+	};
+
+	/**
 	 * Check whether a link opens a page that may open in the preview, on the same site, without query arguments other than the preview arguments and the navigable query arguments, and with a path that starts with one of the navigable paths.
 	 *
 	 * @param {HTMLAnchorElement}  link  Link element.
@@ -823,8 +834,8 @@
 		// Bail if the link opens another site
 		if ( root.location.origin !== link.origin ) { return false; }
 
-		// Bail if the link points to the current page, which only changes the URL fragment or is handled by scripts within the page
-		if ( root.location.pathname === link.pathname && root.location.search === link.search ) { return false; }
+		// Bail if the link points to the current page
+		if ( isCurrentPageLink( link ) ) { return false; }
 
 		// Iterate query arguments of the link
 		for ( i = 0; i < argNames.length; i++ ) {
@@ -877,8 +888,8 @@
 		// Bail if the link opens in the preview
 		if ( isNavigableLink( link ) ) { return false; }
 
-		// Bail if the link points to the current page, which only changes the URL fragment
-		if ( root.location.origin === link.origin && root.location.pathname === link.pathname && root.location.search === link.search ) { return false; }
+		// Bail if the link points to the current page
+		if ( isCurrentPageLink( link ) ) { return false; }
 
 		return ! isScriptLink( link );
 	};
@@ -902,8 +913,8 @@
 	 * @param {HTMLAnchorElement}  link  Link element.
 	 */
 	var maybePreventLinkNavigation = function( e, link ) {
-		// Bail if the link points to the current page, which only changes the URL fragment
-		if ( root.location.origin === link.origin && root.location.pathname === link.pathname && root.location.search === link.search ) { return; }
+		// Bail if the link points to the current page
+		if ( isCurrentPageLink( link ) ) { return; }
 
 		// Maybe only stop the default action of script links and links that scripts handle within the page, such as cart links of editable carts, so their scripts still run
 		if ( isScriptLink( link ) ) {
@@ -1199,17 +1210,17 @@
 
 	/**
 	 * Handle ready state changes of `XMLHttpRequest` requests and route to the appropriate handler.
+	 * Field values that a visitor action changed are recorded when requests finish, before page scripts fill fields with the response.
 	 */
 	var handleXhrReadyStateChange = function() {
 		// CHECKOUT FIELDS
 		if ( XMLHttpRequest.DONE === this.readyState ) {
-			// Record the values that a visitor action changed, before page scripts fill fields with the response
 			recordChangedFieldValues();
 		}
 	};
 
 	/**
-	 * Handle form submissions, which are stopped as forms must not submit from the preview, except the checkout and order pay forms when placing orders is enabled.
+	 * Handle form submissions, which are stopped as forms must not submit from the preview.
 	 *
 	 * @param {Event}  e  Submit event.
 	 */
