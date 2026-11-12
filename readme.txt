@@ -411,6 +411,8 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 = Unreleased =
 
 * Fixed: Compatibility with theme Twenty Twenty-Four. Fix select fields height and extra spacing at checkout.
+* Fixed: Saved addresses and other values filled by the page being copied to other fields after the live preview reloads.
+* Fixed: Keep the country and state selected in the live preview after it reloads.
 
 = 5.0.0 - 2026-11-08 =
 

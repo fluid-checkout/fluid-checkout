@@ -72,6 +72,9 @@
 	var _ignoredStyleIds = [];
 	var _colorSchemeBodyClasses = {};
 	var _shippingMethods = {};
+	var _enteredFieldValues = {};
+	var _fieldValuesBeforeAction = null;
+	var _changedFields = [];
 	var _originalFetch = null;
 	var _originalXhrOpen = null;
 	var _originalSendBeacon = null;
@@ -247,6 +250,9 @@
 		// Open the request
 		result = _originalXhrOpen.apply( this, args );
 
+		// Handle ready state changes before the page scripts, which add their handlers when sending the request
+		this.addEventListener( 'readystatechange', handleXhrReadyStateChange );
+
 		// Set the preview token header on same-origin requests after `open`, before `send`
 		if ( isSameOriginRequestUrl( String( args[ 1 ] ) ) && _settings.previewArgs[ _settings.tokenQueryArg ] ) {
 			try {
@@ -288,26 +294,146 @@
 
 
 	/**
+	 * Get the key of a field value, with the value for checkboxes and radio buttons, as their fields can share the same name.
+	 *
+	 * @param {Object}  fieldValue  Field value, with the field name, value, checked state and package index.
+	 *
+	 * @return {string}  Field value key.
+	 */
+	var getFieldValueKey = function( fieldValue ) {
+		return null !== fieldValue.checked ? fieldValue.name + '=' + fieldValue.value : fieldValue.name;
+	};
+
+	/**
+	 * Get the value of a checkout field.
+	 *
+	 * @param {HTMLElement}  field  Checkout field.
+	 *
+	 * @return {Object}  Field value, with the field name, value, checked state and package index of shipping methods.
+	 */
+	var getFieldValue = function( field ) {
+		return { name: field.name, value: field.value, checked: field.matches( _settings.checkableFieldSelector ) ? field.checked : null, packageIndex: field.matches( _settings.shippingMethodSelector ) ? field.getAttribute( _settings.packageIndexAttribute ) : null };
+	};
+
+	/**
 	 * Send the values entered in the checkout fields to the admin page, which sends them back after the page preview reloads.
 	 *
 	 * @param {HTMLFormElement}  form  Checkout form.
 	 */
 	var sendFieldValues = function( form ) {
-		var fields;
+		var countryFieldNames;
 		var values;
 
-		// Get the fields with the country fields first, so they are set again before the state fields they replace
-		fields = Array.prototype.slice.call( form.querySelectorAll( _settings.checkoutFieldSelector ) ).sort( function( a, b ) {
-			return b.matches( _settings.countryFieldSelector ) - a.matches( _settings.countryFieldSelector );
+		// Get the names of the country fields in the page
+		countryFieldNames = Array.prototype.map.call( form.querySelectorAll( _settings.countryFieldSelector ), function( field ) {
+			return field.name;
 		} );
 
-		// Get the name, value and checked state of each field, and the package index of shipping methods, leaving out radio buttons that are not checked
-		values = fields.map( function( field ) {
-			return { name: field.name, value: field.value, checked: field.matches( _settings.checkableFieldSelector ) ? field.checked : null, packageIndex: field.matches( _settings.shippingMethodSelector ) ? field.getAttribute( _settings.packageIndexAttribute ) : null };
+		// Get the entered values with the country fields first, so they are set again before the state fields they replace
+		values = Object.keys( _enteredFieldValues ).map( function( key ) {
+			return _enteredFieldValues[ key ];
+		} ).sort( function( a, b ) {
+			return ( -1 !== countryFieldNames.indexOf( b.name ) ) - ( -1 !== countryFieldNames.indexOf( a.name ) );
 		} );
 
 		// Send field values to the admin page
 		root.parent.postMessage( { source: _settings.messageSource, type: 'fieldValues', values: values }, _settings.adminOrigin );
+	};
+
+	/**
+	 * Maybe keep the values of the checkout fields before a visitor action, to record the values that the action changes once the page scripts handle it.
+	 *
+	 * @param {HTMLElement}  changedField  (optional) Field that the action changed directly, the target of input and change events.
+	 */
+	var maybeKeepFieldValuesBeforeAction = function( changedField ) {
+		var form = document.querySelector( _settings.checkoutFormSelector );
+		var fields;
+		var fieldValue;
+		var i;
+
+		// Bail if not a checkout page
+		if ( ! form ) { return; }
+
+		// Maybe keep the field that the action changed directly
+		if ( changedField ) {
+			_changedFields.push( changedField );
+		}
+
+		// Bail if the values are already kept for another event of the same action
+		if ( _fieldValuesBeforeAction ) { return; }
+
+		// Get fields, and start keeping their values
+		fields = form.querySelectorAll( _settings.checkoutFieldSelector );
+		_fieldValuesBeforeAction = {};
+
+		// Iterate fields
+		for ( i = 0; i < fields.length; i++ ) {
+			// Keep the field value
+			fieldValue = getFieldValue( fields[ i ] );
+			_fieldValuesBeforeAction[ getFieldValueKey( fieldValue ) ] = fieldValue;
+		}
+
+		// Record the changes after the page scripts handle the action
+		root.setTimeout( recordChangedFieldValues );
+	};
+
+	/**
+	 * Record the field values that a visitor action changed, in the field itself and in the visible fields that page scripts change in response, such as the state field after a country change.
+	 * Values that the page fills without a visitor action, such as saved addresses and pickup locations from checkout updates, are not recorded, so they are not set in other fields after the page preview reloads.
+	 */
+	var recordChangedFieldValues = function() {
+		var form = document.querySelector( _settings.checkoutFormSelector );
+		var fieldValuesBefore = _fieldValuesBeforeAction;
+		var changedFields = _changedFields;
+		var fieldValues = {};
+		var hasChanged = false;
+		var fields;
+		var fieldValue;
+		var key;
+		var i;
+
+		// Bail if not a checkout page, or no values are kept before an action, as they were already recorded
+		if ( ! form || ! fieldValuesBefore ) { return; }
+
+		// Clear the values and fields kept for the action
+		_fieldValuesBeforeAction = null;
+		_changedFields = [];
+
+		// Get fields after the action
+		fields = form.querySelectorAll( _settings.checkoutFieldSelector );
+
+		// Iterate fields
+		for ( i = 0; i < fields.length; i++ ) {
+			// Get the field value
+			fieldValue = getFieldValue( fields[ i ] );
+			key = getFieldValueKey( fieldValue );
+			fieldValues[ key ] = fieldValue;
+
+			// Skip fields that the action did not change, except the fields it changed directly, as their change events can come after the change, such as for autofill
+			if ( -1 === changedFields.indexOf( fields[ i ] ) && fieldValuesBefore[ key ] && fieldValuesBefore[ key ].value === fieldValue.value && fieldValuesBefore[ key ].checked === fieldValue.checked ) { continue; }
+
+			// Skip hidden fields that page scripts changed in response to the action, such as billing fields that mirror the shipping fields
+			if ( -1 === changedFields.indexOf( fields[ i ] ) && ! ( fields[ i ].offsetWidth || fields[ i ].offsetHeight || fields[ i ].getClientRects().length ) ) { continue; }
+
+			// Record the value
+			_enteredFieldValues[ key ] = fieldValue;
+			hasChanged = true;
+		}
+
+		// Iterate field values before the action
+		for ( key in fieldValuesBefore ) {
+			// Skip fields still in the page
+			if ( fieldValues[ key ] ) { continue; }
+
+			// Remove the values of fields that the action removed, such as radio buttons no longer checked and the state field of countries without states
+			delete _enteredFieldValues[ key ];
+			hasChanged = true;
+		}
+
+		// Maybe send the field values to the admin page
+		if ( hasChanged ) {
+			sendFieldValues( form );
+		}
 	};
 
 	/**
@@ -326,6 +452,9 @@
 
 		// Iterate field values
 		for ( i = 0; i < values.length; i++ ) {
+			// Record the value, so the values of fields not in the page are sent again with the values entered in the page
+			_enteredFieldValues[ getFieldValueKey( values[ i ] ) ] = values[ i ];
+
 			// Get the field, matching checkboxes and radio buttons by their value too
 			field = form.querySelector( ( null !== values[ i ].checked ? _settings.fieldByNameValueSelector : _settings.fieldByNameSelector ).replace( '###NAME###', CSS.escape( values[ i ].name ) ).replace( '###VALUE###', CSS.escape( values[ i ].value ) ) );
 
@@ -939,6 +1068,9 @@
 		// MODIFIER HOLD
 		maybeForwardModifierHoldStart( e );
 
+		// CHECKOUT FIELDS
+		maybeKeepFieldValuesBeforeAction();
+
 		// ADMIN SHORTCUTS
 		if ( maybeForwardAdminShortcut( e ) ) {
 			return;
@@ -982,16 +1114,32 @@
 	 * @param {Event}  e  Input or change event.
 	 */
 	var handleChange = function( e ) {
-		var matchedElement;
-
 		// SHIPPING METHODS
 		if ( e.target.matches( _settings.shippingMethodSelector ) ) {
 			_shippingMethods[ e.target.getAttribute( _settings.packageIndexAttribute ) ] = e.target.value;
 		}
 
 		// CHECKOUT FIELDS
-		if ( matchedElement = e.target.closest( _settings.checkoutFormSelector ) ) {
-			sendFieldValues( matchedElement );
+		maybeKeepFieldValuesBeforeAction( e.target );
+	};
+
+	/**
+	 * Handle document mouse down and up events and route to the appropriate handler.
+	 * Enhanced fields change their values on these events without sending change events, such as select2 dropdowns.
+	 */
+	var handleMouseDownUp = function() {
+		// CHECKOUT FIELDS
+		maybeKeepFieldValuesBeforeAction();
+	};
+
+	/**
+	 * Handle ready state changes of `XMLHttpRequest` requests and route to the appropriate handler.
+	 */
+	var handleXhrReadyStateChange = function() {
+		// CHECKOUT FIELDS
+		if ( XMLHttpRequest.DONE === this.readyState ) {
+			// Record the values that a visitor action changed, before page scripts fill fields with the response
+			recordChangedFieldValues();
 		}
 	};
 
@@ -1092,6 +1240,8 @@
 		// Add event listeners
 		window.addEventListener( 'click', handleClick, true );
 		window.addEventListener( 'auxclick', handleClick, true ); // Middle clicks open links in new tabs
+		window.addEventListener( 'mousedown', handleMouseDownUp, true );
+		window.addEventListener( 'mouseup', handleMouseDownUp, true );
 		window.addEventListener( 'keydown', handleKeyDown, true );
 		window.addEventListener( 'keyup', handleKeyUp, true );
 		window.addEventListener( 'blur', handleWindowBlur );
