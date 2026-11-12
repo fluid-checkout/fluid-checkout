@@ -16,3 +16,7 @@ body#{ $body-theme-selector } div.woocommerce form .form-row .select2-container 
 body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
 	line-height: normal; // Needed as WooCommerce block theme styles add padding to the selected option text
 }
+
+body#{ $body-theme-selector } .select2-container .select2-search--dropdown {
+	padding-top: .5rem; // Needed to use the bottom padding value of WooCommerce block theme styles, which remove the top padding
+}

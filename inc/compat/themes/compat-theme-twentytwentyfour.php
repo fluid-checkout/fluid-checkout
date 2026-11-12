@@ -27,6 +27,7 @@ class FluidCheckout_ThemeCompat_TwentyTwentyFour extends FluidCheckout {
 		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_coupon_code_apply_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_checkout_login_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_order_summary_continue_button_classes', array( $this, 'add_button_class' ), 10 );
 	}
 
 
