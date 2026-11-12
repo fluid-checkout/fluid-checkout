@@ -56,6 +56,16 @@ var po2mo = require('gulp-po2mo');
 var po2json = require('gulp-po2json');
 var through2 = require('through2');
 var path = require('path');
+var preReleaseBranchRules = null;
+
+try {
+	preReleaseBranchRules = require(
+		path.join( __dirname, 'fluid-checkout-standards/scripts/lib/pre-release-branch.js' )
+	);
+}
+catch ( err ) {
+	// Standards symlink missing; beta/rc branch enforcement is skipped.
+}
 var url = require('url');
 var readline = require('readline');
 var glob = require('glob');
@@ -940,14 +950,48 @@ function verifyBundledSourcesForOfficialRelease( done ) {
 	var branch;
 	var cwd;
 
-	// Bail early for pre-release package versions
-	if ( isPreReleaseVersion() ) {
+	errors = [];
+	cwd = process.cwd();
+
+	// Beta and rc pre-releases must be packaged from release/*
+	if ( isPreReleaseVersion() && preReleaseBranchRules ) {
+		var preReleaseKind = preReleaseBranchRules.getPreReleaseKind( _package.version );
+
+		if ( preReleaseBranchRules.requiresReleaseBranchForPreRelease( preReleaseKind ) ) {
+			if ( ! isGitRepository( cwd ) ) {
+				errors.push(
+					preReleaseKind + ' packages require git; could not verify the current branch.'
+				);
+			}
+			else {
+				try {
+					branch = getGitBranchName( cwd );
+					if ( ! preReleaseBranchRules.isReleaseBranchName( branch ) ) {
+						errors.push(
+							preReleaseBranchRules.preReleaseBranchFailureMessage( preReleaseKind, branch )
+						);
+					}
+				}
+				catch ( err ) {
+					errors.push( 'Could not read git branch for this plugin: ' + err.message );
+				}
+			}
+		}
+
+		if ( errors.length ) {
+			done( new Error( errors.join( '\n' ) ) );
+			return;
+		}
+
 		done();
 		return;
 	}
 
-	errors = [];
-	cwd = process.cwd();
+	// Bail early for other pre-release package versions (alpha, dev)
+	if ( isPreReleaseVersion() ) {
+		done();
+		return;
+	}
 
 	if ( ! isGitRepository( cwd ) ) {
 		errors.push( 'This plugin is not a git repository; official releases require git.' );
