@@ -25,8 +25,19 @@ class FluidCheckout_CheckoutHideOptionalFields_Test extends TestCase {
 	public function setUpInstance() {
 		add_filter( 'woocommerce_is_checkout', '__return_true' );
 
+		wp_set_current_user( 0 );
+
+		if ( ! WC()->session ) {
+			WC()->session = new WC_Session_Handler();
+			WC()->session->init();
+		}
+
 		if ( ! WC()->customer instanceof WC_Customer ) {
 			WC()->customer = new WC_Customer();
+		}
+
+		foreach ( array( 'billing_country', 'shipping_country' ) as $country_field_key ) {
+			WC()->session->__unset( FluidCheckout_Steps::SESSION_PREFIX . $country_field_key );
 		}
 
 		$this->previous_billing_country = WC()->customer->get_billing_country();
@@ -101,12 +112,16 @@ class FluidCheckout_CheckoutHideOptionalFields_Test extends TestCase {
 	 * @param   string  $address_type  `billing` or `shipping`.
 	 */
 	protected function set_customer_country( $country, $address_type = 'billing' ) {
+		$steps = FluidCheckout_Steps::instance();
+
 		if ( 'shipping' === $address_type ) {
 			WC()->customer->set_shipping_country( $country );
+			$steps->set_checkout_field_value_to_session( 'shipping_country', $country );
 			return;
 		}
 
 		WC()->customer->set_billing_country( $country );
+		$steps->set_checkout_field_value_to_session( 'billing_country', $country );
 	}
 
 	/**
