@@ -37,6 +37,7 @@
 		navigableLinksClass:          'fc-admin-preview--navigable-links',
 		editableCartClass:            'fc-admin-preview--editable-cart',
 		placeOrderEnabledClass:       'fc-admin-preview--place-order-enabled',
+		inertActionClass:             'fc-admin-preview__inert-action',
 		darkModeClass:                'has-fc-dark-mode',
 
 		stylesId:                     'fc-admin-preview-styles',
@@ -51,6 +52,7 @@
 		quantityFieldSelector:        '.quantity input',
 		couponCodeFieldSelector:      'input[name="coupon_code"]',
 		linkSelector:                 'a[href], area[href]',
+		submitButtonSelector:         'button:not([type="button"]):not([type="reset"]), input[type="submit"], input[type="image"]',
 		scriptLinkSelector:           '.woocommerce-terms-and-conditions-link',
 		cartLinkSelector:             'a.remove, a.restore-item, a.woocommerce-remove-coupon',
 		checkoutFormSelector:         'form.checkout',
@@ -850,6 +852,46 @@
 	};
 
 	/**
+	 * Check whether a link is a script link or a link that scripts handle within the page, such as cart links of editable carts.
+	 *
+	 * @param {HTMLAnchorElement}  link  Link element.
+	 *
+	 * @return {boolean}  Whether scripts handle the link within the page.
+	 */
+	var isScriptLink = function( link ) {
+		return 'javascript:' === link.protocol || link.matches( _settings.scriptLinkSelector ) || ( _settings.isCartEditable && link.matches( _settings.cartLinkSelector ) );
+	};
+
+	/**
+	 * Check whether the preview stops a link, as it neither opens in the preview, points to the current page nor runs scripts within the page.
+	 *
+	 * @param {HTMLAnchorElement}  link  Link element.
+	 *
+	 * @return {boolean}  Whether the link is stopped.
+	 */
+	var isStoppedLink = function( link ) {
+		// Bail if the link opens in the preview
+		if ( isNavigableLink( link ) ) { return false; }
+
+		// Bail if the link points to the current page, which only changes the URL fragment
+		if ( root.location.origin === link.origin && root.location.pathname === link.pathname && root.location.search === link.search ) { return false; }
+
+		return ! isScriptLink( link );
+	};
+
+	/**
+	 * Check whether the preview stops a submit button, as forms do not submit from the preview.
+	 * Buttons of the checkout and order pay forms are left out, as placing orders has its own styles, and so are the cart actions of editable carts, which scripts handle.
+	 *
+	 * @param {HTMLElement}  button  Submit button.
+	 *
+	 * @return {boolean}  Whether the submit button is stopped.
+	 */
+	var isStoppedSubmitButton = function( button ) {
+		return !! button.form && ! button.form.matches( _settings.checkoutFormSelector ) && ! button.form.matches( _settings.orderPayFormSelector ) && ! ( _settings.isCartEditable && button.closest( _settings.cartActionSelector ) );
+	};
+
+	/**
 	 * Maybe stop a link from navigating away from the preview page.
 	 *
 	 * @param {Event}              e     Click or auxiliary click event.
@@ -860,7 +902,7 @@
 		if ( root.location.origin === link.origin && root.location.pathname === link.pathname && root.location.search === link.search ) { return; }
 
 		// Maybe only stop the default action of script links and links that scripts handle within the page, such as cart links of editable carts, so their scripts still run
-		if ( 'javascript:' === link.protocol || link.matches( _settings.scriptLinkSelector ) || ( _settings.isCartEditable && link.matches( _settings.cartLinkSelector ) ) ) {
+		if ( isScriptLink( link ) ) {
 			e.preventDefault();
 		}
 		// Otherwise, stop the link scripts too, such as social login scripts that open other windows
@@ -1133,6 +1175,25 @@
 	};
 
 	/**
+	 * Handle document mouse over events and route to the appropriate handler.
+	 * Stopped links and submit buttons are marked when the pointer reaches them, so they show the not-allowed cursor like the other inert actions, also in content that scripts replace.
+	 *
+	 * @param {Event}  e  Mouse over event.
+	 */
+	var handleMouseOver = function( e ) {
+		var matchedElement;
+
+		// LINKS
+		if ( matchedElement = e.target.closest( _settings.linkSelector ) ) {
+			matchedElement.classList.toggle( _settings.inertActionClass, isStoppedLink( matchedElement ) );
+		}
+		// SUBMIT BUTTONS
+		else if ( matchedElement = e.target.closest( _settings.submitButtonSelector ) ) {
+			matchedElement.classList.toggle( _settings.inertActionClass, isStoppedSubmitButton( matchedElement ) );
+		}
+	};
+
+	/**
 	 * Handle ready state changes of `XMLHttpRequest` requests and route to the appropriate handler.
 	 */
 	var handleXhrReadyStateChange = function() {
@@ -1242,6 +1303,7 @@
 		window.addEventListener( 'auxclick', handleClick, true ); // Middle clicks open links in new tabs
 		window.addEventListener( 'mousedown', handleMouseDownUp, true );
 		window.addEventListener( 'mouseup', handleMouseDownUp, true );
+		window.addEventListener( 'mouseover', handleMouseOver, true );
 		window.addEventListener( 'keydown', handleKeyDown, true );
 		window.addEventListener( 'keyup', handleKeyUp, true );
 		window.addEventListener( 'blur', handleWindowBlur );

@@ -17,7 +17,8 @@ body.fc-admin-preview [name="calc_shipping"],
 body.fc-admin-preview:not( .fc-admin-preview--navigable-links ) :is( .checkout-button, .fc-cart-action__proceed-checkout ),
 body.fc-admin-preview:not( .fc-admin-preview--editable-cart ) :is( .quantity *, .fc-coupon-code__apply ),
 body.fc-admin-preview:not( .fc-admin-preview--place-order-enabled ) :is( #place_order, .fc-place-order-button ),
-body.fc-admin-preview :has( > iframe ):not( .fc-admin-preview--place-order-enabled #payment * ) {
+body.fc-admin-preview :has( > iframe ):not( .fc-admin-preview--place-order-enabled #payment * ),
+body.fc-admin-preview .fc-admin-preview__inert-action {
 	cursor: not-allowed;
 }
 
