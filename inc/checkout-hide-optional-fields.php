@@ -250,7 +250,20 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 	 */
 	public function get_country_for_address_field( $field_key ) {
 		$address_type = $this->get_address_type_for_field_key( $field_key );
-		$country = WC()->checkout()->get_value( $address_type . '_country' );
+		$country_key = $address_type . '_country';
+		$country = '';
+
+		if ( WC()->checkout() ) {
+			$country = WC()->checkout()->get_value( $country_key );
+		}
+
+		if ( ! $country && WC()->customer instanceof WC_Customer ) {
+			if ( 'shipping' === $address_type ) {
+				$country = WC()->customer->get_shipping_country();
+			} else {
+				$country = WC()->customer->get_billing_country();
+			}
+		}
 
 		if ( ! $country ) {
 			$country = WC()->countries->get_base_country();
@@ -290,8 +303,8 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 	 *
 	 * Country locale entries such as postcode for the United Arab Emirates set `hidden` and leave
 	 * the field optional. Field args include `hidden` when WooCommerce copies it onto the field.
-	 * Older WooCommerce only copies locale keys that already exist on the default field, so `hidden`
-	 * is read from the country locale when the arg is absent.
+	 * When the arg is absent, or when WooCommerce seeded `hidden => false` before applying the locale
+	 * overlay, read `hidden` from the merged country locale.
 	 *
 	 * @param   string  $field_key  Checkout field key.
 	 * @param   array   $args       Field arguments.
@@ -299,8 +312,8 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 	 * @since 5.0.1
 	 */
 	public function is_address_locale_field_hidden( $field_key, $args ) {
-		if ( is_array( $args ) && array_key_exists( 'hidden', $args ) ) {
-			return $this->is_locale_hidden_value( $args[ 'hidden' ] );
+		if ( is_array( $args ) && array_key_exists( 'hidden', $args ) && $this->is_locale_hidden_value( $args[ 'hidden' ] ) ) {
+			return true;
 		}
 
 		$field_locale = $this->get_merged_address_locale_field( $field_key );
