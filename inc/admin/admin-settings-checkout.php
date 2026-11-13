@@ -711,9 +711,50 @@ class FluidCheckout_Settings_Checkout {
 
 				)
 			);
+
+			// Maybe add notice when WooCommerce coupons are disabled
+			$settings = self::maybe_add_coupon_codes_disabled_notice( $settings );
 		}
 
 		return $settings;
+	}
+
+
+
+	/**
+	 * Maybe insert a notice after the coupon codes section title when WooCommerce coupons are disabled.
+	 *
+	 * @param   array  $settings  Checkout settings fields.
+	 */
+	public static function maybe_add_coupon_codes_disabled_notice( $settings ) {
+		// Bail if WooCommerce coupons are enabled
+		if ( wc_coupons_enabled() ) { return $settings; }
+
+		// Define notice field
+		$notice = array(
+			'type' => 'fc_paragraph',
+			'desc' => sprintf(
+				/* translators: %s: URL to the WooCommerce general settings page. */
+				__( 'Coupon codes are disabled in WooCommerce. The coupon section will not appear on the checkout page until coupons are enabled. <a href="%s">Enable coupons in WooCommerce settings</a>.', 'fluid-checkout' ),
+				esc_url( admin_url( 'admin.php?page=wc-settings&tab=general' ) )
+			),
+			'id'   => 'fc_checkout_coupon_codes_wc_disabled_notice',
+		);
+
+		// Insert notice after the coupon codes section title
+		$new_settings = array();
+		foreach ( $settings as $setting ) {
+			$new_settings[] = $setting;
+
+			// Skip settings that are not the coupon codes section title
+			if ( ! is_array( $setting ) || ! array_key_exists( 'id', $setting ) || ! array_key_exists( 'type', $setting ) ) { continue; }
+			if ( 'fc_checkout_coupon_code_options' !== $setting[ 'id' ] || 'title' !== $setting[ 'type' ] ) { continue; }
+
+			// Add notice after the section title
+			$new_settings[] = $notice;
+		}
+
+		return $new_settings;
 	}
 
 }
