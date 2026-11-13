@@ -13,6 +13,8 @@
     "test": "bash -lc 'PLUGIN_DIR=\"$(pwd)\"; source \"$PLUGIN_DIR/env.local.sh\"; cd \"$PLUGIN_DIR\"; COMPOSER=composer.dev.json composer test'",
     "test:filter": "bash -lc 'PLUGIN_DIR=\"$(pwd)\"; source \"$PLUGIN_DIR/env.local.sh\"; cd \"$PLUGIN_DIR\"; ./vendor-dev/bin/phpunit --configuration ./phpunit.xml.dist --filter \"$1\"' --",
     "sync:shared": "node fluid-checkout-standards/scripts/sync-shared-files.js",
+    "plugins:cache": "node fluid-checkout-standards/scripts/plugins-cache.js",
+    "themes:cache": "node fluid-checkout-standards/scripts/themes-cache.js",
     "version:next:alpha": "node fluid-checkout-standards/scripts/check-release-workflow.js --next alpha",
     "version:next:beta": "node fluid-checkout-standards/scripts/check-release-workflow.js --next beta",
     "version:alpha": "node fluid-checkout-standards/scripts/npm-version-prerelease.js alpha --apply",
