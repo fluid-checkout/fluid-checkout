@@ -410,6 +410,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 = Unreleased =
 
+* Fixed: Fatal error when a checkout or address field is null or not an array while adding the field description class.
 * Improved: Compatibility with Oxygen 6. Load Breakdance compatibility when Oxygen runs the Breakdance engine, and fix layout and styles for themeless Oxygen cart and checkout pages.
 * Fixed: Compatibility with plugin Aelia Currency Switcher. Prevent an infinite recursion when the design editor loads the Order pay preview, which exhausted PHP memory.
 * Fixed: Requests to external services failing in the settings preview.
