@@ -181,9 +181,11 @@
 	 * @return {boolean}  Whether the request is same-origin.
 	 */
 	var isSameOriginRequestUrl = function( requestUrl ) {
+		// Compare the origins, resolving relative URLs from the preview page
 		try {
 			return root.location.origin === new URL( requestUrl, root.location.href ).origin;
 		}
+		// Treat URLs that are not valid as other origins
 		catch ( error ) {
 			return false;
 		}
@@ -255,13 +257,15 @@
 		// Handle ready state changes before the page scripts, which add their handlers when sending the request
 		this.addEventListener( 'readystatechange', handleXhrReadyStateChange );
 
-		// Set the preview token header on same-origin requests after `open`, before `send`
+		// Maybe set the preview token header on same-origin requests after `open`, before `send`
 		if ( isSameOriginRequestUrl( String( args[ 1 ] ) ) && _settings.previewArgs[ _settings.tokenQueryArg ] ) {
+			// Set the header, which the browser can reject in some request states
 			try {
 				this.setRequestHeader( _settings.tokenHeader, _settings.previewArgs[ _settings.tokenQueryArg ] );
 			}
+			// Ignore headers the browser rejects for this request state
 			catch ( error ) {
-				// Ignore headers the browser rejects for this request state
+				// Intentionally empty
 			}
 		}
 
@@ -283,14 +287,25 @@
 
 
 	/**
-	 * Maybe send the ready message to the admin page, with the color scheme of the page, when the preview is shown in its frame.
+	 * Forward a message to the settings page holding the frame.
+	 *
+	 * @param  {Object}  data  Message payload without the shared source field.
 	 */
-	var maybeSendReadyMessage = function() {
+	var postToAdmin = function( data ) {
 		// Bail if not shown in a frame, or the admin origin is not available
 		if ( root.parent === root || ! _settings.adminOrigin ) { return; }
 
+		// Send the message to the admin page, with the message source
+		data.source = _settings.messageSource;
+		root.parent.postMessage( data, _settings.adminOrigin );
+	};
+
+	/**
+	 * Maybe send the ready message to the admin page, with the color scheme of the page, when the preview is shown in its frame.
+	 */
+	var maybeSendReadyMessage = function() {
 		// Send ready message to the admin page, with the color scheme the page has before the admin page forces one
-		root.parent.postMessage( { source: _settings.messageSource, type: 'ready', colorScheme: _hasDarkModeClass ? 'dark' : 'light' }, _settings.adminOrigin );
+		postToAdmin( { type: 'ready', colorScheme: _hasDarkModeClass ? 'dark' : 'light' } );
 	};
 
 
@@ -339,7 +354,7 @@
 		} );
 
 		// Send field values to the admin page
-		root.parent.postMessage( { source: _settings.messageSource, type: 'fieldValues', values: values }, _settings.adminOrigin );
+		postToAdmin( { type: 'fieldValues', values: values } );
 	};
 
 	/**
@@ -704,7 +719,7 @@
 		probe.style.removeProperty( property );
 
 		// Send the computed value to the admin page
-		root.parent.postMessage( { source: _settings.messageSource, type: 'computedCssValue', requestId: requestId, value: computedValue }, _settings.adminOrigin );
+		postToAdmin( { type: 'computedCssValue', requestId: requestId, value: computedValue } );
 	};
 
 	/**
@@ -763,7 +778,7 @@
 		}
 
 		// Send the computed values to the admin page
-		root.parent.postMessage( { source: _settings.messageSource, type: 'computedCssVariables', requestId: requestId, values: values }, _settings.adminOrigin );
+		postToAdmin( { type: 'computedCssVariables', requestId: requestId, values: values } );
 	};
 
 
@@ -804,7 +819,7 @@
 	 */
 	var sendStylesRefreshedMessage = function() {
 		// Send styles refreshed message to the admin page
-		root.parent.postMessage( { source: _settings.messageSource, type: 'stylesRefreshed' }, _settings.adminOrigin );
+		postToAdmin( { type: 'stylesRefreshed' } );
 	};
 
 
@@ -821,7 +836,7 @@
 	};
 
 	/**
-	 * Check whether a link opens a page that may open in the preview, on the same site, without query arguments other than the preview arguments and the navigable query arguments, and with a path that starts with one of the navigable paths.
+	 * Check whether a link opens a page that may open in the preview.
 	 *
 	 * @param {HTMLAnchorElement}  link  Link element.
 	 *
@@ -878,7 +893,7 @@
 	};
 
 	/**
-	 * Check whether the preview stops a link, as it neither opens in the preview, points to the current page nor runs scripts within the page.
+	 * Check whether the preview stops a link, so it shows the not-allowed cursor.
 	 *
 	 * @param {HTMLAnchorElement}  link  Link element.
 	 *
@@ -970,31 +985,16 @@
 	 * @return {boolean}
 	 */
 	var isAdminShortcutBlockedTarget = function( target ) {
-		var inputType;
-
 		// Bail if target is missing
 		if ( ! target || ! target.tagName ) { return false; }
 
-		// Skip text fields and other editable controls
-		if ( 'TEXTAREA' === target.tagName || 'SELECT' === target.tagName ) {
-			return true;
-		}
+		// Bail if the target is a text area or select field
+		if ( 'TEXTAREA' === target.tagName || 'SELECT' === target.tagName ) { return true; }
 
-		// Maybe skip text-like inputs
-		if ( 'INPUT' === target.tagName ) {
-			inputType = ( target.type || 'text' ).toLowerCase();
+		// Bail if the target is a text-like input
+		if ( 'INPUT' === target.tagName && -1 !== [ 'text', 'search', 'url', 'tel', 'email', 'password', 'number', 'color' ].indexOf( ( target.type || 'text' ).toLowerCase() ) ) { return true; }
 
-			if ( -1 !== [ 'text', 'search', 'url', 'tel', 'email', 'password', 'number', 'color' ].indexOf( inputType ) ) {
-				return true;
-			}
-		}
-
-		// Skip contenteditable regions
-		if ( target.isContentEditable ) {
-			return true;
-		}
-
-		return false;
+		return !! target.isContentEditable;
 	};
 
 	/**
@@ -1004,20 +1004,7 @@
 	 * @return {boolean}
 	 */
 	var isShortcutModifierKey = function( e ) {
-		return 'Meta' === e.key || 'Control' === e.key || 'MetaLeft' === e.code || 'MetaRight' === e.code || 'ControlLeft' === e.code || 'ControlRight' === e.code;
-	};
-
-	/**
-	 * Forward a message to the settings page holding the frame.
-	 *
-	 * @param  {Object}  data  Message payload without the shared source field.
-	 */
-	var postToAdmin = function( data ) {
-		// Bail if not shown in a frame, or the admin origin is not available
-		if ( root.parent === root || ! _settings.adminOrigin ) { return; }
-
-		data.source = _settings.messageSource;
-		root.parent.postMessage( data, _settings.adminOrigin );
+		return FCUtils.keyboardKeys.COMMAND_OR_WINDOWS === e.key || FCUtils.keyboardKeys.CONTROL === e.key || 'MetaLeft' === e.code || 'MetaRight' === e.code || 'ControlLeft' === e.code || 'ControlRight' === e.code;
 	};
 
 	/**
@@ -1037,6 +1024,7 @@
 		// Bail if not shown in a frame, or the admin origin is not available
 		if ( root.parent === root || ! _settings.adminOrigin ) { return false; }
 
+		// Get the pressed shortcut
 		isExpandShortcut = ( e.metaKey || e.ctrlKey ) && e.shiftKey && ! e.altKey && 'p' === e.key.toLowerCase();
 		isHeaderFooterShortcut = ( e.metaKey || e.ctrlKey ) && e.shiftKey && ! e.altKey && 'h' === e.key.toLowerCase();
 		isGuestShortcut = ( e.metaKey || e.ctrlKey ) && e.shiftKey && ! e.altKey && 'g' === e.key.toLowerCase();
@@ -1051,8 +1039,7 @@
 		if ( isShiftShortcut && isAdminShortcutBlockedTarget( e.target ) ) { return false; }
 
 		// Stop the browser shortcut and keep it inside the settings page flow
-		e.preventDefault();
-		e.stopImmediatePropagation();
+		preventAction( e );
 
 		// EXPAND PREVIEW
 		if ( isExpandShortcut ) {
@@ -1090,6 +1077,7 @@
 		// Bail on key repeat while the key is already held
 		if ( e.repeat ) { return; }
 
+		// Send modifier hold start message to the admin page
 		postToAdmin( { type: 'adminShortcut', shortcut: 'modifierHoldStart' } );
 	};
 
@@ -1105,6 +1093,7 @@
 		// Bail while the other modifier is still held
 		if ( e.metaKey || e.ctrlKey ) { return; }
 
+		// Send modifier hold end message to the admin page
 		postToAdmin( { type: 'adminShortcut', shortcut: 'modifierHoldEnd' } );
 	};
 
@@ -1112,6 +1101,7 @@
 	 * Hide shortcut hints on the settings page when focus leaves the preview frame.
 	 */
 	var handleWindowBlur = function() {
+		// Send modifier hold end message to the admin page
 		postToAdmin( { type: 'adminShortcut', shortcut: 'modifierHoldEnd' } );
 	};
 
@@ -1341,6 +1331,8 @@
 
 		_hasInitialized = true;
 	};
+
+
 
 	//
 	// Public APIs
