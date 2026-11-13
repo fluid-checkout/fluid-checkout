@@ -1,0 +1,43 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+// ------------------------------------
+// LINKS
+// ------------------------------------
+
+// Theme `a` and Elementor `.elementor a` use header color with no underline, so FC
+// text links blend into surrounding copy. Use Synex accent `--theme` for CTAs.
+body#{ $body-theme-selector } a.fc-contact-login__action--underline,
+body#{ $body-theme-selector } a.fc-account-matching__action--underline,
+body#{ $body-theme-selector } .fc-wrapper a.woocommerce-terms-and-conditions-link,
+body#{ $body-theme-selector } .fc-wrapper a.woocommerce-privacy-policy-link,
+body#{ $body-theme-selector } .fc-wrapper .lost_password a,
+body#{ $body-theme-selector } .fc-login-form a:not( .button ),
+body#{ $body-theme-selector } .fc-wrapper a.shipping-calculator-button,
+body#{ $body-theme-selector } .fc-wrapper a.fc-step__substep-edit,
+body#{ $body-theme-selector } .fc-wrapper a.fc-checkout-order-review__edit-cart {
+	color: var( --theme, #007BFF );
+	text-decoration: underline;
+}
+
+// Expansible "Add …" toggles keep FC's no-underline style; accent color is enough.
+body#{ $body-theme-selector } .fc-wrapper a.expansible-section__toggle-plus {
+	color: var( --theme, #007BFF );
+}
+
+body#{ $body-theme-selector } a.fc-contact-login__action--underline:hover,
+body#{ $body-theme-selector } a.fc-account-matching__action--underline:hover,
+body#{ $body-theme-selector } .fc-wrapper a.woocommerce-terms-and-conditions-link:hover,
+body#{ $body-theme-selector } .fc-wrapper a.woocommerce-privacy-policy-link:hover,
+body#{ $body-theme-selector } .fc-wrapper .lost_password a:hover,
+body#{ $body-theme-selector } .fc-login-form a:not( .button ):hover,
+body#{ $body-theme-selector } .fc-wrapper a.shipping-calculator-button:hover,
+body#{ $body-theme-selector } .fc-wrapper a.fc-step__substep-edit:hover,
+body#{ $body-theme-selector } .fc-wrapper a.fc-checkout-order-review__edit-cart:hover,
+body#{ $body-theme-selector } .fc-wrapper a.expansible-section__toggle-plus:hover {
+	color: var( --header, #15171A );
+}
