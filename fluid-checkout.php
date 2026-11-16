@@ -158,6 +158,7 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 		 */
 		private function load_telemetry_client_class() {
 			self::maybe_register_own_plugins_telemetry();
+			self::maybe_register_plugin_settings_telemetry();
 
 			// Bail if class is already loaded
 			if ( class_exists( 'FC_Telemetry_Client' ) ) { return; }
@@ -176,6 +177,19 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 			}
 
 			add_filter( 'fc_telemetry_own_plugins', array( __CLASS__, 'set_own_plugins_telemetry_options' ), 10, 2 );
+		}
+
+
+
+		/**
+		 * Register this plugin's active profile settings in the telemetry payload.
+		 */
+		private static function maybe_register_plugin_settings_telemetry() {
+			if ( has_filter( 'fc_telemetry_plugin_settings', array( __CLASS__, 'set_plugin_settings_telemetry' ) ) ) {
+				return;
+			}
+
+			add_filter( 'fc_telemetry_plugin_settings', array( __CLASS__, 'set_plugin_settings_telemetry' ), 10, 2 );
 		}
 
 
@@ -213,6 +227,36 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 			);
 
 			return self::merge_own_plugins_telemetry_options( $plugins, $own_plugins );
+		}
+
+
+
+		/**
+		 * Add Lite active-profile settings to the telemetry payload.
+		 *
+		 * @param array       $plugin_settings Plugin settings keyed by plugin slug.
+		 * @param string|null $api_url         Remote API base URL from the consuming plugin.
+		 */
+		public static function set_plugin_settings_telemetry( $plugin_settings, $api_url = null ) {
+			// Bail if a specific API URL was requested and it is not this plugin's telemetry API.
+			if ( null !== $api_url && ! self::is_own_telemetry_api_url( $api_url ) ) { return $plugin_settings; }
+
+			// Bail if settings are not available yet
+			if ( ! class_exists( 'FluidCheckout_Settings' ) ) { return $plugin_settings; }
+
+			if ( ! is_array( $plugin_settings ) ) {
+				$plugin_settings = array();
+			}
+
+			$settings = FluidCheckout_Settings::instance();
+
+			$plugin_settings['fluid-checkout'] = array(
+				'version'  => self::$version,
+				'profile'  => $settings->get_active_profile_slug(),
+				'settings' => $settings->get_effective_values(),
+			);
+
+			return $plugin_settings;
 		}
 
 		/**

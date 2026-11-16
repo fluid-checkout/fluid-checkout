@@ -73,8 +73,11 @@ class FluidCheckout_Settings_Tools {
 
 			// Fallback when the stored option is not an array
 			if ( ! is_array( $telemetry_data_groups ) ) {
-				$telemetry_data_groups = array( 'basic_environment' );
+				$telemetry_data_groups = array( 'basic_environment', 'plugin_settings' );
 			}
+
+			// Keep always-on groups present in the Tools UI
+			$telemetry_data_groups = self::normalize_telemetry_data_groups( $telemetry_data_groups );
 
 			$telemetry_data_groups_conditional = array(
 				'data-conditional-id'    => 'fc_telemetry_enabled',
@@ -122,13 +125,12 @@ class FluidCheckout_Settings_Tools {
 						array(
 							'title'             => '',
 							'desc'              => __( 'Plugin settings', 'fluid-checkout' ),
-							'desc_tip'          => __( 'The active Fluid Checkout settings you have selected.', 'fluid-checkout' ) . ' ' . __( 'These settings are not sent yet.', 'fluid-checkout' ),
+							'desc_tip'          => __( 'Included whenever usage tracking is on. The active Fluid Checkout settings profile and its effective option values. License keys, API keys, secrets, tokens and webhook URLs are never included.', 'fluid-checkout' ),
 							'id'                => 'fc_telemetry_data_groups_plugin_settings',
 							'field_name'        => 'fc_telemetry_data_groups',
 							'checkbox_value'    => 'plugin_settings',
 							'type'              => 'checkbox',
 							'value'             => $telemetry_data_groups,
-							'badge'             => __( 'Coming soon', 'fluid-checkout' ),
 							'control_disabled'  => true,
 							'is_option'         => false,
 							'custom_attributes' => $telemetry_data_groups_conditional,
@@ -335,7 +337,12 @@ class FluidCheckout_Settings_Tools {
 		);
 
 		if ( empty( $groups ) ) {
-			return array( 'basic_environment' );
+			$groups = array( 'basic_environment', 'plugin_settings' );
+		}
+
+		// Plugin settings are always included when telemetry is enabled
+		if ( ! in_array( 'plugin_settings', $groups, true ) ) {
+			$groups[] = 'plugin_settings';
 		}
 
 		if ( ! in_array( 'basic_environment', $groups, true ) ) {

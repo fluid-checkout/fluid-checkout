@@ -879,7 +879,12 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			);
 
 			if ( empty( $groups ) ) {
-				return array( 'basic_environment' );
+				$groups = array( 'basic_environment', 'plugin_settings' );
+			}
+
+			// Plugin settings are always included when telemetry is enabled
+			if ( ! in_array( 'plugin_settings', $groups, true ) ) {
+				$groups[] = 'plugin_settings';
 			}
 
 			$dependent_groups = array( 'plugin_settings', 'woocommerce_sales_metrics' );
@@ -1022,7 +1027,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			}
 
 			$payload  = array(
-				'schema_version' => 2,
+				'schema_version' => 3,
 				'site_domain'    => $site_domain,
 				'report_groups'  => $groups,
 			);
@@ -1031,6 +1036,14 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 				$payload = array_merge( $payload, self::build_basic_environment_payload( $api_url ) );
 				$payload['plugin_activations']  = self::build_plugin_activations( $api_url );
 				$payload['plugins_report_scope'] = null !== $plugins_report_scope ? $plugins_report_scope : 'complete';
+			}
+
+			if ( in_array( 'plugin_settings', $groups, true ) ) {
+				$plugin_settings = self::build_plugin_settings_payload( $api_url );
+
+				if ( ! empty( $plugin_settings ) ) {
+					$payload['plugin_settings'] = $plugin_settings;
+				}
 			}
 
 			if ( in_array( 'woocommerce_sales_metrics', $groups, true ) ) {
@@ -1064,6 +1077,135 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			 * @param string|null $api_url Telemetry API base URL.
 			 */
 			return apply_filters( 'fc_telemetry_payload', $payload, $groups, $api_url );
+		}
+
+
+
+		/**
+		 * Build the plugin settings section of the telemetry payload.
+		 *
+		 * Each own plugin contributes its entry through `fc_telemetry_plugin_settings`.
+		 *
+		 * @param string|null $api_url Telemetry API base URL from the consuming plugin.
+		 */
+		public static function build_plugin_settings_payload( $api_url = null ) {
+			$api_url = self::resolve_api_url( $api_url );
+
+			/**
+			 * Filters own-plugin settings contributed to the telemetry payload.
+			 *
+			 * Expected shape:
+			 * array(
+			 *   'plugin-slug' => array(
+			 *     'version'  => '1.2.3',
+			 *     'profile'  => 'default',
+			 *     'settings' => array( ... ),
+			 *   ),
+			 * )
+			 *
+			 * @param array       $plugin_settings Plugin settings keyed by plugin slug.
+			 * @param string|null $api_url         Telemetry API base URL.
+			 */
+			$plugin_settings = apply_filters( 'fc_telemetry_plugin_settings', array(), $api_url );
+
+			if ( ! is_array( $plugin_settings ) ) {
+				return array();
+			}
+
+			$sanitized = array();
+
+			foreach ( $plugin_settings as $plugin_slug => $entry ) {
+				$plugin_slug = sanitize_key( (string) $plugin_slug );
+
+				// Skip empty or non-array entries
+				if ( '' === $plugin_slug || ! is_array( $entry ) ) {
+					continue;
+				}
+
+				$settings = array();
+
+				if ( array_key_exists( 'settings', $entry ) && is_array( $entry['settings'] ) ) {
+					$settings = self::sanitize_plugin_settings_for_telemetry( $entry['settings'] );
+				}
+
+				$sanitized[ $plugin_slug ] = array(
+					'version'  => isset( $entry['version'] ) ? sanitize_text_field( (string) $entry['version'] ) : '',
+					'profile'  => isset( $entry['profile'] ) ? sanitize_title( (string) $entry['profile'] ) : '',
+					'settings' => $settings,
+				);
+			}
+
+			return $sanitized;
+		}
+
+
+
+		/**
+		 * Remove sensitive values from a plugin settings map before telemetry.
+		 *
+		 * @param array $settings Raw settings values.
+		 * @param int   $depth    Current recursion depth.
+		 */
+		public static function sanitize_plugin_settings_for_telemetry( $settings, $depth = 0 ) {
+			if ( $depth > 8 || ! is_array( $settings ) ) {
+				return array();
+			}
+
+			$sensitive_key_fragments = array(
+				'license_key',
+				'api_key',
+				'apikey',
+				'secret',
+				'token',
+				'password',
+				'webhook',
+				'private_key',
+				'auth_key',
+			);
+
+			/**
+			 * Filters key fragments treated as sensitive in telemetry plugin settings.
+			 *
+			 * @param array $sensitive_key_fragments Substrings matched against option keys.
+			 */
+			$sensitive_key_fragments = apply_filters( 'fc_telemetry_plugin_settings_sensitive_key_fragments', $sensitive_key_fragments );
+
+			$sanitized = array();
+
+			foreach ( $settings as $key => $value ) {
+				$key_string = is_string( $key ) ? $key : (string) $key;
+				$key_lower  = strtolower( $key_string );
+
+				// Skip sensitive keys
+				$is_sensitive = false;
+
+				foreach ( $sensitive_key_fragments as $fragment ) {
+					if ( false !== strpos( $key_lower, strtolower( (string) $fragment ) ) ) {
+						$is_sensitive = true;
+						break;
+					}
+				}
+
+				if ( $is_sensitive ) {
+					continue;
+				}
+
+				if ( is_array( $value ) ) {
+					$sanitized[ $key_string ] = self::sanitize_plugin_settings_for_telemetry( $value, $depth + 1 );
+					continue;
+				}
+
+				if ( is_bool( $value ) || is_int( $value ) || is_float( $value ) || is_null( $value ) ) {
+					$sanitized[ $key_string ] = $value;
+					continue;
+				}
+
+				if ( is_string( $value ) ) {
+					$sanitized[ $key_string ] = $value;
+				}
+			}
+
+			return $sanitized;
 		}
 
 
@@ -1521,6 +1663,25 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 					'gross_sales'  => $payload['sales_metrics']['gross_sales'] ?? null,
 					'currency'     => $payload['sales_metrics']['currency'] ?? null,
 				);
+			}
+
+			if ( ! empty( $payload['plugin_settings'] ) && is_array( $payload['plugin_settings'] ) ) {
+				$minimal['plugin_settings'] = array();
+
+				foreach ( $payload['plugin_settings'] as $plugin_slug => $entry ) {
+					$entry_minimal = array(
+						'profile' => is_array( $entry ) ? ( $entry['profile'] ?? '' ) : '',
+						'version' => is_array( $entry ) ? ( $entry['version'] ?? '' ) : '',
+					);
+
+					if ( is_array( $entry ) && ! empty( $entry['settings'] ) && is_array( $entry['settings'] ) ) {
+						$entry_minimal['settings_hash'] = hash( 'sha256', wp_json_encode( $entry['settings'] ) );
+					}
+
+					$minimal['plugin_settings'][ sanitize_key( (string) $plugin_slug ) ] = $entry_minimal;
+				}
+
+				ksort( $minimal['plugin_settings'] );
 			}
 
 			return hash( 'sha256', wp_json_encode( $minimal ) );

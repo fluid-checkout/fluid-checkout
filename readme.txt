@@ -408,6 +408,10 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Send the active settings profile in usage tracking reports.
+
 = 5.0.0 - 2026-11-08 =
 
 * Bump tested up to WooCommerce 11.3
