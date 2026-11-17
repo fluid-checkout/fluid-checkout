@@ -420,6 +420,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Fixed: Optional fields that WooCommerce hides for the selected country, such as postcode in the United Arab Emirates, no longer show an "Add ..." link. Optional fields the country still shows keep that link, and the link updates when the customer changes country.
 * Fixed: Do not show the coupon code section on checkout when WooCommerce coupons are disabled.
 * Improved: Show a notice on the coupon codes settings when WooCommerce coupons are disabled, with a link to enable them.
+* Improved: Disable coupon codes settings on the checkout and cart settings when WooCommerce coupons are disabled.
 
 = 5.0.0 - 2026-11-08 =
 
