@@ -410,6 +410,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 = Unreleased =
 
+* Fixed: Hide the "Enter your address to view shipping options" message on the cart page when shipping rates are already displayed for a saved address.
 * Improved: Compatibility with Oxygen 6. Load Breakdance compatibility when Oxygen runs the Breakdance engine, and fix layout and styles for themeless Oxygen cart and checkout pages.
 * Fixed: Compatibility with theme Woodmart. Keep the sticky order summary and progress bar below the theme sticky header when the site header is shown at checkout.
 * Fixed: Compatibility with plugin Aelia Currency Switcher. Prevent an infinite recursion when the design editor loads the Order pay preview, which exhausted PHP memory.
