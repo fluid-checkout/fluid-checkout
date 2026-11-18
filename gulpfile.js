@@ -25,7 +25,10 @@
  * - build                set-assets-version, clean, then dev (unminified) JS/CSS compile, and npm-run-build when present
  * - build-prod           update-ver, clean, minified JS/CSS, and npm-run-build when present
  * - copy-plugin-files    Copy committed plugin files into the export folder
- * - pack-plugin-zip      Zip the export folder into an installable package
+ * - pack-plugin-zip      Zip the export folder into an installable package.
+ *                        Plain X.Y.Z versions also upload that zip to a draft
+ *                        GitHub release for the npm tag. Any pre-release suffix
+ *                        stays local.
  * - generate-pot         Generate the POT translation catalog
  * - translate-po         Fill empty PO msgstr via DeepL/Google Translate APIs
  * - update-translations  translate-po, then rebuild .mo and .l10n.php
@@ -56,6 +59,16 @@ var po2mo = require('gulp-po2mo');
 var po2json = require('gulp-po2json');
 var through2 = require('through2');
 var path = require('path');
+var preReleaseBranchRules = null;
+
+try {
+	preReleaseBranchRules = require(
+		path.join( __dirname, 'fluid-checkout-standards/scripts/lib/pre-release-branch.js' )
+	);
+}
+catch ( err ) {
+	// Standards symlink missing; beta/rc branch enforcement is skipped.
+}
 var url = require('url');
 var readline = require('readline');
 var glob = require('glob');
@@ -160,6 +173,13 @@ var _defaultAction = _gulpSettingsLocal.defaultAction || _gulpSettings.defaultAc
 
 // Run:
 /**
+ * Official stable versions are plain X.Y.Z with no pre-release suffix.
+ * Kept in sync with is_official_stable_version in
+ * .github/scripts/deploy-wordpress-org.sh.
+ */
+var _officialStableVersionPattern = /^\d+\.\d+\.\d+$/;
+
+/**
  * Whether the current package.json version is a pre-release (alpha, beta, dev, or rc).
  * Same rules as changelog Stable tag updates: skip when the marker appears after the start.
  */
@@ -182,6 +202,32 @@ function isPreReleaseVersion() {
 	}
 
 	return false;
+}
+
+/**
+ * Whether a version is an official stable release (plain X.Y.Z).
+ * Alpha, beta, rc, dev, and any other suffix return false.
+ * Pass a version string to test that string. Omit it to read package.json.
+ *
+ * @param {string} version Optional version. Defaults to the current package version.
+ * @return {boolean}
+ */
+function isOfficialStableVersion( version ) {
+	var candidate = version;
+
+	// Reload package.json so an npm version bump is visible mid-lifecycle
+	if ( 'string' !== typeof candidate ) {
+		try {
+			_package = loadJsonFile.sync( 'package.json' );
+		}
+		catch ( err ) {
+			// Keep the previously loaded package when reload fails
+		}
+
+		candidate = _package.version;
+	}
+
+	return _officialStableVersionPattern.test( String( candidate || '' ).trim() );
 }
 
 /**
@@ -940,14 +986,48 @@ function verifyBundledSourcesForOfficialRelease( done ) {
 	var branch;
 	var cwd;
 
-	// Bail early for pre-release package versions
-	if ( isPreReleaseVersion() ) {
+	errors = [];
+	cwd = process.cwd();
+
+	// Beta and rc pre-releases must be packaged from release/*
+	if ( isPreReleaseVersion() && preReleaseBranchRules ) {
+		var preReleaseKind = preReleaseBranchRules.getPreReleaseKind( _package.version );
+
+		if ( preReleaseBranchRules.requiresReleaseBranchForPreRelease( preReleaseKind ) ) {
+			if ( ! isGitRepository( cwd ) ) {
+				errors.push(
+					preReleaseKind + ' packages require git; could not verify the current branch.'
+				);
+			}
+			else {
+				try {
+					branch = getGitBranchName( cwd );
+					if ( ! preReleaseBranchRules.isReleaseBranchName( branch ) ) {
+						errors.push(
+							preReleaseBranchRules.preReleaseBranchFailureMessage( preReleaseKind, branch )
+						);
+					}
+				}
+				catch ( err ) {
+					errors.push( 'Could not read git branch for this plugin: ' + err.message );
+				}
+			}
+		}
+
+		if ( errors.length ) {
+			done( new Error( errors.join( '\n' ) ) );
+			return;
+		}
+
 		done();
 		return;
 	}
 
-	errors = [];
-	cwd = process.cwd();
+	// Bail early for other pre-release package versions (alpha, dev)
+	if ( isPreReleaseVersion() ) {
+		done();
+		return;
+	}
 
 	if ( ! isGitRepository( cwd ) ) {
 		errors.push( 'This plugin is not a git repository; official releases require git.' );
@@ -1280,9 +1360,424 @@ gulp.task( 'copy-plugin-files', gulp.series( function( done ) {
 	);
 } ) );
 
+/**
+ * Quote one argument for the shell without putting secrets on the command line.
+ * gh reads GH_TOKEN or GITHUB_TOKEN from the environment, or the gh auth login keyring.
+ *
+ * @param {string} value
+ * @return {string}
+ */
+function shellQuote( value ) {
+	return JSON.stringify( String( value ) );
+}
+
+/**
+ * Join argv into one shell command.
+ *
+ * @param {Array} args
+ * @return {string}
+ */
+function shellCommand( args ) {
+	return args.map( function( arg ) {
+		return shellQuote( arg );
+	} ).join( ' ' );
+}
+
+/**
+ * Child env for gh. Disables prompts and debug output so a token cannot be printed.
+ *
+ * @return {Object}
+ */
+function getGhExecOptions() {
+	var options = Object.assign( {}, _execOptions );
+	var env = Object.assign( {}, process.env );
+
+	env.GH_PROMPT_DISABLED = '1';
+	env.GH_NO_UPDATE_NOTIFIER = '1';
+	delete env.GH_DEBUG;
+	delete env.DEBUG;
+
+	options.env = env;
+
+	return options;
+}
+
+/**
+ * Build an Error that includes command output and not the environment.
+ *
+ * @param {string} message
+ * @param {Error} err
+ * @param {string} stderr
+ * @param {string} stdout
+ * @return {Error}
+ */
+function commandFailure( message, err, stderr, stdout ) {
+	var detail = String( stderr || '' ).trim();
+
+	if ( ! detail ) {
+		detail = String( stdout || '' ).trim();
+	}
+
+	if ( ! detail && err ) {
+		detail = err.message;
+	}
+
+	return new Error( message + ( detail ? '\n' + detail : '' ) );
+}
+
+/**
+ * Whether gh says the release for this tag does not exist.
+ *
+ * @param {Error} err
+ * @param {string} stderr
+ * @param {string} stdout
+ * @return {boolean}
+ */
+function isGitHubReleaseMissing( err, stderr, stdout ) {
+	var combined;
+
+	if ( ! err ) {
+		return false;
+	}
+
+	combined = ( String( stderr || '' ) + '\n' + String( stdout || '' ) ).toLowerCase();
+
+	return -1 !== combined.indexOf( 'release not found' );
+}
+
+/**
+ * Whether gh refused to create a release because that tag already has one.
+ *
+ * @param {string} stderr
+ * @param {string} stdout
+ * @return {boolean}
+ */
+function isGitHubReleaseAlreadyExists( stderr, stdout ) {
+	var combined = ( String( stderr || '' ) + '\n' + String( stdout || '' ) ).toLowerCase();
+
+	return -1 !== combined.indexOf( 'already exists' );
+}
+
+/**
+ * npm tag prefix. Official tags in this repo are vX.Y.Z. Defaults to v.
+ *
+ * @return {string}
+ */
+function getNpmTagVersionPrefix() {
+	var prefix;
+
+	try {
+		prefix = execSync( 'npm config get tag-version-prefix', {
+			encoding: 'utf8',
+			stdio: [ 'ignore', 'pipe', 'pipe' ],
+		} ).trim();
+	}
+	catch ( err ) {
+		prefix = 'v';
+	}
+
+	// npm prints these sentinels when the key is unset in some versions
+	if ( ! prefix || 'undefined' === prefix || 'null' === prefix ) {
+		return 'v';
+	}
+
+	return prefix;
+}
+
+/**
+ * Remote that receives git push --tags for the current branch.
+ *
+ * @return {string}
+ */
+function getReleaseGitRemoteName() {
+	var tracked;
+
+	try {
+		tracked = execSync( 'git rev-parse --abbrev-ref --symbolic-full-name @{u}', {
+			encoding: 'utf8',
+			stdio: [ 'ignore', 'pipe', 'ignore' ],
+		} ).trim();
+	}
+	catch ( err ) {
+		tracked = '';
+	}
+
+	if ( tracked && -1 !== tracked.indexOf( '/' ) ) {
+		return tracked.split( '/' )[ 0 ];
+	}
+
+	return 'origin';
+}
+
+/**
+ * owner/repo for a GitHub remote URL. The raw URL is not returned.
+ *
+ * @param {string} remoteName
+ * @return {string}
+ */
+function getGitHubRepoSlug( remoteName ) {
+	var remoteUrl;
+	var match;
+
+	remoteUrl = execSync( 'git remote get-url ' + shellQuote( remoteName ), {
+		encoding: 'utf8',
+		stdio: [ 'ignore', 'pipe', 'pipe' ],
+	} ).trim();
+
+	match = remoteUrl.match( /github\.com[:/]([^/\s:]+)\/([^/\s]+?)(?:\.git)?\/?$/ );
+
+	if ( ! match ) {
+		throw new Error( 'Git remote "' + remoteName + '" does not point at a GitHub repository.' );
+	}
+
+	return match[ 1 ] + '/' + match[ 2 ];
+}
+
+/**
+ * Run a command and pass through stdout, stderr, and the error.
+ *
+ * @param {Array} args
+ * @param {Function} callback
+ */
+function execCommand( args, callback ) {
+	exec( shellCommand( args ), getGhExecOptions(), function( err, stdout, stderr ) {
+		callback( err, stdout, stderr );
+	} );
+}
+
+/**
+ * Look for the tag on the remote. Retries briefly because postversion pushes the tag immediately before this task.
+ *
+ * @param {string} remoteName
+ * @param {string} tag
+ * @param {number} attemptsLeft
+ * @param {Function} callback function( err, exists )
+ */
+function remoteTagExists( remoteName, tag, attemptsLeft, callback ) {
+	execCommand( [ 'git', 'ls-remote', '--tags', remoteName, 'refs/tags/' + tag ], function( err, stdout, stderr ) {
+		if ( err ) {
+			callback( commandFailure(
+				'GitHub release upload failed: could not check ' + remoteName + ' for tag ' + tag + '.',
+				err,
+				stderr,
+				stdout
+			) );
+			return;
+		}
+
+		if ( String( stdout || '' ).trim() ) {
+			callback( null, true );
+			return;
+		}
+
+		if ( attemptsLeft <= 1 ) {
+			callback( null, false );
+			return;
+		}
+
+		console.log( 'Tag ' + tag + ' is not on ' + remoteName + ' yet. Checking again.' );
+		setTimeout( function() {
+			remoteTagExists( remoteName, tag, attemptsLeft - 1, callback );
+		}, 2000 );
+	} );
+}
+
+/**
+ * Replace the zip on a release that is already there.
+ * A draft stays a draft. A published release stays published.
+ * --clobber removes the previous asset before the new upload. A failed upload
+ * leaves that asset missing until the next successful run of this task.
+ *
+ * @param {string} tag
+ * @param {string} repoSlug
+ * @param {string} zipFilePath
+ * @param {string} stateLabel
+ * @param {Function} done
+ */
+function uploadExistingGitHubReleaseAsset( tag, repoSlug, zipFilePath, stateLabel, done ) {
+	var assetName = path.basename( zipFilePath );
+
+	console.log( 'GitHub release ' + tag + ' already exists (' + stateLabel + '). Re-uploading ' + assetName + '.' );
+
+	execCommand( [ 'gh', 'release', 'upload', tag, zipFilePath, '--clobber', '--repo', repoSlug ], function( err, stdout, stderr ) {
+		if ( stdout ) {
+			console.log( stdout );
+		}
+
+		if ( err ) {
+			done( commandFailure(
+				'GitHub release upload failed: could not upload ' + assetName + ' to the existing ' + stateLabel + ' release ' + tag + '.',
+				err,
+				stderr,
+				stdout
+			) );
+			return;
+		}
+
+		if ( stderr ) {
+			console.log( stderr );
+		}
+
+		console.log( 'Uploaded ' + assetName + ' to the existing ' + stateLabel + ' GitHub release ' + tag + '.' );
+		done();
+	} );
+}
+
+/**
+ * Create a draft release for an existing tag and attach the zip.
+ * If the release was created between the view and the create, upload instead.
+ *
+ * @param {string} tag
+ * @param {string} repoSlug
+ * @param {string} version
+ * @param {string} zipFilePath
+ * @param {Function} done
+ */
+function createDraftGitHubRelease( tag, repoSlug, version, zipFilePath, done ) {
+	var notes = 'Draft release of ' + _package.name + ' ' + version + '.';
+
+	console.log( 'Creating draft GitHub release ' + tag + ' and uploading ' + path.basename( zipFilePath ) + '.' );
+
+	execCommand( [
+		'gh', 'release', 'create', tag,
+		'--draft',
+		'--verify-tag',
+		'--title', version,
+		'--notes', notes,
+		'--repo', repoSlug,
+		zipFilePath,
+	], function( err, stdout, stderr ) {
+		if ( stdout ) {
+			console.log( stdout );
+		}
+
+		if ( err && isGitHubReleaseAlreadyExists( stderr, stdout ) ) {
+			uploadExistingGitHubReleaseAsset( tag, repoSlug, zipFilePath, 'existing', done );
+			return;
+		}
+
+		if ( err ) {
+			done( commandFailure(
+				'GitHub release upload failed: could not create the draft release for tag ' + tag + '.',
+				err,
+				stderr,
+				stdout
+			) );
+			return;
+		}
+
+		if ( stderr ) {
+			console.log( stderr );
+		}
+
+		console.log( 'Draft GitHub release created for ' + tag + '.' );
+		done();
+	} );
+}
+
+/**
+ * Upload the built zip to a draft GitHub release for an official stable version.
+ * Pre-release versions, including any suffix other than plain X.Y.Z, are skipped.
+ * The git tag must already be on the remote. npm version pushes it before this task.
+ * Authentication comes from gh auth login, GH_TOKEN, or GITHUB_TOKEN. No token is stored in this file.
+ *
+ * @param {string} zipFilePath
+ * @param {Function} done
+ */
+function uploadOfficialStableReleaseAsset( zipFilePath, done ) {
+	var version = String( _package.version || '' ).trim();
+	var remoteName;
+	var repoSlug;
+	var tag;
+
+	// Pre-release packages stay on disk. Alpha, beta, rc, dev, and any other suffix.
+	if ( ! isOfficialStableVersion( version ) ) {
+		console.log( 'Skipping GitHub release for version ' + version + '. Only plain X.Y.Z versions are uploaded. Pre-release packages stay local.' );
+		done();
+		return;
+	}
+
+	if ( ! zipFilePath || ! fs.existsSync( zipFilePath ) ) {
+		done( new Error( 'GitHub release upload failed: built zip was not found at "' + zipFilePath + '".' ) );
+		return;
+	}
+
+	execCommand( [ 'gh', '--version' ], function( versionErr, versionStdout, versionStderr ) {
+		if ( versionErr ) {
+			done( commandFailure(
+				'GitHub release upload failed: the gh CLI is required for official stable releases. Install GitHub CLI and run "gh auth login", or set the GITHUB_TOKEN environment variable.',
+				versionErr,
+				versionStderr,
+				versionStdout
+			) );
+			return;
+		}
+
+		try {
+			remoteName = getReleaseGitRemoteName();
+			repoSlug = getGitHubRepoSlug( remoteName );
+			tag = getNpmTagVersionPrefix() + version;
+		}
+		catch ( err ) {
+			done( new Error( 'GitHub release upload failed: ' + err.message ) );
+			return;
+		}
+
+		console.log( 'Official stable release ' + version + '. Git tag ' + tag + ' on ' + repoSlug + '.' );
+
+		remoteTagExists( remoteName, tag, 5, function( tagErr, exists ) {
+			if ( tagErr ) {
+				done( tagErr );
+				return;
+			}
+
+			if ( ! exists ) {
+				done( new Error(
+					'GitHub release upload failed: tag ' + tag + ' is not on remote "' + remoteName + '". ' +
+					'npm version pushes tags before pack-plugin-zip. Push the tag, then run this task again.'
+				) );
+				return;
+			}
+
+			execCommand( [ 'gh', 'release', 'view', tag, '--repo', repoSlug, '--json', 'tagName,isDraft,url' ], function( viewErr, viewStdout, viewStderr ) {
+				var existing;
+				var stateLabel;
+
+				if ( viewErr && ! isGitHubReleaseMissing( viewErr, viewStderr, viewStdout ) ) {
+					done( commandFailure(
+						'GitHub release upload failed: could not read the release for tag ' + tag + '.',
+						viewErr,
+						viewStderr,
+						viewStdout
+					) );
+					return;
+				}
+
+				// Deleted release, or first upload for this tag: create a new draft.
+				if ( viewErr ) {
+					createDraftGitHubRelease( tag, repoSlug, version, zipFilePath, done );
+					return;
+				}
+
+				try {
+					existing = JSON.parse( viewStdout );
+				}
+				catch ( parseErr ) {
+					done( new Error( 'GitHub release upload failed: unexpected response while reading release ' + tag + '.' ) );
+					return;
+				}
+
+				stateLabel = existing && existing.isDraft ? 'draft' : 'published';
+				uploadExistingGitHubReleaseAsset( tag, repoSlug, zipFilePath, stateLabel, done );
+			} );
+		} );
+	} );
+}
+
 // Run:
 // gulp pack-plugin-zip
 // Pack the extracted plugin folder into a new installable zip file with the version number.
+// Plain X.Y.Z versions then upload that zip to a draft GitHub release. Pre-releases stay local.
 gulp.task( 'pack-plugin-zip', gulp.series( function( done ) {
 	// Load package.json
 	_package = loadJsonFile.sync( 'package.json' );
@@ -1306,7 +1801,7 @@ gulp.task( 'pack-plugin-zip', gulp.series( function( done ) {
 			return;
 		}
 
-		done();
+		uploadOfficialStableReleaseAsset( destinationFileWithPath, done );
 	} );
 } ) );
 

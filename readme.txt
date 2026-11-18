@@ -408,6 +408,22 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Show a notice on the coupon codes settings when WooCommerce coupons are disabled, with a link to enable them.
+* Improved: Disable coupon codes settings on the checkout and cart settings when WooCommerce coupons are disabled.
+* Fixed: Compatibility with theme Woodmart. Keep the sticky order summary and progress bar below the theme sticky header when the site header is shown at checkout.
+* Fixed: Compatibility with plugin Aelia Currency Switcher. Prevent an infinite recursion when the design editor loads the Order pay preview, which exhausted PHP memory.
+* Fixed: Compatibility with plugin Oxygen 6. Load Breakdance compatibility when Oxygen runs the Breakdance engine, and fix layout and styles for themeless Oxygen cart and checkout pages.
+* Fixed: Compatibility with plugin Kustom Checkout for WooCommerce (formerly Klarna Checkout). Prevent a fatal error when Kustom Checkout is the selected payment method on checkout. The same issue is fixed for Svea Checkout, Dintero Checkout, PaysonCheckout, and Nets Easy.
+* Fixed: Requests to external services failing in the settings preview.
+* Fixed: WooCommerce feature compatibility declared from an invalid plugin file when Lite runs bundled inside Fluid Checkout PRO.
+* Fixed: Hide the "Enter your address to view shipping options" message on the cart page when shipping rates are already displayed for a saved address.
+* Fixed: Optional fields that WooCommerce hides for the selected country, such as postcode in the United Arab Emirates, no longer show an "Add ..." link. Optional fields the country still shows keep that link, and the link updates when the customer changes country.
+* Fixed: Fatal error when a checkout or address field is null or not an array while adding the field description class.
+* Fixed: Store API cart requests failing when the order or account checkout field group is not present.
+* Fixed: Do not show the coupon code section on checkout when WooCommerce coupons are disabled.
+
 = 5.0.0 - 2026-11-08 =
 
 * Bump tested up to WooCommerce 11.3

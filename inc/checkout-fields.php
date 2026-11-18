@@ -304,6 +304,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function maybe_change_shipping_company_field_args( $fields ) {
+		// Bail if fields are not valid
+		if ( ! is_array( $fields ) ) { return $fields; }
+
 		// Bail if shipping company field is not available
 		if ( ! array_key_exists( 'shipping_company', $fields ) ) { return $fields; }
 
@@ -316,12 +319,12 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			unset( $fields[ 'shipping_company' ] );
 		}
 		// Maybe set as required
-		elseif ( 'required' === $field_visibility ) {
+		elseif ( 'required' === $field_visibility && is_array( $fields[ 'shipping_company' ] ) ) {
 			$fields[ 'shipping_company' ][ 'required' ] = true;
 		}
 		// Maybe set as optional, only to undo the shared WooCommerce company option
 		// leaking the billing `required` state into the shipping company field.
-		elseif ( 'optional' === $field_visibility && 'required' === $billing_company_visibility ) {
+		elseif ( 'optional' === $field_visibility && 'required' === $billing_company_visibility && is_array( $fields[ 'shipping_company' ] ) ) {
 			$fields[ 'shipping_company' ][ 'required' ] = false;
 		}
 
@@ -376,7 +379,13 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function add_field_has_description_class_default_locale_field_args( $fields ) {
+		// Bail if fields are not valid
+		if ( ! is_array( $fields ) ) { return $fields; }
+
 		foreach( $fields as $field_key => $field_args ) {
+			// Skip if field args are not valid
+			if ( ! is_array( $fields[ $field_key ] ) ) { continue; }
+
 			// Bail if field does not have description
 			if ( ! array_key_exists( 'description', $fields[ $field_key ] ) ) { continue; }
 
@@ -407,20 +416,20 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 		// Iterate over fields
 		foreach( $fields as $field_key => $field_args ) {
-			// Skip if field does not have description
-			if ( ! array_key_exists( 'description', $field_args ) ) { continue; }
-
 			// Skip if field args are not valid
 			if ( ! is_array( $field_args ) ) { continue; }
 
-			// Maybe initialize `class` array
-			if ( ! array_key_exists( 'class', $field_args ) || ! is_array( $field_args[ 'class' ] ) ) {
+			// Skip if field does not have description
+			if ( ! array_key_exists( 'description', $field_args ) ) { continue; }
+
+			// Maybe initialize `class` array directly on `$fields`, because `$field_args` is a copy
+			if ( ! array_key_exists( 'class', $fields[ $field_key ] ) || ! is_array( $fields[ $field_key ][ 'class' ] ) ) {
 				// Create a new class array directly in the fields array
 				$fields[ $field_key ][ 'class' ] = array();
 			}
 
 			// Maybe add class for field with description
-			if ( ! in_array( 'has-description', $field_args[ 'class' ] ) ) {
+			if ( ! in_array( 'has-description', $fields[ $field_key ][ 'class' ] ) ) {
 				// Add class directly to the fields array
 				array_push( $fields[ $field_key ][ 'class' ], 'has-description' );
 			}
@@ -502,6 +511,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 		// Merge new field args into the original field args
 		foreach( $fields as $field_key => $original_args ) {
+			// Skip if field args are not valid
+			if ( ! is_array( $original_args ) ) { continue; }
+
 			$new_args = array_key_exists( $field_key, $new_field_args ) ? $new_field_args[ $field_key ] : array();
 			$fields[ $field_key ] = $this->merge_form_field_args( $original_args, $new_args );
 		}
@@ -517,12 +529,21 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function change_order_field_args( $fields ) {
+		// Bail if checkout field groups are not valid
+		if ( ! is_array( $fields ) ) { return $fields; }
+
 		$field_group = 'order';
+
+		// Skip if order field group is not available
+		if ( ! array_key_exists( $field_group, $fields ) || ! is_array( $fields[ $field_group ] ) ) {
+			return $fields;
+		}
+
 		$fields[ $field_group ] = $this->change_checkout_field_args( $fields[ $field_group ] );
 		return $fields;
 	}
 
-	
+
 
 	/**
 	 * Change account fields args.
@@ -530,7 +551,16 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function change_account_field_args( $fields ) {
+		// Bail if checkout field groups are not valid
+		if ( ! is_array( $fields ) ) { return $fields; }
+
 		$field_group = 'account';
+
+		// Skip if account field group is not available
+		if ( ! array_key_exists( $field_group, $fields ) || ! is_array( $fields[ $field_group ] ) ) {
+			return $fields;
+		}
+
 		$fields[ $field_group ] = $this->change_checkout_field_args( $fields[ $field_group ] );
 		return $fields;
 	}
@@ -555,9 +585,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 		return $args;
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Add extra class for `select2` fields.
 	 *
