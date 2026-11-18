@@ -121,7 +121,7 @@ jobs:
           # WooCommerce, plugin, and theme hooks are not edited, so a missing
           # docblock on those names is ignored.
           catalog="${RUNNER_TEMP}/plugins.json"
-          gh api "repos/fluid-checkout/fluid-checkout-docs/contents/plugins.json" --jq '.content' | base64 -d > "${catalog}"
+          curl -fsSL -o "${catalog}" https://raw.githubusercontent.com/fluid-checkout/fluid-checkout-docs/main/plugins.json
           if ! jq -e '.plugins[] | select(.id == "lite") | .hookPrefixes | length > 0' "${catalog}" >/dev/null; then
             echo "::error::plugins.json has no hookPrefixes for lite."
             exit 1

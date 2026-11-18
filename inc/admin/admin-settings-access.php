@@ -62,7 +62,11 @@ class FluidCheckout_Admin_Settings_Access extends FluidCheckout {
 	 */
 	public function get_unlocked() {
 		/**
-		 * Filter the list of unlocked feature slugs for the Fluid Checkout settings page.
+		 * Filters the list of unlocked feature slugs for the Fluid Checkout settings page.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param string[] $feature_slugs Unlocked feature slugs.
 		 */
 		return apply_filters( 'fc_admin_settings_unlocked', array_keys( $this->unlocked ) );
 	}

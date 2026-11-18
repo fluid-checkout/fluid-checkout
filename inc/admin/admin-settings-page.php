@@ -440,6 +440,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		 * Filters whether the current request is for an admin page with the settings page layout.
 		 *
 		 * @since 5.0.0
+		 *
+		 * @param bool $is_settings_page Whether the request is the Fluid Checkout settings page.
 		 */
 		return true === apply_filters( 'fc_is_admin_settings_layout_page', $this->is_settings_page() );
 	}
@@ -598,14 +600,14 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 					<span class="fc-header__logo-text"><?php echo esc_html( __( 'Fluid Checkout', 'fluid-checkout' ) ); ?></span>
 				</a>
 				<?php
-				/**
-				 * Filters HTML beside the settings header logo link (not inside the link).
-				 *
-				 * @since 5.0.0
-				 *
-				 * @param string $html Empty by default.
-				 */
 				echo wp_kses(
+					/**
+					 * Filters HTML beside the settings header logo link (not inside the link).
+					 *
+					 * @since 5.0.0
+					 *
+					 * @param string $html HTML beside the logo link. Default empty string.
+					 */
 					apply_filters( 'fc_settings_header_logo_after_title', '' ),
 					array(
 						'span' => array(
@@ -669,6 +671,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		 * Sections that are not already a built-in tab are added as extra tabs.
 		 *
 		 * @since 5.0.0
+		 *
+		 * @param array $sections Settings sections keyed by section slug. Default empty array.
 		 */
 		$sections = apply_filters( 'fc_admin_settings_sections', array() );
 		$sections = is_array( $sections ) ? $sections : array();
@@ -700,9 +704,14 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		$tabs = array_merge( $tabs, $tabs_after );
 
 		/**
-		 * Filter the tabs of the Fluid Checkout settings page.
+		 * Filters the tabs of the Fluid Checkout settings page.
+		 *
 		 * Each tab is an array with the keys `label`, `section`, and optionally `show_save_button`.
 		 * Separators are entries with `type` set to `separator`.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param array $tabs Settings tabs keyed by tab slug.
 		 */
 		$tabs = apply_filters( 'fc_admin_settings_tabs', $tabs );
 
@@ -841,7 +850,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		 *
 		 * @since 5.0.0
 		 *
-		 * @param  string  $section  Settings section slug. An empty string is the dashboard section.
+		 * @param  array   $settings  Settings fields for the section. Default empty array.
+		 * @param  string  $section   Settings section slug. An empty string is the dashboard section.
 		 */
 		$settings = apply_filters( 'fc_admin_settings', array(), $section );
 
@@ -966,9 +976,11 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		}
 
 		/**
-		 * After settings are saved on the Fluid Checkout settings page.
+		 * Fires after settings are saved on the Fluid Checkout settings page.
 		 *
-		 * @param  string  $tab  Settings tab slug that was active when saving.
+		 * @since 5.0.0
+		 *
+		 * @param  string  $current_tab  Settings tab slug that was active when saving.
 		 */
 		do_action( 'fc_admin_settings_saved', $current_tab );
 	}
@@ -1311,7 +1323,9 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 				<div class="<?php echo esc_attr( $layout_class ); ?>" data-fc-settings-layout>
 					<?php
 					/**
-					 * At the start of the settings layout, before the sidebar and content columns.
+					 * Fires at the start of the settings layout, before the sidebar and content columns.
+					 *
+					 * @since 5.0.0
 					 *
 					 * @param  string  $current_tab  Active settings tab slug.
 					 */
@@ -1411,7 +1425,9 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 					<?php
 					/**
-					 * After the settings content column (e.g. page preview).
+					 * Fires after the settings content column, for example the page preview.
+					 *
+					 * @since 5.0.0
 					 *
 					 * @param  string  $current_tab  Active settings tab slug.
 					 */
@@ -1435,7 +1451,21 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		FluidCheckout_Admin_Settings_Renderer::instance()->output_fields( $this->get_tab_settings( $tab ) );
 
 		/**
-		 * Output additional content for a tab of the Fluid Checkout settings page.
+		 * Fires to output additional content for a tab of the Fluid Checkout settings page.
+		 *
+		 * The dynamic portion of the hook name, `$tab`, refers to the settings tab slug.
+		 * Additional hook names are created for tabs registered by other plugins.
+		 * Possible hook names include:
+		 *
+		 * - `fc_admin_settings_tab_checkout`
+		 * - `fc_admin_settings_tab_cart`
+		 * - `fc_admin_settings_tab_order_received`
+		 * - `fc_admin_settings_tab_order_pay`
+		 * - `fc_admin_settings_tab_integrations`
+		 * - `fc_admin_settings_tab_tools`
+		 * - `fc_admin_settings_tab_license_keys`
+		 *
+		 * @since 5.0.0
 		 */
 		do_action( 'fc_admin_settings_tab_' . $tab );
 	}

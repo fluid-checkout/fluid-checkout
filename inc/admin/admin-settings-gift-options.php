@@ -56,6 +56,8 @@ class FluidCheckout_Settings_GiftOptions {
 		 * Filters the Gift options settings.
 		 *
 		 * @since 5.0.0
+		 *
+		 * @param array $settings Settings fields for the section.
 		 */
 		return apply_filters(
 			'fc_gift_options_settings',

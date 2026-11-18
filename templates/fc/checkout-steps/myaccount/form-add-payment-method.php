@@ -59,6 +59,13 @@ if ( $available_gateways ) : ?>
 				<?php wp_nonce_field( 'woocommerce-add-payment-method', 'woocommerce-add-payment-method-nonce' ); ?>
 				<?php
 				// CHANGE: Add filter for custom add-payment-method button classes
+				/**
+				 * Filters the CSS classes added to the add-payment-method submit button.
+				 *
+				 * @since 4.1.0
+				 *
+				 * @param array $classes CSS classes. Default empty array.
+				 */
 				$fc_add_payment_method_button_classes = implode( ' ', apply_filters( 'fc_add_payment_method_button_classes', array() ) );
 				// CHANGE: Check if function introduced in WooCommerce 7.1 is available before trying to use it
 				$fc_add_payment_method_theme_button_class = function_exists( 'wc_wp_theme_get_element_class_name' ) && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '';

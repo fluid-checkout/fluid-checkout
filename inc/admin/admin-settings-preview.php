@@ -124,8 +124,6 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		 * @since  5.0.0
 		 *
 		 * @param  array  $pages  Preview page definitions by page slug.
-		 *
-		 * @return array  Preview page definitions.
 		 */
 		return apply_filters( 'fc_admin_settings_preview_pages', $pages );
 	}
@@ -156,14 +154,12 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		);
 
 		/**
-		 * Filter the preview pane configuration on the Fluid Checkout settings page.
+		 * Filters the preview pane configuration on the Fluid Checkout settings page.
 		 *
 		 * @since  5.0.0
 		 *
-		 * @param  array   $config  Preview pane configuration.
-		 * @param  string  $tab     Settings tab slug, or the slug another admin page uses for its preview pane configuration.
-		 *
-		 * @return array  Preview pane configuration.
+		 * @param  array   $defaults  Preview pane configuration.
+		 * @param  string  $tab       Settings tab slug, or the slug another admin page uses for its preview pane configuration.
 		 */
 		$config = apply_filters( 'fc_admin_settings_preview_config', $defaults, $tab );
 
@@ -229,9 +225,11 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		}
 
 		/**
-		 * Filter the default preview mode per Fluid Checkout settings tab.
+		 * Filters the default preview mode per Fluid Checkout settings tab.
 		 *
-		 * @return array Preview mode by settings tab slug. Keys are tab slugs; values are `guest` or `logged_in`.
+		 * @since 5.0.0
+		 *
+		 * @param array $tab_preview_modes Preview mode by settings tab slug. Keys are tab slugs. Values are `guest` or `logged_in`. Default empty array.
 		 */
 		$this->tab_preview_modes = apply_filters( 'fc_admin_settings_preview_tab_modes', array() );
 

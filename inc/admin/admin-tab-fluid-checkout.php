@@ -133,6 +133,7 @@ class FluidCheckout_Settings_WC_FluidCheckoutTab extends WC_Settings_Page {
 		 *
 		 * @since 5.0.0
 		 *
+		 * @param  array   $settings         Settings fields for the section. Default empty array.
 		 * @param  string  $current_section  Settings section slug.
 		 */
 		return apply_filters( 'fc_admin_settings', array(), $current_section );

@@ -57,6 +57,8 @@ class FluidCheckout_Settings_InternationalPhone {
 		 * Filters the Phone fields settings.
 		 *
 		 * @since 5.0.0
+		 *
+		 * @param array $settings Settings fields for the section.
 		 */
 		return apply_filters(
 			'fc_international_phone_settings',

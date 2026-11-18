@@ -193,8 +193,6 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 		 * @since  5.0.0
 		 *
 		 * @param  array  $address  Address values by field key, without the `billing_` or `shipping_` prefix.
-		 *
-		 * @return array  Address values.
 		 */
 		$this->customer_address = apply_filters( 'fc_admin_preview_dummy_customer_address', $address );
 
@@ -253,9 +251,7 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 		 *
 		 * @since  5.0.0
 		 *
-		 * @param  array  $meta  Meta values by meta key.
-		 *
-		 * @return array  Meta values.
+		 * @param  array  $customer_meta  Meta values by meta key.
 		 */
 		$this->customer_meta = (array) apply_filters( 'fc_admin_preview_dummy_customer_meta', $this->customer_meta );
 
@@ -281,8 +277,6 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 			 * @since  5.0.0
 			 *
 			 * @param  array  $fields  Field values by field key.
-			 *
-			 * @return array  Field values.
 			 */
 			$this->order_fields = (array) apply_filters( 'fc_admin_preview_dummy_order_fields', array(
 				'order_comments'    => _x( 'Please leave the package at the front door.', 'Dummy order notes in the admin preview', 'fluid-checkout' ),
@@ -312,8 +306,6 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 			 * @since  5.0.0
 			 *
 			 * @param  array  $products  Product property lists.
-			 *
-			 * @return array  Product property lists.
 			 */
 			$products = apply_filters( 'fc_admin_preview_dummy_products', array(
 				array( 'name' => _x( 'Beanie', 'Dummy product name in the admin preview', 'fluid-checkout' ), 'regular_price' => '20', 'sale_price' => '18', 'sku' => 'fc-preview-beanie' ),

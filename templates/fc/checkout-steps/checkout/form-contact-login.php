@@ -82,7 +82,7 @@ defined( 'ABSPATH' ) || exit;
 				 *
 				 * @since 5.0.0
 				 *
-				 * @param string $classes CSS classes. Default `fc-contact-login__action--underline`.
+				 * @param string $login_link_classes CSS classes. Default `fc-contact-login__action--underline`.
 				 */
 				echo esc_attr( apply_filters( 'fc_checkout_contact_login_link_classes', $login_link_classes ) );
 			?>" data-flyout-toggle data-flyout-target="[data-flyout-checkout-login]"><?php echo esc_html( 

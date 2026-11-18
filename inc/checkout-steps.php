@@ -6062,7 +6062,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		/**
-		 * Filter the visibility of the shipping step substeps, as `yes` or `no` for each substep ID.
+		 * Filters the visibility of the shipping step substeps, as `yes` or `no` for each substep ID.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param array $visibility Visibility by substep ID, `yes` or `no`.
 		 */
 		return apply_filters( 'fc_shipping_step_substep_visibility', $visibility );
 	}

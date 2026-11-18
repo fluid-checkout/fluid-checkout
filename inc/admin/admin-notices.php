@@ -247,6 +247,8 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		 * Used by PRO to honour legacy dismiss options from PRO and former
 		 * standalone add-ons (Address Book, VAT Assistant, Google Address Autocomplete).
 		 *
+		 * @since 5.0.0
+		 *
 		 * @param  bool    $is_dismissed  Whether the notice is dismissed via the Lite option.
 		 * @param  string  $name          Notice name.
 		 */
@@ -289,6 +291,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		$name = sanitize_text_field( wp_unslash( $_GET[ self::$plugin_prefix . '_notice' ] ) );
 
 		// Bail if notice name is not registered
+		/** This filter is documented in inc/admin/admin-notices.php */
 		$registered_notices = apply_filters( self::$plugin_prefix . '_admin_notices', array() );
 		$registered_names = array();
 		foreach ( $registered_notices as $notice ) {

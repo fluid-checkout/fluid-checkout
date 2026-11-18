@@ -551,6 +551,8 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 		 * Filters the settings profile slug to overlay for the current request.
 		 *
 		 * @since 5.0.0
+		 *
+		 * @param string|null $profile_slug Settings profile slug to overlay. Default null.
 		 */
 		return apply_filters( 'fc_settings_context_profile', null );
 	}
@@ -583,8 +585,13 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 	 */
 	public function get_effective_values() {
 		/**
-		 * Filter the effective settings values for the current request.
+		 * Filters the effective settings values for the current request.
+		 *
 		 * Applied after the cache, so filtered values are never cached.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param array $effective_values Effective settings values for the current request.
 		 */
 		return apply_filters( 'fc_settings_effective_values', $this->get_stored_effective_values() );
 	}

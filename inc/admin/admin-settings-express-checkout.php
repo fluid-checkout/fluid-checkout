@@ -56,6 +56,8 @@ class FluidCheckout_Settings_ExpressCheckout {
 		 * Filters the Express checkout settings.
 		 *
 		 * @since 5.0.0
+		 *
+		 * @param array $settings Settings fields for the section.
 		 */
 		return apply_filters(
 			'fc_express_checkout_settings',

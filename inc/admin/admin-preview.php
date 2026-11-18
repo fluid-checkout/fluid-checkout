@@ -438,8 +438,6 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 			 * @since  5.0.0
 			 *
 			 * @param  bool  $enabled  Whether to enqueue the compatibility styles.
-			 *
-			 * @return bool  Whether to enqueue the compatibility styles.
 			 */
 			if ( true !== apply_filters( 'fc_enable_compat_theme_admin_preview_style_' . $theme_slug, true ) ) { continue; }
 
@@ -465,8 +463,6 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		 * @since  5.0.0
 		 *
 		 * @param  array  $settings  Frame script settings.
-		 *
-		 * @return array  Frame script settings.
 		 */
 		return apply_filters( 'fc_admin_preview_frame_script_settings', array(
 			'adminOrigin'                 => $this->get_admin_origin(),
@@ -673,8 +669,6 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		 * @since  5.0.0
 		 *
 		 * @param  array  $hosts  Host names.
-		 *
-		 * @return array  Host names.
 		 */
 		$hosts = (array) apply_filters( 'fc_admin_preview_allowed_hosts', array() );
 
@@ -1190,8 +1184,6 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		 * @since  5.0.0
 		 *
 		 * @param  array  $field_keys  Session field keys.
-		 *
-		 * @return array  Session field keys.
 		 */
 		return array_values( (array) apply_filters( 'fc_admin_preview_session_field_keys', array() ) );
 	}
