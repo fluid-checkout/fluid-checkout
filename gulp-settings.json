@@ -18,6 +18,8 @@
 			".gitignore",
 			"/.github/",
 			"/.github/**",
+			"/.wordpress-org/",
+			"/.wordpress-org/**",
 			"fluid-checkout-standards",
 			"fluid-checkout-standards/**",
 			"env.local.config.example.sh",
