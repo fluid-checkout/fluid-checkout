@@ -5290,6 +5290,29 @@ msgstr ""
 msgid "One per saved address"
 msgstr "Yksi kutakin tallennettua osoitetta kohti"
 
+#: inc/admin/admin-settings-checkout.php:742
+#. translators: %s: URL to the WooCommerce general settings page.
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the checkout page until coupons are enabled. <a "
+"href=\"%s\">Enable coupons in WooCommerce settings</a>."
+msgstr ""
+"Alennuskoodit on poistettu käytöstä WooCommerce-palvelussa. "
+"Alennuskoodiosio ei näy kassasivulla, ennen kuin alennuskoodit on otettu "
+"käyttöön. <a href=\"%s\">Ota alennuskoodit käyttöön "
+"WooCommerce-asetuksissa</a>."
+
+#: inc/admin/admin-settings-checkout.php:735
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the cart page until coupons are enabled. <a href=\"%s\">Enable "
+"coupons in WooCommerce settings</a>."
+msgstr ""
+"Alennuskoodit on poistettu käytöstä WooCommerce-palvelussa. "
+"Alennuskoodiosio ei näy ostoskorisivulla, ennen kuin alennuskoodit on "
+"otettu käyttöön. <a href=\"%s\">Ota alennuskoodit käyttöön "
+"WooCommerce-asetuksissa</a>."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

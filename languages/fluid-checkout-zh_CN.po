@@ -4798,6 +4798,25 @@ msgstr "显示支持国家/地区设置的电话号码输入框，以便客户�
 msgid "One per saved address"
 msgstr "每个已保存的地址限一个"
 
+#: inc/admin/admin-settings-checkout.php:742
+#. translators: %s: URL to the WooCommerce general settings page.
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the checkout page until coupons are enabled. <a "
+"href=\"%s\">Enable coupons in WooCommerce settings</a>."
+msgstr ""
+"WooCommerce 中已禁用优惠券代码。在启用优惠券之前，结账页面上不会显示优惠券区域。<a href=\"%s\">在 WooCommerce "
+"设置中启用优惠券</a>。"
+
+#: inc/admin/admin-settings-checkout.php:735
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the cart page until coupons are enabled. <a href=\"%s\">Enable "
+"coupons in WooCommerce settings</a>."
+msgstr ""
+"WooCommerce 中已禁用优惠券代码。在启用优惠券之前，购物车页面上不会显示优惠券区域。<a href=\"%s\">在 WooCommerce "
+"设置中启用优惠券</a>。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

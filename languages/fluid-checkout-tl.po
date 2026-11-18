@@ -5430,6 +5430,29 @@ msgstr ""
 msgid "One per saved address"
 msgstr "Isa bawat naka-save na address"
 
+#: inc/admin/admin-settings-checkout.php:742
+#. translators: %s: URL to the WooCommerce general settings page.
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the checkout page until coupons are enabled. <a "
+"href=\"%s\">Enable coupons in WooCommerce settings</a>."
+msgstr ""
+"Hindi pinagana ang mga coupon code sa WooCommerce. Hindi lilitaw ang "
+"seksyon ng coupon sa pahina ng checkout hangga&#39;t hindi pinagana ang mga "
+"coupon. <a href=\"%s\">Paganahin ang mga coupon sa mga setting ng "
+"WooCommerce</a> ."
+
+#: inc/admin/admin-settings-checkout.php:735
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the cart page until coupons are enabled. <a href=\"%s\">Enable "
+"coupons in WooCommerce settings</a>."
+msgstr ""
+"Hindi pinagana ang mga coupon code sa WooCommerce. Hindi lilitaw ang "
+"seksyon ng coupon sa pahina ng cart hangga&#39;t hindi pinagana ang mga "
+"coupon. <a href=\"%s\">Paganahin ang mga coupon sa mga setting ng "
+"WooCommerce</a> ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

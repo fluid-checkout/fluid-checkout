@@ -4902,6 +4902,26 @@ msgstr "顧客が正しい国際形式で番号を入力できるよう、国別
 msgid "One per saved address"
 msgstr "登録済みの住所ごとに1件"
 
+#: inc/admin/admin-settings-checkout.php:742
+#. translators: %s: URL to the WooCommerce general settings page.
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the checkout page until coupons are enabled. <a "
+"href=\"%s\">Enable coupons in WooCommerce settings</a>."
+msgstr ""
+"WooCommerce "
+"ではクーポンコードが無効になっています。クーポンを有効にするまで、チェックアウトページにクーポンセクションは表示されません。<a "
+"href=\"%s\">WooCommerce の設定でクーポンを有効にする</a>。"
+
+#: inc/admin/admin-settings-checkout.php:735
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the cart page until coupons are enabled. <a href=\"%s\">Enable "
+"coupons in WooCommerce settings</a>."
+msgstr ""
+"WooCommerce ではクーポンコードが無効になっています。クーポンを有効にするまで、カートページにクーポンセクションは表示されません。<a "
+"href=\"%s\">WooCommerce の設定でクーポンを有効にする</a>。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

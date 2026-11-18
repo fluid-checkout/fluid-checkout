@@ -5279,6 +5279,29 @@ msgstr ""
 msgid "One per saved address"
 msgstr "Một lần cho mỗi địa chỉ đã lưu."
 
+#: inc/admin/admin-settings-checkout.php:742
+#. translators: %s: URL to the WooCommerce general settings page.
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the checkout page until coupons are enabled. <a "
+"href=\"%s\">Enable coupons in WooCommerce settings</a>."
+msgstr ""
+"Mã giảm giá hiện đang bị vô hiệu hóa trong WooCommerce. Phần mã giảm giá sẽ "
+"không hiển thị trên trang thanh toán cho đến khi bạn kích hoạt tính năng "
+"này. <a href=\"%s\">Vui lòng kích hoạt mã giảm giá trong cài đặt "
+"WooCommerce</a> ."
+
+#: inc/admin/admin-settings-checkout.php:735
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the cart page until coupons are enabled. <a href=\"%s\">Enable "
+"coupons in WooCommerce settings</a>."
+msgstr ""
+"Mã giảm giá hiện đang bị vô hiệu hóa trong WooCommerce. Phần mã giảm giá sẽ "
+"không hiển thị trên trang giỏ hàng cho đến khi bạn kích hoạt tính năng này. "
+"<a href=\"%s\">Vui lòng kích hoạt mã giảm giá trong cài đặt WooCommerce</a> "
+"."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
