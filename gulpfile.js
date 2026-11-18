@@ -872,26 +872,6 @@ function loadPluginZipRsyncSettings( settingsJsonPath ) {
 }
 
 /**
- * Directories that must never ship inside a plugin zip.
- * .github holds workflows. .wordpress-org holds WordPress.org directory assets.
- * Anchored and unanchored patterns cover the plugin root and nested copies.
- *
- * @return {Array}
- */
-function getPluginZipNeverShipExcludes() {
-	return [
-		'/.github/',
-		'/.github/**',
-		'.github/',
-		'.github/**',
-		'/.wordpress-org/',
-		'/.wordpress-org/**',
-		'.wordpress-org/',
-		'.wordpress-org/**',
-	];
-}
-
-/**
  * Build rsync filter arguments from a merged pluginZipRsync object.
  *
  * @param {Object} mergedRsync Merged include/exclude settings
@@ -900,9 +880,8 @@ function getPluginZipNeverShipExcludes() {
 function getPluginZipRsyncArgsFromSettings( mergedRsync ) {
 	var rsync = mergedRsync || {};
 	var args = [];
-	var exclude = ( rsync.exclude || [] ).concat( getPluginZipNeverShipExcludes() );
 
-	exclude.forEach( function( pattern ) {
+	( rsync.exclude || [] ).forEach( function( pattern ) {
 		args.push( '--exclude=' + JSON.stringify( String( pattern ) ) );
 	} );
 
