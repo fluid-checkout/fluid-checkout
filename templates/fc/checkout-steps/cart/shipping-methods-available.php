@@ -6,12 +6,13 @@
  *
  * @see     https://woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 5.0.0
+ * @version 5.0.1
  * @wc-version 11.2.0
  * @original plugins/woocommerce/templates/cart/cart-shipping.php
  */
 
 defined( 'ABSPATH' ) || exit;
+// CHANGE: Add variables to determine if there are shipping methods available to display
 $formatted_destination     = isset( $formatted_destination ) ? $formatted_destination : WC()->countries->get_formatted_address( $package['destination'], ', ' );
 $has_calculated_shipping   = ! empty( $has_calculated_shipping );
 $has_available_methods     = ! empty( $available_methods ) && is_array( $available_methods );
@@ -27,6 +28,7 @@ $shipping_rates_displayed   = $has_available_methods && $can_display_shipping_ra
 
 <div class="shipping shipping-method__package" data-title="<?php echo esc_attr( $package_name ); ?>" data-package-index="<?php echo esc_attr( $package_index ); ?>">
 
+	<?php // CHANGE: Change criteria to show shipping methods or error/instructions message ?>
 	<?php if ( $can_display_shipping_rates ) : ?>
 
 		<?php // CHANGE: Conditionally add the shipping package name ?>
@@ -34,6 +36,7 @@ $shipping_rates_displayed   = $has_available_methods && $can_display_shipping_ra
 			<p class="shipping-method__package-name"><?php echo esc_html( $package_name ); ?></p>
 		<?php endif; ?>
 
+		<?php // CHANGE: Change how to determine if there are shipping methods available to display ?>
 		<?php if ( $has_available_methods ) : ?>
 
 			<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element markup ?>

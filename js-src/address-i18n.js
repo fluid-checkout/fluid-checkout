@@ -345,7 +345,7 @@ jQuery( function( $ ) {
 			}
 			// CHANGE: END - Hide the whole "Add ..." section while the locale hides the field.
 
-			// CHANGE: Handle collapsible fields state for fields the locale still shows
+			// CHANGE: Handle collapsible fields state
 			var fieldCollapsibleToggle, fieldCollapsibleContent;
 			if ( ! isLocaleHidden && window.CollapsibleBlock && expansibleSection ) {
 				fieldCollapsibleToggle = expansibleSection.querySelector( _settings.expansibleToggleSelector );
