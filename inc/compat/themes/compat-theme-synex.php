@@ -22,6 +22,10 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
+		// Enqueue
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
@@ -66,6 +70,35 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 
 
 	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Scripts
+		wp_register_script( 'fc-compat-synex-smooth-scroll', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/themes/synex/smooth-scroll' ), array( 'jquery', 'synex-main' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-compat-synex-smooth-scroll', 'window.addEventListener("load",function(){SynexSmoothScroll.init();});' );
+	}
+
+	/**
+	 * Enqueue assets.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-compat-synex-smooth-scroll' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		$this->enqueue_assets();
+	}
+
+
+
+	/**
 	 * Add container class to the main content element.
 	 *
 	 * @param string $class Main content element classes.
@@ -80,9 +113,9 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 
 
 	/**
-	 * Change the sticky element relative ID.
+	 * Change the element used to position the progress bar and order summary when sticky.
 	 *
-	 * @param   array  $attributes  HTML element attributes.
+	 * @param  array  $attributes  The elements attributes.
 	 */
 	public function change_sticky_elements_relative_header( $attributes ) {
 		// Bail if using distraction free header and footer
