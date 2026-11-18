@@ -1,0 +1,71 @@
+# Publish a Fluid Checkout Lite zip that was already built and attached to a
+# GitHub release. This workflow does not run gulp, npm, or a plugin build.
+#
+# Start it by hand from the Actions tab on main, after npm version has pushed
+# the vX.Y.Z tag and uploaded fluid-checkout-X.Y.Z.zip to a draft release.
+# dry_run defaults to true: SVN status and diff are printed, and nothing is
+# committed.
+#
+# SVN_USERNAME and SVN_PASSWORD are environment secrets on wordpress-org.
+# Do not copy those secrets to repository or organization secrets, and do not
+# point any other workflow at that environment.
+#
+# 10up/action-wordpress-plugin-deploy is not used. It publishes the git
+# checkout. The installable JS and CSS are produced by the local gulp build
+# and are not in git, so the tested release zip is the artifact that ships.
+
+name: Deploy to WordPress.org
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Stable version X.Y.Z, without a v prefix. Must match the zip header and readme Stable tag."
+        required: true
+        type: string
+      dry_run:
+        description: "Print the SVN status and diff. Do not commit or publish the GitHub release."
+        required: false
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-wordpress-org-${{ inputs.version }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Publish the existing release zip
+    runs-on: ubuntu-latest
+    environment: wordpress-org
+    timeout-minutes: 30
+    steps:
+      - name: Checkout the workflow
+        uses: actions/checkout@v4
+        with:
+          # The script fetches the release tag for .wordpress-org assets.
+          # Do not print the remote URL. It can contain the checkout token.
+          persist-credentials: true
+          fetch-depth: 1
+
+      - name: Install Subversion
+        run: |
+          set -euo pipefail
+          if ! command -v svn >/dev/null 2>&1 || ! command -v unzip >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install --yes subversion unzip
+          fi
+
+      - name: Publish the release zip to WordPress.org
+        env:
+          VERSION: ${{ inputs.version }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          PLUGIN_SLUG: fluid-checkout
+          GIT_TAG_PREFIX: v
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          GH_TOKEN: ${{ github.token }}
+        run: bash .github/scripts/deploy-wordpress-org.sh
