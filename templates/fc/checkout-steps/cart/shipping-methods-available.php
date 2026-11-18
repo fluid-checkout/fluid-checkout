@@ -12,22 +12,29 @@
  */
 
 defined( 'ABSPATH' ) || exit;
-$formatted_destination    = isset( $formatted_destination ) ? $formatted_destination : WC()->countries->get_formatted_address( $package['destination'], ', ' );
-$has_calculated_shipping  = ! empty( $has_calculated_shipping );
+$formatted_destination     = isset( $formatted_destination ) ? $formatted_destination : WC()->countries->get_formatted_address( $package['destination'], ', ' );
+$has_calculated_shipping   = ! empty( $has_calculated_shipping );
+$has_available_methods     = ! empty( $available_methods ) && is_array( $available_methods );
+$requires_shipping_address = 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_shipping_cost_requires_address' );
+
+// CHANGE: A saved address can produce rates before WooCommerce sets `has_calculated_shipping`.
+// The address prompt must stay hidden once those rates are actually shown.
+$can_display_shipping_rates = ( is_checkout() && ( ! $requires_shipping_address || $has_calculated_shipping ) ) || ( FluidCheckout_Steps::instance()->is_cart_page_or_fragment() && WC()->cart->show_shipping() );
+$shipping_rates_displayed   = $has_available_methods && $can_display_shipping_rates;
 ?>
 
 <?php // CHANGE: Remove shipping totals table row elements ?>
 
 <div class="shipping shipping-method__package" data-title="<?php echo esc_attr( $package_name ); ?>" data-package-index="<?php echo esc_attr( $package_index ); ?>">
 
-	<?php if ( ( is_checkout() && ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_shipping_cost_requires_address' ) || $has_calculated_shipping ) ) || ( FluidCheckout_Steps::instance()->is_cart_page_or_fragment() && WC()->cart->show_shipping() ) ) : ?>
+	<?php if ( $can_display_shipping_rates ) : ?>
 
 		<?php // CHANGE: Conditionally add the shipping package name ?>
 		<?php if ( FluidCheckout_Steps::instance()->is_shipping_package_name_display_enabled() ) : ?>
 			<p class="shipping-method__package-name"><?php echo esc_html( $package_name ); ?></p>
 		<?php endif; ?>
 
-		<?php if ( ! empty( $available_methods ) && is_array( $available_methods ) ) : ?>
+		<?php if ( $has_available_methods ) : ?>
 
 			<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element markup ?>
 			<?php
@@ -131,7 +138,7 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 	<?php endif; ?>
 
 	<?php // CHANGE: Conditionally display message for when no shipping methods are available for the package, only on the checkout page ?>
-	<?php if ( is_checkout() && ( empty( $available_methods ) || ! is_array( $available_methods ) ) && ( $has_calculated_shipping || 'yes' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_shipping_cost_requires_address' ) ) ) : ?>
+	<?php if ( is_checkout() && ! $has_available_methods && ( $has_calculated_shipping || ! $requires_shipping_address ) ) : ?>
 		<div class="fc-shipping-method__no-shipping-methods shipping-method__package">
 			<div class="shipping-method__options">
 				<?php echo wp_kses_post( apply_filters( 'woocommerce_no_shipping_available_html', __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce' ) ) ); ?>
@@ -139,8 +146,8 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 		</div>
 	<?php endif; ?>
 
-	<?php // CHANGE: Conditionally display message for when shipping costs require an address, but shipping address has not yet been provided ?>
-	<?php if ( ( is_checkout() || FluidCheckout_Steps::instance()->is_cart_page_or_fragment() ) && 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_shipping_cost_requires_address' ) && ! $has_calculated_shipping ) : ?>
+	<?php // CHANGE: Show the address prompt only when rates are not displayed. A complete saved address can have rates before shipping is marked calculated. ?>
+	<?php if ( ( is_checkout() || FluidCheckout_Steps::instance()->is_cart_page_or_fragment() ) && $requires_shipping_address && ! $has_calculated_shipping && ! $shipping_rates_displayed ) : ?>
 		<div class="fc-shipping-method__incomplete-address shipping-method__package">
 			<div class="shipping-method__options">
 				<?php echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'woocommerce' ) ) ); ?>
