@@ -10,8 +10,8 @@ $body-theme-selector: null !default;
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 
-// Theme `.header-section` is `position: absolute`. The breadcrumb hero normally
-// clears it; without that section, content starts under the header.
-body#{ $body-theme-selector }:not( .has-checkout-header ) {
-	padding-top: remsize( 12rem );
+// Keep content below the theme header, which is absolute and overlaps the page.
+// The theme breadcrumb section normally leaves this space, but is removed on these pages.
+body#{ $body-theme-selector }#{ $body-page-selector }:not( .has-checkout-header ) .fc-content {
+	padding-top: remsize( 12rem ); // Needed to use theme header height plus spacing
 }

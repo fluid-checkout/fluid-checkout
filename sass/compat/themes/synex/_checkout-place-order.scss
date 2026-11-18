@@ -1,0 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+// Theme removes link underlines, so the terms and privacy links blend into the surrounding text
+body#{ $body-theme-selector } .fc-wrapper a.woocommerce-terms-and-conditions-link,
+body#{ $body-theme-selector } .fc-wrapper a.woocommerce-privacy-policy-link {
+	text-decoration: underline;
+}

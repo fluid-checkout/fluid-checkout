@@ -18,7 +18,11 @@
 	$body-page-selector: scope.$body-page-selector,
 	$body-theme-selector: scope.$body-theme-selector
 );
-@forward "links" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+@forward "checkout-login" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
+@forward "checkout-place-order" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
 	$body-page-selector: scope.$body-page-selector,
 	$body-theme-selector: scope.$body-theme-selector
 );

@@ -1,0 +1,15 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+// ------------------------------------
+// CHECKOUT LOGIN
+// ------------------------------------
+
+// Theme removes link underlines, so the lost password link blends into the surrounding text
+body#{ $body-theme-selector } .fc-login-form .lost_password a {
+	text-decoration: underline;
+}
