@@ -2,15 +2,11 @@
 // LOAD STYLES
 // ------------------------------------
 @use "scope-synex" as scope;
-@forward "woocommerce-form-fields" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+@forward "checkout-columns" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
 	$body-page-selector: scope.$body-page-selector,
 	$body-theme-selector: scope.$body-theme-selector
 );
-@forward "woocommerce-form-fields-select2" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
-	$body-page-selector: scope.$body-page-selector,
-	$body-theme-selector: scope.$body-theme-selector
-);
-@forward "tom-select-control" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+@forward "checkout-content-area" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
 	$body-page-selector: scope.$body-page-selector,
 	$body-theme-selector: scope.$body-theme-selector
 );
@@ -26,19 +22,19 @@
 	$body-page-selector: scope.$body-page-selector,
 	$body-theme-selector: scope.$body-theme-selector
 );
+@forward "checkout-progress-bar" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
 @forward "checkout-steps" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
 	$body-page-selector: scope.$body-page-selector,
 	$body-theme-selector: scope.$body-theme-selector
 );
-@forward "checkout-content-area" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+@forward "tom-select-control" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
 	$body-page-selector: scope.$body-page-selector,
 	$body-theme-selector: scope.$body-theme-selector
 );
-@forward "checkout-columns" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
-	$body-page-selector: scope.$body-page-selector,
-	$body-theme-selector: scope.$body-theme-selector
-);
-@forward "checkout-progress-bar" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+@forward "woocommerce-form-fields" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
 	$body-page-selector: scope.$body-page-selector,
 	$body-theme-selector: scope.$body-theme-selector
 );

@@ -46,24 +46,25 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 	 * Add or remove very late hooks.
 	 */
 	public function very_late_hooks() {
-		// Theme breadcrumb / page heading
-		$this->maybe_remove_theme_breadcrumb();
+		// Theme breadcrumb and page heading
+		$this->breadcrumb_hooks();
 	}
 
 
 
 	/**
-	 * Maybe remove the theme breadcrumb and page heading section.
+	 * Add or remove breadcrumb hooks.
 	 */
-	public function maybe_remove_theme_breadcrumb() {
+	public function breadcrumb_hooks() {
 		// Bail if not on checkout page
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
 
-		remove_action( 'synex_before_main_content', 'synex_breadcrumb_func' );
-		remove_action( 'creatim_before_main_content', 'synex_breadcrumb_func' );
+		// Theme breadcrumb and page heading section
+		remove_action( 'synex_before_main_content', 'synex_breadcrumb_func', 10 );
+		remove_action( 'creatim_before_main_content', 'synex_breadcrumb_func', 10 );
 		remove_action( 'hfe_header', 'synex_breadcrumb_func', 20 );
 	}
 
@@ -139,26 +140,26 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 			':root' => array(
 				// Form field styles
 				// Theme sets global `input { color: var(--white) }`, which makes field text unreadable on light backgrounds.
-				'--fluidcheckout--field--text-color' => 'var( --header, #15171A )',
+				'--fluidcheckout--field--text-color'                           => 'var( --header, #15171A )',
 				// Match Select2/TomSelect height, padding and font-size to text inputs (theme body is 18px).
-				'--fluidcheckout--field--height' => '42px',
-				'--fluidcheckout--field--padding-left' => '9px',
-				'--fluidcheckout--field--font-size' => '18px',
+				'--fluidcheckout--field--height'                               => '42px',
+				'--fluidcheckout--field--padding-left'                         => '9px',
+				'--fluidcheckout--field--font-size'                            => '18px',
 				// Match WooCommerce form fields.
-				'--fluidcheckout--field--border-radius' => 'var( --wc-form-border-radius, 4px )',
-				'--fluidcheckout--field--border-color' => 'var( --wc-form-border-color, rgba(32, 7, 7, 0.8) )',
-				'--fluidcheckout--field--background-color--accent' => 'var( --theme, #007BFF )',
+				'--fluidcheckout--field--border-radius'                        => 'var( --wc-form-border-radius, 4px )',
+				'--fluidcheckout--field--border-color'                         => 'var( --wc-form-border-color, rgba(32, 7, 7, 0.8) )',
+				'--fluidcheckout--field--background-color--accent'             => 'var( --theme, #007BFF )',
 
 				// Button design styles
-				'--fluidcheckout--button--height' => '42px',
-				'--fluidcheckout--button--border-radius' => '8px',
-				'--fluidcheckout--button--primary--background-color' => 'var( --theme, #007BFF )',
-				'--fluidcheckout--button--primary--border-color' => 'var( --theme, #007BFF )',
-				'--fluidcheckout--button--primary--text-color' => '#fff',
+				'--fluidcheckout--button--height'                              => '42px',
+				'--fluidcheckout--button--border-radius'                       => '8px',
+				'--fluidcheckout--button--primary--background-color'           => 'var( --theme, #007BFF )',
+				'--fluidcheckout--button--primary--border-color'               => 'var( --theme, #007BFF )',
+				'--fluidcheckout--button--primary--text-color'                 => '#fff',
 				// Match theme `.theme-btn-main:hover .theme-btn { background-color: var(--header) }`.
-				'--fluidcheckout--button--primary--background-color--hover' => 'var( --header, #15171A )',
-				'--fluidcheckout--button--primary--border-color--hover' => 'var( --header, #15171A )',
-				'--fluidcheckout--button--primary--text-color--hover' => '#fff',
+				'--fluidcheckout--button--primary--background-color--hover'    => 'var( --header, #15171A )',
+				'--fluidcheckout--button--primary--border-color--hover'        => 'var( --header, #15171A )',
+				'--fluidcheckout--button--primary--text-color--hover'          => '#fff',
 			),
 		);
 
