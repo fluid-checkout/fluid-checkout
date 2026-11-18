@@ -35,6 +35,10 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		// Dark mode
 		add_filter( 'fc_enable_dark_mode_styles', array( $this, 'maybe_set_is_dark_mode' ), 10 );
 
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
 		// Header elements
 		add_action( 'fc_checkout_header', array( $this, 'maybe_output_woodmart_checkout_steps_section' ), 20 );
 
@@ -89,6 +93,23 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 			remove_action( 'woocommerce_checkout_billing', array( $free_shipping_bar_instance, 'render_shipping_progress_bar_with_wrapper' ), 10 );
 			add_action( 'fc_checkout_before_steps', array( $free_shipping_bar_instance, 'render_shipping_progress_bar_with_wrapper' ), 5 ); // Right before coupon code section
 		}
+	}
+
+
+
+	/**
+	 * Change the element used to position the progress bar and order summary when sticky.
+	 *
+	 * @param  array  $attributes  The elements attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		// Real sticky rows (`.whb-sticky-real`) and sticky header clone both become `position: fixed` when stuck
+		$attributes[ 'data-sticky-relative-to' ] = '.whb-header.whb-sticked .whb-main-header, .whb-clone.whb-sticked';
+
+		return $attributes;
 	}
 
 

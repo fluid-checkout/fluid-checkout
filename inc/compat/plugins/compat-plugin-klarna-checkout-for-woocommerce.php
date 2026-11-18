@@ -78,8 +78,8 @@ class FluidCheckout_KlarnaCheckoutForWooCommerce extends FluidCheckout {
 			// Skip some classes
 			if ( in_array( $class_name, $skip_undo_hooks_classes ) ) { continue; }
 
-			// Skip classes that don't exist or do not have the undo hooks function
-			if ( ! class_exists( $class_name ) || ! method_exists( $class_name::instance(), 'undo_hooks_early' ) ) { continue; }
+			// Skip classes that don't exist, are not singletons, or do not have the undo hooks function
+			if ( ! class_exists( $class_name ) || ! method_exists( $class_name, 'instance' ) || ! method_exists( $class_name::instance(), 'undo_hooks_early' ) ) { continue; }
 
 			// Run undo hooks
 			$class_name::instance()->undo_hooks_early();
@@ -108,8 +108,8 @@ class FluidCheckout_KlarnaCheckoutForWooCommerce extends FluidCheckout {
 			// Skip some classes
 			if ( in_array( $class_name, $skip_undo_hooks_classes ) ) { continue; }
 
-			// Skip classes that don't exist or do not have the undo hooks function
-			if ( ! class_exists( $class_name ) || ! method_exists( $class_name::instance(), 'undo_hooks' ) ) { continue; }
+			// Skip classes that don't exist, are not singletons, or do not have the undo hooks function
+			if ( ! class_exists( $class_name ) || ! method_exists( $class_name, 'instance' ) || ! method_exists( $class_name::instance(), 'undo_hooks' ) ) { continue; }
 
 			// Run undo hooks
 			$class_name::instance()->undo_hooks();

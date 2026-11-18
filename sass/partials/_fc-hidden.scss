@@ -10,3 +10,9 @@ $order-review-selector: null !default;
 .fc-hidden {
 	display: none !important; // Needed as this is an utility class
 }
+
+// Address fields the country locale hides. `address-i18n.js` adds and removes this class.
+// `!important` matches `.fc-hidden` so theme form-row display rules cannot reveal the "Add ..." link.
+.fc-address-locale-hidden {
+	display: none !important;
+}

@@ -5,7 +5,9 @@
 // ------------------------------------
 
 body.breakdance .bde-section.bde-header,
-body.breakdance .bde-section.bde-header--sticky {
+body.breakdance .bde-section.bde-header--sticky,
+body.oxygen .bde-section.bde-header,
+body.oxygen .bde-section.bde-header--sticky {
 	z-index: z( 'sticky-element' );
 }
 
