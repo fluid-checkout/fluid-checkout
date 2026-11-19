@@ -319,7 +319,19 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		// Otherwise, maybe output field types registered for the Fluid Checkout settings page
 		elseif ( has_action( 'fc_admin_settings_render_field_' . $field_type ) ) {
 			/**
-			 * Output a settings field of a specific type on the Fluid Checkout settings page.
+			 * Fires to output a settings field of a specific type on the Fluid Checkout settings page.
+			 *
+			 * The dynamic portion of the hook name, `$field_type`, refers to the settings field type.
+			 * Additional hook names are created for field types registered by other plugins.
+			 * Possible hook names include:
+			 *
+			 * - `fc_admin_settings_render_field_text`
+			 * - `fc_admin_settings_render_field_select`
+			 * - `fc_admin_settings_render_field_checkbox`
+			 * - `fc_admin_settings_render_field_fc_select`
+			 * - `fc_admin_settings_render_field_fc_button`
+			 *
+			 * @since 5.0.0
 			 *
 			 * @param  array  $value  Settings field arguments.
 			 */

@@ -86,6 +86,8 @@ class FluidCheckout_Utils extends FluidCheckout {
 		/**
 		 * Filters whether the current request is the order pay page or an order pay fragment.
 		 *
+		 * @since 5.0.0
+		 *
 		 * @param bool $value Whether order pay page or fragment. Default false.
 		 */
 		if ( true === apply_filters( 'fc_is_order_pay_page_or_fragment', false ) ) { return true; }

@@ -55,6 +55,13 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		// Account pages that also load Fluid Checkout form assets
 		if ( function_exists( 'is_account_page' ) && is_account_page() && ( is_wc_endpoint_url( 'edit-address' ) || is_wc_endpoint_url( 'add-payment-method' ) ) ) { return true; }
 
+		/**
+		 * Filters whether optional fields are wrapped as expansible sections on the current page.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param bool $should_hide Whether optional fields are hidden behind an add link. Default false.
+		 */
 		return (bool) apply_filters( 'fc_should_hide_optional_fields_on_current_page', false );
 	}
 
@@ -131,6 +138,8 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		 * Filters the locales and language codes that keep "Add" link labels capitalized.
 		 *
 		 * @since 5.0.0
+		 *
+		 * @param string[] $languages Locales and language codes that keep the label capitalized.
 		 */
 		$preserve_case_languages = apply_filters(
 			'fc_optional_fields_link_label_preserve_case_languages',
@@ -162,8 +171,9 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		 *
 		 * @since 5.0.0
 		 *
-		 * @param  string  $locale    Current locale.
-		 * @param  string  $language  Language code.
+		 * @param  bool    $should_lowercase  Whether the label is lowercased.
+		 * @param  string  $locale            Current locale.
+		 * @param  string  $language          Language code.
 		 */
 		return (bool) apply_filters( 'fc_optional_fields_link_label_lowercase', $should_lowercase, $locale, $language );
 	}

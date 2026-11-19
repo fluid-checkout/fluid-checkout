@@ -101,6 +101,8 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		 * Filters the body classes for the design of Fluid Checkout pages.
 		 *
 		 * @since 5.0.0
+		 *
+		 * @param string[] $add_classes Body classes added for the design template.
 		 */
 		$add_classes = apply_filters( 'fc_design_body_classes', $add_classes );
 

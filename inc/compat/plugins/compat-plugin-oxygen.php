@@ -79,6 +79,15 @@ class FluidCheckout_Oxygen extends FluidCheckout {
 		if ( ! self::is_oxygen_six_with_breakdance_woocommerce() ) { return false; }
 
 		// Allow complete override
+		/**
+		 * Filters whether an Oxygen 6 page without a Breakdance document tree uses the Fluid Checkout container layout.
+		 *
+		 * Return `true` or `false` to override the default detection. Return `null` to keep it.
+		 *
+		 * @since 5.0.1
+		 *
+		 * @param bool|null $should_use Short-circuit value. Default null.
+		 */
 		$should_use = apply_filters( 'fc_oxygen_six_should_use_themeless_fc_container_layout', null );
 		if ( null !== $should_use ) { return (bool) $should_use; }
 

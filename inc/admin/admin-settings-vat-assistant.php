@@ -115,6 +115,8 @@ class FluidCheckout_Settings_VATAssistant {
 		 * - `fc_vat_vat_assistant_settings`
 		 *
 		 * @since 5.0.0
+		 *
+		 * @param array $settings Settings fields for the section.
 		 */
 		$settings = apply_filters(
 			'fc_vat_' . $current_section . '_settings',

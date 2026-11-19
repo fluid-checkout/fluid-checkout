@@ -57,6 +57,8 @@ class FluidCheckout_Settings_TrustSymbols {
 		 * Filters the Trust badges settings.
 		 *
 		 * @since 5.0.0
+		 *
+		 * @param array $settings Settings fields for the section.
 		 */
 		return apply_filters(
 			'fc_trust_symbols_settings',

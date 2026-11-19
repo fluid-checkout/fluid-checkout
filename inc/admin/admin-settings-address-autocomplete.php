@@ -284,6 +284,8 @@ class FluidCheckout_Settings_AddressAutocomplete {
 		 * Filters the settings for the Address Autocomplete tab.
 		 *
 		 * @since 5.0.0
+		 *
+		 * @param array $settings Settings fields for the section.
 		 */
 		$settings = apply_filters(
 			'fc_gaa_address_autocomplete_settings',

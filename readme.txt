@@ -408,6 +408,11 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 == Changelog ==
 
+= Unreleased =
+
+* Dev: Added or fixed documentation for hooks.
+* Dev: Hook docs publishing warns about undocumented hooks and skips them, instead of failing the release.
+
 = 5.0.1 - 2026-11-18 =
 
 * Improved: Show a notice on the coupon codes settings when WooCommerce coupons are disabled, with a link to enable them.

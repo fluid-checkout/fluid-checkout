@@ -100,9 +100,11 @@ class FluidCheckout_RestApi_Errors {
 		);
 
 		/**
-		 * Filter REST API error definitions for `fluid-checkout/v1`.
+		 * Filters REST API error definitions for `fluid-checkout/v1`.
 		 *
 		 * Add-ons register resource-specific messages (for example address book CRUD).
+		 *
+		 * @since 5.0.0
 		 *
 		 * @param array $definitions Catalog id => array( message, status ).
 		 */
@@ -118,7 +120,9 @@ class FluidCheckout_RestApi_Errors {
 		$map = array();
 
 		/**
-		 * Filter feature-layer error code => REST `fc_api_*` code map.
+		 * Filters the feature-layer error code to REST `fc_api_*` code map.
+		 *
+		 * @since 5.0.0
 		 *
 		 * @param array $map Feature error code => REST catalog id.
 		 */

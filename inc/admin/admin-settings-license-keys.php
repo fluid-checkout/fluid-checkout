@@ -54,6 +54,7 @@ class FluidCheckout_Settings_LicenseKeys {
 		 *
 		 * @since 5.0.0
 		 *
+		 * @param  array   $settings         Settings rows to append. Default empty array.
 		 * @param  string  $current_section  Current settings section slug.
 		 */
 		$settings_add = apply_filters( 'fc_' . $current_section . '_settings_add', array(), $current_section );
@@ -92,6 +93,7 @@ class FluidCheckout_Settings_LicenseKeys {
 		 *
 		 * @since 5.0.0
 		 *
+		 * @param  array   $settings_new     License keys settings.
 		 * @param  string  $current_section  Current settings section slug.
 		 */
 		$settings = apply_filters( 'fc_' . $current_section . '_settings', $settings_new, $current_section );

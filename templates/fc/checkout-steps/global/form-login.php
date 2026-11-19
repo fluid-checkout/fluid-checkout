@@ -89,12 +89,24 @@ $unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 		<input type="hidden" name="redirect" value="<?php echo esc_url( $redirect ); ?>" />
 		<button type="submit" class="woocommerce-form-login__submit <?php
 			echo esc_attr(
+				/**
+				 * Filters the CSS classes for the checkout login submit button.
+				 *
+				 * @since 4.0.5
+				 *
+				 * @param string $classes CSS classes. Default `woocommerce-button button`.
+				 */
 				apply_filters( 'fc_checkout_login_button_classes', 'woocommerce-button button' )
 				// CHANGE: Check if function introduced in WooCommerce 7.1 is available before trying to use it
 				. ( function_exists( 'wc_wp_theme_get_element_class_name' ) && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' )
 			);
 		?>" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>">
-			<?php echo esc_html( apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) ) ); ?>
+			<?php
+			echo esc_html(
+				/** This filter is documented in templates/fc/checkout-steps/checkout/form-contact-login.php */
+				apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) )
+			);
+			?>
 		</button>
 	</p>
 	<?php // CHANGE: END - Move login button to its own section and customize button classes and label ?>

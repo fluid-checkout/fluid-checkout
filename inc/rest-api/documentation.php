@@ -18,10 +18,12 @@ class FluidCheckout_RestApi_Documentation {
 		$resources = array();
 
 		/**
-		 * Filter endpoint classes included in the REST API documentation export.
+		 * Filters endpoint classes included in the REST API documentation export.
 		 *
 		 * Register callbacks only from export-only files (for example
 		 * `inc/rest-api/export-documentation.php`), never from production bootstrap.
+		 *
+		 * @since 5.0.0
 		 *
 		 * @param string[] $endpoint_classes Fully qualified endpoint class names.
 		 */

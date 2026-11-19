@@ -257,7 +257,7 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 				 *
 				 * @since 5.0.0
 				 *
-				 * @param string $api_url     Canonical telemetry API base URL.
+				 * @param string $canonical   Canonical telemetry API base URL.
 				 * @param string $plugin_slug Plugin slug. Default `fluid-checkout`.
 				 */
 				$filtered = untrailingslashit( (string) apply_filters( 'fc_telemetry_api_url', $canonical, self::$plugin_slug ) );

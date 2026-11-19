@@ -104,6 +104,8 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 		 * Filters the getting-started checklist steps on the Dashboard.
 		 *
 		 * @since 5.0.0
+		 *
+		 * @param array $steps Checklist steps.
 		 */
 		return apply_filters( 'fc_setup_checklist_steps', $steps );
 	}
@@ -338,6 +340,8 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 		 * Filters settings tabs that mark a getting-started checklist step when visited.
 		 *
 		 * @since 5.0.0
+		 *
+		 * @param array $tab_to_step Checklist step ID by settings tab slug.
 		 */
 		return apply_filters( 'fc_setup_checklist_tab_to_step', $tab_to_step );
 	}

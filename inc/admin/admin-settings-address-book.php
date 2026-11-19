@@ -102,6 +102,8 @@ class FluidCheckout_Settings_AddressBook {
 		 * Filters the Address book settings.
 		 *
 		 * @since 5.0.0
+		 *
+		 * @param array $settings Settings fields for the section.
 		 */
 		$settings = apply_filters(
 			'fc_pro_address_book_settings',
@@ -200,9 +202,12 @@ class FluidCheckout_Settings_AddressBook {
 
 		/**
 		 * Filters the Address Book migration settings displayed on the Address Book tab.
+		 *
 		 * The Address Book add-on replaces the locked placeholder settings with its own settings.
 		 *
 		 * @since 5.0.0
+		 *
+		 * @param array $migration_settings Locked migration settings shown until Address Book replaces them.
 		 */
 		$migration_settings = apply_filters( 'fc_admin_address_book_migration_settings', self::get_locked_migration_settings() );
 

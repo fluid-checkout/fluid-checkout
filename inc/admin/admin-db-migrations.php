@@ -572,6 +572,8 @@ class FluidCheckout_AdminDBMigrations extends FluidCheckout {
 		/**
 		 * Filters the list of available database migration files.
 		 *
+		 * @since 5.0.0
+		 *
 		 * @param  array  $files  Absolute paths to migration PHP files.
 		 */
 		$files = apply_filters( 'fc_available_db_migrations', $files );

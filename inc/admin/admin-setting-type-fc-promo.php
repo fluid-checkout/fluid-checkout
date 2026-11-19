@@ -258,6 +258,7 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 		 *
 		 * @since 5.0.0
 		 *
+		 * @param  string  $html         HTML for the promo card actions.
 		 * @param  array   $value        Promo field args.
 		 * @param  string  $action_type  activated|activate|purchase (or custom from extensions).
 		 * @param  string  $plugin_file  Plugin basename.
