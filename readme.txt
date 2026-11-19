@@ -408,9 +408,12 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 == Changelog ==
 
-= 5.0.1 - 2026-11-18 =
+= Unreleased =
 
 * Dev: Added or fixed documentation for hooks.
+
+= 5.0.1 - 2026-11-18 =
+
 * Improved: Show a notice on the coupon codes settings when WooCommerce coupons are disabled, with a link to enable them.
 * Improved: Disable coupon codes settings on the checkout and cart settings when WooCommerce coupons are disabled.
 * Fixed: Compatibility with theme Woodmart. Keep the sticky order summary and progress bar below the theme sticky header when the site header is shown at checkout.

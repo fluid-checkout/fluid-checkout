@@ -9,7 +9,10 @@
 # - versioned_docs/ is not written here; a plain semver tag is recorded so a
 #   later docs-repo step can snapshot it
 #
-# No pull_request trigger. Fork pull requests must not run this workflow.
+# No pull_request trigger, and no branch push trigger. A release pushes the
+# same commit to main and as a tag; only the stable tag runs this workflow,
+# so one release publishes once. Fork pull requests must not run it.
+# workflow_dispatch is only for a manual rerun.
 #
 # Generated JSON and the Composer install live under RUNNER_TEMP, outside the
 # plugin tree. The docs checkout has to sit under the workspace (fluid-checkout-docs/)
@@ -21,10 +24,9 @@ name: Hook docs data
 
 on:
   push:
-    branches:
-      - main
     tags:
       # Glob, not regex. [0-9]+ is one or more digits. The whole tag must match.
+      # One tag push matches one of these patterns and starts one run.
       # 4.2.7 and v4.2.7 match. 4.2.7-beta-1 and v4.2.7-alpha-1 do not.
       - "[0-9]+.[0-9]+.[0-9]+"
       - "v[0-9]+.[0-9]+.[0-9]+"
@@ -41,13 +43,14 @@ jobs:
   publish:
     name: Publish Fluid Checkout Lite hook data
     runs-on: ubuntu-latest
-    # Second check for tag pushes that match the glob. workflow_dispatch and
-    # pushes to main are not tag-filtered. contains() is case-sensitive; the
-    # step below rejects any other casing on a tag push.
+    # Tag pushes are already limited to the globs above. This is a second
+    # check: workflow_dispatch is a manual rerun and is not tag-filtered.
+    # contains() is case-sensitive; the step below rejects any other casing
+    # on a tag push.
     if: >-
       github.event_name == 'workflow_dispatch' ||
-      github.ref_type == 'branch' ||
       (
+        github.event_name == 'push' &&
         github.ref_type == 'tag' &&
         !contains(github.ref_name, 'beta') &&
         !contains(github.ref_name, 'alpha')
@@ -112,7 +115,7 @@ jobs:
             ./vendor/bin/wp-hooks-generator \
               --input="${GITHUB_WORKSPACE}" \
               --output="${output_dir}" \
-              --ignore-files="vendor/,languages/,node_modules/,js/,css/,build/"
+              --ignore-files="vendor/,languages/,node_modules/,js/,css/,build/,tests/"
           ) 2>&1 | tee "${log_file}"
 
           # Fail only for undocumented hooks this plugin documents.
