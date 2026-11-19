@@ -10,14 +10,11 @@ $body-theme-selector: null !default;
 // TOM SELECT CONTROL
 // ------------------------------------
 
-// WooCommerce `.shop_table tfoot td` sets `font-weight: 700`, which inherits into TomSelect
-// in the cart shipping calculator. Native inputs reset their own font-weight.
 body#{ $body-theme-selector } .ts-wrapper.single .ts-control,
 body#{ $body-theme-selector } .ts-wrapper.single .ts-control > [data-ts-item] {
 	font-weight: 400 !important; // Needed to override WooCommerce shop_table bold inheritance
 	font-size: inherit !important; // Needed to match the font size of text inputs
 }
-// With the font size fix, which sets text inputs to 16px on smaller screens
 body#{ $body-theme-selector }.has-form-field-font-size-fix .ts-wrapper.single .ts-control,
 body#{ $body-theme-selector }.has-form-field-font-size-fix .ts-wrapper.single .ts-control > [data-ts-item] {
 	@media (#{$bp-smaller-than-desktop}) {

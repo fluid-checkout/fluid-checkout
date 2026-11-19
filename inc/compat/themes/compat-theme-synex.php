@@ -140,13 +140,10 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 		$new_css_variables = array(
 			':root' => array(
 				// Form field styles
-				// Theme sets global `input { color: var(--white) }`, which makes field text unreadable on light backgrounds.
 				'--fluidcheckout--field--text-color'                           => 'var( --header, #15171A )',
-				// Match Select2/TomSelect height, padding and font-size to text inputs (theme body is 18px).
 				'--fluidcheckout--field--height'                               => '42px',
 				'--fluidcheckout--field--padding-left'                         => '9px',
 				'--fluidcheckout--field--font-size'                            => '18px',
-				// Match WooCommerce form fields.
 				'--fluidcheckout--field--border-radius'                        => 'var( --wc-form-border-radius, 4px )',
 				'--fluidcheckout--field--border-color'                         => 'var( --wc-form-border-color, rgba(32, 7, 7, 0.8) )',
 				'--fluidcheckout--field--background-color--accent'             => 'var( --theme, #007BFF )',
@@ -157,7 +154,6 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 				'--fluidcheckout--button--primary--background-color'           => 'var( --theme, #007BFF )',
 				'--fluidcheckout--button--primary--border-color'               => 'var( --theme, #007BFF )',
 				'--fluidcheckout--button--primary--text-color'                 => '#fff',
-				// Match theme `.theme-btn-main:hover .theme-btn { background-color: var(--header) }`.
 				'--fluidcheckout--button--primary--background-color--hover'    => 'var( --header, #15171A )',
 				'--fluidcheckout--button--primary--border-color--hover'        => 'var( --header, #15171A )',
 				'--fluidcheckout--button--primary--text-color--hover'          => '#fff',

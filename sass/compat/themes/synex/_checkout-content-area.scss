@@ -10,8 +10,6 @@ $body-theme-selector: null !default;
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 
-// Keep content below the theme header, which is absolute and overlaps the page.
-// The theme breadcrumb section normally leaves this space, but is removed on these pages.
 body#{ $body-theme-selector }#{ $body-page-selector }:not( .has-checkout-header ):not( .fc-admin-preview--hide-header-footer ) .fc-content {
 	padding-top: remsize( 12rem ); // Needed to use theme header height plus spacing
 }

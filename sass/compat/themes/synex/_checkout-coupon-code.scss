@@ -9,8 +9,6 @@ $body-theme-selector: null !default;
 // CHECKOUT COUPON CODE
 // ------------------------------------
 
-// WooCommerce notice icons are absolutely positioned. FC coupon messages use
-// zero padding, so the icon overflows onto the coupon field below.
 body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-error:before,
 body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-info:before,
 body#{ $body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-message:before {

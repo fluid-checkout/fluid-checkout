@@ -39,8 +39,7 @@
 		// Bail if smooth scroller is not available
 		if ( 'undefined' === typeof ScrollSmoother || ! ScrollSmoother.get() ) { return; }
 
-		// Stop the smooth scroller, as it moves the page content with transforms,
-		// which makes sticky elements follow the content instead of the window
+		// Stop the smooth scroller
 		ScrollSmoother.get().kill();
 	};
 

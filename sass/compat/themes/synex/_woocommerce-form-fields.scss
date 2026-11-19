@@ -9,7 +9,6 @@ $body-theme-selector: null !default;
 // WOOCOMMERCE FORM FIELDS
 // ------------------------------------
 
-// Theme sets global `input { color: var(--white) }` and `input:focus { color: var(--white) }`.
 body#{ $body-theme-selector } div.woocommerce form .form-row textarea,
 body#{ $body-theme-selector } div.woocommerce form .form-row select,
 body#{ $body-theme-selector } div.woocommerce form .form-row input[type="email"],
@@ -33,7 +32,6 @@ body#{ $body-theme-selector } div.woocommerce form .form-row input[type="passwor
 	color: var( --fluidcheckout--field--text-color, #15171A ) !important; // Needed to override theme styles
 }
 
-// Use the same text color for the selected option of enhanced select fields
 body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered,
 body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered,
 body#{ $body-theme-selector } div.woocommerce form .form-row .ts-control,

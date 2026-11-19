@@ -9,13 +9,13 @@ $body-theme-selector: null !default;
 // CHECKOUT PROGRESS BAR
 // ------------------------------------
 
-// Sticky state below the theme mobile header bar, which is 40px taller than the header element used to position sticky elements
+// Sticky state
 body#{ $body-theme-selector }#{ $body-page-selector }:not( .has-checkout-header ):not( .fc-admin-preview--hide-header-footer ) .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
 	@media (max-width: 1199px) { // Needed to use theme's breakpoint
 		transform: translateY( 40px ); // Needed to use `px` as units to match theme styles
 	}
 }
-// With admin bar, which the theme sticky header covers
+// Sticky progress bar, page with admin bar
 body#{ $body-theme-selector }#{ $body-page-selector }:not( .has-checkout-header ).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
 	@media (min-width: 1200px) { // Needed to use theme's breakpoint
 		transform: translateY( 0 );
