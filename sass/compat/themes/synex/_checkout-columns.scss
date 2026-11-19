@@ -11,7 +11,7 @@ $body-theme-selector: null !default;
 // ------------------------------------
 
 // Sticky sidebar below the theme mobile header bar, which is 40px taller than the header element used to position sticky elements
-body#{ $body-theme-selector }#{ $body-page-selector }:not( .has-checkout-header ) .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
+body#{ $body-theme-selector }#{ $body-page-selector }:not( .has-checkout-header ):not( .fc-admin-preview--hide-header-footer ) .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
 	@media (#{$bp-larger-than-desktop}) and (max-width: 1199px) { // Needed to use theme's breakpoint
 		padding-top: calc( #{ $global-spacing-tiny } + 40px ); // Needed to use `px` as units to match theme styles
 	}

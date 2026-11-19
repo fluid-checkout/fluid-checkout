@@ -10,7 +10,7 @@ $body-theme-selector: null !default;
 // ------------------------------------
 
 // Sticky state below the theme mobile header bar, which is 40px taller than the header element used to position sticky elements
-body#{ $body-theme-selector }#{ $body-page-selector }:not( .has-checkout-header ) .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
+body#{ $body-theme-selector }#{ $body-page-selector }:not( .has-checkout-header ):not( .fc-admin-preview--hide-header-footer ) .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
 	@media (max-width: 1199px) { // Needed to use theme's breakpoint
 		transform: translateY( 40px ); // Needed to use `px` as units to match theme styles
 	}
