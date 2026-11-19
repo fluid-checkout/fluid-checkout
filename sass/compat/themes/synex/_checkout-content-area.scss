@@ -15,3 +15,10 @@ $body-theme-selector: null !default;
 body#{ $body-theme-selector }#{ $body-page-selector }:not( .has-checkout-header ):not( .fc-admin-preview--hide-header-footer ) .fc-content {
 	padding-top: remsize( 12rem ); // Needed to use theme header height plus spacing
 }
+// With admin bar
+body#{ $body-theme-selector }#{ $body-page-selector }:not( .has-checkout-header ):not( .fc-admin-preview--hide-header-footer ).admin-bar .fc-content {
+	padding-top: remsize( 12rem ) + 32px; // Needed to use the admin bar height
+	@media (max-width: 782px) { // Needed to use the admin bar breakpoint
+		padding-top: remsize( 12rem ) + 46px; // Needed to use the admin bar height
+	}
+}
