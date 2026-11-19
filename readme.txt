@@ -411,6 +411,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 = Unreleased =
 
 * Dev: Added or fixed documentation for hooks.
+* Dev: Hook docs publishing warns about undocumented hooks and skips them, instead of failing the release.
 
 = 5.0.1 - 2026-11-18 =
 

@@ -118,11 +118,18 @@ jobs:
               --ignore-files="vendor/,languages/,node_modules/,js/,css/,build/,tests/"
           ) 2>&1 | tee "${log_file}"
 
-          # Fail only for undocumented hooks this plugin documents.
           # Prefixes come from fluid-checkout-docs plugins.json: lite hookPrefixes,
           # minus catalog hookExcludePrefixes and hookExcludeNames. Copied
           # WooCommerce, plugin, and theme hooks are not edited, so a missing
           # docblock on those names is ignored.
+          #
+          # wp-hooks/generator does not write a hook that is missing a docblock
+          # or has an empty one, so those calls are already absent from the
+          # JSON that this job publishes. A documented call of the same name
+          # is still published. Undocumented Fluid Checkout hooks are a
+          # warning, not a failed job. A generator crash, a missing
+          # plugins.json entry, a bad hooks file, or a later publish error
+          # still fails the job.
           catalog="${RUNNER_TEMP}/plugins.json"
           curl -fsSL -o "${catalog}" https://raw.githubusercontent.com/fluid-checkout/fluid-checkout-docs/main/plugins.json
           if ! jq -e '.plugins[] | select(.id == "lite") | .hookPrefixes | length > 0' "${catalog}" >/dev/null; then
@@ -173,25 +180,44 @@ jobs:
             return 0
           }
 
-          own_failures=0
+          own_skipped=0
           third_party=0
+          skipped_file="${RUNNER_TEMP}/undocumented-fc-hooks.txt"
+          : > "${skipped_file}"
           while IFS= read -r line; do
             if [[ ! "${line}" =~ ^Hook\ \'(.*)\'\ in\ file\ \'(.*)\'\ (is\ missing\ a\ docblock|has\ an\ empty\ docblock)\.$ ]]; then
               continue
             fi
             hook_name="${BASH_REMATCH[1]}"
+            hook_file="${BASH_REMATCH[2]}"
             if hook_is_lite "${hook_name}"; then
-              own_failures=$((own_failures + 1))
-              echo "::error::${line}"
+              own_skipped=$((own_skipped + 1))
+              rel_file="${hook_file}"
+              if [[ -n "${GITHUB_WORKSPACE}" && "${rel_file}" == "${GITHUB_WORKSPACE}/"* ]]; then
+                rel_file="${rel_file#"${GITHUB_WORKSPACE}/"}"
+              fi
+              echo "::warning file=${rel_file}::Undocumented Fluid Checkout hook '${hook_name}' in ${rel_file}. Skipped from the published hook data."
+              printf -- '- `%s` (%s)\n' "${hook_name}" "${rel_file}" >> "${skipped_file}"
             else
               third_party=$((third_party + 1))
             fi
           done < "${log_file}"
-          echo "Ignored ${third_party} third-party hook call(s) without a docblock."
-          if [[ "${own_failures}" -gt 0 ]]; then
-            echo "::error::${own_failures} Fluid Checkout hook call(s) need a docblock before publishing."
-            exit 1
-          fi
+          echo "Skipped ${own_skipped} undocumented Fluid Checkout hook call(s). Ignored ${third_party} third-party hook call(s) without a docblock."
+          {
+            echo "### Hook docs"
+            echo
+            echo "Published hooks are the ones with a docblock. Undocumented Fluid Checkout hooks are left out of the JSON."
+            echo
+            echo "Undocumented Fluid Checkout hooks: ${own_skipped}"
+            echo
+            if [[ "${own_skipped}" -gt 0 ]]; then
+              cat "${skipped_file}"
+            else
+              echo "None."
+            fi
+            echo
+            echo "Ignored ${third_party} third-party hook call(s) without a docblock."
+          } >> "${GITHUB_STEP_SUMMARY}"
           for name in actions.json filters.json; do
             file="${output_dir}/${name}"
             if ! jq -e '(.hooks | type) == "array"' "${file}" >/dev/null; then
