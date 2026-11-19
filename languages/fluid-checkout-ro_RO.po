@@ -5443,6 +5443,29 @@ msgstr ""
 msgid "One per saved address"
 msgstr "Câte una pentru fiecare adresă salvată"
 
+#: inc/admin/admin-settings-checkout.php:742
+#. translators: %s: URL to the WooCommerce general settings page.
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the checkout page until coupons are enabled. <a "
+"href=\"%s\">Enable coupons in WooCommerce settings</a>."
+msgstr ""
+"Codurile promoționale sunt dezactivate în WooCommerce. Secțiunea dedicată "
+"codurilor promoționale nu va apărea pe pagina de finalizare a comenzii până "
+"când acestea nu vor fi activate. <a href=\"%s\">Activați codurile "
+"promoționale în setările WooCommerce</a>."
+
+#: inc/admin/admin-settings-checkout.php:735
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the cart page until coupons are enabled. <a href=\"%s\">Enable "
+"coupons in WooCommerce settings</a>."
+msgstr ""
+"Codurile promoționale sunt dezactivate în WooCommerce. Secțiunea dedicată "
+"codurilor promoționale nu va apărea pe pagina coșului de cumpărături până "
+"când acestea nu vor fi activate. <a href=\"%s\">Activează codurile "
+"promoționale din setările WooCommerce</a>."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, woocommerce checkout, one page checkout, multi-step
 Requires PHP: 7.4
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 5.0.0
+Stable tag: 5.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -408,7 +408,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 == Changelog ==
 
-= Unreleased =
+= 5.0.1 - 2026-11-18 =
 
 * Dev: Added or fixed documentation for hooks.
 * Improved: Show a notice on the coupon codes settings when WooCommerce coupons are disabled, with a link to enable them.

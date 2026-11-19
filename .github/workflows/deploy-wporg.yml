@@ -20,11 +20,11 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Stable version X.Y.Z, without a v prefix. Must match the zip header and readme Stable tag."
+        description: "Stable version X.Y.Z, without a `v` prefix. Must match the zip header and readme Stable tag."
         required: true
         type: string
       dry_run:
-        description: "Print the SVN status and diff. Do not commit or publish the GitHub release."
+        description: "DRY RUN - Print the SVN status and diff. Do not commit or publish the GitHub release."
         required: false
         type: boolean
         default: true

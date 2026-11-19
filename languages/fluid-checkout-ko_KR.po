@@ -4888,6 +4888,25 @@ msgstr "고객이 올바른 국제 형식으로 번호를 입력할 수 있도�
 msgid "One per saved address"
 msgstr "저장된 주소당 1개"
 
+#: inc/admin/admin-settings-checkout.php:742
+#. translators: %s: URL to the WooCommerce general settings page.
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the checkout page until coupons are enabled. <a "
+"href=\"%s\">Enable coupons in WooCommerce settings</a>."
+msgstr ""
+"WooCommerce에서 쿠폰 코드가 비활성화되어 있습니다. 쿠폰이 활성화될 때까지 결제 페이지에 쿠폰 섹션이 표시되지 않습니다. <a "
+"href=\"%s\">WooCommerce 설정에서 쿠폰 활성화하기</a>."
+
+#: inc/admin/admin-settings-checkout.php:735
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the cart page until coupons are enabled. <a href=\"%s\">Enable "
+"coupons in WooCommerce settings</a>."
+msgstr ""
+"WooCommerce에서 쿠폰 코드가 비활성화되어 있습니다. 쿠폰이 활성화될 때까지 장바구니 페이지에 쿠폰 섹션이 표시되지 않습니다. "
+"<a href=\"%s\">WooCommerce 설정에서 쿠폰 활성화하기</a>."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

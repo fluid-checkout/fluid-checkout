@@ -5318,6 +5318,28 @@ msgstr ""
 msgid "One per saved address"
 msgstr "មួយសម្រាប់អាសយដ្ឋានដែលបានរក្សាទុក"
 
+#: inc/admin/admin-settings-checkout.php:742
+#. translators: %s: URL to the WooCommerce general settings page.
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the checkout page until coupons are enabled. <a "
+"href=\"%s\">Enable coupons in WooCommerce settings</a>."
+msgstr ""
+"លេខកូដគូប៉ុងត្រូវបានបិទនៅក្នុង WooCommerce។ "
+"ផ្នែកគូប៉ុងនឹងមិនបង្ហាញនៅលើទំព័រទូទាត់ប្រាក់ទេ "
+"រហូតដល់គូប៉ុងត្រូវបានបើកដំណើរការ។ <a "
+"href=\"%s\">សូមបើកដំណើរការគូប៉ុងនៅក្នុងការកំណត់ WooCommerce</a> ។"
+
+#: inc/admin/admin-settings-checkout.php:735
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the cart page until coupons are enabled. <a href=\"%s\">Enable "
+"coupons in WooCommerce settings</a>."
+msgstr ""
+"លេខកូដគូប៉ុងត្រូវបានបិទនៅក្នុង WooCommerce។ "
+"ផ្នែកគូប៉ុងនឹងមិនបង្ហាញនៅលើទំព័ររទេះទេ រហូតដល់គូប៉ុងត្រូវបានបើក។ <a "
+"href=\"%s\">សូមបើកគូប៉ុងនៅក្នុងការកំណត់ WooCommerce</a> ។"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

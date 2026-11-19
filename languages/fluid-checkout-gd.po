@@ -5464,6 +5464,27 @@ msgstr ""
 msgid "One per saved address"
 msgstr "Aon airson gach seòladh a chaidh a shàbhaladh"
 
+#: inc/admin/admin-settings-checkout.php:742
+#. translators: %s: URL to the WooCommerce general settings page.
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the checkout page until coupons are enabled. <a "
+"href=\"%s\">Enable coupons in WooCommerce settings</a>."
+msgstr ""
+"Tha còdan cùpain à comas ann an WooCommerce. Cha nochd earrann nan cùpain "
+"air duilleag an àite-pàighidh gus an tèid cùpain a chomasachadh. <a "
+"href=\"%s\">Cuir cùpain an comas ann an roghainnean WooCommerce</a> ."
+
+#: inc/admin/admin-settings-checkout.php:735
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the cart page until coupons are enabled. <a href=\"%s\">Enable "
+"coupons in WooCommerce settings</a>."
+msgstr ""
+"Tha còdan cùpain à comas ann an WooCommerce. Cha nochd earrann nan cùpain "
+"air duilleag a’ chairt gus an tèid cùpain a chomasachadh. <a "
+"href=\"%s\">Cuir cùpain an comas ann an roghainnean WooCommerce</a> ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

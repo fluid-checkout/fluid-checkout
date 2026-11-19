@@ -5370,6 +5370,28 @@ msgstr ""
 msgid "One per saved address"
 msgstr "Un por cada enderezo gardado"
 
+#: inc/admin/admin-settings-checkout.php:742
+#. translators: %s: URL to the WooCommerce general settings page.
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the checkout page until coupons are enabled. <a "
+"href=\"%s\">Enable coupons in WooCommerce settings</a>."
+msgstr ""
+"Os códigos de cupón están desactivados en WooCommerce. A sección de cupóns "
+"non aparecerá na páxina de finalización da compra ata que os cupóns estean "
+"activados. <a href=\"%s\">Activa os cupóns na configuración de "
+"WooCommerce</a> ."
+
+#: inc/admin/admin-settings-checkout.php:735
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the cart page until coupons are enabled. <a href=\"%s\">Enable "
+"coupons in WooCommerce settings</a>."
+msgstr ""
+"Os códigos de cupón están desactivados en WooCommerce. A sección de cupóns "
+"non aparecerá na páxina do carriño ata que os cupóns estean activados. <a "
+"href=\"%s\">Activa os cupóns na configuración de WooCommerce</a> ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2026-11-08 19:36+0000\n"
+"POT-Creation-Date: 2026-11-18 20:47+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -17,25 +17,25 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/checkout-coupon-codes.php:351
+#: inc/checkout-coupon-codes.php:357
 msgid "Enter your code here"
 msgstr ""
 
-#: inc/checkout-coupon-codes.php:359
+#: inc/checkout-coupon-codes.php:365
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
 msgstr ""
 
 #. translators: %s: Form field label
-#: inc/checkout-coupon-codes.php:416, inc/checkout-hide-optional-fields.php:270
+#: inc/checkout-coupon-codes.php:422, inc/checkout-hide-optional-fields.php:472
 msgid "Add %s"
 msgstr ""
 
-#: inc/checkout-coupon-codes.php:513
+#: inc/checkout-coupon-codes.php:519
 msgid "Remove"
 msgstr ""
 
-#: inc/checkout-coupon-codes.php:599, inc/admin/admin-notice-db-migrations-applied.php:59, inc/admin/admin-notice-new-settings-page.php:53, inc/admin/admin-notice-settings-legacy-cleanup.php:126, inc/admin/admin-settings-renderer.php:403
+#: inc/checkout-coupon-codes.php:605, inc/admin/admin-notice-db-migrations-applied.php:59, inc/admin/admin-notice-new-settings-page.php:53, inc/admin/admin-notice-settings-legacy-cleanup.php:126, inc/admin/admin-settings-renderer.php:403
 msgid "Dismiss"
 msgstr ""
 
@@ -59,167 +59,167 @@ msgstr ""
 msgid "Only used for shipping-related questions."
 msgstr ""
 
-#: inc/checkout-steps.php:1252
+#: inc/checkout-steps.php:1261
 msgid "Click to go to the order summary"
 msgstr ""
 
-#: inc/checkout-steps.php:1252
+#: inc/checkout-steps.php:1261
 msgid "Cart total:"
 msgstr ""
 
-#: inc/checkout-steps.php:2227
+#: inc/checkout-steps.php:2236
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr ""
 
 #. translators: Next checkout step title
 #. translators: %s: next guided setup step label
-#: inc/checkout-steps.php:2232, inc/admin/guided-setup/guided-setup-fluid-checkout.php:1142
+#: inc/checkout-steps.php:2241, inc/admin/guided-setup/guided-setup-fluid-checkout.php:1142
 msgid "Proceed to %s"
 msgstr ""
 
-#: inc/checkout-steps.php:2821
+#: inc/checkout-steps.php:2830
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr ""
 
-#: inc/checkout-steps.php:2822
+#: inc/checkout-steps.php:2831
 msgid "Proceed to contact"
-msgstr ""
-
-#: inc/checkout-steps.php:2832
-msgctxt "Checkout step title"
-msgid "Shipping"
-msgstr ""
-
-#: inc/checkout-steps.php:2833
-msgid "Proceed to shipping"
 msgstr ""
 
 #: inc/checkout-steps.php:2841
 msgctxt "Checkout step title"
-msgid "Billing"
+msgid "Shipping"
 msgstr ""
 
 #: inc/checkout-steps.php:2842
-msgid "Proceed to billing"
+msgid "Proceed to shipping"
 msgstr ""
 
 #: inc/checkout-steps.php:2850
 msgctxt "Checkout step title"
-msgid "Payment"
+msgid "Billing"
 msgstr ""
 
 #: inc/checkout-steps.php:2851
+msgid "Proceed to billing"
+msgstr ""
+
+#: inc/checkout-steps.php:2859
+msgctxt "Checkout step title"
+msgid "Payment"
+msgstr ""
+
+#: inc/checkout-steps.php:2860
 msgid "Proceed to payment"
 msgstr ""
 
-#: inc/checkout-steps.php:2862
+#: inc/checkout-steps.php:2871
 msgid "Contact"
 msgstr ""
 
-#: inc/checkout-steps.php:2872, inc/admin/admin-settings-checkout.php:639, inc/admin/admin-settings-international-phone.php:94
+#: inc/checkout-steps.php:2881, inc/admin/admin-settings-checkout.php:639, inc/admin/admin-settings-international-phone.php:94
 msgid "Shipping address"
 msgstr ""
 
-#: inc/checkout-steps.php:2882
+#: inc/checkout-steps.php:2891
 msgid "Shipping method"
 msgstr ""
 
-#: inc/checkout-steps.php:2892
+#: inc/checkout-steps.php:2901
 msgid "Additional notes"
 msgstr ""
 
-#: inc/checkout-steps.php:2906, inc/admin/admin-settings-checkout.php:603, inc/admin/admin-settings-international-phone.php:141
+#: inc/checkout-steps.php:2915, inc/admin/admin-settings-checkout.php:603, inc/admin/admin-settings-international-phone.php:141
 msgid "Billing address"
 msgstr ""
 
-#: inc/checkout-steps.php:2916
+#: inc/checkout-steps.php:2925
 msgid "Payment method"
 msgstr ""
 
 #. translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:3244
+#: inc/checkout-steps.php:3253
 msgid "Step %1$s of %2$s"
 msgstr ""
 
 #. translators: %s: Substep title.
-#: inc/checkout-steps.php:3780
+#: inc/checkout-steps.php:3789
 msgid "Change: %s"
 msgstr ""
 
-#: inc/checkout-steps.php:3788
+#: inc/checkout-steps.php:3797
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr ""
 
-#: inc/checkout-steps.php:3807
+#: inc/checkout-steps.php:3816
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr ""
 
-#: inc/checkout-steps.php:3993
+#: inc/checkout-steps.php:4002
 msgctxt "Substep review text"
 msgid "None."
 msgstr ""
 
-#: inc/checkout-steps.php:4324
+#: inc/checkout-steps.php:4333
 msgid "An account will be created with the information provided at checkout when completing the order."
 msgstr ""
 
 #. translators: Substep review field format
-#: inc/checkout-steps.php:4687
+#: inc/checkout-steps.php:4696
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr ""
 
 #. translators: %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:4692
+#: inc/checkout-steps.php:4701
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr ""
 
-#: inc/checkout-steps.php:4835
+#: inc/checkout-steps.php:4844
 msgid "yes"
 msgstr ""
 
-#: inc/checkout-steps.php:5510, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:892
+#: inc/checkout-steps.php:5519, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:892
 msgid "Not selected yet."
 msgstr ""
 
 #. translators: %d: shipping package number
 #. translators: %d: Package number
-#: inc/checkout-steps.php:5523, inc/checkout-steps.php:6330, inc/checkout-steps.php:8912
+#: inc/checkout-steps.php:5532, inc/checkout-steps.php:6339, inc/checkout-steps.php:8965
 msgctxt "shipping packages"
 msgid "Shipping %d"
 msgstr ""
 
-#: inc/checkout-steps.php:5523, inc/checkout-steps.php:6330, inc/checkout-steps.php:8912
+#: inc/checkout-steps.php:5532, inc/checkout-steps.php:6339, inc/checkout-steps.php:8965
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr ""
 
-#: inc/checkout-steps.php:6800
+#: inc/checkout-steps.php:6809
 msgid "Same as shipping address"
 msgstr ""
 
-#: inc/checkout-steps.php:6859
+#: inc/checkout-steps.php:6868
 msgid "Same as billing address"
 msgstr ""
 
-#: inc/checkout-steps.php:8578, inc/admin/admin-settings-cart.php:134, inc/admin/admin-settings-checkout.php:341, inc/admin/admin-settings-checkout.php:348, inc/admin/admin-settings-order-received.php:304
+#: inc/checkout-steps.php:8631, inc/admin/admin-settings-cart.php:134, inc/admin/admin-settings-checkout.php:341, inc/admin/admin-settings-checkout.php:348, inc/admin/admin-settings-order-received.php:304
 msgid "Order summary"
 msgstr ""
 
-#: inc/checkout-steps.php:8675, inc/checkout-steps.php:8979
+#: inc/checkout-steps.php:8728, inc/checkout-steps.php:9032
 msgid "Edit cart"
 msgstr ""
 
-#: inc/checkout-steps.php:8989
+#: inc/checkout-steps.php:9042
 msgid "Close and continue with checkout"
 msgstr ""
 
-#: inc/checkout-steps.php:8989, inc/admin/guided-setup/guided-setup-fluid-checkout.php:1135
+#: inc/checkout-steps.php:9042, inc/admin/guided-setup/guided-setup-fluid-checkout.php:1135
 msgid "Continue"
 msgstr ""
 
@@ -362,7 +362,7 @@ msgstr ""
 msgid "Set separate colors for light and dark mode."
 msgstr ""
 
-#: inc/admin/admin-design-editor-promo.php:128, inc/admin/admin-setting-type-fc-addons.php:395, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:295, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
+#: inc/admin/admin-design-editor-promo.php:128, inc/admin/admin-setting-type-fc-addons.php:395, inc/admin/admin-setting-type-fc-promo.php:89, inc/admin/admin-settings-cart.php:334, inc/admin/admin-settings-order-pay.php:67, inc/admin/admin-settings-order-received.php:68
 msgid "Learn more"
 msgstr ""
 
@@ -594,37 +594,37 @@ msgctxt "Dummy product name in the admin preview"
 msgid "T-Shirt"
 msgstr ""
 
-#: inc/admin/admin-preview-dummy-data.php:467
+#: inc/admin/admin-preview-dummy-data.php:480
 msgctxt "Dummy order update in the admin preview"
 msgid "We received your order and will send you an update when it ships."
 msgstr ""
 
-#: inc/admin/admin-preview-dummy-data.php:492
+#: inc/admin/admin-preview-dummy-data.php:505
 msgctxt "Dummy download in the admin preview"
 msgid "User guide"
 msgstr ""
 
-#: inc/admin/admin-preview.php:827
+#: inc/admin/admin-preview.php:828
 msgid "This preview has expired. Reload the admin page to start a new preview."
 msgstr ""
 
-#: inc/admin/admin-preview.php:827
+#: inc/admin/admin-preview.php:828
 msgid "Preview expired"
 msgstr ""
 
-#: inc/admin/admin-preview.php:836
+#: inc/admin/admin-preview.php:837
 msgid "Orders cannot be placed in the preview."
 msgstr ""
 
-#: inc/admin/admin-preview.php:845
+#: inc/admin/admin-preview.php:846
 msgid "Logging in is not available in the preview."
 msgstr ""
 
-#: inc/admin/admin-preview.php:923
+#: inc/admin/admin-preview.php:924
 msgid "Accounts cannot be created in the preview."
 msgstr ""
 
-#: inc/admin/admin-preview.php:982
+#: inc/admin/admin-preview.php:983
 msgid "Requests to other sites are blocked in the preview."
 msgstr ""
 
@@ -1552,27 +1552,27 @@ msgstr ""
 msgid "Items"
 msgstr ""
 
-#: inc/admin/admin-settings-cart.php:282
+#: inc/admin/admin-settings-cart.php:321
 msgid "Cart page optimization"
 msgstr ""
 
-#: inc/admin/admin-settings-cart.php:287
+#: inc/admin/admin-settings-cart.php:326
 msgid "Give your cart the same clear, conversion-focused layout as your checkout."
 msgstr ""
 
-#: inc/admin/admin-settings-cart.php:289
+#: inc/admin/admin-settings-cart.php:328
 msgid "Match the cart layout to the checkout page for a consistent purchase journey."
 msgstr ""
 
-#: inc/admin/admin-settings-cart.php:290
+#: inc/admin/admin-settings-cart.php:329
 msgid "Keep the cart always updated in the background, no full page reloads when quantities change."
 msgstr ""
 
-#: inc/admin/admin-settings-cart.php:291
+#: inc/admin/admin-settings-cart.php:330
 msgid "Place coupon codes, shipping, and cross-sells exactly where they convert best."
 msgstr ""
 
-#: inc/admin/admin-settings-cart.php:292
+#: inc/admin/admin-settings-cart.php:331
 msgid "Keep the order summary visible while scrolling, and add trust symbols where shoppers need reassurance."
 msgstr ""
 
@@ -2058,6 +2058,15 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Define the visibility of the additional order notes field."
+msgstr ""
+
+#. translators: %s: URL to the WooCommerce general settings page.
+#: inc/admin/admin-settings-checkout.php:742
+msgid "Coupon codes are disabled in WooCommerce. The coupon section will not appear on the checkout page until coupons are enabled. <a href=\"%s\">Enable coupons in WooCommerce settings</a>."
+msgstr ""
+
+#: inc/admin/admin-settings-checkout.php:735
+msgid "Coupon codes are disabled in WooCommerce. The coupon section will not appear on the cart page until coupons are enabled. <a href=\"%s\">Enable coupons in WooCommerce settings</a>."
 msgstr ""
 
 #: inc/admin/admin-settings-customer-accounts.php:38, inc/admin/admin-settings-page.php:653
@@ -4040,7 +4049,7 @@ msgstr ""
 msgid "Theme Betheme"
 msgstr ""
 
-#: inc/compat/themes/compat-theme-betheme.php:189, inc/compat/themes/compat-theme-bookshelf.php:107, inc/compat/themes/compat-theme-kapee.php:129, inc/compat/themes/compat-theme-nyture.php:82, inc/compat/themes/compat-theme-porto.php:224, inc/compat/themes/compat-theme-pressmart.php:187, inc/compat/themes/compat-theme-thegem.php:165, inc/compat/themes/compat-theme-woodmart.php:165
+#: inc/compat/themes/compat-theme-betheme.php:189, inc/compat/themes/compat-theme-bookshelf.php:107, inc/compat/themes/compat-theme-kapee.php:129, inc/compat/themes/compat-theme-nyture.php:82, inc/compat/themes/compat-theme-porto.php:224, inc/compat/themes/compat-theme-pressmart.php:187, inc/compat/themes/compat-theme-thegem.php:165, inc/compat/themes/compat-theme-woodmart.php:186
 msgid "Checkout progress"
 msgstr ""
 
@@ -4160,23 +4169,23 @@ msgstr ""
 msgid "Output the checkout steps section from The Gem theme when using Fluid Checkout header and footer."
 msgstr ""
 
-#: inc/compat/themes/compat-theme-woodmart.php:158
+#: inc/compat/themes/compat-theme-woodmart.php:179
 msgid "Theme Woodmart"
 msgstr ""
 
-#: inc/compat/themes/compat-theme-woodmart.php:166
+#: inc/compat/themes/compat-theme-woodmart.php:187
 msgid "Output the checkout steps section from the Woodmart theme when using Fluid Checkout header and footer."
 msgstr ""
 
-#: inc/compat/themes/compat-theme-woodmart.php:174
+#: inc/compat/themes/compat-theme-woodmart.php:195
 msgid "Checkout options"
 msgstr ""
 
-#: inc/compat/themes/compat-theme-woodmart.php:175
+#: inc/compat/themes/compat-theme-woodmart.php:196
 msgid "Disable the theme checkout options"
 msgstr ""
 
-#: inc/compat/themes/compat-theme-woodmart.php:176
+#: inc/compat/themes/compat-theme-woodmart.php:197
 msgid "The options display product image, quantity field, remove button and link to product page added by the theme are disabled by default."
 msgstr ""
 
