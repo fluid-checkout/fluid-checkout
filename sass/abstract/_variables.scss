@@ -508,6 +508,10 @@ $checkout-expansible-section-text-decoration:    none !default;
 $checkout-highlighted-section-background-color:                 var( --fluidcheckout--section--highlighted-background-color, $lighter-grey ) !default;
 $checkout-highlighted-section-fields-background-color:          var( --fluidcheckout--section--highlighted-field-background-color, $white ) !default;
 
+// Section background over the page background, to hide the separator line behind the text
+$checkout-contact-login-separator-background-color:             var( --fluidcheckout--page--background-color, $white ) !default;
+$checkout-contact-login-separator-background-image:             linear-gradient( $checkout-step-background-color, $checkout-step-background-color ) !default;
+
 // END - CHECKOUT STEPS
 // ----------------------------------------
 
