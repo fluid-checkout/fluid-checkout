@@ -151,7 +151,7 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 				'--fluidcheckout--field--background-color--accent'             => 'var( --theme, #007BFF )',
 
 				// Button design styles
-				'--fluidcheckout--button--height'                              => '42px',
+				'--fluidcheckout--button--height'                              => '50px',
 				'--fluidcheckout--button--border-radius'                       => '8px',
 				'--fluidcheckout--button--primary--background-color'           => 'var( --theme, #007BFF )',
 				'--fluidcheckout--button--primary--border-color'               => 'var( --theme, #007BFF )',
