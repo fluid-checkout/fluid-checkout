@@ -1,0 +1,15 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $body-theme-selector } .select2-container .select2-search__field,
+body#{ $body-theme-selector } .select2-container .select2-search__field:focus {
+	color: var( --fluidcheckout--field--text-color, #15171A ); // Needed to use the same text color as other fields
+}

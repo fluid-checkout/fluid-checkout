@@ -38,3 +38,11 @@
 	$body-page-selector: scope.$body-page-selector,
 	$body-theme-selector: scope.$body-theme-selector
 );
+@forward "woocommerce-form-fields-select2" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
+@forward "z-index" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector,
+	$body-theme-selector: scope.$body-theme-selector
+);
