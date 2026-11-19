@@ -161,6 +161,9 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
+				// Page styles
+				'--fluidcheckout--page--background-color'                      => 'var( --body, #EDF1F5 )',
+
 				// Form field styles
 				'--fluidcheckout--field--text-color'                           => 'var( --header, #15171A )',
 				'--fluidcheckout--field--height'                               => '42px',
