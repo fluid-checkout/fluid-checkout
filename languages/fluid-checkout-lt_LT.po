@@ -5423,6 +5423,27 @@ msgstr ""
 msgid "One per saved address"
 msgstr "Po vieną kiekvienam išsaugotam adresui"
 
+#: inc/admin/admin-settings-checkout.php:742
+#. translators: %s: URL to the WooCommerce general settings page.
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the checkout page until coupons are enabled. <a "
+"href=\"%s\">Enable coupons in WooCommerce settings</a>."
+msgstr ""
+"„WooCommerce“ kuponų kodai yra išjungti. Kol kuponai nebus įjungti, kasos "
+"puslapyje nebus rodomas kuponų skyrius. <a href=\"%s\">Įjunkite kuponus "
+"„WooCommerce“ nustatymuose</a>."
+
+#: inc/admin/admin-settings-checkout.php:735
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the cart page until coupons are enabled. <a href=\"%s\">Enable "
+"coupons in WooCommerce settings</a>."
+msgstr ""
+"„WooCommerce“ kuponų kodai yra išjungti. Kuponų skiltis nebus rodoma "
+"krepšelio puslapyje, kol kuponai nebus įjungti. <a href=\"%s\">Įjunkite "
+"kuponus „WooCommerce“ nustatymuose</a>."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

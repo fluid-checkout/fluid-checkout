@@ -5338,6 +5338,27 @@ msgstr ""
 msgid "One per saved address"
 msgstr "Gordetako helbide bakoitzeko bat"
 
+#: inc/admin/admin-settings-checkout.php:742
+#. translators: %s: URL to the WooCommerce general settings page.
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the checkout page until coupons are enabled. <a "
+"href=\"%s\">Enable coupons in WooCommerce settings</a>."
+msgstr ""
+"Kupoi kodeak desgaituta daude WooCommerce-n. Kupoien atala ez da ordainketa "
+"orrian agertuko kupoiak gaituta egon arte. <a href=\"%s\">Gaitu kupoiak "
+"WooCommerce ezarpenetan</a> ."
+
+#: inc/admin/admin-settings-checkout.php:735
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the cart page until coupons are enabled. <a href=\"%s\">Enable "
+"coupons in WooCommerce settings</a>."
+msgstr ""
+"Kupoi kodeak desgaituta daude WooCommerce-n. Kupoi atala ez da agertuko "
+"erosketa orrian kupoiak gaituta egon arte. <a href=\"%s\">Gaitu kupoiak "
+"WooCommerce ezarpenetan</a> ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -5372,6 +5372,27 @@ msgstr ""
 msgid "One per saved address"
 msgstr "Један по сачуваној адреси"
 
+#: inc/admin/admin-settings-checkout.php:742
+#. translators: %s: URL to the WooCommerce general settings page.
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the checkout page until coupons are enabled. <a "
+"href=\"%s\">Enable coupons in WooCommerce settings</a>."
+msgstr ""
+"Купони су онемогућени у WooCommerce-у. Одељак са купонима се неће појавити "
+"на страници за плаћање док се купони не омогуће. <a href=\"%s\">Омогућите "
+"купоне у подешавањима WooCommerce-а</a> ."
+
+#: inc/admin/admin-settings-checkout.php:735
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the cart page until coupons are enabled. <a href=\"%s\">Enable "
+"coupons in WooCommerce settings</a>."
+msgstr ""
+"Купони су онемогућени у WooCommerce-у. Одељак са купонима се неће појавити "
+"на страници корпе док се купони не омогуће. <a href=\"%s\">Омогућите купоне "
+"у подешавањима WooCommerce-а</a> ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

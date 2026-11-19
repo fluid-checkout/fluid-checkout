@@ -5224,6 +5224,27 @@ msgstr ""
 msgid "One per saved address"
 msgstr "દરેક સાચવેલા સરનામાં માટે એક"
 
+#: inc/admin/admin-settings-checkout.php:742
+#. translators: %s: URL to the WooCommerce general settings page.
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the checkout page until coupons are enabled. <a "
+"href=\"%s\">Enable coupons in WooCommerce settings</a>."
+msgstr ""
+"WooCommerce માં કૂપન કોડ્સ અક્ષમ છે. કૂપન્સ સક્ષમ ન થાય ત્યાં સુધી ચેકઆઉટ "
+"પૃષ્ઠ પર કૂપન વિભાગ દેખાશે નહીં. <a href=\"%s\">WooCommerce સેટિંગ્સમાં "
+"કૂપન્સ સક્ષમ કરો</a> ."
+
+#: inc/admin/admin-settings-checkout.php:735
+msgid ""
+"Coupon codes are disabled in WooCommerce. The coupon section will not "
+"appear on the cart page until coupons are enabled. <a href=\"%s\">Enable "
+"coupons in WooCommerce settings</a>."
+msgstr ""
+"WooCommerce માં કૂપન કોડ્સ અક્ષમ છે. કૂપન્સ સક્ષમ ન થાય ત્યાં સુધી કૂપન "
+"વિભાગ કાર્ટ પૃષ્ઠ પર દેખાશે નહીં. <a href=\"%s\">WooCommerce સેટિંગ્સમાં "
+"કૂપન્સ સક્ષમ કરો</a> ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
