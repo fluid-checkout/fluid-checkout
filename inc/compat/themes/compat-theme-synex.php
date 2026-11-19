@@ -76,7 +76,8 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-compat-synex-smooth-scroll', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/themes/synex/smooth-scroll' ), array( 'jquery', 'synex-main' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-compat-synex-smooth-scroll', 'window.addEventListener("load",function(){SynexSmoothScroll.init();});' );
+		// Initialize before the theme creates the smooth scroller in its document ready handlers
+		wp_add_inline_script( 'fc-compat-synex-smooth-scroll', 'SynexSmoothScroll.init();' );
 	}
 
 	/**
