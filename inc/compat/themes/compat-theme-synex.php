@@ -48,6 +48,9 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 	public function very_late_hooks() {
 		// Theme breadcrumb and page heading
 		$this->breadcrumb_hooks();
+
+		// Elementor header and footer from Synex Core
+		$this->elementor_hooks();
 	}
 
 
@@ -66,6 +69,25 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 		remove_action( 'synex_before_main_content', 'synex_breadcrumb_func', 10 );
 		remove_action( 'creatim_before_main_content', 'synex_breadcrumb_func', 10 );
 		remove_action( 'hfe_header', 'synex_breadcrumb_func', 20 );
+	}
+
+
+
+	/**
+	 * Add or remove Elementor hooks.
+	 */
+	public function elementor_hooks() {
+		// Bail if the Elementor header and footer from Synex Core are not available
+		if ( ! class_exists( 'Creatim_Header_Footer_Elementor' ) ) { return; }
+
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Bail if not using distraction free header and footer
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+
+		// Theme header and footer assets, which load Elementor scripts that fail when the theme header is replaced
+		remove_action( 'wp_enqueue_scripts', array( Creatim_Header_Footer_Elementor::instance(), 'enqueue_scripts' ), 10 );
 	}
 
 
