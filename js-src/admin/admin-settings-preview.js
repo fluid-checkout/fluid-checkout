@@ -1166,21 +1166,49 @@
 
 
 	/**
-	 * Toggle preview expanded/collapsed with Ctrl+Shift+P or Cmd+Shift+P.
+	 * Toggle header and footer visibility in the page preview.
+	 */
+	var toggleHeaderFooterVisible = function() {
+		setHeaderFooterVisible( ! _isHeaderFooterVisible );
+		saveState( 'headerFooter', _isHeaderFooterVisible );
+		_isHeaderFooterShownForTab = false;
+	};
+
+	/**
+	 * Switch the preview to guest or logged-in mode and reload the active page.
+	 *
+	 * @param  {string}  mode  Preview mode.
+	 */
+	var switchPreviewMode = function( mode ) {
+		// Bail if the mode is already active
+		if ( mode === _previewMode ) { return; }
+
+		setPreviewMode( mode );
+		saveState( 'mode', _previewMode );
+		loadActivePreviewPage();
+	};
+
+	/**
+	 * Handle preview keyboard shortcuts (expand, header/footer, guest, logged-in).
 	 *
 	 * @param  {KeyboardEvent}  e  Key down event.
 	 */
-	var handlePreviewExpandKeydown = function( e ) {
+	var handlePreviewShortcutKeydown = function( e ) {
 		var layout;
-		var isExpandShortcut;
+		var key;
+		var isModifierShortcut;
 
-		// Bail if FCUtils is not available
-		if ( ! window.FCUtils ) { return; }
+		isModifierShortcut = ( e.metaKey || e.ctrlKey ) && e.shiftKey && ! e.altKey;
 
-		isExpandShortcut = ( e.metaKey || e.ctrlKey ) && e.shiftKey && ! e.altKey && FCUtils.keyboardKeys.P === e.key.toLowerCase();
+		// Bail if the modifier combo was not pressed
+		if ( ! isModifierShortcut ) { return; }
 
-		// Bail if the expand shortcut was not pressed
-		if ( ! isExpandShortcut ) { return; }
+		key = e.key.toLowerCase();
+
+		// Bail if this is not a preview shortcut key
+		if ( -1 === [ 'p', 'h', 'g', 'l' ].indexOf( key ) ) {
+			return;
+		}
 
 		// Bail if the user is typing in a field
 		if ( isPreviewExpandShortcutBlockedTarget( e.target ) ) { return; }
@@ -1191,7 +1219,23 @@
 		if ( ! layout || ! layout.classList.contains( _settings.hasPreviewClass ) ) { return; }
 
 		e.preventDefault();
-		togglePreviewExpanded();
+
+		// EXPAND PREVIEW
+		if ( 'p' === key ) {
+			togglePreviewExpanded();
+		}
+		// TOGGLE HEADER AND FOOTER (distraction-free)
+		else if ( 'h' === key ) {
+			toggleHeaderFooterVisible();
+		}
+		// GUEST MODE
+		else if ( 'g' === key ) {
+			switchPreviewMode( _settings.guestMode );
+		}
+		// LOGGED-IN MODE
+		else if ( 'l' === key ) {
+			switchPreviewMode( _settings.loggedInMode );
+		}
 	};
 
 
@@ -1241,10 +1285,7 @@
 		}
 		// HEADER AND FOOTER TOGGLE
 		else if ( matchedElement = e.target.closest( _settings.headerFooterSelector ) ) {
-			// Toggle the header and footer, remembered in the browser and kept after leaving a tab that shows them
-			setHeaderFooterVisible( ! _isHeaderFooterVisible );
-			saveState( 'headerFooter', _isHeaderFooterVisible );
-			_isHeaderFooterShownForTab = false;
+			toggleHeaderFooterVisible();
 			e.preventDefault();
 		}
 	};
@@ -1468,14 +1509,35 @@
 	var handleAdminShortcutMessage = function( shortcut ) {
 		var layout;
 
+		layout = getLayout();
+
 		// EXPAND PREVIEW
 		if ( 'expandPreview' === shortcut ) {
-			layout = getLayout();
-
 			// Bail if the preview column is not visible for the current tab
 			if ( ! layout || ! layout.classList.contains( _settings.hasPreviewClass ) ) { return; }
 
 			togglePreviewExpanded();
+		}
+		// TOGGLE HEADER AND FOOTER
+		else if ( 'toggleHeaderFooter' === shortcut ) {
+			// Bail if the preview column is not visible for the current tab
+			if ( ! layout || ! layout.classList.contains( _settings.hasPreviewClass ) ) { return; }
+
+			toggleHeaderFooterVisible();
+		}
+		// GUEST MODE
+		else if ( 'previewGuest' === shortcut ) {
+			// Bail if the preview column is not visible for the current tab
+			if ( ! layout || ! layout.classList.contains( _settings.hasPreviewClass ) ) { return; }
+
+			switchPreviewMode( _settings.guestMode );
+		}
+		// LOGGED-IN MODE
+		else if ( 'previewLoggedIn' === shortcut ) {
+			// Bail if the preview column is not visible for the current tab
+			if ( ! layout || ! layout.classList.contains( _settings.hasPreviewClass ) ) { return; }
+
+			switchPreviewMode( _settings.loggedInMode );
 		}
 		// SAVE SETTINGS
 		else if ( 'saveSettings' === shortcut ) {
@@ -1691,7 +1753,7 @@
 		document.addEventListener( 'change', handleViewportChange, true );
 		document.addEventListener( 'change', handleWidthChange, true );
 		document.addEventListener( 'keydown', handleWidthKeyDown, true );
-		document.addEventListener( 'keydown', handlePreviewExpandKeydown, true );
+		document.addEventListener( 'keydown', handlePreviewShortcutKeydown, true );
 		document.addEventListener( 'change', handleModeChange, true );
 		window.addEventListener( 'message', handleMessage );
 		document.addEventListener( 'load', handleFrameLoad, true ); // Load events do not bubble, but reach the document in the capture phase

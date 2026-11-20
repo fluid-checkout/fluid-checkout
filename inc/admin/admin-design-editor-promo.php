@@ -129,7 +129,6 @@ class FluidCheckout_Admin_DesignEditorPromo extends FluidCheckout {
 				'plugin_file'          => 'fluid-checkout-pro/fluid-checkout-pro.php',
 				'plugin_slug'          => 'fluid-checkout-pro',
 				'purchase_url'         => 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=design-editor-promo-purchase&mtm_source=lite-plugin',
-				'purchase_price'       => FluidCheckout_Admin::instance()->get_pro_purchase_price(),
 			),
 		);
 	}

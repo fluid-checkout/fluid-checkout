@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 3.0.0
+ * @version 5.0.1
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -79,7 +79,7 @@ defined( 'ABSPATH' ) || exit;
 
 			// Get logo HTML from output buffer
 			$logo_html = ob_get_clean();
-			
+
 			// Maybe add `aria-description` attribute
 			if ( ! strpos( $logo_html, ' aria-description=' ) ) {
 				$logo_html = str_replace( 'rel="home"', 'rel="home" aria-description="' . $homepage_link_description . '"', $logo_html );
@@ -89,7 +89,7 @@ defined( 'ABSPATH' ) || exit;
 			if ( strpos( $logo_html, ' alt=""' ) ) {
 				$logo_html = str_replace( 'alt=""', 'alt="' . $site_title . '"', $logo_html );
 			}
-			
+
 			// Output logo HTML
 			echo $logo_html;
 			?>
@@ -104,7 +104,8 @@ defined( 'ABSPATH' ) || exit;
 			do_action( 'fc_checkout_header_widgets' );
 		?>
 
-		<?php if ( has_action( 'fc_checkout_header_cart_link' ) ) : ?>
+		<?php // CHANGE: Hide the header cart link on the order received (thank you) page. ?>
+		<?php if ( has_action( 'fc_checkout_header_cart_link' ) && ! ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) ) : ?>
 		<div class="fc-checkout__cart-link-wrapper">
 			<?php
 				/**

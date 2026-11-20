@@ -146,6 +146,8 @@
 
 .fc-header__button:not( .fc-header__button--save ):not( .fc-header__button--upgrade ) .fc-settings-shortcut,
 .fc-settings-preview__expand .fc-settings-shortcut,
+.fc-settings-preview__header-footer .fc-settings-shortcut,
+.fc-settings-preview__mode .fc-settings-shortcut,
 .button-secondary .fc-settings-shortcut,
 .fc-settings-button:not( .fc-settings-button--primary ) .fc-settings-shortcut {
 	background-color: rgba( 130, 130, 130, .2 );

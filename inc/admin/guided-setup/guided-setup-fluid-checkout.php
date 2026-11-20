@@ -1043,7 +1043,7 @@ class FluidCheckout_Admin_GuidedSetup_FluidCheckout extends FluidCheckout_Admin_
 			<div class="fc-setup-card__inner">
 				<form>
 					<h2><?php echo esc_html__( 'Recommended setup', 'fluid-checkout' ); ?></h2>
-					<p class="fc-setup-intro"><?php echo esc_html__( 'Based on what you told us, these checkout options are a good starting point. You can turn recommended options off before applying them and the general default value will be used instead.', 'fluid-checkout' ); ?></p>
+					<p class="fc-setup-intro"><?php echo esc_html__( 'Based on what you told us, these checkout options are a good starting point. You can turn recommended options off before applying them.', 'fluid-checkout' ); ?></p>
 					<p class="fc-setup-intro"><?php echo esc_html__( 'You can change any of these settings later in the Fluid Checkout settings.', 'fluid-checkout' ); ?></p>
 					<div data-fc-setup-recommendations>
 						<?php $this->output_recommended_setup_settings(); ?>

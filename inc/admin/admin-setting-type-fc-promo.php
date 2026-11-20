@@ -210,13 +210,13 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 			$purchase_url   = isset( $value[ 'purchase_url' ] ) ? (string) $value[ 'purchase_url' ] : '';
 			$purchase_label = isset( $value[ 'purchase_label' ] ) ? (string) $value[ 'purchase_label' ] : '';
 
-			if ( '' === $purchase_label && ! empty( $value[ 'purchase_price' ] ) ) {
-				$purchase_label = $admin->get_pro_upgrade_button_label( (string) $value[ 'purchase_price' ] );
+			if ( '' === $purchase_label ) {
+				$purchase_label = $admin->get_pro_upgrade_button_label();
 			}
 
 			if ( '' !== $purchase_url && '' !== $purchase_label ) :
 				?>
-				<a href="<?php echo esc_url( $purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo wp_kses_post( $purchase_label ); ?></a>
+				<a href="<?php echo esc_url( $purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $purchase_label ); ?></a>
 				<?php
 			endif;
 		else :
@@ -224,13 +224,12 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 			$purchase_url   = isset( $value[ 'purchase_url' ] ) ? (string) $value[ 'purchase_url' ] : '';
 			$purchase_label = isset( $value[ 'purchase_label' ] ) ? (string) $value[ 'purchase_label' ] : '';
 
-			if ( '' === $purchase_label && ! empty( $value[ 'purchase_price' ] ) ) {
-				$purchase_label = $admin->get_addon_purchase_button_label( (string) $value[ 'purchase_price' ] );
+			if ( '' === $purchase_label ) {
+				$purchase_label = $admin->get_addon_purchase_button_label();
 			}
 
 			if ( ! $is_pro_installed ) :
 				// PRO not installed: Upgrade to PRO + optional “Get only this add-on”
-				$pro_price        = ! empty( $value[ 'pro_purchase_price' ] ) ? (string) $value[ 'pro_purchase_price' ] : $admin->get_pro_purchase_price();
 				$pro_purchase_url = ! empty( $value[ 'pro_purchase_url' ] )
 					? (string) $value[ 'pro_purchase_url' ]
 					: add_query_arg(
@@ -242,13 +241,13 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 						'https://fluidcheckout.com/pricing/'
 					);
 				?>
-				<a href="<?php echo esc_url( $pro_purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo wp_kses_post( $admin->get_pro_upgrade_button_label( $pro_price ) ); ?></a>
+				<a href="<?php echo esc_url( $pro_purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $admin->get_pro_upgrade_button_label() ); ?></a>
 				<?php if ( '' !== $purchase_url && '' !== $purchase_label ) : ?>
-					<a href="<?php echo esc_url( $purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo wp_kses_post( $purchase_label ); ?></a>
+					<a href="<?php echo esc_url( $purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $purchase_label ); ?></a>
 				<?php endif; ?>
 			<?php elseif ( '' !== $purchase_url ) : ?>
-				<?php // PRO installed: price-less purchase CTA so customers are not nudged to pay again. ?>
-				<a href="<?php echo esc_url( $purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $admin->get_addon_purchase_button_label_without_price() ); ?></a>
+				<?php // PRO installed: install CTA so customers are not nudged to pay again. ?>
+				<a href="<?php echo esc_url( $purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $admin->get_addon_install_button_label() ); ?></a>
 			<?php endif;
 		endif;
 

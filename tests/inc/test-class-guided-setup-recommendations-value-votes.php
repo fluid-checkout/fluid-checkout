@@ -334,4 +334,111 @@ class FluidCheckout_Guided_Setup_Recommendations_Value_Votes_Test extends TestCa
 		);
 	}
 
+
+
+	/**
+	 * Test: finish apply only writes listed recommendation keys, not every code default.
+	 *
+	 * profile_values may still contain the full settings defaults for scoring.
+	 */
+	public function test_get_values_to_apply_only_includes_listed_recommendations() {
+		$result = $this->engine->get_recommendation(
+			array(
+				'business_industry' => 'fashion-apparel-accessories',
+				'customer_audience' => 'dtc',
+				'customer_location' => 'domestic',
+				'product_types'     => array( 'physical' ),
+				'delivery_methods'  => array( 'ship_to_address' ),
+			)
+		);
+
+		$this->assertNotEmpty( $result['recommended'] );
+		$this->assertGreaterThan(
+			count( $result['recommended'] ),
+			count( $result['profile_values'] ),
+			'profile_values should still carry more keys than the listed recommendations'
+		);
+
+		$apply_pro        = $this->engine->should_apply_pro_recommendation_options();
+		$recommended_keys = array();
+
+		// Collect listed option keys that finish setup is allowed to write
+		foreach ( $result['recommended'] as $row ) {
+			$option_key = isset( $row['option_key'] ) ? (string) $row['option_key'] : '';
+
+			// Skip incomplete rows
+			if ( '' === $option_key ) {
+				continue;
+			}
+
+			// Skip PRO promo rows on Lite
+			if ( ! empty( $row['is_pro'] ) && ! $apply_pro ) {
+				continue;
+			}
+
+			$recommended_keys[] = $option_key;
+		}
+
+		$recommended_keys = array_values( array_unique( $recommended_keys ) );
+		$values_to_apply  = $this->engine->get_values_to_apply(
+			array(
+				'profile_values' => $result['profile_values'],
+				'recommended'    => $result['recommended'],
+				'user_overrides' => array(),
+			)
+		);
+
+		$this->assertNotEmpty( $values_to_apply );
+		$this->assertSame( $recommended_keys, array_keys( $values_to_apply ) );
+		$this->assertArrayHasKey( 'fc_checkout_layout', $values_to_apply );
+
+		// A settings default that was never listed must not be applied
+		$unlisted_defaults = array_diff_key( $result['profile_values'], $values_to_apply );
+		$this->assertNotEmpty( $unlisted_defaults );
+		$this->assertArrayNotHasKey( array_key_first( $unlisted_defaults ), $values_to_apply );
+	}
+
+
+
+	/**
+	 * Test: unchecked recommendation toggles are omitted from values to apply.
+	 */
+	public function test_get_values_to_apply_omits_user_overrides() {
+		$values = $this->engine->get_values_to_apply(
+			array(
+				'profile_values' => array(
+					'fc_checkout_layout'                      => 'multi-step',
+					'fc_enable_checkout_hide_optional_fields' => 'yes',
+					'fc_show_shipping_section_highlighted'    => 'yes',
+				),
+				'recommended'    => array(
+					array(
+						'option_key' => 'fc_checkout_layout',
+						'value'      => 'multi-step',
+						'is_pro'     => false,
+					),
+					array(
+						'option_key' => 'fc_enable_checkout_hide_optional_fields',
+						'value'      => 'yes',
+						'is_pro'     => false,
+					),
+					array(
+						'option_key' => 'fc_show_shipping_section_highlighted',
+						'value'      => 'yes',
+						'is_pro'     => false,
+					),
+				),
+				'user_overrides' => array( 'fc_show_shipping_section_highlighted' ),
+			)
+		);
+
+		$this->assertSame(
+			array(
+				'fc_checkout_layout'                      => 'multi-step',
+				'fc_enable_checkout_hide_optional_fields' => 'yes',
+			),
+			$values
+		);
+	}
+
 }

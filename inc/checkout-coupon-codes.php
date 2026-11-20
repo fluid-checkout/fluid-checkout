@@ -74,6 +74,9 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * Add or remove very late hooks.
 	 */
 	public function very_late_hooks() {
+		// Bail if use of coupons not enabled
+		if ( ! wc_coupons_enabled() ) { return; }
+
 		// Substep
 		$this->maybe_register_substep();
 	}
@@ -150,6 +153,9 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	public function maybe_register_substep() {
 		// Bail if feature is not enabled
 		if ( ! $this->is_feature_enabled() ) { return; }
+
+		// Bail if use of coupons not enabled
+		if ( ! wc_coupons_enabled() ) { return; }
 
 		// Get coupon code position
 		$is_hidden_position = false === $this->get_substep_step_id();

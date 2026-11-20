@@ -1,5 +1,4 @@
 <?php
-
 defined( 'ABSPATH' ) || exit;
 
 trait TransactionalTestClassTrait {
@@ -27,7 +26,6 @@ trait TransactionalTestClassTrait {
 		parent::setUp();
 		self::start_database_transaction();
 
-		// Maybe call the instance custom setUp method.
 		if ( method_exists( $this, 'setUpInstance' ) ) {
 			$this->setUpInstance();
 		}
@@ -37,7 +35,6 @@ trait TransactionalTestClassTrait {
 	 * Shared teardown logic for transaction rollback.
 	 */
 	public function tearDown() : void {
-		// Maybe call the instance custom tearDown method.
 		if ( method_exists( $this, 'tearDownInstance' ) ) {
 			$this->tearDownInstance();
 		}

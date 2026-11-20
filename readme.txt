@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, woocommerce checkout, one page checkout, multi-step
 Requires PHP: 7.4
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 4.2.8
+Stable tag: 5.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -408,7 +408,23 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 == Changelog ==
 
-= Unreleased =
+= 5.0.1 - 2026-11-18 =
+
+* Improved: Show a notice on the coupon codes settings when WooCommerce coupons are disabled, with a link to enable them.
+* Improved: Disable coupon codes settings on the checkout and cart settings when WooCommerce coupons are disabled.
+* Fixed: Compatibility with theme Woodmart. Keep the sticky order summary and progress bar below the theme sticky header when the site header is shown at checkout.
+* Fixed: Compatibility with plugin Aelia Currency Switcher. Prevent an infinite recursion when the design editor loads the Order pay preview, which exhausted PHP memory.
+* Fixed: Compatibility with plugin Oxygen 6. Load Breakdance compatibility when Oxygen runs the Breakdance engine, and fix layout and styles for themeless Oxygen cart and checkout pages.
+* Fixed: Compatibility with plugin Kustom Checkout for WooCommerce (formerly Klarna Checkout). Prevent a fatal error when Kustom Checkout is the selected payment method on checkout. The same issue is fixed for Svea Checkout, Dintero Checkout, PaysonCheckout, and Nets Easy.
+* Fixed: Requests to external services failing in the settings preview.
+* Fixed: WooCommerce feature compatibility declared from an invalid plugin file when Lite runs bundled inside Fluid Checkout PRO.
+* Fixed: Hide the "Enter your address to view shipping options" message on the cart page when shipping rates are already displayed for a saved address.
+* Fixed: Optional fields that WooCommerce hides for the selected country, such as postcode in the United Arab Emirates, no longer show an "Add ..." link. Optional fields the country still shows keep that link, and the link updates when the customer changes country.
+* Fixed: Fatal error when a checkout or address field is null or not an array while adding the field description class.
+* Fixed: Store API cart requests failing when the order or account checkout field group is not present.
+* Fixed: Do not show the coupon code section on checkout when WooCommerce coupons are disabled.
+
+= 5.0.0 - 2026-11-08 =
 
 * Bump tested up to WooCommerce 11.3
 * Added: New settings pages, with guided setup and live preview of checkout pages.
@@ -445,6 +461,8 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Fixed: Settings page header missing after third-party admin notices are stripped on Fluid Checkout settings screens.
 * Fixed: Plugin deactivation syncs only non-Fluid Checkout settings from the active profile to wp_options. Managed `fc_*` values stay in the profile.
 * Fixed: PHP deprecation notice across the plugin.
+* Fixed: Keep the checkout email after placing an order so the next checkout is not empty.
+* Fixed: Do not allow removing logged-in customer email on checkout, use the registered customer account email when a value is missing for checkout session.
 * Deprecated: Filter `fc_next_step_button_label` now shows a deprecation notice, use `fc_proceed_to_next_step_button_label` instead.
 * Deprecated: Filter `fc_shipping_methods_disable_auto_select`, use `fc_prevent_shipping_method_autoselect` instead. Note that the new filter has inverted logic: return `true` to prevent auto-selecting a shipping method.
 * Deprecated: Filter `fc_skip_add_pickup_point_info_as_review_text_lines`. Returning true from this filter still skips pickup point details from the shipping method review text. Use `fc_add_pickup_point_info_as_review_text_lines` instead.

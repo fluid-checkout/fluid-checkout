@@ -265,7 +265,46 @@ class FluidCheckout_Settings_Cart {
 					)
 				)
 			);
+
+			// Maybe adjust coupon codes settings when WooCommerce coupons are disabled
+			$settings = self::maybe_adjust_coupon_codes_cart_settings_when_wc_disabled( $settings );
 		}
+
+		return $settings;
+	}
+
+
+
+	/**
+	 * Maybe insert a notice and disable the cart coupon codes setting when WooCommerce coupons are disabled.
+	 *
+	 * @param   array  $settings  Cart settings fields.
+	 */
+	public static function maybe_adjust_coupon_codes_cart_settings_when_wc_disabled( $settings ) {
+		// Bail if WooCommerce coupons are enabled
+		if ( wc_coupons_enabled() ) { return $settings; }
+
+		// Bail if checkout settings class is not available
+		if ( ! class_exists( 'FluidCheckout_Settings_Checkout' ) ) { return $settings; }
+
+		$notice = FluidCheckout_Settings_Checkout::get_wc_coupons_disabled_notice_field( 'cart' );
+		$notice[ 'custom_attributes' ] = array(
+			'data-conditional-id'    => 'fc_pro_enable_cart_page',
+			'data-conditional-value' => 'yes',
+		);
+
+		$option_id  = 'fc_pro_cart_section_position_coupon_code';
+		$new_settings = array();
+
+		foreach ( $settings as $setting ) {
+			if ( is_array( $setting ) && array_key_exists( 'id', $setting ) && $option_id === $setting[ 'id' ] ) {
+				$new_settings[] = $notice;
+			}
+
+			$new_settings[] = $setting;
+		}
+
+		$settings = FluidCheckout_Settings::instance()->disable_settings_field( $new_settings, $option_id );
 
 		return $settings;
 	}
@@ -296,7 +335,6 @@ class FluidCheckout_Settings_Cart {
 				'plugin_file'      => 'fluid-checkout-pro/fluid-checkout-pro.php',
 				'plugin_slug'      => 'fluid-checkout-pro',
 				'purchase_url'     => 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=cart-promo-purchase&mtm_source=lite-plugin',
-				'purchase_price'   => FluidCheckout_Admin::instance()->get_pro_purchase_price(),
 			),
 		);
 	}
