@@ -1,0 +1,18 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+// ------------------------------------
+// CHECKOUT LOGIN
+// ------------------------------------
+
+body#{ $body-theme-selector } .fc-contact-login__action--underline {
+	text-decoration: underline;
+}
+
+body#{ $body-theme-selector } .fc-login-form .lost_password a {
+	text-decoration: underline;
+}

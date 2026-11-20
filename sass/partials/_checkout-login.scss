@@ -96,7 +96,8 @@ $order-review-selector: null !default;
 	position: relative;
 	display: inline-block;
 	padding: 0 $global-spacing-extra-small;
-	background-color: $white;
+	background-color: $checkout-contact-login-separator-background-color;
+	background-image: $checkout-contact-login-separator-background-image;
 	font-weight: bold;
 }
 

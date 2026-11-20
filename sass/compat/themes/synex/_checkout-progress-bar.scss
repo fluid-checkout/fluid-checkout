@@ -1,0 +1,23 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+// ------------------------------------
+// CHECKOUT PROGRESS BAR
+// ------------------------------------
+
+// Sticky state
+body#{ $body-theme-selector }#{ $body-page-selector }:not( .has-checkout-header ):not( .fc-admin-preview--hide-header-footer ) .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
+	@media (max-width: 1199px) { // Needed to use theme's breakpoint
+		transform: translateY( 40px ); // Needed to use `px` as units to match theme styles
+	}
+}
+// Sticky progress bar, page with admin bar
+body#{ $body-theme-selector }#{ $body-page-selector }:not( .has-checkout-header ).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
+	@media (min-width: 1200px) { // Needed to use theme's breakpoint
+		transform: translateY( 0 );
+	}
+}

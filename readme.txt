@@ -408,6 +408,11 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Compatibility with theme Synex.
+* Fixed: Background of the guest checkout section separator not matching the background behind it with some design templates and themes.
+
 = 5.0.1 - 2026-11-18 =
 
 * Improved: Show a notice on the coupon codes settings when WooCommerce coupons are disabled, with a link to enable them.

@@ -1,0 +1,23 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
+// ------------------------------------
+// TOM SELECT CONTROL
+// ------------------------------------
+
+body#{ $body-theme-selector } .ts-wrapper.single .ts-control,
+body#{ $body-theme-selector } .ts-wrapper.single .ts-control > [data-ts-item] {
+	font-weight: 400 !important; // Needed to override WooCommerce shop_table bold inheritance
+	font-size: inherit !important; // Needed to match the font size of text inputs
+}
+body#{ $body-theme-selector }.has-form-field-font-size-fix .ts-wrapper.single .ts-control,
+body#{ $body-theme-selector }.has-form-field-font-size-fix .ts-wrapper.single .ts-control > [data-ts-item] {
+	@media (#{$bp-smaller-than-desktop}) {
+		font-size: remsize( 1.6rem ) !important; // Needed to match the font size of text inputs
+	}
+}

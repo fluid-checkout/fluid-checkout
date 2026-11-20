@@ -1,0 +1,24 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
+// ------------------------------------
+// CHECKOUT COLUMNS
+// ------------------------------------
+
+// Sticky sidebar
+body#{ $body-theme-selector }#{ $body-page-selector }:not( .has-checkout-header ):not( .fc-admin-preview--hide-header-footer ) .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
+	@media (#{$bp-larger-than-desktop}) and (max-width: 1199px) { // Needed to use theme's breakpoint
+		padding-top: calc( #{ $global-spacing-tiny } + 40px ); // Needed to use `px` as units to match theme styles
+	}
+}
+// Sticky sidebar, page with admin bar
+body#{ $body-theme-selector }#{ $body-page-selector }:not( .has-checkout-header ).admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
+	@media (min-width: 1200px) { // Needed to use theme's breakpoint
+		padding-top: $global-spacing-tiny;
+	}
+}
