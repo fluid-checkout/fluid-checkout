@@ -10,7 +10,10 @@ $body-theme-selector: null !default;
 // Z-INDEX FIXES
 // ------------------------------------
 
-body#{ $body-theme-selector }.has-flyout--open .header-section {
+body#{ $body-theme-selector }.ehf-header.has-flyout--open #synex-hfe-header {
+	z-index: z( 'header-element' );
+}
+body#{ $body-theme-selector }:not( .ehf-header ).has-flyout--open .header-section {
 	z-index: z( 'header-element' );
 }
 body#{ $body-theme-selector }.has-flyout--open .synex-default-fallback-footer {

@@ -137,6 +137,19 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 
 
 	/**
+	 * Header selector for sticky elements with the theme or Synex Core HFE header.
+	 *
+	 * @return string
+	 */
+	public function get_sticky_header_relative_selector() {
+		if ( function_exists( 'hfe_header_enabled' ) && hfe_header_enabled() ) {
+			return '#synex-hfe-header';
+		}
+
+		return '.header-section';
+	}
+
+	/**
 	 * Change the element used to position the progress bar and order summary when sticky.
 	 *
 	 * @param  array  $attributes  The elements attributes.
@@ -145,7 +158,7 @@ class FluidCheckout_ThemeCompat_Synex extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
-		$attributes[ 'data-sticky-relative-to' ] = '.header-section';
+		$attributes[ 'data-sticky-relative-to' ] = $this->get_sticky_header_relative_selector();
 
 		return $attributes;
 	}
