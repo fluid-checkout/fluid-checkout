@@ -7,8 +7,8 @@
 # committed.
 #
 # SVN_USERNAME and SVN_PASSWORD are environment secrets on wordpress-org.
-# Do not copy those secrets to repository or organization secrets, and do not
-# point any other workflow at that environment.
+# Do not copy those secrets to repository or organization secrets.
+# Only this workflow and update-wporg-assets.yml may use that environment.
 #
 # 10up/action-wordpress-plugin-deploy is not used. It publishes the git
 # checkout. The installable JS and CSS are produced by the local gulp build
@@ -33,7 +33,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: deploy-wordpress-org-${{ inputs.version }}
+  group: wordpress-org-svn
   cancel-in-progress: false
 
 jobs:
@@ -54,9 +54,9 @@ jobs:
       - name: Install Subversion
         run: |
           set -euo pipefail
-          if ! command -v svn >/dev/null 2>&1 || ! command -v unzip >/dev/null 2>&1; then
+          if ! command -v svn >/dev/null 2>&1 || ! command -v unzip >/dev/null 2>&1 || ! command -v rsync >/dev/null 2>&1; then
             sudo apt-get update
-            sudo apt-get install --yes subversion unzip
+            sudo apt-get install --yes subversion unzip rsync
           fi
 
       - name: Publish the release zip to WordPress.org
