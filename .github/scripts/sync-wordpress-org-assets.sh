@@ -190,6 +190,8 @@ svn_mime_type_for_name() {
 	base="$( basename "$1" )"
 	lower="$( printf '%s' "${base}" | tr '[:upper:]' '[:lower:]' )"
 
+	# Match the extension only. A locale suffix stays in the stem, so
+	# banner-772x250-de.png and screenshot-1-de_DE.png are still image/png.
 	case "${lower}" in
 		*.png) printf 'image/png\n' ;;
 		*.jpg|*.jpeg) printf 'image/jpeg\n' ;;
@@ -361,6 +363,10 @@ self_test() {
 	require_cmd rsync
 
 	svn_mime_type_for_name "screenshot-1.png" | grep -qx 'image/png' || die "png mime type"
+	svn_mime_type_for_name "screenshot-9.png" | grep -qx 'image/png' || die "screenshot-9 mime type"
+	svn_mime_type_for_name "banner-772x250-de.png" | grep -qx 'image/png' || die "short-locale banner mime type"
+	svn_mime_type_for_name "banner-1544x500-pt.png" | grep -qx 'image/png' || die "short-locale retina banner mime type"
+	svn_mime_type_for_name "screenshot-1-de_DE.png" | grep -qx 'image/png' || die "full-locale screenshot mime type"
 	svn_mime_type_for_name "Banner.PNG" | grep -qx 'image/png' || die "PNG mime type"
 	svn_mime_type_for_name "banner-772x250.jpg" | grep -qx 'image/jpeg' || die "jpg mime type"
 	svn_mime_type_for_name "banner-1544x500.jpeg" | grep -qx 'image/jpeg' || die "jpeg mime type"
@@ -375,6 +381,7 @@ self_test() {
 	url="file://${repo}/repo"
 	mkdir -p "${repo}/seed/trunk" "${repo}/seed/assets" "${repo}/seed/tags"
 	printf 'icon\n' > "${repo}/seed/assets/icon.png"
+	printf 'old-shot\n' > "${repo}/seed/assets/screenshot-1.jpg"
 	printf 'keep\n' > "${repo}/seed/trunk/keep.txt"
 	svn import "${repo}/seed" "${url}" -m "seed" --non-interactive >/dev/null
 
@@ -429,6 +436,8 @@ self_test() {
 	fi
 
 	printf 'banner\n' > "${source}/screenshot-1.png"
+	printf 'de-banner\n' > "${source}/banner-772x250-de.png"
+	printf 'fr-retina\n' > "${source}/banner-1544x500-fr.png"
 	printf 'wide\n' > "${source}/banner-772x250.jpg"
 	printf 'retina\n' > "${source}/banner-1544x500.jpeg"
 	printf 'gif\n' > "${source}/icon.gif"
@@ -444,7 +453,10 @@ self_test() {
 
 	svn_status="$( svn status --ignore-externals "${wc}" )"
 	printf '%s\n' "${svn_status}" | grep -q 'assets/icon.png' || die "Removed listing file was not scheduled."
+	printf '%s\n' "${svn_status}" | grep -q 'assets/screenshot-1.jpg' || die "Old screenshot jpg was not scheduled for removal."
 	printf '%s\n' "${svn_status}" | grep -q 'assets/screenshot-1.png' || die "New screenshot was not scheduled."
+	printf '%s\n' "${svn_status}" | grep -q 'assets/banner-772x250-de.png' || die "Localized banner was not scheduled."
+	printf '%s\n' "${svn_status}" | grep -q 'assets/banner-1544x500-fr.png' || die "Localized retina banner was not scheduled."
 	if printf '%s\n' "${svn_status}" | grep -q 'DS_Store'; then
 		die ".DS_Store was scheduled for SVN."
 	fi
@@ -454,6 +466,8 @@ self_test() {
 	[[ -d "${wc}/.svn" ]] || die "Sync damaged the working copy .svn directory."
 
 	svn propget svn:mime-type -- "${wc}/assets/screenshot-1.png" | grep -qx 'image/png' || die "png svn:mime-type was not set."
+	svn propget svn:mime-type -- "${wc}/assets/banner-772x250-de.png" | grep -qx 'image/png' || die "localized banner svn:mime-type was not set."
+	svn propget svn:mime-type -- "${wc}/assets/banner-1544x500-fr.png" | grep -qx 'image/png' || die "localized retina banner svn:mime-type was not set."
 	svn propget svn:mime-type -- "${wc}/assets/banner-772x250.jpg" | grep -qx 'image/jpeg' || die "jpg svn:mime-type was not set."
 	svn propget svn:mime-type -- "${wc}/assets/banner-1544x500.jpeg" | grep -qx 'image/jpeg' || die "jpeg svn:mime-type was not set."
 	svn propget svn:mime-type -- "${wc}/assets/icon.gif" | grep -qx 'image/gif' || die "gif svn:mime-type was not set."
