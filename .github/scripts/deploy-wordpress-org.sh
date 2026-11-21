@@ -3,7 +3,10 @@
 #
 # This does not build the plugin. pack-plugin-zip uploads the zip while
 # creating the git tag. This script downloads that asset and copies it into
-# SVN trunk, tags/X.Y.Z, and assets/ when .wordpress-org/ is on the tag.
+# SVN trunk and tags/X.Y.Z. Listing files in .wordpress-org/ are copied into
+# SVN assets/ by sync-wordpress-org-assets.sh. README is not copied. Existing
+# screenshots, banners, and icons stay in place until that directory has
+# listing images. png, jpg, gif, and svg get svn:mime-type.
 #
 # Checks stop the script before svn commit. dry_run prints the status and
 # diff and commits nothing. A real commit publishes the draft GitHub release
@@ -36,94 +39,9 @@ require_cmd() {
 	fi
 }
 
-# Plain X.Y.Z only. Alpha, beta, rc, dev, and any other suffix are refused.
-# Same rule as _officialStableVersionPattern in gulpfile.js, including trim.
-is_official_stable_version() {
-	local candidate="${1:-}"
-
-	candidate="${candidate#"${candidate%%[![:space:]]*}"}"
-	candidate="${candidate%"${candidate##*[![:space:]]}"}"
-	[[ "${candidate}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
-}
-
-build_svn_auth_args() {
-	SVN_AUTH_ARGS=( --non-interactive --no-auth-cache )
-
-	if [[ -n "${SVN_USERNAME:-}" && -n "${SVN_PASSWORD:-}" ]]; then
-		SVN_AUTH_ARGS+=( --username "${SVN_USERNAME}" --password "${SVN_PASSWORD}" )
-		return 0
-	fi
-
-	if [[ "${DRY_RUN}" != "true" ]]; then
-		die "SVN_USERNAME and SVN_PASSWORD must both be set on the wordpress-org environment when dry_run is false."
-	fi
-}
-
-prepare_assets_directory() {
-	local output status
-
-	set +e
-	output="$( svn list --non-interactive "${SVN_URL}/assets" 2>&1 )"
-	status=$?
-	set -e
-
-	if [[ "${status}" -eq 0 ]]; then
-		svn update --set-depth infinity "${SVN_AUTH_ARGS[@]}" assets
-		return 0
-	fi
-
-	if [[ "${output}" != *"W160013"* ]]; then
-		printf '%s\n' "${output}" >&2
-		die "Could not check whether SVN assets/ exists."
-	fi
-
-	if [[ -n "${1:-}" ]]; then
-		printf 'SVN has no assets directory. Creating it for .wordpress-org.\n'
-		svn mkdir --non-interactive assets
-		return 0
-	fi
-
-	printf 'SVN has no assets directory. Leaving it absent.\n'
-}
-
-svn_tag_state() {
-	local output status
-
-	set +e
-	output="$( svn list --non-interactive "${SVN_URL}/tags/${VERSION}" 2>&1 )"
-	status=$?
-	set -e
-
-	if [[ "${status}" -eq 0 ]]; then
-		printf 'yes\n'
-		return 0
-	fi
-
-	if [[ "${output}" == *"W160013"* ]]; then
-		printf 'no\n'
-		return 0
-	fi
-
-	printf '%s\n' "${output}" >&2
-	printf 'error\n'
-}
-
-read_stable_tag() {
-	local file="$1"
-
-	awk '
-		/^==[^=]/ { exit }
-		{
-			sub( /\r/, "", $0 )
-			if ( match( $0, /^Stable tag:[[:space:]]*/ ) ) {
-				value = substr( $0, RLENGTH + 1 )
-				sub( /[[:space:]]*$/, "", value )
-				print value
-				exit
-			}
-		}
-	' "${file}"
-}
+_deploy_script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+# shellcheck source=sync-wordpress-org-assets.sh
+source "${_deploy_script_dir}/sync-wordpress-org-assets.sh"
 
 read_plugin_version() {
 	local file="$1"
@@ -189,67 +107,8 @@ assert_package_tree() {
 	printf 'Package header Version and Stable tag are both %s.\n' "${expected}"
 }
 
-# Schedule svn add for new files and svn delete for files rsync removed.
-# Only the topmost path in each tree is scheduled. svn add/delete cover children.
-sync_svn_status() {
-	local target="$1"
-	local line status path
-	local -a missing=()
-	local -a unversioned=()
-
-	while IFS= read -r line || [[ -n "${line}" ]]; do
-		[[ -z "${line}" ]] && continue
-		[[ "${line}" == ---* ]] && continue
-		[[ "${#line}" -lt 9 ]] && continue
-
-		status="${line:0:1}"
-		path="${line:8}"
-
-		if [[ "${status}" == "!" ]]; then
-			missing+=( "${path}" )
-		elif [[ "${status}" == "?" ]]; then
-			unversioned+=( "${path}" )
-		fi
-	done < <( svn status --ignore-externals -- "${target}" )
-
-	schedule_topmost "delete" "${missing[@]+"${missing[@]}"}"
-	schedule_topmost "add" "${unversioned[@]+"${unversioned[@]}"}"
-}
-
-path_has_listed_ancestor() {
-	local path="$1"
-	shift
-	local other
-
-	for other in "$@"; do
-		if [[ "${path}" == "${other}/"* ]]; then
-			return 0
-		fi
-	done
-
-	return 1
-}
-
-schedule_topmost() {
-	local action="$1"
-	shift
-	local path
-
-	[[ "$#" -gt 0 ]] || return 0
-
-	for path in "$@"; do
-		if path_has_listed_ancestor "${path}" "$@"; then
-			continue
-		fi
-
-		if [[ "${action}" == "delete" ]]; then
-			svn delete --force --non-interactive -- "${path}"
-		else
-			svn add --parents --force --non-interactive -- "${path}"
-		fi
-	done
-}
-
+# Copy a plugin directory into an SVN directory.
+# Listing assets use sync_wordpress_org_assets so README files stay out of SVN.
 sync_directory() {
 	local source="$1"
 	local destination="$2"
@@ -339,7 +198,7 @@ publish_github_release() {
 }
 
 deploy() {
-	local asset_name git_tag zip_path unpack_dir plugin_root assets_dir assets_source tag_state
+	local asset_name git_tag zip_path unpack_dir plugin_root assets_dir assets_source tag_state publish_assets
 
 	: "${VERSION:?Set VERSION to the stable X.Y.Z release.}"
 	: "${GITHUB_REPOSITORY:?GITHUB_REPOSITORY is required, for example fluid-checkout/fluid-checkout.}"
@@ -400,20 +259,30 @@ deploy() {
 
 	assets_dir="${WORK_DIR}/tag-assets"
 	assets_source="$( fetch_wordpress_org_assets "${git_tag}" "${assets_dir}" )"
+	publish_assets=0
+	if [[ -n "${assets_source}" ]] && wordpress_org_has_publishable_files "${assets_source}"; then
+		publish_assets=1
+	fi
 
 	svn checkout --depth immediates "${SVN_AUTH_ARGS[@]}" "${SVN_URL}" "${WORK_DIR}/svn"
 	cd "${WORK_DIR}/svn"
 	svn update --set-depth infinity "${SVN_AUTH_ARGS[@]}" trunk
 	svn update --set-depth empty "${SVN_AUTH_ARGS[@]}" tags
-	prepare_assets_directory "${assets_source}"
+	if [[ "${publish_assets}" -eq 1 ]]; then
+		prepare_assets_directory "${assets_source}"
+	else
+		if [[ -n "${assets_source}" ]]; then
+			printf '.wordpress-org has no listing files or blueprints to publish. SVN assets/ left unchanged.\n'
+		fi
+		prepare_assets_directory ""
+	fi
 
 	printf 'Syncing the release zip into trunk.\n'
 	sync_directory "${plugin_root}" trunk
 	svn copy -- "trunk" "tags/${VERSION}"
 
-	if [[ -n "${assets_source}" ]]; then
-		printf 'Syncing .wordpress-org into SVN assets/.\n'
-		sync_directory "${assets_source}" assets
+	if [[ "${publish_assets}" -eq 1 ]]; then
+		sync_wordpress_org_assets "${assets_source}" assets
 	fi
 
 	if [[ "${DRY_RUN}" == "true" ]]; then

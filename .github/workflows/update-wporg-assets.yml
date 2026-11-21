@@ -1,0 +1,69 @@
+# Update WordPress.org listing assets and readme.txt without publishing code.
+#
+# Push to main runs when readme.txt or .wordpress-org/ changes. The script
+# aborts if this tree differs from the stable git tag in any other path.
+# workflow_dispatch defaults to a dry run: SVN status and diff are printed,
+# and nothing is committed.
+#
+# SVN_USERNAME and SVN_PASSWORD are environment secrets on wordpress-org.
+# Do not copy those secrets to repository or organization secrets.
+# Only this workflow and deploy-wporg.yml may use that environment.
+#
+# 10up/action-wordpress-plugin-asset-update is not used.
+
+name: Update WordPress.org assets
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".wordpress-org/**"
+      - "readme.txt"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "DRY RUN - Print the SVN status and diff. Do not commit."
+        required: false
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wordpress-org-svn
+  cancel-in-progress: false
+
+jobs:
+  assets:
+    name: Update readme and listing assets
+    runs-on: ubuntu-latest
+    environment: wordpress-org
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # The script fetches the stable git tag. Do not print the remote URL.
+          # It can contain the checkout token.
+          persist-credentials: true
+          fetch-depth: 1
+
+      - name: Install Subversion
+        run: |
+          set -euo pipefail
+          if ! command -v svn >/dev/null 2>&1 || ! command -v rsync >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install --yes subversion rsync
+          fi
+
+      - name: Update WordPress.org readme and assets
+        env:
+          # Push publishes. workflow_dispatch uses the dry_run input, which defaults to true.
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && (inputs.dry_run && 'true' || 'false') || 'false' }}
+          PLUGIN_SLUG: fluid-checkout
+          GIT_TAG_PREFIX: v
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        run: bash .github/scripts/update-wordpress-org-assets.sh

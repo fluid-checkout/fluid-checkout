@@ -1,0 +1,53 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"description": "Live Preview for Fluid Checkout Lite: WooCommerce, a sample product, and the checkout page.",
+	"landingPage": "/checkout/",
+	"preferredVersions": {
+		"php": "8.2",
+		"wp": "latest"
+	},
+	"features": {
+		"networking": true
+	},
+	"steps": [
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"permalink_structure": "/%postname%/"
+			}
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "wordpress.org/plugins",
+				"slug": "woocommerce"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "wordpress.org/plugins",
+				"slug": "fluid-checkout"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "mkdir",
+			"path": "/wordpress/wp-content/mu-plugins"
+		},
+		{
+			"step": "writeFile",
+			"path": "/wordpress/wp-content/mu-plugins/fluid-checkout-preview-cart.php",
+			"data": "<?php\n/**\n * Plugin Name: Fluid Checkout Live Preview Cart\n * Description: Adds the sample product to the cart when the WordPress.org preview opens checkout. Exists only inside that preview.\n */\n\nadd_action(\n\t'template_redirect',\n\tstatic function () {\n\t\tif ( ! function_exists( 'WC' ) || ! WC()->cart ) {\n\t\t\treturn;\n\t\t}\n\t\tif ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_wc_endpoint_url() ) {\n\t\t\treturn;\n\t\t}\n\t\tif ( ! WC()->cart->is_empty() ) {\n\t\t\treturn;\n\t\t}\n\t\t$product_id = (int) get_option( 'fluid_checkout_preview_product_id' );\n\t\tif ( $product_id < 1 ) {\n\t\t\treturn;\n\t\t}\n\t\tWC()->cart->add_to_cart( $product_id );\n\t},\n\t1\n);\n"
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php require_once '/wordpress/wp-load.php';\nupdate_option( 'woocommerce_coming_soon', 'no' );\nupdate_option( 'woocommerce_store_pages_only', 'no' );\nif ( ! class_exists( 'WC_Product_Simple' ) || ! function_exists( 'wc_get_page_id' ) ) {\n\tfwrite( STDERR, \"WooCommerce is not active.\\n\" );\n\texit( 1 );\n}\n$product = new WC_Product_Simple();\n$product->set_name( 'Sample product' );\n$product->set_regular_price( '20' );\n$product->set_status( 'publish' );\n$product->set_catalog_visibility( 'visible' );\n$product->set_stock_status( 'instock' );\nupdate_option( 'fluid_checkout_preview_product_id', (int) $product->save() );\n$zone = new WC_Shipping_Zone( 0 );\n$instance_id = $zone->add_shipping_method( 'flat_rate' );\nupdate_option(\n\t'woocommerce_flat_rate_' . $instance_id . '_settings',\n\tarray(\n\t\t'title'      => 'Flat rate',\n\t\t'cost'       => '5',\n\t\t'tax_status' => 'none',\n\t)\n);\nupdate_option( 'woocommerce_bacs_settings', array( 'enabled' => 'yes', 'title' => 'Direct bank transfer' ) );\nupdate_option( 'woocommerce_cod_settings', array( 'enabled' => 'yes', 'title' => 'Cash on delivery' ) );\nif ( (int) wc_get_page_id( 'checkout' ) < 1 ) {\n\tfwrite( STDERR, \"WooCommerce did not create the checkout page.\\n\" );\n\texit( 1 );\n}\nflush_rewrite_rules();\n"
+		}
+	]
+}

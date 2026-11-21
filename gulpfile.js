@@ -175,7 +175,7 @@ var _defaultAction = _gulpSettingsLocal.defaultAction || _gulpSettings.defaultAc
 /**
  * Official stable versions are plain X.Y.Z with no pre-release suffix.
  * Kept in sync with is_official_stable_version in
- * .github/scripts/deploy-wordpress-org.sh.
+ * .github/scripts/sync-wordpress-org-assets.sh.
  */
 var _officialStableVersionPattern = /^\d+\.\d+\.\d+$/;
 
