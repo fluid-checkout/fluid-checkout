@@ -897,10 +897,29 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 		}
 
 		/**
-		 * Check if Fluid Checkout PRO is active on a single install or network wide.
+		 * Check if Fluid Checkout PRO is active on a single install or network wide, and loads its features for the current request.
 		 */
 		public function is_pro_activated() {
-			return $this->is_plugin_activated( 'fluid-checkout-pro/fluid-checkout-pro.php' );
+			// Bail if PRO is not active
+			if ( ! $this->is_plugin_activated( 'fluid-checkout-pro/fluid-checkout-pro.php' ) ) { return false; }
+
+			return $this->should_load_pro_features();
+		}
+
+		/**
+		 * Check whether the Fluid Checkout PRO features should load for the current request.
+		 *
+		 * @return  bool
+		 */
+		public function should_load_pro_features() {
+			/**
+			 * Filter whether to load the Fluid Checkout PRO features for the current request. Return `false` to run the request with the Lite features only.
+			 *
+			 * @since  5.1.0
+			 *
+			 * @return bool  Whether to load the PRO features.
+			 */
+			return false !== apply_filters( 'fc_should_load_pro_features', true );
 		}
 
 

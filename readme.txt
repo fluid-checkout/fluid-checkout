@@ -410,6 +410,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 = Unreleased =
 
+* Added: Filter `fc_should_load_pro_features` to run a request with the Lite features only while Fluid Checkout PRO is active.
 * Improved: Compatibility with Oxygen 6. Load Breakdance compatibility when Oxygen runs the Breakdance engine, and fix layout and styles for themeless Oxygen cart and checkout pages.
 * Improved: Show the `not-allowed` cursor on links and buttons that do nothing in the live preview.
 * Improved: Show a notice on the coupon codes settings when WooCommerce coupons are disabled, with a link to enable them.
