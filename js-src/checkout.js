@@ -1302,7 +1302,8 @@ jQuery( function ( $ ) {
 			document.body.classList.add( 'fc-processing-update' );
 
 			// CHANGE: Snapshot address field values when the request leaves so later fragment HTML can be reconciled
-			wc_checkout_form.pendingUpdateFieldValues = wc_checkout_form.get_checkout_address_field_values();
+			var fieldValuesAtRequest = wc_checkout_form.get_checkout_address_field_values();
+			wc_checkout_form.pendingUpdateFieldValues = fieldValuesAtRequest;
 
 			wc_checkout_form.xhr = $.ajax( {
 				type: 'POST',
@@ -1359,9 +1360,9 @@ jQuery( function ( $ ) {
 						// CHANGE: Trigger custom event before fragments are replaced.
 						$( document.body ).trigger( 'fc_checkout_fragments_replace_before', [ data ] );
 
-						// CHANGE: Compare current address fields to the request snapshot before replace overwrites them
+						// CHANGE: Compare current address fields to this request's closed-over snapshot before replace overwrites them
 						addressValuesToRestore = wc_checkout_form.get_changed_address_field_values(
-							wc_checkout_form.pendingUpdateFieldValues,
+							fieldValuesAtRequest,
 							wc_checkout_form.get_checkout_address_field_values()
 						);
 
@@ -1441,8 +1442,10 @@ jQuery( function ( $ ) {
 						// CHANGE: END - Restore address values that changed while the request was open
 					}
 
-					// CHANGE: Clear the request field snapshot after fragments are handled
-					wc_checkout_form.pendingUpdateFieldValues = null;
+					// CHANGE: Clear this request's snapshot only when a newer update has not already replaced it
+					if ( wc_checkout_form.pendingUpdateFieldValues === fieldValuesAtRequest ) {
+						wc_checkout_form.pendingUpdateFieldValues = null;
+					}
 
 					// CHANGE: Unblock remaining blocked fragments after updating.
 					$( _settings.checkoutBlockUISelector ).unblock();
