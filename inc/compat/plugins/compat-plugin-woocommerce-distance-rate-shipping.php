@@ -20,7 +20,7 @@ class FluidCheckout_WooCommerceDistanceRateShipping extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Shipping packages
-		// After Fluid Checkout PRO Local Pickup may rebuild package destinations (priorities 5–20).
+		// After Fluid Checkout PRO Local Pickup may rebuild package destinations (priorities 5-20).
 		add_filter( 'woocommerce_cart_shipping_packages', array( $this, 'maybe_set_package_destination_address_alias' ), 100 );
 	}
 
@@ -30,7 +30,8 @@ class FluidCheckout_WooCommerceDistanceRateShipping extends FluidCheckout {
 	 * Maybe copy destination `address_1` into `address` for Distance Rate Shipping.
 	 *
 	 * Distance Rate skips rate calculation during `update_order_review` when
-	 * `destination['address']` is empty. WooCommerce packages only set `address_1`.
+	 * `destination['address']` is empty. WooCommerce sets both keys, but some
+	 * rebuilds (for example PRO Local Pickup) only set `address_1`.
 	 *
 	 * @param   array  $packages  The shipping packages.
 	 */
