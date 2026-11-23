@@ -412,6 +412,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 * Added: Compatibility with theme Synex.
 * Fixed: Background of the guest checkout section separator not matching the background behind it with some design templates and themes.
+* Fixed: Keep address field values filled while a checkout update is in progress, so autofill no longer loses the ZIP or postcode when the form refreshes.
 
 = 5.0.1 - 2026-11-18 =
 
