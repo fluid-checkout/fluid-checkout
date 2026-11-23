@@ -157,8 +157,8 @@ class FluidCheckout_Settings extends FluidCheckout_ProfileStorage {
 
 			// =============================== CHECKOUT VISIBILITY & DISPLAY ===============================
 			'fc_hide_site_header_footer_at_checkout'                        => 'yes',
-			'fc_show_shipping_section_highlighted'                          => 'yes',
-			'fc_show_billing_section_highlighted'                           => 'yes',
+			'fc_show_shipping_section_highlighted'                          => 'no',
+			'fc_show_billing_section_highlighted'                           => 'no',
 
 			// =============================== EXPRESS CHECKOUT ===============================
 			'fc_enable_checkout_express_checkout'                           => 'no',
