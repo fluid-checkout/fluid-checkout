@@ -397,13 +397,15 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 == Screenshots ==
 
-1. Step 1 - Contact: Email, account creation and newsletter sign-up
-2. Step 2 - Shipping: Shipping address, shipping method, additional order notes
-3. Step 3 - Billing: Billing address and company information
-4. Step 4 - Payment: Payment options and discounts
-5. Single Step: All fields are displayed in one single step.
-6. Settings: Multi-step or single-step layout, choose a logo and header color, enable/disable features
-7. Theme Deli: The checkout page looks and feels like your website, even with highly styled themes
+1. Multi-step checkout that guides shoppers one step at a time: contact, shipping, payment.
+2. The same checkout on a phone.
+3. The same Boxed checkout running on the Flatsome theme, with the theme's header, fonts, form fields, and buttons.
+4. Change the layout and design from WP Admin with a live preview. No code needed.
+5. Payment step with the coupon field tucked away, so shoppers aren't sent off hunting for codes.
+6. One-page checkout, with every section on a single page.
+7. Shipping step with shipping methods before the address, and earlier steps available to review.
+8. Fields are checked as they are filled in, with feedback when something needs attention.
+9. Show trust badges in the checkout header, next to the order summary, and payment logos below the Place order button.
 
 
 == Changelog ==
