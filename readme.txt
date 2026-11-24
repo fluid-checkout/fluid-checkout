@@ -413,6 +413,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Added: Compatibility with theme Synex.
 * Improved: Turn off the highlighted background for billing and shipping address sections by default.
 * Fixed: Background of the guest checkout section separator not matching the background behind it with some design templates and themes.
+* Fixed: Compatibility with theme Woodmart. Prevent the sticky order summary from briefly sitting under the theme header while scrolling when the site header is shown at checkout.
 
 = 5.0.1 - 2026-11-18 =
 
