@@ -917,6 +917,8 @@ if ( ! class_exists( 'FluidCheckout' ) ) {
 			 *
 			 * @since  5.1.0
 			 *
+			 * @param  bool  $should_load  Whether to load the PRO features.
+			 *
 			 * @return bool  Whether to load the PRO features.
 			 */
 			return false !== apply_filters( 'fc_should_load_pro_features', true );
