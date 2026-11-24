@@ -135,6 +135,21 @@ class FluidCheckout_Settings_Checkout {
 					),
 
 					array(
+						'type'              => 'fc_paragraph',
+						'desc'              => sprintf(
+							/* translators: 1: URL to the Trust badges settings page. 2: URL to the WordPress Widgets screen. */
+							__( 'When using the <em>"1 column"</em> layout with the <em>"Split"</em> design template, a right column is shown only if the page sidebar widget area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). Otherwise the page stays as a single column with Split styles. Add widgets via <a href="%1$s" data-fc-settings-nav-link="trust_symbols">Trust badges</a> or <a href="%2$s">Appearance > Widgets</a>.', 'fluid-checkout' ),
+							esc_url( class_exists( 'FluidCheckout_Admin_Settings_Page' ) ? FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( 'trust_symbols' ) : '' ),
+							esc_url( admin_url( 'widgets.php' ) )
+						),
+						'id'                => 'fc_design_template_split_one_column_sidebar_notice',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_design_template,fc_checkout_column_layout',
+							'data-conditional-value' => 'split,one_column',
+						),
+					),
+
+					array(
 						'title'                 => __( 'Split column background', 'fluid-checkout' ),
 						'desc'                  => '',
 						'desc_tip'              => __( 'Choose a background color for the Split design secondary column. Leave empty to use the order summary background color.', 'fluid-checkout' ) . '<br>' . __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),

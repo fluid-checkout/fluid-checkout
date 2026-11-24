@@ -418,6 +418,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 
 * Improved: Show a notice on the coupon codes settings when WooCommerce coupons are disabled, with a link to enable them.
 * Improved: Disable coupon codes settings on the checkout and cart settings when WooCommerce coupons are disabled.
+* Improved: Show an inline notice on the Design template settings when Split and 1 column are selected, explaining that the right column only appears when that page sidebar has widgets.
 * Fixed: Compatibility with theme Woodmart. Keep the sticky order summary and progress bar below the theme sticky header when the site header is shown at checkout.
 * Fixed: Compatibility with plugin Aelia Currency Switcher. Prevent an infinite recursion when the design editor loads the Order pay preview, which exhausted PHP memory.
 * Fixed: Compatibility with plugin Oxygen 6. Load Breakdance compatibility when Oxygen runs the Breakdance engine, and fix layout and styles for themeless Oxygen cart and checkout pages.
