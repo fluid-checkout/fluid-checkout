@@ -1759,6 +1759,10 @@ jQuery( function ( $ ) {
 					const msg = $this.text().trim();
 					const $formRow = $field.closest( '.form-row' );
 
+					// CHANGE: Skip fields that already show the inline error message of Fluid Checkout validation, so fields do not show two messages
+					if ( $formRow.is( '.woocommerce-invalid' ) && $formRow.find( '.fc-inline-error' ).length > 0 ) { return; }
+					// CHANGE: END - Skip fields that already show the inline error message of Fluid Checkout validation
+
 					const errorMessage = document.createElement( 'p' );
 					errorMessage.id = descriptionId;
 					errorMessage.className = 'checkout-inline-error-message';

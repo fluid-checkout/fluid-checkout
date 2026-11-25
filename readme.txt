@@ -421,6 +421,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Fixed: Compatibility with plugin Aelia Currency Switcher. Prevent an infinite recursion when the design editor loads the Order pay preview, which exhausted PHP memory.
 * Fixed: Compatibility with plugin Kustom Checkout for WooCommerce (formerly Klarna Checkout). Prevent a fatal error when Kustom Checkout is the selected payment method on checkout. The same issue is fixed for Svea Checkout, Dintero Checkout, PaysonCheckout, and Nets Easy.
 * Fixed: Coupon code Apply button overflowing the coupon code field when the form field height is changed in the design editor (PRO feature).
+* Fixed: Two error messages shown below the same checkout field when placing the order fails.
 * Fixed: Saved addresses and other values filled by the page being copied to other fields after the live preview reloads.
 * Fixed: Keep the country and state selected in the live preview after it reloads.
 * Fixed: Hide the "Enter your address to view shipping options" message on the cart page when shipping rates are already displayed for a saved address.
