@@ -3,18 +3,34 @@ $order-review-selector: null !default;
 
 $body-theme-selector: null !default;
 
+
+
+@use "abstract" as *;
 // ------------------------------------
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
 body#{ $body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection--single {
+	min-height: 0; // Needed to take the height of the theme text fields, which depends on the site font, instead of the field height variable
 	border-radius: var(--wc-form-border-radius); // Needed to use WooCommerce variable to match theme styles
 	color: var(--wc-form-color-text, #000); // Needed to use WooCommerce variable to match theme styles
 	overflow: hidden;
 }
 
 body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+	min-height: 0; // Needed to take the height of the theme text fields
 	line-height: normal; // Needed as WooCommerce block theme styles add padding to the selected option text
+}
+
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__arrow {
+	bottom: 0; // Needed to center the arrow in select fields that take the height of the theme text fields
+	min-height: 0; // Needed to center the arrow
+}
+
+body#{ $body-theme-selector }.has-fc-field-height div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+	padding-top: 0; // Needed to override the padding of WooCommerce block theme styles, so select fields take the field height setting as the other fields
+	padding-bottom: 0; // Needed to override the padding of WooCommerce block theme styles
+	line-height: $form-field-select2-selection-height--single; // Needed to take the field height setting as the other fields
 }
 
 body#{ $body-theme-selector } .select2-container .select2-search--dropdown {

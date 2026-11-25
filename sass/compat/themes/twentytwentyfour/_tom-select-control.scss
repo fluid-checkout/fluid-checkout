@@ -10,7 +10,14 @@ $body-theme-selector: null !default;
 // TOM SELECT CONTROL
 // ------------------------------------
 
+body#{ $body-theme-selector } .ts-wrapper.single {
+	min-height: 0; // Needed to take the height of the theme text fields, which depends on the site font, instead of the field height variable
+}
+
 body#{ $body-theme-selector } .ts-wrapper.single .ts-control {
+	min-height: 0; // Needed to take the height of the theme text fields
+	padding-top: .9rem; // Needed to use the padding of the theme text fields from WooCommerce block theme styles
+	padding-bottom: .9rem; // Needed to use the padding of the theme text fields from WooCommerce block theme styles
 	background-color: var(--wc-form-color-background, #fff);
 	border: var(--wc-form-border-width) solid var(--wc-form-border-color);
 	border-radius: var(--wc-form-border-radius);
@@ -19,7 +26,29 @@ body#{ $body-theme-selector } .ts-wrapper.single .ts-control {
 }
 
 body#{ $body-theme-selector } .ts-wrapper.single .ts-control .item {
-	line-height: remsize( 4.8rem ); // Needed to match theme styles
-	height: remsize( 4.7rem ); // Needed to match theme styles
+	line-height: normal; // Needed to take the height of the theme text fields
+	height: auto; // Needed to take the height of the theme text fields
 }
 
+body#{ $body-theme-selector } .ts-wrapper.single .ts-control input {
+	font-family: inherit; // Needed to use the site font while searching, as the browser default font changes the field height
+	line-height: normal; // Needed to keep the height of the theme text fields while searching
+}
+
+body#{ $body-theme-selector } .ts-wrapper.single .ts-control,
+body#{ $body-theme-selector } .ts-wrapper.single .ts-control .item,
+body#{ $body-theme-selector } .ts-wrapper.single .ts-control input,
+body#{ $body-theme-selector } .ts-dropdown .option {
+	font-size: var( --fluidcheckout--field--font-size, var( --wp--preset--font-size--small ) ); // Needed to use theme variable to match the theme text fields, unless the field font size is changed in the design editor
+}
+
+body#{ $body-theme-selector }.has-fc-field-height .ts-wrapper.single .ts-control {
+	padding-top: 0; // Needed to take the field height setting as the other fields
+	padding-bottom: 0; // Needed to take the field height setting as the other fields
+	height: $form-field-height; // Needed to keep the field height while searching, as the field height setting also changes the height of the search input
+}
+
+body#{ $body-theme-selector }.has-fc-field-height .ts-wrapper.single .ts-control .item {
+	line-height: calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) ); // Needed to take the field height setting as the other fields
+	height: calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) ); // Needed to take the field height setting as the other fields
+}
