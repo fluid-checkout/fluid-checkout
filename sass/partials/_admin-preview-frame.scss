@@ -2,6 +2,12 @@
 // ADMIN PREVIEW FRAME
 // ------------------------------------
 
+html:has( > body.fc-admin-preview ) {
+	scrollbar-gutter: stable; // Keep space for the scrollbar, so the page content stays in place when switching between pages with and without a scrollbar
+}
+
+
+
 body.fc-admin-preview--hide-header-footer :is( header, footer, nav, [role="banner"], [role="contentinfo"], [role="navigation"], .wp-site-blocks > :not( :has( .fc-content, .woocommerce ) ) ):not( :is( main, article, .fc-content, .woocommerce ) * ) {
 	display: none !important; // Needed to override theme styles
 }

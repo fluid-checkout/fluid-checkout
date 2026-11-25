@@ -413,6 +413,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 * Added: Filter `fc_should_load_pro_features` to turn off PRO features for a request.
 * Improved: Compatibility with Oxygen 6. Load Breakdance compatibility when Oxygen runs the Breakdance engine, and fix layout and styles for themeless Oxygen cart and checkout pages.
 * Improved: Show the `not-allowed` cursor on links and buttons that do nothing in the live preview.
+* Improved: Keep the page content in place in the live preview when switching between pages with and without a scrollbar.
 * Improved: Show a notice on the coupon codes settings when WooCommerce coupons are disabled, with a link to enable them.
 * Improved: Disable coupon codes settings on the checkout and cart settings when WooCommerce coupons are disabled.
 * Fixed: Compatibility with theme Twenty Twenty-Four. Fix select fields height and extra spacing at checkout, missing spacing above the search field of open select fields, and the order summary Continue button style on mobile.
