@@ -44,10 +44,10 @@
 		probeId:                      'fc-admin-preview-probe',
 		customStylesId:               'fc-custom-styles',
 
-		inertActionSelector:          '.fc-place-order__custom-buttons, .fc-express-checkout, .checkout-button, .fc-cart-action__proceed-checkout, .add_to_cart_button, .single_add_to_cart_button, .wc-block-components-product-button__button, [name="calc_shipping"]',
+		inertActionSelector:          '.fc-place-order__custom-buttons, .fc-express-checkout, .checkout-button, .fc-cart-action__proceed-checkout, .add_to_cart_button, .single_add_to_cart_button, .wc-block-components-product-button__button',
 		frameContainerSelector:       'body :has( > iframe )',
 		paymentFieldsSelector:        '#payment',
-		cartActionSelector:           '.quantity, .fc-coupon-code__apply',
+		cartActionSelector:           '.quantity, .fc-coupon-code__apply, [name="calc_shipping"]',
 		placeOrderActionSelector:     '#place_order, .fc-place-order-button',
 		quantityFieldSelector:        '.quantity input',
 		couponCodeFieldSelector:      'input[name="coupon_code"]',
@@ -57,6 +57,7 @@
 		cartLinkSelector:             'a.remove, a.restore-item, a.woocommerce-remove-coupon',
 		checkoutFormSelector:         'form.checkout',
 		orderPayFormSelector:         'form#order_review',
+		shippingCalcFormSelector:     'form.woocommerce-shipping-calculator',
 		checkoutFieldSelector:        'input[name]:not([type="hidden"]):not([type="password"]):not([type="submit"]):not([type="button"]):not([type="radio"]:not(:checked)), select[name], textarea[name]',
 		checkableFieldSelector:       '[type="checkbox"], [type="radio"]',
 		countryFieldSelector:         '.country_to_state',
@@ -1217,6 +1218,9 @@
 	var handleSubmit = function( e ) {
 		// Bail if submitting the checkout or order pay form while placing orders is enabled, so the page scripts place or pay for the order
 		if ( _settings.isPlaceOrderEnabled && ( e.target.matches( _settings.checkoutFormSelector ) || e.target.matches( _settings.orderPayFormSelector ) ) ) { return; }
+
+		// Bail if submitting the shipping calculator of editable carts, so the page scripts update the shipping address
+		if ( _settings.isCartEditable && e.target.matches( _settings.shippingCalcFormSelector ) ) { return; }
 
 		// Stop the form submission
 		preventAction( e );
