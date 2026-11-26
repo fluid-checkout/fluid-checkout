@@ -196,8 +196,8 @@ jQuery( function ( $ ) {
 		dirtyInput: false,
 		selectedPaymentMethod: false,
 		xhr: false,
-		// CHANGE: Field values at the start of the current update_order_review request (billing_/shipping_)
-		pendingUpdateFieldValues: null,
+		// CHANGE: Add variable for the address field values sent with the last checkout update
+		lastUpdateAddressFieldValues: {},
 		// CHANGE: Use checkout form and order pay form selectors from settings
 		$order_review: $( _settings.orderPayFormSelector ),
 		$checkout_form: $( _settings.checkoutFormSelector ),
@@ -792,13 +792,10 @@ jQuery( function ( $ ) {
 				return;
 			}
 
-			// CHANGE: Autofill and paste do not fire keydown, so dirtyInput is never set. Still update for address text fields behind the incomplete-fields gate in maybe_update_checkout.
-			if ( wc_checkout_form.dirtyInput ) {
-				wc_checkout_form.input_changed( e );
-			} else if ( e.target && e.target.matches && e.target.matches( '.address-field input.input-text' ) ) {
+			// CHANGE: Also update when the value changed since the last update without a keydown, such as with autofill or paste
+			if ( wc_checkout_form.dirtyInput || e.target.value !== wc_checkout_form.lastUpdateAddressFieldValues[ e.target.name ] ) {
 				wc_checkout_form.input_changed( e );
 			}
-			// CHANGE: END - Autofill and paste do not fire keydown
 		},
 		// CHANGE: Add function to set the autocomplete attribute values form data attributes. This fixes issue with lost user data when refreshing the page while using the Firefox Browser.
 		set_autocomplete_attribute_from_data: function( e ) {
@@ -1039,153 +1036,125 @@ jQuery( function ( $ ) {
 				}
 			}
 		},
+		// CHANGE: Add function to get the address field values from the checkout form
 		/**
-		 * Collect billing_ and shipping_ field values from the checkout form.
-		 * Unchecked checkboxes and radios are omitted, matching form serialize.
+		 * Get the address field values from the checkout form.
 		 *
-		 * @return {Object} Map of field name to value.
+		 * @return  {Object}  Field values by field name.
 		 */
-		get_checkout_address_field_values: function () {
+		get_address_field_values: function() {
 			var values = {};
 			var form = document.querySelector( _settings.checkoutFormSelector );
 
 			// Bail if checkout form is not available
 			if ( ! form ) { return values; }
 
-			var fields = form.querySelectorAll( 'input, select, textarea' );
+			// Iterate form fields
+			for ( var i = 0; i < form.elements.length; i++ ) {
+				var field = form.elements[ i ];
 
-			// Iterate checkout fields
-			for ( var i = 0; i < fields.length; i++ ) {
-				var field = fields[ i ];
-				var name = field.getAttribute( 'name' );
-				var type = field.type;
+				// Skip fields without a name or outside the address sections
+				if ( ! field.name || ! field.closest( _settings.addressFieldsSectionSelector ) ) { continue; }
 
-				// Bail if not a billing or shipping field
-				if ( ! name || ( 0 !== name.indexOf( 'billing_' ) && 0 !== name.indexOf( 'shipping_' ) ) ) { continue; }
+				// Skip file fields, as their value cannot be restored
+				if ( 'file' === field.type ) { continue; }
 
-				// Bail if button-like control
-				if ( 'button' === type || 'submit' === type || 'reset' === type || 'file' === type || 'image' === type ) { continue; }
+				// Skip unchecked checkboxes and radio buttons
+				if ( ( 'checkbox' === field.type || 'radio' === field.type ) && ! field.checked ) { continue; }
 
-				// Bail if unchecked checkbox or radio (same as serialize)
-				if ( ( 'checkbox' === type || 'radio' === type ) && ! field.checked ) { continue; }
-
-				values[ name ] = field.value;
+				// Add field value
+				values[ field.name ] = field.value;
 			}
 
 			return values;
 		},
+		// CHANGE: END - Add function to get the address field values from the checkout form
+		// CHANGE: Add function to get the address field values changed since the checkout update request was sent
 		/**
-		 * Build a map of address field values that changed since the update request was sent.
+		 * Get the address field values changed since the checkout update request was sent.
 		 *
-		 * @param   {Object}  pendingValues  Values snapped when the request started.
-		 * @param   {Object}  currentValues  Values in the DOM before fragment replace.
-		 * @return  {Object}  Map of field name to value to restore (null means clear or uncheck).
+		 * @param   {Object}  requestValues  Address field values sent with the request.
+		 * @param   {Object}  currentValues  Current address field values.
+		 *
+		 * @return  {Object}                 Changed field values by field name, `null` for fields no longer sent, such as unchecked checkboxes.
 		 */
-		get_changed_address_field_values: function ( pendingValues, currentValues ) {
-			var changed = {};
-			var names = {};
+		get_changed_address_field_values: function( requestValues, currentValues ) {
+			var changedValues = {};
 			var name;
 
-			// Bail if either map is missing
-			if ( ! pendingValues || ! currentValues ) { return changed; }
-
-			// Collect all field names from both maps
-			for ( name in pendingValues ) {
-				if ( Object.prototype.hasOwnProperty.call( pendingValues, name ) ) {
-					names[ name ] = true;
-				}
-			}
+			// Iterate current values
 			for ( name in currentValues ) {
-				if ( Object.prototype.hasOwnProperty.call( currentValues, name ) ) {
-					names[ name ] = true;
-				}
+				// Skip unchanged values
+				if ( currentValues[ name ] === requestValues[ name ] ) { continue; }
+
+				// Add changed value
+				changedValues[ name ] = currentValues[ name ];
 			}
 
-			// Iterate field names and keep those that differ from the request snapshot
-			for ( name in names ) {
-				if ( ! Object.prototype.hasOwnProperty.call( names, name ) ) { continue; }
+			// Iterate values sent with the request
+			for ( name in requestValues ) {
+				// Skip fields still sent
+				if ( undefined !== currentValues[ name ] ) { continue; }
 
-				var pendingValue = Object.prototype.hasOwnProperty.call( pendingValues, name ) ? pendingValues[ name ] : null;
-				var currentValue = Object.prototype.hasOwnProperty.call( currentValues, name ) ? currentValues[ name ] : null;
-
-				// Bail if value did not change while the request was open
-				if ( pendingValue === currentValue ) { continue; }
-
-				changed[ name ] = currentValue;
+				// Add removed value
+				changedValues[ name ] = null;
 			}
 
-			return changed;
+			return changedValues;
 		},
+		// CHANGE: END - Add function to get the address field values changed since the checkout update request was sent
+		// CHANGE: Add function to restore address field values after replacing the checkout fragments
 		/**
-		 * Write preserved address field values into the checkout form after fragment replace.
+		 * Restore address field values after replacing the checkout fragments.
 		 *
-		 * @param   {Object}  valuesToRestore  Map of field name to value (null clears or unchecks).
-		 * @return  {boolean} True when at least one field was written.
+		 * @param   {Object}   fieldValues  Field values by field name, `null` to clear or uncheck the field.
+		 *
+		 * @return  {Boolean}               Whether any field was changed.
 		 */
-		restore_checkout_address_field_values: function ( valuesToRestore ) {
-			var restored = false;
+		restore_address_field_values: function( fieldValues ) {
+			var hasChangedFields = false;
 			var form = document.querySelector( _settings.checkoutFormSelector );
 
-			// Bail if nothing to restore or form is missing
-			if ( ! valuesToRestore || ! form ) { return false; }
+			// Bail if checkout form is not available
+			if ( ! form ) { return hasChangedFields; }
 
-			// Iterate values to restore
-			for ( var name in valuesToRestore ) {
-				if ( ! Object.prototype.hasOwnProperty.call( valuesToRestore, name ) ) { continue; }
+			// Iterate form fields
+			for ( var i = 0; i < form.elements.length; i++ ) {
+				var field = form.elements[ i ];
+				var value = fieldValues[ field.name ];
 
-				var value = valuesToRestore[ name ];
-				var fields = form.querySelectorAll( '[name="' + name + '"]' );
+				// Skip fields without a value to restore
+				if ( ! field.name || undefined === value ) { continue; }
 
-				// Bail if field was removed from the DOM
-				if ( ! fields.length ) { continue; }
+				// Maybe restore checked state of checkboxes and radio buttons
+				if ( 'checkbox' === field.type || 'radio' === field.type ) {
+					// Get checked state to restore
+					var isChecked = value === field.value;
 
-				// Iterate matching fields (radios share a name)
-				for ( var i = 0; i < fields.length; i++ ) {
-					var field = fields[ i ];
-					var type = field.type;
+					// Skip fields already in this state
+					if ( isChecked === field.checked ) { continue; }
 
-					// Maybe clear or uncheck when the in-flight value was removed
-					if ( null === value ) {
-						if ( 'checkbox' === type || 'radio' === type ) {
-							// Bail if already unchecked
-							if ( ! field.checked ) { continue; }
-							field.checked = false;
-						} else {
-							// Bail if already empty
-							if ( '' === field.value ) { continue; }
-							field.value = '';
-							if ( field.tomselect ) {
-								field.tomselect.setValue( '', true );
-							}
-						}
-						restored = true;
-						continue;
-					}
-
-					// Maybe set radio or checkbox checked state
-					if ( 'checkbox' === type || 'radio' === type ) {
-						var shouldCheck = field.value === value;
-						// Bail if checked state already matches
-						if ( field.checked === shouldCheck ) { continue; }
-						field.checked = shouldCheck;
-						restored = true;
-						continue;
-					}
-
-					// Bail if the field already has the in-flight value (fragment may have been skipped)
-					if ( field.value === value ) { continue; }
-
-					// Set text, select, and textarea values
-					field.value = value;
-					if ( field.tomselect ) {
-						field.tomselect.setValue( value, true );
-					}
-					restored = true;
+					// Set checked state
+					field.checked = isChecked;
 				}
+				// Otherwise, restore the field value
+				else {
+					// Get value to restore
+					value = null === value ? '' : value;
+
+					// Skip fields that already have this value
+					if ( value === field.value ) { continue; }
+
+					// Set field value
+					field.value = value;
+				}
+
+				hasChangedFields = true;
 			}
 
-			return restored;
+			return hasChangedFields;
 		},
+		// CHANGE: END - Add function to restore address field values after replacing the checkout fragments
 		update_checkout: function ( event, args ) {
 			// CHANGE: Mirror all field values
 			wc_checkout_form.maybe_mirror_all_address_field_values();
@@ -1266,6 +1235,10 @@ jQuery( function ( $ ) {
 				post_data: $( 'form.checkout' ).serialize(),
 			};
 
+			// CHANGE: Save the address field values sent with this request
+			var requestAddressFieldValues = wc_checkout_form.get_address_field_values();
+			wc_checkout_form.lastUpdateAddressFieldValues = requestAddressFieldValues;
+
 			if ( false !== args.update_shipping_method ) {
 				var shipping_methods = {};
 
@@ -1300,10 +1273,6 @@ jQuery( function ( $ ) {
 
 			// CHANGE: Set body class for processing checkout update
 			document.body.classList.add( 'fc-processing-update' );
-
-			// CHANGE: Snapshot address field values when the request leaves so later fragment HTML can be reconciled
-			var fieldValuesAtRequest = wc_checkout_form.get_checkout_address_field_values();
-			wc_checkout_form.pendingUpdateFieldValues = fieldValuesAtRequest;
 
 			wc_checkout_form.xhr = $.ajax( {
 				type: 'POST',
@@ -1352,19 +1321,13 @@ jQuery( function ( $ ) {
 					// CHANGE: Set variables for current focused element
 					FCUtils.setCurrentFocusedElementGlobalVariables();
 
-					// CHANGE: Track address values filled while the request was open (restored after fragment replace)
-					var addressValuesToRestore = null;
-
 					// Always update the fragments
 					if ( data && data.fragments ) {
 						// CHANGE: Trigger custom event before fragments are replaced.
 						$( document.body ).trigger( 'fc_checkout_fragments_replace_before', [ data ] );
 
-						// CHANGE: Compare current address fields to this request's closed-over snapshot before replace overwrites them
-						addressValuesToRestore = wc_checkout_form.get_changed_address_field_values(
-							fieldValuesAtRequest,
-							wc_checkout_form.get_checkout_address_field_values()
-						);
+						// CHANGE: Get address field values changed while the request was processing, before replacing the fragments
+						var changedAddressFieldValues = wc_checkout_form.get_changed_address_field_values( requestAddressFieldValues, wc_checkout_form.get_address_field_values() );
 
 						// CHANGE: Try to remove intl-tel-input components from existing fields before replacing fragments
 						if ( window.intlTelInput ) {
@@ -1432,19 +1395,13 @@ jQuery( function ( $ ) {
 						} );
 						wc_checkout_form.fragments = data.fragments;
 
-						// CHANGE: Trigger custom event after fragments are replaced.
-						$( document.body ).trigger( 'fc_checkout_fragments_replace_after', [ data ] );
-
-						// CHANGE: Restore address values that changed while the request was open, then sync the session
-						if ( addressValuesToRestore && wc_checkout_form.restore_checkout_address_field_values( addressValuesToRestore ) ) {
+						// CHANGE: Maybe restore address field values changed while the request was processing, and update again to send them
+						if ( wc_checkout_form.restore_address_field_values( changedAddressFieldValues ) ) {
 							$( document.body ).trigger( 'update_checkout' );
 						}
-						// CHANGE: END - Restore address values that changed while the request was open
-					}
 
-					// CHANGE: Clear this request's snapshot only when a newer update has not already replaced it
-					if ( wc_checkout_form.pendingUpdateFieldValues === fieldValuesAtRequest ) {
-						wc_checkout_form.pendingUpdateFieldValues = null;
+						// CHANGE: Trigger custom event after fragments are replaced.
+						$( document.body ).trigger( 'fc_checkout_fragments_replace_after', [ data ] );
 					}
 
 					// CHANGE: Unblock remaining blocked fragments after updating.
