@@ -411,6 +411,7 @@ Fluid Checkout Lite users can get help on our [support page](https://fluidchecko
 = Unreleased =
 
 * Added: Compatibility with theme Synex.
+* Added: Compatibility with plugin Helcim Commerce for WooCommerce. Keep the HelcimPay modal flow working after Place order on classic checkout.
 * Improved: Turn off the highlighted background for billing and shipping address sections by default.
 * Fixed: Background of the guest checkout section separator not matching the background behind it with some design templates and themes.
 
