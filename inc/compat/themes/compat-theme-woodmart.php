@@ -102,9 +102,6 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 	/**
 	 * Get the header element selector used to position sticky elements.
 	 *
-	 * The selected element must exist on page load, because the sticky elements script only looks it up once.
-	 * The theme switches it to `position: fixed` when the header sticks, which is when the offset applies.
-	 *
 	 * @return string
 	 */
 	public function get_sticky_header_relative_selector() {
