@@ -27,13 +27,17 @@
 	var _hasInitialized = false;
 	var _publicMethods = {};
 	var _settings = {
-		checkoutFormSelector:       'form.checkout',
-		checkoutPlaceOrderSelector: '#place_order, .fc-place-order-button',
-		helcimIframeSelector:       'iframe#helcimPayIframe',
-		loadingClass:               'fc-loading',
+		checkoutFormSelector:         'form.checkout',
+		checkoutPlaceOrderSelector:   '#place_order, .fc-place-order-button',
+		helcimIframeSelector:         'iframe#helcimPayIframe',
+		loadingClass:                 'fc-loading',
+		processingClass:              'processing',
+		disabledClass:                'disabled',
+		helcimModalFallbackTimeoutMs: 25000,
 	};
 	var _helcimModalOpen = false;
 	var _mutationObserver = null;
+	var _helcimModalFallbackTimeoutId = null;
 
 
 
@@ -51,12 +55,12 @@
 	var unblockCheckoutForm = function( wc_checkout_form ) {
 		// Maybe unblock via the WooCommerce checkout form object
 		if ( wc_checkout_form && wc_checkout_form.$checkout_form ) {
-			wc_checkout_form.$checkout_form.removeClass( 'processing' ).unblock();
+			wc_checkout_form.$checkout_form.removeClass( _settings.processingClass ).unblock();
 			return;
 		}
 
 		// Otherwise unblock the checkout form directly
-		$( _settings.checkoutFormSelector ).removeClass( 'processing' ).unblock();
+		$( _settings.checkoutFormSelector ).removeClass( _settings.processingClass ).unblock();
 	};
 
 	/**
@@ -64,7 +68,7 @@
 	 */
 	var disablePlaceOrderButtons = function() {
 		$( _settings.checkoutPlaceOrderSelector ).attr( 'disabled', 'disabled' );
-		$( _settings.checkoutPlaceOrderSelector ).addClass( 'disabled' );
+		$( _settings.checkoutPlaceOrderSelector ).addClass( _settings.disabledClass );
 	};
 
 	/**
@@ -73,7 +77,7 @@
 	var enablePlaceOrderButtons = function() {
 		$( _settings.checkoutPlaceOrderSelector ).removeClass( _settings.loadingClass );
 		$( _settings.checkoutPlaceOrderSelector ).removeAttr( 'disabled' );
-		$( _settings.checkoutPlaceOrderSelector ).removeClass( 'disabled' );
+		$( _settings.checkoutPlaceOrderSelector ).removeClass( _settings.disabledClass );
 	};
 
 	/**
@@ -91,6 +95,17 @@
 	};
 
 	/**
+	 * Clear the HelcimPay fallback restore timer.
+	 */
+	var clearHelcimModalFallbackTimeout = function() {
+		// Bail if no fallback timer is active
+		if ( null === _helcimModalFallbackTimeoutId ) { return; }
+
+		window.clearTimeout( _helcimModalFallbackTimeoutId );
+		_helcimModalFallbackTimeoutId = null;
+	};
+
+	/**
 	 * Restore checkout UI after Helcim finishes, fails, or the customer closes the modal.
 	 */
 	var restoreCheckoutUiAfterHelcim = function() {
@@ -98,8 +113,25 @@
 		if ( ! _helcimModalOpen ) { return; }
 
 		_helcimModalOpen = false;
+		clearHelcimModalFallbackTimeout();
 		enablePlaceOrderButtons();
 		allowCheckoutUpdates();
+	};
+
+	/**
+	 * Schedule a fallback restore when HelcimPay never opens or never signals failure.
+	 */
+	var scheduleHelcimModalFallbackRestore = function() {
+		clearHelcimModalFallbackTimeout();
+
+		_helcimModalFallbackTimeoutId = window.setTimeout( function() {
+			_helcimModalFallbackTimeoutId = null;
+
+			// Bail if Helcim already restored the UI
+			if ( ! _helcimModalOpen ) { return; }
+
+			restoreCheckoutUiAfterHelcim();
+		}, _settings.helcimModalFallbackTimeoutMs );
 	};
 
 	/**
@@ -126,7 +158,7 @@
 			return;
 		}
 
-		// Otherwise check nested iframes
+		// Otherwise check nested iframes on the added body child
 		if ( node.querySelector && node.querySelector( _settings.helcimIframeSelector ) ) {
 			markHelcimModalOpen();
 		}
@@ -150,7 +182,7 @@
 			return;
 		}
 
-		// Otherwise check nested iframes
+		// Otherwise check nested iframes on the removed body child
 		if ( node.querySelector && node.querySelector( _settings.helcimIframeSelector ) ) {
 			restoreCheckoutUiAfterHelcim();
 		}
@@ -180,9 +212,10 @@
 			}
 		} );
 
+		// Watch direct children of body only. HelcimPay appends the iframe (or a wrapper) there.
 		_mutationObserver.observe( document.body, {
 			childList: true,
-			subtree:   true,
+			subtree:   false,
 		} );
 	};
 
@@ -207,21 +240,14 @@
 		// Remove the blockUI overlay so HelcimPay is not covered by the spinner
 		unblockCheckoutForm( wc_checkout_form );
 
-		// Track HelcimPay until the iframe appears or Helcim fails without opening it
+		// Track HelcimPay until the iframe appears or Helcim fails without opening it.
+		// Place order stays enabled until the iframe is added so a Helcim failure
+		// without checkout_error cannot leave the button stuck disabled.
 		_helcimModalOpen = true;
+		scheduleHelcimModalFallbackRestore();
 
 		// Let Helcim open HelcimPay.js with the tokens from this AJAX result
 		$( _settings.checkoutFormSelector ).triggerHandler( 'checkout_place_order_success', [ result, wc_checkout_form ] );
-
-		// Fluid Checkout re-enables place order after this handler returns false.
-		// Re-disable on the next tick while HelcimPay is active or failing.
-		window.setTimeout( function() {
-			// Bail if Helcim already restored the UI (for example checkout_error)
-			if ( ! _helcimModalOpen ) { return; }
-
-			disablePlaceOrderButtons();
-			blockCheckoutUpdates();
-		}, 0 );
 
 		// Stop Fluid Checkout from navigating to `#helcim-pay`
 		return false;
