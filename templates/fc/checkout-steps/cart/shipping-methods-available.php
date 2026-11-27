@@ -19,9 +19,7 @@ $has_available_methods     = ! empty( $available_methods ) && is_array( $availab
 $requires_shipping_address = 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_shipping_cost_requires_address' );
 
 // CHANGE: A saved address can produce rates before WooCommerce sets `has_calculated_shipping`.
-// The address prompt must stay hidden once those rates are actually shown.
 $can_display_shipping_rates = ( is_checkout() && ( ! $requires_shipping_address || $has_calculated_shipping ) ) || ( FluidCheckout_Steps::instance()->is_cart_page_or_fragment() && WC()->cart->show_shipping() );
-$shipping_rates_displayed   = $has_available_methods && $can_display_shipping_rates;
 ?>
 
 <?php // CHANGE: Remove shipping totals table row elements ?>
@@ -149,8 +147,8 @@ $shipping_rates_displayed   = $has_available_methods && $can_display_shipping_ra
 		</div>
 	<?php endif; ?>
 
-	<?php // CHANGE: Show the address prompt only when rates are not displayed. A complete saved address can have rates before shipping is marked calculated. ?>
-	<?php if ( ( is_checkout() || FluidCheckout_Steps::instance()->is_cart_page_or_fragment() ) && $requires_shipping_address && ! $has_calculated_shipping && ! $shipping_rates_displayed ) : ?>
+	<?php // CHANGE: Show the address prompt only on the checkout page, as the cart shipping calculator section already shows the address message ?>
+	<?php if ( is_checkout() && $requires_shipping_address && ! $has_calculated_shipping ) : ?>
 		<div class="fc-shipping-method__incomplete-address shipping-method__package">
 			<div class="shipping-method__options">
 				<?php echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'woocommerce' ) ) ); ?>
