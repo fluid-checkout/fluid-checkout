@@ -53,6 +53,8 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_add_free_shipping_bar_fragment' ), 10 );
 	}
 
+
+
 	/**
 	 * Initialize theme options hooks.
 	 */
@@ -98,6 +100,25 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 
 
 	/**
+	 * Get the header element selector used to position sticky elements.
+	 *
+	 * @return string
+	 */
+	public function get_sticky_header_relative_selector() {
+		// Get header settings from the theme
+		$settings = function_exists( 'whb_get_settings' ) ? whb_get_settings() : array();
+
+		// Maybe use the header clone, which the theme shows instead of the real header when sticky
+		if ( ! empty( $settings[ 'sticky_clone' ] ) && isset( $settings[ 'sticky_effect' ] ) && 'slide' === $settings[ 'sticky_effect' ] ) {
+			return '.whb-clone';
+		}
+
+		return '.whb-header .whb-main-header';
+	}
+
+
+
+	/**
 	 * Change the element used to position the progress bar and order summary when sticky.
 	 *
 	 * @param  array  $attributes  The elements attributes.
@@ -106,8 +127,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
-		// Real sticky rows (`.whb-sticky-real`) and sticky header clone both become `position: fixed` when stuck
-		$attributes[ 'data-sticky-relative-to' ] = '.whb-header.whb-sticked .whb-main-header, .whb-clone.whb-sticked';
+		$attributes[ 'data-sticky-relative-to' ] = $this->get_sticky_header_relative_selector();
 
 		return $attributes;
 	}

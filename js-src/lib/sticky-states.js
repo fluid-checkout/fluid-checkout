@@ -273,6 +273,11 @@
 			var isEndThreshold = currentScrollPosition >= manager.settings.endThreshold;
 			var isStaticAtEnd = manager.stickyElement.hasAttribute( manager.settings.staticAtEndAttribute );
 
+			// Maybe get the relative element again, as it can be added to the page after initializing
+			if ( ! manager.relativeElement && manager.stickyElement.getAttribute( manager.settings.stickyRelativeToAttribute ) ) {
+				manager.relativeElement = getRelativeElement( manager.stickyElement.getAttribute( manager.settings.stickyRelativeToAttribute ) );
+			}
+
 			// Maybe set isSticky value based on the relative element
 			if ( manager.relativeElement && isVisible( manager.relativeElement ) && _publicMethods.isStickyPosition( manager.relativeElement ) ) {
  				relativeHeight = manager.relativeElement.getBoundingClientRect().height;
