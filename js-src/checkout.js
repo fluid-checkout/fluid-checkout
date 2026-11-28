@@ -196,6 +196,8 @@ jQuery( function ( $ ) {
 		dirtyInput: false,
 		selectedPaymentMethod: false,
 		xhr: false,
+		// CHANGE: Add variable for the address field values sent with the last checkout update
+		lastUpdateAddressFieldValues: {},
 		// CHANGE: Use checkout form and order pay form selectors from settings
 		$order_review: $( _settings.orderPayFormSelector ),
 		$checkout_form: $( _settings.checkoutFormSelector ),
@@ -790,7 +792,8 @@ jQuery( function ( $ ) {
 				return;
 			}
 
-			if ( wc_checkout_form.dirtyInput ) {
+			// CHANGE: Also update when the value changed since the last update without a keydown, such as with autofill or paste
+			if ( wc_checkout_form.dirtyInput || e.target.value !== wc_checkout_form.lastUpdateAddressFieldValues[ e.target.name ] ) {
 				wc_checkout_form.input_changed( e );
 			}
 		},
@@ -1033,6 +1036,125 @@ jQuery( function ( $ ) {
 				}
 			}
 		},
+		// CHANGE: Add function to get the address field values from the checkout form
+		/**
+		 * Get the address field values from the checkout form.
+		 *
+		 * @return  {Object}  Field values by field name.
+		 */
+		get_address_field_values: function() {
+			var values = {};
+			var form = document.querySelector( _settings.checkoutFormSelector );
+
+			// Bail if checkout form is not available
+			if ( ! form ) { return values; }
+
+			// Iterate form fields
+			for ( var i = 0; i < form.elements.length; i++ ) {
+				var field = form.elements[ i ];
+
+				// Skip fields without a name or outside the address sections
+				if ( ! field.name || ! field.closest( _settings.addressFieldsSectionSelector ) ) { continue; }
+
+				// Skip file fields, as their value cannot be restored
+				if ( 'file' === field.type ) { continue; }
+
+				// Skip unchecked checkboxes and radio buttons
+				if ( ( 'checkbox' === field.type || 'radio' === field.type ) && ! field.checked ) { continue; }
+
+				// Add field value
+				values[ field.name ] = field.value;
+			}
+
+			return values;
+		},
+		// CHANGE: END - Add function to get the address field values from the checkout form
+		// CHANGE: Add function to get the address field values changed since the checkout update request was sent
+		/**
+		 * Get the address field values changed since the checkout update request was sent.
+		 *
+		 * @param   {Object}  requestValues  Address field values sent with the request.
+		 * @param   {Object}  currentValues  Current address field values.
+		 *
+		 * @return  {Object}                 Changed field values by field name, `null` for fields no longer sent, such as unchecked checkboxes.
+		 */
+		get_changed_address_field_values: function( requestValues, currentValues ) {
+			var changedValues = {};
+			var name;
+
+			// Iterate current values
+			for ( name in currentValues ) {
+				// Skip unchanged values
+				if ( currentValues[ name ] === requestValues[ name ] ) { continue; }
+
+				// Add changed value
+				changedValues[ name ] = currentValues[ name ];
+			}
+
+			// Iterate values sent with the request
+			for ( name in requestValues ) {
+				// Skip fields still sent
+				if ( undefined !== currentValues[ name ] ) { continue; }
+
+				// Add removed value
+				changedValues[ name ] = null;
+			}
+
+			return changedValues;
+		},
+		// CHANGE: END - Add function to get the address field values changed since the checkout update request was sent
+		// CHANGE: Add function to restore address field values after replacing the checkout fragments
+		/**
+		 * Restore address field values after replacing the checkout fragments.
+		 *
+		 * @param   {Object}   fieldValues  Field values by field name, `null` to clear or uncheck the field.
+		 *
+		 * @return  {Boolean}               Whether any field was changed.
+		 */
+		restore_address_field_values: function( fieldValues ) {
+			var hasChangedFields = false;
+			var form = document.querySelector( _settings.checkoutFormSelector );
+
+			// Bail if checkout form is not available
+			if ( ! form ) { return hasChangedFields; }
+
+			// Iterate form fields
+			for ( var i = 0; i < form.elements.length; i++ ) {
+				var field = form.elements[ i ];
+				var value = fieldValues[ field.name ];
+
+				// Skip fields without a value to restore
+				if ( ! field.name || undefined === value ) { continue; }
+
+				// Maybe restore checked state of checkboxes and radio buttons
+				if ( 'checkbox' === field.type || 'radio' === field.type ) {
+					// Get checked state to restore
+					var isChecked = value === field.value;
+
+					// Skip fields already in this state
+					if ( isChecked === field.checked ) { continue; }
+
+					// Set checked state
+					field.checked = isChecked;
+				}
+				// Otherwise, restore the field value
+				else {
+					// Get value to restore
+					value = null === value ? '' : value;
+
+					// Skip fields that already have this value
+					if ( value === field.value ) { continue; }
+
+					// Set field value
+					field.value = value;
+				}
+
+				hasChangedFields = true;
+			}
+
+			return hasChangedFields;
+		},
+		// CHANGE: END - Add function to restore address field values after replacing the checkout fragments
 		update_checkout: function ( event, args ) {
 			// CHANGE: Mirror all field values
 			wc_checkout_form.maybe_mirror_all_address_field_values();
@@ -1112,6 +1234,10 @@ jQuery( function ( $ ) {
 				has_full_address: has_full_address,
 				post_data: $( 'form.checkout' ).serialize(),
 			};
+
+			// CHANGE: Save the address field values sent with this request
+			var requestAddressFieldValues = wc_checkout_form.get_address_field_values();
+			wc_checkout_form.lastUpdateAddressFieldValues = requestAddressFieldValues;
 
 			if ( false !== args.update_shipping_method ) {
 				var shipping_methods = {};
@@ -1200,6 +1326,9 @@ jQuery( function ( $ ) {
 						// CHANGE: Trigger custom event before fragments are replaced.
 						$( document.body ).trigger( 'fc_checkout_fragments_replace_before', [ data ] );
 
+						// CHANGE: Get address field values changed while the request was processing, before replacing the fragments
+						var changedAddressFieldValues = wc_checkout_form.get_changed_address_field_values( requestAddressFieldValues, wc_checkout_form.get_address_field_values() );
+
 						// CHANGE: Try to remove intl-tel-input components from existing fields before replacing fragments
 						if ( window.intlTelInput ) {
 							// Get intl-tel-input object
@@ -1265,6 +1394,11 @@ jQuery( function ( $ ) {
 							$( key ).unblock();
 						} );
 						wc_checkout_form.fragments = data.fragments;
+
+						// CHANGE: Maybe restore address field values changed while the request was processing, and update again to send them
+						if ( wc_checkout_form.restore_address_field_values( changedAddressFieldValues ) ) {
+							$( document.body ).trigger( 'update_checkout' );
+						}
 
 						// CHANGE: Trigger custom event after fragments are replaced.
 						$( document.body ).trigger( 'fc_checkout_fragments_replace_after', [ data ] );
